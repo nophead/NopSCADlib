@@ -6,3 +6,4 @@ tests/bom/
 tests/deps/
 *.log
 *.html
+times.txt
