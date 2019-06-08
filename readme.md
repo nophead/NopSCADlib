@@ -5,8 +5,11 @@ It contains lots of vitamins (the RepRap term for non-printed parts), some gener
 some utilities. There are also Python scripts to generate Bills of Materials (BOMs),
  STL files for all the printed parts and DXF files for CNC routed parts in a project.
 
+<img src="libtest.png" width="100%"/>
+
+
 ## Table of Contents<a name="top"/>
-<table><tr><td valign="top"><table><tr>
+<table><tr>
 <th align="left"> Vitamins A-N </th><th align="left"> Vitamins O-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
 <tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
 <tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
@@ -34,7 +37,8 @@ some utilities. There are also Python scripts to generate Bills of Materials (BO
 <tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Nuts">Nuts</a> </td><td></td><td></td><td></td><td></td></tr>
-</table></td><td valign="top"><img src="libtest.png" width="100%"/></td></tr></table>
+</table>
+
 ---
 <a name="Ball_bearings"></a>
 ## Ball_bearings
