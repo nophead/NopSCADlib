@@ -1,0 +1,8 @@
+*_canute.bat
+Thumbs.db
+__pycache__
+*.pyc
+tests/bom/
+tests/deps/
+*.log
+*.html
