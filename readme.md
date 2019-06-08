@@ -5,6 +5,10 @@ It contains lots of vitamins (the RepRap term for non-printed parts), some gener
 some utilities. There are also Python scripts to generate Bills of Materials (BOMs),
  STL files for all the printed parts and DXF files for CNC routed parts in a project.
 
+For some of examples of what it can make see the [gallery](gallery/readme.md).
+
+The license is GNU General Public License v3.0, see [COPYING](COPYING).
+
 <img src="libtest.png" width="100%"/>
 
 

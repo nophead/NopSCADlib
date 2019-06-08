@@ -39,6 +39,7 @@ def gallery():
 
     projects = [i for i in os.listdir(project_dir) if os.path.isdir(project_dir + '/' + i + '/assemblies')]
     with open(output_name, 'wt') as output_file:
+        print("# A gallery of projects made with NopSCADlib", file = output_file)
         for project in projects:
             path = project_dir + '/' + project
             print(project)
