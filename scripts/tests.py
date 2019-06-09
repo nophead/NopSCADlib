@@ -28,8 +28,10 @@ import bom
 import times
 import time
 import json
+import shutil
 from deps import *
 from blurb import *
+from colorama import Fore
 
 w = 4096
 h = w
@@ -38,7 +40,20 @@ def do_cmd(cmd, output = sys.stdout):
     for arg in cmd:
         print(arg, end = " ")
     print()
-    subprocess.call(cmd, stdout = output)
+    return subprocess.call(cmd, stdout = output, stderr = output)
+
+def update_image(tmp_name, png_name):
+    """Update an image only if different, otherwise just change the mod time"""
+    with open(os.devnull, 'w') as null:
+        diff_name = png_name.replace('.png', '_diff.png')
+        if not os.path.isfile(png_name) or do_cmd(("magick compare -metric AE %s %s %s" % (png_name, tmp_name, diff_name)).split(), output = null):
+            shutil.copyfile(tmp_name, png_name)
+            print(Fore.GREEN + png_name + " updated" + Fore.WHITE)
+        else:
+            os.utime(png_name, None)
+            os.remove(diff_name)
+        os.remove(tmp_name)
+
 
 def depluralise(name):
     if name[-3:] == "ies" and name != "zipties":
@@ -159,9 +174,11 @@ def tests(tests):
             if changed:
                 print(changed)
                 t = time.time()
-                openscad.run("-D", "$bom=2", "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", png_name, scad_name);
+                tmp_name = 'tmp.png'
+                openscad.run("-D", "$bom=2", "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name);
                 times.add_time(scad_name, t)
-                do_cmd(["magick", png_name, "-trim", "-resize", "1000x600", "-bordercolor", "#ffffe5", "-border", "10", png_name])
+                do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", "#ffffe5", "-border", "10", tmp_name])
+                update_image(tmp_name, png_name)
                 BOM = bom.parse_bom()
                 with open(bom_name, 'wt') as outfile:
                     json.dump(BOM.flat_data(), outfile, indent = 4)

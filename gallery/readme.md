@@ -7,7 +7,7 @@ Arduino thermostat to control a beer fridge to use it as an environmental chambe
 
 ---
 ## HydraBot
-Current state of HydraRaptor after being modified for laser engarving.
+Current state of HydraRaptor after being modified for laser engraving.
 
 ![](HydraBot.png)
 

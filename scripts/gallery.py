@@ -28,6 +28,7 @@ from colorama import Fore, init
 from tests import do_cmd
 import re
 from shutil import copyfile
+from tests import update_image
 
 project_dir = '../..'
 target_dir = 'gallery'
@@ -53,7 +54,10 @@ def gallery():
                             if image.startswith('![Main Assembly](assemblies/'):
                                 file = image[17 : -1]
                                 line = line.replace(image, '![](%s.png)' % project)
-                                copyfile(path + '/' + file, '%s/%s.png' %(target_dir, project))
+                                tmp_name = 'tmp.png'
+                                target_name = '%s/%s.png' %(target_dir, project)
+                                copyfile(path + '/' + file, tmp_name)
+                                update_image(tmp_name, target_name)
                             else:
                                 line = line.replace(image, '')
                         else:

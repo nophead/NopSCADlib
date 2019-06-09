@@ -25,7 +25,7 @@
 from __future__ import print_function
 from set_config import *
 import openscad
-from tests import do_cmd
+from tests import do_cmd, update_image
 import time
 import times
 from deps import *
@@ -33,6 +33,7 @@ import os
 import json
 import blurb
 import bom
+import shutil
 from colorama import Fore
 
 def is_assembly(s):
@@ -151,12 +152,15 @@ def views(target, do_assemblies = None):
                                         if changed:
                                             print(changed)
                                             t = time.time()
-                                            openscad.run("-D$pose=1", "-D$explode=%d" % explode, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", png_name, png_maker_name);
+                                            tmp_name = 'tmp.png'
+                                            openscad.run("-D$pose=1", "-D$explode=%d" % explode, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
                                             times.add_time(png_name, t)
-                                            do_cmd(["magick", png_name, "-trim", "-resize", "1004x1004", "-bordercolor", "#ffffe5", "-border", "10", png_name])
+                                            do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", "#ffffe5", "-border", "10", tmp_name])
+                                            update_image(tmp_name, png_name)
                                         tn_name = png_name.replace('.png', '_tn.png')
                                         if mtime(png_name) > mtime(tn_name):
-                                            do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background #ffffe5 -gravity Center -extent 280x280 -bordercolor #ffffe5 -border 10 " + tn_name).split())
+                                            do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background #ffffe5 -gravity Center -extent 280x280 -bordercolor #ffffe5 -border 10 " + tmp_name).split())
+                                            update_image(tmp_name, tn_name)
                                     os.remove(png_maker_name)
                                 done_assemblies.append(module)
                             else:
