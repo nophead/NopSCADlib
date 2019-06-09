@@ -48,7 +48,7 @@ module fan_guard(type, name = false, thickness = fan_guard_thickness(), spokes =
     spoke_start = grill && rings > 1 ? inner_ring + ring_pitch : inner_ring;
     rounding = grill ? 1.5 : 0;
 
-    extrude_if(thickness) {
+    extrude_if(thickness, center = false) {
         difference() {
             offset(-rounding) offset(rounding) {
                 difference() {
