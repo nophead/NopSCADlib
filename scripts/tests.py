@@ -142,10 +142,10 @@ def tests(tests):
             body += ["[%s](%s) Code for this example.\n" % (scad_name.replace('\\','/'), scad_name)]
 
             if doc:
-                for thing in ["properties", "functions", "modules"]:
+                for thing, heading in [("properties", "Function"), ("functions", "Function"), ("modules", "Module")]:
                     things = doc[thing]
                     if things:
-                        body += ['### %s\n|  |  |\n|:--- |:--- |' % thing.title()]
+                        body += ['### %s\n| %s | Description |\n|:--- |:--- |' % (thing.title(), heading)]
                         for item in sorted(things):
                             body += ['| ```%s``` | %s |' % (item, things[item])]
                         body += ['']
@@ -168,10 +168,10 @@ def tests(tests):
 
             with open(bom_name, "rt") as bom_file:
                 BOM = json.load(bom_file)
-                for thing in ["vitamins", "printed", "routed", "assemblies"]:
+                for thing, heading in [("vitamins", "Module call | BOM entry") , ("printed", "Filename"), ("routed", "Filename"), ("assemblies", "Name")]:
                     things = BOM[thing]
                     if things:
-                        body += ['### %s\n|  |  | |\n| ---:|:--- |:---|' % thing.title()]
+                        body += ['### %s\n| Qty | %s |\n| ---:|:--- |%s' % (thing.title(), heading, ':---|' if '|' in heading else '')]
                         for item in sorted(things, key = lambda s: s.split(":")[-1]):
                             name = item
                             desc = ''
@@ -183,7 +183,9 @@ def tests(tests):
                                     j = name.find(']]') + 2
                                     name = name.replace(name[i : j], '[ ... ]')
                                 desc = vit[1]
-                            body += ['| %3d | %s | %s |' % (things[item], name, desc)]
+                                body += ['| %3d | %s | %s |' % (things[item], name, desc)]
+                            else:
+                                body += ['| %3d | %s |' % (things[item], name)]
                         body += ['']
 
             body += ['\n<a href="#top">Top</a>']

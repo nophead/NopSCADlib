@@ -56,6 +56,10 @@ def gallery():
                                 copyfile(path + '/' + file, '%s/%s.png' %(target_dir, project))
                             else:
                                 line = line.replace(image, '')
+                        else:
+                            match = re.match(r"^(#+).*$", line)
+                            if match:
+                                line = '#' + line
                         print(line[:-1], file = output_file)
                         if line == '---\n':
                             break;

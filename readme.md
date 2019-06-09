@@ -61,7 +61,7 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 [tests/ball_bearings.scad](tests/ball_bearings.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bb_bore(type)``` | Internal diameter |
 | ```bb_colour(type)``` | Shield colour, "silver" for metal |
@@ -70,12 +70,12 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 | ```bb_width(type)``` | Width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bb_rim(type)``` | Inner and outer rim thickness |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```ball_bearing(type)``` | Draw a ball bearing |
 | ```bearing_ball(dia)``` | Draw a steel bearing ball |
@@ -83,7 +83,7 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 ![ball_bearings](tests/png/ball_bearings.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```ball_bearing(BB608)``` |  Ball bearing 608-2RS 8mm x 22mm x 7mm |
 |   1 | ```ball_bearing(BB624)``` |  Ball bearing 624-2RS 4mm x 13mm x 5mm |
@@ -110,7 +110,7 @@ exposing enough information to make a battery box.
 [tests/batteries.scad](tests/batteries.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```battery_colour(type)``` | Casing colour |
 | ```battery_contact(type)``` | Contact type |
@@ -130,7 +130,7 @@ exposing enough information to make a battery box.
 | ```contact_width(type)``` | Width of the flat part |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```battery(type)``` | Draw a battery |
 | ```battery_contact(type, pos = true)``` | Draw a positive or negative battery contact for specified battery |
@@ -139,7 +139,7 @@ exposing enough information to make a battery box.
 ![batteries](tests/png/batteries.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   6 | ```battery_contact(bcontact, false)``` |  Battery negative contact |
 |   6 | ```battery_contact(bcontact, true)``` |  Battery positive contact |
@@ -171,7 +171,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 [tests/belts.scad](tests/belts.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```belt_pitch(type)``` | Pitch in mm |
 | ```belt_thickness(type)``` | Total thickness including teeth |
@@ -179,20 +179,20 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | ```belt_width(type)``` | Width in mm |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```belt_length(points, gap = 0)``` | Compute belt length given path and optional gap |
 | ```belt_pitch_height(type)``` | Offset of the pitch radius from the tips of the teeth |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```belt(type, points, gap = 0, gap_pt = undef)``` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified |
 
 ![belts](tests/png/belts.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```belt(GT2x6, [ ... ])``` |  Belt GT2 x 6mm x 128mm |
 |   1 | ```belt(GT2x6, [ ... ], 80, [0, 0.81])``` |  Belt GT2 x 6mm x 694mm |
@@ -222,7 +222,7 @@ Models of radial blowers.
 [tests/blowers.scad](tests/blowers.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```blower_axis(type)``` | XY coordinates of the axle |
 | ```blower_base(type)``` | Thickness of the base |
@@ -241,7 +241,7 @@ Models of radial blowers.
 | ```blower_width(type)``` | Width of enclosing rectangle |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```blower(type)``` | Draw specified blower |
 | ```blower_hole_positions(type)``` | Translate children to screw hole positions |
@@ -249,7 +249,7 @@ Models of radial blowers.
 ![blowers](tests/png/blowers.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```blower(PE4020)``` |  Blower Pengda Technology 4020 |
 |   1 | ```blower(RM5015)``` |  Blower Runda RB5015 |
@@ -276,7 +276,7 @@ better.
 [tests/bulldogs.scad](tests/bulldogs.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bulldog_depth(type)``` | Depth from the back to the front of the tubes |
 | ```bulldog_handle_length(type)``` | Length that the handle protrudes from the back |
@@ -287,14 +287,14 @@ better.
 | ```bulldog_tube(type)``` | Outside diameter of the tubes |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```bulldog(type, open = 4)``` | Draw bulldog clip open by specified amount |
 
 ![bulldogs](tests/png/bulldogs.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```bulldog(small_bulldog)``` |  Bulldog clip 19mm |
 |   1 | ```bulldog(large_bulldog)``` |  Bulldog clip 25mm |
@@ -315,7 +315,7 @@ PCB mounted buttons. Can optionally have a coloured cap
 [tests/buttons.scad](tests/buttons.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```square_button_cap_d(type)``` | Diameter of the body of the cap |
 | ```square_button_cap_flange_d(type)``` | Diameter of the flange of the cap |
@@ -330,14 +330,14 @@ PCB mounted buttons. Can optionally have a coloured cap
 | ```square_button_width(type)``` | Width and depth of the base |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```square_button(type, colour = "yellow")``` | Draw square button with specified cap colour if it has a cap |
 
 ![buttons](tests/png/buttons.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```square_button(button_12mm, "yellow")``` |  Square button 12mm with yellow cap |
 |   1 | ```square_button(button_4p5mm)``` |  Square button 4.5mm |
@@ -362,13 +362,13 @@ When the sides are constrained then a circular model is more accurate.
 [tests/cable_strips.scad](tests/cable_strips.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bezier_cable_length(depth, min_z, pos)``` | Calculate a length that will achieve the desired minimum z |
 | ```cable_strip_length(depth, travel, extra = 15)``` | Calculate circular cable strip length |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```bezier_cable_strip(ways, depth, length, travel, pos, below, extra)``` | Draw a cable strip using a Bezier curve |
 | ```cable_strip(ways, depth, travel, x, extra = 15)``` | Draw a cable stripe with a semi circular fold |
@@ -376,7 +376,7 @@ When the sides are constrained then a circular model is more accurate.
 ![cable_strips](tests/png/cable_strips.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```bezier_cable_strip(20, 50, 150, 100, -100, 100, 10)``` |  Polypropylene strip 170mm x 26mm x 0.8mm |
 |   1 | ```bezier_cable_strip(20, 50, 150, 100, 0, 100, 10)``` |  Polypropylene strip 170mm x 26mm x 0.8mm |
@@ -401,7 +401,7 @@ Various electronic components used in hot ends and heated beds.
 [tests/components.scad](tests/components.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```al_clad_clearance(type)``` | Clearance from screw hole centre to the body |
 | ```al_clad_height(type)``` | Body height |
@@ -434,12 +434,12 @@ Various electronic components used in hot ends and heated beds.
 | ```tc_width(type)``` | Width of lugs |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```TO220_thickness()``` | Thickness of the tab of a TO220 |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ``` TO220(description, leads = 3, lead_length = 16)``` | Draw a TO220 package, use ```description``` to describe what it is |
 | ```al_clad_resistor(type, value, leads = true)``` | Draw an aluminium clad resistor |
@@ -456,7 +456,7 @@ Various electronic components used in hot ends and heated beds.
 ![components](tests/png/components.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```TO220("Generic TO220 package")``` |  Generic TO220 package |
 |   8 | ```tubing(HSHRNK32)``` |  Heatshrink sleeving ID 3.2mm x 15mm |
@@ -490,7 +490,7 @@ LCD dispays.
 [tests/displays.scad](tests/displays.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```display_aperture(type)``` | Size of the aperture including its depth |
 | ```display_height(type)``` | Depth of the metal part |
@@ -503,13 +503,13 @@ LCD dispays.
 | ```display_width(type)``` | Width of the metal part |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```display_depth(type)``` | Total thickness including touch screen and PCB |
 | ```display_ts_thickness(type)``` | Touch screen thickness or 0 |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```display(type)``` | Draw specified display |
 | ```display_aperture(type, clearance, clear_pcb = false)``` | Make aperture cutout |
@@ -517,7 +517,7 @@ LCD dispays.
 ![displays](tests/png/displays.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```display(HDMI5)``` |  HDMI display 5" |
 |   1 | ```display(LCD1602A)``` |  LCD display 1602A |
@@ -538,7 +538,7 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 [tests/d_connectors.scad](tests/d_connectors.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ``` d_flange_length(type)``` | Length of the flange |
 | ``` d_flange_thickness(type)``` | Thickness of the flange |
@@ -551,14 +551,14 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 | ``` d_widths(type)``` | Widths of the D for plug and socket |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ``` d_mate_distance(type)``` | Spacing when mated |
 | ``` d_pcb_offset(type)``` | Height of the back of the flange above the PCB |
 | ``` d_slot_length(type)``` | Slot to clear the back |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```d_connector_holes(type)``` | Place children at the screw hole positions |
 | ```d_pillar()``` | Draw a pillar for a D-connector |
@@ -568,7 +568,7 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 ![d_connectors](tests/png/d_connectors.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```d_plug(DCONN15, idc = true)``` |  D-type 15 way IDC plug |
 |   1 | ```d_socket(DCONN15, idc = true)``` |  D-type 15 way IDC socket |
@@ -596,7 +596,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 [tests/fans.scad](tests/fans.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```fan_aperture(type)``` | Optional diameter for the aperture, which can be bigger than the bore it has flared corners. |
 | ```fan_blades(type)``` | The number of blades |
@@ -611,12 +611,12 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | ```fan_width(type)``` | Width of square |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```fan_screw_length(type, thickness)``` | Screw length required |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```fan(type)``` | Draw specified fan, origin in the centre |
 | ```fan_assembly(type, thickness, include_fan = true)``` | Fan with its fasteners |
@@ -626,7 +626,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 ![fans](tests/png/fans.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```fan(fan120x25)``` |  Fan 120mm x 25mm |
 |   1 | ```fan(fan25x10)``` |  Fan 25mm x 10mm |
@@ -664,12 +664,12 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 [tests/fuseholder.scad](tests/fuseholder.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```fuseholder_diameter()``` | Outside diameter of flange |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```fuseholder(thickness)``` | Fuseholder with nut in place for specified panel thickness |
 | ```fuseholder_hole(h = 100)``` | Hole with flats for fuseholder |
@@ -677,7 +677,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 ![fuseholder](tests/png/fuseholder.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```fuseholder(6)``` |  Fuse holder 20mm |
 
@@ -699,7 +699,7 @@ Needs updating as mostly obsolete versions.
 [tests/hot_ends.scad](tests/hot_ends.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```hot_end_duct_height_fan(type)``` | Duct height at fan end |
 | ```hot_end_duct_height_nozzle(type)``` | Duct height at nozzle end |
@@ -716,20 +716,20 @@ Needs updating as mostly obsolete versions.
 | ```hot_end_total_length(type)``` | Length from nozzle tip to the top |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```hot_end_length(type)``` | The amount the hot end extends below its mounting |
 | ```hot_end_need_cooling(type)``` | Has own fan so don't need cooling hole in the duct |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```hot_end(type, filament, naked = false)``` | Draw specified hot end |
 
 ![hot_ends](tests/png/hot_ends.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```tubing(HSHRNK16)``` |  Heatshrink sleeving ID 1.6mm x 15mm |
 |   4 | ```tubing(HSHRNK64, 60)``` |  Heatshrink sleeving ID 6.4mm x 60mm |
@@ -761,7 +761,7 @@ IEC mains inlets and outlet.
 [tests/iecs.scad](tests/iecs.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```iec_bezel_h(type)``` | Bezel height |
 | ```iec_bezel_r(type)``` | Bezel corner radius |
@@ -783,7 +783,7 @@ IEC mains inlets and outlet.
 | ```iec_width(type)``` | Widest part including the lugs |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```iec(type)``` | Draw specified IEC connector |
 | ```iec_assembly(type, thickness)``` | Assembly with fasteners given panel thickness |
@@ -793,7 +793,7 @@ IEC mains inlets and outlet.
 ![iecs](tests/png/iecs.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```iec(IEC_fused_inlet)``` |  IEC fused inlet |
 |   1 | ```iec(IEC_inlet)``` |  IEC inlet |
@@ -820,7 +820,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 [tests/inserts.scad](tests/inserts.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```insert_barrel_d(type)``` | Diameter of the main barrel |
 | ```insert_hole_radius(type)``` | Radius of the required hole in the plastic |
@@ -832,7 +832,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | ```insert_screw_diameter(type)``` | Screw size |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```insert(type)``` | Draw specified insert |
 | ```insert_boss(type, z, wall = 2 * extrusion_width)``` | Make a boss to take an insert |
@@ -841,7 +841,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 ![inserts](tests/png/inserts.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```insert(F1BM)``` |  Heatfit insert M2 |
 |   1 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
@@ -863,14 +863,14 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 [tests/jack.scad](tests/jack.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```jack_4mm_hole_radius()``` | Panel hole radius for 4mm jack |
 | ```jack_4mm_shielded_hole_radius()``` | Panel hole radius for 4mm shielded jack |
 | ```post_4mm_diameter()``` | Outer diameter of 4mm binding post |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```jack_4mm(colour, thickness, display_colour = false)``` | Draw a 4mm jack socket with nut positioned for specified panel thickness |
 | ```jack_4mm_shielded(colour, thickness, display_colour = false)``` | Draw a 4mm shielded jack |
@@ -880,7 +880,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 ![jack](tests/png/jack.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```post_4mm("red", 3)``` |  4mm jack binding post red |
 |   1 | ```jack_4mm("blue", 3, "royalblue")``` |  4mm jack socket blue |
@@ -902,7 +902,7 @@ Nuts for leadscrews.
 [tests/leadnuts.scad](tests/leadnuts.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```leadnut_bore(type)``` | Thread size |
 | ```leadnut_flange_dia(type)``` | Flange diameter |
@@ -916,12 +916,12 @@ Nuts for leadscrews.
 | ```leadnut_screw(type)``` | The type of the fixing screws |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```leadnut_shank(type)``` | The length of the shank below the flange |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```leadnut(type)``` | Draw specified leadnut |
 | ```leadnut_screw_positions(type)``` | Position children at the screw holes |
@@ -929,7 +929,7 @@ Nuts for leadscrews.
 ![leadnuts](tests/png/leadnuts.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```leadnut(LSN8x2)``` |  Leadscrew nut 8 x 2 |
 |   1 | ```leadnut(LSN8x8)``` |  Leadscrew nut 8 x 8 RobotDigg |
@@ -950,7 +950,7 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 [tests/leds.scad](tests/leds.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```led_diameter(type)``` | Body diameter |
 | ```led_height(type)``` | Body height |
@@ -960,19 +960,19 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 | ```led_rim_t(type)``` | Rim height |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```led_hole_radius(type)``` | Radius of panel hole to accept LED |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```led(type, colour = "red", lead = 5)``` | Draw specified LED with desired colour and led length |
 
 ![leds](tests/png/leds.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```led(LED10mm)``` |  LED 10 mm red |
 |   1 | ```led(LED3mm, "green")``` |  LED 3 mm green |
@@ -999,7 +999,7 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 [tests/light_strips.scad](tests/light_strips.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```light_strip_aperture(type)``` | Inside width |
 | ```light_strip_depth(type)``` | Outside depth |
@@ -1011,7 +1011,7 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 | ```light_strip_width(type)``` | Outside width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```light_strip_clip_depth(light)``` | Depth of the clip |
 | ```light_strip_clip_length(light)``` | Outside length |
@@ -1021,7 +1021,7 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 | ```light_strip_segments(type, max_length)``` | Calculate the maximum number of segments that fit in max_length |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```light_strip(type, segs = undef)``` | Draw specified light strip, segs can be used to limit the length |
 | ```light_strip_clip(light)``` | Make a clip to go over the strip to be incorporated into a bracket |
@@ -1029,7 +1029,7 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 ![light_strips](tests/png/light_strips.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```light_strip(Rigid5050, 6)``` |  Light strip rigid SMD5050 low profile x 250mm (6 segments) |
 |   1 | ```light_strip(RIGID5050, 6)``` |  Light strip rigid SMD5050 x 250mm (6 segments) |
@@ -1050,26 +1050,26 @@ LMnUU linear bearings.
 [tests/linear_bearings.scad](tests/linear_bearings.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bearing_dia(type)``` | Outside diameter |
 | ```bearing_length(type)``` | Total length |
 | ```bearing_rod_dia(type)``` | Internal diameter |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bearing_radius(type)``` | Outside radius |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```linear_bearing(type)``` | Draw specified linear bearing |
 
 ![linear_bearings](tests/png/linear_bearings.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```linear_bearing(LM10UU)``` |  Linear bearing LM10UU |
 |   1 | ```linear_bearing(LM12UU)``` |  Linear bearing LM12UU |
@@ -1095,7 +1095,7 @@ UK 13A sockets at the moment.
 [tests/mains_sockets.scad](tests/mains_sockets.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```mains_socket_corner(type)``` | Corner radius |
 | ```mains_socket_depth(type)``` | Depth at the base |
@@ -1108,12 +1108,12 @@ UK 13A sockets at the moment.
 | ```mains_socket_width(type)``` | Width at the base |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```mains_socket_screw(type)``` | Screw type |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```mains_socket(type)``` | Draw specified 13A socket |
 | ```mains_socket_earth_position(type)``` | Position of earth terminal for DiBond panel |
@@ -1123,7 +1123,7 @@ UK 13A sockets at the moment.
 ![mains_sockets](tests/png/mains_sockets.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```mains_socket(Contactum)``` |  Mains socket 13A |
 |   1 | ```mains_socket(MKLOGIC)``` |  Mains socket 13A, switched |
@@ -1146,7 +1146,7 @@ Needs 7 segment font from <http://www.twyman.org.uk/Fonts/font-download.htm> to 
 [tests/meter.scad](tests/meter.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```meter_height(type = led_meter)``` | Height of body excluding PCB |
 | ```meter_hole_pitch(type = led_meter)``` | Lug hole pitch |
@@ -1160,7 +1160,7 @@ Needs 7 segment font from <http://www.twyman.org.uk/Fonts/font-download.htm> to 
 | ```meter_width(type = led_meter)``` | Width of body |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```meter()``` | Default meter type |
 | ```meter_bezel_length(type = led_meter)``` | Printed bezel length |
@@ -1169,7 +1169,7 @@ Needs 7 segment font from <http://www.twyman.org.uk/Fonts/font-download.htm> to 
 | ```meter_bezel_width(type = led_meter)``` | Printed bezel width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```meter(type = led_meter, colour = "red", value = "888", display_colour = false)``` | Draw a meter with optional colour and display value |
 | ```meter_assembly(type = led_meter, colour = "red", value = "888", display_colour = false)``` | Meter assembled into the bezel |
@@ -1180,15 +1180,15 @@ Needs 7 segment font from <http://www.twyman.org.uk/Fonts/font-download.htm> to 
 ![meter](tests/png/meter.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```meter(led_meter, colour = "blue")``` |  LED meter blue |
 |   2 | ```meter(led_meter)``` |  LED meter red |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   2 | meter_bezel.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   2 | meter_bezel.stl |
 
 
 <a href="#top">Top</a>
@@ -1206,7 +1206,7 @@ Used for limit switches.
 [tests/microswitches.scad](tests/microswitches.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```microswitch_body_clr(type)``` | Body colour |
 | ```microswitch_button_clr(type)``` | Button colour |
@@ -1223,13 +1223,13 @@ Used for limit switches.
 | ```microswitch_width(type)``` | Body width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```microswitch_lower_extent(type)``` | How far legs extend downwards |
 | ```microswitch_right_extent(type)``` | How far legs extend right |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```microswitch(type)``` | Draw specified microswitch |
 | ```microswitch_hole_positions(type)``` | Place children at the hole positions |
@@ -1238,7 +1238,7 @@ Used for limit switches.
 ![microswitches](tests/png/microswitches.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```microswitch(small_microswitch)``` |  Microswitch DM1-00P-110-3 |
 |   1 | ```microswitch(medium_microswitch)``` |  Microswitch SS-01 or SS-5GL |
@@ -1262,14 +1262,14 @@ Uses STL files copyright geekammo and licenced with MIT license, see [microview/
 [tests/microview.scad](tests/microview.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```microview(cutout = false)``` | Draw microview or generate a panel cutout for it |
 
 ![microview](tests/png/microview.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```microview()``` |  Microview OLED display |
 
@@ -1289,7 +1289,7 @@ Random screw down modules. Currently just DROK buck converters.
 [tests/modules.scad](tests/modules.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```mod_height(type)``` | Body height |
 | ```mod_hole_r(type)``` | Screw hole radius |
@@ -1301,7 +1301,7 @@ Random screw down modules. Currently just DROK buck converters.
 | ```mod_width(type)``` | Body width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```mod(type)``` | Draw specified module |
 | ```mod_screw_positions(type)``` | Position children at the screw positions |
@@ -1310,7 +1310,7 @@ Random screw down modules. Currently just DROK buck converters.
 ![modules](tests/png/modules.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```mod(drok_buck)``` |  Drok buck converter |
 |   2 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
@@ -1335,7 +1335,7 @@ If a nut is given a child then it gets placed on its top surface.
 [tests/nuts.scad](tests/nuts.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```nut_radius(type)``` | Radius across the corners |
 | ```nut_size(type)``` | Diameter of the corresponding screw |
@@ -1343,7 +1343,7 @@ If a nut is given a child then it gets placed on its top surface.
 | ```nut_washer(type)``` | Corresponding washer |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```nut_flat_radius(type)``` | Radius across the flats |
 | ```nut_thickness(type, nyloc = false)``` | Thickness of plain or nyloc version |
@@ -1351,7 +1351,7 @@ If a nut is given a child then it gets placed on its top surface.
 | ```nut_trap_radius(nut, horizontal = false)``` | Radius across the corners of a nut trap |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```nut(type, nyloc = false, brass = false, nylon = false)``` | Draw specified nut |
 | ```nut_and_washer(type, nyloc)``` | Draw nut with corresponding washer |
@@ -1361,7 +1361,7 @@ If a nut is given a child then it gets placed on its top surface.
 ![nuts](tests/png/nuts.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```nut(M2_nut)``` |  Nut M2  |
 |   1 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 nyloc |
@@ -1399,14 +1399,14 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 [tests/opengrab.scad](tests/opengrab.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```opengrab_depth()``` | Module height |
 | ```opengrab_target_thickness()``` | Target sheet thickness |
 | ```opengrab_width()``` | Module width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```opengrab()``` | Draw OpenGrab module |
 | ```opengrab_hole_positions()``` | Position children at the screw positions |
@@ -1415,7 +1415,7 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 ![opengrab](tests/png/opengrab.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```opengrab_target()``` |  OpenGrab  silicon steel target plate |
 |   1 | ```opengrab()``` |  OpenGrab V3 electro permanent magnet |
@@ -1437,14 +1437,14 @@ Can be shown stretched by specifying the ```actual_id```.
 [tests/o_ring.scad](tests/o_ring.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```O_ring(id, minor_d, actual_id = 0)``` | Draw O-ring with specified internal diameter and minor diameter. ```actual_id``` can be used to stretch it around something. |
 
 ![o_ring](tests/png/o_ring.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```O_ring(2.5, 1.6)``` |  O-ring nitrile 2.5mm x 1.6mm |
 
@@ -1464,7 +1464,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 [tests/pcbs.scad](tests/pcbs.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```hdr_base_colour(type)``` | Header insulator colour |
 | ```hdr_pin_below(type)``` | Header pin length underneath |
@@ -1489,13 +1489,13 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_width(type)``` | Width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```pcb_coord(type, p)``` | Convert offsets from the edge to coordinates relative to the centre |
 | ```pcb_screw(type, cap = hs_cap)``` | Mounting screw type |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```barrel_jack(cutout = false)``` | Draw barrel power jack |
 | ```chip(length, width, thickness, cutout = false)``` | Draw a black cube to represent a chip |
@@ -1526,7 +1526,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ![pcbs](tests/png/pcbs.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```pcb(ArduinoUno3)``` |  Arduino Uno R3 |
 |   1 | ```d_plug(DCONN15, pcb = true)``` |  D-type 15 way PCB mount plug |
@@ -1566,20 +1566,20 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   4 | pcb_spacer20100.stl |  |
-|   4 | pcb_spacer20110.stl |  |
-|   4 | pcb_spacer20120.stl |  |
-|   4 | pcb_spacer20130.stl |  |
-|   4 | pcb_spacer2560.stl |  |
-|   8 | pcb_spacer2570.stl |  |
-|   4 | pcb_spacer2580.stl |  |
-|   4 | pcb_spacer2590.stl |  |
-|   4 | pcb_spacer30140.stl |  |
-|   4 | pcb_spacer30150.stl |  |
-|   4 | pcb_spacer30170.stl |  |
-|   4 | pcb_spacer40160.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   4 | pcb_spacer20100.stl |
+|   4 | pcb_spacer20110.stl |
+|   4 | pcb_spacer20120.stl |
+|   4 | pcb_spacer20130.stl |
+|   4 | pcb_spacer2560.stl |
+|   8 | pcb_spacer2570.stl |
+|   4 | pcb_spacer2580.stl |
+|   4 | pcb_spacer2590.stl |
+|   4 | pcb_spacer30140.stl |
+|   4 | pcb_spacer30150.stl |
+|   4 | pcb_spacer30170.stl |
+|   4 | pcb_spacer40160.stl |
 
 
 <a href="#top">Top</a>
@@ -1597,7 +1597,7 @@ Threaded pillars. Each end can be male or female.
 [tests/pillars.scad](tests/pillars.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```pillar_bot_thread(type)``` | Bottom thread length, + for male, - for female |
 | ```pillar_height(type)``` | Body height |
@@ -1612,14 +1612,14 @@ Threaded pillars. Each end can be male or female.
 | ```pillar_top_thread(type)``` | Top thread length, + for male, - for female |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```pillar(type)``` | Draw specified pillar |
 
 ![pillars](tests/png/pillars.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```pillar(M3x13_hex_pillar)``` |  Pillar hex M/F M3x13 |
 |   1 | ```pillar(M3x20_hex_pillar)``` |  Pillar hex M/F M3x20 |
@@ -1647,7 +1647,7 @@ Face order is bottom, top, left, right, front, back.
 [tests/psus.scad](tests/psus.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```atx_psu(type)``` | True if an ATX style PSU |
 | ```psu_accessories(type)``` | Accessories to add to BOM, e.g. mains lead |
@@ -1676,13 +1676,13 @@ Face order is bottom, top, left, right, front, back.
 | ```terminal_block_pitch(type)``` | Pitch between screws |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```psu_face_transform(type, face)``` | Returns a transformation matrix to get to the specified face |
 | ```terminal_block_length(type, ways)``` | Total length of terminal block |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```atx_psu_cutout(type)``` | Cut out for the rear of an ATX |
 | ```psu(type)``` | Draw a power supply |
@@ -1692,7 +1692,7 @@ Face order is bottom, top, left, right, front, back.
 ![psus](tests/png/psus.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 |  |  IEC mains lead |
 |   1 | ```psu(ATX500)``` |  PSU ATX500 |
@@ -1723,7 +1723,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 [tests/pulleys.scad](tests/pulleys.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```pulley_belt(type)``` | Belt type |
 | ```pulley_bore(type)``` | Bore diameter for shaft |
@@ -1741,7 +1741,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 | ```pulley_width(type)``` | Width of teeth / belt channel |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```pulley_extent(type)``` | Largest diameter |
 | ```pulley_height(type)``` | Total height of pulley |
@@ -1750,7 +1750,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 | ```pulley_pr(type)``` | Pitch radius |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```pulley(type)``` | Draw a pulley |
 | ```pulley_assembly(type)``` | Draw a pulley with its grub screws in place |
@@ -1758,7 +1758,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 ![pulleys](tests/png/pulleys.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```pulley(GT2x16_toothed_idler)``` |  Pulley GT2 idler 16 teeth |
 |   1 | ```pulley(GT2x20_toothed_idler)``` |  Pulley GT2 idler 20 teeth |
@@ -1790,7 +1790,7 @@ Linear rails with carriages.
 [tests/rails.scad](tests/rails.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```carriage_block_length(type)``` | Length of the metal part |
 | ```carriage_clearance(type)``` | Gap under the carriage |
@@ -1812,14 +1812,14 @@ Linear rails with carriages.
 | ```rail_width(type)``` | Width of rail section |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```carriage_screw_depth(type)``` | Carriage thread depth |
 | ```rail_screw_height(type, screw)``` | Position screw taking into account countersink into counterbored hole |
 | ```rail_travel(type, length)``` | How far the carriage can travel |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```carriage(type, rail)``` | Draw the specified carriage |
 | ```carriage_hole_positions(type)``` | Position children over screw holes |
@@ -1831,7 +1831,7 @@ Linear rails with carriages.
 ![rails](tests/png/rails.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```rail(MGN15, 260)``` |  Linear rail MGN15 x 260mm |
 |   1 | ```rail(MGN5, 200)``` |  Linear rail MGN5 x 200mm |
@@ -1869,7 +1869,7 @@ Ring terminals and earth assemblies for DiBond panels.
 [tests/ring_terminals.scad](tests/ring_terminals.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```ringterm_hole(type)``` | Wire hole diameter |
 | ```ringterm_id(type)``` | Inside diameter |
@@ -1880,12 +1880,12 @@ Ring terminals and earth assemblies for DiBond panels.
 | ```ringterm_width(type)``` | Width of the tail |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```ringterm_extent(type)``` | Space to leave |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```ring_terminal(type)``` | Draw specifeid ring terminal |
 | ```ring_terminal_assembly(type, thickness, top = false)``` | Earthing assembly for DiBond twin skins |
@@ -1894,7 +1894,7 @@ Ring terminals and earth assemblies for DiBond panels.
 ![ring_terminals](tests/png/ring_terminals.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
 |   1 | ```ring_terminal(M3_ringterm)``` |  Ring terminal 3mm |
@@ -1917,7 +1917,7 @@ Rocket switch. Also used for neon indicator in the same form factor.
 [tests/rockers.scad](tests/rockers.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```rocker_bezel(type)``` | Bezel width |
 | ```rocker_button(type)``` | How far the button extends from the bezel |
@@ -1934,7 +1934,7 @@ Rocket switch. Also used for neon indicator in the same form factor.
 | ```rocker_width(type)``` | Body width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```rocker(type)``` | Draw the specified rocker switch |
 | ```rocker_hole(type, h = 0)``` | Make a hole to accept a rocker switch, by default 2D, set h for 3D |
@@ -1942,7 +1942,7 @@ Rocket switch. Also used for neon indicator in the same form factor.
 ![rockers](tests/png/rockers.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```rocker(neon_indicator)``` |  Neon Indicator H8630FBNAL |
 |   1 | ```rocker(small_rocker)``` |  Rocker Switch PRASA1-16F-BB0BW |
@@ -1963,7 +1963,7 @@ Steel rods, with optional chamfer.
 ![rod](tests/png/rod.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```rod(10, 80)``` |  Smooth rod 10mm x 80mm |
 |   1 | ```rod(12, 80)``` |  Smooth rod 12mm x 80mm |
@@ -1989,7 +1989,7 @@ Machine screws and wood screws with various head styles.
 [tests/screws.scad](tests/screws.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```screw_clearance_radius(type)``` | Clearance hole radius |
 | ```screw_head_height(type)``` | Head height |
@@ -2004,7 +2004,7 @@ Machine screws and wood screws with various head styles.
 | ```screw_washer(type)``` | Default washer |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```screw_boss_diameter(type)``` | Boss big enough for nut trap and washer |
 | ```screw_head_depth(type, d)``` | How far a counter sink head will go into a straight hole diameter d |
@@ -2013,7 +2013,7 @@ Machine screws and wood screws with various head styles.
 | ```screw_shorter_than(x)``` | Returns longest screw length shorter than or equal to x |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```screw(type, length, hob_point = 0, nylon = false)``` | Draw specified screw, optionally hobbed or nylon |
 | ```screw_and_washer(type, length, star = false, penny = false)``` | Screw with a washer which can be standard or penny and an optional star washer on top |
@@ -2022,7 +2022,7 @@ Machine screws and wood screws with various head styles.
 ![screws](tests/png/screws.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```screw(No632_pan_screw, 30)``` |  Screw 6-32 pan x 30mm |
 |   1 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
@@ -2069,14 +2069,14 @@ Sealing strip from B&Q used to seal around the door of 3D printers.
 [tests/sealing_strip.scad](tests/sealing_strip.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```sealing_strip(length)``` | Draw specified length of sealing strip |
 
 ![sealing_strip](tests/png/sealing_strip.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```sealing_strip(100)``` |  Sealing strip 10mm x 4mm x 100mm |
 
@@ -2106,14 +2106,14 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 [tests/sheets.scad](tests/sheets.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```sheet_colour(type)``` | Colour |
 | ```sheet_is_soft(type)``` | Is soft enough for wood screws |
 | ```sheet_thickness(type)``` | Thickness |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```render_2D_sheet(type, color = false)``` | Extrude a 2D sheet template and give it the correct colour |
 | ```render_sheet(type, color = false)``` | Render a sheet in the correct colour after holes have been subtracted |
@@ -2123,7 +2123,7 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 ![sheets](tests/png/sheets.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```sheet(FoilTape, 30, 30, 2)``` |  Aluminium foil tape 30mm x 30mm x 0.05mm |
 |   1 | ```sheet(AL6, 30, 30, 2)``` |  Aluminium tooling plate 30mm x 30mm x 6mm |
@@ -2159,7 +2159,7 @@ Spade terminals used as parts of electrical components.
 [tests/spades.scad](tests/spades.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```spade_hole(type)``` | Hole diameter |
 | ```spade_l(type)``` | Length of the narrow part |
@@ -2168,7 +2168,7 @@ Spade terminals used as parts of electrical components.
 | ```spade_w(type)``` | Width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```spade(type, height = 14)``` | Draw a spade of the specified type and total length. The shank length is adjusted to make the length. |
 
@@ -2190,7 +2190,7 @@ Filament spool models
 [tests/spools.scad](tests/spools.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```spool_depth(type)``` | Internal depth |
 | ```spool_diameter(type)``` | Outside diameter |
@@ -2202,19 +2202,19 @@ Filament spool models
 | ```spool_width(type)``` | Internal width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```spool_height(type)``` | Outside width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```spool(type)``` | Draw specified spool |
 
 ![spools](tests/png/spools.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```spool(spool_200x55)``` |  Filament spool 200 x 55 |
 |   1 | ```spool(spool_300x85)``` |  Filament spool 300 x 85 |
@@ -2235,7 +2235,7 @@ Compression springs. Can be tapered, have open, closed or ground ends. Ground en
 [tests/springs.scad](tests/springs.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```spring_closed(type)``` | Are the ends closed |
 | ```spring_colour(type)``` | The colour |
@@ -2248,19 +2248,19 @@ Compression springs. Can be tapered, have open, closed or ground ends. Ground en
 | ```spring_turns(type)``` | Number of turns |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```comp_spring(type, l = 0)``` | Calculate the mesh for spring |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```comp_spring(type, l = 0)``` | Draw specified spring, l can be set to specify the compressed length. |
 
 ![springs](tests/png/springs.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```comp_spring(batt_spring)``` |  Spring 5 - 6mm spiral OD, 0.5mm gauge x 8mm long, closed end |
 |   1 | ```comp_spring(peg_spring)``` |  Spring 6.4mm OD, 0.9mm gauge x 15.5mm long, closed end |
@@ -2281,7 +2281,7 @@ Solid state relays.
 [tests/ssrs.scad](tests/ssrs.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```ssr_base_t(type)``` | Thickness of metal base |
 | ```ssr_height(type)``` | Height |
@@ -2293,7 +2293,7 @@ Solid state relays.
 | ```ssr_width(type)``` | Width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```ssr(type)``` | Draw specified SSR |
 | ```ssr_assembly(type, screw, thickness)``` | Assembly with fasteners in place |
@@ -2302,7 +2302,7 @@ Solid state relays.
 ![ssrs](tests/png/ssrs.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
 |   4 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
@@ -2326,7 +2326,7 @@ NEMA stepper motor model.
 [tests/stepper_motors.scad](tests/stepper_motors.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```NEMA_body_radius(type)``` | Body radius |
 | ```NEMA_boss_height(type)``` | Boss height |
@@ -2339,13 +2339,13 @@ NEMA stepper motor model.
 | ```NEMA_width(type)``` | Width of the square face |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```NEMA_big_hole(type)``` | Clearance hole for the big boss |
 | ```NEMA_holes(type)``` | Screw positions for for loop |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```NEMA(type)``` | Draw specified NEMA stepper motor |
 | ```NEMA_outline(type)``` | 2D outline |
@@ -2355,7 +2355,7 @@ NEMA stepper motor model.
 ![stepper_motors](tests/png/stepper_motors.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |  24 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x 8mm |
 |   1 | ```NEMA(NEMA14)``` |  Stepper motor NEMA14 x 36mm |
@@ -2383,7 +2383,7 @@ Toggle switches
 [tests/toggles.scad](tests/toggles.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```toggle_angle(type)``` | Angle of the paddle |
 | ```toggle_collar_d(type)``` | Collar diameter |
@@ -2412,12 +2412,12 @@ Toggle switches
 | ```toggle_width(type)``` | Body width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```toggle_hole_radius(type)``` | Radius of the panel hole |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```toggle(type, thickness)``` | Draw specified toggle switch with the nuts and washers positioned for the specified panel thickness |
 | ```toggle_hole(type, h = 100)``` | Drill the hole in a panel |
@@ -2425,7 +2425,7 @@ Toggle switches
 ![toggles](tests/png/toggles.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```toggle(AP5236, 3)``` |  Toggle switch AP5236 |
 |   1 | ```toggle(CK7101, 3)``` |  Toggle switch CK7101 |
@@ -2448,7 +2448,7 @@ Iron core transformers. The grey shaded area is the keep out region where the te
 [tests/transformers.scad](tests/transformers.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```tx_bobbin_height(type)``` | Bobbin height |
 | ```tx_bobbin_offset(type)``` | Vertical offset of the bobbin from the centre of the laminations |
@@ -2468,7 +2468,7 @@ Iron core transformers. The grey shaded area is the keep out region where the te
 | ```tx_y_pitch(type)``` | Screw hole y pitch when four screws |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```transformer(type)``` | Draw specified transformer |
 | ```transformer_hole_positions(type)``` | Position children at the mounting hole positions |
@@ -2476,7 +2476,7 @@ Iron core transformers. The grey shaded area is the keep out region where the te
 ![transformers](tests/png/transformers.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```transformer(CCM300)``` |  Transformer Carroll & Meynell CCM300/230 isolation |
 |   1 | ```transformer(SMALLTX)``` |  Transformer Small mains |
@@ -2497,7 +2497,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 [tests/tubings.scad](tests/tubings.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```tubing_colour(type)``` | Colour |
 | ```tubing_id(type)``` | Inside diameter |
@@ -2505,14 +2505,14 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 | ```tubing_od(type)``` | Outside diameter |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```tubing(type, length = 15, forced_id = 0)``` | Draw specified tubing with optional forced internal diameter |
 
 ![tubings](tests/png/tubings.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```tubing(HSHRNK16)``` |  Heatshrink sleeving ID 1.6mm x 15mm |
 |   1 | ```tubing(HSHRNK100)``` |  Heatshrink sleeving ID 10mm x 15mm |
@@ -2541,7 +2541,7 @@ Variable auto transformers.
 [tests/variacs.scad](tests/variacs.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```variac_bulge_dia(type)``` | Bulge to opposite edge |
 | ```variac_bulge_width(type)``` | Width of the bulge |
@@ -2559,12 +2559,12 @@ Variable auto transformers.
 | ```variac_shaft_length(type)``` | Shaft length |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```variac_radius(type)``` | Body radius |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```variac(type, thickness = 3, dial = true)``` | Draw the specified variac with screws and possibly the dial when it is fixed and not rotating |
 | ```variac_dial(type)``` | Draw the dial for the specified variac |
@@ -2574,7 +2574,7 @@ Variable auto transformers.
 ![variacs](tests/png/variacs.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```variac(DURATRAKV5HM, 3)``` |  Variac DURATRAK V5HM |
 |   1 | ```variac(RAVISTAT1F1, 3)``` |  Variac RAVISTAT 1F-1 |
@@ -2593,7 +2593,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 [tests/veroboard.scad](tests/veroboard.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```vero_assembly(type)``` | Name of the assembly |
 | ```vero_breaks(type)``` | Breaks in the tracks |
@@ -2608,7 +2608,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | ```vero_strips(type)``` | Number of strips |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```vero_length(type)``` | Length of the board |
 | ```vero_thickness(type)``` | Thickness of the substrate |
@@ -2617,7 +2617,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | ```vero_width(type)``` | Width of the board |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```vero_cutouts(type, angle = undef)``` | Make cutouts to clear components |
 | ```vero_grid_pos(type, x, y)``` | Convert grid position to offset from the centre |
@@ -2629,7 +2629,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ![veroboard](tests/png/veroboard.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
 |   4 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
@@ -2639,14 +2639,14 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 |   8 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   4 | pcb_spacer30120.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   4 | pcb_spacer30120.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   2 | z_bed_terminal_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   2 | z_bed_terminal_assembly |
 
 
 <a href="#top">Top</a>
@@ -2666,7 +2666,7 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 [tests/washers.scad](tests/washers.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```penny_washer(type)``` | Corresponding penny washer |
 | ```spring_washer_diameter(type)``` | Spring washer size |
@@ -2678,14 +2678,14 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 | ```washer_thickness(type)``` | Thickness |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```washer_colour(type)``` | Washer colour |
 | ```washer_id(type)``` | Inside diameter |
 | ```washer_radius(type)``` | Outside radius |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```penny_washer(type)``` | Draw penny version of specified plain washer |
 | ```printed_washer(type, name = false)``` | Create printed washer |
@@ -2696,7 +2696,7 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 ![washers](tests/png/washers.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
 |   1 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
@@ -2731,16 +2731,16 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 |   1 | ```star_washer(M8_washer)``` |  Washer star M8 x 1.6mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | M20_washer.stl |  |
-|   1 | M25_washer.stl |  |
-|   2 | M30_washer.stl |  |
-|   1 | M35_washer.stl |  |
-|   1 | M40_washer.stl |  |
-|   1 | M50_washer.stl |  |
-|   1 | M60_washer.stl |  |
-|   1 | M80_washer.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | M20_washer.stl |
+|   1 | M25_washer.stl |
+|   2 | M30_washer.stl |
+|   1 | M35_washer.stl |
+|   1 | M40_washer.stl |
+|   1 | M50_washer.stl |
+|   1 | M60_washer.stl |
+|   1 | M80_washer.stl |
 
 
 <a href="#top">Top</a>
@@ -2758,7 +2758,7 @@ Cable zipties.
 [tests/zipties.scad](tests/zipties.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```ziptie_colour(type)``` | Colour |
 | ```ziptie_latch(type)``` | Latch dimensions |
@@ -2769,7 +2769,7 @@ Cable zipties.
 ![zipties](tests/png/zipties.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```ziptie(small_ziptie, 5)``` |  Ziptie 100mm min length |
 |   1 | ```ziptie(ziptie_3mm, 5)``` |  Ziptie 100mm min length |
@@ -2800,7 +2800,7 @@ Normally the side sheets are the same type but they can be overridden individual
 [tests/box.scad](tests/box.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```box_base_sheet(type)``` | Sheet type for the bottom |
 | ```box_depth(type)``` | Internal depth |
@@ -2813,7 +2813,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_width(type)``` | Internal width |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```box_bezel_height(type, bottom)``` | Bezel height for top or bottom |
 | ```box_corner_gap(type)``` | Gap between box_sheets at the corners to connect inside and outside profiles |
@@ -2823,7 +2823,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_outset(type)``` | How much the bezel expands the specified internal size |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```box_back(type)``` | Default back, can be overridden to customise |
 | ```box_back_blank(type, sheet = false)``` | Generates a 2D template for the back sheet, ```sheet``` can be set to override the type |
@@ -2848,7 +2848,7 @@ Normally the side sheets are the same type but they can be overridden individual
 ![box](tests/png/box.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   8 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   4 | ```screw(M3_dome_screw, 16)``` |  Screw M3 dome x 16mm |
@@ -2861,26 +2861,26 @@ Normally the side sheets are the same type but they can be overridden individual
 |   8 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|  10 | bottom_bezel.stl |  |
-|   4 | box_corner_profile.stl |  |
-|   1 | top_bezel.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|  10 | bottom_bezel.stl |
+|   4 | box_corner_profile.stl |
+|   1 | top_bezel.stl |
 
 ### Routed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | box_back.dxf |  |
-|   1 | box_base.dxf |  |
-|   1 | box_front.dxf |  |
-|   1 | box_left.dxf |  |
-|   1 | box_right.dxf |  |
-|   1 | box_top.dxf |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | box_back.dxf |
+|   1 | box_base.dxf |
+|   1 | box_front.dxf |
+|   1 | box_left.dxf |
+|   1 | box_right.dxf |
+|   1 | box_top.dxf |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | box_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | box_assembly |
 
 
 <a href="#top">Top</a>
@@ -2905,7 +2905,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 [tests/butt_box.scad](tests/butt_box.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```bbox_base_sheet(type)``` | Sheet type for the base |
 | ```bbox_depth(type)``` | Internal depth |
@@ -2917,7 +2917,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ```bbox_width(type)``` | Internal width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```_bbox_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true)``` | The box assembly, wrap with a local copy without parameters |
 | ```bbox_back(type)``` | Default back, can be overridden to customise |
@@ -2937,7 +2937,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 ![butt_box](tests/png/butt_box.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |  48 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |  36 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
@@ -2952,27 +2952,27 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 |  48 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   8 | corner_block_M30.stl |  |
-|   8 | fixing_block_M30.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   8 | corner_block_M30.stl |
+|   8 | fixing_block_M30.stl |
 
 ### Routed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | bbox_back.dxf |  |
-|   1 | bbox_base.dxf |  |
-|   1 | bbox_front.dxf |  |
-|   1 | bbox_left.dxf |  |
-|   1 | bbox_right.dxf |  |
-|   1 | bbox_top.dxf |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | bbox_back.dxf |
+|   1 | bbox_base.dxf |
+|   1 | bbox_front.dxf |
+|   1 | bbox_left.dxf |
+|   1 | bbox_right.dxf |
+|   1 | bbox_top.dxf |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | bbox_assembly |  |
-|   8 | corner_block_M30_assembly |  |
-|   8 | fixing_block_M30_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | bbox_assembly |
+|   8 | corner_block_M30_assembly |
+|   8 | fixing_block_M30_assembly |
 
 
 <a href="#top">Top</a>
@@ -2989,7 +2989,7 @@ of conductive panels, an extra layer of insulation.
 [tests/cable_grommets.scad](tests/cable_grommets.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```mouse_grommet(r, thickness)``` | Make the STL for a mouse grommet |
 | ```mouse_grommet_hole(r, h = 50, z = undef, expand = wall + clearance)``` | Make a hole for a mouse grommet |
@@ -3002,12 +3002,12 @@ of conductive panels, an extra layer of insulation.
 ![cable_grommets](tests/png/cable_grommets.png)
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | mouse_grommet_50_3.stl |  |
-|   1 | ribbon_grommet_20_3.stl |  |
-|   1 | round_grommet_bottom_60.stl |  |
-|   1 | round_grommet_top_60_3.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | mouse_grommet_50_3.stl |
+|   1 | ribbon_grommet_20_3.stl |
+|   1 | round_grommet_bottom_60.stl |
+|   1 | round_grommet_top_60_3.stl |
 
 
 <a href="#top">Top</a>
@@ -3023,16 +3023,16 @@ Adapts ESP12 module to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/
 [tests/carriers.scad](tests/carriers.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```ESP12F_carrier_stl()``` | Generate the STL for an ESP12 carrier |
 
 ![carriers](tests/png/carriers.png)
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | ESP12F_carrier.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | ESP12F_carrier.stl |
 
 
 <a href="#top">Top</a>
@@ -3053,7 +3053,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 [tests/corner_block.scad](tests/corner_block.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```corner_block_h_holes(screw = def_screw)``` | List of transforms to side holes |
 | ```corner_block_hole_offset(screw = def_screw)``` | Hole offset from the edge |
@@ -3063,7 +3063,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 | ```corner_block_width(screw = def_screw)``` | Block width, depth and height |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```corner_block(screw = def_screw, name = false)``` | Generate the STL for a printed corner block |
 | ```corner_block_assembly(screw = def_screw, name = false)``` | The printed block with inserts |
@@ -3075,7 +3075,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 ![corner_block](tests/png/corner_block.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   3 | ```insert(F1BM)``` |  Heatfit insert M2 |
 |   3 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
@@ -3095,20 +3095,20 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 |   3 | ```star_washer(M4_washer)``` |  Washer star M4 x 0.8mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | corner_block_M20.stl |  |
-|   1 | corner_block_M25.stl |  |
-|   1 | corner_block_M30.stl |  |
-|   1 | corner_block_M40.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | corner_block_M20.stl |
+|   1 | corner_block_M25.stl |
+|   1 | corner_block_M30.stl |
+|   1 | corner_block_M40.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | corner_block_M20_assembly |  |
-|   1 | corner_block_M25_assembly |  |
-|   1 | corner_block_M30_assembly |  |
-|   1 | corner_block_M40_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | corner_block_M20_assembly |
+|   1 | corner_block_M25_assembly |
+|   1 | corner_block_M30_assembly |
+|   1 | corner_block_M40_assembly |
 
 
 <a href="#top">Top</a>
@@ -3127,7 +3127,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 [tests/door_hinge.scad](tests/door_hinge.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```door_hinge_pin_x()``` | X offset of the hinge pin |
 | ```door_hinge_pin_y()``` | Y offset of the hinge pin |
@@ -3137,7 +3137,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 | ```door_hinge_stat_width()``` | Width of the stationary part |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```door_hinge(door_thickness)``` | Generates STL for the moving part of the hinge |
 | ```door_hinge_assembly(top, door_thickness = 6)``` | The moving assembly that goes on the door |
@@ -3150,7 +3150,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 ![door_hinge](tests/png/door_hinge.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
 |   2 | ```screw(M3_cap_screw, 35)``` |  Screw M3 cap x 35mm |
@@ -3161,10 +3161,10 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 |   8 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   2 | door_hinge_6.stl |  |
-|   2 | door_hinge_stat.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   2 | door_hinge_6.stl |
+|   2 | door_hinge_stat.stl |
 
 
 <a href="#top">Top</a>
@@ -3180,13 +3180,13 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 [tests/door_latch.scad](tests/door_latch.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```door_latch_offset()``` | Offset of the axle from the door edge |
 | ```door_latch_screw()``` | The screw used for the axle |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```door_latch_assembly(sheet_thickness = 3)``` | The assembly for a specified sheet thickess |
 | ```door_latch_stl()``` | Generates the STL for the printed part |
@@ -3194,16 +3194,16 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 ![door_latch](tests/png/door_latch.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
 |   1 | ```screw(M4_hex_screw, 20)``` |  Screw M4 hex x 20mm |
 |   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | door_latch.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | door_latch.stl |
 
 
 <a href="#top">Top</a>
@@ -3221,30 +3221,30 @@ The ring spacing as well as the number of spokes can be specified, if zero a gas
 [tests/fan_guard.scad](tests/fan_guard.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```fan_guard_corner_r(type)``` | Corner radius of the guard |
 | ```fan_guard_thickness()``` | Default thickness |
 | ```fan_guard_width(type)``` | Width of the guard |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```fan_guard(type, name = false, thickness = fan_guard_thickness()``` | Generate the STL |
 
 ![fan_guard](tests/png/fan_guard.png)
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | fan_guard_120.stl |  |
-|   1 | fan_guard_25.stl |  |
-|   1 | fan_guard_30.stl |  |
-|   1 | fan_guard_40.stl |  |
-|   1 | fan_guard_50.stl |  |
-|   2 | fan_guard_60.stl |  |
-|   1 | fan_guard_70.stl |  |
-|   2 | fan_guard_80.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | fan_guard_120.stl |
+|   1 | fan_guard_25.stl |
+|   1 | fan_guard_30.stl |
+|   1 | fan_guard_40.stl |
+|   1 | fan_guard_50.stl |
+|   2 | fan_guard_60.stl |
+|   1 | fan_guard_70.stl |
+|   2 | fan_guard_80.stl |
 
 
 <a href="#top">Top</a>
@@ -3265,7 +3265,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 [tests/fixing_block.scad](tests/fixing_block.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```fixing_block_depth(screw = def_screw)``` | Depth given screw size |
 | ```fixing_block_h_hole(screw = def_screw)``` | Returns transform to position the horizontal screw |
@@ -3276,7 +3276,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 | ```fixing_block_width(screw = def_screw)``` | Width given screw size |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef)``` | Assembly with fasteners in place |
 | ```fixing_block(screw = def_screw)``` | Generate the STL |
@@ -3289,7 +3289,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 ![fixing_block](tests/png/fixing_block.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   3 | ```insert(F1BM)``` |  Heatfit insert M2 |
 |   3 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
@@ -3309,20 +3309,20 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 |   3 | ```star_washer(M4_washer)``` |  Washer star M4 x 0.8mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | fixing_block_M20.stl |  |
-|   1 | fixing_block_M25.stl |  |
-|   1 | fixing_block_M30.stl |  |
-|   1 | fixing_block_M40.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | fixing_block_M20.stl |
+|   1 | fixing_block_M25.stl |
+|   1 | fixing_block_M30.stl |
+|   1 | fixing_block_M40.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | fixing_block_M20_assembly |  |
-|   1 | fixing_block_M25_assembly |  |
-|   1 | fixing_block_M30_assembly |  |
-|   1 | fixing_block_M40_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | fixing_block_M20_assembly |
+|   1 | fixing_block_M25_assembly |
+|   1 | fixing_block_M30_assembly |
+|   1 | fixing_block_M40_assembly |
 
 
 <a href="#top">Top</a>
@@ -3339,7 +3339,7 @@ inserts don't grip well in rubber.
 [tests/foot.scad](tests/foot.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```foot_diameter(type = foot)``` | Outside maximum diameter |
 | ```foot_height(type = foot)``` | Total height |
@@ -3349,13 +3349,13 @@ inserts don't grip well in rubber.
 | ```foot_thickness(type = foot)``` | Thickness under the screw |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```foot()``` | Default foot used unless a list of parameters is passed |
 | ```insert_foot()``` | Default foot with insert |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```fastened_insert_foot_assembly(t = 3, type = insert_foot)``` | Assembly with fasteners in place for specified sheet thickness |
 | ```foot(type = foot)``` | Generate STL |
@@ -3366,7 +3366,7 @@ inserts don't grip well in rubber.
 ![foot](tests/png/foot.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
@@ -3377,15 +3377,15 @@ inserts don't grip well in rubber.
 |   1 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | foot.stl |  |
-|   1 | insert_foot.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | foot.stl |
+|   1 | insert_foot.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | insert_foot_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | insert_foot_assembly |
 
 
 <a href="#top">Top</a>
@@ -3401,7 +3401,7 @@ Printed handle that can be printed without needing support material due to its t
 [tests/handle.scad](tests/handle.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```handle_height()``` | Total height |
 | ```handle_length()``` | Outside length |
@@ -3409,7 +3409,7 @@ Printed handle that can be printed without needing support material due to its t
 | ```handle_width()``` | The width, i.e. diameter |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```handle_assembly()``` | Printed part with inserts in place |
 | ```handle_fastened_assembly(thickness)``` | Assembly with fasteners in place |
@@ -3420,7 +3420,7 @@ Printed handle that can be printed without needing support material due to its t
 ![handle](tests/png/handle.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```insert(F1BM4)``` |  Heatfit insert M4 |
 |   2 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
@@ -3428,14 +3428,14 @@ Printed handle that can be printed without needing support material due to its t
 |   2 | ```star_washer(M4_washer)``` |  Washer star M4 x 0.8mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | handle.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | handle.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | handle_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | handle_assembly |
 
 
 <a href="#top">Top</a>
@@ -3451,7 +3451,7 @@ Clamp for ribbon cable and polypropylene strip.
 [tests/ribbon_clamp.scad](tests/ribbon_clamp.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```ribbon_clamp_height()``` | Height |
 | ```ribbon_clamp_hole_pitch(ways)``` | Hole pitch |
@@ -3459,7 +3459,7 @@ Clamp for ribbon cable and polypropylene strip.
 | ```ribbon_clamp_width()``` | Width |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```ribbon_clamp(ways)``` | Generate STL for given number of ways |
 | ```ribbon_clamp_assembly(ways)``` | Printed part with inserts in place |
@@ -3470,7 +3470,7 @@ Clamp for ribbon cable and polypropylene strip.
 ![ribbon_clamp](tests/png/ribbon_clamp.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 |  |  Ribbon cable 20 way 100mm |
@@ -3480,14 +3480,14 @@ Clamp for ribbon cable and polypropylene strip.
 |   2 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | ribbon_clamp_20.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | ribbon_clamp_20.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | ribbon_clamp_20_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | ribbon_clamp_20_assembly |
 
 
 <a href="#top">Top</a>
@@ -3503,7 +3503,7 @@ Knob with embedded hex head screw.
 [tests/screw_knob.scad](tests/screw_knob.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```screw_knob(screw)``` | Generate the STL foe a knob to fit the specified hex screw |
 | ```screw_knob_assembly(screw, length)``` | Assembly with the screw in place |
@@ -3511,22 +3511,22 @@ Knob with embedded hex head screw.
 ![screw_knob](tests/png/screw_knob.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```screw(M3_hex_screw, 16)``` |  Screw M3 hex x 16mm |
 |   1 | ```screw(M4_hex_screw, 16)``` |  Screw M4 hex x 16mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | screw_knob_M30.stl |  |
-|   1 | screw_knob_M40.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | screw_knob_M30.stl |
+|   1 | screw_knob_M40.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | screw_knob_M30_16_assembly |  |
-|   1 | screw_knob_M40_16_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | screw_knob_M30_16_assembly |
+|   1 | screw_knob_M40_16_assembly |
 
 
 <a href="#top">Top</a>
@@ -3542,12 +3542,12 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 [tests/socket_box.scad](tests/socket_box.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```socket_box_depth()``` | Outside depth of the backbox |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```socket_box(type)``` | Generate STL of the backbox for the specified socket |
 | ```socket_box_assembly(type)``` | The box with inserts fitted |
@@ -3556,7 +3556,7 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 ![socket_box](tests/png/socket_box.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```mains_socket(Contactum)``` |  Mains socket 13A |
@@ -3568,16 +3568,16 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 |   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | socket_box_Contactum.stl |  |
-|   1 | socket_box_MKLOGIC.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | socket_box_Contactum.stl |
+|   1 | socket_box_MKLOGIC.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | socket_box_Contactum_assembly |  |
-|   1 | socket_box_MKLOGIC_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | socket_box_Contactum_assembly |
+|   1 | socket_box_MKLOGIC_assembly |
 
 
 <a href="#top">Top</a>
@@ -3594,7 +3594,7 @@ be fully customised by passing a list of properties.
 [tests/strap_handle.scad](tests/strap_handle.scad) Code for this example.
 
 ### Properties
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```strap_extension(type = strap)``` | How much length of the strap that can pull out |
 | ```strap_panel(type = strap)``` | Panel thickness |
@@ -3603,14 +3603,14 @@ be fully customised by passing a list of properties.
 | ```strap_width(type = strap)``` | Width of strap |
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```strap_end_width(type = strap)``` | Width of the ends |
 | ```strap_height(type)``` | Height of the ends |
 | ```strap_insert(type)``` | The insert type |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```strap(length, type = strap)``` | Generate the STL for the rubber strap |
 | ```strap_assembly(length, type = strap)``` | Assembly with screws in place |
@@ -3621,7 +3621,7 @@ be fully customised by passing a list of properties.
 ![strap_handle](tests/png/strap_handle.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   2 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x 8mm |
@@ -3629,15 +3629,15 @@ be fully customised by passing a list of properties.
 |   2 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | strap.stl |  |
-|   2 | strap_end.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | strap.stl |
+|   2 | strap_end.stl |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   2 | strap_end_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   2 | strap_end_assembly |
 
 
 <a href="#top">Top</a>
@@ -3653,7 +3653,7 @@ Annotation used in this documentation
 [tests/annotation.scad](tests/annotation.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```arrow(length = 20)``` | Draw an arrow that faces downwards |
 | ```label(str, scale = 0.25, valign = "baseline", halign = "left")``` | Draw text that always faces the camera |
@@ -3674,7 +3674,7 @@ Bezier curves and function to get and adjust the length or minimum z point.
 [tests/bezier.scad](tests/bezier.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```adjust_bezier_length(v, l, eps = 0.001, r1 = 1.0, r2 = 1.5, l1, l2)``` | Adjust Bezier control points ```v``` to get the required curve length ```l``` |
 | ```adjust_bezier_z(v, z, eps = 0.001, r1 = 1, r2 = 1.5, z1, z2)``` | Adjust Bezier control points ```v``` to get the required minimum ```z``` |
@@ -3700,7 +3700,7 @@ a square cornered part fits in the hole then circles are placed in the corners m
 [tests/dogbones.scad](tests/dogbones.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true)``` | Rectangle with cylinders at the corners |
 | ```dogbone_square(size, r = cnc_bit_r, center = true)``` | Square with circles at the corners |
@@ -3721,7 +3721,7 @@ Rounded fillet for adding to corners.
 [tests/fillet.scad](tests/fillet.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```fillet(r, h, center = false)``` | Fillet with specified radius and height |
 
@@ -3741,7 +3741,7 @@ Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/
 [tests/hanging_hole.scad](tests/hanging_hole.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```hanging_hole(z, ir, h = 100, h2 = 100)``` | Hole radius ```ir``` hanging at the specified ```z``` value above a void who's shape is given by a 2D child |
 
@@ -3761,12 +3761,12 @@ Layout objects in a line with equal gaps given a vector of their widths.
 [tests/layout.scad](tests/layout.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```layout_offset(widths, i, gap = 2)``` | Calculate the offset for the ```i```th item |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```layout(widths, gap = 2, no_offset = false)``` | Layout children passing ```$i``` |
 
@@ -3786,7 +3786,7 @@ Maths utilities for minapulating vectors and matrices.
 [tests/maths.scad](tests/maths.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```identity(n, x = 1)``` | Construct an arbitrary size identity matrix |
 | ```reverse(v)``` | Reverse a vector |
@@ -3819,7 +3819,7 @@ If `chamfer_base` is true then the bottom edge is made suitable for 3D printing 
 [tests/offset.scad](tests/offset.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```offset_3D(r, chamfer_base = false)``` | Offset 3D shape by specified radius ```r```, positive or negative. |
 
@@ -3839,7 +3839,7 @@ Square with one rounded corner.
 [tests/quadrant.scad](tests/quadrant.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```quadrant(w, r, center = false)``` | Draw a square with one rounded corner, can be centered on the arc centre, when ```center``` is ```true```. |
 
@@ -3863,7 +3863,7 @@ the angle gets shallower than 45 degrees.
 [tests/round.scad](tests/round.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```round(r, ir = undef, or = undef)``` | Round a 2D child, single radius or separate inside and outside radii |
 | ```round_3D(r, ir = undef, or = undef, chamfer_base = false)``` | Round a 3D child single radius or separate inside and outside radii |
@@ -3884,7 +3884,7 @@ Cylinder with a rounded end.
 [tests/rounded_cylinder.scad](tests/rounded_cylinder.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```rounded_corner(r, h, r2, ir = 0)``` | 2D version |
 | ```rounded_cylinder(r, h, r2, ir = 0, angle = 360)``` | Rounded cylinder given radius ```r```, height ```h```, optional internal radius ```ir``` and optional ```angle``` |
@@ -3907,13 +3907,13 @@ Because the tangents need to be calculated to find the length these can be calcu
 [tests/rounded_polygon.scad](tests/rounded_polygon.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```rounded_polygon_length(points, tangents)``` | Calculate the length given the point list and the list of tangents computed by ``` rounded_polygon_tangents``` |
 | ```rounded_polygon_tangents(points)``` | Compute the straight sections needed to draw and to compute the lengths |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```rounded_polygon(points, _tangents = undef)``` | Draw the rounded polygon from the point list, can pass the tangent list to save it being calculated |
 
@@ -3933,7 +3933,7 @@ A sector of a circle between two angles.
 [tests/sector.scad](tests/sector.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```sector(r, start_angle, end_angle)``` | Create specified sector given radius ```r```, ```start_angle``` and ```end_angle``` |
 
@@ -3959,7 +3959,7 @@ An additional twist around the path can be specified. If the path is closed this
 [tests/sweep.scad](tests/sweep.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```after(path1, path2)``` | Translate ```path2``` so its start meets the end of ```path1``` and then concatenate |
 | ```arc_points(r, a = [90, 0, 180], al = 90)``` | Generate the points of a circular arc |
@@ -3970,7 +3970,7 @@ An additional twist around the path can be specified. If the path is closed this
 | ```sweep(path, profile, loop = false, twist = 0)``` | Generate the point list and face list of the swept volume |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```sweep(path, profile, loop = false, twist = 0)``` | Draw a polyhedron that is the swept volume |
 
@@ -3990,7 +3990,7 @@ Simple tube or ring
 [tests/tube.scad](tests/tube.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```ring(or, ir)``` | Create a ring with specified external and internal radii |
 | ```tube(or, ir, h, center = true)``` | Create a tube with specified external and internal radii and height ```h``` |
@@ -4015,7 +4015,7 @@ heirachical BOMs are also generated for real projects.
 [tests/bom.scad](tests/bom.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```arg(value, default, name = "")``` | Create string for arg if not default, helper for ```vitamin()``` |
 | ```bom_mode(n = 1)``` | Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well |
@@ -4024,7 +4024,7 @@ heirachical BOMs are also generated for real projects.
 | ```value_string(value)``` | Convert ```value``` to a string or quote it if it is already a string |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```assembly(name)``` | Name an assembly that will appear on the BOM, there needs to a module named ```<name>_assembly``` to make it |
 | ```dxf(name)``` | Name a dxf that will appear on the BOM, there needs to a module named ```<name>_dxf``` to make it |
@@ -4040,7 +4040,7 @@ heirachical BOMs are also generated for real projects.
 ![bom](tests/png/bom.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```widget(3)``` |  Rivit like thing for 3mm sheets |
@@ -4050,21 +4050,21 @@ heirachical BOMs are also generated for real projects.
 |   1 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | widget.stl |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | widget.stl |
 
 ### Routed
-|  |  | |
-| ---:|:--- |:---|
-|   1 | widget.dxf |  |
+| Qty | Filename |
+| ---:|:--- |
+|   1 | widget.dxf |
 
 ### Assemblies
-|  |  | |
-| ---:|:--- |:---|
-|   1 | widget_top_assembly |  |
-|   1 | widgit_base_assembly |  |
-|   1 | wigdit_assembly |  |
+| Qty | Name |
+| ---:|:--- |
+|   1 | widget_top_assembly |
+|   1 | widgit_base_assembly |
+|   1 | wigdit_assembly |
 
 
 <a href="#top">Top</a>
@@ -4082,7 +4082,7 @@ Original version by Doug Moen on the OpenSCAD forum
 [tests/clip.scad](tests/clip.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```box(xmin, ymin, zmin, xmax, ymax, zmax)``` | Construct a box given its bounds |
 | ```clip(xmin = -inf, ymin = -inf, zmin = -inf, xmax = inf, ymax = inf, zmax = inf)``` | Clip child to specified boundaries |
@@ -4103,7 +4103,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 [tests/global.scad](tests/global.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```Len(x)``` | Returns the length of a list or 0 if ```x``` is not a list |
 | ```echoit(x)``` | Echo expression and return it, useful for debugging |
@@ -4114,7 +4114,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 | ```sqr(x)``` | Returns the square of ```x``` |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```circle4n(r, d = undef)``` | Circle with multiple of 4 vertices |
 | ```ellipse(xr, yr)``` | Draw an ellipse |
@@ -4142,14 +4142,14 @@ The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is
 [tests/polyholes.scad](tests/polyholes.scad) Code for this example.
 
 ### Functions
-|  |  |
+| Function | Description |
 |:--- |:--- |
 | ```corrected_diameter(d, n = 0)``` | Adjusted diameter to make flats lie on the circle |
 | ```corrected_radius(r, n = 0)``` | Adjusted radius to make flats lie on the circle |
 | ```sides(r)``` | Optimium number of sides for specified radius |
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```drill(r, h = 100)``` | Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle |
 | ```poly_circle(r, sides = 0)``` | Make a circle adjusted to print the correct size |
@@ -4160,7 +4160,7 @@ The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is
 ![polyholes](tests/png/polyholes.png)
 
 ### Vitamins
-|  |  | |
+| Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```sheet(Steel06, 20, 20, 1)``` |  Sheet mild steel 20mm x 20mm x 0.6mm |
 |   1 | ```rod(1.5, 11)``` |  Smooth rod 1.5mm x 11mm |
@@ -4199,7 +4199,7 @@ Rectangle with rounded corners.
 [tests/rounded_rectangle.scad](tests/rounded_rectangle.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```rounded_rectangle(size, r, center = true, xy_center = true)``` | Like ```cube()``` but corners rounded in XY plane and separate centre options for xy and z. |
 | ```rounded_square(size, r, center = true)``` | Like ```square()``` but with with rounded corners |
@@ -4221,7 +4221,7 @@ This ensures `hull` and `minkowski` results have the correct dimensions when sph
 [tests/sphere.scad](tests/sphere.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```sphere(r = 1, d = undef)``` | Override ```sphere``` so that has vertices on all three axes. Has the advantage of giving correct dimensions when hulled |
 
@@ -4242,7 +4242,7 @@ Small holes can get away without it, but they print better with truncated teardr
 [tests/teardrops.scad](tests/teardrops.scad) Code for this example.
 
 ### Modules
-|  |  |
+| Module | Description |
 |:--- |:--- |
 | ```teardrop(h, r, center = true, truncate = true)``` | For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging |
 | ```teardrop_plus(h, r, center = true, truncate = true)``` | Slightly bigger teardrop to allow for the 3D printing staircase effect |
