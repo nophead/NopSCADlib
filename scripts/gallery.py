@@ -29,12 +29,13 @@ from tests import do_cmd
 import re
 from shutil import copyfile
 from tests import update_image
+import sys
 
 project_dir = '../..'
 target_dir = 'gallery'
 output_name = target_dir + '/readme.md'
 
-def gallery():
+def gallery(force):
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
 
@@ -45,6 +46,8 @@ def gallery():
             path = project_dir + '/' + project
             print(project)
             document = path + '/readme.md'
+            if force:
+                os.system('cd %s && make_all' % path)
             if os.path.isfile(document):
                 with open(document, 'rt') as readme:
                     for line in readme.readlines():
@@ -74,4 +77,4 @@ def gallery():
 
 if __name__ == '__main__':
     init()
-    gallery()
+    gallery(force = len(sys.argv) > 1 and sys.argv[1] == '-f')
