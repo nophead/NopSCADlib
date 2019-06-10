@@ -22,7 +22,7 @@
 //
 include <../core.scad>
 
-microswitch_contact_color        = "gold";
+microswitch_contact_color        =  brass;
 
 function microswitch_thickness(type) = type[2];     //! Body thickness
 function microswitch_width(type)     = type[3];     //! Body width

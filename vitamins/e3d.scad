@@ -35,7 +35,7 @@ rad_len = 26;
 nozzle_h = 5;
 
 module e3d_nozzle(type) {
-    color("gold") {
+    color(brass) {
         rotate_extrude()
             polygon([
                 [0.2,  0],

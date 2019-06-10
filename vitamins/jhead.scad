@@ -49,7 +49,7 @@ insulator_dia = 12;
 module heater_block(type, resistor, thermistor) {
     h = heater_height(type);
 
-    color("gold") {
+    color(brass) {
         render() difference() {
             rotate([90, 0, 0])
                 linear_extrude(height = heater_width(type), center = true) difference() {

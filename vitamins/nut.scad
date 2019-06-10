@@ -47,7 +47,7 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
     if(exploded() && nyloc)
         cylinder(r = 0.2, h = 10);
 
-    color(brass? brass : nylon ? grey30: grey70) translate_z((exploded() && nyloc) ? 10 : 0) {
+    color(brass ? "gold" : nylon ? grey30: grey70) translate_z((exploded() && nyloc) ? 10 : 0) {
         linear_extrude(height = thickness)
             difference() {
                 circle(outer_rad, $fn = 6);
