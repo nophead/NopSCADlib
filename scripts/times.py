@@ -68,4 +68,5 @@ def print_times():
                 colour = Fore.GREEN
         print(colour + "%5.1f %5.1f %s" % (new, delta, key))
         total += new
-    print(Fore.WHITE + "%5.1f" % total)
+    if sorted_times:
+        print(Fore.WHITE + "%5.1f" % total)

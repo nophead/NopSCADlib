@@ -7,11 +7,10 @@ Vitamins:
  a  e  a   
  s  e  i  i
  e  t  n  n
-  |  | 3|  |  3 Ferrule for 1.5mm^2 wire
-  |  | 1| 1|  2 Wire blue  30/0.25 length 150mm
-  |  |  | 1|  1 Wire brown  30/0.25 length 150mm
-  |  |  | 1|  1 Wire brown  7/0.2 length 150mm
-  |  | 1| 1|  2 Wire green & yellow  30/0.25 length 150mm
+  |  | 3|  |  3 Ferrule for 1.5mm^2 wire - not shown
+  |  | 1| 1|  2 Wire blue 30/0.25mm strands, length 150mm - not shown
+  |  |  | 2|  2 Wire brown 30/0.25mm strands, length 150mm - not shown
+  |  | 1| 1|  2 Wire green & yellow 30/0.25mm strands, length 150mm - not shown
   |  |  | 1|  1 IEC inlet for ATX
  2|  |  |  |  2 Heatfit insert M3
   |  | 2|  |  2 4mm shielded jack socket blue

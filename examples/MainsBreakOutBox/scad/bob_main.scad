@@ -1,11 +1,35 @@
 //
-//! 13A socket break out box with 4mm jacks to measure voltage and / or load current and earth leakage current.
-//
-// GNU GPL v2
+// NopSCADlib Copyright Chris Palmer 2018
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
-// Top level model
+// This file is part of NopSCADlib.
+//
+// NopSCADlib is free software: you can redistribute it and/or modify it under the terms of the
+// GNU General Public License as published by the Free Software Foundation, either version 3 of
+// the License, or (at your option) any later version.
+//
+// NopSCADlib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along with NopSCADlib.
+// If not, see <https://www.gnu.org/licenses/>.
+//
+
+//
+//! 13A socket break out box with 4mm jacks to measure voltage and / or load current and earth leakage current.
+//!
+//! Intended as a simple example of NopSCADlib use. Don't build it unless you understand the safety implications of working with mains electricity. In the words of
+//! the great [Paul Carlson](https://www.youtube.com/channel/UCU9SoQxJewrWb_3GxeteQPA), "if you are following along, you are doing so at your own risk".
+//!
+//! In normal use the neutral jack sockets are linked with a short lead and so are the two earth jacks. Current can be safely measured using a clamp ammeter around the neutral link.
+//!
+//! Voltage and current waveforms can be measured simultaneously with a [Mooshimeter](https://moosh.im/) CAT III multimeter connected to the bottom three jacks.
+//!
+//! Earth leakage current can be measured by connecting an AC milliampere meter between the two earth jacks. The DUT must be mounted on an insulated substrate and must not be touched
+//! while its earth is disconnected. Don't be tempted to float the earth of an oscilloscope this way, use a mains isolation transformer to power the DUT instead.
+//! Earth leakage can be measured Canadian CSA style by disconnected the neutral link from the left socket and linking the central neutral to the live.
 //
 $extrusion_width = 0.5;
 $pp1_colour = "dimgrey";
@@ -13,7 +37,6 @@ $pp2_colour = [0.9, 0.9, 0.9];
 
 include <NopSCADlib/lib.scad>
 use <NopSCADlib/foot.scad>
-include <NopSCADlib/vitamins/mains_sockets.scad>
 
 echo(extrusion_width = extrusion_width, layer_height = layer_height);
 wall = 2.5;
@@ -160,24 +183,26 @@ assembly("feet") {
         foot_assembly(base_thickness, foot);
 }
 //
-//! 1. Solder wires to the IEC terminals and cover the joints with heatshrink sleeving.
+//! 1. Solder wires to the IEC terminals: -
 //!     * Use wire rated for 13A, e.g. 1.5mm<sup>2</sup>, the easiest source is stripping 13A rated flex.
-//!     * Attach one green & yellow to the earth, one blue to neutral and two brown to the live. The second brown one can be thinner because it is only for voltage measurement.
-//!     * The earth, neutral and thin live wires should be long enough to protrude through the appropriate 4mm jack holes far enough to be able to strip and solder them to the jacks.
-//!     * The thick brown needs to be long enough to reach the socket.
+//!     * Attach one green & yellow to the earth, one blue to neutral and two brown to the live.
+//!     * The earth, neutral and one of the live wires should be long enough to protrude through the appropriate 4mm jack holes far enough to be able to strip and solder them to the jacks.
+//!     * The second brown needs to be long enough to reach the socket.
+//! 1. Cover the the joints with heatshrink sleeving and shrink it with a hot air gun.
 //! 1. Attach the IEC inlet using two 12mm M3 countersunk cap screws, washers and nyloc nuts on the back.
 //
 module mains_in_assembly() pose([ 35.40, 0.00, 144.20 ], [ -13.10, 0.00, 13.75 ])
 assembly("mains_in") {
     feet_assembly();
 
-    wire("green & yellow", 30, 150, 0.25);
-    wire("blue",  30, 150, 0.25);
-    wire("brown", 30, 150, 0.25);
-    wire("brown", 7, 150);
-    for(i = [1:3])
-        hidden() tubing(HSHRNK32);
-
+    hidden() {
+        wire("green & yellow", 30, 150, 0.25);
+        wire("blue",  30, 150, 0.25);
+        wire("brown", 30, 150, 0.25);
+        wire("brown", 30, 150, 0.25);
+        for(i = [1:3])
+            tubing(HSHRNK32);
+    }
     translate([iec_x, iec_y, iec_z])
         rotate([90, 0, -90])
             iec_assembly(iec, wall);
@@ -197,14 +222,15 @@ assembly("mains_in") {
 //
 module main_assembly()
 assembly("main") {
-    wire("green & yellow", 30, 150, 0.25);
-    wire("blue",  30, 150, 0.25);
-    for(i = [1:5])
-        hidden() tubing(HSHRNK32);
+    hidden() {
+        wire("green & yellow", 30, 150, 0.25);
+        wire("blue",  30, 150, 0.25);
+        for(i = [1:5])
+            hidden() tubing(HSHRNK32);
 
-    for(i = [1:3])
-        vitamin(": Ferrule for 1.5mm^2 wire");
-
+        for(i = [1:3])
+            vitamin(": Ferrule for 1.5mm^2 wire");
+    }
     echo(screw_length = screw_length);
 
     mains_in_assembly();

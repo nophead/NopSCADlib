@@ -25,7 +25,7 @@ include <../core.scad>
 include <zipties.scad>
 
 module wire(color, strands, length, strand = 0.2)
-    vitamin(str(": Wire ", color, "  ", strands, "/", strand, " length ",length, "mm"));
+    vitamin(str(": Wire ", color, " ", strands, "/", strand, "mm strands, length ",length, "mm"));
 
 module ribbon_cable(ways, length)
     vitamin(str(": Ribbon cable ", ways, " way ", length, "mm"));

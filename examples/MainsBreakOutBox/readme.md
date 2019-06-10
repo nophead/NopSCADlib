@@ -1,6 +1,17 @@
 # MainsBreakOutBox
 13A socket break out box with 4mm jacks to measure voltage and / or load current and earth leakage current.
 
+Intended as a simple example of NopSCADlib use. Don't build it unless you understand the safety implications of working with mains electricity. In the words of
+the great [Paul Carlson](https://www.youtube.com/channel/UCU9SoQxJewrWb_3GxeteQPA), "if you are following along, you are doing so at your own risk".
+
+In normal use the neutral jack sockets are linked with a short lead and so are the two earth jacks. Current can be safely measured using a clamp ammeter around the neutral link.
+
+Voltage and current waveforms can be measured simultaneously with a [Mooshimeter](https://moosh.im/) CAT III multimeter connected to the bottom three jacks.
+
+Earth leakage current can be measured by connecting an AC milliampere meter between the two earth jacks. The DUT must be mounted on an insulated substrate and must not be touched
+while its earth is disconnected. Don't be tempted to float the earth of an oscilloscope this way, use a mains isolation transformer to power the DUT instead.
+Earth leakage can be measured Canadian CSA style by disconnected the neutral link from the left socket and linking the central neutral to the live.
+
 ![Main Assembly](assemblies/main_assembled.png)
 
 
@@ -17,7 +28,7 @@
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket blue |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket brown |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket green |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;3&nbsp; |  &nbsp;&nbsp;3&nbsp; | &nbsp;&nbsp; Ferrule for 1.5mm^2 wire |
+| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;3&nbsp; |  &nbsp;&nbsp;3&nbsp; | &nbsp;&nbsp; Ferrule for 1.5mm^2 wire - not shown |
 | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Heatfit insert M3 |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;3&nbsp; | &nbsp;&nbsp;5&nbsp; |  &nbsp;&nbsp;8&nbsp; | &nbsp;&nbsp; Heatshrink sleeving ID 3.2mm x 15mm - not shown |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; IEC inlet for ATX |
@@ -27,10 +38,9 @@
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Screw M3 cs cap x 20mm |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp; Screw M3 dome x 10mm |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;8&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;10&nbsp; | &nbsp;&nbsp; Washer  M3 x 7mm x 0.5mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire blue  30/0.25 length 150mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; Wire brown  30/0.25 length 150mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; Wire brown  7/0.2 length 150mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire green & yellow  30/0.25 length 150mm |
+| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire blue 30/0.25mm strands, length 150mm - not shown |
+| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire brown 30/0.25mm strands, length 150mm - not shown |
+| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire green & yellow 30/0.25mm strands, length 150mm - not shown |
 |  |  |  |  | | **3D Printed parts** |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;&nbsp;foot.stl |
 | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;&nbsp;socket_box.stl |
@@ -102,10 +112,9 @@
 ### Vitamins
 |Qty|Description|
 |--:|:----------|
-|1| Wire green & yellow  30/0.25 length 150mm|
-|1| Wire blue  30/0.25 length 150mm|
-|1| Wire brown  30/0.25 length 150mm|
-|1| Wire brown  7/0.2 length 150mm|
+|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
+|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
+|2| Wire brown 30/0.25mm strands, length 150mm - not shown|
 |3| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
 |1| IEC inlet for ATX|
 |2| Screw M3 cs cap x 12mm|
@@ -124,11 +133,12 @@
 ### Assembly instructions
 ![mains_in_assembly](assemblies/mains_in_assembly_tn.png)
 
-1. Solder wires to the IEC terminals and cover the joints with heatshrink sleeving.
+1. Solder wires to the IEC terminals: -
     * Use wire rated for 13A, e.g. 1.5mm<sup>2</sup>, the easiest source is stripping 13A rated flex.
-    * Attach one green & yellow to the earth, one blue to neutral and two brown to the live. The second brown one can be thinner because it is only for voltage measurement.
-    * The earth, neutral and thin live wires should be long enough to protrude through the appropriate 4mm jack holes far enough to be able to strip and solder them to the jacks.
-    * The thick brown needs to be long enough to reach the socket.
+    * Attach one green & yellow to the earth, one blue to neutral and two brown to the live.
+    * The earth, neutral and one of the live wires should be long enough to protrude through the appropriate 4mm jack holes far enough to be able to strip and solder them to the jacks.
+    * The second brown needs to be long enough to reach the socket.
+1. Cover the the joints with heatshrink sleeving and shrink it with a hot air gun.
 1. Attach the IEC inlet using two 12mm M3 countersunk cap screws, washers and nyloc nuts on the back.
 
 ![mains_in_assembled](assemblies/mains_in_assembled_tn.png)
@@ -140,10 +150,10 @@
 ### Vitamins
 |Qty|Description|
 |--:|:----------|
-|1| Wire green & yellow  30/0.25 length 150mm|
-|1| Wire blue  30/0.25 length 150mm|
+|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
+|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
 |5| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
-|3| Ferrule for 1.5mm^2 wire|
+|3| Ferrule for 1.5mm^2 wire - not shown|
 |1| Mains socket 13A|
 |2| Screw M3 cs cap x 20mm|
 |2| 4mm shielded jack socket blue|

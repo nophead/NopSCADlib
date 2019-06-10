@@ -743,7 +743,7 @@ Needs updating as mostly obsolete versions.
 |   1 | ```resistor(RIE1212UB5C5R6)``` |  Resistor UB5C 5R6F 5R6 3W vitreous enamel |
 |   1 |  |  Tape self amalgamating silicone 110mm x 25mm |
 |   1 | ```resistor(Epcos)``` |  Thermistor Epcos B57560G104F 100K 1% |
-|   2 |  |  Wire Red PTFE  16/0.2 length 170mm |
+|   2 |  |  Wire Red PTFE 16/0.2mm strands, length 170mm |
 |   4 | ```ziptie(small_ziptie, 8)``` |  Ziptie 100mm min length |
 
 
