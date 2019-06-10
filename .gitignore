@@ -3,7 +3,7 @@ Thumbs.db
 __pycache__
 *.pyc
 tests/bom/
-tests/deps/
+*.deps
 *.log
 *.html
 times.txt

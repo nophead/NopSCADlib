@@ -1,0 +1,6 @@
+base_assembly:
+Vitamins:
+  2 Heatfit insert M3
+
+Printed:
+  1 socket_box.stl

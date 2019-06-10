@@ -1,0 +1,14 @@
+main_assembly:
+Vitamins:
+  3 Ferrule for 1.5mm^2 wire
+  1 Wire blue  30/0.25 length 150mm
+  1 Wire green & yellow  30/0.25 length 150mm
+  2 4mm shielded jack socket blue
+  1 4mm shielded jack socket brown
+  2 4mm shielded jack socket green
+  1 Mains socket 13A
+  2 Screw M3 cs cap x 20mm
+  5 Heatshrink sleeving ID 3.2mm x 15mm - not shown
+
+Assemblies:
+  1 mains_in_assembly

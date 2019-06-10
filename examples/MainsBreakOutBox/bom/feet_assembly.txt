@@ -1,0 +1,11 @@
+feet_assembly:
+Vitamins:
+  4 Nut M3 nyloc
+  4 Screw M3 dome x 10mm
+  8 Washer  M3 x 7mm x 0.5mm
+
+Printed:
+  4 foot.stl
+
+Assemblies:
+  1 base_assembly

@@ -1,0 +1,14 @@
+mains_in_assembly:
+Vitamins:
+  1 Wire blue  30/0.25 length 150mm
+  1 Wire brown  30/0.25 length 150mm
+  1 Wire brown  7/0.2 length 150mm
+  1 Wire green & yellow  30/0.25 length 150mm
+  1 IEC inlet for ATX
+  2 Nut M3 nyloc
+  2 Screw M3 cs cap x 12mm
+  3 Heatshrink sleeving ID 3.2mm x 15mm - not shown
+  2 Washer  M3 x 7mm x 0.5mm
+
+Assemblies:
+  1 feet_assembly

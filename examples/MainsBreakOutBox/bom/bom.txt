@@ -1,0 +1,36 @@
+Vitamins:
+          M
+          a
+          i
+          n
+ B  F  M  s
+ a  e  a   
+ s  e  i  i
+ e  t  n  n
+  |  | 3|  |  3 Ferrule for 1.5mm^2 wire
+  |  | 1| 1|  2 Wire blue  30/0.25 length 150mm
+  |  |  | 1|  1 Wire brown  30/0.25 length 150mm
+  |  |  | 1|  1 Wire brown  7/0.2 length 150mm
+  |  | 1| 1|  2 Wire green & yellow  30/0.25 length 150mm
+  |  |  | 1|  1 IEC inlet for ATX
+ 2|  |  |  |  2 Heatfit insert M3
+  |  | 2|  |  2 4mm shielded jack socket blue
+  |  | 1|  |  1 4mm shielded jack socket brown
+  |  | 2|  |  2 4mm shielded jack socket green
+  |  | 1|  |  1 Mains socket 13A
+  | 4|  | 2|  6 Nut M3 nyloc
+  |  |  | 2|  2 Screw M3 cs cap x 12mm
+  |  | 2|  |  2 Screw M3 cs cap x 20mm
+  | 4|  |  |  4 Screw M3 dome x 10mm
+  |  | 5| 3|  8 Heatshrink sleeving ID 3.2mm x 15mm - not shown
+  | 8|  | 2| 10 Washer  M3 x 7mm x 0.5mm
+
+Printed:
+  | 4|  |  |  4 foot.stl
+ 1|  |  |  |  1 socket_box.stl
+
+Assemblies:
+  1 base_assembly
+  1 feet_assembly
+  1 main_assembly
+  1 mains_in_assembly
