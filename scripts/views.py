@@ -149,10 +149,10 @@ def views(target, do_assemblies = None):
                                             png_name = png_name.replace('_assembly', '_assembled')
                                         changed = check_deps(mtime(png_name), dname)
                                         changed = times.check_have_time(changed, png_name)
+                                        tmp_name = 'tmp.png'
                                         if changed:
                                             print(changed)
                                             t = time.time()
-                                            tmp_name = 'tmp.png'
                                             openscad.run("-D$pose=1", "-D$explode=%d" % explode, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
                                             times.add_time(png_name, t)
                                             do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", "#ffffe5", "-border", "10", tmp_name])

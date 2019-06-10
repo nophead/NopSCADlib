@@ -35,6 +35,8 @@ from colorama import Fore
 
 w = 4096
 h = w
+threshold = 20  # Image comparison allowed number of different pixels
+fuzz = 10       # Image comparison allowed percentage error in pixel value
 
 def do_cmd(cmd, output = sys.stdout):
     for arg in cmd:
@@ -42,17 +44,28 @@ def do_cmd(cmd, output = sys.stdout):
     print()
     return subprocess.call(cmd, stdout = output, stderr = output)
 
+def compare_images(a, b, c):
+    if not os.path.isfile(a):
+        return -1
+    log_name = 'magick.log'
+    with open(log_name, 'w') as output:
+        do_cmd(("magick compare -metric AE -fuzz %d%% %s %s %s" % (fuzz, a, b, c)).split(), output = output)
+    with open(log_name, 'r') as f:
+        pixels = int(f.read().strip())
+    os.remove(log_name)
+    return pixels
+
 def update_image(tmp_name, png_name):
     """Update an image only if different, otherwise just change the mod time"""
-    with open(os.devnull, 'w') as null:
-        diff_name = png_name.replace('.png', '_diff.png')
-        if not os.path.isfile(png_name) or do_cmd(("magick compare -metric AE %s %s %s" % (png_name, tmp_name, diff_name)).split(), output = null):
-            shutil.copyfile(tmp_name, png_name)
-            print(Fore.GREEN + png_name + " updated" + Fore.WHITE)
-        else:
-            os.utime(png_name, None)
-            os.remove(diff_name)
-        os.remove(tmp_name)
+    diff_name = png_name.replace('.png', '_diff.png')
+    pixels = compare_images(png_name, tmp_name, diff_name)
+    if pixels < 0 or pixels > threshold:
+        shutil.copyfile(tmp_name, png_name)
+        print(Fore.YELLOW + png_name + " updated" + Fore.WHITE, pixels if pixels > 0 else '')
+    else:
+        os.utime(png_name, None)
+        os.remove(diff_name)
+    os.remove(tmp_name)
 
 
 def depluralise(name):
