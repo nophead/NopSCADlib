@@ -25,7 +25,7 @@
 from __future__ import print_function
 from set_config import *
 import openscad
-from tests import do_cmd, update_image
+from tests import do_cmd, update_image, colour_scheme, background
 import time
 import times
 from deps import *
@@ -153,13 +153,13 @@ def views(target, do_assemblies = None):
                                         if changed:
                                             print(changed)
                                             t = time.time()
-                                            openscad.run("-D$pose=1", "-D$explode=%d" % explode, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
+                                            openscad.run("-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
                                             times.add_time(png_name, t)
-                                            do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", "#ffffe5", "-border", "10", tmp_name])
+                                            do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
                                             update_image(tmp_name, png_name)
                                         tn_name = png_name.replace('.png', '_tn.png')
                                         if mtime(png_name) > mtime(tn_name):
-                                            do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background #ffffe5 -gravity Center -extent 280x280 -bordercolor #ffffe5 -border 10 " + tmp_name).split())
+                                            do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background " + background + " -gravity Center -extent 280x280 -bordercolor " + background + " -border 10 " + tmp_name).split())
                                             update_image(tmp_name, tn_name)
                                     os.remove(png_maker_name)
                                 done_assemblies.append(module)

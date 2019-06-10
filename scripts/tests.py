@@ -36,7 +36,10 @@ from colorama import Fore
 w = 4096
 h = w
 threshold = 20  # Image comparison allowed number of different pixels
-fuzz = 10       # Image comparison allowed percentage error in pixel value
+fuzz = 5       # Image comparison allowed percentage error in pixel value
+
+colour_scheme = "--colorscheme=Nature"
+background = "#F8F8F8"
 
 def do_cmd(cmd, output = sys.stdout):
     for arg in cmd:
@@ -98,8 +101,8 @@ def tests(tests):
     png_name = "libtest.png"
     scad_name = "libtest.scad"
     if not os.path.isfile(png_name):
-        openscad.run("--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall", "-o", png_name, scad_name);
-        do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", "#ffffe5", "-border", "10", png_name])
+        openscad.run(colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall", "-o", png_name, scad_name);
+        do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", background, "-border", "10", png_name])
     #
     # List of individual part files
     #
@@ -188,9 +191,9 @@ def tests(tests):
                 print(changed)
                 t = time.time()
                 tmp_name = 'tmp.png'
-                openscad.run("-D", "$bom=2", "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name);
+                openscad.run("-D", "$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name);
                 times.add_time(scad_name, t)
-                do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", "#ffffe5", "-border", "10", tmp_name])
+                do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", background, "-border", "10", tmp_name])
                 update_image(tmp_name, png_name)
                 BOM = bom.parse_bom()
                 with open(bom_name, 'wt') as outfile:

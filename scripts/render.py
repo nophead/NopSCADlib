@@ -24,7 +24,7 @@ from set_config import *
 from exports import bom_to_parts
 import os
 import openscad
-from tests import do_cmd, update_image
+from tests import do_cmd, update_image, colour_scheme, background
 from deps import mtime
 
 def render(target, type):
@@ -60,8 +60,9 @@ def render(target, type):
             cam = "--camera=0,0,0,70,0,315,500" if type == 'stl' else "--camera=0,0,0,0,0,0,500"
             render = "--preview" if type == 'stl' else "--render"
             tmp_name = 'tmp.png'
-            openscad.run("--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall", "-o", tmp_name, png_maker_name);
-            do_cmd(("magick "+ tmp_name + " -trim -resize 280x280 -background #ffffe5 -gravity Center -extent 280x280 -bordercolor #ffffe5 -border 10 " + tmp_name).split())
+            openscad.run(colour_scheme, "--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall", "-o", tmp_name, png_maker_name);
+            do_cmd(("magick "+ tmp_name + " -trim -resize 280x280 -background %s -gravity Center -extent 280x280 -bordercolor %s -border 10 %s"
+                    % (background, background, tmp_name)).split())
             update_image(tmp_name, png_name)
             os.remove(png_maker_name)
 
