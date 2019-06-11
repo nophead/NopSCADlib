@@ -67,9 +67,9 @@ def gallery(force):
                             match = re.match(r"^(#+).*$", line)
                             if match:
                                 line = '#' + line
-                        print(line[:-1], file = output_file)
                         if line == '---\n':
                             break;
+                        print(line[:-1], file = output_file)
             else:
                 print(Fore.MAGENTA + "Can't find", document, Fore.WHITE);
     with open(target_dir + "/readme.html", "wt") as html_file:
