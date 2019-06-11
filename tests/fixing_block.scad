@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../fixing_block.scad>
+use <../printed/fixing_block.scad>
 use <../utils/layout.scad>
 
 include <../vitamins/screws.scad>

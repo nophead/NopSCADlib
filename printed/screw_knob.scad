@@ -20,9 +20,9 @@
 //
 //! Knob with embedded hex head screw.
 //
-include <core.scad>
-include <vitamins/screws.scad>
-use <utils/hanging_hole.scad>
+include <../core.scad>
+include <../vitamins/screws.scad>
+use <../utils/hanging_hole.scad>
 
 knob_wall = 2;
 function knob_nut_trap_depth(screw) = round_to_layer(screw_head_height(screw));

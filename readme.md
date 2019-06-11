@@ -10,6 +10,8 @@ For more examples of what it can make see the [gallery](gallery/readme.md).
 
 The license is GNU General Public License v3.0, see [COPYING](COPYING).
 
+See [usage](docs/usage.md) for requirement, installation instructions and usage.
+
 <img src="libtest.png" width="100%"/>
 
 
@@ -2796,7 +2798,7 @@ screw type and printed part wall thickness. This diagram shows how the various d
 Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
 
 
-[box.scad](box.scad) Implementation.
+[printed/box.scad](printed/box.scad) Implementation.
 
 [tests/box.scad](tests/box.scad) Code for this example.
 
@@ -2901,7 +2903,7 @@ maximum spacing.
 Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 
 
-[butt_box.scad](butt_box.scad) Implementation.
+[printed/butt_box.scad](printed/butt_box.scad) Implementation.
 
 [tests/butt_box.scad](tests/butt_box.scad) Code for this example.
 
@@ -2985,7 +2987,7 @@ Printed cable grommets for passing cables through panels avoiding sharp edges an
 of conductive panels, an extra layer of insulation.
 
 
-[cable_grommets.scad](cable_grommets.scad) Implementation.
+[printed/cable_grommets.scad](printed/cable_grommets.scad) Implementation.
 
 [tests/cable_grommets.scad](tests/cable_grommets.scad) Code for this example.
 
@@ -3019,7 +3021,7 @@ of conductive panels, an extra layer of insulation.
 Adapts ESP12 module to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/esp-12-module-breakout-adaptor.html>.
 
 
-[carriers.scad](carriers.scad) Implementation.
+[printed/carriers.scad](printed/carriers.scad) Implementation.
 
 [tests/carriers.scad](tests/carriers.scad) Code for this example.
 
@@ -3049,7 +3051,7 @@ See [butt_box](#Butt_box) for an example of usage.
 Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
 
 
-[corner_block.scad](corner_block.scad) Implementation.
+[printed/corner_block.scad](printed/corner_block.scad) Implementation.
 
 [tests/corner_block.scad](tests/corner_block.scad) Code for this example.
 
@@ -3123,7 +3125,7 @@ The screws are tapped into the acrylic.
 Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [door_latch](#door_latch) holds it closed.
 
 
-[door_hinge.scad](door_hinge.scad) Implementation.
+[printed/door_hinge.scad](printed/door_hinge.scad) Implementation.
 
 [tests/door_hinge.scad](tests/door_hinge.scad) Code for this example.
 
@@ -3176,7 +3178,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 
 
-[door_latch.scad](door_latch.scad) Implementation.
+[printed/door_latch.scad](printed/door_latch.scad) Implementation.
 
 [tests/door_latch.scad](tests/door_latch.scad) Code for this example.
 
@@ -3217,7 +3219,7 @@ Pintable fan finger guard to match the specified fan. To be ```include```d, not 
 The ring spacing as well as the number of spokes can be specified, if zero a gasket is generated instead of a guard.
 
 
-[fan_guard.scad](fan_guard.scad) Implementation.
+[printed/fan_guard.scad](printed/fan_guard.scad) Implementation.
 
 [tests/fan_guard.scad](tests/fan_guard.scad) Code for this example.
 
@@ -3261,7 +3263,7 @@ See [butt_box](#Butt_box) for an example of usage.
 Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
 
 
-[fixing_block.scad](fixing_block.scad) Implementation.
+[printed/fixing_block.scad](printed/fixing_block.scad) Implementation.
 
 [tests/fixing_block.scad](tests/fixing_block.scad) Code for this example.
 
@@ -3335,7 +3337,7 @@ Customisable printed rubber feet for equipment cases. The insert variant is bett
 inserts don't grip well in rubber.
 
 
-[foot.scad](foot.scad) Implementation.
+[printed/foot.scad](printed/foot.scad) Implementation.
 
 [tests/foot.scad](tests/foot.scad) Code for this example.
 
@@ -3397,7 +3399,7 @@ inserts don't grip well in rubber.
 Printed handle that can be printed without needing support material due to its truncated teardrop profile.
 
 
-[handle.scad](handle.scad) Implementation.
+[printed/handle.scad](printed/handle.scad) Implementation.
 
 [tests/handle.scad](tests/handle.scad) Code for this example.
 
@@ -3447,7 +3449,7 @@ Printed handle that can be printed without needing support material due to its t
 Clamp for ribbon cable and polypropylene strip.
 
 
-[ribbon_clamp.scad](ribbon_clamp.scad) Implementation.
+[printed/ribbon_clamp.scad](printed/ribbon_clamp.scad) Implementation.
 
 [tests/ribbon_clamp.scad](tests/ribbon_clamp.scad) Code for this example.
 
@@ -3499,7 +3501,7 @@ Clamp for ribbon cable and polypropylene strip.
 Knob with embedded hex head screw.
 
 
-[screw_knob.scad](screw_knob.scad) Implementation.
+[printed/screw_knob.scad](printed/screw_knob.scad) Implementation.
 
 [tests/screw_knob.scad](tests/screw_knob.scad) Code for this example.
 
@@ -3538,7 +3540,7 @@ Knob with embedded hex head screw.
 UK 13A socket and printed backbox with earth terminal for the panel it is mounted on.
 
 
-[socket_box.scad](socket_box.scad) Implementation.
+[printed/socket_box.scad](printed/socket_box.scad) Implementation.
 
 [tests/socket_box.scad](tests/socket_box.scad) Code for this example.
 
@@ -3590,7 +3592,7 @@ Retracting strap handle. Print the strap with flexible filament. Shown with defa
 be fully customised by passing a list of properties.
 
 
-[strap_handle.scad](strap_handle.scad) Implementation.
+[printed/strap_handle.scad](printed/strap_handle.scad) Implementation.
 
 [tests/strap_handle.scad](tests/strap_handle.scad) Code for this example.
 

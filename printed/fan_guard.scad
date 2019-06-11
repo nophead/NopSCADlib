@@ -21,7 +21,7 @@
 //!
 //! The ring spacing as well as the number of spokes can be specified, if zero a gasket is generated instead of a guard.
 //
-use <utils/tube.scad>
+use <../utils/tube.scad>
 
 function fan_guard_thickness() = 2; //! Default thickness
 

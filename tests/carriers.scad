@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../carriers.scad>
+use <../printed/carriers.scad>
 
 module carriers()
     color(pp1_colour) ESP12F_carrier_stl();

@@ -20,9 +20,9 @@
 //
 //! Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 //
-include <core.scad>
-use <utils/hanging_hole.scad>
-include <vitamins/screws.scad>
+include <../core.scad>
+use <../utils/hanging_hole.scad>
+include <../vitamins/screws.scad>
 
 length = 35;
 width = 12;

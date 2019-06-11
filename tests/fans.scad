@@ -19,7 +19,7 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
-include <../fan_guard.scad>
+include <../printed/fan_guard.scad>
 
 include <../vitamins/fans.scad>
 

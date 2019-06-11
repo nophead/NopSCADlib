@@ -25,10 +25,10 @@
 //!
 //! Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
 //
-include <core.scad>
-include <vitamins/screws.scad>
-include <vitamins/inserts.scad>
-use <utils/maths.scad>
+include <../core.scad>
+include <../vitamins/screws.scad>
+include <../vitamins/inserts.scad>
+use <../utils/maths.scad>
 
 def_screw = M3_cap_screw;
 wall = 2.5;

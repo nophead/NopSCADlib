@@ -17,10 +17,12 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 $explode = 1;
+
 include <../core.scad>
 use <../utils/layout.scad>
 include <../vitamins/mains_sockets.scad>
-use <../socket_box.scad>
+use <../printed/socket_box.scad>
+
 module socket_boxes()
     layout([for(s = mains_sockets) mains_socket_width(s)], 20)
         if($preview)

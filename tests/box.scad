@@ -22,11 +22,11 @@ include <../vitamins/screws.scad>
 include <../vitamins/sheets.scad>
 include <../vitamins/inserts.scad>
 
-use <../box.scad>
+use <../printed/box.scad>
 
 box = [M3_dome_screw, 3, DiBond, PMMA3, DiBond6, true, 150, 100, 70];
 
-include <../box_assembly.scad>
+include <../printed/box_assembly.scad>
 
 module box_assembly() _box_assembly(box);
 

@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../handle.scad>
+use <../printed/handle.scad>
 
 module handle()
     translate([handle_length() / 2, 0])

@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../ribbon_clamp.scad>
+use <../printed/ribbon_clamp.scad>
 use <../vitamins/wire.scad>
 
 ways = 20;

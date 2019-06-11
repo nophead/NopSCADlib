@@ -22,7 +22,7 @@ include <../vitamins/screws.scad>
 include <../vitamins/sheets.scad>
 include <../vitamins/inserts.scad>
 
-include <../butt_box.scad>
+include <../printed/butt_box.scad>
 
 $explode = 0;
 

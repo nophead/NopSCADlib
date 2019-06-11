@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../foot.scad>
+use <../printed/foot.scad>
 
 module feet()
     if($preview) {

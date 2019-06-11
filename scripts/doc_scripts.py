@@ -35,7 +35,7 @@ def doc_scripts():
         print(
 '''
 # Python scripts
-These are located in the scripts subdirectory, which needs to be added to the program search path.
+These are located in the ```scripts``` subdirectory, which needs to be added to the program search path.
 
 They should work with both Python 2 and Python 3.
 

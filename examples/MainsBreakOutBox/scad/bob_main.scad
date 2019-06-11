@@ -36,7 +36,7 @@ $pp1_colour = "dimgrey";
 $pp2_colour = [0.9, 0.9, 0.9];
 
 include <NopSCADlib/lib.scad>
-use <NopSCADlib/foot.scad>
+use <NopSCADlib/printed/foot.scad>
 
 echo(extrusion_width = extrusion_width, layer_height = layer_height);
 wall = 2.5;

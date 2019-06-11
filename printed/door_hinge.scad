@@ -23,8 +23,8 @@
 //! The screws are tapped into the acrylic.
 //! Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [door_latch](#door_latch) holds it closed.
 //
-include <core.scad>
-include <vitamins/screws.scad>
+include <../core.scad>
+include <../vitamins/screws.scad>
 
 width = 18;
 thickness = 4;

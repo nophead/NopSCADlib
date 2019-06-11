@@ -125,7 +125,7 @@ def tests(tests):
 
             locations = [
                 ('vitamins/' + depluralise(base_name) + '.scad', 'Vitamins'),
-                (base_name + '.scad',                            'Printed'),
+                ('printed/' + base_name + '.scad',               'Printed'),
                 ('utils/' + base_name + '.scad',                 'Utilities'),
                 ('utils/core/' + base_name + '.scad',            'Core Utilities'),
             ]
@@ -238,6 +238,8 @@ instructions and exploded views by scraping markdown embedded in OpenSCAD commen
 For more examples of what it can make see the [gallery](gallery/readme.md).
 
 The license is GNU General Public License v3.0, see [COPYING](COPYING).
+
+See [usage](docs/usage.md) for requirement, installation instructions and usage.
 
 <img src="libtest.png" width="100%"/>\n
 ''', file = doc_file)

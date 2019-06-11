@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../corner_block.scad>
+use <../printed/corner_block.scad>
 
 include <../vitamins/screws.scad>
 

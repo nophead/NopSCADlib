@@ -20,11 +20,11 @@
 //
 //! UK 13A socket and printed backbox with earth terminal for the panel it is mounted on.
 //
-include <core.scad>
-include <vitamins/mains_sockets.scad>
-include <vitamins/screws.scad>
-include <vitamins/inserts.scad>
-include <vitamins/ring_terminals.scad>
+include <../core.scad>
+include <../vitamins/mains_sockets.scad>
+include <../vitamins/screws.scad>
+include <../vitamins/inserts.scad>
+include <../vitamins/ring_terminals.scad>
 
 box_height = 19;
 base_thickness = 2;

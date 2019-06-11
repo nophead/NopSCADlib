@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../door_latch.scad>
+use <../printed/door_latch.scad>
 
 module door_latches()
      translate([door_latch_offset(), 0])

@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../screw_knob.scad>
+use <../printed/screw_knob.scad>
 
 include <../vitamins/screws.scad>
 

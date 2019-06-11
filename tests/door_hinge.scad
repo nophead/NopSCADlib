@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../door_hinge.scad>
+use <../printed/door_hinge.scad>
 
 include <../vitamins/sheets.scad>
 use <../vitamins/screw.scad>

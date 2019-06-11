@@ -20,10 +20,10 @@
 //
 //! Clamp for ribbon cable and polypropylene strip.
 //
-include <core.scad>
-include <vitamins/screws.scad>
-include <vitamins/inserts.scad>
-use <vitamins/cable_strip.scad>
+include <../core.scad>
+include <../vitamins/screws.scad>
+include <../vitamins/inserts.scad>
+use <../vitamins/cable_strip.scad>
 
 wall = 2;
 min_wall = 2 * extrusion_width;

@@ -30,7 +30,7 @@ include <screws.scad>
 use <fan.scad>
 use <iec.scad>
 use <rocker.scad>
-include <../fan_guard.scad>
+include <../printed/fan_guard.scad>
 
 function psu_face_holes(type)        = type[0];     //! List of screw hole positions
 function psu_face_thickness(type)    = type[1];     //! The thickness

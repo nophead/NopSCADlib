@@ -32,7 +32,7 @@
 
 use <fixing_block.scad>
 use <corner_block.scad>
-use <utils/maths.scad>
+use <../utils/maths.scad>
 
 function bbox_screw(type)     = type[0]; //! Screw type for corner blocks
 function bbox_sheets(type)    = type[1]; //! Sheet type for the sides

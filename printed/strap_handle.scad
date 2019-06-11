@@ -21,9 +21,9 @@
 //! Retracting strap handle. Print the strap with flexible filament. Shown with default dimensions but can
 //! be fully customised by passing a list of properties.
 //
-include <core.scad>
-include <vitamins/screws.scad>
-include <vitamins/inserts.scad>
+include <../core.scad>
+include <../vitamins/screws.scad>
+include <../vitamins/inserts.scad>
 
 strap = [18, 2, M3_pan_screw, 3, 25];
 function strap() = strap;

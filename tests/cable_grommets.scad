@@ -18,7 +18,7 @@
 //
 include <../core.scad>
 
-use <../cable_grommets.scad>
+use <../printed/cable_grommets.scad>
 
 module cable_grommets() {
     rotate(90)
