@@ -65,12 +65,12 @@ def bom_to_assemblies(bom_dir):
         flat_bom = flat_bom[:-1]
     return [assembly["name"] for  assembly in flat_bom]
 
-def eop(print_mode, project, doc_file, last = False, first = False):
+def eop(print_mode, doc_file, last = False, first = False):
     if print_mode:
          print('\n<div style="page-break-after: always;"></div>', file = doc_file)
     else:
         if not first:
-            print('[Top](#%s)' % project.lower().replace(' ', '-'),   file = doc_file)
+            print('[Top](#TOP)',   file = doc_file)
         if not last:
             print("\n---", file = doc_file)
 
@@ -178,6 +178,7 @@ def views(target, do_assemblies = None):
             # Title, description and picture
             #
             project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
+            print('<a name="TOP"/>', file = doc_file)
             print('# %s' % project, file = doc_file)
             main_file = bom.find_scad_file('main_assembly')
             if not main_file:
@@ -189,16 +190,22 @@ def views(target, do_assemblies = None):
                 if print_mode:
                     print(Fore.MAGENTA + "Missing project description" + Fore.WHITE)
             print('![Main Assembly](assemblies/%s.png)\n' % flat_bom[-1]["name"].replace('_assembly', '_assembled'), file = doc_file)
-            eop(print_mode, project, doc_file, first = True)
+            eop(print_mode, doc_file, first = True)
             #
             # Build TOC
             #
             print('## Table of Contents', file = doc_file)
-            print('[TOC]\n', file = doc_file)
-            eop(print_mode, project, doc_file)
+            print('1. [Parts list](#Parts_list)', file = doc_file)
+            for ass in flat_bom:
+                name =  ass["name"]
+                cap_name = name.replace('_', ' ').title()
+                print('1. [%s](#%s)' % (cap_name, name), file = doc_file)
+            print(file = doc_file)
+            eop(print_mode, doc_file)
             #
             # Global BOM
             #
+            print('<a name="Parts_list"/>', file = doc_file)
             print('## Parts list', file = doc_file)
             vitamins = {}
             printed = {}
@@ -230,13 +237,16 @@ def views(target, do_assemblies = None):
                     count = ass["printed"][p] if p in ass["printed"] else '.'
                     print('| %s ' % pad(count, 2, 1), file = doc_file, end = '')
                 print('| %s | %s |' % (pad(printed[p], 2, 1), pad(p, 3)), file = doc_file)
-            eop(print_mode, project, doc_file)
+            print(file = doc_file)
+            eop(print_mode, doc_file)
             #
             # Assembly instructions
             #
             for ass in flat_bom:
                 name = ass["name"]
                 cap_name = name.replace('_', ' ').title()
+
+                print('<a name="%s"/>' % name, file = doc_file)
                 if ass["count"] > 1:
                     print("## %d x %s" % (ass["count"], cap_name), file = doc_file)
                 else:
@@ -311,19 +321,19 @@ def views(target, do_assemblies = None):
 
                 name = name.replace('_assembly', '_assembled')
                 print('![%s](assemblies/%s)\n' % (name, name + suffix), file = doc_file)
-                eop(print_mode, project, doc_file, last = ass == flat_bom[-1] and not main_blurb)
+                eop(print_mode, doc_file, last = ass == flat_bom[-1] and not main_blurb)
             #
             # If main module is suppressed print any blurb here
             #
             if main_blurb:
                 print(main_blurb, file = doc_file)
-                eop(print_mode, project, doc_file, last = True)
+                eop(print_mode, doc_file, last = True)
         #
         # Convert to HTML
         #
         html_name = "printme.html" if print_mode else "readme.html"
         with open(top_dir + html_name, "wt") as html_file:
-            do_cmd(("python -m markdown -x tables -x toc -x sane_lists " + doc_name).split(), html_file)
+            do_cmd(("python -m markdown -x tables -x sane_lists " + doc_name).split(), html_file)
     #
     # Spell check
     #
