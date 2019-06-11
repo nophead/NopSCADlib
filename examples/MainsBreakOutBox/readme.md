@@ -1,4 +1,4 @@
-<a name="TOP"/>
+<a name="TOP"></a>
 # MainsBreakOutBox
 13A socket break out box with 4mm jacks to measure voltage and / or load current and earth leakage current.
 
@@ -27,7 +27,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 [Top](#TOP)
 
 ---
-<a name="Parts_list"/>
+<a name="Parts_list"></a>
 ## Parts list
 | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Base</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Feet</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Mains&nbsp;In</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Main</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |
 |--:|--:|--:|--:|--:|:--|
@@ -54,7 +54,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 [Top](#TOP)
 
 ---
-<a name="base_assembly"/>
+<a name="base_assembly"></a>
 ## Base Assembly
 ### Vitamins
 |Qty|Description|
@@ -81,7 +81,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 [Top](#TOP)
 
 ---
-<a name="feet_assembly"/>
+<a name="feet_assembly"></a>
 ## Feet Assembly
 ### Vitamins
 |Qty|Description|
@@ -117,7 +117,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 [Top](#TOP)
 
 ---
-<a name="mains_in_assembly"/>
+<a name="mains_in_assembly"></a>
 ## Mains In Assembly
 ### Vitamins
 |Qty|Description|
@@ -156,7 +156,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 [Top](#TOP)
 
 ---
-<a name="main_assembly"/>
+<a name="main_assembly"></a>
 ## Main Assembly
 ### Vitamins
 |Qty|Description|

@@ -178,8 +178,7 @@ def views(target, do_assemblies = None):
             # Title, description and picture
             #
             project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
-            print('<a name="TOP"/>', file = doc_file)
-            print('# %s' % project, file = doc_file)
+            print('<a name="TOP"></a>\n# %s' % project, file = doc_file)
             main_file = bom.find_scad_file('main_assembly')
             if not main_file:
                 raise Exception("can't find source for main_assembly")
@@ -205,8 +204,7 @@ def views(target, do_assemblies = None):
             #
             # Global BOM
             #
-            print('<a name="Parts_list"/>', file = doc_file)
-            print('## Parts list', file = doc_file)
+            print('<a name="Parts_list"></a>\n## Parts list', file = doc_file)
             vitamins = {}
             printed = {}
             routed = {}
@@ -246,11 +244,10 @@ def views(target, do_assemblies = None):
                 name = ass["name"]
                 cap_name = name.replace('_', ' ').title()
 
-                print('<a name="%s"/>' % name, file = doc_file)
                 if ass["count"] > 1:
-                    print("## %d x %s" % (ass["count"], cap_name), file = doc_file)
+                    print('<a name="%s"></a>\n## %d x %s' % (name, ass["count"], cap_name), file = doc_file)
                 else:
-                    print("## %s" % cap_name, file = doc_file)
+                    print('<a name="%s"></a>\n## %s' % (name, cap_name), file = doc_file)
                 vitamins = ass["vitamins"]
                 if vitamins:
                     print("### Vitamins",         file = doc_file)
