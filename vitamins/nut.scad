@@ -26,6 +26,7 @@ include <../core.scad>
 use <washer.scad>
 use <screw.scad>
 use <../utils/rounded_cylinder.scad>
+brass_colour = brass;
 
 function nut_size(type)       = type[1];        //! Diameter of the corresponding screw
 function nut_radius(type)     = type[2] / 2;    //! Radius across the corners
@@ -47,7 +48,7 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
     if(exploded() && nyloc)
         cylinder(r = 0.2, h = 10);
 
-    color(brass ? "gold" : nylon ? grey30: grey70) translate_z((exploded() && nyloc) ? 10 : 0) {
+    color(brass ? brass_colour : nylon ? grey30: grey70) translate_z((exploded() && nyloc) ? 10 : 0) {
         linear_extrude(height = thickness)
             difference() {
                 circle(outer_rad, $fn = 6);
