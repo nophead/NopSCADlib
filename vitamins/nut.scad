@@ -45,20 +45,18 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
     vitamin(str("nut(", type[0], arg(nyloc, false, "nyloc"), arg(brass, false, "brass"), arg(nylon, false, "nylon"),
                    "): Nut M", nut_size(type), " ", desc));
 
-    if(exploded() && nyloc)
-        cylinder(r = 0.2, h = 10);
+    explode(nyloc ? 10 : 0)
+        color(brass ? brass_colour : nylon ? grey30: grey70) {
+            linear_extrude(height = thickness)
+                difference() {
+                    circle(outer_rad, $fn = 6);
 
-    color(brass ? brass_colour : nylon ? grey30: grey70) translate_z((exploded() && nyloc) ? 10 : 0) {
-        linear_extrude(height = thickness)
-            difference() {
-                circle(outer_rad, $fn = 6);
-
-                circle(hole_rad);
-            }
-        if(nyloc)
-            translate_z(-eps)
-                rounded_cylinder(r = outer_rad * cos(30) , h = nyloc_thickness, r2 = (nyloc_thickness - thickness) / 2, ir = hole_rad);
-    }
+                    circle(hole_rad);
+                }
+            if(nyloc)
+                translate_z(-eps)
+                    rounded_cylinder(r = outer_rad * cos(30) , h = nyloc_thickness, r2 = (nyloc_thickness - thickness) / 2, ir = hole_rad);
+        }
     if($children)
         translate_z(thickness)
             children();

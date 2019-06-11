@@ -85,6 +85,8 @@ class STL:
             sys.exit(1)
 
     def write(self, fname):
+        mins = [float('inf'), float('inf'), float('inf')]
+        maxs = [float('-inf'), float('-inf'), float('-inf')]
         with open(fname,"wt") as f:
             print('solid OpenSCAD_Model', file=f)
             for facet in self.facets:
@@ -92,13 +94,18 @@ class STL:
                 print('    outer loop', file=f)
                 for vertex in facet.vertices:
                     print('      vertex %s %s %s' % (vertex.x, vertex.y, vertex.z), file=f)
+                    for i in range(3):
+                        ordinate = vertex.key[i]
+                        if ordinate > maxs[i]:  maxs[i] = ordinate
+                        if ordinate < mins[i]:  mins[i] = ordinate
                 print('    endloop', file=f)
                 print('  endfacet', file=f)
             print('endsolid OpenSCAD_Model', file=f)
+        return mins, maxs
 
 def canonicalise(fname):
     stl = STL(fname)
-    stl.write(fname)
+    return stl.write(fname)
 
 if __name__ == '__main__':
     if len(sys.argv) == 2:

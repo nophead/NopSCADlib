@@ -28,6 +28,7 @@ from set_config import *
 import time
 import times
 from deps import *
+import json
 
 def bom_to_parts(target_dir, part_type, assembly = None):
     #
@@ -70,6 +71,16 @@ def make_parts(target, part_type, parts = None):
                     print("Removing %s" % file)
                     os.remove(target_dir + '/' + file)
     #
+    # Read existing STL bounds
+    #
+    if part_type == 'stl':
+        bounds_fname = target_dir + '/bounds.json'
+        try:
+            with open(bounds_fname) as json_file:
+                bounds_map = json.load(json_file)
+        except:
+            bounds_map = {}
+    #
     # Find all the scad files
     #
     lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib'
@@ -104,13 +115,16 @@ def make_parts(target, part_type, parts = None):
                                     dname = deps_name(deps_dir, filename)
                                     changed = check_deps(mtime(part_file), dname)
                                     changed = times.check_have_time(changed, part)
+                                    if part_type == 'stl' and not changed and not part in bounds_map:
+                                        changed = "No bounds"
                                     if changed:
                                         print(changed)
                                         t = time.time()
                                         openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
                                         times.add_time(part, t)
                                         if part_type == 'stl':
-                                            c14n_stl.canonicalise(part_file)
+                                            bounds = c14n_stl.canonicalise(part_file)
+                                            bounds_map[part] = bounds
                                     targets.remove(part)
                                     os.remove(part_maker_name)
                                     #
@@ -119,6 +133,12 @@ def make_parts(target, part_type, parts = None):
                                     for line in open("openscad.log"):
                                         if line[:7] == 'ECHO: "' and line[-6:] == '.' + part_type + '"\n':
                                             used.append(line[7:-2])
+    #
+    # Write new bounds file
+    #
+    if part_type == 'stl':
+        with open(bounds_fname, 'w') as outfile:
+            json.dump(bounds_map, outfile, indent = 4)
     #
     # List the ones we didn't find
     #

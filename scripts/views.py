@@ -39,17 +39,26 @@ from colorama import Fore
 def is_assembly(s):
     return s[-9:] == '_assembly' or s[-11:] == '_assemblies'
 
-def add_assembly(flat_bom, bom):
+def add_assembly(flat_bom, bom, bounds_map):
     if not bom in flat_bom:
         big = False
         for ass in bom["assemblies"]:
-            add_assembly(flat_bom, ass)
-            if ass["routed"]:
+            add_assembly(flat_bom, ass, bounds_map)
+            if ass["big"]:
                 big = True
+        if not big:
+            for stl in bom["printed"]:
+                bounds = bounds_map[stl]
+                width = bounds[1][0] - bounds[0][0]
+                depth = bounds[1][1] - bounds[0][1]
+                if max(width, depth) > 80:
+                    big = True
+                    break
+
         bom["big"] = big or bom["routed"]
         flat_bom.append(bom)
 
-def bom_to_assemblies(bom_dir):
+def bom_to_assemblies(bom_dir, bounds_map):
     global flat_bom
     #
     # Make a list of all the parts in the BOM
@@ -59,7 +68,7 @@ def bom_to_assemblies(bom_dir):
     with open(bom_file) as json_file:
         bom = json.load(json_file)
     flat_bom = []
-    add_assembly(flat_bom, bom)
+    add_assembly(flat_bom, bom, bounds_map)
     ass =  flat_bom[-1]
     if len(ass["assemblies"]) < 2 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
         flat_bom = flat_bom[:-1]
@@ -90,11 +99,15 @@ def views(target, do_assemblies = None):
         os.makedirs(target_dir)
     if not os.path.isdir(deps_dir):
         os.makedirs(deps_dir)
+
     times.read_times(target_dir)
+    bounds_fname = top_dir + 'stls/bounds.json'
+    with open(bounds_fname) as json_file:
+        bounds_map = json.load(json_file)
     #
     # Find all the assemblies
     #
-    assemblies = bom_to_assemblies(bom_dir)
+    assemblies = bom_to_assemblies(bom_dir, bounds_map)
     for file in os.listdir(target_dir):
         if file.endswith('.png'):
             assembly = file[:-4].replace('_assembled', '_assembly')

@@ -71,12 +71,12 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 
 ### Assembly instructions
-![base_assembly](assemblies/base_assembly_tn.png)
+![base_assembly](assemblies/base_assembly.png)
 
 1. Remove the support material from under the insert lugs.
 2. Place the inserts into the holes in the lugs and press home with a soldering iron with a conical bit heated to 200&deg;C.
 
-![base_assembled](assemblies/base_assembled_tn.png)
+![base_assembled](assemblies/base_assembled.png)
 
 [Top](#TOP)
 
@@ -108,11 +108,11 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 
 ### Assembly instructions
-![feet_assembly](assemblies/feet_assembly_tn.png)
+![feet_assembly](assemblies/feet_assembly.png)
 
 * Attach the four feet using 10mm M3 dome screws, washers above and below and nyloc nuts
 
-![feet_assembled](assemblies/feet_assembled_tn.png)
+![feet_assembled](assemblies/feet_assembled.png)
 
 [Top](#TOP)
 
@@ -141,7 +141,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 
 ### Assembly instructions
-![mains_in_assembly](assemblies/mains_in_assembly_tn.png)
+![mains_in_assembly](assemblies/mains_in_assembly.png)
 
 1. Solder wires to the IEC terminals: -
     * Use wire rated for 13A, e.g. 1.5mm<sup>2</sup>, the easiest source is stripping 13A rated flex.
@@ -151,7 +151,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 1. Cover the the joints with heatshrink sleeving and shrink it with a hot air gun.
 1. Attach the IEC inlet using two 12mm M3 countersunk cap screws, washers and nyloc nuts on the back.
 
-![mains_in_assembled](assemblies/mains_in_assembled_tn.png)
+![mains_in_assembled](assemblies/mains_in_assembled.png)
 
 [Top](#TOP)
 
@@ -181,7 +181,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 
 ### Assembly instructions
-![main_assembly](assemblies/main_assembly_tn.png)
+![main_assembly](assemblies/main_assembly.png)
 
 ![inside](docs/inside_small.jpg)
 
@@ -194,6 +194,6 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 1. Crimp appropriate ferrules to the three wires and connect them to the 13A socket.
 1. Screw the socket onto the top of the case using two 20mm M3 countersunk cap screws.
 
-![main_assembled](assemblies/main_assembled_tn.png)
+![main_assembled](assemblies/main_assembled.png)
 
 [Top](#TOP)

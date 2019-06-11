@@ -34,9 +34,9 @@ module no_pose() let($posed = true) children();                     //! Force ch
 module explode(d, explode_children = false, offset = [0,0,0]) {     //! Explode children by specified Z distance or vector ```d```, option to explode grand children
     v = is_list(d) ? d : [0, 0, d];
     o = is_list(offset) ? offset : [0, 0, offset];
-    if($exploded && is_undef($exploded_parent)) {
+    if($exploded && is_undef($exploded_parent) && norm(v)) {
         translate(o)                                                // Draw the line first in case the child is transparent
-            hull() {
+            color("yellow") hull() {
                 sphere(0.2);
 
                 translate(v * $exploded)
