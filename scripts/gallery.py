@@ -20,7 +20,7 @@
 #
 
 #
-# Find projects and add them to the gallery
+#! Finds projects and adds them to the gallery.
 #
 from __future__ import print_function
 import os

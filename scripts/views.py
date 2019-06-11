@@ -20,7 +20,7 @@
 #
 
 #
-#: Generate assembly views and intructions
+#! Generates exploded and unexploded assembly views and scrapes build instructions to make readme.md, readme.html and printme.html files for the project.
 #
 from __future__ import print_function
 from set_config import *

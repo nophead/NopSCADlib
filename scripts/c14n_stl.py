@@ -20,6 +20,8 @@
 #
 
 #
+#! OpenSCAD produces randomly ordered STL files. This script re-orders them consistently so that GIT can tell if they have changed or not.
+#
 # OpenSCAD produces randomly ordered STL files so source control like GIT can't tell if they have changed or not.
 # This scrip orders each triangle to start with the lowest vertex first (comparing x, then y, then z)
 # It then sorts the triangles to start with the one with the lowest vertices first (comparing first vertex, second, then third)

@@ -19,6 +19,7 @@
 # If not, see <https://www.gnu.org/licenses/>.
 #
 
+#! Generates BOM files for the project.
 from __future__ import print_function
 
 import os

@@ -20,7 +20,7 @@
 #
 
 #
-# Set target configuration for multi-target projects that have variable configurations.
+#! Sets the target configuration for multi-target projects that have variable configurations.
 #
 from __future__ import print_function
 

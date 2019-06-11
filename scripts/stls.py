@@ -18,6 +18,7 @@
 # You should have received a copy of the GNU General Public License along with NopSCADlib.
 # If not, see <https://www.gnu.org/licenses/>.
 #
+#! Generates STL files for all the printed parts listed on the BOM or a specified list.
 
 from __future__ import print_function
 import sys

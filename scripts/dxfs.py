@@ -18,7 +18,8 @@
 # You should have received a copy of the GNU General Public License along with NopSCADlib.
 # If not, see <https://www.gnu.org/licenses/>.
 #
-
+#! Generates DXF files for all the routed parts listed on the BOM or a specified list.
+#
 from __future__ import print_function
 import sys
 

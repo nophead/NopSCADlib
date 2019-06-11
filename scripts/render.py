@@ -19,6 +19,8 @@
 # If not, see <https://www.gnu.org/licenses/>.
 #
 
+#! Renders STL and DXF files to PNG for inclusion in the build instructions.
+
 from __future__ import print_function
 from set_config import *
 from exports import bom_to_parts
