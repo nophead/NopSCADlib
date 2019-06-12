@@ -20,15 +20,16 @@ pip install markdown
 
 ## Installation
 
-OpenSCAD it has to be setup to find libraries by setting the ```OPENSCADPATH``` environment variable to where you want to file your libraries and NopSCADlib needs to be installed
-in the directory it points to. This can be done with ```git clone https://github.com/nophead/NopSCADlib.git``` while in that directory or by downloading
-https://github.com/nophead/NopSCADlib/archive/master.zip and unzipping it to a directory called NopSCADlib if you don't want to use GIT.
+OpenSCAD has to be setup to find libraries by setting the ```OPENSCADPATH``` environment variable to where you want to file your libraries and NopSCADlib needs to be installed
+in the directory it points to. This can be done with ```git clone https://github.com/nophead/NopSCADlib.git``` while in that directory or, if you don't want to use GIT,
+by downloading https://github.com/nophead/NopSCADlib/archive/master.zip and unzipping it to a directory called NopSCADlib.
 
 The ```NopSCADlib/scripts``` directory needs to be added to the executable search path.
 
 The installation can be tested by opening ```NopSCADlib/libtest.scad``` in the OpenSCAD GUI. It should render all the objects in the library in about 1 minute.
 
-Running ```tests``` from the command line will run all the tests in the ```tests``` directory and build the ```readme.md``` catalog and render it to ```readme.html```.
+Running ```tests``` from the command line will run all the tests in the ```tests``` directory and build the ```readme.md``` catalog for GitHub and render it to ```readme.html```
+for local preview.
 
 ## Directory structure
 
@@ -48,8 +49,8 @@ Running ```tests``` from the command line will run all the tests in the ```tests
 
 ## Making a project
 
-Each project has its own directory and that is used to derive the project's name. There should also be a subdirectory called ```scad``` and a main scad file which contains the main
- assembly, it can have any name.
+Each project has its own directory and that is used to derive the project's name.
+There should also be a subdirectory called ```scad``` with a scad file in it that contains the main assembly.
 A skeleton project looks like this: -
 
     //! Project description in Markdown format before the first include.
@@ -71,7 +72,7 @@ Other scad files can be added to the scad directory and included or used as requ
 
 * Subassemblies can be added in the same format as ```main_assembly()```, i.e. a module called ```something_assembly()```, taking no parameters and calling ```assembly("something")```
  with the rest of its contents passed as children.
-It needs to be called directly or indirectly from main_assembly() to appear in the view and on the BOM.
+It needs to be called directly or indirectly from ```main_assembly()``` to appear in the view and on the BOM.
 Assembly instructions should be added directly before the module definition in comments marked with ```//!```.
 
 * Any printed parts should be made by a module called ```something_stl()```, taking no parameters and calling ```stl("something")``` so they appear on the BOM when called from
@@ -86,9 +87,9 @@ When ```make_all``` is run from the top level directory of the project it will c
 | Directory | Contents |
 |:----------|:---------|
 | assemblies | For each assembly: an assembled view and an exploded assembly view, in large and small formats |
-| bom | A flat BOM in ```bom.txt``` for the whole project, flat BOMs in text format for each assembly and a hierarchical BOM in JSON format, ```bom.json```.|
+| bom | A flat BOM in ```bom.txt``` for the whole project, flat BOMs in text format for each assembly and a hierarchical BOM in JSON format: ```bom.json```.|
 | deps | Dependency files for each scad file in the project, so that subsequent builds can be incremental |
-| dxfs | DXF files for all the routed parts in the project and small PNG images of them |
+| dxfs | DXF files for all the CNC routed parts in the project and small PNG images of them |
 | stls | STL files for all the printed parts in the project and small PNG images of them |
 
 It will also make a Markdown assembly manual called ```readme.md``` suitable for GitHub, a version rendered to HTML for viewing locally called ```readme.html``` and a second
@@ -105,21 +106,23 @@ review the changes graphically. They will be deleted on the next run.
 
 ### Including the library
 
-All the vitamins and utilities are included if you include ```NopSCADlib/lib.scad```. Printed parts are not included and need to be used or included explicitly, their documentation
+All the vitamins and utilities are included if you include [NopSCADlib/lib.scad](../lib.scad). Printed parts are not included and need to be used or included explicitly, their documentation
 notes which files need to be included rather than used.
 
 This is the easiest way to use the library and is reasonably efficient because the only files included are the object list definitions, all the functions and modules are used, so
 get shared if other files in the project include ```lib.scad``` as well, or if you have multiple projects open in the same instance of OpenSCAD.
 
-One downside is that any change to the library will mean all the project files need regenrating. A more optimised approach for large projects is to include ```NopSCADlib/core.scad```
-instead. That only has the a small set of utilities and the global settings in global_defs.scad. Any vitamins used need to be included explicitly.
+One downside is that any change to the library will mean all the project files need regenerating.
+A more optimised approach for large projects is to include [NopSCADlib/core.scad](../core.scad) instead.
+That only has the a small set of utilities and the global settings in [global_defs.scad](../global_defs.scad). Any vitamins used need to be included explicitly.
 One can copy the include or use from ```lib.scad```.
 
 ### Parametric parts.
 
-Modules that generate parts and assemblies need to take no parameters so they can be called from the framework to make the STL files and assembly views, etc. Sometimes
-parts or asemblies need to be parametric, for example fan guards take the fan as a parameter. To work around this the ```fan_guard()``` module calls the ```stl()``` module with a
-variable name which has a suffix of the fan width, e.g. "fan_guard_60". This ensures if there are different sized fans in the same project they have unique names.
+Modules that generate parts and assemblies need to take no parameters so that they can be called from the framework to make the STL files and assembly views, etc.
+Sometimes parts or asemblies need to be parametric, for example fan guards take the fan as a parameter.
+To work around this the ```fan_guard()``` module calls the ```stl()``` module with a variable name which has a suffix of the fan width, e.g. "fan_guard_60".
+This ensures that if there are different sized fans in the same project the STL files have unique names.
 It is then up to the user to add a wrapper called ```fan_guard_60_stl()``` that calls ```fan_guard()``` with a 60mm fan: -
 
     module fan_guard_60_stl() fan_guard(fan60x15);
@@ -134,17 +137,21 @@ name the STL. For example a 3D printer might have a bed cooling fan and differen
 
     module bed_fan_guard_stl() fan_guard(bed_fan, name = "bed_fan_guard");
 
+In this case the STL file has a constant name related to its use, regardless of what size it is.
+
 ### Assembly boundaries
 
-The assembly() module is used to mark assemblies that correspond to a step of construction. Each assembly named in this way gets a page in the build manual with a list of the parts and
-subassemblies it uses and an exploded view, some build instructions and the assembled view. This doesn't always correspong with how one would want to structure the code. For example
-consider a 3D printed handle with inserts and screws and washers to attach it. It is convenient to have an assembly which includes all the fansteners, so a single module call adds the
-handle and its fasteners, specifying the panel thickness.
+The assembly() module is used to mark assemblies that correspond to a step of construction.
+Each assembly named in this way gets a page in the build manual with a list of the parts and subassemblies it uses, an exploded view, some build instructions and then the assembled view.
+This doesn't always correspong with how one would want to structure the code.
+For example, consider a 3D printed handle with inserts and screws and washers to attach it.
+It is convenient to have an assembly module that includes all the fasteners, so that a single module call adds the handle and its fasteners, specifying the panel thickness.
 
 ![](../tests/png/handle.png)
 
-In terms of assembling it though you don't add all the fasteners and then use that as a sub-assembly. You actually insert the heatfit inserts first and then the handle with its inserts
-becomes a sub-assembly but the other fasteners need to be added to the parent assembly and inserting them becomes a build step of that parent assembly.
+In terms of assembling it though you don't add all the fasteners and then use that as a sub-assembly.
+You actually insert the heatfit inserts first and then the handle with its inserts becomes a sub-assembly.
+The other fasteners need to be added to the parent assembly and inserting them becomes a build step of that parent assembly.
 This is achieved by having a pair of modules: -
 
     //
@@ -199,8 +206,8 @@ A few vitamins are non-parametric one offs, for example the MicroView. In these 
 Similarly simple vitamins like rods that only need two parameters don't need named lists, so only have a single file.
 
 Each property in the object type list is assessed by a function to give it a name and isolate the rest of the code from changes to the list order.
-Only the property accessor functions need to be kept in sync with the object deffinitions.
-These functions take a particular form, so they can be scrapped out and added to the documentation as properties. E.g.
+Only the property accessor functions need to be kept in sync with the object definitions.
+These functions take a particular form, so they can be scraped out and added to the documentation as properties. E.g.
 
     function spring_od(type)     = type[1]; //! Outside diameter
 
@@ -208,12 +215,14 @@ Other functions and modules with ```//!``` comments will be added to the documen
 Functions and modules without these special comments are considered private and do not appear in the documentation.
 
 A vitamin announces itself to the BOM by calling the ```vitamin()``` module with a string description composed of two parts separated by a colon.
-The first part is a string representation of the module call. This is used in the documentation to show how to instantiate every part available.
+The first part is a string representation of the module instantiation.
+This is used in the documentation to show how to instantiate every part available.
 To facilitate this the first element in the type list is the name of the list as a string and is simply accessed as ```type[0]```.
 
 The part of the description after the colon is free format text that appears on the BOM. Since vitamins are listed alphabetically starting the description with the broad
 category of the part and leaving the more refined description to the end generates tidier parts lists.
-For example ```Screw M3 pan x 30mm``` ensures all the screws appear together and are ordered by their diameter before length.
+For example ```Screw M3 pan x 30mm``` ensures all the screws appear together and are ordered by their diameter before length, although ```M3 x 30mm pan screw``` would be
+more natural.
 
 Vitamins are only ever previewed so they are optimised to draw quickly in F5 and don't need to worry about being manifold.
 In OpenCSG 3D difference and intersection are relatively slow and the negative volumes interfere with nearby objects when they are composed into assemblies. For this reason as much
