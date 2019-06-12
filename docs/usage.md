@@ -3,7 +3,7 @@
 ## Requirements
 1. OpenSCAD 2019.05 or later, download it from here: https://www.openscad.org/downloads.html
 1. Python 2.7+ or 3.6+ from https://www.python.org/downloads/
-1. ImageMagick www.imagemagick.org
+1. ImageMagick 7 www.imagemagick.org
 
 These are all cross platform tools so NopSCADlib should work on any platform that supports them.
 They all need to be added to the executable search path so that they work from the command line.
@@ -27,16 +27,17 @@ The ```NopSCADlib/scripts``` directory needs to be added to the executable searc
 
 The installation can be tested by opening ```NopSCADlib/libtest.scad``` in the GUI. It should render all the objects in the library in about 1 minute.
 
-Running ```tests``` from the command line will run all the tests in the ```tests``` directory and build the ```readme.md``` catalog.
+Running ```tests``` from the command line will run all the tests in the ```tests``` directory and build the ```readme.md``` catalog and render it to readme.html.
 
 ## Directory structure
 
 | Path | Usage |
 |:-----|:------|
-| ```NopSCADlib``` | Top level scad files and printed parts |
+| ```NopSCADlib``` | Top level scad files, e.g. ```lib.scad``` |
 | ```NopSCADlib/doc``` | Documentation like this that is not automatically generated |
 | ```NopSCADlib/examples``` | Example projects |
 | ```NopSCADlib/gallery``` | Pictures of items that have been made with the library |
+| ```NopSCADlib/printed``` | Scad files for making reusable printed parts |
 | ```NopSCADlib/scripts``` | Python scripts |
 | ```NopSCADlib/tests``` | A stand alone test for each type of vitamin and most of the utilities |
 | ```NopSCADlib/utils```   | Utilitity scad files |
@@ -46,8 +47,22 @@ Running ```tests``` from the command line will run all the tests in the ```tests
 
 ## Making a project
 
-Each project has its own directory and that is used to derive the project's name. There should be a main scad file which contains the main assembly. A skeleton looks like this: -
+Each project has its own directory and that is used to derive the project's name. There should also be a subdirectory called ```scad`` and a main scad file which contains the main
+ assembly.
+A skeleton project looks like this: -
 
 ```OpenSCAD
-//!
+//! Project desciption in Markdown format before the first include.
 include <NopSCADlib/lib.scad>
+
+...
+
+module main_assembly()
+assembly("main") {
+    ...
+}
+
+if($preview)
+    main_assembly();
+
+```
