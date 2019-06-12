@@ -83,7 +83,7 @@ def make_parts(target, part_type, parts = None):
     #
     # Find all the scad files
     #
-    lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib'
+    lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib/printed'
     used = []
     module_suffix = '_dxf' if part_type == 'svg' else '_' + part_type
     for dir in [source_dir, lib_dir]:

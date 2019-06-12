@@ -8,7 +8,7 @@ They should work with both Python 2 and Python 3.
 |:--|:--|
 | ```bom.py``` | Generates BOM files for the project. |
 | ```c14n_stl.py``` | OpenSCAD produces randomly ordered STL files. This script re-orders them consistently so that GIT can tell if they have changed or not. |
-| ```doc_scripts.py``` | Makes this document. |
+| ```doc_scripts.py``` | Makes this document and doc/usage.md. |
 | ```dxfs.py``` | Generates DXF files for all the routed parts listed on the BOM or a specified list. |
 | ```gallery.py``` | Finds projects and adds them to the gallery. |
 | ```make_all.py``` | Generates all the files for a project by running ```bom.py```, ```stls.py```, ```dxfs.py```, ```render.py``` and ```views.py```. |

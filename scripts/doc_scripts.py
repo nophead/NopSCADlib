@@ -20,7 +20,7 @@
 #
 
 #
-#! Makes this document.
+#! Makes this document and doc/usage.md.
 #
 from __future__ import print_function
 
@@ -63,10 +63,15 @@ They should work with both Python 2 and Python 3.
 
     with open(dir + "/readme.html", "wt") as html_file:
         do_cmd(("python -m markdown -x tables " + doc_name).split(), html_file)
+
+    with open("docs/usage.html", "wt") as html_file:
+        do_cmd(("python -m markdown -x tables docs/usage.md").split(), html_file)
     #
     # Spell check
     #
     do_cmd(('codespell -L od ' + doc_name).split())
+    do_cmd(('codespell -L od docs/usage.md').split())
+
 
 if __name__ == '__main__':
     doc_scripts()

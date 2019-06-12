@@ -29,7 +29,7 @@ def parse_line(line):
         return False, line[start :]
     else:
         words = line.split()
-        return len(words) and (words[0] == "module" or words[0] == "function"), ""
+        return len(words) and (words[0] == "module" or words[0] == "function" or words[0] == 'include'), ""
 
 def _scrape_blurb(lines):
     """ Find Markup lines before the first function or module given a list of lines."""

@@ -16,9 +16,12 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
+
 //
 //! Annotation used in this documentation
+//
+
+include <../core.scad>
 
 module label(str, scale = 0.25, valign = "baseline", halign = "left") //! Draw text that always faces the camera
     color("black")

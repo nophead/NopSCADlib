@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../strap_handle.scad>
+use <../printed/strap_handle.scad>
 
 length = 150;
 

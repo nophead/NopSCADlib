@@ -14,12 +14,12 @@ The following Python modules are used and can be installed with pip:
 
 ```
 pip install colorama
-
+pip install codespell
 ```
 
 ## Installation
 
-OpenSCAD it has to be setup to find libraries by setting the ```OPENSCADPATH``` environment variable to where you want to file your libaries and NopSCADlib needs to be installed
+OpenSCAD it has to be setup to find libraries by setting the ```OPENSCADPATH``` environment variable to where you want to file your libraries and NopSCADlib needs to be installed
 in the directory it points to. This can be done with ```git clone https://github.com/nophead/NopSCADlib.git``` while in that directory or by downloading
 https://github.com/nophead/NopSCADlib/archive/master.zip and unzipping it to a directory called NopSCADlib if you don't want to use GIT.
 
@@ -31,7 +31,7 @@ Running ```tests``` from the command line will run all the tests in the ```tests
 
 ## Directory structure
 
-| Path | Usage |
+| Path | Contents |
 |:-----|:------|
 | ```NopSCADlib``` | Top level scad files, e.g. ```lib.scad``` |
 | ```NopSCADlib/doc``` | Documentation like this that is not automatically generated |
@@ -47,16 +47,18 @@ Running ```tests``` from the command line will run all the tests in the ```tests
 
 ## Making a project
 
-Each project has its own directory and that is used to derive the project's name. There should also be a subdirectory called ```scad`` and a main scad file which contains the main
+Each project has its own directory and that is used to derive the project's name. There should also be a subdirectory called ```scad``` and a main scad file which contains the main
  assembly.
 A skeleton project looks like this: -
 
-```OpenSCAD
-//! Project desciption in Markdown format before the first include.
+
+```
+//! Project description in Markdown format before the first include.
 include <NopSCADlib/lib.scad>
 
 ...
 
+//! Assembly instructions in Markdown format in front of each module that makes an assembly.
 module main_assembly()
 assembly("main") {
     ...
@@ -66,3 +68,31 @@ if($preview)
     main_assembly();
 
 ```
+
+Other scad files can be added in the scad directory and included or used as reqired.
+
+* Subassemblies can be added in the same format as ```main_assembly()```, i.e. a module called something_assembly, taking no parameters and calling assembly("something") with
+the rest of its contents passed as children. Assembly instructions should be added directly before the module definition.
+
+* Any printed parts should be made by a module called ```something_stl()```, taking no parameters and calling stl("something") so they appear on the BOM.
+
+* Any routed parts should be made by a module called ```something_dxf()```, taking no paraneters and calling dxf("something") so they appear on the BOM.
+
+When ```make_all``` is run from the top level directory of the project it will create the following sub-directories and populate the. :-
+
+| Directory | Contents |
+|:----------|:---------|
+| assemblies | For each assembly an assembled view and an exploded assembly view in large and small format |
+| bom | A flat BOM in ```bom.txt``` for the whole project, flat BOMs in text format for each assembly and a hierarchical BOM in JSON format, ```bom.json```.|
+| deps | Dependency files for each scad file in the project so subsequent builds can be incremental |
+| dxfs | DXF files for all the routed parts in the project and small PNG images of them |
+| stls | STL files for all the printed parts in the project and small PNG images of them |
+
+It will also make a Markdown assembly manual called ```readme.md``` suitable for github, a version rendered to HTML for viewing locally called ```readme.html``` and a second
+HTML version called ```printme.html```. This has page breaks instead of horizontal rules and can be converted to PDF uisng Chrome.
+
+Each time OpenSCAD is run to produce STL, DXF or assembly views the time it takes is recorded and comared with the previous time. At the end the times are printed with the delta
+ from the last run and coloured red or green if they have got significantly faster or slower. This is useful for optimising the scad code for speed.
+
+When PNG files are made they are compared with the previous version and only updated if they have changed. When that happens a PNG difference file is created so you can
+review the changes graphically. They will be deleted on the next run.

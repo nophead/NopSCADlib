@@ -31,7 +31,7 @@ from shutil import copyfile
 from tests import update_image
 import sys
 
-project_dir = '../..'
+project_dirs = ['../..', 'examples']
 target_dir = 'gallery'
 output_name = target_dir + '/readme.md'
 
@@ -39,11 +39,12 @@ def gallery(force):
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
 
-    projects = [i for i in os.listdir(project_dir) if os.path.isdir(project_dir + '/' + i + '/assemblies')]
+
+    paths = sorted([pdir + '/' + i for pdir in project_dirs for i in os.listdir(pdir) if os.path.isdir(pdir + '/' + i + '/assemblies')], key = lambda s: os.path.basename(s))
     with open(output_name, 'wt') as output_file:
         print("# A gallery of projects made with NopSCADlib", file = output_file)
-        for project in projects:
-            path = project_dir + '/' + project
+        for path in paths:
+            project = os.path.basename(path)
             print(project)
             document = path + '/readme.md'
             if force:
