@@ -106,8 +106,8 @@ review the changes graphically. They will be deleted on the next run.
 
 ### Including the library
 
-All the vitamins and utilities are included if you include [NopSCADlib/lib.scad](../lib.scad). Printed parts are not included and need to be used or included explicitly, their documentation
-notes which files need to be included rather than used.
+All the vitamins and utilities are included if you include [NopSCADlib/lib.scad](../lib.scad).
+Printed parts are not included and need to be used or included explicitly, their documentation states which files need to be included rather than used.
 
 This is the easiest way to use the library and is reasonably efficient because the only files included are the object list definitions, all the functions and modules are used, so
 get shared if other files in the project include ```lib.scad``` as well, or if you have multiple projects open in the same instance of OpenSCAD.
@@ -115,7 +115,7 @@ get shared if other files in the project include ```lib.scad``` as well, or if y
 One downside is that any change to the library will mean all the project files need regenerating.
 A more optimised approach for large projects is to include [NopSCADlib/core.scad](../core.scad) instead.
 That only has the a small set of utilities and the global settings in [global_defs.scad](../global_defs.scad). Any vitamins used need to be included explicitly.
-One can copy the include or use from ```lib.scad```.
+One can copy the include or use line from [NopSCADlib/lib.scad](../lib.scad).
 
 ### Parametric parts.
 
@@ -123,15 +123,16 @@ Modules that generate parts and assemblies need to take no parameters so that th
 Sometimes parts or asemblies need to be parametric, for example fan guards take the fan as a parameter.
 To work around this the ```fan_guard()``` module calls the ```stl()``` module with a variable name which has a suffix of the fan width, e.g. "fan_guard_60".
 This ensures that if there are different sized fans in the same project the STL files have unique names.
-It is then up to the user to add a wrapper called ```fan_guard_60_stl()``` that calls ```fan_guard()``` with a 60mm fan: -
+It is then up to the user to add a wrapper to their project called ```fan_guard_60_stl()``` that calls ```fan_guard()``` with a 60mm fan: -
 
     module fan_guard_60_stl() fan_guard(fan60x15);
 
 Calling ```fan_guard(fan60x15)``` draws a fan guard for a 60mm fan and puts ```fan_guard_60.stl``` on the BOM. The framework then looks for a module ```fan_guard_60_stl()``` to
 generate it.
 
-This is OK if the fan will always be 60mm but what if the project is parametric and the fan size can vary? To cater for that ```fan_guard()``` can be passed a ```name``` parameter to
-name the STL. For example a 3D printer might have a bed cooling fan and different sized machines might have different size fans.
+This is OK if the fan will always be 60mm but what if the project is parametric and the fan size can vary?
+To cater for that ```fan_guard()``` can be passed a ```name``` parameter to name the STL.
+For example a 3D printer might have a bed cooling fan and different sized machines might have different size fans.
 
     bed_fan = fan80x38;
 
@@ -141,16 +142,17 @@ In this case the STL file has a constant name related to its use, regardless of 
 
 ### Assembly boundaries
 
-The assembly() module is used to mark assemblies that correspond to a step of construction.
-Each assembly named in this way gets a page in the build manual with a list of the parts and subassemblies it uses, an exploded view, some build instructions and then the assembled view.
-This doesn't always correspong with how one would want to structure the code.
+The ```assembly()``` module is used to mark assemblies that correspond to a step of construction.
+Each assembly named in this way gets a page in the build manual with a list of the parts and sub-assemblies that it uses, an exploded view,
+some build instructions and then the assembled view.
+This doesn't always correspond with how one would want to structure the code.
 For example, consider a 3D printed handle with inserts and screws and washers to attach it.
 It is convenient to have an assembly module that includes all the fasteners, so that a single module call adds the handle and its fasteners, specifying the panel thickness.
 
 ![](../tests/png/handle.png)
 
 In terms of assembling it though you don't add all the fasteners and then use that as a sub-assembly.
-You actually insert the heatfit inserts first and then the handle with its inserts becomes a sub-assembly.
+You actually insert the Heatfit inserts first and then the handle with its inserts becomes a sub-assembly.
 The other fasteners need to be added to the parent assembly and inserting them becomes a build step of that parent assembly.
 This is achieved by having a pair of modules: -
 
@@ -179,11 +181,12 @@ This is achieved by having a pair of modules: -
     }
 
 Notice how the first module ```handle_assembly()``` uses ```assembly()``` and has a build instruction. It isn't used directly in a project though, ```handle_fastened_assembly()``` is
-what is actually called from the parent assembly. Because it doesn't have a call to assembly() the fasteners are added to the parent but the STL and the inserts become a sub-assembly.
+what is actually called from the parent assembly.
+Because it doesn't have a call to ```assembly()```, the fasteners are added to the parent but the STL and the inserts become a sub-assembly.
 
 When the parent assembly is shown exploded the handle's screws will be exploded but the inserts won't. They only explode when the sub-assembly is shown exloded.
 
-Not also the ```pose([225, 0, 150], [0, 0, 14])``` call before the ```assembly()``` call. This allows the sub-assembly to be posed differently in its build step but doesn't
+Note also the ```pose([225, 0, 150], [0, 0, 14])``` call before the ```assembly()``` call. This allows the sub-assembly to be posed differently in its build step but doesn't
 affect its orientation in the parent assembly. The pose parameters are the rotation and the translation taken from the GUI.
 
 ### Exploded diagrams
@@ -205,7 +208,7 @@ that includes the implementation functions and modules.
 A few vitamins are non-parametric one offs, for example the MicroView. In these cases there is only one file with the singular name that needs to be used directly.
 Similarly simple vitamins like rods that only need two parameters don't need named lists, so only have a single file.
 
-Each property in the object type list is assessed by a function to give it a name and isolate the rest of the code from changes to the list order.
+Each property in the object type list is accessed by a function to give it a name and isolate the rest of the code from changes to the list order.
 Only the property accessor functions need to be kept in sync with the object definitions.
 These functions take a particular form, so they can be scraped out and added to the documentation as properties. E.g.
 
@@ -224,7 +227,7 @@ category of the part and leaving the more refined description to the end generat
 For example ```Screw M3 pan x 30mm``` ensures all the screws appear together and are ordered by their diameter before length, although ```M3 x 30mm pan screw``` would be
 more natural.
 
-Vitamins are only ever previewed so they are optimised to draw quickly in F5 and don't need to worry about being manifold.
+Vitamins are only ever previewed, so they are optimised to draw quickly in F5 and don't need to worry about being manifold.
 In OpenCSG 3D difference and intersection are relatively slow and the negative volumes interfere with nearby objects when they are composed into assemblies. For this reason as much
 as possible is done by unioning primitives and extruded 2D shapes. Any 3D differences or intersections are wrapped in ```render()``` so that CGAL will compute a polyhedron
 that is cached and reused. This will be very slow the first time it renders but very fast afterwards.
