@@ -15,6 +15,7 @@ The following Python modules are used and can be installed with pip:
 ```
 pip install colorama
 pip install codespell
+pip install markdown
 ```
 
 ## Installation
@@ -51,23 +52,19 @@ Each project has its own directory and that is used to derive the project's name
  assembly.
 A skeleton project looks like this: -
 
+    //! Project description in Markdown format before the first include.
+    include <NopSCADlib/lib.scad>
 
-```
-//! Project description in Markdown format before the first include.
-include <NopSCADlib/lib.scad>
-
-...
-
-//! Assembly instructions in Markdown format in front of each module that makes an assembly.
-module main_assembly()
-assembly("main") {
     ...
-}
 
-if($preview)
-    main_assembly();
+    //! Assembly instructions in Markdown format in front of each module that makes an assembly.
+    module main_assembly()
+    assembly("main") {
+        ...
+    }
 
-```
+    if($preview)
+        main_assembly();
 
 Other scad files can be added in the scad directory and included or used as required.
 
