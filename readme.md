@@ -10,7 +10,7 @@ For more examples of what it can make see the [gallery](gallery/readme.md).
 
 The license is GNU General Public License v3.0, see [COPYING](COPYING).
 
-See [usage](docs/usage.md) for requirement, installation instructions and usage.
+See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
 
 <img src="libtest.png" width="100%"/>
 

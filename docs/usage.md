@@ -69,14 +69,14 @@ if($preview)
 
 ```
 
-Other scad files can be added in the scad directory and included or used as reqired.
+Other scad files can be added in the scad directory and included or used as required.
 
 * Subassemblies can be added in the same format as ```main_assembly()```, i.e. a module called ```something_assembly()```, taking no parameters and calling ```assembly("something")``` with
 the rest of its contents passed as children. Assembly instructions should be added directly before the module definition.
 
 * Any printed parts should be made by a module called ```something_stl()```, taking no parameters and calling ```stl("something")``` so they appear on the BOM.
 
-* Any routed parts should be made by a module called ```something_dxf()```, taking no paraneters and calling ```dxf("something")``` so they appear on the BOM.
+* Any routed parts should be made by a module called ```something_dxf()```, taking no parameters and calling ```dxf("something")``` so they appear on the BOM.
 
 When ```make_all``` is run from the top level directory of the project it will create the following sub-directories and populate them:-
 
@@ -91,7 +91,7 @@ When ```make_all``` is run from the top level directory of the project it will c
 It will also make a Markdown assembly manual called ```readme.md``` suitable for GitHub, a version rendered to HTML for viewing locally called ```readme.html``` and a second
 HTML version called ```printme.html```. This has page breaks instead of horizontal rules and can be converted to PDF using Chrome to make a stand alone manual.
 
-Each time OpenSCAD is run to produce STL, DXF or assembly views the time it takes is recorded and compared with the previous time. At the end the times are printed with the delta
+Each time OpenSCAD is run to produce STL files, DXF files or assembly views the time it takes is recorded and compared with the previous time. At the end the times are printed with the delta
  from the last run and coloured red or green if they have got significantly faster or slower. This is useful for optimising the scad code for speed.
 
 When PNG files are made they are compared with the previous version and only updated if they have changed. When that happens a PNG difference file is created, so you can
