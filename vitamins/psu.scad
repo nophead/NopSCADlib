@@ -125,7 +125,7 @@ function psu_face_transform(type, face) =           //! Returns a transformation
 
 grill_hole = 4.5;
 grill_gap = 1.5;
-module grill(width, height) {
+module psu_grill(width, height) {
     nx = floor(width / (grill_hole + grill_gap));
     xpitch = width / nx;
     ny = floor(height / ((grill_hole + grill_gap) * cos(30)));
@@ -186,7 +186,7 @@ module psu(type) { //! Draw a power supply
                                     my1 = i == f_top && psu_face_grill(faces[f_back]) ? 0 : 6;
                                     my2 = i == f_back && psu_face_grill(faces[f_top]) ? 0 : 6;
                                     translate([0, (my2 - my1) / 2])
-                                        grill(xw - 2 * mx, yw - my1 - my2);
+                                        psu_grill(xw - 2 * mx, yw - my1 - my2);
                                 }
                                 if(fan)
                                     translate([fan.x, fan.y]) intersection() {
