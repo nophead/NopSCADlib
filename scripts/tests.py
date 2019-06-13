@@ -144,9 +144,11 @@ def tests(tests):
             if type == vtype:
                 type = types[0] if cap_name[0] <= vsplit else types[1]
 
-            if not type in bodies:
-                bodies[type] = []
-                index[type] = []
+            for t in types:
+                if not t in bodies:
+                    bodies[t] = []
+                    index[t] = []
+
             body = bodies[type]
 
             index[type] += [cap_name]
