@@ -18,6 +18,8 @@ pip install codespell
 pip install markdown
 ```
 
+This font: [7 SEGMENT.TTF](7 SEGMENT.TTF) is needed for simulating 7 secgments displays and needs to be installed.
+
 ## Installation
 
 OpenSCAD has to be setup to find libraries by setting the ```OPENSCADPATH``` environment variable to where you want to file your libraries and NopSCADlib needs to be installed

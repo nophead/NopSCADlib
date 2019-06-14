@@ -22,7 +22,7 @@
 //! CNC cut panel. The meter is held in the bezel by melting the stakes with a soldering iron set to 200&deg;C. The
 //! bezel is fixed in the panel with hot glue.
 //!
-//! Needs 7 segment font from <http://www.twyman.org.uk/Fonts/font-download.htm> to look realistic.
+//! Needs the font, [7 SEGMENT.TTF](docs/7 SEGMENT.TTF) from the docs directory installing to get realistic digits.
 //
 include <../core.scad>
 
