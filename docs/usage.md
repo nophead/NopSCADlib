@@ -18,7 +18,7 @@ pip install codespell
 pip install markdown
 ```
 
-The 7 SEGMENT.TTF from the docs directory is needed for simulating 7 secgments displays and needs to be installed.
+The 7 SEGMENT.TTF from the docs directory is needed for simulating 7 segment displays and needs to be installed.
 
 ## Installation
 
