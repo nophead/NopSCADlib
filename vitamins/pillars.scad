@@ -20,22 +20,22 @@
 //
 // Nylon pillars
 //
-//                                                  n         t  h   o          i          o  i   o         i         b   t
-//                                                  a         h  e   d          d          f  f
-//                                                  m         r  i                         n  n   c         c         t   t
-//                                                  e         e  g                                o         o         h   h
-//                                                            a  h                                l         l         r   r
-//                                                            d  t                                o         o         e   e
-//                                                                                                u         u         a   a
-//                                                            d                                   r         r         d   d
+//                                                  n            t  h   o          i          o  i   o         i         b   t
+//                                                  a            h  e   d          d          f  f
+//                                                  m            r  i                         n  n   c         c         t   t
+//                                                  e            e  g                                o         o         h   h
+//                                                               a  h                                l         l         r   r
+//                                                               d  t                                o         o         e   e
+//                                                                                                   u         u         a   a
+//                                                               d                                   r         r         d   d
 //
-M2x16_brass_pillar     = ["M2x16_brass_pillar",     "nurled", 2, 16, 3.17,      3.17,       0, 0, brass,     brass,    3,-3];
-M3x13_hex_pillar       = ["M3x13_hex_pillar",       "hex",    3, 13, 5/cos(30), 5/cos(30),  6, 6, "silver", "silver", -6, 6];
-M3x20_hex_pillar       = ["M3x20_hex_pillar",       "hex",    3, 20, 5/cos(30), 5/cos(30),  6, 6, "silver", "silver", -6, 6];
-M3x20_nylon_pillar     = ["M3x20_nylon_pillar",     "nylon",  3, 20, 8,         5/cos(30),  0, 6, "white",   brass,   -6, 6];
-M4x17_nylon_pillar     = ["M4x17_nylon_pillar",     "nylon",  4, 20, 8,         5/cos(30),  0, 6, "white",   brass,   -6, 6];
-M3x20_nylon_hex_pillar = ["M3x20_nylon_hex_pillar", "nylon",  3, 20, 8/cos(30), 8/cos(30),  6, 6,  grey20,   grey20,  -6, 6];
-M3x10_nylon_hex_pillar = ["M3x10_nylon_hex_pillar", "nylon",  3, 10,5.5/cos(30),5.5/cos(30),6, 6,  grey20,   grey20,  -6, 6];
+M2x16_brass_pillar     = ["M2x16_brass_pillar",     "nurled",    2, 16, 3.17,      3.17,       0, 0, brass,     brass,    3,-3];
+M3x13_hex_pillar       = ["M3x13_hex_pillar",       "hex",       3, 13, 5/cos(30), 5/cos(30),  6, 6, "silver", "silver", -6, 6];
+M3x20_hex_pillar       = ["M3x20_hex_pillar",       "hex",       3, 20, 5/cos(30), 5/cos(30),  6, 6, "silver", "silver", -6, 6];
+M3x20_nylon_pillar     = ["M3x20_nylon_pillar",     "nylon",     3, 20, 8,         5/cos(30),  0, 6, "white",   brass,   -6, 6];
+M4x17_nylon_pillar     = ["M4x17_nylon_pillar",     "nylon",     4, 20, 8,         5/cos(30),  0, 6, "white",   brass,   -6, 6];
+M3x20_nylon_hex_pillar = ["M3x20_nylon_hex_pillar", "hex nylon", 3, 20, 8/cos(30), 8/cos(30),  6, 6,  grey20,   grey20,  -6, 6];
+M3x10_nylon_hex_pillar = ["M3x10_nylon_hex_pillar", "hex nylon", 3, 10,5.5/cos(30),5.5/cos(30),6, 6,  grey20,   grey20,  -6, 6];
 
 
 pillars = [M2x16_brass_pillar, M3x13_hex_pillar, M3x20_hex_pillar, M3x20_nylon_pillar, M4x17_nylon_pillar, M3x10_nylon_hex_pillar, M3x20_nylon_hex_pillar];

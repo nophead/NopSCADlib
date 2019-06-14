@@ -1626,10 +1626,10 @@ Threaded pillars. Each end can be male or female.
 | ---:|:--- |:---|
 |   1 | ```pillar(M3x13_hex_pillar)``` |  Pillar hex M/F M3x13 |
 |   1 | ```pillar(M3x20_hex_pillar)``` |  Pillar hex M/F M3x20 |
+|   1 | ```pillar(M3x10_nylon_hex_pillar)``` |  Pillar hex nylon M/F M3x10 |
+|   1 | ```pillar(M3x20_nylon_hex_pillar)``` |  Pillar hex nylon M/F M3x20 |
 |   1 | ```pillar(M2x16_brass_pillar)``` |  Pillar nurled F/M M2x16 |
-|   1 | ```pillar(M3x10_nylon_hex_pillar)``` |  Pillar nylon M/F M3x10 |
 |   1 | ```pillar(M3x20_nylon_pillar)``` |  Pillar nylon M/F M3x20 |
-|   1 | ```pillar(M3x20_nylon_hex_pillar)``` |  Pillar nylon M/F M3x20 |
 |   1 | ```pillar(M4x17_nylon_pillar)``` |  Pillar nylon M/F M4x20 |
 
 
