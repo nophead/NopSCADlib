@@ -637,9 +637,9 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 |   1 | ```fan(fan70x15)``` |  Fan 70mm x 15mm |
 |   1 | ```fan(fan80x25)``` |  Fan 80mm x 25mm |
 |   1 | ```fan(fan80x38)``` |  Fan 80mm x 38mm |
-|   4 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 nyloc |
-|   8 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
-|  28 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|   4 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|   8 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|  28 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   4 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
 |   8 | ```screw(M3_dome_screw, 20)``` |  Screw M3 dome x 20mm |
 |  20 | ```screw(M4_dome_screw, 16)``` |  Screw M4 dome x 16mm |
@@ -798,7 +798,7 @@ IEC mains inlets and outlet.
 |   1 | ```iec(IEC_inlet)``` |  IEC inlet |
 |   1 | ```iec(IEC_inlet_atx)``` |  IEC inlet for ATX |
 |   1 | ```iec(IEC_outlet)``` |  IEC outlet |
-|   8 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
+|   8 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   4 | ```screw(M3_cs_cap_screw, 10)``` |  Screw M3 cs cap x 10mm |
 |   4 | ```screw(M3_cs_cap_screw, 12)``` |  Screw M3 cs cap x 12mm |
 |   8 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
@@ -1312,7 +1312,7 @@ Random screw down modules. Currently just DROK buck converters.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```mod(drok_buck)``` |  Drok buck converter |
-|   2 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|   2 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   2 | ```screw(M4_dome_screw, 12)``` |  Screw M4 dome x 12mm |
 |   4 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
@@ -1362,23 +1362,23 @@ If a nut is given a child then it gets placed on its top surface.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```nut(M2_nut)``` |  Nut M2  |
-|   1 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 nyloc |
-|   1 | ```nut(M2p5_nut)``` |  Nut M2.5  |
-|   1 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 nyloc |
-|   1 | ```nut(M2p5_nut, nylon = true)``` |  Nut M2.5 nylon |
-|   1 | ```nut(M3_nut)``` |  Nut M3  |
-|   1 | ```nut(M3_nut, brass = true)``` |  Nut M3 brass |
-|   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
-|   1 | ```nut(M4_nut)``` |  Nut M4  |
-|   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
-|   1 | ```nut(M5_nut)``` |  Nut M5  |
-|   1 | ```nut(M5_nut, nyloc = true)``` |  Nut M5 nyloc |
-|   1 | ```nut(M6_nut)``` |  Nut M6  |
-|   1 | ```nut(M6_half_nut)``` |  Nut M6  |
-|   1 | ```nut(M6_nut, nyloc = true)``` |  Nut M6 nyloc |
-|   1 | ```nut(M8_nut)``` |  Nut M8  |
-|   1 | ```nut(M8_nut, nyloc = true)``` |  Nut M8 nyloc |
+|   1 | ```nut(M2_nut)``` |  Nut M2 x 1.6mm  |
+|   1 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
+|   1 | ```nut(M2p5_nut)``` |  Nut M2.5 x 2.2mm  |
+|   1 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|   1 | ```nut(M2p5_nut, nylon = true)``` |  Nut M2.5 x 2.2mm nylon |
+|   1 | ```nut(M3_nut)``` |  Nut M3 x 2.4mm  |
+|   1 | ```nut(M3_nut, brass = true)``` |  Nut M3 x 2.4mm brass |
+|   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   1 | ```nut(M4_nut)``` |  Nut M4 x 3.2mm  |
+|   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
+|   1 | ```nut(M5_nut)``` |  Nut M5 x 4mm  |
+|   1 | ```nut(M5_nut, nyloc = true)``` |  Nut M5 x 4mm nyloc |
+|   1 | ```nut(M6_half_nut)``` |  Nut M6 x 3mm  |
+|   1 | ```nut(M6_nut)``` |  Nut M6 x 5mm  |
+|   1 | ```nut(M6_nut, nyloc = true)``` |  Nut M6 x 5mm nyloc |
+|   1 | ```nut(M8_nut)``` |  Nut M8 x 6.5mm  |
+|   1 | ```nut(M8_nut, nyloc = true)``` |  Nut M8 x 6.5mm nyloc |
 |   1 | ```washer(M6_washer)``` |  Washer  M6 x 12.5mm x 1.5mm |
 |   1 | ```wingnut(M4_wingnut)``` |  Wingnut M4 |
 
@@ -1536,10 +1536,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 |  |  Micro SD card |
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
-|  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 nyloc |
-|  12 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 nyloc |
-|  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
-|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
+|  12 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
 |   1 | ```pcb(PSU12V1A)``` |  PSU 12V 1A |
 |   1 | ```pcb(PERF60x40)``` |  Perfboard 60 x 40mm |
@@ -1837,9 +1837,9 @@ Linear rails with carriages.
 |   1 | ```rail(MGN7, 200)``` |  Linear rail MGN7 x 200mm |
 |   1 | ```rail(MGN9, 200)``` |  Linear rail MGN9 x 200mm |
 |   1 | ```rail(SSR15, 200)``` |  Linear rail SSR15 x 200mm |
-|  26 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 nyloc |
-|  17 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
-|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|  26 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
+|  17 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |  11 | ```screw(M2_cap_screw, 10)``` |  Screw M2 cap x 10mm |
 |  15 | ```screw(M2_cs_cap_screw, 10)``` |  Screw M2 cs cap x 10mm |
 |   8 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
@@ -1895,7 +1895,7 @@ Ring terminals and earth assemblies for DiBond panels.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
+|   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   1 | ```ring_terminal(M3_ringterm)``` |  Ring terminal 3mm |
 |   1 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
 |   2 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
@@ -2303,7 +2303,7 @@ Solid state relays.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   4 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
 |   1 | ```ssr(SSR25DA)``` |  Solid state relay Fotek 25A |
 |   1 | ```ssr(SSR10DA)``` |  Solid state relay Robodigg 10A |
@@ -2631,7 +2631,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
-|   4 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
+|   4 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   4 | ```screw(M3_dome_screw, 25)``` |  Screw M3 dome x 25mm |
 |   2 | ```terminal_254(10)``` |  Terminal block 10 way 0.1" |
 |   2 | ```veroboard(z_vb)``` |  Veroboard 5 holes x 22strips |
@@ -3151,7 +3151,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   2 | ```screw(M3_cap_screw, 35)``` |  Screw M3 cap x 35mm |
 |   4 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
 |   4 | ```screw(M4_dome_screw, 16)``` |  Screw M4 dome x 16mm |
@@ -3195,7 +3195,7 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```screw(M4_hex_screw, 20)``` |  Screw M4 hex x 20mm |
 |   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
@@ -3368,7 +3368,7 @@ inserts don't grip well in rubber.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
-|   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 nyloc |
+|   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x 8mm |
 |   1 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
 |   1 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
@@ -3560,7 +3560,7 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 |   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```mains_socket(Contactum)``` |  Mains socket 13A |
 |   1 | ```mains_socket(MKLOGIC)``` |  Mains socket 13A, switched |
-|   2 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 nyloc |
+|   2 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   2 | ```ring_terminal(M3_ringterm)``` |  Ring terminal 3mm |
 |   4 | ```screw(M3_cs_cap_screw, 20)``` |  Screw M3 cs cap x 20mm |
 |   2 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
