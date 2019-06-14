@@ -373,20 +373,16 @@ When the sides are constrained then a circular model is more accurate.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```bezier_cable_strip(ways, depth, length, travel, pos, below, extra)``` | Draw a cable strip using a Bezier curve |
-| ```cable_strip(ways, depth, travel, x, extra = 15)``` | Draw a cable stripe with a semi circular fold |
+| ```bezier_cable_strip(ways, depth, length, below, extra, pos = 0)``` | Draw a cable strip using a Bezier curve |
+| ```cable_strip(ways, depth, travel, extra = 15, pos = 0)``` | Draw a cable stripe with a semi circular fold |
 
 ![cable_strips](tests/png/cable_strips.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```bezier_cable_strip(20, 50, 150, 100, -100, 100, 10)``` |  Polypropylene strip 170mm x 26mm x 0.8mm |
-|   1 | ```bezier_cable_strip(20, 50, 150, 100, 0, 100, 10)``` |  Polypropylene strip 170mm x 26mm x 0.8mm |
-|   1 | ```bezier_cable_strip(20, 50, 150, 100, 100, 100, 10)``` |  Polypropylene strip 170mm x 26mm x 0.8mm |
-|   1 | ```cable_strip(20, 25, 100, -100, 30)``` |  Polypropylene strip 189mm x 24mm x 0.8mm |
-|   1 | ```cable_strip(20, 25, 100, 0, 30)``` |  Polypropylene strip 189mm x 24mm x 0.8mm |
-|   1 | ```cable_strip(20, 25, 100, 100, 30)``` |  Polypropylene strip 189mm x 24mm x 0.8mm |
+|   3 | ```bezier_cable_strip(20, 50, 150, 100, 10)``` |  Polypropylene strip 170mm x 26mm x 0.8mm |
+|   3 | ```cable_strip(20, 25, 100, 30)``` |  Polypropylene strip 189mm x 24mm x 0.8mm |
 
 
 <a href="#top">Top</a>

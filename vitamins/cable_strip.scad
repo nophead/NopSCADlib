@@ -44,14 +44,14 @@ function cable_strip_control_points(depth, min_z, pos) = let(z = min(min_z, min_
 function bezier_cable_length(depth, min_z, pos) = //! Calculate a length that will achieve the desired minimum z
     bezier_length(adjust_bezier_z(cable_strip_control_points(depth, min_z, pos), min_z));
 
-module bezier_cable_strip(ways, depth, length, travel, pos, below, extra) { //! Draw a cable strip using a Bezier curve
+module bezier_cable_strip(ways, depth, length, below, extra, pos = 0) { //! Draw a cable strip using a Bezier curve
     width = ceil(ribbon_clamp_slot(ways) - 1);
 
     thickness = cable_strip_thickness;
 
     total = 2 * extra + length;
 
-    vitamin(str("bezier_cable_strip(", ways, ", ", depth, ", ", length, ", ", travel, ", ", pos, ", ", below, ", ", extra,
+    vitamin(str("bezier_cable_strip(", ways, ", ", depth, ", ", length, ", ", below, ", ", extra,
                                    "): Polypropylene strip ", total, "mm x ", width, "mm x ", thickness, "mm"));
 
     c = cable_strip_control_points(depth, -below + extra, pos);
@@ -71,7 +71,7 @@ module bezier_cable_strip(ways, depth, length, travel, pos, below, extra) { //! 
 
 function cable_strip_length(depth, travel, extra = 15) = ceil(travel / 2 + 2 * extra + PI * depth); //! Calculate circular cable strip length
 
-module cable_strip(ways, depth, travel, x, extra = 15) {  //! Draw a cable stripe with a semi circular fold
+module cable_strip(ways, depth, travel, extra = 15, pos = 0) {  //! Draw a cable stripe with a semi circular fold
 
     width = ribbon_clamp_slot(ways);
 
@@ -79,15 +79,15 @@ module cable_strip(ways, depth, travel, x, extra = 15) {  //! Draw a cable strip
 
     radius = depth / 2;
 
-    top = travel / 4 + extra + x / 2;
-    bottom = travel / 4 + extra - x /2;
+    top = travel / 4 + extra + pos / 2;
+    bottom = travel / 4 + extra - pos /2;
 
     length = max(top, bottom);
 
     total = ceil(top + bottom + PI * depth);
     w = floor(width - 2);
 
-    vitamin(str("cable_strip(", ways, ", ", depth, ", ", travel, ", ", x, arg(extra, 15), "): Polypropylene strip ", total, "mm x ", w, "mm x ", thickness, "mm"));
+    vitamin(str("cable_strip(", ways, ", ", depth, ", ", travel, arg(extra, 15), "): Polypropylene strip ", total, "mm x ", w, "mm x ", thickness, "mm"));
 
     color(cable_strip_color) linear_extrude(height = w, center = true, convexity = 4)
         difference() {
@@ -108,7 +108,7 @@ module cable_strip(ways, depth, travel, x, extra = 15) {  //! Draw a cable strip
             translate([0, -thickness / 2])
                 square([travel, thickness * 2]);
 
-            translate([x, depth - thickness - thickness / 2])
+            translate([pos, depth - thickness - thickness / 2])
                 square([travel, thickness * 2]);
         }
 }

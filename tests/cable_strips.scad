@@ -24,11 +24,11 @@ module cable_strips() {
     depth = 50;
     rotate(-90)
         for(pos = [-100, 0, 100]) {
-            bezier_cable_strip(ways = 20, depth = depth, length = 150, travel = 100, pos = pos, below = 100, extra = 10);
+            bezier_cable_strip(ways = 20, depth = depth, length = 150, below = 100, extra = 10, pos = pos);
 
             translate([0, depth * 2])
                 rotate([0, -90, 0])
-                    cable_strip(ways =20, depth = depth / 2, travel = 100, x = pos, extra = 30);
+                    cable_strip(ways =20, depth = depth / 2, travel = 100, extra = 30, pos = pos);
 
 
         }
