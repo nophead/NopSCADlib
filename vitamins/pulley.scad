@@ -55,8 +55,9 @@ GT_r = 0.555;
 
 module pulley(type) { //! Draw a pulley
     teeth = pulley_teeth(type);
+    od = pulley_od(type);
 
-    vitamin(str("pulley(", type[0], "): Pulley ", pulley_type(type), pulley_screws(type) ? " " : " idler ", teeth ? str(teeth, " teeth") : "smooth"));
+    vitamin(str("pulley(", type[0], "): Pulley ", pulley_type(type), pulley_screws(type) ? " " : " idler ", teeth ? str(teeth, " teeth") : str("smooth ", od, "mm")));
 
     ft = pulley_flange_thickness(type);
     tw = pulley_od(type) * PI / (teeth * 2);
@@ -64,7 +65,7 @@ module pulley(type) { //! Draw a pulley
     w = pulley_width(type);
     r1 = pulley_bore(type) / 2;
 
-    or =  pulley_od(type) / 2;
+    or =  od / 2;
     ir =  pulley_ir(type);
     module core() {
         translate_z(pulley_hub_length(type) + ft)

@@ -204,7 +204,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 |   1 | ```belt(T5x6, [ ... ])``` |  Belt T5 x 6mm x 130mm |
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   2 | ```pulley(GT2x20_toothed_idler)``` |  Pulley GT2 idler 20 teeth |
-|   2 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth |
+|   2 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth 9.63mm |
 |   2 | ```pulley(GT2x20ob_pulley)``` |  Pulley GT2OB 20 teeth |
 |   1 | ```screw(M3_cs_cap_screw, 20)``` |  Screw M3 cs cap x 20mm |
 |   4 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x 6mm |
@@ -1765,8 +1765,8 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 | ---:|:--- |:---|
 |   1 | ```pulley(GT2x16_toothed_idler)``` |  Pulley GT2 idler 16 teeth |
 |   1 | ```pulley(GT2x20_toothed_idler)``` |  Pulley GT2 idler 20 teeth |
-|   1 | ```pulley(GT2x20_plain_idler)``` |  Pulley GT2 idler smooth |
-|   1 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth |
+|   1 | ```pulley(GT2x20_plain_idler)``` |  Pulley GT2 idler smooth 12mm |
+|   1 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth 9.63mm |
 |   1 | ```pulley(GT2x20ob_pulley)``` |  Pulley GT2OB 20 teeth |
 |   1 | ```pulley(GT2x12_pulley)``` |  Pulley GT2RD 12 teeth |
 |   1 | ```pulley(GT2x20um_pulley)``` |  Pulley GT2UM 20 teeth |
