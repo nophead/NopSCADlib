@@ -18,7 +18,7 @@ pip install codespell
 pip install markdown
 ```
 
-This font: [7 SEGMENT.TTF](7 SEGMENT.TTF) is needed for simulating 7 secgments displays and needs to be installed.
+The 7 SEGMENT.TTF from the docs directory is needed for simulating 7 secgments displays and needs to be installed.
 
 ## Installation
 
