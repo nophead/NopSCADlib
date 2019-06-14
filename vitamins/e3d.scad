@@ -112,7 +112,7 @@ module e3d_fan_duct(type) {
 module e3d_fan(type) {
     e3d_fan_duct(type);
 
-    translate([fan_x_offset + 5, 0, 15])
+    translate([fan_x_offset + 5 + eps, 0, 15])
         rotate([0, 90, 0])
              not_on_bom()
                 fan(fan30x10);
