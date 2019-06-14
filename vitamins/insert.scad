@@ -78,18 +78,19 @@ module insert(type) { //! Draw specified insert
 module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole to take an insert, ```counterbore``` is the extra length for the screw
     h = insert_hole_length(type);
 
-    render() if(horizontal) {
-        teardrop_plus(r = insert_hole_radius(type), h = 2 * h);
+    render(convexity = 2)
+        if(horizontal) {
+            teardrop_plus(r = insert_hole_radius(type), h = 2 * h);
 
-        if(counterbore)
-            teardrop_plus(r = insert_screw_diameter(type) / 2 + 0.1, h = 2 * (h + counterbore));
-    }
-    else {
-        poly_cylinder(r = insert_hole_radius(type), h = 2 * h, center = true);
+            if(counterbore)
+                teardrop_plus(r = insert_screw_diameter(type) / 2 + 0.1, h = 2 * (h + counterbore));
+        }
+        else {
+            poly_cylinder(r = insert_hole_radius(type), h = 2 * h, center = true);
 
-        if(counterbore)
-            poly_cylinder(r = insert_screw_diameter(type) / 2 + 0.1, h = 2 * (h + counterbore), center = true);
-    }
+            if(counterbore)
+                poly_cylinder(r = insert_screw_diameter(type) / 2 + 0.1, h = 2 * (h + counterbore), center = true);
+        }
 }
 
 module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to take an insert
