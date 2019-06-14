@@ -4118,6 +4118,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 | ```circle4n(r, d = undef)``` | Circle with multiple of 4 vertices |
 | ```ellipse(xr, yr)``` | Draw an ellipse |
 | ```extrude_if(h, center = true)``` | Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D |
+| ```hflip()``` | Invert children by doing a 180 glip around the Y axis |
 | ```semi_circle(r, d = undef)``` | A semi circle in the positive Y domain |
 | ```translate_z(z)``` | Shortcut for Z only translations |
 | ```vflip()``` | Invert children by doing a 180 flip around the X axis |
