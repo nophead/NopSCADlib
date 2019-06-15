@@ -32,7 +32,7 @@ function r2sides4n(r) = floor((r2sides(r) + 3) / 4) * 4;                        
 
 module translate_z(z) translate([0, 0, z]) children();                              //! Shortcut for Z only translations
 module vflip() rotate([180, 0, 0]) children();                                      //! Invert children by doing a 180 flip around the X axis
-module hflip() rotate([0, 180, 0]) children();                                      //! Invert children by doing a 180 glip around the Y axis
+module hflip() rotate([0, 180, 0]) children();                                      //! Invert children by doing a 180 flip around the Y axis
 module ellipse(xr, yr) scale([1, yr / xr]) circle4n(xr);                            //! Draw an ellipse
 
 module extrude_if(h, center = true)                 //! Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D
