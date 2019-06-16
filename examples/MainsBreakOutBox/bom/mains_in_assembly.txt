@@ -4,7 +4,7 @@ Vitamins:
   2 Wire brown 30/0.25mm strands, length 150mm - not shown
   1 Wire green & yellow 30/0.25mm strands, length 150mm - not shown
   1 IEC inlet for ATX
-  2 Nut M3 nyloc
+  2 Nut M3 x 2.4mm nyloc
   2 Screw M3 cs cap x 12mm
   3 Heatshrink sleeving ID 3.2mm x 15mm - not shown
   2 Washer  M3 x 7mm x 0.5mm

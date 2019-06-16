@@ -26,7 +26,7 @@
                     "vitamins": {
                         "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": 8,
                         "screw(M3_dome_screw, 10): Screw M3 dome x 10mm": 4,
-                        "nut(M3_nut, nyloc = true): Nut M3 nyloc": 4
+                        "nut(M3_nut, nyloc = true): Nut M3 x 2.4mm nyloc": 4
                     },
                     "printed": {
                         "foot.stl": 4
@@ -42,7 +42,7 @@
                 "iec(IEC_inlet_atx): IEC inlet for ATX": 1,
                 "screw(M3_cs_cap_screw, 12): Screw M3 cs cap x 12mm": 2,
                 "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": 2,
-                "nut(M3_nut, nyloc = true): Nut M3 nyloc": 2
+                "nut(M3_nut, nyloc = true): Nut M3 x 2.4mm nyloc": 2
             },
             "printed": {},
             "routed": {}

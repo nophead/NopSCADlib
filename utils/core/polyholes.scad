@@ -23,9 +23,9 @@
 //!
 //! The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is useful for making printed washers and pillars.
 //
-function sides(r) = max(round(4 * r), 3); //! Optimium number of sides for specified radius
-function corrected_radius(r, n = 0)   = r / cos(180 / (n ? n : sides(r))); //! Adjusted radius to make flats lie on the circle
-function corrected_diameter(d, n = 0) = d / cos(180 / (n ? n : sides(d / 2))); //! Adjusted diameter to make flats lie on the circle
+function sides(r) = max(round(4 * r), 3);                                       //! Optimium number of sides for specified radius
+function corrected_radius(r, n = 0)   = r / cos(180 / (n ? n : sides(r)));      //! Adjusted radius to make flats lie on the circle
+function corrected_diameter(d, n = 0) = d / cos(180 / (n ? n : sides(d / 2)));  //! Adjusted diameter to make flats lie on the circle
 
 module poly_circle(r, sides = 0) { //! Make a circle adjusted to print the correct size
     n = sides ? sides : sides(r);
@@ -38,8 +38,8 @@ module poly_cylinder(r, h, center = false, sides = 0) //! Make a cylinder adjust
 
 module poly_ring(or, ir) { //! Make a 2D ring adjusted to have the correct internal radius
     cir = corrected_radius(ir);
-    filaments = floor((or - cir) / extrusion_width);
-    if(filaments > 3)
+    filaments = (or - cir) / extrusion_width;
+    if(filaments > 3 + eps)
         difference() {
             circle(or);
 

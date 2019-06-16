@@ -17,7 +17,7 @@ Vitamins:
   |  | 1|  |  1 4mm shielded jack socket brown
   |  | 2|  |  2 4mm shielded jack socket green
   |  | 1|  |  1 Mains socket 13A
-  | 4|  | 2|  6 Nut M3 nyloc
+  | 4|  | 2|  6 Nut M3 x 2.4mm nyloc
   |  |  | 2|  2 Screw M3 cs cap x 12mm
   |  | 2|  |  2 Screw M3 cs cap x 20mm
   | 4|  |  |  4 Screw M3 dome x 10mm

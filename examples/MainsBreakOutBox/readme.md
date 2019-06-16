@@ -39,7 +39,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;3&nbsp; | &nbsp;&nbsp;5&nbsp; |  &nbsp;&nbsp;8&nbsp; | &nbsp;&nbsp; Heatshrink sleeving ID 3.2mm x 15mm - not shown |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; IEC inlet for ATX |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; Mains socket 13A |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;6&nbsp; | &nbsp;&nbsp; Nut M3 nyloc |
+| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;6&nbsp; | &nbsp;&nbsp; Nut M3 x 2.4mm nyloc |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Screw M3 cs cap x 12mm |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Screw M3 cs cap x 20mm |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp; Screw M3 dome x 10mm |
@@ -88,7 +88,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 |--:|:----------|
 |8| Washer  M3 x 7mm x 0.5mm|
 |4| Screw M3 dome x 10mm|
-|4| Nut M3 nyloc|
+|4| Nut M3 x 2.4mm nyloc|
 
 
 ### 3D Printed parts
@@ -129,7 +129,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 |1| IEC inlet for ATX|
 |2| Screw M3 cs cap x 12mm|
 |2| Washer  M3 x 7mm x 0.5mm|
-|2| Nut M3 nyloc|
+|2| Nut M3 x 2.4mm nyloc|
 
 
 ### Sub-assemblies

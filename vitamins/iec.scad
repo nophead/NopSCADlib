@@ -46,7 +46,8 @@ function iec_depth(type)    = type[16]; //! Depth of the body below the flange
 function iec_spades(type)   = type[17]; //! Spade type
 function iec_male(type)     = type[18]; //! True for an outlet
 
-insert_overlap = 1.1; // chosen to make cap screws 10mm long.
+insert_screw_length = 10;
+function iec_insert_screw_length() = insert_screw_length; //! Screw length used for inserts
 
 module iec(type) { //! Draw specified IEC connector
     vitamin(str("iec(", type[0], "): ", iec_part(type)));
@@ -181,18 +182,24 @@ module iec_screw_positions(type) //! Position children at the screw holes
 
 module iec_holes(type, h = 100, poly = false, horizontal = false, insert = false) { //! Drill the required panel holes
     clearance = 0.2;
+    screw = iec_screw(type);
+    insert_type = screw_insert(screw);
+    insert_overlap = max(0, insert_screw_length + clearance - iec_flange_t(type) - insert_hole_length(insert_type));
 
     iec_screw_positions(type)
         if(insert)
-            insert_hole(screw_insert(iec_screw(type)), insert_overlap, horizontal = horizontal);
+            if(h)
+                insert_hole(insert_type, insert_overlap, horizontal = horizontal);
+            else
+                poly_circle(insert_hole_radius(insert_type));
         else
             if(horizontal)
-                teardrop_plus(r = screw_clearance_radius(iec_screw(type)), h = h);
+                teardrop_plus(r = screw_clearance_radius(screw), h = h);
             else
                 if(poly)
-                    poly_cylinder(r = screw_clearance_radius(iec_screw(type)), h = h, center = true);
+                    poly_cylinder(r = screw_clearance_radius(screw), h = h, center = true);
                 else
-                    drill(screw_clearance_radius(iec_screw(type)), h);
+                    drill(screw_clearance_radius(screw), h);
 
     extrude_if(h)
         hull()
@@ -204,13 +211,20 @@ module iec_holes(type, h = 100, poly = false, horizontal = false, insert = false
                         drill(iec_slot_r(type) + clearance / 2, 0);
 }
 
-module iec_assembly(type, thickness) { //! Assembly with fasteners given panel thickness
+module iec_inserts(type) {              //! Place the inserts
+    insert = screw_insert(iec_screw(type));
+
+    iec_screw_positions(type)
+        insert(insert);
+}
+
+module iec_assembly(type, thickness) {  //! Assembly with fasteners given panel thickness
     screw = iec_screw(type);
     washer = screw_washer(screw);
     nut = screw_nut(screw);
     insert = screw_insert(screw);
     screw_length = thickness ? screw_longer_than(iec_flange_t(type) + thickness + washer_thickness(washer) + nut_thickness(nut, true))
-                             : screw_shorter_than(iec_flange_t(type) + insert_hole_length(insert) + insert_overlap);
+                             : insert_screw_length;
 
     iec(type);
 
@@ -222,7 +236,5 @@ module iec_assembly(type, thickness) { //! Assembly with fasteners given panel t
             translate_z(-thickness)
                 vflip()
                     nut_and_washer(nut, true);
-        else
-            insert(insert);
     }
 }

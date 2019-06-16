@@ -1,6 +1,6 @@
 feet_assembly:
 Vitamins:
-  4 Nut M3 nyloc
+  4 Nut M3 x 2.4mm nyloc
   4 Screw M3 dome x 10mm
   8 Washer  M3 x 7mm x 0.5mm
 

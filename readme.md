@@ -781,12 +781,18 @@ IEC mains inlets and outlet.
 | ```iec_spades(type)``` | Spade type |
 | ```iec_width(type)``` | Widest part including the lugs |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```iec_insert_screw_length()``` | Screw length used for inserts |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | ```iec(type)``` | Draw specified IEC connector |
 | ```iec_assembly(type, thickness)``` | Assembly with fasteners given panel thickness |
 | ```iec_holes(type, h = 100, poly = false, horizontal = false, insert = false)``` | Drill the required panel holes |
+| ```iec_inserts(type)``` | Place the inserts |
 | ```iec_screw_positions(type)``` | Position children at the screw holes |
 
 ![iecs](tests/png/iecs.png)

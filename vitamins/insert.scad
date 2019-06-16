@@ -94,12 +94,14 @@ module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole 
 }
 
 module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to take an insert
-    difference() {
-        ir = insert_hole_radius(type);
-        linear_extrude(height = z)
-            poly_ring(corrected_radius(ir) + wall, insert_screw_diameter(type) / 2 + 0.1);
+    render(convexity = 3)
+        difference() {
+            ir = insert_hole_radius(type);
+            linear_extrude(height = z)
+                hull()
+                    poly_ring(corrected_radius(ir) + wall, ir);
 
-        translate_z(z)
-            insert_hole(type, max(0, z - insert_hole_length(type) - 2 * layer_height));
-    }
+            translate_z(z)
+                insert_hole(type, max(0, z - insert_hole_length(type) - 2 * layer_height));
+        }
 }
