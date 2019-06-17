@@ -40,23 +40,26 @@ def is_assembly(s):
     return s[-9:] == '_assembly' or s[-11:] == '_assemblies'
 
 def add_assembly(flat_bom, bom, bounds_map):
-    if not bom in flat_bom:
-        big = False
-        for ass in bom["assemblies"]:
-            add_assembly(flat_bom, ass, bounds_map)
-            if ass["big"]:
+    for b in flat_bom:
+        if b["name"] == bom["name"]:
+            return b
+    big = False
+    for ass in bom["assemblies"]:
+        b = add_assembly(flat_bom, ass, bounds_map)
+        if b["big"]:
+            big = True
+    if not big:
+        for stl in bom["printed"]:
+            bounds = bounds_map[stl]
+            width = bounds[1][0] - bounds[0][0]
+            depth = bounds[1][1] - bounds[0][1]
+            if max(width, depth) > 80:
                 big = True
-        if not big:
-            for stl in bom["printed"]:
-                bounds = bounds_map[stl]
-                width = bounds[1][0] - bounds[0][0]
-                depth = bounds[1][1] - bounds[0][1]
-                if max(width, depth) > 80:
-                    big = True
-                    break
+                break
 
-        bom["big"] = big or bom["routed"]
-        flat_bom.append(bom)
+    bom["big"] = big or bom["routed"]
+    flat_bom.append(bom)
+    return bom
 
 def bom_to_assemblies(bom_dir, bounds_map):
     global flat_bom
