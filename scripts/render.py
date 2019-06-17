@@ -28,6 +28,7 @@ import os
 import openscad
 from tests import do_cmd, update_image, colour_scheme, background
 from deps import mtime
+from colorama import init
 
 def render(target, type):
     #
@@ -69,6 +70,7 @@ def render(target, type):
             os.remove(png_maker_name)
 
 if __name__ == '__main__':
+    init()
     target =  sys.argv[1] if len(sys.argv) > 1 else None
     render(target, 'stl')
     render(target, 'dxf')
