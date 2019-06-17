@@ -35,6 +35,7 @@ import blurb
 import bom
 import shutil
 from colorama import Fore
+import copy
 
 def is_assembly(s):
     return s[-9:] == '_assembly' or s[-11:] == '_assemblies'
@@ -42,6 +43,7 @@ def is_assembly(s):
 def add_assembly(flat_bom, bom, bounds_map):
     for b in flat_bom:
         if b["name"] == bom["name"]:
+            b["count"] += bom["count"]
             return b
     big = False
     for ass in bom["assemblies"]:
@@ -58,7 +60,7 @@ def add_assembly(flat_bom, bom, bounds_map):
                 break
 
     bom["big"] = big or bom["routed"]
-    flat_bom.append(bom)
+    flat_bom.append(copy.deepcopy(bom))
     return bom
 
 def bom_to_assemblies(bom_dir, bounds_map):

@@ -54,11 +54,11 @@ class BOM:
         self.routed = {}
         self.assemblies = {}
 
-    def data(self, main):
+    def data(self, main, count = 1):
         return {
              "name"       : self.name,
-             "count"      : self.count,
-             "assemblies" : [main.assemblies[ass].data(main) for ass in self.assemblies],
+             "count"      : count,
+             "assemblies" : [main.assemblies[ass].data(main, self.assemblies[ass].count) for ass in self.assemblies],
              "vitamins"   : self.vitamins,
              "printed"    : self.printed,
              "routed"     : self.routed
