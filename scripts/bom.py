@@ -54,21 +54,13 @@ class BOM:
         self.routed = {}
         self.assemblies = {}
 
-    def data(self, main, count = 1):
-        return {
-             "name"       : self.name,
-             "count"      : count,
-             "assemblies" : [main.assemblies[ass].data(main, self.assemblies[ass].count) for ass in self.assemblies],
-             "vitamins"   : self.vitamins,
-             "printed"    : self.printed,
-             "routed"     : self.routed
-        }
-
     def flat_data(self):
         assemblies = {}
         for ass in self.assemblies:
             assemblies[ass] = self.assemblies[ass].count
         return {
+             "name"       : self.name,
+             "count"      : self.count,
              "assemblies" : assemblies,
              "vitamins"   : self.vitamins,
              "printed"    : self.printed,
@@ -167,6 +159,7 @@ class BOM:
 
 def parse_bom(file = "openscad.log", name = None):
     main = BOM(name)
+    main.ordered_assemblies = []
     stack = []
 
     for line in open(file):
@@ -179,6 +172,9 @@ def parse_bom(file = "openscad.log", name = None):
                     main.assemblies[stack[-1]].add_assembly(ass)    #add to nested BOM
                 stack.append(ass)
                 main.add_assembly(ass)                              #add to flat BOM
+                if ass in main.ordered_assemblies:
+                    main.ordered_assemblies.remove(ass)
+                main.ordered_assemblies.insert(0, ass)
             else:
                 if s[0] == '}':
                     if s[1:] != stack[-1]:
@@ -227,14 +223,15 @@ def boms(target = None, assembly = None):
     if assembly == "main_assembly":
         main.print_bom(True, open(bom_dir + "/bom.txt","wt"))
 
-    for ass in sorted(main.assemblies):
+    for ass in main.assemblies:
         with open(bom_dir + "/" + ass + ".txt", "wt") as f:
             bom = main.assemblies[ass]
             print(bom.make_name(ass) + ":", file=f)
             bom.print_bom(False, f)
 
+    data = [main.assemblies[ass].flat_data() for ass in main.ordered_assemblies]
     with open(bom_dir + "/bom.json", 'w') as outfile:
-        json.dump(main.assemblies[assembly].data(main), outfile, indent = 4)
+        json.dump(data, outfile, indent = 4)
 
     print("done")
 

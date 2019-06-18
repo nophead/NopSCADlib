@@ -35,45 +35,43 @@ import blurb
 import bom
 import shutil
 from colorama import Fore
-import copy
 
 def is_assembly(s):
     return s[-9:] == '_assembly' or s[-11:] == '_assemblies'
-
-def add_assembly(flat_bom, bom, bounds_map):
-    for b in flat_bom:
-        if b["name"] == bom["name"]:
-            b["count"] += bom["count"]
-            return b
-    big = False
-    for ass in bom["assemblies"]:
-        b = add_assembly(flat_bom, ass, bounds_map)
-        if b["big"]:
-            big = True
-    if not big:
-        for stl in bom["printed"]:
-            bounds = bounds_map[stl]
-            width = bounds[1][0] - bounds[0][0]
-            depth = bounds[1][1] - bounds[0][1]
-            if max(width, depth) > 80:
-                big = True
-                break
-
-    bom["big"] = big or bom["routed"]
-    flat_bom.append(copy.deepcopy(bom))
-    return bom
 
 def bom_to_assemblies(bom_dir, bounds_map):
     global flat_bom
     #
     # Make a list of all the parts in the BOM
     #
-    bom  = {}
     bom_file = bom_dir + "/bom.json"
     with open(bom_file) as json_file:
-        bom = json.load(json_file)
-    flat_bom = []
-    add_assembly(flat_bom, bom, bounds_map)
+        flat_bom = json.load(json_file)
+    #
+    # Decide if we need big or small assembly pictures
+    #
+    for bom in flat_bom:
+        big = False
+        for ass in bom["assemblies"]:
+            for b in flat_bom:
+                if b["name"] == ass:
+                    if not "big" in b:
+                        print(ass, bom["name"])
+                    if b["big"]:
+                        big = True
+                    break
+        if not big:
+            for stl in bom["printed"]:
+                bounds = bounds_map[stl]
+                width = bounds[1][0] - bounds[0][0]
+                depth = bounds[1][1] - bounds[0][1]
+                if max(width, depth) > 80:
+                    big = True
+                    break
+        bom["big"] = big or bom["routed"]
+    #
+    # Remove the main assembly if it is a shell
+    #
     ass =  flat_bom[-1]
     if len(ass["assemblies"]) < 2 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
         flat_bom = flat_bom[:-1]
@@ -278,49 +276,49 @@ def views(target, do_assemblies = None):
                 printed = ass["printed"]
                 if printed:
                     print('### 3D Printed parts', file = doc_file)
-                    i = 0
-                    for p in printed:
+                    keys = sorted(list(printed.keys()))
+                    for i in range(len(keys)):
+                        p = keys[i]
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p], p), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(printed) - 1:
                             n = (i % 3) + 1
                             print('\n|%s' % ('--|' * n), file =  doc_file)
                             for j in range(n):
-                                part = list(printed.keys())[i - n + j + 1]
+                                part = keys[i - n + j + 1]
                                 print('| ![%s](stls/%s) %s' % (part, part.replace('.stl','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
                             print('\n', file = doc_file)
-                        i += 1
                     print('\n', file  = doc_file)
 
                 routed = ass["routed"]
                 if routed:
                     print("### CNC Routed parts", file = doc_file)
-                    i = 0
-                    for r in routed:
+                    keys = sorted(list(routed.keys()))
+                    for i in range(len(keys)):
+                        r = keys[i]
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r], r), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(routed) - 1:
                             n = (i % 3) + 1
                             print('\n|%s' % ('--|' * n), file =  doc_file)
                             for j in range(n):
-                                part = list(routed.keys())[i - n + j + 1]
+                                part = keys[i - n + j + 1]
                                 print('| ![%s](dxfs/%s) %s' % (part, part.replace('.dxf','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
                             print('\n', file = doc_file)
-                        i += 1
                     print('\n', file  = doc_file)
 
                 sub_assemblies = ass["assemblies"]
                 if sub_assemblies:
                     print("### Sub-assemblies", file = doc_file)
-                    i = 0
-                    for a in sub_assemblies:
-                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', a["count"], a["name"]), file = doc_file, end = '')
-                        if (i % 3) == 2 or i == len(sub_assemblies) - 1:
+                    keys = sorted(list(sub_assemblies.keys()))
+                    for i in range(len(keys)):
+                        a = keys[i]
+                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', sub_assemblies[a], a), file = doc_file, end = '')
+                        if (i % 3) == 2 or i == len(keys) - 1:
                             n = (i % 3) + 1
                             print('\n|%s' % ('--|' * n), file =  doc_file)
                             for j in range(n):
-                                a = sub_assemblies[i - n + j + 1]["name"].replace('_assembly', '_assembled')
+                                a = keys[i - n + j + 1].replace('_assembly', '_assembled')
                                 print('| ![%s](assemblies/%s) %s' % (a, a + '_tn.png', '|\n' if j == j - 1 else ''), end = '', file = doc_file)
                             print('\n', file = doc_file)
-                        i += 1
                     print('\n', file  = doc_file)
 
                 small = not ass["big"]

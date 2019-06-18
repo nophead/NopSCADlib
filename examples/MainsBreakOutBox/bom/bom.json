@@ -1,64 +1,69 @@
-{
-    "name": "main_assembly",
-    "count": 1,
-    "assemblies": [
-        {
-            "name": "mains_in_assembly",
-            "count": 1,
-            "assemblies": [
-                {
-                    "name": "feet_assembly",
-                    "count": 1,
-                    "assemblies": [
-                        {
-                            "name": "base_assembly",
-                            "count": 1,
-                            "assemblies": [],
-                            "vitamins": {
-                                "insert(F1BM3): Heatfit insert M3": 2
-                            },
-                            "printed": {
-                                "socket_box.stl": 1
-                            },
-                            "routed": {}
-                        }
-                    ],
-                    "vitamins": {
-                        "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": 8,
-                        "screw(M3_dome_screw, 10): Screw M3 dome x 10mm": 4,
-                        "nut(M3_nut, nyloc = true): Nut M3 x 2.4mm nyloc": 4
-                    },
-                    "printed": {
-                        "foot.stl": 4
-                    },
-                    "routed": {}
-                }
-            ],
-            "vitamins": {
-                ": Wire green & yellow 30/0.25mm strands, length 150mm - not shown": 1,
-                ": Wire blue 30/0.25mm strands, length 150mm - not shown": 1,
-                ": Wire brown 30/0.25mm strands, length 150mm - not shown": 2,
-                "tubing(HSHRNK32): Heatshrink sleeving ID 3.2mm x 15mm - not shown": 3,
-                "iec(IEC_inlet_atx): IEC inlet for ATX": 1,
-                "screw(M3_cs_cap_screw, 12): Screw M3 cs cap x 12mm": 2,
-                "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": 2,
-                "nut(M3_nut, nyloc = true): Nut M3 x 2.4mm nyloc": 2
-            },
-            "printed": {},
-            "routed": {}
-        }
-    ],
-    "vitamins": {
-        ": Wire green & yellow 30/0.25mm strands, length 150mm - not shown": 1,
-        ": Wire blue 30/0.25mm strands, length 150mm - not shown": 1,
-        "tubing(HSHRNK32): Heatshrink sleeving ID 3.2mm x 15mm - not shown": 5,
-        ": Ferrule for 1.5mm^2 wire - not shown": 3,
-        "mains_socket(Contactum): Mains socket 13A": 1,
-        "screw(M3_cs_cap_screw, 20): Screw M3 cs cap x 20mm": 2,
-        "jack_4mm_shielded(\"blue\", 3, \"royalblue\"): 4mm shielded jack socket blue": 2,
-        "jack_4mm_shielded(\"brown\", 3, \"sienna\"): 4mm shielded jack socket brown": 1,
-        "jack_4mm_shielded(\"green\", 3): 4mm shielded jack socket green": 2
+[
+    {
+        "name": "base_assembly",
+        "count": 1,
+        "assemblies": {},
+        "vitamins": {
+            "insert(F1BM3): Heatfit insert M3": 2
+        },
+        "printed": {
+            "socket_box.stl": 1
+        },
+        "routed": {}
     },
-    "printed": {},
-    "routed": {}
-}
+    {
+        "name": "feet_assembly",
+        "count": 1,
+        "assemblies": {
+            "base_assembly": 1
+        },
+        "vitamins": {
+            "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": 8,
+            "screw(M3_dome_screw, 10): Screw M3 dome x 10mm": 4,
+            "nut(M3_nut, nyloc = true): Nut M3 x 2.4mm nyloc": 4
+        },
+        "printed": {
+            "foot.stl": 4
+        },
+        "routed": {}
+    },
+    {
+        "name": "mains_in_assembly",
+        "count": 1,
+        "assemblies": {
+            "feet_assembly": 1
+        },
+        "vitamins": {
+            ": Wire green & yellow 30/0.25mm strands, length 150mm - not shown": 1,
+            ": Wire blue 30/0.25mm strands, length 150mm - not shown": 1,
+            ": Wire brown 30/0.25mm strands, length 150mm - not shown": 2,
+            "tubing(HSHRNK32): Heatshrink sleeving ID 3.2mm x 15mm - not shown": 3,
+            "iec(IEC_inlet_atx): IEC inlet for ATX": 1,
+            "screw(M3_cs_cap_screw, 12): Screw M3 cs cap x 12mm": 2,
+            "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": 2,
+            "nut(M3_nut, nyloc = true): Nut M3 x 2.4mm nyloc": 2
+        },
+        "printed": {},
+        "routed": {}
+    },
+    {
+        "name": "main_assembly",
+        "count": 1,
+        "assemblies": {
+            "mains_in_assembly": 1
+        },
+        "vitamins": {
+            ": Wire green & yellow 30/0.25mm strands, length 150mm - not shown": 1,
+            ": Wire blue 30/0.25mm strands, length 150mm - not shown": 1,
+            "tubing(HSHRNK32): Heatshrink sleeving ID 3.2mm x 15mm - not shown": 5,
+            ": Ferrule for 1.5mm^2 wire - not shown": 3,
+            "mains_socket(Contactum): Mains socket 13A": 1,
+            "screw(M3_cs_cap_screw, 20): Screw M3 cs cap x 20mm": 2,
+            "jack_4mm_shielded(\"blue\", 3, \"royalblue\"): 4mm shielded jack socket blue": 2,
+            "jack_4mm_shielded(\"brown\", 3, \"sienna\"): 4mm shielded jack socket brown": 1,
+            "jack_4mm_shielded(\"green\", 3): 4mm shielded jack socket green": 2
+        },
+        "printed": {},
+        "routed": {}
+    }
+]
