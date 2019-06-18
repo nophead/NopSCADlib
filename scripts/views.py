@@ -55,8 +55,6 @@ def bom_to_assemblies(bom_dir, bounds_map):
         for ass in bom["assemblies"]:
             for b in flat_bom:
                 if b["name"] == ass:
-                    if not "big" in b:
-                        print(ass, bom["name"])
                     if b["big"]:
                         big = True
                     break
