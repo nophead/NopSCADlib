@@ -30,21 +30,22 @@ include <inserts.scad>
 function iec_part(type)     = type[1];  //! Description
 function iec_screw(type)    = type[2];  //! Screw type
 function iec_pitch(type)    = type[3];  //! Screw hole pitch
-function iec_slot_w(type)   = type[4];  //! Body width
-function iec_slot_h(type)   = type[5];  //! Body height
-function iec_slot_r(type)   = type[6];  //! Body corner radius
-function iec_bezel_w(type)  = type[7];  //! Bezel width
-function iec_bezel_h(type)  = type[8];  //! Bezel height
-function iec_bezel_r(type)  = type[9];  //! Bezel corner radius
-function iec_bezel_t(type)  = type[10]; //! Bezel thickness
-function iec_flange_w(type) = type[11]; //! Flange width not including the lugs
-function iec_flange_h(type) = type[12]; //! Flange height
-function iec_flange_r(type) = type[13]; //! Flange corner radius
-function iec_flange_t(type) = type[14]; //! Flange thickness
-function iec_width(type)    = type[15]; //! Widest part including the lugs
-function iec_depth(type)    = type[16]; //! Depth of the body below the flange
-function iec_spades(type)   = type[17]; //! Spade type
-function iec_male(type)     = type[18]; //! True for an outlet
+function iec_body_w(type)   = type[4];  //! Body width
+function iec_body_w2(type)  = type[5];  //! Body width at the narrow part
+function iec_body_h(type)   = type[6];  //! Body height
+function iec_body_r(type)   = type[7];  //! Body corner radius
+function iec_bezel_w(type)  = type[8];  //! Bezel width
+function iec_bezel_h(type)  = type[9];  //! Bezel height
+function iec_bezel_r(type)  = type[10];  //! Bezel corner radius
+function iec_bezel_t(type)  = type[11]; //! Bezel thickness
+function iec_flange_w(type) = type[12]; //! Flange width not including the lugs
+function iec_flange_h(type) = type[13]; //! Flange height
+function iec_flange_r(type) = type[14]; //! Flange corner radius
+function iec_flange_t(type) = type[15]; //! Flange thickness
+function iec_width(type)    = type[16]; //! Widest part including the lugs
+function iec_depth(type)    = type[17]; //! Depth of the body below the flange
+function iec_spades(type)   = type[18]; //! Spade type
+function iec_male(type)     = type[19]; //! True for an outlet
 
 insert_screw_length = 10;
 function iec_insert_screw_length() = insert_screw_length; //! Screw length used for inserts
@@ -68,10 +69,10 @@ module iec(type) { //! Draw specified IEC connector
                     cube([pin_w, pin_d, h - pin_chamfer], center = true);
             }
 
-    socket_w  = 24;
+    socket_w  = 24.5;
     socket_w2 = 14;
-    socket_h  = 16.5;
-    socket_h2 = 12;
+    socket_h  = 16.34;
+    socket_h2 = socket_h - (socket_w - socket_w2);
     socket_d  = 17;
     socket_r = 3;
     socket_r2 = 0.5;
@@ -83,7 +84,7 @@ module iec(type) { //! Draw specified IEC connector
                 translate([side * (socket_w / 2 - socket_r), -socket_h / 2 + socket_r])
                     circle(socket_r);
 
-                translate([side * (socket_w / 2 - socket_r2), -socket_h / 2 + socket_h2 + socket_r2])
+                translate([side * (socket_w / 2 - socket_r2), socket_h2 / 2 - socket_r2])
                     circle(socket_r2);
 
                 translate([side * (socket_w2 / 2 - socket_r2), socket_h / 2 - socket_r2])
@@ -94,7 +95,7 @@ module iec(type) { //! Draw specified IEC connector
         translate([0, socket_offset])
             if(iec_male(type))
                 difference() {
-                    offset(3)
+                    offset(2)
                         socket_shape();
 
                     difference() {
@@ -110,6 +111,28 @@ module iec(type) { //! Draw specified IEC connector
                 }
             else
                 socket_shape();
+
+    module body_shape() {
+        hull() {
+            bw = iec_body_w(type);
+            bh = iec_body_h(type);
+            br = iec_body_r(type);
+            bw2 = iec_body_w2(type);
+            bh2 = bh - (bw - bw2);
+            br2 = 1;
+
+            for(side = [-1, 1]) {
+                translate([side * (bw / 2 - br), -bh / 2 + br])
+                    circle4n(br);
+
+                translate([side * (bw / 2 - br2), bh2 / 2 - br2])
+                    circle4n(br2);
+
+                translate([side * (bw2 / 2 - br2), bh / 2 - br2])
+                    circle4n(br2);
+            }
+        }
+    }
 
     color(grey20) {
         // Flange
@@ -153,12 +176,14 @@ module iec(type) { //! Draw specified IEC connector
         translate_z(-h)
             linear_extrude(height = h)
                 difference() {
-                    rounded_square([iec_slot_w(type), iec_slot_h(type)], iec_slot_r(type));
+                    body_shape();
+
                     oriffice_shape();
                 }
         // Back
         translate_z(-iec_depth(type))
-            rounded_rectangle([iec_slot_w(type), iec_slot_h(type), iec_depth(type) - h], iec_slot_r(type), center = false);
+            linear_extrude(height = iec_depth(type) - h)
+                body_shape();
     }
     if(!iec_male(type))
         translate([0, socket_offset, iec_flange_t(type) + iec_bezel_t(type) - socket_d]) {
@@ -174,6 +199,8 @@ module iec(type) { //! Draw specified IEC connector
             rotate([180, 0, spade[4]])
                 spade(spade[0], spade[1]);
 }
+
+function iec_spade_depth(type) = iec_depth(type) + max([for(spade = iec_spades(type)) spade[1]]);
 
 module iec_screw_positions(type) //! Position children at the screw holes
     for(side = [-1, 1])
@@ -204,11 +231,11 @@ module iec_holes(type, h = 100, poly = false, horizontal = false, insert = false
     extrude_if(h)
         hull()
             for(x = [-1, 1], y = [-1, 1], sag = horizontal && y > 1 ? layer_height : 0)
-                translate([x * (iec_slot_w(type) / 2 - iec_slot_r(type)), y * (iec_slot_h(type) / 2  - iec_slot_r(type) + sag )])
+                translate([x * (iec_body_w(type) / 2 - iec_body_r(type)), y * (iec_body_h(type) / 2  - iec_body_r(type) + sag )])
                     if(horizontal)
-                        teardrop(0, iec_slot_r(type) + clearance / 2 + layer_height / 4);
+                        teardrop(0, iec_body_r(type) + clearance / 2 + layer_height / 4);
                     else
-                        drill(iec_slot_r(type) + clearance / 2, 0);
+                        drill(iec_body_r(type) + clearance / 2, 0);
 }
 
 module iec_inserts(type) {              //! Place the inserts

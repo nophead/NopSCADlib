@@ -766,6 +766,10 @@ IEC mains inlets and outlet.
 | ```iec_bezel_r(type)``` | Bezel corner radius |
 | ```iec_bezel_t(type)``` | Bezel thickness |
 | ```iec_bezel_w(type)``` | Bezel width |
+| ```iec_body_h(type)``` | Body height |
+| ```iec_body_r(type)``` | Body corner radius |
+| ```iec_body_w(type)``` | Body width |
+| ```iec_body_w2(type)``` | Body width at the narrow part |
 | ```iec_depth(type)``` | Depth of the body below the flange |
 | ```iec_flange_h(type)``` | Flange height |
 | ```iec_flange_r(type)``` | Flange corner radius |
@@ -775,9 +779,6 @@ IEC mains inlets and outlet.
 | ```iec_part(type)``` | Description |
 | ```iec_pitch(type)``` | Screw hole pitch |
 | ```iec_screw(type)``` | Screw type |
-| ```iec_slot_h(type)``` | Body height |
-| ```iec_slot_r(type)``` | Body corner radius |
-| ```iec_slot_w(type)``` | Body width |
 | ```iec_spades(type)``` | Spade type |
 | ```iec_width(type)``` | Widest part including the lugs |
 
@@ -800,14 +801,15 @@ IEC mains inlets and outlet.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```iec(IEC_fused_inlet)``` |  IEC fused inlet |
+|   1 | ```iec(IEC_fused_inlet)``` |  IEC fused inlet JR-101-1F |
+|   1 | ```iec(IEC_fused_inlet2)``` |  IEC fused inlet old |
 |   1 | ```iec(IEC_inlet)``` |  IEC inlet |
 |   1 | ```iec(IEC_inlet_atx)``` |  IEC inlet for ATX |
-|   1 | ```iec(IEC_outlet)``` |  IEC outlet |
-|   8 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   1 | ```iec(IEC_outlet)``` |  IEC outlet RS 811-7193 |
+|  10 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   4 | ```screw(M3_cs_cap_screw, 10)``` |  Screw M3 cs cap x 10mm |
-|   4 | ```screw(M3_cs_cap_screw, 12)``` |  Screw M3 cs cap x 12mm |
-|   8 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|   6 | ```screw(M3_cs_cap_screw, 12)``` |  Screw M3 cs cap x 12mm |
+|  10 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 
 
 <a href="#top">Top</a>

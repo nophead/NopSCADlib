@@ -60,7 +60,7 @@ insert_length = insert_length(insert);
 insert_boss = mains_socket_insert_boss(socket);
 screw_length = screw_longer_than(mains_socket_height(socket) + insert_length(insert));
 
-iec_h = iec_slot_h(iec) + 1;
+iec_h = iec_body_h(iec) + 1;
 
 box_height = socket_depth + iec_h;
 base_thickness = wall;
