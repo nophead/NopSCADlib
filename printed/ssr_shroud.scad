@@ -121,7 +121,7 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
     ssr_shroud_hole_positions(type)
         hull() {
             translate_z(-height + boss_h2) {
-                cylinder(h = eps, r = boss_r);
+                cylinder(h = eps, r = boss_r - eps);
 
                 translate([0, -$side * (boss_r - 1)])
                     cube([2 * boss_r, eps, eps], center = true);
