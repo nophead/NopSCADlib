@@ -21,11 +21,17 @@ use <../utils/layout.scad>
 
 include <../vitamins/screws.scad>
 include <../vitamins/ssrs.scad>
+use <../printed/ssr_shroud.scad>
 
-module ssrs()
-    layout([for(s = ssrs) ssr_width(s)], 15)
-        rotate(90)
-            ssr_assembly(ssrs[$i], M4_cap_screw, 3);
+thickness = 3;
 
-if($preview)
-    ssrs();
+module ssr_shrouds()
+    layout([for(s = ssrs) ssr_width(s)], 15) let(ssr = ssrs[$i])
+        rotate(90) {
+            if($preview)
+                ssr_shroud_fastened_assembly(ssr, 6, thickness, ssr[0]);
+            else
+                ssr_shroud(ssrs[$i], 6, ssr[0]);
+        }
+
+ssr_shrouds();

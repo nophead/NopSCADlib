@@ -86,6 +86,7 @@ use <tests/ribbon_clamp.scad>
 use <tests/screw_knob.scad>
 use <tests/socket_box.scad>
 use <tests/strap_handle.scad>
+use <tests/ssr_shroud.scad>
 
 x5 = 800;
 
@@ -300,8 +301,11 @@ translate([x3 + 15, modules_y])
 translate([x3 + 40, modules_y])
     modules();
 
-translate([x3, ssrs_y])
+translate([x3, ssrs_y]) {
     ssrs();
+
+    ssr_shrouds();
+}
 
 translate([x3, blowers_y])
     blowers();

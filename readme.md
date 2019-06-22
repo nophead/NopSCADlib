@@ -32,8 +32,8 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
 <tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
@@ -3585,6 +3585,58 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 | ---:|:--- |
 |   1 | socket_box_Contactum_assembly |
 |   1 | socket_box_MKLOGIC_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Ssr_shroud"></a>
+## Ssr_shroud
+A cover to go over the mains end of an SSR to make it safe to be touched.
+The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
+
+
+[printed/ssr_shroud.scad](printed/ssr_shroud.scad) Implementation.
+
+[tests/ssr_shroud.scad](tests/ssr_shroud.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```ssr_shroud_extent(type, cable_d)``` | How far it extends beyond the SSR |
+| ```ssr_shroud_height(type)``` | Outside height |
+| ```ssr_shroud_screw(type)``` | Screw used to fasten |
+| ```ssr_shroud_width(type)``` | Outside width of shroud |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```ssr_shroud(type, cable_d, name)``` | Generate the STL file for a specified ssr and cable |
+| ```ssr_shroud_assembly(type, cable_d, name)``` | The printed parts with inserts fitted |
+| ```ssr_shroud_fastened_assembly(type, cable_d, thickness, name)``` | Assembly with screws in place |
+| ```ssr_shroud_hole_positions(type)``` | Place children at the screw hole positions |
+
+![ssr_shroud](tests/png/ssr_shroud.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
+|   4 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
+|   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | ssr_shroud_SSR10DA.stl |
+|   1 | ssr_shroud_SSR25DA.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | ssr_shroud_SSR10DA_assembly |
+|   1 | ssr_shroud_SSR25DA_assembly |
 
 
 <a href="#top">Top</a>
