@@ -22,7 +22,7 @@
 //
 
 include <../core.scad>
-use <../utils/tube.scad>
+use <../utils/rounded_polygon.scad>
 
 function ziptie_width(type)     = type[1]; //! Width
 function ziptie_thickness(type) = type[2]; //! Thickness
@@ -30,24 +30,41 @@ function ziptie_latch(type)     = type[3]; //! Latch dimensions
 function ziptie_colour(type)    = type[4]; //! Colour
 function ziptie_tail(type)      = type[5]; //! The length without teeth
 
-module ziptie(type, r)
+module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius ```r``` and optionally through panel thickness ```t```
 {
     latch = ziptie_latch(type);
-    length = ceil(2 * PI * r + ziptie_tail(type) + latch.z + 1);
+    lx = latch.x / 2;
+    zt = ziptie_thickness(type);
+    cr = zt;                        // sharp corner raduus
+    z = r + t - cr;
+    x = r - cr;
+    inside_corners  = t ? [ [0, 0, r],      [-x, z, cr],      [x, z, cr]      ] : [];
+    outside_corners = t ? [ [0, 0, r + zt], [-x, z, cr + zt], [x, z, cr + zt] ] : [];
+    x1 = lx - zt / 2;
+    x2 = x1 + x1 * zt / r;
+    inside_path  = concat([ [0, 0, r],      [x1, -r,      eps] ], inside_corners);
+    outside_path = concat([ [0, 0, r + zt], [x2, -r - zt, eps] ], outside_corners);
+
+    tangents = rounded_polygon_tangents(outside_path);
+    length = ceil(rounded_polygon_length(outside_path, tangents) + ziptie_tail(type) + latch.z + 1);
     len = length <= 100 ? 100 : length;
+
     vitamin(str("ziptie(", type[0], ", ", r, "): Ziptie ", len, "mm min length"));
 
-    angle = (r > latch.x / 2) ? asin((latch.x / 2) / r) - asin(ziptie_thickness(type) / latch.x) : 0;
-    color(ziptie_colour(type)) union() {
-        tube(ir = r, or = r + ziptie_thickness(type), h = ziptie_width(type));
-        translate([0, -r, - latch.y / 2])
-            rotate([90, 0, angle]) {
-                union() {
-                    cube(latch);
+    color(ziptie_colour(type)){
+        linear_extrude(height = ziptie_width(type), center = true)
+            difference() {
+                rounded_polygon(outside_path, tangents);
+                rounded_polygon(inside_path);
+             }
 
-                    translate([latch.x / 2, latch.y / 2, (latch.z + 1) / 2])
+        translate([lx, -r])
+             rotate([90, 0, 0])
+                union() {
+                    rounded_rectangle(latch, 0.5, center = false);
+
+                    translate_z((latch.z + 1) / 2)
                         cube([ziptie_thickness(type), ziptie_width(type), latch.z + 1], center = true);
                 }
-            }
-    }
+     }
 }

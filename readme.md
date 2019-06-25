@@ -42,8 +42,8 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Nuts">Nuts</a> </td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -2753,6 +2753,53 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 <a href="#top">Top</a>
 
 ---
+<a name="Wire"></a>
+## Wire
+Just a BOM entry at the moment and cable bundle size functions for holes, plus cable ties.
+
+
+[vitamins/wire.scad](vitamins/wire.scad) Implementation.
+
+[tests/wire.scad](tests/wire.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```cable_bundle(cable)``` | Arrangement of a bundle in a flat cable clip |
+| ```cable_height(cable)``` | Height in flat clip |
+| ```cable_radius(cable)``` | Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>. |
+| ```cable_width(cable)``` | Width in flat clip |
+| ```cable_wire_size(cable)``` | Size of each wire in a bundle |
+| ```cable_wires(cable)``` | Number of wires in a bindle |
+| ```wire_hole_radius(cable)``` | Radius of a hole to accept a bundle of wires |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```cable_tie(cable_r, thickness)``` | A ziptie threaded around cable radius ```cable_r``` and through a panel with specified ```thickness```. |
+| ```cable_tie_holes(cable_r, h = 100)``` | Holes to thread a ziptie through a panel to make a cable tie. |
+| ```mouse_hole(cable, h = 100)``` | A mouse hole to allow a panel to go over a wire bundle. |
+| ```ribbon_cable(ways, length)``` | Add ribbon cable to the BOM |
+| ```wire(color, strands, length, strand = 0.2)``` | Add stranded wire to the BOM |
+
+![wire](tests/png/wire.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 |  |  Wire black 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire blue 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire brown 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire green 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire orange 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire red 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire yellow 7/0.2mm strands, length 90mm |
+|   1 | ```ziptie(small_ziptie, 2.1)``` |  Ziptie 100mm min length |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Zipties"></a>
 ## Zipties
 Cable zipties.
@@ -2772,6 +2819,11 @@ Cable zipties.
 | ```ziptie_tail(type)``` | The length without teeth |
 | ```ziptie_thickness(type)``` | Thickness |
 | ```ziptie_width(type)``` | Width |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```ziptie(type, r, t = 0)``` | Draw specified ziptie wrapped around radius ```r``` and optionally through panel thickness ```t``` |
 
 ![zipties](tests/png/zipties.png)
 
@@ -3603,6 +3655,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```ssr_shroud_cable_x(type, cable_d)``` | Position of cable entry holes |
 | ```ssr_shroud_extent(type, cable_d)``` | How far it extends beyond the SSR |
 | ```ssr_shroud_height(type)``` | Outside height |
 | ```ssr_shroud_screw(type)``` | Screw used to fasten |
@@ -3615,6 +3668,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 | ```ssr_shroud_assembly(type, cable_d, name)``` | The printed parts with inserts fitted |
 | ```ssr_shroud_fastened_assembly(type, cable_d, thickness, name)``` | Assembly with screws in place |
 | ```ssr_shroud_hole_positions(type)``` | Place children at the screw hole positions |
+| ```ssr_shroud_holes(type, cable_d)``` | Drill the screw and ziptie holes |
 
 ![ssr_shroud](tests/png/ssr_shroud.png)
 
@@ -3625,6 +3679,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 |   4 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
 |   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+|   4 | ```ziptie(small_ziptie, 3)``` |  Ziptie 100mm min length |
 
 ### Printed
 | Qty | Filename |
