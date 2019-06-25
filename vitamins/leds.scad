@@ -31,4 +31,4 @@ LED10mm = ["LED10mm", 10, 11.0, 2.0, 13.5, 2.54, 0.4];
 
 LEDs = [LED3mm, LED5mm, LED10mm];
 
-use <LED.scad>
+use <led.scad>
