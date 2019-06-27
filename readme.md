@@ -29,12 +29,12 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
 <tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
@@ -3494,6 +3494,64 @@ Printed handle that can be printed without needing support material due to its t
 | Qty | Name |
 | ---:|:--- |
 |   1 | handle_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Psu_shroud"></a>
+## Psu_shroud
+A cover to go over the mains end of a PSU terminal strip to make it safe.
+The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
+
+
+[printed/psu_shroud.scad](printed/psu_shroud.scad) Implementation.
+
+[tests/psu_shroud.scad](tests/psu_shroud.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```psu_shroud_cable_pitch(cable_d)``` | Pitch between cable entries |
+| ```psu_shroud_centre_y(type)``` | Shroud centre relative to PSU centre |
+| ```psu_shroud_depth(type)``` | Outside depth of the shroud |
+| ```psu_shroud_extent(type)``` | How far it extends beyond the PSU to clear the connections |
+| ```psu_shroud_height(type)``` | Outside height |
+| ```psu_shroud_screw(type)``` | Screw used to fasten |
+| ```psu_shroud_width(type)``` | Outside width of the shroud |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```psu_shroud(type, cable_d, name, cables = 1)``` | Generate the STL file for a specified ssr and cable |
+| ```psu_shroud_assembly(type, cable_d, name, cables = 1)``` | The printed parts with inserts fitted |
+| ```psu_shroud_cable_positions(type, cable_d, cables = 1)``` | Place children at the cable tie positions |
+| ```psu_shroud_fastened_assembly(type, cable_d, thickness, name, cables = 1)``` | Assembly with screws in place |
+| ```psu_shroud_hole_positions(type)``` | Place children at the screw hole positions |
+| ```psu_shroud_holes(type, cable_d, cables = 1)``` | Drill the screw and ziptie holes |
+
+![psu_shroud](tests/png/psu_shroud.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
+|   4 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
+|   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+|   2 | ```ziptie(small_ziptie, 3)``` |  Ziptie 100mm min length |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | psu_shroud_PD_150_12.stl |
+|   1 | psu_shroud_S_250_48.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | psu_shroud_PD_150_12_assembly |
+|   1 | psu_shroud_S_250_48_assembly |
 
 
 <a href="#top">Top</a>

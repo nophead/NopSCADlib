@@ -87,6 +87,7 @@ use <tests/screw_knob.scad>
 use <tests/socket_box.scad>
 use <tests/strap_handle.scad>
 use <tests/ssr_shroud.scad>
+use <tests/psu_shroud.scad>
 
 x5 = 800;
 
@@ -217,9 +218,11 @@ translate([x0, fans_y]) {
 translate([x0, transformers_y])
     variacs();
 
-translate([x0, psus_y])
+translate([x0, psus_y]) {
     psus();
 
+    psu_shrouds();
+}
 
 x1 = x0 + 100;
 zipties_y = 0;

@@ -139,6 +139,8 @@ module psu_grill(width, height) {
     }
 }
 
+function psu_terminal_block_z(type) = psu_face_cutouts(psu_faces(type)[f_left])[0][2].y + psu_height(type) / 2;
+
 module psu(type) { //! Draw a power supply
     vitamin(str("psu(", type[0], "): PSU ", psu_name(type)));
 
@@ -242,7 +244,7 @@ module psu(type) { //! Draw a power supply
         rt = psu_face_thickness(faces[f_right]);
         lt =  psu_face_thickness(faces[f_left]);
         cutout = psu_face_cutouts(faces[f_left])[0];
-        z = cutout[2].y + h / 2;
+        z = psu_terminal_block_z(type);
         pw = w -ft - bt;
         pl = l - right - rt;
         pcb_thickness = 1.6;

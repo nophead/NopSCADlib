@@ -20,18 +20,19 @@ include <../core.scad>
 use <../utils/layout.scad>
 
 include <../vitamins/screws.scad>
-include <../vitamins/ssrs.scad>
-use <../printed/ssr_shroud.scad>
+include <../vitamins/psus.scad>
+use <../printed/psu_shroud.scad>
 
 thickness = 3;
 
-module ssr_shrouds()
-    layout([for(s = ssrs) ssr_width(s)], 15) let(ssr = ssrs[$i])
-        rotate(90) {
-            if($preview)
-                ssr_shroud_fastened_assembly(ssr, 6, thickness, ssr[0]);
-            else
-                ssr_shroud(ssr, 6, ssr[0]);
-        }
+module psu_shrouds()
+    layout([for(p = psus) psu_width(p)], 10) let(psu = psus[$i])
+        if(psu_terminals(psu))
+            rotate(90) {
+                if($preview)
+                    psu_shroud_fastened_assembly(psu, 6, thickness, psu[0]);
+                else
+                    psu_shroud(psu, 6, psu[0]);
+            }
 
-ssr_shrouds();
+psu_shrouds();
