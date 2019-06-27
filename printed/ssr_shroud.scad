@@ -147,7 +147,7 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
 module ssr_shroud_assembly(type, cable_d, name) //! The printed parts with inserts fitted
 assembly(str("ssr_shroud_", name)) {
 
-    translate_z(ssr_height(type) + top)
+    translate_z(ssr_shroud_height(type))
         vflip()
             color(pp1_colour) ssr_shroud(type, cable_d, name);
 
