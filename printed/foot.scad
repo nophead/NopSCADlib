@@ -28,7 +28,6 @@ include <../vitamins/inserts.scad>
 foot        = [25, 12, 3, 2, M4_cap_screw, 10];
 insert_foot = [20, 10, 0, 2, M3_cap_screw, 10];
 
-function foot() = foot; //! Default foot used unless a list of parameters is passed
 function insert_foot() = insert_foot; //! Default foot with insert
 
 function foot_diameter(type = foot) = type[0]; //! Outside maximum diameter

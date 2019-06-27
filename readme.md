@@ -3410,7 +3410,6 @@ inserts don't grip well in rubber.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| ```foot()``` | Default foot used unless a list of parameters is passed |
 | ```insert_foot()``` | Default foot with insert |
 
 ### Modules
@@ -4220,12 +4219,17 @@ Global constants, functions and modules. This file is used directly or indirectl
 | Function | Description |
 |:--- |:--- |
 | ```Len(x)``` | Returns the length of a list or 0 if ```x``` is not a list |
+| ```cm(x)``` | cm to mm conversion |
 | ```echoit(x)``` | Echo expression and return it, useful for debugging |
+| ```foot(x)``` | Foot to mm conversion |
 | ```in(list, x)``` | Returns true if ```x``` is an element in the ```list``` |
-| ```inch(x)``` | Inch to mm conversion |
+| ```inch(x)``` | Inch to mm conversion (For fractional inches, 'inch(1 + 7/8)' will work as expected.) |
+| ```m(x)``` | m to mm conversion |
+| ```mm(x)``` | Explicit mm specified |
 | ```r2sides(r)``` | Replicates the OpenSCAD logic to calculate the number of sides from the radius |
 | ```r2sides4n(r)``` | Round up the number of sides to a multiple of 4 to ensure points land on all axes |
 | ```sqr(x)``` | Returns the square of ```x``` |
+| ```yard(x)``` | Yard to mm conversion |
 
 ### Modules
 | Module | Description |

@@ -22,8 +22,14 @@
 //
 include <../../global_defs.scad>
 
+function inch(x) = x * 25.4;                                                        //! Inch to mm conversion (For fractional inches, 'inch(1 + 7/8)' will work as expected.)
+function foot(x) = x * 25.4 * 12;                                                   //! Foot to mm conversion
+function yard(x) = x * 25.4 * 12 * 3;                                               //! Yard to mm conversion
+function mm(x)   = x;                                                               //! Explicit mm specified
+function cm(x)   = x * 10.0;                                                        //! cm to mm conversion
+function m(x)    = x * 1000.0;                                                      //! m to mm conversion
+
 function sqr(x) = x * x;                                                            //! Returns the square of ```x```
-function inch(x) = x * 25.4;                                                        //! Inch to mm conversion
 function echoit(x) = echo(x) x;                                                     //! Echo expression and return it, useful for debugging
 function in(list, x) = !!len([for(v = list) if(v == x) true]);                      //! Returns true if ```x``` is an element in the ```list```
 function Len(x) = is_list(x) ? len(x) : 0;                                          //! Returns the length of a list or 0 if ```x``` is not a list
