@@ -397,16 +397,6 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
     }
 }
 
-module box_shelf_blank(type) { //! Generates a 2D template for a shelf sheet
-    dxf("box_shelf");
-
-    difference() {
-        sheet_2D(box_sheets(type), box_width(type) - bezel_clearance, box_depth(type) - bezel_clearance, 1);
-
-        offset(bezel_clearance / 2)
-            box_corner_quadrants(type, box_width(type), box_depth(type));
-    }
-}
 
 module box_screw_hole_positions(type)
     for(x = [-1, 1], y = [-1, 1])
@@ -438,6 +428,17 @@ module box_top_blank(type) {  //! Generates a 2D template for the top sheet
 function subst_sheet(type, sheet) =
     let(s = box_sheets(type))
         sheet ? assert(sheet_thickness(sheet) == sheet_thickness(s)) sheet : s;
+
+module box_shelf_blank(type, sheet = false) { //! Generates a 2D template for a shelf sheet
+    dxf("box_shelf");
+
+    difference() {
+        sheet_2D(subst_sheet(type, sheet), box_width(type) - bezel_clearance, box_depth(type) - bezel_clearance, 1);
+
+        offset(bezel_clearance / 2)
+            box_corner_quadrants(type, box_width(type), box_depth(type));
+    }
+}
 
 module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, ```sheet``` can be set to override the type
     dxf("box_left");
