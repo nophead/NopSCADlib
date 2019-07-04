@@ -25,7 +25,7 @@
 //! Uses STL files copyright geekammo and licenced with MIT license, see [microview/LICENSE.txt](vitamins/microview/LICENSE.txt).
 //
 include <../core.scad>
-use <pcb.scad> // for pin
+include <pin_headers.scad>
 
 panel_clearance = 0.2;
 
@@ -54,6 +54,6 @@ module microview(cutout = false) {  //! Draw microview or generate a panel cutou
 
             for(side = [-1, 1], i = [0 : 7])
                 translate([side * inch(0.35), (i - 3.5) * inch(0.1)])
-                    pin();
+                    pin(2p54header);
         }
 }

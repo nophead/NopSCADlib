@@ -61,7 +61,7 @@ function rotate_from_to(a, b) =
 //
 function calculate_twist(A, B) = let(D = transpose3(B) * A) atan2(D[1][0], D[0][0]);
 //
-// Compute a 4x4 matrix to orientate a frame of the sweep given the position and a 3x3 rotation matrix.
+// Compute a 4x3 matrix to orientate a frame of the sweep given the position and a 3x3 rotation matrix.
 //
 function orientate(p, r) =
     let(x = r[0], y = r[1], z = r[2])
@@ -113,7 +113,7 @@ function skin_points(profile, path, loop, twist = 0) =
 
 function cap(facets, segment = 0) = [for(i = [0 : facets - 1]) segment ? facets * segment + i : facets - 1 - i];
 
-function quad(p, a,b,c,d) = norm(p[a] - p[c]) > norm(p[b] - p[d]) ? [[b, c, d], [b, d, a]] : [[a, b, c], [a, c, d]];
+function quad(p, a, b, c, d) = norm(p[a] - p[c]) > norm(p[b] - p[d]) ? [[b, c, d], [b, d, a]] : [[a, b, c], [a, c, d]];
 
 function skin_faces(points, segs, facets, loop) = [for(i = [0 : facets - 1], s = [0 : segs - (loop ? 1 : 2)])
    each quad(points,

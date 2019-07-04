@@ -22,19 +22,20 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
 <tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
 <tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
@@ -679,6 +680,55 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```fuseholder(6)``` |  Fuse holder 20mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Green_terminals"></a>
+## Green_terminals
+Parametric green terminal blocks
+
+
+[vitamins/green_terminals.scad](vitamins/green_terminals.scad) Object definitions.
+
+[vitamins/green_terminal.scad](vitamins/green_terminal.scad) Implementation.
+
+[tests/green_terminals.scad](tests/green_terminals.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```gt_back_depth(type)``` | Back ledge depth |
+| ```gt_back_height(type)``` | Height at the back |
+| ```gt_box_h(type)``` | Height of the cable entry box |
+| ```gt_box_w(type)``` | Width inside the cable entry box |
+| ```gt_depth(type)``` | Total front to back depth |
+| ```gt_front_depth(type)``` | Front ledge depth |
+| ```gt_front_height(type)``` | Height at the front |
+| ```gt_front_t(type)``` | Thickness of frame around the front aperture |
+| ```gt_height(type)``` | Height of the flat top |
+| ```gt_pitch(type)``` | Pitch between terminals |
+| ```gt_screw_r(type)``` | Screw head radius |
+| ```gt_top(type)``` | Depth at the top |
+| ```gt_tube_h(type)``` | Height of optional tubes around the screws |
+| ```gt_y_offset(type)``` | Offset of the pins from centre of the depth |
+| ```gt_y_offset2(type)``` | Offset of the pins screws from the screws |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```green_terminal(type, ways, skip = [])``` | Draw green terminal blocks, skip can be used to remove pins. |
+| ```terminal_254(ways, skip = [])``` | Draw 0.1" terminal block |
+
+![green_terminals](tests/png/green_terminals.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```green_terminal(gt_6p35, 2)``` |  Terminal block 2 way 0.25" |
+|   1 | ```green_terminal(gt_3p5, 3)``` |  Terminal block 3 way 3.5mm |
+|   1 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 
 
 <a href="#top">Top</a>
@@ -1473,13 +1523,6 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Properties
 | Function | Description |
 |:--- |:--- |
-| ```hdr_base_colour(type)``` | Header insulator colour |
-| ```hdr_pin_below(type)``` | Header pin length underneath |
-| ```hdr_pin_colour(type)``` | Header pin colour |
-| ```hdr_pin_length(type)``` | Header pin length |
-| ```hdr_pin_width(type)``` | Header pin size |
-| ```hdr_pitch(type)``` | Header pitch |
-| ```hdr_socket_depth(type)``` | Socket depth for female housing |
 | ```pcb_accessories(type)``` | List of accessories to go on the BOM, SD cards, USB cables, etc. |
 | ```pcb_colour(type)``` | Colour of the subtrate |
 | ```pcb_components(type)``` | List of components |
@@ -1505,10 +1548,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Module | Description |
 |:--- |:--- |
 | ```barrel_jack(cutout = false)``` | Draw barrel power jack |
-| ```chip(length, width, thickness, cutout = false)``` | Draw a black cube to represent a chip |
+| ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
 | ```flex(cutout = false)``` | Draw flexistrip connector |
 | ```hdmi(cutout = false)``` | Draw HDMI socket |
-| ```idc_transition(type, cols = 5, skip = [], cutout = false)``` | Draw IDC transition header |
 | ```jack(cutout = false)``` | Draw 3.5mm jack |
 | ```molex_254(ways)``` | Draw molex header |
 | ```pcb(type)``` | Draw specified PCB |
@@ -1520,12 +1562,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_grid(type, x, y, z = 0)``` | Positions children at specified grid positions |
 | ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
 | ```pcb_spacer(screw, height, wall = 1.8)``` | Generate STL for PCB spacer |
-| ```pin(type = 2p54header, length = undef)``` | Draw a header pin |
-| ```pin_header(type = 2p54header, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw pin header |
-| ```pin_socket(type = 2p54header, cols = 1, rows = 1, right_angle = false, height = 0, cutout = false)``` | Draw pin socket |
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
-| ```terminal_254(ways, skip = [])``` | Draw 0.1" terminal block |
 | ```terminal_35(ways)``` | Draw 3.5mm terminal block |
+| ```uSD(size, cutout = false)``` | Draw uSD socket |
 | ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |
 | ```usb_B(cutout = false)``` | Draw USB B connector |
 | ```usb_uA(cutout = false)``` | Draw USB micro A connector |
@@ -1536,18 +1575,21 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```pcb(ArduinoUno3)``` |  Arduino Uno R3 |
+|   1 |  |  Cat 5 patch cable 300mm |
 |   1 | ```d_plug(DCONN15, pcb = true)``` |  D-type 15 way PCB mount plug |
-|   1 | ```pcb(DuetW)``` |  Duet WiFi electronics |
+|   1 | ```pcb(DuetE)``` |  Duet 2 Ethernet electronics |
+|   1 | ```pcb(Duex2)``` |  Duex2 expansion board |
+|   1 | ```pcb(Duex5)``` |  Duex5 expasnion board |
 |   1 | ```pcb(ExtruderPCB)``` |  Extruder connection PCB |
 |   1 | ```pcb(Keyes5p1)``` |  Keyes5.1 Arduino Uno expansion board |
 |   1 | ```pcb(Melzi)``` |  Melzi electronics |
-|   2 |  |  Micro SD card |
+|   3 |  |  Micro SD card |
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
 |  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
 |  12 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
-|   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
+|  12 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
 |   1 | ```pcb(PSU12V1A)``` |  PSU 12V 1A |
 |   1 | ```pcb(PERF60x40)``` |  Perfboard 60 x 40mm |
@@ -1563,14 +1605,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
 |   8 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
 |   4 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
-|   4 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
+|  12 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
 |   3 | ```terminal_35(2)``` |  Terminal block 2 way 3.5mm |
-|   2 | ```terminal_254(4)``` |  Terminal block 4 way 0.1" |
+|   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
 |  16 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
 |  12 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
-|   4 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
 ### Printed
 | Qty | Filename |
@@ -1585,8 +1627,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer2590.stl |
 |   4 | pcb_spacer30140.stl |
 |   4 | pcb_spacer30150.stl |
-|   4 | pcb_spacer30170.stl |
+|   4 | pcb_spacer30190.stl |
 |   4 | pcb_spacer40160.stl |
+|   4 | pcb_spacer40170.stl |
+|   4 | pcb_spacer40180.stl |
 
 
 <a href="#top">Top</a>
@@ -1635,6 +1679,52 @@ Threaded pillars. Each end can be male or female.
 |   1 | ```pillar(M2x16_brass_pillar)``` |  Pillar nurled F/M M2x16 |
 |   1 | ```pillar(M3x20_nylon_pillar)``` |  Pillar nylon M/F M3x20 |
 |   1 | ```pillar(M4x17_nylon_pillar)``` |  Pillar nylon M/F M4x20 |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Pin_headers"></a>
+## Pin_headers
+Pin headers and sockets, etc.
+
+
+[vitamins/pin_headers.scad](vitamins/pin_headers.scad) Object definitions.
+
+[vitamins/pin_header.scad](vitamins/pin_header.scad) Implementation.
+
+[tests/pin_headers.scad](tests/pin_headers.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```hdr_base_colour(type)``` | Header insulator colour |
+| ```hdr_pin_below(type)``` | Header pin length underneath |
+| ```hdr_pin_colour(type)``` | Header pin colour |
+| ```hdr_pin_length(type)``` | Header pin length |
+| ```hdr_pin_width(type)``` | Header pin size |
+| ```hdr_pitch(type)``` | Header pitch |
+| ```hdr_socket_depth(type)``` | Socket depth for female housing |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```box_header(type, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw box header |
+| ```idc_transition(type, cols = 5, skip = [], cutout = false)``` | Draw IDC transition header |
+| ```pin(type, length = undef)``` | Draw a header pin |
+| ```pin_header(type, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw pin header |
+| ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, cutout = false)``` | Draw pin socket |
+
+![pin_headers](tests/png/pin_headers.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
+|   1 | ```pin_header(2p54header102)``` |  Pin header 10 x 2 |
+|   1 | ```box_header(2p54header102)``` |  Pin header 10 x 2 |
+|   1 | ```pin_socket(2p54header, 10, 2)``` |  Pin socket 10 x 2 |
+|   1 | ```pin_socket(2p54header, 10, 2, right_angle = true)``` |  Pin socket 10 x 2 right_angle |
 
 
 <a href="#top">Top</a>
@@ -2641,7 +2731,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 |   2 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
 |   4 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   4 | ```screw(M3_dome_screw, 25)``` |  Screw M3 dome x 25mm |
-|   2 | ```terminal_254(10)``` |  Terminal block 10 way 0.1" |
+|   2 | ```green_terminal(gt_2p54, 10)``` |  Terminal block 10 way 0.1" |
 |   2 | ```veroboard(z_vb)``` |  Veroboard 5 holes x 22strips |
 |   8 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 
@@ -2899,7 +2989,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_left_blank(type, sheet = false)``` | Generates a 2D template for the left sheet, ```sheet``` can be set to override the type |
 | ```box_right(type)``` | Default right side, can be overridden to customise |
 | ```box_right_blank(type, sheet = false)``` | Generates a 2D template for the right sheet, ```sheet``` can be set to override the type |
-| ```box_shelf_blank(type)``` | Generates a 2D template for a shelf sheet |
+| ```box_shelf_blank(type, sheet = false)``` | Generates a 2D template for a shelf sheet |
 | ```box_top(type)``` | Default top, can be overridden to customise |
 | ```box_top_blank(type)``` | Generates a 2D template for the top sheet |
 | ```grill(width, height, r = 1000, poly = false, h = 0)``` | A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling. |

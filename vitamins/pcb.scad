@@ -25,6 +25,9 @@ panel_clearance = 0.2;
 include <../core.scad>
 include <screws.scad>
 include <buttons.scad>
+include <green_terminals.scad>
+include <pin_headers.scad>
+
 use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
 use <../utils/tube.scad>
@@ -53,8 +56,8 @@ module pcb_grid(type, x, y, z = 0)  //! Positions children at specified grid pos
 
 // allows negative ordinates to represent offsets from the far edge
 function pcb_coord(type, p) = let(l = pcb_length(type), w = pcb_width(type)) //! Convert offsets from the edge to coordinates relative to the centre
-    [(p.x > 0 ? p.x : l + p.x) - l / 2,
-     (p.y > 0 ? p.y : w + p.y) - w / 2];
+    [(p.x >= 0 ? p.x : l + p.x) - l / 2,
+     (p.y >= 0 ? p.y : w + p.y) - w / 2];
 
 module pcb_screw_positions(type) { //! Positions children at the mounting hole positions
     holes = pcb_holes(type);
@@ -66,145 +69,10 @@ module pcb_screw_positions(type) { //! Positions children at the mounting hole p
                 children();
        }
 }
-//                          p     p   b    p     p       b
-//                          i     i   e    i     i       a
-//                          t     n   l    n     n       s
-//                          c         o                  e
-//                          h     l   w    w     c
-//                                                       c
-//
-2p54header = ["2p54header", 2.54, 12, 3.2, 0.66, "gold", grey20, 8.5];
 
-function hdr_pitch(type)        = type[1];  //! Header pitch
-function hdr_pin_length(type)   = type[2];  //! Header pin length
-function hdr_pin_below(type)    = type[3];  //! Header pin length underneath
-function hdr_pin_width(type)    = type[4];  //! Header pin size
-function hdr_pin_colour(type)   = type[5];  //! Header pin colour
-function hdr_base_colour(type)  = type[6];  //! Header insulator colour
-function hdr_socket_depth(type) = type[7];  //! Socket depth for female housing
-
-module pin(type = 2p54header, length = undef) { //! Draw a header pin
-    w = hdr_pin_width(type);
-    l = length == undef ? hdr_pin_length(type) : length;
-    chamfer = w / 2;
-    color(hdr_pin_colour(type))
-        translate_z(l / 2 -hdr_pin_below(type))
-            hull() {
-                cube([w, w, l - 2 * chamfer], center = true);
-
-                cube([w - chamfer, w - chamfer, l], center = true);
-            }
- }
-
-module pin_header(type = 2p54header, cols = 1, rows = 1, smt = false, cutout = false) { //! Draw pin header
-    pitch =  hdr_pitch(type);
-    h = pitch;
-
-    if(cutout)
-        dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
-    else
-        vitamin(str("pin_header(", type[0], cols, rows, arg(smt, false, "smt"), "): Pin header ", cols, " x ", rows));
-
-        translate_z(smt ? 3.5 - h : 0) {
-            for(x = [0 : cols - 1], y = [0 : rows - 1])
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type);
-
-            color(hdr_base_colour(type))
-                linear_extrude(height = h)
-                    for(x = [0 : cols - 1], y = [0 : rows - 1])
-                        translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), pitch / 2])
-                            hull() {
-                                chamfer = pitch / 4;
-                                square([pitch + eps, pitch - chamfer], center = true);
-
-                                square([pitch - chamfer, pitch + eps], center = true);
-                            }
-        }
-}
-
-module idc_transition(type, cols = 5, skip = [], cutout = false) { //! Draw IDC transition header
-    rows = 2;
-    pitch =  hdr_pitch(type);
-    height = 7.4;
-    width = 6;
-    length = cols * pitch + 5.08;
-    if(cutout)
-        ;
-    else {
-        vitamin(str("idc_transition(", type[0], ", ", cols, "): IDC transition header ", cols, " x ", rows));
-
-        color(hdr_base_colour(type))
-            rotate([90, 0, 0])
-                linear_extrude(height = width, center = true, convexity = cols * rows)
-                    difference() {
-                        translate([0, height / 2])
-                            square([length, height], center = true);
-
-                            for(i = [0 : cols * rows - 1])
-                                translate([pitch / 2 * (i - (cols * rows - 1) / 2), height / 2])
-                                    circle(d = pitch / 2 + eps);
-
-                            slot = pitch / 3;
-                            translate([0, height / 2 - pitch / 4 + slot / 2])
-                                square([cols * pitch, slot], center = true);
-                        }
-
-        for(x = [0 : cols - 1], y = [0 : rows -1])
-            if(!in(skip, x))
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type, 2);
-    }
-}
-
-module pin_socket(type = 2p54header, cols = 1, rows = 1, right_angle = false, height = 0, cutout = false) { //! Draw pin socket
-    pitch = hdr_pitch(type);
-    length = pitch * cols + 0.5;
-    width = pitch * rows - 0.08;
-    depth = max(hdr_socket_depth(type), height);
-    ra_offset = 1.5;
-    if(cutout)
-        ;
-    else {
-        vitamin(str("pin_socket(", type[0], ", ", cols, ", ", rows, arg(right_angle, false, "right_angle"), arg(height, 0, "height"),
-                               "): Pin socket ", cols, " x ", rows, right_angle ? " right_angle" : ""));
-        color(hdr_base_colour(type))
-            translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
-                rotate([right_angle ? 90 : 0, 0, 0])
-                    translate_z(depth / 2)
-                        linear_extrude(height = depth, center = true)
-                            difference() {
-                                square([length, width], center = true);
-
-                            for(x = [0 : cols - 1], y = [0 : rows -1])
-                                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2)])
-                                    square(hdr_pin_width(type), center = true);
-                    }
-
-        color(hdr_pin_colour(type))
-            for(x = [0 : cols - 1], y = [0 : rows -1]) {
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type, hdr_pin_below(type) + width / 2 + (y - 0.5) * pitch);
-
-                if(right_angle) {
-                    rotate([-90, 0, 0])
-                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) -width / 2, 0])
-                            pin(type, hdr_pin_below(type) + (y - 0.5) * pitch);
-
-                    w = hdr_pin_width(type);
-                    translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
-                        rotate([0, -90, 0])
-                            rotate_extrude(angle = 90, $fn = 32)
-                                translate([0, -w / 2])
-                                    square(w);
-                }
-            }
-    }
-}
-
-module chip(length, width, thickness, cutout = false) //! Draw a black cube to represent a chip
+module chip(length, width, thickness, colour, cutout = false) //! Draw a coloured cube to represent a chip, or other rectangular component
     if(!cutout)
-        color(grey20)
+        color(colour)
             translate_z(thickness / 2) cube([length, width, thickness], center = true);
 
 module usb_Ax2(cutout = false) { //! Draw USB type A dual socket
@@ -552,6 +420,40 @@ module barrel_jack(cutout = false) { //! Draw barrel power jack
     }
 }
 
+module uSD(size, cutout = false) { //! Draw uSD socket
+    min_w = 12;
+    w = size.x - min_w;
+    t = 0.15;
+
+    if(cutout)
+        ;
+    else
+        translate_z(size.z / 2) {
+            color("silver")
+                rotate([90, 0, 90]) {
+                    linear_extrude(height = size.y, center = true)
+                        difference() {
+                            square([size.x, size.z], center = true);
+                            square([size.x - 2 * t, size.z - 2 * t], center = true);
+                        }
+
+                    translate_z(-size.y / 2 + t / 2)
+                        cube([size.x, size.z, t], center = true);
+                }
+            if(w > 0)
+                color(grey20)
+                    rotate([90, 0, 90])
+                        translate_z(t)
+                            linear_extrude(height = size.y - t, center = true)
+                                difference() {
+                                    square([size.x - 2 * t, size.z - 2 * t], center = true);
+
+                                    translate([-size.x / 2 + min_w / 2 + 0.7, size.z / 2 - t])
+                                        square([min_w, 2.2], center = true);
+                                }
+        }
+}
+
 module flex(cutout = false) { //! Draw flexistrip connector
     l = 20.6;
     w = 3;
@@ -693,109 +595,6 @@ module terminal_35(ways) { //! Draw 3.5mm terminal block
             single();
 }
 
-module terminal_254(ways, skip = []) { //! Draw 0.1" terminal block
-    vitamin(str("terminal_254(", ways, "): Terminal block ", ways, " way 0.1\""));
-    pitch = 2.54;
-    width = ways * pitch;
-    depth = 6.2;
-    height = 8.5;
-    ledge_height = 5;
-    ledge_depth = 0.7;
-    top = 3;
-    back = 3;
-    module single(skip = false) {
-        screw_r = 1;
-        box_w1 = pitch - 0.4;
-        box_h1 = ledge_height - 0.4;
-        box_w2 = 2;
-        box_h2 = 2;
-        color("lime") {
-            rotate([90, 0, 0])
-                linear_extrude(height = pitch, center = true, convexity = 5)
-                    polygon(points = [
-                        [ depth / 2,               0],
-                        [ depth / 2,               ledge_height / 2 - box_h1 / 2],
-                        [ depth / 2 - 0.5,         ledge_height / 2 - box_h1 / 2],
-                        [ depth / 2 - 2,           ledge_height / 2 - box_h2 / 2],
-                        [-depth / 2 + 1,           ledge_height / 2 - box_h2 / 2],
-                        [-depth / 2 + 1,           ledge_height / 2 + box_h2 / 2],
-                        [ depth / 2 - 2,           ledge_height / 2 + box_h2 / 2],
-                        [ depth / 2 - 0.5,         ledge_height / 2 + box_h1 / 2],
-                        [ depth / 2,               ledge_height / 2 + box_h1 / 2],
-                        [ depth / 2,               ledge_height],
-                        [ depth / 2 - ledge_depth, ledge_height],
-                        [   top / 2,               height],
-                        [ screw_r + eps,           height],
-                        [ screw_r + eps,           ledge_height / 2 + box_h2 / 2],
-                        [-screw_r - eps,           ledge_height / 2 + box_h2 / 2],
-                        [-screw_r - eps,           height],
-                        [  -top / 2,               height],
-                        [-depth / 2,               back],
-                        [-depth / 2,               0],
-                    ]);
-
-            translate_z(ledge_height / 2 + box_h2 / 2)
-                linear_extrude(height = height - ledge_height / 2 - box_h2 / 2)
-                    difference() {
-                        square([screw_r * 2 + 0.1, pitch], center = true);
-
-                        circle(screw_r);
-                    }
-
-            linear_extrude(height = ledge_height)
-                difference() {
-                    translate([0.5, 0])
-                        square([depth - 1, pitch], center = true);
-
-
-                    translate([depth / 2, 0]) {
-                        square([9, box_w2], center = true);
-
-                        hull() {
-                            square([1, box_w1], center = true);
-                            square([4, box_w2], center = true);
-                        }
-                    }
-                }
-        }
-        if(!skip)
-            color("silver")
-                translate_z(1) {
-                    slot_depth = 1;
-                    screw_top = height - 1.5;
-                    pin_l = 3.3 + ledge_height / 2 - 2;
-                    translate_z(ledge_height / 2)               // screw
-                        cylinder(r = 1, h = screw_top - slot_depth - ledge_height / 2);
-
-                    translate_z(screw_top - slot_depth)         // screw head
-                        linear_extrude(height = slot_depth)
-                            difference() {
-                                circle(1);
-                                square([4, 0.5], center = true);
-                            }
-
-                    translate_z(ledge_height / 2 - 1)
-                        rotate([0, 90, 0])
-                            linear_extrude(height = 2, center = true)
-                                difference() {
-                                    square([2, 2], center = true);
-
-                                    square([1.5, 1.9], center = true);
-
-                                }
-
-                    translate([-1.5, 0, ledge_height / 2 - 1])  // terminal back
-                        cube([1, 2, 2], center = true);
-
-                    translate_z(ledge_height / 2 - 2 - pin_l / 2)
-                        cube([0.44, 0.75, pin_l], center = true);     // pin
-                }
-    }
-    for(i = [0: ways -1])
-        translate([0, i * pitch - width / 2 + pitch / 2])
-            single(in(skip, i));
-}
-
 module molex_254(ways) { //! Draw molex header
     vitamin(str("molex_254(", ways, "): Molex KK header ", ways, " way"));
     pitch = 2.54;
@@ -822,12 +621,27 @@ module molex_254(ways) { //! Draw molex header
                 cube([0.44, 0.75, above + below], center = true);
 }
 
+module standoff(h, d, h2, d2) {
+    color("white") {
+        cylinder(d = d, h = h);
+
+        hull() {
+            translate_z(-(h2 - h) / 2 + d2 / 2)
+                sphere(d = d2);
+
+            translate_z(h +(h2 - h) / 2 - d2 / 2)
+                sphere(d = d2);
+        }
+    }
+}
+
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
     function show(comp, part) = (comp[3] == part || comp[3] == str("-",part)) && (!cutouts || angle == undef || angle == comp.z);
     rotate(comp.z) {
         if(show(comp, "2p54header")) pin_header(2p54header, comp[4], comp[5], len(comp) > 5 ? comp[6] : false, cutouts);
+        if(show(comp, "2p54boxhdr")) box_header(2p54header, comp[4], comp[5], len(comp) > 5 ? comp[6] : false, cutouts);
         if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], comp[6], len(comp) > 7 ? comp[7] : 0, cutouts);
-        if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], cutouts);
+        if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], len(comp) > 7 ? comp[7] : grey30, cutouts);
         if(show(comp, "rj45")) rj45(cutouts);
         if(show(comp, "usb_Ax2")) usb_Ax2(cutouts);
         if(show(comp, "usb_uA")) usb_uA(cutouts);
@@ -838,13 +652,18 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "flex")) flex(cutouts);
         if(show(comp, "D_plug")) if(!cutouts) translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
         if(show(comp, "molex_hdr")) if(!cutouts) molex_254(comp[4]);
-        if(show(comp, "term254")) if(!cutouts) terminal_254(comp[4], comp[5]);
+        if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5]);
+        if(show(comp, "gterm35")) if(!cutouts) green_terminal(gt_3p5, comp[4], comp[5]);
+        if(show(comp, "gterm635")) if(!cutouts) green_terminal(gt_6p35, comp[4], comp[5]);
         if(show(comp, "term35")) if(!cutouts) terminal_35(comp[4]);
         if(show(comp, "transition")) if(!cutouts) idc_transition(2p54header, comp[4], comp[5]);
         if(show(comp, "block"))
             color(comp[7]) if(!cutouts) translate_z(comp[6] / 2) cube([comp[4], comp[5], comp[6]], center = true);
                            else if(comp[8]) translate([-50, 0, comp[6] / 2 - panel_clearance]) cube([100, comp[5] + 2 * panel_clearance, comp[6] + 2 * panel_clearance], center = true);
         if(show(comp, "button_6mm")) square_button(button_6mm);
+        if(show(comp, "pcb")) if(!cutouts) translate_z(comp[4]) pcb(comp[5]);
+        if(show(comp, "standoff")) if(!cutouts) standoff(comp[4], comp[5], comp[6], comp[7]);
+        if(show(comp, "uSD")) uSD(comp[4], cutouts);
     }
 }
 
