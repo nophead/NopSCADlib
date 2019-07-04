@@ -4112,7 +4112,7 @@ Square with one rounded corner.
 ---
 <a name="Round"></a>
 ## Round
-Round 2D shapes uisng `offset()`, which is fast and 3D shapes with [`offset_3D()`](#offset), which is very slow.
+Round 2D shapes using `offset()`, which is fast and 3D shapes with [`offset_3D()`](#offset), which is very slow.
 
 A single radius can be specified or separate internal and external radii.
 If `chamfer_base` is `true` for `round_3D()` then the bottom edge is made suitable for 3D printing by chamfering once the
