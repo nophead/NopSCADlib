@@ -47,6 +47,19 @@ LCD1602A = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCB,
           [],                                       // clearance need for the ts ribbon
         ];
 
-displays = [LCD1602A, HDMI5];
+SSD1963_4p3PCB = ["", "", 120, 74, 1.65, 3, 3, 0, "mediumblue", false, [[3, 3], [-3, 3], [-3, -3], [3, -3]],
+    [ [2.75 + 1.27, 37, 90, "2p54header", 20, 2]
+    ],
+    []];
+
+SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD1963_4p3PCB,
+        [0, 0, 0],
+        [[-50, -26.5], [50, 31.5, 0.5]],
+        [[-105.5 / 2, -65 / 2 + 1], [105.5 / 2, 65 / 2 + 1, 1]],
+        0,
+        [[0, -34.5], [12, -31.5]],
+        ];
+
+displays = [HDMI5, SSD1963_4p3, LCD1602A];
 
 use <display.scad>
