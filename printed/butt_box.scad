@@ -97,7 +97,7 @@ function fixing_block_positions(type) = let(
 
         for(i = [0 : 1 : hspans - 1], x = [-1, 1], y = [-1, 1])
             translate([x * width / 2, y * depth / 2, (i - (hspans - 1) / 2) * hspan]) *
-            rotate([y > 0 ? 180 : 0, x * y * 90]),
+            rotate([y > 0 ? 180 : 0, x * y * 90, 0]),
 
     ];
 
