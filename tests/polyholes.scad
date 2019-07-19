@@ -52,8 +52,8 @@ module polyholes() {
     sizes = [1.5, 2, 3, 4];
     for(i = [0 : len(sizes) - 1])
         translate([i * 10, -10]) {
-            color(pp1_colour) linear_extrude(height = 1)
-                poly_ring(ir = ir, or = cir + sizes[i] * extrusion_width);
+            color(pp1_colour)
+                poly_tube(ir = ir, or = cir + sizes[i] * extrusion_width, h = 1);
 
             rod(2 * ir, 3);
        }

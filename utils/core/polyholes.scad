@@ -62,6 +62,10 @@ module poly_ring(or, ir) { //! Make a 2D ring adjusted to have the correct inter
                 }
 }
 
+module poly_tube(or, ir, h, center = false) //! Make a tube adjusted to have the correct internal radius
+    extrude_if(h, center)
+        poly_ring(or, ir);
+
 module drill(r, h = 100) //! Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle
     extrude_if(h)
         circle(r = corrected_radius(r, r2sides(r)));
