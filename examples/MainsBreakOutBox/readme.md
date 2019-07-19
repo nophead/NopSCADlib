@@ -86,9 +86,9 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### Vitamins
 |Qty|Description|
 |--:|:----------|
-|8| Washer  M3 x 7mm x 0.5mm|
-|4| Screw M3 dome x 10mm|
 |4| Nut M3 x 2.4mm nyloc|
+|4| Screw M3 dome x 10mm|
+|8| Washer  M3 x 7mm x 0.5mm|
 
 
 ### 3D Printed parts
@@ -122,14 +122,14 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### Vitamins
 |Qty|Description|
 |--:|:----------|
-|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
-|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
-|2| Wire brown 30/0.25mm strands, length 150mm - not shown|
 |3| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
 |1| IEC inlet for ATX|
+|2| Nut M3 x 2.4mm nyloc|
 |2| Screw M3 cs cap x 12mm|
 |2| Washer  M3 x 7mm x 0.5mm|
-|2| Nut M3 x 2.4mm nyloc|
+|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
+|2| Wire brown 30/0.25mm strands, length 150mm - not shown|
+|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
 
 
 ### Sub-assemblies
@@ -161,15 +161,15 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### Vitamins
 |Qty|Description|
 |--:|:----------|
-|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
-|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
-|5| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
-|3| Ferrule for 1.5mm^2 wire - not shown|
-|1| Mains socket 13A|
-|2| Screw M3 cs cap x 20mm|
 |2| 4mm shielded jack socket blue|
 |1| 4mm shielded jack socket brown|
 |2| 4mm shielded jack socket green|
+|3| Ferrule for 1.5mm^2 wire - not shown|
+|5| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
+|1| Mains socket 13A|
+|2| Screw M3 cs cap x 20mm|
+|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
+|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
 
 
 ### Sub-assemblies

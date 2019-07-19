@@ -267,7 +267,7 @@ def views(target, do_assemblies = None):
                     print("### Vitamins",         file = doc_file)
                     print("|Qty|Description|",    file = doc_file)
                     print("|--:|:----------|",    file = doc_file)
-                    for v in vitamins:
+                    for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
                         print("|%d|%s|" % (vitamins[v], v.split(":")[1]),     file = doc_file)
                     print("\n", file = doc_file)
 
