@@ -130,7 +130,7 @@ module round_grommet_bottom(diameter, od = undef) { //! Generate the STL for a r
 }
 
 module round_grommet_hole(diameter, h = 100) //! Make a hole for a round grommet
-    drill(diameter / 2 + wall + clearance, h);
+    drill(echoit(corrected_radius(diameter / 2) + wall + clearance), h);
 
 module round_grommet_assembly(diameter, thickness, od = undef) {
     color(pp1_colour)
@@ -182,6 +182,20 @@ module mouse_grommet(r, thickness) { //! Make the STL for a mouse grommet
         }
 }
 
+module mouse_grommet_assembly(r, thickness)
+    color(pp1_colour)
+        rotate([-90, 0, 0])
+            mouse_grommet(r, thickness);
+
 module ribbon_grommet_20_3_stl() ribbon_grommet(20, 3);
-module mouse_grommet_20_3_stl() mouse_grommet(2,3);
-module mouse_grommet_30_3_stl() mouse_grommet(3,3);
+module mouse_grommet_15_3_stl() mouse_grommet(1.5, 3);
+module mouse_grommet_20_3_stl() mouse_grommet(2, 3);
+module mouse_grommet_30_3_stl() mouse_grommet(3, 3);
+
+module round_grommet_bottom_30_stl() round_grommet_bottom(3);
+module round_grommet_bottom_40_stl() round_grommet_bottom(4);
+module round_grommet_bottom_60_stl() round_grommet_bottom(6);
+
+module round_grommet_top_30_3_stl() round_grommet_top(3, 3);
+module round_grommet_top_40_3_stl() round_grommet_top(4, 3);
+module round_grommet_top_60_3_stl() round_grommet_top(6, 3);
