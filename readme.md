@@ -4589,6 +4589,7 @@ Small holes can get away without it, but they print better with truncated teardr
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| ```semi_teardrop(h, r, d = undef, center = true)``` | A semi teardrop in the positive Y domain |
 | ```teardrop(h, r, center = true, truncate = true)``` | For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging |
 | ```teardrop_plus(h, r, center = true, truncate = true)``` | Slightly bigger teardrop to allow for the 3D printing staircase effect |
 | ```tearslot(h, r, w, center = true)``` | A horizontal slot that doesn't need support material |

@@ -36,7 +36,10 @@ module teardrops() {
                         tearslot(h = 0, r = 3, w = 10);
 
                     translate([30, 15])
-                         vertical_tearslot(h = 0, r =3, l = 10);
+                        vertical_tearslot(h = 0, r =3, l = 10);
+
+                    translate([20, 10])
+                        semi_teardrop(h = 0, r = 3);
                 }
 }
 

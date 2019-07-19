@@ -149,11 +149,16 @@ module mouse_grommet_hole(r, h = 50, z = undef, expand = wall + clearance) //! M
         hull(){
             R = r + expand;
             translate([0, z == undef ? R : z])
-                semi_circle(R);
+                if(expand)
+                    semi_circle(R);
+                else
+                    semi_teardrop(r = R, h = 0);
 
             translate([-R, 0])
                 square([2 * R, eps]);
         }
+
+function mouse_grommet_offset(r) = r + wall;
 
 module mouse_grommet(r, thickness) { //! Make the STL for a mouse grommet
     stl(str("mouse_grommet_", r * 10, "_", thickness));
@@ -167,7 +172,7 @@ module mouse_grommet(r, thickness) { //! Make the STL for a mouse grommet
                 translate_z(side * (width - wall) / 2)
                     linear_extrude(height = wall, center = true)
                         difference() {
-                            mouse_grommet_hole(r + wall + overlap, z = r + wall, h = 0, expand = 0);
+                            mouse_grommet_hole(r, z = r + wall, h = 0, expand = wall + overlap);
 
                         translate([0, wall])
                             mouse_grommet_hole(r, h = 0, expand = 0);

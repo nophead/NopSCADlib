@@ -34,6 +34,18 @@ module teardrop(h, r, center = true, truncate = true) //! For making horizontal 
                     polygon([[0, 0], [eps, 0], [0, r * sqrt(2)]]);
             }
 
+module semi_teardrop(h, r, d = undef, center = true) //! A semi teardrop in the positive Y domain
+    render(convexity = 5)
+        extrude_if(h, center)
+            intersection() {
+                R = is_undef(d) ? r : d / 2;
+                teardrop(r = R, h = 0);
+
+                sq = R + 1;
+                translate([-sq, 0])
+                    square([2 * sq, sq]);
+            }
+
 module teardrop_plus(h, r, center = true, truncate = true) //! Slightly bigger teardrop to allow for the 3D printing staircase effect
     teardrop(h, r + layer_height / 4, center, truncate);
 
