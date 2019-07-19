@@ -620,7 +620,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | Module | Description |
 |:--- |:--- |
 | ```fan(type)``` | Draw specified fan, origin in the centre |
-| ```fan_assembly(type, thickness, include_fan = true)``` | Fan with its fasteners |
+| ```fan_assembly(type, thickness, include_fan = true, screw = false)``` | Fan with its fasteners |
 | ```fan_hole_positions(type, z = undef)``` | Position children at the screw hole positions |
 | ```fan_holes(type, poly = false, screws = true, h = 100)``` | Make all the holes for the fan, or just the aperture if ```screws``` is false. Set ```poly``` true for poly_holes. |
 

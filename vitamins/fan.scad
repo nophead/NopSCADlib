@@ -151,16 +151,16 @@ function nut_and_washer_thickness(screw, nyloc) = washer_thickness(screw_washer(
 function fan_screw_depth(type) = fan_boss_d(type) ? fan_depth(type) : fan_thickness(type);
 function fan_screw_length(type, thickness) = screw_longer_than(thickness + fan_screw_depth(type) + nut_and_washer_thickness(fan_screw(type), true)); //! Screw length required
 
-module fan_assembly(type, thickness, include_fan = true) { //! Fan with its fasteners
+module fan_assembly(type, thickness, include_fan = true, screw = false) { //! Fan with its fasteners
     translate_z(-fan_depth(type) / 2) {
         if(include_fan)
             fan(type);
 
-        screw = fan_screw(type);
-        nut = screw_nut(screw);
+        Screw = screw ? screw : fan_screw(type);
+        nut = screw_nut(Screw);
         fan_hole_positions(type) {
             translate_z(thickness)
-                screw_and_washer(screw, fan_screw_length(type, thickness));
+                screw_and_washer(Screw, fan_screw_length(type, thickness));
 
             translate_z(include_fan ? -fan_screw_depth(type) : 0)
                 vflip()
