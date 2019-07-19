@@ -2303,6 +2303,7 @@ Filament spool models
 | Function | Description |
 |:--- |:--- |
 | ```spool_height(type)``` | Outside width |
+| ```spool_pitch(type)``` | Spacing of the rims |
 
 ### Modules
 | Module | Description |
@@ -2316,6 +2317,7 @@ Filament spool models
 | ---:|:--- |:---|
 |   1 | ```spool(spool_200x55)``` |  Filament spool 200 x 55 |
 |   1 | ```spool(spool_300x85)``` |  Filament spool 300 x 85 |
+|   1 | ```spool(spool_300x88)``` |  Filament spool 300 x 88 |
 
 
 <a href="#top">Top</a>

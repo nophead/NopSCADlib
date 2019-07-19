@@ -23,10 +23,11 @@
 //                              i    i   e   i  u  o   u    u
 //                              a    d   p   m  b  r   b    b
 //                                   t   t         e
-//                                   h   h   t  t      d    t
+//                                   h   h   t  t      d    taper_d
+spool_300x88 = ["spool_300x88", 300, 88, 43, 6, 8, 52, 214, 300];
 spool_300x85 = ["spool_300x85", 300, 85, 60, 4, 8, 52, 250, 280];
 spool_200x55 = ["spool_200x55", 200, 55, 40, 5, 5, 52, 200, 200];
 
-spools = [spool_200x55, spool_300x85];
+spools = [spool_200x55, spool_300x85, spool_300x88];
 
 use <spool.scad>

@@ -30,6 +30,7 @@ function spool_hub_bore(type)      = type[6]; //! Bore through the hub
 function spool_hub_diameter(type)  = type[7]; //! Diameter of the thicker hub
 function spool_hub_taper(type)     = type[8]; //! Diameter at which it tapers down to rim thickness
 function spool_height(type)        = spool_width(type) + 2 * spool_hub_thickness(type); //! Outside width
+function spool_pitch(type)         = spool_width(type) + spool_rim_thickness(type); //! Spacing of the rims
 
 module spool(type) { //! Draw specified spool
     vitamin(str("spool(", type[0], "): Filament spool ", spool_diameter(type), " x ", spool_width(type)));
