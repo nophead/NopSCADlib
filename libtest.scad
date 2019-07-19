@@ -156,7 +156,7 @@ fans_y = displays_y + 100;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;
 
-translate([x0 + 20, inserts_y])
+translate([x0 + 30, inserts_y])
     inserts();
 
 translate([x0, inserts_y])
