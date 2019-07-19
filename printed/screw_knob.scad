@@ -30,7 +30,7 @@ knob_stem_h = 6;
 knob_thickness = 4;
 knob_r = 8;
 knob_wave = 1;
-knob_waves = 9;
+knob_waves = 5;
 knob_height = knob_stem_h + knob_thickness;
 function knob_height() = knob_height;
 
@@ -73,5 +73,8 @@ assembly(str("screw_knob_M", 20 * screw_radius(screw), "_", length)) {
 module screw_knob_M30_stl() screw_knob(M3_hex_screw);
 module screw_knob_M40_stl() screw_knob(M4_hex_screw);
 
+//! * Press the M3 x 16 hex screw into the knob
 module screw_knob_M30_16_assembly() screw_knob_assembly(M3_hex_screw, 16);
+
+//! * Press the M4 x 16 hex screw into the knob
 module screw_knob_M40_16_assembly() screw_knob_assembly(M4_hex_screw, 16);
