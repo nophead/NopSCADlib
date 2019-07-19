@@ -27,15 +27,15 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
 <tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
 <tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
@@ -3473,6 +3473,76 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 |   1 | fixing_block_M25_assembly |
 |   1 | fixing_block_M30_assembly |
 |   1 | fixing_block_M40_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Flat_hinge"></a>
+## Flat_hinge
+A parametric flat hinge. A piece of filament can be used for the hinge pin.
+
+The width, depth, thickness, number and type of screws, number of knuckles, knuckle diameter, pin diameter and clearance can all be varied.
+A margin between the screws and the knuckle edge can be enforced to allow the hinge to bend all the way back to 270&deg; from closed.
+
+Opening the test in OpenSCAD with its customiser enabled allows these parameters to be played with.
+
+Note setting ```thickness1``` or ```thickness2``` to zero in the ```hinge_fastened_assembly()``` removes the screws from one side or the other and
+setting ```show_hinge``` to false removes the hinge.
+This allows the hinges and one set of screws to belong to one assembly and the other set of screws to another assembly.
+
+
+[printed/flat_hinge.scad](printed/flat_hinge.scad) Implementation.
+
+[tests/flat_hinge.scad](tests/flat_hinge.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```hinge_clearance(type)``` | Clearance between knuckles |
+| ```hinge_depth(type)``` | Depth of each leaf |
+| ```hinge_knuckle_dia(type)``` | The knuckle diameter |
+| ```hinge_knuckles(type)``` | How many knuckles |
+| ```hinge_margin(type)``` | How far to keep the screws from the knuckes |
+| ```hinge_pin_dia(type)``` | The pin diameter |
+| ```hinge_screw(type)``` | Screw type to mount it |
+| ```hinge_screws(type)``` | How many screws |
+| ```hinge_thickness(type)``` | Thickness of the leaves |
+| ```hinge_width(type)``` | Width |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```hinge_both(type)``` | Both parts together for printing |
+| ```hinge_fastened_assembly(type, thickness1, thickness2, angle, show_hinge = true)``` | Assembled hinge with its fasteners |
+| ```hinge_male(type, female = false)``` | The half with the stationary pin |
+| ```hinge_screw_positions(type)``` | Place children at the screw positions |
+
+![flat_hinge](tests/png/flat_hinge.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 |  |  Hinge pin 20 x 2.85mm |
+|   1 |  |  Hinge pin 50 x 4mm |
+|  14 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   4 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
+|  10 | ```screw(M3_dome_screw, 12)``` |  Screw M3 dome x 12mm |
+|  28 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | hinge_female_big.stl |
+|   1 | hinge_female_small.stl |
+|   1 | hinge_male_big.stl |
+|   1 | hinge_male_small.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | hinge_big_assembly |
+|   1 | hinge_small_assembly |
 
 
 <a href="#top">Top</a>

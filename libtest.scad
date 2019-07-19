@@ -88,6 +88,7 @@ use <tests/socket_box.scad>
 use <tests/strap_handle.scad>
 use <tests/ssr_shroud.scad>
 use <tests/psu_shroud.scad>
+use <tests/flat_hinge.scad>
 
 x5 = 800;
 
@@ -114,6 +115,9 @@ translate([x5 + 70, cable_grommets_y + 150])
 translate([x5, cable_grommets_y + 470]) {
     door_hinges()
         door_latches();
+
+    translate([120, 0])
+        flat_hinges();
 }
 
 translate([x5, cable_grommets_y + 370])
