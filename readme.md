@@ -4366,6 +4366,8 @@ heirachical BOMs are also generated for real projects.
 | ```no_pose()``` | Force children not to be posed even if parent is |
 | ```not_on_bom(on = false)``` | Specify the following child parts are not on the BOM, for example when they are on a PCB that comes assembled |
 | ```pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef)``` | Pose an STL or assembly for rendering to png by specifying rotation ```a``` and translation ```t```, ```exploded = true for``` just the exploded view or ```false``` for unexploded only. |
+| ```pose_hflip(exploded = undef)``` | Pose an STL or assembly for rendering to png by flipping around the Y axis, ```exploded = true for``` just the exploded view or ```false``` for unexploded only. |
+| ```pose_vflip(exploded = undef)``` | Pose an STL or assembly for rendering to png by flipping around the X axis, ```exploded = true for``` just the exploded view or ```false``` for unexploded only. |
 | ```stl(name)``` | Name an stl that will appear on the BOM, there needs to a module named ```<name>_stl``` to make it |
 | ```vitamin(description)``` | Describe a vitamin for the BOM entry and precede it with a module call that creates it, eg. "wigit(42): Type 42 widget" |
 

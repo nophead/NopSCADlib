@@ -63,6 +63,22 @@ module pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef)       //! Pose an 
                             translate(-t)
                                 children();
 
+module pose_hflip(exploded = undef)       //! Pose an STL or assembly for rendering to png by flipping around the Y axis, ```exploded = true for``` just the exploded view or ```false``` for unexploded only.
+    if(is_undef($pose) || !is_undef($posed) || (!is_undef(exploded) && exploded != !!exploded()))
+        children();
+    else
+        let($posed = true) // only pose the top level
+            hflip()
+                children();
+
+module pose_vflip(exploded = undef)       //! Pose an STL or assembly for rendering to png by flipping around the X axis, ```exploded = true for``` just the exploded view or ```false``` for unexploded only.
+    if(is_undef($pose) || !is_undef($posed) || (!is_undef(exploded) && exploded != !!exploded()))
+        children();
+    else
+        let($posed = true) // only pose the top level
+            vflip()
+                children();
+
 
 module assembly(name) {                 //! Name an assembly that will appear on the BOM, there needs to a module named ```<name>_assembly``` to make it
     if(bom_mode())
