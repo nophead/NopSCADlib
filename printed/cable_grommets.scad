@@ -130,7 +130,7 @@ module round_grommet_bottom(diameter, od = undef) { //! Generate the STL for a r
 }
 
 module round_grommet_hole(diameter, h = 100) //! Make a hole for a round grommet
-    drill(echoit(corrected_radius(diameter / 2) + wall + clearance), h);
+    drill(corrected_radius(diameter / 2) + wall + clearance, h);
 
 module round_grommet_assembly(diameter, thickness, od = undef) {
     color(pp1_colour)
