@@ -2217,7 +2217,7 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 |:--- |:--- |
 | ```render_2D_sheet(type, color = false)``` | Extrude a 2D sheet template and give it the correct colour |
 | ```render_sheet(type, color = false)``` | Render a sheet in the correct colour after holes have been subtracted |
-| ```sheet(type, w, d, corners = [0, 0, 0, 0])``` | Draw speified sheet |
+| ```sheet(type, w, d, corners = [0, 0, 0, 0])``` | Draw specified sheet |
 | ```sheet_2D(type, w, d, corners = [0, 0, 0, 0])``` | 2D sheet template with specified size and optionally rounded corners |
 
 ![sheets](tests/png/sheets.png)
