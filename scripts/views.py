@@ -219,36 +219,49 @@ def views(target, do_assemblies = None):
             # Global BOM
             #
             print('<a name="Parts_list"></a>\n## Parts list', file = doc_file)
-            vitamins = {}
-            printed = {}
-            routed = {}
+            types = ["vitamins", "printed", "routed"]
+            headings = {"vitamins" : "vitamins", "printed" : "3D printed parts", "routed" : "CNC routed parts"}
+            things = {}
+            for t in types:
+                things[t] = {}
             for ass in flat_bom:
-                for v in ass["vitamins"]:
-                    if v in vitamins:
-                        vitamins[v] += ass["vitamins"][v]
-                    else:
-                        vitamins[v] = ass["vitamins"][v]
-                for p in ass["printed"]:
-                    if p in printed:
-                        printed[p] += ass["printed"][p]
-                    else:
-                        printed[p] = ass["printed"][p]
+                for t in types:
+                    for thing in ass[t]:
+                        if thing in things[t]:
+                            things[t][thing] += ass[t][thing]
+                        else:
+                            things[t][thing] = ass[t][thing]
             for ass in flat_bom:
                 name = ass["name"][:-9].replace('_', ' ').title().replace(' ','&nbsp;')
                 print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
             print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
+
             print(('|--:' * len(flat_bom) + '|--:|:--|'), file = doc_file)
-            for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
-                for ass in flat_bom:
-                    count = ass["vitamins"][v] if v in ass["vitamins"] else '.'
-                    print('| %s ' % pad(count, 2, 1), file = doc_file, end = '')
-                print('|  %s | %s |' % (pad(vitamins[v], 2, 1), pad(v.split(":")[1], 2)), file = doc_file)
-            print(('|  ' * len(flat_bom) + '| | **3D Printed parts** |'), file = doc_file)
-            for p in sorted(printed):
-                for ass in flat_bom:
-                    count = ass["printed"][p] if p in ass["printed"] else '.'
-                    print('| %s ' % pad(count, 2, 1), file = doc_file, end = '')
-                print('| %s | %s |' % (pad(printed[p], 2, 1), pad(p, 3)), file = doc_file)
+
+            for t in types:
+                if things[t]:
+                    totals = {}
+                    heading = headings[t][0:1].upper() + headings[t][1:]
+                    print(('|  ' * len(flat_bom) + '| | **%s** |') % heading, file = doc_file)
+                    for thing in sorted(things[t], key = lambda s: s.split(":")[-1]):
+                        for ass in flat_bom:
+                            count = ass[t][thing] if thing in ass[t] else 0
+                            print('| %s ' % pad(count if count else '.', 2, 1), file = doc_file, end = '')
+                            name = ass["name"]
+                            if name in totals:
+                                totals[name] += count
+                            else:
+                                totals[name] = count
+                        print('|  %s | %s |' % (pad(things[t][thing], 2, 1), pad(thing.split(":")[-1], 2)), file = doc_file)
+
+                    grand_total = 0
+                    for ass in flat_bom:
+                        name = ass["name"]
+                        total = totals[name] if name in totals else 0
+                        print('| %s ' % pad(total if total else '.', 2, 1), file = doc_file, end = '')
+                        grand_total += total
+                    print("| %s | %s |" % (pad(grand_total, 2, 1), pad('Total %s count' % headings[t], 2)), file = doc_file)
+
             print(file = doc_file)
             eop(print_mode, doc_file)
             #
