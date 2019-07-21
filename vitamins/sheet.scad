@@ -74,7 +74,7 @@ module sheet_2D(type, w, d, corners = [0, 0, 0, 0]) { //! 2D sheet template with
     }
 }
 
-module sheet(type, w, d, corners = [0, 0, 0, 0]) //! Draw speified sheet
+module sheet(type, w, d, corners = [0, 0, 0, 0]) //! Draw specified sheet
     linear_extrude(height = sheet_thickness(type), center = true)
         sheet_2D(type, w, d, corners);
 
