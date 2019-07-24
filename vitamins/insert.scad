@@ -93,6 +93,8 @@ module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole 
         }
 }
 
+function insert_boss_radius(type, wall) = corrected_radius(insert_hole_radius(type)) + wall; //! Compute the outer radius of an insert boss
+
 module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to take an insert
     render(convexity = 3)
         difference() {

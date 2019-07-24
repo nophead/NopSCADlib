@@ -889,6 +889,11 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | ```insert_ring3_d(type)``` | Diameter of the bottom ring |
 | ```insert_screw_diameter(type)``` | Screw size |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```insert_boss_radius(type, wall)``` | Compute the outer radius of an insert boss |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
