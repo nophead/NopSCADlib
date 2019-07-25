@@ -33,7 +33,7 @@ function ldr_active(type)      = type[6]; //! The active width
 function ldr_lead_d(type)      = type[7]; //! The lead diameter
 
 module LDR(type, lead_length = 3) { //! Draw an LDR, can specify the lead length
-    vitamin(str("ldr(", type[0], "): Light dependent resistor: ", ldr_description(type)));
+    vitamin(str("ldr(", type[0], "): Light dependent resistor - ", ldr_description(type)));
 
     module shape()
         intersection() {

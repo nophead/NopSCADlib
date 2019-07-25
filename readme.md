@@ -989,8 +989,8 @@ Larger ones seem to have both a higher dark resistance and a lower bright light 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```ldr(large_ldr)``` |  Light dependent resistor |
-|   1 | ```ldr(small_ldr)``` |  Light dependent resistor |
+|   1 | ```ldr(large_ldr)``` |  Light dependent resistor - large |
+|   1 | ```ldr(small_ldr)``` |  Light dependent resistor - small |
 
 
 <a href="#top">Top</a>
