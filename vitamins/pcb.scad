@@ -750,14 +750,19 @@ module pcb(type) { //! Draw specified PCB
                 }
 }
 
-module pcb_spacer(screw, height, wall = 1.8) { //! Generate STL for PCB spacer
-    stl(str("pcb_spacer", round(screw_radius(screw) * 20), round(height * 10)));
+module pcb_spacer(screw, height, wall = 1.8, taper = 0) { //! Generate STL for PCB spacer
+    stl(str("pcb_spacer", round(screw_radius(screw) * 20), round(height * 10), taper ? str("_", taper) : ""));
 
     ir = screw_clearance_radius(screw);
     or = corrected_radius(ir) + wall;
 
-    linear_extrude(height = height)
-        poly_ring(or, ir);
+    if(height > taper)
+        linear_extrude(height = height - taper)
+            poly_ring(or, ir);
+
+    if(taper)
+        linear_extrude(height = height)
+            poly_ring(ir + 2 * extrusion_width, ir);
 }
 
 module pcb_base(type, height, thickness, wall = 2) { //! Generate STL for a base with PCB spacers
@@ -798,12 +803,8 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
                 screw(screw, screw_length);
 
             color(pp1_colour)
-                if(taper) {
-                    h2 = max(0,  height - 2);
-                    if(h2)
-                        pcb_spacer(screw, h2);
-                    pcb_spacer(screw, height, 2 * extrusion_width); // Thin as can be at the top because there is no clearance around the holes.
-                }
+                if(taper)
+                    pcb_spacer(screw, height, taper = 2);
                 else
                     pcb_spacer(screw, height);
 
