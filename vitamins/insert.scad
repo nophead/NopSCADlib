@@ -107,3 +107,45 @@ module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to tak
                 insert_hole(type, max(0, z - insert_hole_length(type) - 2 * layer_height));
         }
 }
+
+module insert_lug(insert, wall, side, counter_bore = 0) {
+    boss_r = insert_boss_radius(insert, wall);
+    boss_h = insert_hole_length(insert);
+    boss_h2 = boss_h + counter_bore;
+    translate_z(-boss_h)
+        linear_extrude(height = boss_h)
+             difference() {
+                hull() {
+                    circle(boss_r);
+
+                    translate([side * (boss_r - 1), 0])
+                        square([eps, 2 * boss_r], center = true);
+                }
+                poly_circle(insert_hole_radius(insert));
+            }
+
+    // insert boss counter_bore
+    translate_z(-boss_h2) {
+        linear_extrude(height = counter_bore + eps)
+             difference() {
+                hull() {
+                    circle(boss_r);
+
+                    translate([side * (boss_r - 1), 0])
+                        square([eps, 2 * boss_r], center = true);
+                }
+                poly_circle(insert_screw_diameter(insert) / 2 + 0.1);
+            }
+
+        // support cones
+        hull() {
+            cylinder(h = eps, r = boss_r - eps);
+
+            translate([side * (boss_r - 1), 0])
+                cube([eps, 2 * boss_r, eps], center = true);
+
+            translate([side * (boss_r - wall + eps), 0, - (2 * boss_r - wall)])
+                cube(eps, center = true);
+        }
+    }
+}

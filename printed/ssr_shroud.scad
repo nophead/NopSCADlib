@@ -33,10 +33,8 @@ wall = 1.8;
 top = 1.5;
 screw = M3_cap_screw;
 insert = screw_insert(screw);
-boss_r = wall + corrected_radius(insert_hole_radius(insert));
-boss_h = insert_hole_length(insert);
+boss_r = insert_boss_radius(insert, wall);
 counter_bore = 2;
-boss_h2 = boss_h + counter_bore;
 rad = 3;
 clearance = layer_height;
 
@@ -61,7 +59,6 @@ module ssr_shroud_holes(type, cable_d) { //! Drill the screw and ziptie holes
         translate([ssr_shroud_cable_x(type, cable_d), side * (ssr_width(type) / 2 - 2 * boss_r)])
             rotate(-90)
                 cable_tie_holes(cable_d / 2, h = 0);
-
 }
 
 module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a specified ssr and cable
@@ -103,45 +100,11 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
                             vertical_tearslot(h = 0, r = cable_d / 2, l = cable_d);
                     }
     // insert boss
-    translate_z(height - boss_h)
-        linear_extrude(height = boss_h)
-            ssr_shroud_hole_positions(type)
-                difference() {
-                    hull() {
-                        circle(boss_r);
-
-                        translate([0, -$side * (boss_r - 1)])
-                            square([2 * boss_r, eps], center = true);
-                    }
-                    poly_circle(insert_hole_radius(insert));
-                }
-
-    // insert boss counter_bore
-    translate_z(height - boss_h2)
-        linear_extrude(height = counter_bore + eps)
-            ssr_shroud_hole_positions(type)
-                difference() {
-                    hull() {
-                        circle(boss_r);
-
-                        translate([0, -$side * (boss_r - 1)])
-                            square([2 * boss_r, eps], center = true);
-                    }
-                    poly_circle(insert_screw_diameter(insert) / 2 + 0.1);
-                }
-    // support cones
     ssr_shroud_hole_positions(type)
-        hull() {
-            translate_z(-height + boss_h2) {
-                cylinder(h = eps, r = boss_r - eps);
-
-                translate([0, -$side * (boss_r - 1)])
-                    cube([2 * boss_r, eps, eps], center = true);
-            }
-            translate([0, -$side * (boss_r - wall), -height + boss_h2 + (2 * boss_r - wall)])
-                cube(eps);
-        }
-
+        vflip()
+            translate_z(height)
+                rotate(90)
+                    insert_lug(insert, wall, $side, counter_bore);
 }
 
 module ssr_shroud_assembly(type, cable_d, name) //! The printed parts with inserts fitted
@@ -153,7 +116,6 @@ assembly(str("ssr_shroud_", name)) {
 
     ssr_shroud_hole_positions(type)
         insert(insert);
-
 }
 
 module ssr_shroud_fastened_assembly(type, cable_d, thickness, name) //! Assembly with screws in place
@@ -177,6 +139,4 @@ module ssr_shroud_fastened_assembly(type, cable_d, thickness, name) //! Assembly
                     color(grey20)
                         cylinder(d = cable_d, h = 20, center = true);
         }
-
-
 }

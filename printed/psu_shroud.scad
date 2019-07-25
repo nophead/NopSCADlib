@@ -33,10 +33,8 @@ wall = 1.8;
 top = 1.5;
 screw = M3_cap_screw;
 insert = screw_insert(screw);
-boss_r = wall + corrected_radius(insert_hole_radius(insert));
-boss_h = insert_hole_length(insert);
+boss_r = insert_boss_radius(insert, wall);
 counter_bore = 2;
-boss_h2 = boss_h + counter_bore;
 rad = 2;
 clearance = layer_height;
 overlap = 6;
@@ -137,49 +135,13 @@ module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file f
                         translate([0, height / 2])
                                 vertical_tearslot(h = 0, r = cable_d / 2, l = cable_d);
                 }
-
-    mirror([0, 1, 0]) {
-        // insert boss
-        translate_z(height - boss_h)
-            linear_extrude(height = boss_h)
-                psu_shroud_hole_positions(type)
-                    difference() {
-                        hull() {
-                            circle(boss_r);
-
-                            translate([0, $side * (boss_r - 1)])
-                                square([2 * boss_r, eps], center = true);
-                        }
-                        poly_circle(insert_hole_radius(insert));
-                    }
-
-        // insert boss counter_bore
-        translate_z(height - boss_h2)
-            linear_extrude(height = counter_bore + eps)
-                psu_shroud_hole_positions(type)
-                    difference() {
-                        hull() {
-                            circle(boss_r);
-
-                            translate([0, $side * (boss_r - 1)])
-                                square([2 * boss_r, eps], center = true);
-                        }
-                        poly_circle(insert_screw_diameter(insert) / 2 + 0.1);
-                    }
-        // support cones
-        translate_z(height - boss_h2)
-            psu_shroud_hole_positions(type)
-                hull() {
-                    cylinder(h = eps, r = boss_r - eps);
-
-                    translate([0, $side * (boss_r - 1)])
-                        cube([2 * boss_r, eps, eps], center = true);
-
-                    translate([0, $side * (boss_r - wall), - (2 * boss_r - wall)])
-                        cube(eps);
-                }
-    }
-}
+    // insert lugs
+    mirror([0, 1, 0])
+        psu_shroud_hole_positions(type)
+            translate_z(height)
+                rotate(90)
+                    insert_lug(insert, wall, $side, counter_bore);
+ }
 
 module psu_shroud_assembly(type, cable_d, name, cables = 1) //! The printed parts with inserts fitted
 assembly(str("psu_shroud_", name)) {
