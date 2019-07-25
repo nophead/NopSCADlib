@@ -40,6 +40,7 @@ use <tests/inserts.scad>
 use <tests/jack.scad>
 use <tests/leadnuts.scad>
 use <tests/leds.scad>
+use <tests/ldrs.scad>
 use <tests/light_strips.scad>
 use <tests/linear_bearings.scad>
 use <tests/meter.scad>
@@ -251,6 +252,9 @@ components_y = toggles_y + 40;
 
 translate([x2, leds_y])
     leds();
+
+translate([x2 + 40, leds_y])
+    ldrs();
 
 translate([x2 + 8, carriers_y])
     carriers();

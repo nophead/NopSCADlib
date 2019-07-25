@@ -108,7 +108,7 @@ module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to tak
         }
 }
 
-module insert_lug(insert, wall, side, counter_bore = 0) {
+module insert_lug(insert, wall, side, counter_bore = 0) { //! Make a flying insert lug, see [ssr_shroud](#Ssr_shroud)
     boss_r = insert_boss_radius(insert, wall);
     boss_h = insert_hole_length(insert);
     boss_h2 = boss_h + counter_bore;
