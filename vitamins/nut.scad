@@ -58,7 +58,7 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
                     rounded_cylinder(r = outer_rad * cos(30) , h = nyloc_thickness, r2 = (nyloc_thickness - thickness) / 2, ir = hole_rad);
         }
     if($children)
-        translate_z(thickness)
+        translate_z(nut_thickness(type, nyloc))
             children();
 }
 
