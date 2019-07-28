@@ -20,7 +20,8 @@ include <../global_defs.scad>
 use <../utils/fillet.scad>
 
 module fillets() {
-    fillet(3, 25);
+    rotate(180)
+        fillet(3, 10);
 }
 
 fillets();

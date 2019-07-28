@@ -28,5 +28,6 @@ module fillet(r, h, center = false) //! Fillet with specified radius and height
             translate([-eps, -eps, 0])
                 square(r + eps);
 
-            circle(r + eps);
+            translate([r, r])
+                circle(r + eps);
         }
