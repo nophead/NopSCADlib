@@ -63,6 +63,10 @@ module semi_circle(r, d = undef)                    //! A semi circle in the pos
             square([2 * sq, sq]);
     }
 
+module right_triangle(width, height, h, center = true) //! A right angled triangle with the 90&deg; corner at the origin. 3D when ```h``` is nonzero, otherwise 2D
+    extrude_if(h, center = center)
+        polygon(points = [[0,0], [width, 0], [0, height]]);
+
 include <sphere.scad>
 include <bom.scad>
 include <polyholes.scad>
