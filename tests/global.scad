@@ -25,6 +25,9 @@ module globals() {
 
         translate([30, 0])
             ellipse(15, 7);
+
+        translate([50, 0])
+            right_triangle(10, 20, 0);
     }
 }
 
