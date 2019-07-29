@@ -20,8 +20,8 @@
 //
 // Light dependent resistors.
 //
-small_ldr = ["small_ldr", "small", 5,   4.2, 1.8, 3.2, 2.5, 0.4];
-large_ldr = ["large_ldr", "large", 9.2, 7.9, 1.8, 6.8, 4.5, 0.5];
+small_ldr = ["small_ldr", "small", 5,   4.2, 2.0, 3.2, 2.5, 0.4];
+large_ldr = ["large_ldr", "large", 9.2, 7.9, 2.0, 6.8, 4.5, 0.5];
 
 ldrs = [small_ldr, large_ldr];
 
