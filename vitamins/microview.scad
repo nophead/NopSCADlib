@@ -43,14 +43,14 @@ module microview(cutout = false) {  //! Draw microview or generate a panel cutou
             translate_z(8.35) {
 
                 color("black")
-                    import("microview/GKM-002_R05_CHIP_UPPER_HOUSING-1.stl", convexity = 2);
+                    import("microview/GKM-002_R05_CHIP_UPPER_HOUSING-1.STL", convexity = 2);
 
                 translate([-2, 0, 0])
                     color("dimgray")
                         cube([12.5, 15.5, 4.41], center = true);
             }
             color("dimgray")
-                import("microview/GKM-003_R05_CHIP_LOWER_HOUSING.stl", convexity = 2);
+                import("microview/GKM-003_R05_CHIP_LOWER_HOUSING.STL", convexity = 2);
 
             for(side = [-1, 1], i = [0 : 7])
                 translate([side * inch(0.35), (i - 3.5) * inch(0.1)])
