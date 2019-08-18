@@ -26,6 +26,7 @@ from exports import make_parts
 from bom import boms
 from render import render
 from views import views
+from plateup import plateup
 
 if __name__ == '__main__':
     target = None if len(sys.argv) == 1 else sys.argv[1]
@@ -33,4 +34,6 @@ if __name__ == '__main__':
     for part in ['stl', 'dxf']:
         make_parts(target, part)
         render(target, part)
+        plateup(target, part)
+
     views(target)

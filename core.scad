@@ -25,3 +25,15 @@ include <global_defs.scad>
 // Global functions and modules
 //
 use <utils/core/global.scad>
+
+module use_stl(name) {               //! Import an STL to make a build platter
+    stl(name);
+
+    import(str("../stls/", name, ".stl"));
+}
+
+module use_dxf(name) {               //! Import a DXF to make a build panel
+    dxf(name);
+
+    import(str("../dxfs/", name, ".dxf"));
+}
