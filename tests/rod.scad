@@ -24,8 +24,13 @@ include <../vitamins/linear_bearings.scad>
 use <../vitamins/rod.scad>
 
 module rods()
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)])
+    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
+
         rod(bearing_rod_dia(linear_bearings[$i]), 80);
+
+        translate([0, 20])
+            studding(bearing_rod_dia(linear_bearings[$i]), 80);
+    }
 
 if($preview)
     rods();

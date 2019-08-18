@@ -2155,12 +2155,18 @@ Rocket switch. Also used for neon indicator in the same form factor.
 ---
 <a name="Rod"></a>
 ## Rod
-Steel rods, with optional chamfer.
+Steel rods and studding with chamfered ends.
 
 
 [vitamins/rod.scad](vitamins/rod.scad) Implementation.
 
 [tests/rod.scad](tests/rod.scad) Code for this example.
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```rod(d , l)``` | Draw a smooth rod with specified length and diameter |
+| ```studding(d , l)``` | Draw a threaded rod with specified length and diameter |
 
 ![rod](tests/png/rod.png)
 
@@ -2174,6 +2180,13 @@ Steel rods, with optional chamfer.
 |   1 | ```rod(5, 80)``` |  Smooth rod 5mm x 80mm |
 |   1 | ```rod(6, 80)``` |  Smooth rod 6mm x 80mm |
 |   1 | ```rod(8, 80)``` |  Smooth rod 8mm x 80mm |
+|   1 | ```studding(10, 80)``` |  Threaded rod M10 x 80mm |
+|   1 | ```studding(12, 80)``` |  Threaded rod M12 x 80mm |
+|   1 | ```studding(3, 80)``` |  Threaded rod M3 x 80mm |
+|   1 | ```studding(4, 80)``` |  Threaded rod M4 x 80mm |
+|   1 | ```studding(5, 80)``` |  Threaded rod M5 x 80mm |
+|   1 | ```studding(6, 80)``` |  Threaded rod M6 x 80mm |
+|   1 | ```studding(8, 80)``` |  Threaded rod M8 x 80mm |
 
 
 <a href="#top">Top</a>
