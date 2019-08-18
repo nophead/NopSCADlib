@@ -107,7 +107,7 @@ def tests(tests):
     #
     # List of individual part files
     #
-    scads = [i for i in os.listdir(scad_dir) if i[-5:] == ".scad"]
+    scads = [i for i in sorted(os.listdir(scad_dir)) if i[-5:] == ".scad"]
 
     for scad in scads:
         base_name = scad[:-5]
@@ -257,7 +257,7 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
             print('<tr>',  file = doc_file, end = '')
             for type in types:
                 if i < len(index[type]):
-                    name = index[type][i]
+                    name = sorted(index[type])[i]
                     print('<td> <a href = "#' + name + '">' + name + '</a> </td>', file = doc_file, end = '')
                 else:
                     print('<td></td>', file = doc_file, end = '')

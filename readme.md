@@ -18,16 +18,16 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 ## Table of Contents<a name="top"/>
 <table><tr>
 <th align="left"> Vitamins A-N </th><th align="left"> Vitamins O-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
 <tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
 <tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
 <tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
 <tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
 <tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
 <tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
@@ -480,55 +480,6 @@ Various electronic components used in hot ends and heated beds.
 <a href="#top">Top</a>
 
 ---
-<a name="Displays"></a>
-## Displays
-LCD dispays.
-
-
-[vitamins/displays.scad](vitamins/displays.scad) Object definitions.
-
-[vitamins/display.scad](vitamins/display.scad) Implementation.
-
-[tests/displays.scad](tests/displays.scad) Code for this example.
-
-### Properties
-| Function | Description |
-|:--- |:--- |
-| ```display_aperture(type)``` | Size of the aperture including its depth |
-| ```display_height(type)``` | Depth of the metal part |
-| ```display_pcb(type)``` | PCB mounted on the back |
-| ```display_pcb_offset(type)``` | 3D offset of the PCB centre |
-| ```display_ribbon(type)``` | Keep out region for ribbon cable |
-| ```display_thickness(type)``` | Height of the metal part |
-| ```display_threads(type)``` | Length that studs protrude from the PCB holes |
-| ```display_touch_screen(type)``` | Touch screen position and size |
-| ```display_width(type)``` | Width of the metal part |
-
-### Functions
-| Function | Description |
-|:--- |:--- |
-| ```display_depth(type)``` | Total thickness including touch screen and PCB |
-| ```display_ts_thickness(type)``` | Touch screen thickness or 0 |
-
-### Modules
-| Module | Description |
-|:--- |:--- |
-| ```display(type)``` | Draw specified display |
-| ```display_aperture(type, clearance, clear_pcb = false)``` | Make aperture cutout |
-
-![displays](tests/png/displays.png)
-
-### Vitamins
-| Qty | Module call | BOM entry |
-| ---:|:--- |:---|
-|   1 | ```display(HDMI5)``` |  HDMI display 5" |
-|   1 | ```display(LCD1602A)``` |  LCD display 1602A |
-|   1 | ```display(SSD1963_4p3)``` |  LCD display SSD1963 4.3" |
-
-
-<a href="#top">Top</a>
-
----
 <a name="D_connectors"></a>
 ## D_connectors
 D-connectors. Can be any number of ways, male or female, solder buckets, PCB mount or IDC, with or without pillars.
@@ -580,6 +531,55 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 |   1 | ```d_plug(DCONN9)``` |  D-type 9 way  plug |
 |   1 | ```d_socket(DCONN9)``` |  D-type 9 way  socket |
 |   6 | ```d_pillar()``` |  D-type connector pillar |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Displays"></a>
+## Displays
+LCD dispays.
+
+
+[vitamins/displays.scad](vitamins/displays.scad) Object definitions.
+
+[vitamins/display.scad](vitamins/display.scad) Implementation.
+
+[tests/displays.scad](tests/displays.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```display_aperture(type)``` | Size of the aperture including its depth |
+| ```display_height(type)``` | Depth of the metal part |
+| ```display_pcb(type)``` | PCB mounted on the back |
+| ```display_pcb_offset(type)``` | 3D offset of the PCB centre |
+| ```display_ribbon(type)``` | Keep out region for ribbon cable |
+| ```display_thickness(type)``` | Height of the metal part |
+| ```display_threads(type)``` | Length that studs protrude from the PCB holes |
+| ```display_touch_screen(type)``` | Touch screen position and size |
+| ```display_width(type)``` | Width of the metal part |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```display_depth(type)``` | Total thickness including touch screen and PCB |
+| ```display_ts_thickness(type)``` | Touch screen thickness or 0 |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```display(type)``` | Draw specified display |
+| ```display_aperture(type, clearance, clear_pcb = false)``` | Make aperture cutout |
+
+![displays](tests/png/displays.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```display(HDMI5)``` |  HDMI display 5" |
+|   1 | ```display(LCD1602A)``` |  LCD display 1602A |
+|   1 | ```display(SSD1963_4p3)``` |  LCD display SSD1963 4.3" |
 
 
 <a href="#top">Top</a>
@@ -1545,6 +1545,34 @@ If a nut is given a child then it gets placed on its top surface.
 <a href="#top">Top</a>
 
 ---
+<a name="O_ring"></a>
+## O_ring
+Nitrile rubber O-rings.
+
+Just a black torus specified by internal diameter, ```id``` and ```minor_d``` plus a BOM entry.
+Can be shown stretched by specifying the ```actual_id```.
+
+
+[vitamins/o_ring.scad](vitamins/o_ring.scad) Implementation.
+
+[tests/o_ring.scad](tests/o_ring.scad) Code for this example.
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```O_ring(id, minor_d, actual_id = 0)``` | Draw O-ring with specified internal diameter and minor diameter. ```actual_id``` can be used to stretch it around something. |
+
+![o_ring](tests/png/o_ring.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```O_ring(2.5, 1.6)``` |  O-ring nitrile 2.5mm x 1.6mm |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Opengrab"></a>
 ## Opengrab
 Nicodrone OpenGrab V3 electro-permananet magnet, see <https://nicadrone.com/products/epm-v3>.
@@ -1577,34 +1605,6 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 | ---:|:--- |:---|
 |   1 | ```opengrab_target()``` |  OpenGrab  silicon steel target plate |
 |   1 | ```opengrab()``` |  OpenGrab V3 electro permanent magnet |
-
-
-<a href="#top">Top</a>
-
----
-<a name="O_ring"></a>
-## O_ring
-Nitrile rubber O-rings.
-
-Just a black torus specified by internal diameter, ```id``` and ```minor_d``` plus a BOM entry.
-Can be shown stretched by specifying the ```actual_id```.
-
-
-[vitamins/o_ring.scad](vitamins/o_ring.scad) Implementation.
-
-[tests/o_ring.scad](tests/o_ring.scad) Code for this example.
-
-### Modules
-| Module | Description |
-|:--- |:--- |
-| ```O_ring(id, minor_d, actual_id = 0)``` | Draw O-ring with specified internal diameter and minor diameter. ```actual_id``` can be used to stretch it around something. |
-
-![o_ring](tests/png/o_ring.png)
-
-### Vitamins
-| Qty | Module call | BOM entry |
-| ---:|:--- |:---|
-|   1 | ```O_ring(2.5, 1.6)``` |  O-ring nitrile 2.5mm x 1.6mm |
 
 
 <a href="#top">Top</a>
