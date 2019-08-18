@@ -24,8 +24,8 @@ from __future__ import print_function
 
 import subprocess, sys
 
-def run(*args, silent = False):
-    cmd = ["openscad"] + list(args)
+def _run(args, silent):
+    cmd = ["openscad"] + args
     if not silent:
         for arg in cmd:
             print(arg, end=" ")
@@ -37,3 +37,9 @@ def run(*args, silent = False):
             print(line[:-1])
     if rc:
         sys.exit(rc)
+
+def run(*args):
+    _run(list(args), False)
+
+def run_silent(*args):
+    _run(list(args), True);

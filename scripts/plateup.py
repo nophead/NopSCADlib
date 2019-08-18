@@ -67,7 +67,7 @@ def plateup(target, part_type):
             log_name = 'openscad.log'
         else:
             log_name = 'openscad.echo'
-            openscad.run("-D$bom=1", "-o", log_name, src_file, silent = True)
+            openscad.run_silent("-D$bom=1", "-o", log_name, src_file)
         #
         # Add the files on the BOM to the used list
         #
