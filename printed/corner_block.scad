@@ -24,6 +24,11 @@
 //! See [butt_box](#Butt_box) for an example of usage.
 //!
 //! Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
+//!
+//! Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting ```show_block``` to false.
+//! This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
+//!
+//! Star washers can be omitted by setting ```star_washers``` to false.
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
