@@ -2339,6 +2339,7 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 |   1 | ```sheet(MDF19, 30, 30, 2)``` |  Sheet MDF 30mm x 30mm x 19mm |
 |   1 | ```sheet(MDF6, 30, 30, 2)``` |  Sheet MDF 30mm x 30mm x 6mm |
 |   1 | ```sheet(PMMA10, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 10mm |
+|   1 | ```sheet(PMMA2, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 2mm |
 |   1 | ```sheet(PMMA3, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 3mm |
 |   1 | ```sheet(PMMA6, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 6mm |
 |   1 | ```sheet(PMMA8, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 8mm |
