@@ -1688,7 +1688,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
 |  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
-|  12 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|  16 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |  12 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
@@ -1704,6 +1704,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
 |   4 | ```screw(M2p5_cap_screw, 16)``` |  Screw M2.5 cap x 16mm |
 |   8 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
+|   4 | ```screw(M2p5_pan_screw, 30)``` |  Screw M2.5 pan x 30mm |
 |   8 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
 |   4 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
 |  12 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
@@ -1711,9 +1712,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
 |  16 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
-|  12 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  16 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|   1 | ```pcb(ZC_A0591)``` |  ZC-A0591 ULN2003 driver PCB |
 
 ### Printed
 | Qty | Filename |
@@ -1722,10 +1724,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer20110.stl |
 |   4 | pcb_spacer20120.stl |
 |   4 | pcb_spacer20130.stl |
-|   4 | pcb_spacer2560.stl |
-|   8 | pcb_spacer2570.stl |
-|   4 | pcb_spacer2580.stl |
-|   4 | pcb_spacer2590.stl |
+|   4 | pcb_spacer25200.stl |
+|   4 | pcb_spacer2570.stl |
+|   4 | pcb_spacer2580_2.stl |
+|   4 | pcb_spacer2590_2.stl |
 |   4 | pcb_spacer30140.stl |
 |   4 | pcb_spacer30150.stl |
 |   4 | pcb_spacer30190.stl |
