@@ -34,6 +34,7 @@ use <tests/d_connectors.scad>
 use <tests/displays.scad>
 use <tests/fans.scad>
 use <tests/fuseholder.scad>
+use <tests/geared_steppers.scad>
 use <tests/hot_ends.scad>
 use <tests/iecs.scad>
 use <tests/inserts.scad>
@@ -299,6 +300,9 @@ steppers_y = batteries_y + 70;
 
 translate([x3, veroboard_y])
     veroboard_test();
+
+translate([x3 + 70, veroboard_y + 30])
+    geared_steppers();
 
 translate([x3, d_connectors_y])
     d_connectors();
