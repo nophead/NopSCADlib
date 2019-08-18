@@ -48,11 +48,12 @@ module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius ``
     tangents = rounded_polygon_tangents(outside_path);
     length = ceil(rounded_polygon_length(outside_path, tangents) + ziptie_tail(type) + latch.z + 1);
     len = length <= 100 ? 100 : length;
+    width =  ziptie_width(type);
 
-    vitamin(str("ziptie(", type[0], ", ", r, "): Ziptie ", len, "mm min length"));
+    vitamin(str("ziptie(", type[0], ", ", r, "): Ziptie ", width, "mm x ", len, "mm min length"));
 
     color(ziptie_colour(type)){
-        linear_extrude(height = ziptie_width(type), center = true)
+        linear_extrude(height = width, center = true)
             difference() {
                 rounded_polygon(outside_path, tangents);
                 rounded_polygon(inside_path);
