@@ -24,6 +24,11 @@
 //! See [butt_box](#Butt_box) for an example of usage.
 //!
 //! Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
+//!
+//! Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting ```show_block``` to false.
+//! This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
+//!
+//! Star washers can be omitted by setting ```star_washers``` to false.
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
@@ -57,8 +62,8 @@ module corner_block_v_hole(screw = def_screw) //! Place children at the bottom s
     multmatrix(corner_block_v_hole(screw))
         children();
 
-module corner_block_h_holes(screw = def_screw) //! Place children at the side screw holes
-    for(p = corner_block_h_holes(screw))
+module corner_block_h_holes(screw = def_screw, index = undef) //! Place children at the side screw holes
+    for(p = !is_undef(index) ? [corner_block_h_holes(screw)[index]] : corner_block_h_holes(screw))
         multmatrix(p)
             children();
 
@@ -126,22 +131,33 @@ assembly(str("corner_block_M", 20 * screw_radius(screw))) {
         insert(insert);
 }
 
-module fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false) { //! Printed block with all fasteners
+module fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true) { //! Printed block with all fasteners
+    thickness2 = !is_undef(thickness_below) ? thickness_below : thickness;
+    thickness3 = !is_undef(thickness_side2) ? thickness_side2 : thickness;
     washer = screw_washer(screw);
     insert = screw_insert(screw);
-    screw_length = screw_shorter_than(2 * washer_thickness(washer) + thickness + insert_length(insert) + overshoot);
+    function screw_length(t) = screw_shorter_than((star_washers ? 2 : 1) * washer_thickness(washer) + t + insert_length(insert) + overshoot);
+    screw_length = screw_length(thickness);
+    screw_length2 = screw_length(thickness2);
+    screw_length3 = screw_length(thickness3);
 
-    corner_block_assembly(screw, name) children();
+    if(show_block)
+        corner_block_assembly(screw, name) children();
 
-    corner_block_h_holes(screw)
-        translate_z(thickness)
-            screw_and_washer(screw, screw_length, true);
+    if(thickness)
+        corner_block_h_holes(screw, 0)
+            translate_z(thickness)
+                screw_and_washer(screw, screw_length, star_washers);
 
-    thickness2 = thickness_below ? thickness_below : thickness;
-    screw_length2 = screw_shorter_than(2 * washer_thickness(washer) + thickness2 + insert_length(insert) + overshoot);
-    corner_block_v_hole(screw)
-        translate_z(thickness2)
-            screw_and_washer(screw, screw_length2, true);
+    if(thickness3)
+        corner_block_h_holes(screw, 1)
+            translate_z(thickness3)
+                screw_and_washer(screw, screw_length3, star_washers);
+
+    if(thickness2)
+        corner_block_v_hole(screw)
+            translate_z(thickness2)
+                screw_and_washer(screw, screw_length2, star_washers);
 }
 
 module corner_block_M20_stl() corner_block(M2_cap_screw);

@@ -12,6 +12,8 @@ They should work with both Python 2 and Python 3.
 | ```dxfs.py``` | Generates DXF files for all the routed parts listed on the BOM or a specified list. |
 | ```gallery.py``` | Finds projects and adds them to the gallery. |
 | ```make_all.py``` | Generates all the files for a project by running ```bom.py```, ```stls.py```, ```dxfs.py```, ```render.py``` and ```views.py```. |
+| ```panels.py``` | Panelises DXF files so they can be routed together by running scad files found in the ```panels``` directory. |
+| ```platters.py``` | Generates build plates of STL files for efficient printing by running scad files found in the ```platters``` directory. |
 | ```render.py``` | Renders STL and DXF files to PNG for inclusion in the build instructions. |
 | ```set_config.py``` | Sets the target configuration for multi-target projects that have variable configurations. |
 | ```stls.py``` | Generates STL files for all the printed parts listed on the BOM or a specified list. |

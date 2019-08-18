@@ -18,33 +18,34 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 ## Table of Contents<a name="top"/>
 <table><tr>
 <th align="left"> Vitamins A-N </th><th align="left"> Vitamins O-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
 <tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
 <tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
 <tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
 <tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
 <tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
 <tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Nuts">Nuts</a> </td><td></td><td></td><td></td><td></td></tr>
 </table>
 
@@ -479,55 +480,6 @@ Various electronic components used in hot ends and heated beds.
 <a href="#top">Top</a>
 
 ---
-<a name="Displays"></a>
-## Displays
-LCD dispays.
-
-
-[vitamins/displays.scad](vitamins/displays.scad) Object definitions.
-
-[vitamins/display.scad](vitamins/display.scad) Implementation.
-
-[tests/displays.scad](tests/displays.scad) Code for this example.
-
-### Properties
-| Function | Description |
-|:--- |:--- |
-| ```display_aperture(type)``` | Size of the aperture including its depth |
-| ```display_height(type)``` | Depth of the metal part |
-| ```display_pcb(type)``` | PCB mounted on the back |
-| ```display_pcb_offset(type)``` | 3D offset of the PCB centre |
-| ```display_ribbon(type)``` | Keep out region for ribbon cable |
-| ```display_thickness(type)``` | Height of the metal part |
-| ```display_threads(type)``` | Length that studs protrude from the PCB holes |
-| ```display_touch_screen(type)``` | Touch screen position and size |
-| ```display_width(type)``` | Width of the metal part |
-
-### Functions
-| Function | Description |
-|:--- |:--- |
-| ```display_depth(type)``` | Total thickness including touch screen and PCB |
-| ```display_ts_thickness(type)``` | Touch screen thickness or 0 |
-
-### Modules
-| Module | Description |
-|:--- |:--- |
-| ```display(type)``` | Draw specified display |
-| ```display_aperture(type, clearance, clear_pcb = false)``` | Make aperture cutout |
-
-![displays](tests/png/displays.png)
-
-### Vitamins
-| Qty | Module call | BOM entry |
-| ---:|:--- |:---|
-|   1 | ```display(HDMI5)``` |  HDMI display 5" |
-|   1 | ```display(LCD1602A)``` |  LCD display 1602A |
-|   1 | ```display(SSD1963_4p3)``` |  LCD display SSD1963 4.3" |
-
-
-<a href="#top">Top</a>
-
----
 <a name="D_connectors"></a>
 ## D_connectors
 D-connectors. Can be any number of ways, male or female, solder buckets, PCB mount or IDC, with or without pillars.
@@ -579,6 +531,55 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 |   1 | ```d_plug(DCONN9)``` |  D-type 9 way  plug |
 |   1 | ```d_socket(DCONN9)``` |  D-type 9 way  socket |
 |   6 | ```d_pillar()``` |  D-type connector pillar |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Displays"></a>
+## Displays
+LCD dispays.
+
+
+[vitamins/displays.scad](vitamins/displays.scad) Object definitions.
+
+[vitamins/display.scad](vitamins/display.scad) Implementation.
+
+[tests/displays.scad](tests/displays.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```display_aperture(type)``` | Size of the aperture including its depth |
+| ```display_height(type)``` | Depth of the metal part |
+| ```display_pcb(type)``` | PCB mounted on the back |
+| ```display_pcb_offset(type)``` | 3D offset of the PCB centre |
+| ```display_ribbon(type)``` | Keep out region for ribbon cable |
+| ```display_thickness(type)``` | Height of the metal part |
+| ```display_threads(type)``` | Length that studs protrude from the PCB holes |
+| ```display_touch_screen(type)``` | Touch screen position and size |
+| ```display_width(type)``` | Width of the metal part |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```display_depth(type)``` | Total thickness including touch screen and PCB |
+| ```display_ts_thickness(type)``` | Touch screen thickness or 0 |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```display(type)``` | Draw specified display |
+| ```display_aperture(type, clearance, clear_pcb = false)``` | Make aperture cutout |
+
+![displays](tests/png/displays.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```display(HDMI5)``` |  HDMI display 5" |
+|   1 | ```display(LCD1602A)``` |  LCD display 1602A |
+|   1 | ```display(SSD1963_4p3)``` |  LCD display SSD1963 4.3" |
 
 
 <a href="#top">Top</a>
@@ -682,6 +683,57 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```fuseholder(6)``` |  Fuse holder 20mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Geared_steppers"></a>
+## Geared_steppers
+Geared tin can steppers
+
+
+[vitamins/geared_steppers.scad](vitamins/geared_steppers.scad) Object definitions.
+
+[vitamins/geared_stepper.scad](vitamins/geared_stepper.scad) Implementation.
+
+[tests/geared_steppers.scad](tests/geared_steppers.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```gs_boss_d(type)``` | Boss around the shaft diameter |
+| ```gs_boss_h(type)``` | Boss around the shaft height |
+| ```gs_bulge2_d(type)``` | Plastic rear bulge depth from centre |
+| ```gs_bulge2_h(type)``` | Plastic rear bulge height |
+| ```gs_bulge2_w(type)``` | Plastic rear bulge width |
+| ```gs_bulge_d(type)``` | Plastic bulge depth from centre |
+| ```gs_bulge_h(type)``` | Plastic bulge height |
+| ```gs_bulge_w(type)``` | Plastic bulge width |
+| ```gs_diameter(type)``` | Can diameter |
+| ```gs_flat_length(type)``` | Shaft flat length |
+| ```gs_height(type)``` | Can height |
+| ```gs_hole_d(type)``` | Screw hole diameter |
+| ```gs_lug_t(type)``` | Screw lug thickness |
+| ```gs_lug_w(type)``` | Screw lug width |
+| ```gs_offset(type)``` | Offset of the shaft from the centre of the can |
+| ```gs_pitch(type)``` | Screw pitch |
+| ```gs_shaft_d(type)``` | Shaft diameter |
+| ```gs_shaft_flat(type)``` | Shaft width across the flats |
+| ```gs_shaft_length(type)``` | Shaft length |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```geared_stepper(type)``` | Draw the specified geared stepper |
+| ```geared_stepper_screw_positions(type)``` | Place children at the screw positions |
+
+![geared_steppers](tests/png/geared_steppers.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```geared_stepper(28BYJ_48)``` |  Geared stepper - 28BYJ-48 5V |
 
 
 <a href="#top">Top</a>
@@ -1493,6 +1545,34 @@ If a nut is given a child then it gets placed on its top surface.
 <a href="#top">Top</a>
 
 ---
+<a name="O_ring"></a>
+## O_ring
+Nitrile rubber O-rings.
+
+Just a black torus specified by internal diameter, ```id``` and ```minor_d``` plus a BOM entry.
+Can be shown stretched by specifying the ```actual_id```.
+
+
+[vitamins/o_ring.scad](vitamins/o_ring.scad) Implementation.
+
+[tests/o_ring.scad](tests/o_ring.scad) Code for this example.
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```O_ring(id, minor_d, actual_id = 0)``` | Draw O-ring with specified internal diameter and minor diameter. ```actual_id``` can be used to stretch it around something. |
+
+![o_ring](tests/png/o_ring.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```O_ring(2.5, 1.6)``` |  O-ring nitrile 2.5mm x 1.6mm |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Opengrab"></a>
 ## Opengrab
 Nicodrone OpenGrab V3 electro-permananet magnet, see <https://nicadrone.com/products/epm-v3>.
@@ -1525,34 +1605,6 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 | ---:|:--- |:---|
 |   1 | ```opengrab_target()``` |  OpenGrab  silicon steel target plate |
 |   1 | ```opengrab()``` |  OpenGrab V3 electro permanent magnet |
-
-
-<a href="#top">Top</a>
-
----
-<a name="O_ring"></a>
-## O_ring
-Nitrile rubber O-rings.
-
-Just a black torus specified by internal diameter, ```id``` and ```minor_d``` plus a BOM entry.
-Can be shown stretched by specifying the ```actual_id```.
-
-
-[vitamins/o_ring.scad](vitamins/o_ring.scad) Implementation.
-
-[tests/o_ring.scad](tests/o_ring.scad) Code for this example.
-
-### Modules
-| Module | Description |
-|:--- |:--- |
-| ```O_ring(id, minor_d, actual_id = 0)``` | Draw O-ring with specified internal diameter and minor diameter. ```actual_id``` can be used to stretch it around something. |
-
-![o_ring](tests/png/o_ring.png)
-
-### Vitamins
-| Qty | Module call | BOM entry |
-| ---:|:--- |:---|
-|   1 | ```O_ring(2.5, 1.6)``` |  O-ring nitrile 2.5mm x 1.6mm |
 
 
 <a href="#top">Top</a>
@@ -1606,11 +1658,12 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_assembly(type, height, thickness)``` | Draw PCB assembly with spaces and fasteners in place |
 | ```pcb_base(type, height, thickness, wall = 2)``` | Generate STL for a base with PCB spacers |
 | ```pcb_component(comp, cutouts = false, angle = undef)``` | Draw pcb component from description |
+| ```pcb_component_position(type, name)``` | Position child at the specified component position |
 | ```pcb_components(type, cutouts = false, angle = undef)``` | Draw list of PCB components on the PCB |
 | ```pcb_cutouts(type, angle = undef)``` | Make cut outs to clear components on a PCB |
 | ```pcb_grid(type, x, y, z = 0)``` | Positions children at specified grid positions |
 | ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
-| ```pcb_spacer(screw, height, wall = 1.8)``` | Generate STL for PCB spacer |
+| ```pcb_spacer(screw, height, wall = 1.8, taper = 0)``` | Generate STL for PCB spacer |
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
 | ```terminal_35(ways)``` | Draw 3.5mm terminal block |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
@@ -1636,7 +1689,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
 |  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
-|  12 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|  16 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |  12 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
@@ -1652,6 +1705,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
 |   4 | ```screw(M2p5_cap_screw, 16)``` |  Screw M2.5 cap x 16mm |
 |   8 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
+|   4 | ```screw(M2p5_pan_screw, 30)``` |  Screw M2.5 pan x 30mm |
 |   8 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
 |   4 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
 |  12 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
@@ -1659,9 +1713,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
 |  16 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
-|  12 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  16 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|   1 | ```pcb(ZC_A0591)``` |  ZC-A0591 ULN2003 driver PCB |
 
 ### Printed
 | Qty | Filename |
@@ -1670,10 +1725,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer20110.stl |
 |   4 | pcb_spacer20120.stl |
 |   4 | pcb_spacer20130.stl |
-|   4 | pcb_spacer2560.stl |
-|   8 | pcb_spacer2570.stl |
-|   4 | pcb_spacer2580.stl |
-|   4 | pcb_spacer2590.stl |
+|   4 | pcb_spacer25200.stl |
+|   4 | pcb_spacer2570.stl |
+|   4 | pcb_spacer2580_2.stl |
+|   4 | pcb_spacer2590_2.stl |
 |   4 | pcb_spacer30140.stl |
 |   4 | pcb_spacer30150.stl |
 |   4 | pcb_spacer30190.stl |
@@ -2101,12 +2156,18 @@ Rocket switch. Also used for neon indicator in the same form factor.
 ---
 <a name="Rod"></a>
 ## Rod
-Steel rods, with optional chamfer.
+Steel rods and studding with chamfered ends.
 
 
 [vitamins/rod.scad](vitamins/rod.scad) Implementation.
 
 [tests/rod.scad](tests/rod.scad) Code for this example.
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```rod(d , l)``` | Draw a smooth rod with specified length and diameter |
+| ```studding(d , l)``` | Draw a threaded rod with specified length and diameter |
 
 ![rod](tests/png/rod.png)
 
@@ -2120,6 +2181,13 @@ Steel rods, with optional chamfer.
 |   1 | ```rod(5, 80)``` |  Smooth rod 5mm x 80mm |
 |   1 | ```rod(6, 80)``` |  Smooth rod 6mm x 80mm |
 |   1 | ```rod(8, 80)``` |  Smooth rod 8mm x 80mm |
+|   1 | ```studding(10, 80)``` |  Threaded rod M10 x 80mm |
+|   1 | ```studding(12, 80)``` |  Threaded rod M12 x 80mm |
+|   1 | ```studding(3, 80)``` |  Threaded rod M3 x 80mm |
+|   1 | ```studding(4, 80)``` |  Threaded rod M4 x 80mm |
+|   1 | ```studding(5, 80)``` |  Threaded rod M5 x 80mm |
+|   1 | ```studding(6, 80)``` |  Threaded rod M6 x 80mm |
+|   1 | ```studding(8, 80)``` |  Threaded rod M8 x 80mm |
 
 
 <a href="#top">Top</a>
@@ -2285,6 +2353,7 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 |   1 | ```sheet(MDF19, 30, 30, 2)``` |  Sheet MDF 30mm x 30mm x 19mm |
 |   1 | ```sheet(MDF6, 30, 30, 2)``` |  Sheet MDF 30mm x 30mm x 6mm |
 |   1 | ```sheet(PMMA10, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 10mm |
+|   1 | ```sheet(PMMA2, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 2mm |
 |   1 | ```sheet(PMMA3, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 3mm |
 |   1 | ```sheet(PMMA6, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 6mm |
 |   1 | ```sheet(PMMA8, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 8mm |
@@ -2579,7 +2648,7 @@ Toggle switches
 | ---:|:--- |:---|
 |   1 | ```toggle(AP5236, 3)``` |  Toggle switch AP5236 |
 |   1 | ```toggle(CK7101, 3)``` |  Toggle switch CK7101 |
-|   1 | ```toggle(CK7105, 3)``` |  Toggle switch CK7101 |
+|   1 | ```toggle(CK7105, 3)``` |  Toggle switch CK7105 |
 |   1 | ```toggle(MS332F, 3)``` |  Toggle switch MS332F |
 
 
@@ -2921,7 +2990,7 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 |:--- |:--- |
 | ```cable_tie(cable_r, thickness)``` | A ziptie threaded around cable radius ```cable_r``` and through a panel with specified ```thickness```. |
 | ```cable_tie_holes(cable_r, h = 100)``` | Holes to thread a ziptie through a panel to make a cable tie. |
-| ```mouse_hole(cable, h = 100)``` | A mouse hole to allow a panel to go over a wire bundle. |
+| ```mouse_hole(cable, h = 100, teardrop = false)``` | A mouse hole to allow a panel to go over a wire bundle. |
 | ```ribbon_cable(ways, length)``` | Add ribbon cable to the BOM |
 | ```wire(color, strands, length, strand = 0.2)``` | Add stranded wire to the BOM |
 
@@ -3099,6 +3168,10 @@ and mounted components.
 A list specifies the internal dimensions, screw type, top, bottom and side sheet types and the block
 maximum spacing.
 
+ * An optional name can be specified to allow more then one box in a project.
+ * An optional list of fixing blocks to be omitted can be given.
+ * Star washers can be omitted by setting the 11th parameter to false.
+
 Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 
 
@@ -3112,26 +3185,29 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ```bbox_base_sheet(type)``` | Sheet type for the base |
 | ```bbox_depth(type)``` | Internal depth |
 | ```bbox_height(type)``` | Internal height |
+| ```bbox_name(type)``` | Optional name if there is more than one box in a project |
 | ```bbox_screw(type)``` | Screw type for corner blocks |
 | ```bbox_sheets(type)``` | Sheet type for the sides |
+| ```bbox_skip_blocks(type)``` | List of fixing blocks to skip, used to allow a hinged panel for example |
 | ```bbox_span(type)``` | Maximum span between fixing blocks |
 | ```bbox_top_sheet(type)``` | Sheet type for the top |
 | ```bbox_width(type)``` | Internal width |
+| ```star_washers(type)``` | Set to false to remove star washers. |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | ```_bbox_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true)``` | The box assembly, wrap with a local copy without parameters |
 | ```bbox_back(type)``` | Default back, can be overridden to customise |
-| ```bbox_back_blank(type)``` | 2D template for the back |
+| ```bbox_back_blank(type, sheet = false)``` | 2D template for the back |
 | ```bbox_base(type)``` | Default base, can be overridden to customise |
 | ```bbox_base_blank(type)``` | 2D template for the base |
 | ```bbox_front(type)``` | Default front, can be overridden to customise |
-| ```bbox_front_blank(type)``` | 2D template for the front |
+| ```bbox_front_blank(type, sheet = false)``` | 2D template for the front |
 | ```bbox_left(type)``` | Default left side, can be overridden to customise |
-| ```bbox_left_blank(type)``` | 2D template for the left side |
+| ```bbox_left_blank(type, sheet = false)``` | 2D template for the left side |
 | ```bbox_right(type)``` | Default right side, can be overridden to customise |
-| ```bbox_right_blank(type)``` | 2D template for the right side |
+| ```bbox_right_blank(type, sheet = false)``` | 2D template for the right side |
 | ```bbox_shelf_blank(type)``` | 2D template for a shelf |
 | ```bbox_top(type)``` | Default top, can be overridden to customise |
 | ```bbox_top_blank(type)``` | 2D template for the top |
@@ -3249,6 +3325,11 @@ See [butt_box](#Butt_box) for an example of usage.
 
 Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
 
+Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting ```show_block``` to false.
+This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
+
+Star washers can be omitted by setting ```star_washers``` to false.
+
 
 [printed/corner_block.scad](printed/corner_block.scad) Implementation.
 
@@ -3269,10 +3350,10 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 |:--- |:--- |
 | ```corner_block(screw = def_screw, name = false)``` | Generate the STL for a printed corner block |
 | ```corner_block_assembly(screw = def_screw, name = false)``` | The printed block with inserts |
-| ```corner_block_h_holes(screw = def_screw)``` | Place children at the side screw holes |
+| ```corner_block_h_holes(screw = def_screw, index = undef)``` | Place children at the side screw holes |
 | ```corner_block_holes(screw = def_screw)``` | Place children at all the holes |
 | ```corner_block_v_hole(screw = def_screw)``` | Place children at the bottom screw hole |
-| ```fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false)``` | Printed block with all fasteners |
+| ```fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true)``` | Printed block with all fasteners |
 
 ![corner_block](tests/png/corner_block.png)
 
@@ -3461,6 +3542,11 @@ See [butt_box](#Butt_box) for an example of usage.
 
 Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
 
+Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting ```show_block``` to false.
+This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
+
+Star washers can be omitted by setting ```star_washers``` to false.
+
 
 [printed/fixing_block.scad](printed/fixing_block.scad) Implementation.
 
@@ -3480,7 +3566,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef)``` | Assembly with fasteners in place |
+| ```fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef, show_block = true, star_washers = true)``` | Assembly with fasteners in place |
 | ```fixing_block(screw = def_screw)``` | Generate the STL |
 | ```fixing_block_assembly(screw = def_screw)``` | Printed part with the inserts inserted |
 | ```fixing_block_h_hole(screw = def_screw)``` | Position children on the horizontal hole |
@@ -3630,7 +3716,7 @@ inserts don't grip well in rubber.
 |:--- |:--- |
 | ```fastened_insert_foot_assembly(t = 3, type = insert_foot)``` | Assembly with fasteners in place for specified sheet thickness |
 | ```foot(type = foot)``` | Generate STL |
-| ```foot_assembly(t = 0, type = foot)``` | Assembly with fasteners in place for specified sheet thickness |
+| ```foot_assembly(t = 0, type = foot, flip = false)``` | Assembly with fasteners in place for specified sheet thickness |
 | ```insert_foot(type = insert_foot)``` | Generate STL for foot with insert |
 | ```insert_foot_assembly(type = insert_foot)``` | Printed part with insert in place |
 

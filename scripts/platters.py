@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #
 # NopSCADlib Copyright Chris Palmer 2018
 # nop.head@gmail.com
@@ -16,24 +18,16 @@
 # You should have received a copy of the GNU General Public License along with NopSCADlib.
 # If not, see <https://www.gnu.org/licenses/>.
 #
+#! Generates build plates of STL files for efficient printing by running scad files found in the ```platters``` directory.
 
-#
-# Run openscad
-#
 from __future__ import print_function
+import sys
 
-import subprocess, sys
+from plateup import plateup
 
-def run(*args, silent = False):
-    cmd = ["openscad"] + list(args)
-    if not silent:
-        for arg in cmd:
-            print(arg, end=" ")
-        print()
-    with open("openscad.log", "w") as log:
-        rc = subprocess.call(cmd, stdout = log, stderr = log)
-    for line in open("openscad.log", "rt"):
-        if 'ERROR:' in line or 'WARNING:' in line:
-            print(line[:-1])
-    if rc:
-        sys.exit(rc)
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        target = sys.argv[1]
+    else:
+        target = None
+    plateup(target, 'stl')

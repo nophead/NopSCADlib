@@ -667,6 +667,22 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     }
 }
 
+module pcb_component_position(type, name) { //! Position child at the specified component position
+    for(comp = pcb_components(type)) {
+        p = pcb_coord(type, [comp.x, comp.y]);
+        if(comp[3][0] == "-") {
+            if(comp[3] == str("-", name))
+                translate([p.x, p.y])
+                    vflip()
+                        children();
+        }
+        else
+            if(comp[3] == name)
+                translate([p.x, p.y, pcb_thickness(type)])
+                    children();
+    }
+}
+
 module pcb_components(type, cutouts = false, angle = undef) { //! Draw list of PCB components on the PCB
     not_on_bom(pcb_parts_on_bom(type))
         for(comp = pcb_components(type)) {

@@ -61,7 +61,7 @@ module wires() {
                     translate([-w / 2, 0])
                         square([w, h]);
 
-                    mouse_hole(bundle, 0);
+                    mouse_hole(bundle, 0, true);
                 }
 
         translate_z(-thickness)

@@ -275,6 +275,10 @@ PI_IO = ["PI_IO", "PI_IO V2",       35.56, 25.4, 1.6, 0,    0,   0, "green", tru
      [(3.4   - 2.7) * 25.4,          (4.5 - 4.15)  * 25.4,  0, "2p54socket", 13, 2, true],
     ], []];
 
+ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "green", false, [[2.25, 3.25], [-2.25, 3.25], [2.25, -3.25], [-2.25, -3.25] ],
+    [], [], [], [], M2p5_pan_screw];
+
+
 PERF80x20 = ["PERF80x20", "Perfboard 80 x 20mm", 80, 20, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
 
 PERF70x50 = ["PERF70x50", "Perfboard 70 x 50mm", 70, 50, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
@@ -287,6 +291,6 @@ PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
 
-pcbs = [ExtruderPCB, PI_IO, RPI3, ArduinoUno3, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi];
+pcbs = [ExtruderPCB, PI_IO, RPI3, ArduinoUno3, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
 
 use <pcb.scad>

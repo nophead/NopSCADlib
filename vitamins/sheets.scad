@@ -31,6 +31,7 @@ MDF10     = [ "MDF10",     "Sheet MDF",              10, mdf_colour,            
 MDF12     = [ "MDF12",     "Sheet MDF",              12, mdf_colour,             true];    // ~1/2"
 MDF18     = [ "MDF18",     "Sheet MDF",              18, mdf_colour,             true];
 MDF19     = [ "MDF19",     "Sheet MDF",              19, mdf_colour,             true];    // ~3/4"
+PMMA2     = [ "PMMA2",     "Sheet acrylic",           2, [1,   1,   1,   0.5  ], false];
 PMMA3     = [ "PMMA3",     "Sheet acrylic",           3, [1,   1,   1,   0.5  ], false];   // ~1/8"
 PMMA6     = [ "PMMA6",     "Sheet acrylic",           6, [1,   1,   1,   0.5  ], false];   // ~1/4"
 PMMA8     = [ "PMMA8",     "Sheet acrylic",           8, [1,   1,   1,   0.5  ], false];   // ~5/16"
@@ -45,6 +46,6 @@ AL6       = [ "AL6",       "Aluminium tooling plate", 6, [0.9, 0.9, 0.9, 1    ],
 AL8       = [ "AL8",       "Aluminium tooling plate", 8, [0.9, 0.9, 0.9, 1    ], false];
 Steel06   = [ "Steel06",   "Sheet mild steel",       0.6,"silver"              , false];
 
-sheets = [MDF6, MDF10, MDF12, MDF19, PMMA3, PMMA6, PMMA8, PMMA10, glass2, DiBond, DiBond6, Cardboard, FoilTape, Foam20, AL6, AL8, Steel06];
+sheets = [MDF6, MDF10, MDF12, MDF19, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10, glass2, DiBond, DiBond6, Cardboard, FoilTape, Foam20, AL6, AL8, Steel06];
 
 use <sheet.scad>

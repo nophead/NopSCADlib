@@ -107,7 +107,7 @@ def tests(tests):
     #
     # List of individual part files
     #
-    scads = [i for i in os.listdir(scad_dir) if i[-5:] == ".scad"]
+    scads = [i for i in sorted(os.listdir(scad_dir)) if i[-5:] == ".scad"]
 
     for scad in scads:
         base_name = scad[:-5]
@@ -187,7 +187,7 @@ def tests(tests):
             body += ["![%s](%s)\n" %(base_name, png_name)]
 
             dname = deps_name(deps_dir, scad)
-            oldest = min(mtime(png_name), mtime(bom_name))
+            oldest = png_name if mtime(png_name) < mtime(bom_name) else bom_name
             changed = check_deps(oldest, dname)
             changed = times.check_have_time(changed, scad_name)
             if changed:
@@ -257,7 +257,7 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
             print('<tr>',  file = doc_file, end = '')
             for type in types:
                 if i < len(index[type]):
-                    name = index[type][i]
+                    name = sorted(index[type])[i]
                     print('<td> <a href = "#' + name + '">' + name + '</a> </td>', file = doc_file, end = '')
                 else:
                     print('<td></td>', file = doc_file, end = '')

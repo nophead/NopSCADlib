@@ -24,6 +24,11 @@
 //! See [butt_box](#Butt_box) for an example of usage.
 //!
 //! Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
+//!
+//! Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting ```show_block``` to false.
+//! This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
+//!
+//! Star washers can be omitted by setting ```star_washers``` to false.
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
@@ -116,20 +121,24 @@ assembly(str("fixing_block_M", 20 * screw_radius(screw))) {
         insert(insert);
 }
 
-module fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef) { //! Assembly with fasteners in place
+module fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef, show_block = true, star_washers = true) { //! Assembly with fasteners in place
     module fb_screw(screw, thickness) {
         washer = screw_washer(screw);
         insert = screw_insert(screw);
-        screw_length = screw_longer_than(2 * washer_thickness(washer) + thickness + insert_length(insert));
+        screw_length = screw_longer_than((star_washers ? 2 : 1) * washer_thickness(washer) + thickness + insert_length(insert));
 
-        translate_z(thickness)
-            screw_and_washer(screw, screw_length, true);
+        if(thickness)
+            translate_z(thickness)
+                screw_and_washer(screw, screw_length, star_washers);
     }
 
-    no_pose() fixing_block_assembly(screw);
+    if(show_block)
+        no_pose()
+            fixing_block_assembly(screw);
 
+    t2 = !is_undef(thickness2) ? thickness2 : thickness;
     fixing_block_v_holes(screw)
-        fb_screw(screw, thickness2 ? thickness2 : thickness);
+        fb_screw(screw, t2);
 
     fixing_block_h_hole(screw)
         fb_screw(screw2 ? screw2 : screw, thickness);

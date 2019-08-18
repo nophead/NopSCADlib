@@ -46,10 +46,14 @@ function cable_bundle(cable) = //! Arrangement of a bundle in a flat cable clip
 function cable_width(cable)  = cable_bundle(cable)[0] * cable_wire_size(cable); //! Width in flat clip
 function cable_height(cable) = cable_bundle(cable)[1] * cable_wire_size(cable); //! Height in flat clip
 
-module mouse_hole(cable, h = 100) { //! A mouse hole to allow a panel to go over a wire bundle.
+module mouse_hole(cable, h = 100, teardrop = false) { //! A mouse hole to allow a panel to go over a wire bundle.
     r = wire_hole_radius(cable);
 
-    rotate(90) slot(r, 2 * r, h = h);
+        if(teardrop)
+            vertical_tearslot(r = r, l = 2 * r, h = h);
+        else
+            rotate(90)
+                slot(r, 2 * r, h = h);
 }
 
 module cable_tie_holes(cable_r, h = 100) { //! Holes to thread a ziptie through a panel to make a cable tie.

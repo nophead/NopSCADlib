@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2019
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,21 +16,12 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
+include <../vitamins/geared_steppers.scad>
+
 use <../utils/layout.scad>
 
-include <../vitamins/linear_bearings.scad>
+module geared_steppers()
+    layout([for(g = geared_steppers) gs_diameter(g)], 5)
+        geared_stepper(geared_steppers[$i]);
 
-use <../vitamins/rod.scad>
-
-module rods()
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
-
-        rod(bearing_rod_dia(linear_bearings[$i]), 80);
-
-        translate([0, 20])
-            studding(bearing_rod_dia(linear_bearings[$i]), 80);
-    }
-
-if($preview)
-    rods();
+geared_steppers();

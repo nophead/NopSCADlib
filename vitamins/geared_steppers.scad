@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2019
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,21 +16,12 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
-use <../utils/layout.scad>
 
-include <../vitamins/linear_bearings.scad>
+//
+//! Geared tin can steppers
+//
+28BYJ_48 = ["28BYJ_48", "28BYJ-48 5V", 28, 19, 35, 7, 0.85, 4.2, 8, 9, 1.5, 5, 3, 10, 6, 14.7, 17, 16.5, 17.7, 15.5, 13.8 ];
 
-use <../vitamins/rod.scad>
+geared_steppers = [28BYJ_48];
 
-module rods()
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
-
-        rod(bearing_rod_dia(linear_bearings[$i]), 80);
-
-        translate([0, 20])
-            studding(bearing_rod_dia(linear_bearings[$i]), 80);
-    }
-
-if($preview)
-    rods();
+use <geared_stepper.scad>
