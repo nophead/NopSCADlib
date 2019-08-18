@@ -3168,6 +3168,10 @@ and mounted components.
 A list specifies the internal dimensions, screw type, top, bottom and side sheet types and the block
 maximum spacing.
 
+ * An optional name can be specified to allow more then one box in a project.
+ * An optional list of fixing blocks to be omitted can be given.
+ * Star washers can be omitted by setting the 11th parameter to false.
+
 Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 
 
@@ -3181,26 +3185,29 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ```bbox_base_sheet(type)``` | Sheet type for the base |
 | ```bbox_depth(type)``` | Internal depth |
 | ```bbox_height(type)``` | Internal height |
+| ```bbox_name(type)``` | Optional name if there is more than one box in a project |
 | ```bbox_screw(type)``` | Screw type for corner blocks |
 | ```bbox_sheets(type)``` | Sheet type for the sides |
+| ```bbox_skip_blocks(type)``` | List of fixing blocks to skip, used to allow a hinged panel for example |
 | ```bbox_span(type)``` | Maximum span between fixing blocks |
 | ```bbox_top_sheet(type)``` | Sheet type for the top |
 | ```bbox_width(type)``` | Internal width |
+| ```star_washers(type)``` | Set to false to remove star washers. |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | ```_bbox_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true)``` | The box assembly, wrap with a local copy without parameters |
 | ```bbox_back(type)``` | Default back, can be overridden to customise |
-| ```bbox_back_blank(type)``` | 2D template for the back |
+| ```bbox_back_blank(type, sheet = false)``` | 2D template for the back |
 | ```bbox_base(type)``` | Default base, can be overridden to customise |
 | ```bbox_base_blank(type)``` | 2D template for the base |
 | ```bbox_front(type)``` | Default front, can be overridden to customise |
-| ```bbox_front_blank(type)``` | 2D template for the front |
+| ```bbox_front_blank(type, sheet = false)``` | 2D template for the front |
 | ```bbox_left(type)``` | Default left side, can be overridden to customise |
-| ```bbox_left_blank(type)``` | 2D template for the left side |
+| ```bbox_left_blank(type, sheet = false)``` | 2D template for the left side |
 | ```bbox_right(type)``` | Default right side, can be overridden to customise |
-| ```bbox_right_blank(type)``` | 2D template for the right side |
+| ```bbox_right_blank(type, sheet = false)``` | 2D template for the right side |
 | ```bbox_shelf_blank(type)``` | 2D template for a shelf |
 | ```bbox_top(type)``` | Default top, can be overridden to customise |
 | ```bbox_top_blank(type)``` | 2D template for the top |
