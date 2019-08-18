@@ -37,9 +37,10 @@ def read_deps(dname):
                 deps.append(dep)
     return deps
 
-def check_deps(target_mtime, dname):
+def check_deps(target, dname):
+    target_mtime = mtime(target)
     if not target_mtime:
-        return "target missing"
+        return target + " missing"
     if not os.path.isfile(dname):
         return "no deps"
     deps = read_deps(dname)

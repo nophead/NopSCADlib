@@ -84,7 +84,6 @@ def make_parts(target, part_type, parts = None):
     # Find all the scad files
     #
     lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib/printed'
-    used = []
     module_suffix = '_dxf' if part_type == 'svg' else '_' + part_type
     for dir in [source_dir, lib_dir]:
         for filename in os.listdir(dir):
@@ -113,7 +112,7 @@ def make_parts(target, part_type, parts = None):
                                     #
                                     part_file = target_dir + "/" + part
                                     dname = deps_name(deps_dir, filename)
-                                    changed = check_deps(mtime(part_file), dname)
+                                    changed = check_deps(part_file, dname)
                                     changed = times.check_have_time(changed, part)
                                     if part_type == 'stl' and not changed and not part in bounds_map:
                                         changed = "No bounds"
@@ -125,14 +124,9 @@ def make_parts(target, part_type, parts = None):
                                         if part_type == 'stl':
                                             bounds = c14n_stl.canonicalise(part_file)
                                             bounds_map[part] = bounds
+
                                     targets.remove(part)
                                     os.remove(part_maker_name)
-                                    #
-                                    # Add the files on the BOM to the used list for plates.py
-                                    #
-                                    for line in open("openscad.log"):
-                                        if line[:7] == 'ECHO: "' and line[-6:] == '.' + part_type + '"\n':
-                                            used.append(line[7:-2])
     #
     # Write new bounds file
     #
@@ -150,4 +144,3 @@ def make_parts(target, part_type, parts = None):
                 print("Could not find a module called", part[:-4] + module_suffix, "to make", part)
         sys.exit(1)
     times.print_times()
-    return used

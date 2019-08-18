@@ -154,14 +154,14 @@ def views(target, do_assemblies = None):
                                         f.write("use <%s/%s>\n" % (dir, filename))
                                         f.write("%s();\n" % module);
                                     #
-                                    # Run openscad on the created file
+                                    # Run openscad on th created file
                                     #
                                     dname = deps_name(deps_dir, filename)
                                     for explode in [0, 1]:
                                         png_name = target_dir + '/' + module + '.png'
                                         if not explode:
                                             png_name = png_name.replace('_assembly', '_assembled')
-                                        changed = check_deps(mtime(png_name), dname)
+                                        changed = check_deps(png_name, dname)
                                         changed = times.check_have_time(changed, png_name)
                                         tmp_name = 'tmp.png'
                                         if changed:

@@ -187,7 +187,7 @@ def tests(tests):
             body += ["![%s](%s)\n" %(base_name, png_name)]
 
             dname = deps_name(deps_dir, scad)
-            oldest = min(mtime(png_name), mtime(bom_name))
+            oldest = png_name if mtime(png_name) < mtime(bom_name) else bom_name
             changed = check_deps(oldest, dname)
             changed = times.check_have_time(changed, scad_name)
             if changed:
