@@ -2648,7 +2648,7 @@ Toggle switches
 | ---:|:--- |:---|
 |   1 | ```toggle(AP5236, 3)``` |  Toggle switch AP5236 |
 |   1 | ```toggle(CK7101, 3)``` |  Toggle switch CK7101 |
-|   1 | ```toggle(CK7105, 3)``` |  Toggle switch CK7101 |
+|   1 | ```toggle(CK7105, 3)``` |  Toggle switch CK7105 |
 |   1 | ```toggle(MS332F, 3)``` |  Toggle switch MS332F |
 
 
