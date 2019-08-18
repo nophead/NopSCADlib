@@ -116,20 +116,24 @@ assembly(str("fixing_block_M", 20 * screw_radius(screw))) {
         insert(insert);
 }
 
-module fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef) { //! Assembly with fasteners in place
+module fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef, show_block = true, star_washers = true) { //! Assembly with fasteners in place
     module fb_screw(screw, thickness) {
         washer = screw_washer(screw);
         insert = screw_insert(screw);
-        screw_length = screw_longer_than(2 * washer_thickness(washer) + thickness + insert_length(insert));
+        screw_length = screw_longer_than((star_washers ? 2 : 1) * washer_thickness(washer) + thickness + insert_length(insert));
 
-        translate_z(thickness)
-            screw_and_washer(screw, screw_length, true);
+        if(thickness)
+            translate_z(thickness)
+                screw_and_washer(screw, screw_length, star_washers);
     }
 
-    no_pose() fixing_block_assembly(screw);
+    if(show_block)
+        no_pose()
+            fixing_block_assembly(screw);
 
+    t2 = !is_undef(thickness2) ? thickness2 : thickness;
     fixing_block_v_holes(screw)
-        fb_screw(screw, thickness2 ? thickness2 : thickness);
+        fb_screw(screw, t2);
 
     fixing_block_h_hole(screw)
         fb_screw(screw2 ? screw2 : screw, thickness);

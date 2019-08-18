@@ -3338,10 +3338,10 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 |:--- |:--- |
 | ```corner_block(screw = def_screw, name = false)``` | Generate the STL for a printed corner block |
 | ```corner_block_assembly(screw = def_screw, name = false)``` | The printed block with inserts |
-| ```corner_block_h_holes(screw = def_screw)``` | Place children at the side screw holes |
+| ```corner_block_h_holes(screw = def_screw, index = undef)``` | Place children at the side screw holes |
 | ```corner_block_holes(screw = def_screw)``` | Place children at all the holes |
 | ```corner_block_v_hole(screw = def_screw)``` | Place children at the bottom screw hole |
-| ```fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false)``` | Printed block with all fasteners |
+| ```fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true)``` | Printed block with all fasteners |
 
 ![corner_block](tests/png/corner_block.png)
 
@@ -3549,7 +3549,7 @@ Note that the block with its inserts is defined as a sub assembly, but its faste
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef)``` | Assembly with fasteners in place |
+| ```fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef, show_block = true, star_washers = true)``` | Assembly with fasteners in place |
 | ```fixing_block(screw = def_screw)``` | Generate the STL |
 | ```fixing_block_assembly(screw = def_screw)``` | Printed part with the inserts inserted |
 | ```fixing_block_h_hole(screw = def_screw)``` | Position children on the horizontal hole |
