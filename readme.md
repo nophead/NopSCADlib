@@ -2990,7 +2990,7 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 |:--- |:--- |
 | ```cable_tie(cable_r, thickness)``` | A ziptie threaded around cable radius ```cable_r``` and through a panel with specified ```thickness```. |
 | ```cable_tie_holes(cable_r, h = 100)``` | Holes to thread a ziptie through a panel to make a cable tie. |
-| ```mouse_hole(cable, h = 100)``` | A mouse hole to allow a panel to go over a wire bundle. |
+| ```mouse_hole(cable, h = 100, teardrop = false)``` | A mouse hole to allow a panel to go over a wire bundle. |
 | ```ribbon_cable(ways, length)``` | Add ribbon cable to the BOM |
 | ```wire(color, strands, length, strand = 0.2)``` | Add stranded wire to the BOM |
 
