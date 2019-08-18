@@ -846,7 +846,7 @@ Needs updating as mostly obsolete versions.
 |   1 |  |  Tape self amalgamating silicone 110mm x 25mm |
 |   1 | ```resistor(Epcos)``` |  Thermistor Epcos B57560G104F 100K 1% |
 |   2 |  |  Wire Red PTFE 16/0.2mm strands, length 170mm |
-|   4 | ```ziptie(small_ziptie, 8)``` |  Ziptie 100mm min length |
+|   4 | ```ziptie(small_ziptie, 8)``` |  Ziptie 2.5mm x 100mm min length |
 
 
 <a href="#top">Top</a>
@@ -1824,9 +1824,9 @@ Pin headers and sockets, etc.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```box_header(2p54header102)``` |  Box header 10 x 2 |
 |   1 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
 |   1 | ```pin_header(2p54header102)``` |  Pin header 10 x 2 |
-|   1 | ```box_header(2p54header102)``` |  Pin header 10 x 2 |
 |   1 | ```pin_socket(2p54header, 10, 2)``` |  Pin socket 10 x 2 |
 |   1 | ```pin_socket(2p54header, 10, 2, right_angle = true)``` |  Pin socket 10 x 2 right_angle |
 
@@ -3006,7 +3006,7 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 |   1 |  |  Wire orange 7/0.2mm strands, length 90mm |
 |   1 |  |  Wire red 7/0.2mm strands, length 90mm |
 |   1 |  |  Wire yellow 7/0.2mm strands, length 90mm |
-|   1 | ```ziptie(small_ziptie, 2.1)``` |  Ziptie 100mm min length |
+|   1 | ```ziptie(small_ziptie, 2.1)``` |  Ziptie 2.5mm x 100mm min length |
 
 
 <a href="#top">Top</a>
@@ -3042,9 +3042,9 @@ Cable zipties.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```ziptie(small_ziptie, 5)``` |  Ziptie 100mm min length |
-|   1 | ```ziptie(ziptie_3mm, 5)``` |  Ziptie 100mm min length |
-|   1 | ```ziptie(ziptie_3p6mm, 5)``` |  Ziptie 100mm min length |
+|   1 | ```ziptie(small_ziptie, 5)``` |  Ziptie 2.5mm x 100mm min length |
+|   1 | ```ziptie(ziptie_3p6mm, 5)``` |  Ziptie 3.6mm x 100mm min length |
+|   1 | ```ziptie(ziptie_3mm, 5)``` |  Ziptie 3mm x 100mm min length |
 
 
 <a href="#top">Top</a>
@@ -3838,7 +3838,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 |   4 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
 |   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
-|   2 | ```ziptie(small_ziptie, 3)``` |  Ziptie 100mm min length |
+|   2 | ```ziptie(small_ziptie, 3)``` |  Ziptie 2.5mm x 100mm min length |
 
 ### Printed
 | Qty | Filename |
@@ -4035,7 +4035,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 |   4 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
 |   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
-|   4 | ```ziptie(small_ziptie, 3)``` |  Ziptie 100mm min length |
+|   4 | ```ziptie(small_ziptie, 3)``` |  Ziptie 2.5mm x 100mm min length |
 
 ### Printed
 | Qty | Filename |
