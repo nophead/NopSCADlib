@@ -3699,7 +3699,7 @@ inserts don't grip well in rubber.
 |:--- |:--- |
 | ```fastened_insert_foot_assembly(t = 3, type = insert_foot)``` | Assembly with fasteners in place for specified sheet thickness |
 | ```foot(type = foot)``` | Generate STL |
-| ```foot_assembly(t = 0, type = foot)``` | Assembly with fasteners in place for specified sheet thickness |
+| ```foot_assembly(t = 0, type = foot, flip = false)``` | Assembly with fasteners in place for specified sheet thickness |
 | ```insert_foot(type = insert_foot)``` | Generate STL for foot with insert |
 | ```insert_foot_assembly(type = insert_foot)``` | Printed part with insert in place |
 
