@@ -1658,11 +1658,12 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_assembly(type, height, thickness)``` | Draw PCB assembly with spaces and fasteners in place |
 | ```pcb_base(type, height, thickness, wall = 2)``` | Generate STL for a base with PCB spacers |
 | ```pcb_component(comp, cutouts = false, angle = undef)``` | Draw pcb component from description |
+| ```pcb_component_position(type, name)``` | Position child at the specified component position |
 | ```pcb_components(type, cutouts = false, angle = undef)``` | Draw list of PCB components on the PCB |
 | ```pcb_cutouts(type, angle = undef)``` | Make cut outs to clear components on a PCB |
 | ```pcb_grid(type, x, y, z = 0)``` | Positions children at specified grid positions |
 | ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
-| ```pcb_spacer(screw, height, wall = 1.8)``` | Generate STL for PCB spacer |
+| ```pcb_spacer(screw, height, wall = 1.8, taper = 0)``` | Generate STL for PCB spacer |
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
 | ```terminal_35(ways)``` | Draw 3.5mm terminal block |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
