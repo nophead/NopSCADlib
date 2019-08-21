@@ -17,25 +17,26 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 
 ## Table of Contents<a name="top"/>
 <table><tr>
-<th align="left"> Vitamins A-N </th><th align="left"> Vitamins O-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<th align="left"> Vitamins A-M </th><th align="left"> Vitamins N-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
@@ -46,7 +47,6 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Nuts">Nuts</a> </td><td></td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -849,6 +849,37 @@ Needs updating as mostly obsolete versions.
 |   1 | ```resistor(Epcos)``` |  Thermistor Epcos B57560G104F 100K 1% |
 |   2 |  |  Wire Red PTFE 16/0.2mm strands, length 170mm |
 |   4 | ```ziptie(small_ziptie, 8)``` |  Ziptie 2.5mm x 100mm min length |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Hygrometer"></a>
+## Hygrometer
+Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge on eBay
+
+
+[vitamins/hygrometer.scad](vitamins/hygrometer.scad) Implementation.
+
+[tests/hygrometer.scad](tests/hygrometer.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```hygrometer_or()``` | The outside radius of a hygrometer |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```hygrometer()``` | Draw a hygrometer |
+| ```hygrometer_hole(h = 0)``` | Drill the hole for a hygrometer |
+
+![hygrometer](tests/png/hygrometer.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```hygrometer()``` |  Mini LCD Digital Thermometer / Hygrometer |
 
 
 <a href="#top">Top</a>

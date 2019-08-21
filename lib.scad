@@ -66,6 +66,7 @@ include <vitamins/geared_steppers.scad>
 use <vitamins/jack.scad>
 use <vitamins/meter.scad>
 use <vitamins/fuseholder.scad>
+use <vitamins/hygrometer.scad>
 
 use <vitamins/opengrab.scad>
 use <vitamins/wire.scad>

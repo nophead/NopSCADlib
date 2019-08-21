@@ -313,7 +313,10 @@ translate([x3, iecs_y])
 translate([x3 + 15, modules_y])
     microview();
 
-translate([x3 + 40, modules_y])
+translate([x3 + 60, modules_y])
+    hygrometer();
+
+translate([x3 + 90, modules_y])
     modules();
 
 translate([x3, ssrs_y]) {
