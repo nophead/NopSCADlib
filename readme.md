@@ -165,6 +165,8 @@ exposing enough information to make a battery box.
 Models timing belt running over toothed or smooth pulleys and calculates an accurate length.
 Only models 2D paths, so not core XY!
 
+To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
+
 By default the path is a closed loop but a gap length and position can be specified to make open loops.
 
 Individual teeth are not drawn, instead they are represented by a lighter colour.
