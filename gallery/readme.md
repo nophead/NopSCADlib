@@ -7,6 +7,13 @@ Arduino thermostat to control a beer fridge to use it as an environmental chambe
 
 
 <a name="TOP"></a>
+## FilamentDryBox
+A small fan oven with a spool holder to keep the filament warm and dry.
+
+![](FilamentDryBox.png)
+
+
+<a name="TOP"></a>
 ## HydraBot
 Current state of HydraRaptor after being modified for laser engraving.
 
@@ -66,6 +73,13 @@ Mains isolated and variable supply with metering.
 
 
 ![](Mains_Box.png)
+
+
+<a name="TOP"></a>
+## SunBot
+A solar tracker to keep solar powerbanks pointing at the sun.
+
+![](SunBot.png)
 
 
 <a name="TOP"></a>
