@@ -16,17 +16,7 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/d_connectors.scad>
-include <../vitamins/pcbs.scad>
-
-module pcbs()
-    layout([for(p = pcbs) pcb_width(p)], 10)
-        translate([0, pcb_length(pcbs[$i]) / 2])
-            rotate(90)
-                pcb_assembly(pcbs[$i], 5 + $i, 3);
+use <../vitamins/hygrometer.scad>
 
 if($preview)
-    pcbs();
+    hygrometer();

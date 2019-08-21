@@ -139,8 +139,8 @@ module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file f
     mirror([0, 1, 0])
         psu_shroud_hole_positions(type)
             translate_z(height)
-                rotate(90)
-                    insert_lug(insert, wall, $side, counter_bore);
+                rotate($side * 90)
+                    insert_lug(insert, wall, counter_bore);
  }
 
 module psu_shroud_assembly(type, cable_d, name, cables = 1) //! The printed parts with inserts fitted

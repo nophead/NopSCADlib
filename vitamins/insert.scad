@@ -21,6 +21,7 @@
 //! Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering iron with a conical bit set to 200&deg;C.
 //
 include <../core.scad>
+use <../utils/quadrant.scad>
 
 function insert_length(type)         = type[1]; //! Length
 function insert_outer_d(type)        = type[2]; //! Outer diameter at the top
@@ -96,31 +97,52 @@ module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole 
 function insert_boss_radius(type, wall) = corrected_radius(insert_hole_radius(type)) + wall; //! Compute the outer radius of an insert boss
 
 module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to take an insert
-    render(convexity = 3)
-        difference() {
-            ir = insert_hole_radius(type);
-            linear_extrude(height = z)
-                hull()
-                    poly_ring(corrected_radius(ir) + wall, ir);
+    ir = insert_hole_radius(type);
+    or = corrected_radius(ir) + wall;
 
-            translate_z(z)
-                insert_hole(type, max(0, z - insert_hole_length(type) - 2 * layer_height));
+    module shape()
+        hull()
+            poly_ring(or, ir);
+
+    linear_extrude(height = z)
+        poly_ring(or, ir);
+
+    linear_extrude(height = z - insert_hole_length(type))
+        difference() {
+            shape();
+
+            poly_circle(insert_screw_diameter(type) / 2 + 0.1);
         }
+
+    if(z > insert_hole_length(type) + 2 * layer_height)
+        linear_extrude(height = 2 * layer_height)       // cap the end if room
+            shape();
 }
 
-module insert_lug(insert, wall, side, counter_bore = 0) { //! Make a flying insert lug, see [ssr_shroud](#Ssr_shroud)
+module insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, flying = true) { //! Make a flying insert lug, see [ssr_shroud](#Ssr_shroud)
     boss_r = insert_boss_radius(insert, wall);
     boss_h = insert_hole_length(insert);
     boss_h2 = boss_h + counter_bore;
+
+    module shape()
+        intersection() {
+            hull() {
+                circle(boss_r);
+
+                translate([boss_r + extension - eps, 0])
+                    square([eps, 2 * boss_r], center = true);
+            }
+            if(corner_r)
+                translate([boss_r + extension - corner_r, 0])
+                    rotate(-45)
+                        quadrant(w = 100, r = corner_r - eps, center = true);
+        }
+
     translate_z(-boss_h)
         linear_extrude(height = boss_h)
              difference() {
-                hull() {
-                    circle(boss_r);
+                shape();
 
-                    translate([side * (boss_r - 1), 0])
-                        square([eps, 2 * boss_r], center = true);
-                }
                 poly_circle(insert_hole_radius(insert));
             }
 
@@ -128,24 +150,19 @@ module insert_lug(insert, wall, side, counter_bore = 0) { //! Make a flying inse
     translate_z(-boss_h2) {
         linear_extrude(height = counter_bore + eps)
              difference() {
-                hull() {
-                    circle(boss_r);
+                shape();
 
-                    translate([side * (boss_r - 1), 0])
-                        square([eps, 2 * boss_r], center = true);
-                }
                 poly_circle(insert_screw_diameter(insert) / 2 + 0.1);
             }
 
-        // support cones
-        hull() {
-            cylinder(h = eps, r = boss_r - eps);
+        // support cone
+        if(flying)
+            hull() {
+                linear_extrude(height = eps)
+                    shape();
 
-            translate([side * (boss_r - 1), 0])
-                cube([eps, 2 * boss_r, eps], center = true);
-
-            translate([side * (boss_r - wall + eps), 0, - (2 * boss_r - wall)])
-                cube(eps, center = true);
-        }
+                translate([boss_r + extension - wall - eps, 0, - (2 * boss_r + extension - wall)])
+                    cube(eps, center = true);
+            }
     }
 }

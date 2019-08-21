@@ -138,7 +138,7 @@ def tests(tests):
                 print("Can't find implementation!")
                 continue
 
-            vsplit = "N"
+            vsplit = "M"
             vtype = locations[0][1]
             types = [vtype + ' A-' + vsplit[0], vtype + ' ' + chr(ord(vsplit) + 1) + '-Z'] + [loc[1] for loc in locations[1 :]]
             if type == vtype:

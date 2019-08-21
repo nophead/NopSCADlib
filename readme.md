@@ -17,25 +17,26 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 
 ## Table of Contents<a name="top"/>
 <table><tr>
-<th align="left"> Vitamins A-N </th><th align="left"> Vitamins O-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<th align="left"> Vitamins A-M </th><th align="left"> Vitamins N-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
@@ -46,7 +47,6 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Nuts">Nuts</a> </td><td></td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -164,6 +164,8 @@ exposing enough information to make a battery box.
 ## Belts
 Models timing belt running over toothed or smooth pulleys and calculates an accurate length.
 Only models 2D paths, so not core XY!
+
+To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 
 By default the path is a closed loop but a gap length and position can be specified to make open loops.
 
@@ -852,6 +854,37 @@ Needs updating as mostly obsolete versions.
 <a href="#top">Top</a>
 
 ---
+<a name="Hygrometer"></a>
+## Hygrometer
+Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge on eBay
+
+
+[vitamins/hygrometer.scad](vitamins/hygrometer.scad) Implementation.
+
+[tests/hygrometer.scad](tests/hygrometer.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```hygrometer_or()``` | The outside radius of a hygrometer |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```hygrometer()``` | Draw a hygrometer |
+| ```hygrometer_hole(h = 0)``` | Drill the hole for a hygrometer |
+
+![hygrometer](tests/png/hygrometer.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```hygrometer()``` |  Mini LCD Digital Thermometer / Hygrometer |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Iecs"></a>
 ## Iecs
 IEC mains inlets and outlet.
@@ -953,7 +986,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | ```insert(type)``` | Draw specified insert |
 | ```insert_boss(type, z, wall = 2 * extrusion_width)``` | Make a boss to take an insert |
 | ```insert_hole(type, counterbore = 0, horizontal = false)``` | Make a hole to take an insert, ```counterbore``` is the extra length for the screw |
-| ```insert_lug(insert, wall, side, counter_bore = 0)``` | Make a flying insert lug, see [ssr_shroud](#Ssr_shroud) |
+| ```insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, flying = true)``` | Make a flying insert lug, see [ssr_shroud](#Ssr_shroud) |
 
 ![inserts](tests/png/inserts.png)
 
@@ -1676,6 +1709,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```pcb(ArduinoLeonardo)``` |  Arduino Leonardo |
 |   1 | ```pcb(ArduinoUno3)``` |  Arduino Uno R3 |
 |   1 |  |  Cat 5 patch cable 300mm |
 |   1 | ```d_plug(DCONN15, pcb = true)``` |  D-type 15 way PCB mount plug |
@@ -1689,7 +1723,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
 |  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
-|  16 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|  20 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |  12 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
@@ -1701,19 +1735,19 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```pcb(PERF80x20)``` |  Perfboard 80 x 20mm |
 |   1 | ```pin_socket(2p54header, 13, 2, right_angle = true)``` |  Pin socket 13 x 2 right_angle |
 |   1 | ```pcb(RPI3)``` |  Raspberry Pi 3 |
-|  12 | ```screw(M2_cap_screw, 20)``` |  Screw M2 cap x 20mm |
-|   4 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
+|   8 | ```screw(M2_cap_screw, 20)``` |  Screw M2 cap x 20mm |
+|   8 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
 |   4 | ```screw(M2p5_cap_screw, 16)``` |  Screw M2.5 cap x 16mm |
-|   8 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
+|  12 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
 |   4 | ```screw(M2p5_pan_screw, 30)``` |  Screw M2.5 pan x 30mm |
-|   8 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
-|   4 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
+|   4 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
+|   8 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
 |  12 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
 |   3 | ```terminal_35(2)``` |  Terminal block 2 way 3.5mm |
 |   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
 |  16 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
-|  16 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  20 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | ```pcb(ZC_A0591)``` |  ZC-A0591 ULN2003 driver PCB |
@@ -1721,20 +1755,21 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   4 | pcb_spacer20100.stl |
 |   4 | pcb_spacer20110.stl |
 |   4 | pcb_spacer20120.stl |
 |   4 | pcb_spacer20130.stl |
-|   4 | pcb_spacer25200.stl |
+|   4 | pcb_spacer20140.stl |
+|   4 | pcb_spacer25100_2.stl |
+|   4 | pcb_spacer25210.stl |
 |   4 | pcb_spacer2570.stl |
 |   4 | pcb_spacer2580_2.stl |
 |   4 | pcb_spacer2590_2.stl |
-|   4 | pcb_spacer30140.stl |
 |   4 | pcb_spacer30150.stl |
-|   4 | pcb_spacer30190.stl |
-|   4 | pcb_spacer40160.stl |
+|   4 | pcb_spacer30160.stl |
+|   4 | pcb_spacer30200.stl |
 |   4 | pcb_spacer40170.stl |
 |   4 | pcb_spacer40180.stl |
+|   4 | pcb_spacer40190.stl |
 
 
 <a href="#top">Top</a>

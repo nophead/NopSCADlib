@@ -237,6 +237,32 @@ ArduinoUno3 = ["ArduinoUno3", "Arduino Uno R3", 68.58, 53.34, 1.6, 0, 3.3, 0, "#
     M2p5_pan_screw
    ];
 
+ArduinoLeonardo = ["ArduinoLeonardo", "Arduino Leonardo", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
+    [[30.226, -2.54, 0, "2p54socket", 10, 1],
+     [54.61,  -2.54, 0, "2p54socket", 8, 1],
+     [36.83,   2.54, 0, "2p54socket", 8, 1],
+     [57.15,   2.54, 0, "2p54socket", 6, 1],
+     [64.91,  27.89, 0, "2p54header", 2, 3],
+     [ 6.5,   -3.5,  0, "button_6mm"],
+     [4.7625,  7.62, 180, "barrel_jack"],
+     [1.5875, 38.1,  180,"usb_uA"],
+    ],
+    [],[],
+    inch([
+     [-1.35, -1.05],
+     [-1.35,  1.05],
+     [ 1.19,  1.05],
+     [ 1.25,  0.99],
+     [ 1.25,  0.54],
+     [ 1.35,  0.44],
+     [ 1.35, -0.85],
+     [ 1.25, -0.95],
+     [ 1.25, -1.05],
+    ]),
+    M2p5_pan_screw
+   ];
+
+
 Keyes5p1 = ["Keyes5p1", "Keyes5.1 Arduino Uno expansion board", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
     [[30.226, -2.54, 0, "-2p54header", 10, 1],
      [54.61,  -2.54, 0, "-2p54header", 8, 1],
@@ -291,6 +317,6 @@ PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
 
-pcbs = [ExtruderPCB, PI_IO, RPI3, ArduinoUno3, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
+pcbs = [ExtruderPCB, PI_IO, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
 
 use <pcb.scad>
