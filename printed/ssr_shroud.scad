@@ -103,8 +103,8 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
     ssr_shroud_hole_positions(type)
         vflip()
             translate_z(height)
-                rotate(90)
-                    insert_lug(insert, wall, $side, counter_bore);
+                rotate($side * 90)
+                    insert_lug(insert, wall, counter_bore);
 }
 
 module ssr_shroud_assembly(type, cable_d, name) //! The printed parts with inserts fitted

@@ -955,7 +955,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | ```insert(type)``` | Draw specified insert |
 | ```insert_boss(type, z, wall = 2 * extrusion_width)``` | Make a boss to take an insert |
 | ```insert_hole(type, counterbore = 0, horizontal = false)``` | Make a hole to take an insert, ```counterbore``` is the extra length for the screw |
-| ```insert_lug(insert, wall, side, counter_bore = 0)``` | Make a flying insert lug, see [ssr_shroud](#Ssr_shroud) |
+| ```insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, flying = true)``` | Make a flying insert lug, see [ssr_shroud](#Ssr_shroud) |
 
 ![inserts](tests/png/inserts.png)
 

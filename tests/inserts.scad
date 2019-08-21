@@ -21,10 +21,20 @@ use <../utils/layout.scad>
 
 include <../vitamins/inserts.scad>
 
-module inserts()
+module inserts() {
+
     for(i = [0: len(inserts) -1])
         translate([10 * i, 0])
             insert(inserts[i]);
+
+    color(pp1_colour)
+        translate([len(inserts) * 10, 0]) {
+            insert_lug(inserts[0], 2, 1);
+
+            translate([10, 0])
+                insert_boss(inserts[0], z = 10, wall = 2);
+        }
+}
 
 if($preview)
     inserts();
