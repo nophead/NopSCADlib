@@ -4283,7 +4283,7 @@ Layout objects in a line with equal gaps given a vector of their widths.
 ---
 <a name="Maths"></a>
 ## Maths
-Maths utilities for minapulating vectors and matrices.
+Maths utilities for manipulating vectors and matrices.
 
 
 [utils/maths.scad](utils/maths.scad) Implementation.

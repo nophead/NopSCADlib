@@ -18,7 +18,7 @@
 //
 
 //
-//! Maths utilities for minapulating vectors and matrices.
+//! Maths utilities for manipulating vectors and matrices.
 //
 function sqr(x) = x * x;
 
