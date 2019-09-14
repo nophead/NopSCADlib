@@ -21,6 +21,7 @@
 //! Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge on eBay
 //
 include <../core.scad>
+use <../utils/round.scad>
 
 od = 40.9;
 h = 14;
