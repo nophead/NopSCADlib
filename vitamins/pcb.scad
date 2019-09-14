@@ -197,14 +197,27 @@ module jack(cutout = false) { //! Draw 3.5mm jack
                 }
 }
 
-module hdmi(cutout = false) { //! Draw HDMI socket
-    l = 12;
-    iw1 = 14;
-    iw2 = 10;
-    ih1 = 3;
-    ih2 = 4.5;
-    h = 6.5;
-    t = 0.5;
+function hdmi_depth(type)     = type[2]; //! Front to back depth
+function hdmi_width1(type)    = type[3]; //! Inside width at the top
+function hdmi_width2(type)    = type[4]; //! Inside width at the bottom
+function hdmi_height1(type)   = type[5]; //! Inside height at the sides
+function hdmi_height2(type)   = type[6]; //! Inside height in the middle
+function hdmi_height(type)    = type[7]; //! Outside height above the PCB
+function hdmi_thickness(type) = type[8]; //! Wall thickness of the metal
+
+hdmi_full = [ "hdmi_full", "HDMI socket",      12,  14,   10,  3,    4.5, 6.5, 0.5 ];
+hdmi_mini = [ "hdmi_mini", "Mini HDMI socket", 7.5, 10.5, 8.3, 1.28, 2.5, 3.2, 0.35 ];
+
+module hdmi(type, cutout = false) { //! Draw HDMI socket
+    vitamin(str("hdmi(", type[0], "): ", type[1]));
+
+    l = hdmi_depth(type);
+    iw1 = hdmi_width1(type);
+    iw2 = hdmi_width2(type);
+    ih1 = hdmi_height1(type);
+    ih2 = hdmi_height2(type);
+    h = hdmi_height(type);
+    t = hdmi_thickness(type);
 
     module D() {
         hull() {
@@ -503,6 +516,53 @@ module flex(cutout = false) { //! Draw flexistrip connector
     }
 }
 
+module flat_flex(cutout = false) { //! Draw flat flexistrip connector as used on RPI0
+    l1 = 17;
+    w1 = 1.4;
+    h1 = 1.2;
+
+    l2 = 15.4;
+    w2 = 1.6;
+    h2 = 1.0;
+
+    l3 = 16;
+    w3 = 1.1;
+    h3 = 1.2;
+
+    l4 = 12;
+
+    slot_l = 11.8;
+    slot_h = 0.9;
+
+    w = w1 + w2 + w3;
+    if(cutout)
+        ;
+    else {
+        color(grey30) {
+            translate([w / 2 - w1, 0, h1 / 2])
+                rotate([90, 0, 90])
+                    linear_extrude(height = w1)
+                        difference() {
+                            square([l1, h1], center = true);
+
+                            translate([0, -h1 / 2])
+                                square([slot_l, slot_h * 2], center = true);
+                        }
+
+        }
+        color(grey90) {
+            translate([-w / 2 + w3 / 2, 0, h3 / 2])
+                cube([w3, l3, h3], center = true);
+
+            translate([-w / 2 + w3 + w2 / 2, 0, h2 / 2])
+                cube([w2, l2, h2], center = true);
+
+             translate([-w / 2 + w3 + w2 / 2, 0, h3 / 2])
+                cube([w2, l4, h3], center = true);
+       }
+    }
+}
+
 module terminal_35(ways) { //! Draw 3.5mm terminal block
     vitamin(str("terminal_35(", ways, "): Terminal block ", ways, " way 3.5mm"));
     pitch = 3.5;
@@ -648,8 +708,10 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "usb_B")) usb_B(cutouts);
         if(show(comp, "jack")) jack(cutouts);
         if(show(comp, "barrel_jack")) barrel_jack(cutouts);
-        if(show(comp, "hdmi")) hdmi(cutouts);
+        if(show(comp, "hdmi")) hdmi(hdmi_full, cutouts);
+        if(show(comp, "mini_hdmi")) hdmi(hdmi_mini, cutouts);
         if(show(comp, "flex")) flex(cutouts);
+        if(show(comp, "flat_flex")) flat_flex(cutouts);
         if(show(comp, "D_plug")) if(!cutouts) translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
         if(show(comp, "molex_hdr")) if(!cutouts) molex_254(comp[4]);
         if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5]);
@@ -700,11 +762,12 @@ module pcb_components(type, cutouts = false, angle = undef) { //! Draw list of P
 module pcb_cutouts(type, angle = undef) pcb_components(type, true, angle); //! Make cut outs to clear components on a PCB
 
 module pcb_grid_positions(type) {
-    x0 = pcb_grid(type).x;
-    y0 = pcb_grid(type).y;
+    grid =  pcb_grid(type);
+    x0 = grid.x;
+    y0 = grid.y;
 
-    cols = round((pcb_length(type) - 2 * x0) / inch(0.1));
-    rows = round((pcb_width(type) - 2 * y0) / inch(0.1));
+    cols = is_undef(grid[2]) ? round((pcb_length(type) - 2 * x0) / inch(0.1)) : grid[2] - 1;
+    rows = is_undef(grid[3]) ? round((pcb_width(type) - 2 * y0) / inch(0.1))  : grid[3] - 1;
     for(x = [0 : cols], y = [0 : rows])
         pcb_grid(type, x, y)
             children();
@@ -752,7 +815,7 @@ module pcb(type) { //! Draw specified PCB
 
                             circle(d = 1);
                         }
-                    if(fr4) { // oval lands at the ends
+                    if(fr4 && len(grid) < 3) { // oval lands at the ends
                         screw_x = pcb_coord(type, pcb_holes(type)[0]).x;
                         y0 = pcb_grid(type).y;
                         rows = round((pcb_width(type) - 2 * y0) / inch(0.1));

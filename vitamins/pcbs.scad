@@ -209,7 +209,20 @@ RPI3 =  ["RPI3", "Raspberry Pi 3",     85,    56,    1.4, 3,    2.75, 6, "green"
      [45,    11.5,-90, "flex"],
      [7.75,  28,  180, "-uSD", [12, 11.5, 1.28]],
     ],
-    [": Micro SD card"]];
+    [": Micro SD card"],
+    [32.5 - 9.5 * 2.54, 52.5 - 1.27, 20, 2]];
+
+RPI0 =  ["RPI0", "Raspberry Pi Zero",     65,    30,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]],
+    [//[32.5, -3.5,   0, "2p54header", 20, 2],
+     [25.5,  13,    0, "chip",       12, 12, 1.2],
+     [12.4,  3.4, -90, "mini_hdmi"],
+     [54,    2,   -90, "usb_uA"],
+     [41.4,  2,   -90, "usb_uA"],
+     [7.25,  16.7,  180, "uSD", [12, 11.5, 1.28]],
+     [-1.3,    15,    0, "flat_flex"],
+    ],
+    [": Micro SD card"],
+    [32.5 - 9.5 * 2.54, 26.5 - 1.27, 20, 2]];
 
 ArduinoUno3 = ["ArduinoUno3", "Arduino Uno R3", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
     [[30.226, -2.54, 0, "2p54socket", 10, 1],
@@ -317,6 +330,6 @@ PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
 
-pcbs = [ExtruderPCB, PI_IO, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
+pcbs = [ExtruderPCB, PI_IO, RPI0, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
 
 use <pcb.scad>

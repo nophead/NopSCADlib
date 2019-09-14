@@ -1657,6 +1657,13 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| ```hdmi_depth(type)``` | Front to back depth |
+| ```hdmi_height(type)``` | Outside height above the PCB |
+| ```hdmi_height1(type)``` | Inside height at the sides |
+| ```hdmi_height2(type)``` | Inside height in the middle |
+| ```hdmi_thickness(type)``` | Wall thickness of the metal |
+| ```hdmi_width1(type)``` | Inside width at the top |
+| ```hdmi_width2(type)``` | Inside width at the bottom |
 | ```pcb_accessories(type)``` | List of accessories to go on the BOM, SD cards, USB cables, etc. |
 | ```pcb_colour(type)``` | Colour of the subtrate |
 | ```pcb_components(type)``` | List of components |
@@ -1683,8 +1690,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |:--- |:--- |
 | ```barrel_jack(cutout = false)``` | Draw barrel power jack |
 | ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
+| ```flat_flex(cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
 | ```flex(cutout = false)``` | Draw flexistrip connector |
-| ```hdmi(cutout = false)``` | Draw HDMI socket |
+| ```hdmi(type, cutout = false)``` | Draw HDMI socket |
 | ```jack(cutout = false)``` | Draw 3.5mm jack |
 | ```molex_254(ways)``` | Draw molex header |
 | ```pcb(type)``` | Draw specified PCB |
@@ -1719,11 +1727,11 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```pcb(ExtruderPCB)``` |  Extruder connection PCB |
 |   1 | ```pcb(Keyes5p1)``` |  Keyes5.1 Arduino Uno expansion board |
 |   1 | ```pcb(Melzi)``` |  Melzi electronics |
-|   3 |  |  Micro SD card |
+|   4 |  |  Micro SD card |
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
 |  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
-|  20 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|  24 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |  12 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
@@ -1735,19 +1743,23 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```pcb(PERF80x20)``` |  Perfboard 80 x 20mm |
 |   1 | ```pin_socket(2p54header, 13, 2, right_angle = true)``` |  Pin socket 13 x 2 right_angle |
 |   1 | ```pcb(RPI3)``` |  Raspberry Pi 3 |
-|   8 | ```screw(M2_cap_screw, 20)``` |  Screw M2 cap x 20mm |
-|   8 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
+|   1 | ```pcb(RPI0)``` |  Raspberry Pi Zero |
+|   4 | ```screw(M2_cap_screw, 20)``` |  Screw M2 cap x 20mm |
+|  12 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
 |   4 | ```screw(M2p5_cap_screw, 16)``` |  Screw M2.5 cap x 16mm |
+|   4 | ```screw(M2p5_cap_screw, 20)``` |  Screw M2.5 cap x 20mm |
 |  12 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
-|   4 | ```screw(M2p5_pan_screw, 30)``` |  Screw M2.5 pan x 30mm |
+|   4 | ```screw(M2p5_pan_screw, 35)``` |  Screw M2.5 pan x 35mm |
 |   4 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
-|   8 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
-|  12 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
+|   4 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
+|   4 | ```screw(M3_cap_screw, 35)``` |  Screw M3 cap x 35mm |
+|   8 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
+|   4 | ```screw(M4_cap_screw, 35)``` |  Screw M4 cap x 35mm |
 |   3 | ```terminal_35(2)``` |  Terminal block 2 way 3.5mm |
 |   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
 |  16 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
-|  20 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  24 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | ```pcb(ZC_A0591)``` |  ZC-A0591 ULN2003 driver PCB |
@@ -1755,21 +1767,22 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   4 | pcb_spacer20110.stl |
 |   4 | pcb_spacer20120.stl |
 |   4 | pcb_spacer20130.stl |
 |   4 | pcb_spacer20140.stl |
+|   4 | pcb_spacer20150.stl |
 |   4 | pcb_spacer25100_2.stl |
-|   4 | pcb_spacer25210.stl |
+|   4 | pcb_spacer25110_2.stl |
+|   4 | pcb_spacer25220.stl |
 |   4 | pcb_spacer2570.stl |
-|   4 | pcb_spacer2580_2.stl |
+|   4 | pcb_spacer2580.stl |
 |   4 | pcb_spacer2590_2.stl |
-|   4 | pcb_spacer30150.stl |
 |   4 | pcb_spacer30160.stl |
-|   4 | pcb_spacer30200.stl |
-|   4 | pcb_spacer40170.stl |
+|   4 | pcb_spacer30170.stl |
+|   4 | pcb_spacer30210.stl |
 |   4 | pcb_spacer40180.stl |
 |   4 | pcb_spacer40190.stl |
+|   4 | pcb_spacer40200.stl |
 
 
 <a href="#top">Top</a>
