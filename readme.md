@@ -1872,9 +1872,9 @@ Pin headers and sockets, etc.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```box_header(2p54header102)``` |  Box header 10 x 2 |
+|   1 | ```box_header(2p54header, 10, 2)``` |  Box header 10 x 2 |
 |   1 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
-|   1 | ```pin_header(2p54header102)``` |  Pin header 10 x 2 |
+|   1 | ```pin_header(2p54header, 10, 2)``` |  Pin header 10 x 2 |
 |   1 | ```pin_socket(2p54header, 10, 2)``` |  Pin socket 10 x 2 |
 |   1 | ```pin_socket(2p54header, 10, 2, right_angle = true)``` |  Pin socket 10 x 2 right_angle |
 

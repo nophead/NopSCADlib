@@ -50,7 +50,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
     if(cutout)
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
     else
-        vitamin(str("pin_header(", type[0], cols, rows, arg(smt, false, "smt"), "): Pin header ", cols, " x ", rows));
+        vitamin(str("pin_header(", type[0], ", ", cols, ", ", rows, arg(smt, false, "smt"), "): Pin header ", cols, " x ", rows));
 
         translate_z(smt ? 3.5 - h : 0) {
             for(x = [0 : cols - 1], y = [0 : rows - 1])
@@ -80,7 +80,7 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
     if(cutout)
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
     else
-        vitamin(str("box_header(", type[0], cols, rows, arg(smt, false, "smt"), "): Box header ", cols, " x ", rows));
+        vitamin(str("box_header(", type[0], ", ", cols, ", ", rows, arg(smt, false, "smt"), "): Box header ", cols, " x ", rows));
 
         translate_z(smt ? 3.5 - h : 0) {
             for(x = [0 : cols - 1], y = [0 : rows - 1])
