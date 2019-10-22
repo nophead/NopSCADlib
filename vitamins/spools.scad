@@ -27,7 +27,8 @@
 spool_300x88 = ["spool_300x88", 300, 88, 43, 6, 8, 52, 214, 300];
 spool_300x85 = ["spool_300x85", 300, 85, 60, 4, 8, 52, 250, 280];
 spool_200x55 = ["spool_200x55", 200, 55, 40, 5, 5, 52, 200, 200];
+spool_200x60 = ["spool_200x60", 200, 60, 60, 5, 2, 52, 78,  191]; // 3D Filaprint
 
-spools = [spool_200x55, spool_300x85, spool_300x88];
+spools = [spool_200x55, spool_200x60, spool_300x85, spool_300x88];
 
 use <spool.scad>
