@@ -61,30 +61,34 @@ heater_y = heater_width / 2;
 
 fan_x_offset = rad_dia / 2 + 4;
 
-module e3d_resistor(type) {
+module e3d_resistor(type, resistor_wire_rotate = [0,0,0]) {
     translate([11 - heater_x, -3 - heater_y, heater_height / 2 + nozzle_h]) {
         color("grey")
             rotate([-90, 0, 0])
                 cylinder(r = resistor_dia / 2, h = resistor_len);
 
         color("red")
-            translate([-3.5/2, resistor_len  + 3.5/2 + 1, 0]) {
-                cylinder(d = 3.5, h = 36);
+			translate([0, resistor_len + 3.5/2 + 1, 0]) {
+				rotate(resistor_wire_rotate) {
+					translate([-3.5/2, 0, 0]) {
+						cylinder(d = 3.5, h = 36);
 
-                translate([3.5, 0, 0])
-                    cylinder(r = 3.5 / 2, h = 36);
-            }
+						translate([3.5, 0, 0])
+							cylinder(r = 3.5 / 2, h = 36);
+					}
+				}
+			}
     }
 }
 
-module heater_block(type) {
+module heater_block(type, resistor_wire_rotate = [0,0,0]) {
     translate_z(-hot_end_length(type))  {
         translate_z(nozzle_h)
             color("lightgrey")
                 translate([-heater_x, -heater_y, 0])
                     cube([heater_length, heater_width, heater_height]);
 
-        e3d_resistor(type);
+        e3d_resistor(type, resistor_wire_rotate);
         e3d_nozzle(type);
     }
 }
@@ -118,7 +122,7 @@ module e3d_fan(type) {
                 fan(fan30x10);
 }
 
-module e3d_hot_end(type, filament, naked = false) {
+module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]) {
     insulator_length = hot_end_insulator_length(type);
     inset = hot_end_inset(type);
     h_ailettes = rad_len / (2 * rad_nb_ailettes - 1);
@@ -146,17 +150,17 @@ module e3d_hot_end(type, filament, naked = false) {
             }
 
     rotate(90)
-        heater_block(type);
+        heater_block(type, resistor_wire_rotate);
 
     if(!naked)
         translate_z(inset - insulator_length)
             e3d_fan();
 }
 
-module e3d_hot_end_assembly(type, filament, naked = false) {
+module e3d_hot_end_assembly(type, filament, naked = false, resistor_wire_rotate = [0,0,0]) {
     bundle = 3.2;
 
-    e3d_hot_end(type, filament, naked);
+    e3d_hot_end(type, filament, naked, resistor_wire_rotate);
 
     // Wire and ziptie
     if(!naked)
