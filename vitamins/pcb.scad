@@ -697,11 +697,12 @@ module standoff(h, d, h2, d2) {
 
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
     function show(comp, part) = (comp[3] == part || comp[3] == str("-",part)) && (!cutouts || angle == undef || angle == comp.z);
+    function param(n, default = 0) = len(comp) > n ? comp[n] : default;
     rotate(comp.z) {
-        if(show(comp, "2p54header")) pin_header(2p54header, comp[4], comp[5], len(comp) > 5 ? comp[6] : false, cutouts);
-        if(show(comp, "2p54boxhdr")) box_header(2p54header, comp[4], comp[5], len(comp) > 5 ? comp[6] : false, cutouts);
-        if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], comp[6], len(comp) > 7 ? comp[7] : 0, cutouts);
-        if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], len(comp) > 7 ? comp[7] : grey30, cutouts);
+        if(show(comp, "2p54header")) pin_header(2p54header, comp[4], comp[5], param(6), cutouts);
+        if(show(comp, "2p54boxhdr")) box_header(2p54header, comp[4], comp[5], param(6), cutouts);
+        if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7), param(8, false), cutouts);
+        if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], param(7, grey30), cutouts);
         if(show(comp, "rj45")) rj45(cutouts);
         if(show(comp, "usb_Ax2")) usb_Ax2(cutouts);
         if(show(comp, "usb_uA")) usb_uA(cutouts);
@@ -728,6 +729,9 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "uSD")) uSD(comp[4], cutouts);
     }
 }
+
+function pcb_component_position(type, name) = //! Return x y position of specified component
+    [for(comp = pcb_components(type), p = [pcb_coord(type, [comp.x, comp.y])]) if(comp[3] == name) [p.x, p.y]][0];
 
 module pcb_component_position(type, name) { //! Position child at the specified component position
     for(comp = pcb_components(type)) {
