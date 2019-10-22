@@ -3243,6 +3243,12 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ```bbox_width(type)``` | Internal width |
 | ```star_washers(type)``` | Set to false to remove star washers. |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```bbox_area(type)``` | Internal surdface area in m^2 |
+| ```bbox_volume(type)``` | Internal volume in litres |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
@@ -3253,6 +3259,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ```bbox_base_blank(type)``` | 2D template for the base |
 | ```bbox_front(type)``` | Default front, can be overridden to customise |
 | ```bbox_front_blank(type, sheet = false)``` | 2D template for the front |
+| ```bbox_front_blank(type, sheet = false, width = 0)``` | 2D template for the front |
 | ```bbox_left(type)``` | Default left side, can be overridden to customise |
 | ```bbox_left_blank(type, sheet = false)``` | 2D template for the left side |
 | ```bbox_right(type)``` | Default right side, can be overridden to customise |

@@ -50,6 +50,10 @@ function bbox_name(type)       = type[8] ? type[8] : "bbox"; //! Optional name i
 function bbox_skip_blocks(type)= type[9] ? type[9] : [];  //! List of fixing blocks to skip, used to allow a hinged panel for example
 function star_washers(type)    = type[10] ? type[10] : is_undef(type[10]); //! Set to false to remove star washers.
 
+function bbox_volume(type) = bbox_width(type) * bbox_depth(type) * bbox_height(type) / 1000000; //! Internal volume in litres
+function bbox_area(type) = let(w =  bbox_width(type), d = bbox_depth(type), h = bbox_height(type)) //! Internal surdface area in m^2
+    2 * (w * d + w * h + d * h) / 1000000;
+
 module bbox_shelf_blank(type) { //! 2D template for a shelf
     dxf(str(bbox_name(type), "_shelf"));
 
@@ -205,7 +209,7 @@ module _bbox_assembly(type, top = true, base = true, left = true, right = true, 
     width = bbox_width(type);
     depth = bbox_depth(type);
     height = bbox_height(type);
-    echo("Box:", width, depth, height);
+    echo("Box:", width, depth, height, volume = bbox_volume(type), area = bbox_area(type));
 
     t = sheet_thickness(bbox_sheets(type));
     bt = sheet_thickness(bbox_base_sheet(type));
