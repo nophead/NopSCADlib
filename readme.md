@@ -1864,8 +1864,8 @@ Pin headers and sockets, etc.
 | ```box_header(type, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw box header |
 | ```idc_transition(type, cols = 5, skip = [], cutout = false)``` | Draw IDC transition header |
 | ```pin(type, length = undef)``` | Draw a header pin |
-| ```pin_header(type, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw pin header |
-| ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, cutout = false)``` | Draw pin socket |
+| ```pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false)``` | Draw pin header |
+| ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false)``` | Draw pin socket |
 
 ![pin_headers](tests/png/pin_headers.png)
 
@@ -1875,6 +1875,7 @@ Pin headers and sockets, etc.
 |   1 | ```box_header(2p54header, 10, 2)``` |  Box header 10 x 2 |
 |   1 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
 |   1 | ```pin_header(2p54header, 10, 2)``` |  Pin header 10 x 2 |
+|   1 | ```pin_header(2p54header, 10, 2, right_angle = true)``` |  Pin header 10 x 2 right_angle |
 |   1 | ```pin_socket(2p54header, 10, 2)``` |  Pin socket 10 x 2 |
 |   1 | ```pin_socket(2p54header, 10, 2, right_angle = true)``` |  Pin socket 10 x 2 right_angle |
 
