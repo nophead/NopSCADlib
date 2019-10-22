@@ -2122,6 +2122,7 @@ Ring terminals and earth assemblies for DiBond panels.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| ```ringterm_crimp_length(type)``` | If non-zero the length of the crimp tube |
 | ```ringterm_hole(type)``` | Wire hole diameter |
 | ```ringterm_id(type)``` | Inside diameter |
 | ```ringterm_length(type)``` | Length of the tail including the ring |
@@ -2147,12 +2148,13 @@ Ring terminals and earth assemblies for DiBond panels.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   3 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   1 | ```ring_terminal(M3_ringterm)``` |  Ring terminal 3mm |
 |   1 | ```ring_terminal(M3_ringterm_cs)``` |  Ring terminal 3mm |
+|   1 | ```ring_terminal(M3_ringterm_crimp)``` |  Ring terminal crimp 3mm |
 |   1 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
-|   1 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
-|   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+|   2 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
+|   6 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 
 <a href="#top">Top</a>
