@@ -47,6 +47,19 @@ LCD1602A = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCB,
           [],                                       // clearance need for the ts ribbon
         ];
 
+LCDS7282BPCB = ["", "", 85, 36, 1.65, 0, 2.56, 0, "green", false, [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+      [ [3.5, 18, 0, "2p54header", 2, 7]
+      ],
+      []];
+
+LCDS7282B = ["LCDS7282B", "LCD display S-7282B", 73.6, 28.7, 9.6, LCDS7282BPCB,
+          [-2.5, 0, 0],                             // pcb offst
+          [[-64.5 / 2, -14.5 / 2], [64.5 / 2, 14.5 / 2, 0.6]],              // aperture
+          [],                                       // touch screen
+          0,                                        // thread length
+          [],                                       // clearance need for the ts ribbon
+        ];
+
 SSD1963_4p3PCB = ["", "", 120, 74, 1.65, 3, 3, 0, "mediumblue", false, [[3, 3], [-3, 3], [-3, -3], [3, -3]],
     [ [2.75 + 1.27, 37, 90, "2p54header", 20, 2]
     ],
@@ -60,6 +73,6 @@ SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD
         [[0, -34.5], [12, -31.5]],
         ];
 
-displays = [HDMI5, SSD1963_4p3, LCD1602A];
+displays = [HDMI5, SSD1963_4p3, LCD1602A, LCDS7282B];
 
 use <display.scad>
