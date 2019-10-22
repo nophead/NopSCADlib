@@ -260,7 +260,7 @@ Models of radial blowers.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```blower(PE4020)``` |  Blower Pengda Technology 4020 |
-|   1 | ```blower(RM5015)``` |  Blower Runda RB5015 |
+|   1 | ```blower(RB5015)``` |  Blower Runda RB5015 |
 |   3 | ```screw(M3_cap_screw, 20)``` |  Screw M3 cap x 20mm |
 |   2 | ```screw(M4_cap_screw, 25)``` |  Screw M4 cap x 25mm |
 |   3 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
