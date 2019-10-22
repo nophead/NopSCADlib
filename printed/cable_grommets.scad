@@ -195,12 +195,15 @@ module mouse_grommet_assembly(r, thickness)
 module ribbon_grommet_20_3_stl() ribbon_grommet(20, 3);
 module mouse_grommet_15_3_stl() mouse_grommet(1.5, 3);
 module mouse_grommet_20_3_stl() mouse_grommet(2, 3);
+module mouse_grommet_25_3_stl() mouse_grommet(2.5, 3);
 module mouse_grommet_30_3_stl() mouse_grommet(3, 3);
 
 module round_grommet_bottom_30_stl() round_grommet_bottom(3);
 module round_grommet_bottom_40_stl() round_grommet_bottom(4);
+module round_grommet_bottom_50_stl() round_grommet_bottom(5);
 module round_grommet_bottom_60_stl() round_grommet_bottom(6);
 
 module round_grommet_top_30_3_stl() round_grommet_top(3, 3);
 module round_grommet_top_40_3_stl() round_grommet_top(4, 3);
+module round_grommet_top_50_3_stl() round_grommet_top(5, 3);
 module round_grommet_top_60_3_stl() round_grommet_top(6, 3);
