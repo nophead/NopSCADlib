@@ -616,16 +616,11 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | ```fan_thickness(type)``` | Thickness of the frame |
 | ```fan_width(type)``` | Width of square |
 
-### Functions
-| Function | Description |
-|:--- |:--- |
-| ```fan_screw_length(type, thickness)``` | Screw length required |
-
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | ```fan(type)``` | Draw specified fan, origin in the centre |
-| ```fan_assembly(type, thickness, include_fan = true, screw = false)``` | Fan with its fasteners |
+| ```fan_assembly(type, thickness, include_fan = true, screw = false, full_depth = false)``` | Fan with its fasteners |
 | ```fan_hole_positions(type, z = undef)``` | Position children at the screw hole positions |
 | ```fan_holes(type, poly = false, screws = true, h = 100)``` | Make all the holes for the fan, or just the aperture if ```screws``` is false. Set ```poly``` true for poly_holes. |
 
@@ -652,9 +647,9 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 |  20 | ```screw(M4_dome_screw, 16)``` |  Screw M4 dome x 16mm |
 |   4 | ```screw(M4_dome_screw, 25)``` |  Screw M4 dome x 25mm |
 |   4 | ```screw(M4_dome_screw, 30)``` |  Screw M4 dome x 30mm |
-|   4 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|   8 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
-|  28 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|   8 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|  32 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
 
 <a href="#top">Top</a>
@@ -1683,6 +1678,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```pcb_component_position(type, name)``` | Return x y position of specified component |
 | ```pcb_coord(type, p)``` | Convert offsets from the edge to coordinates relative to the centre |
 | ```pcb_screw(type, cap = hs_cap)``` | Mounting screw type |
 

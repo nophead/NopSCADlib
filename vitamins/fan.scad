@@ -147,11 +147,16 @@ module fan_holes(type, poly = false, screws = true, h = 100) { //! Make all the 
     }
 }
 
-function nut_and_washer_thickness(screw, nyloc) = washer_thickness(screw_washer(screw)) + nut_thickness(screw_nut(screw), nyloc);
-function fan_screw_depth(type) = fan_boss_d(type) ? fan_depth(type) : fan_thickness(type);
-function fan_screw_length(type, thickness) = screw_longer_than(thickness + fan_screw_depth(type) + nut_and_washer_thickness(fan_screw(type), true)); //! Screw length required
+function fan_screw_depth(type, full_depth = false) = fan_boss_d(type) || full_depth ? fan_depth(type) : fan_thickness(type);
 
-module fan_assembly(type, thickness, include_fan = true, screw = false) { //! Fan with its fasteners
+function fan_screw_length(type, thickness, full_depth = false) =
+    let(depth = fan_screw_depth(type, full_depth),
+        washers = depth == fan_depth(type) ? 2 : 1,
+        washer = screw_washer(fan_screw(type)),
+        nut = screw_nut(fan_screw(type)))
+            screw_longer_than(thickness + depth + washer_thickness(washer) * washers + nut_thickness(nut, true)); //! Screw length required
+
+module fan_assembly(type, thickness, include_fan = true, screw = false, full_depth = false) { //! Fan with its fasteners
     translate_z(-fan_depth(type) / 2) {
         if(include_fan)
             fan(type);
@@ -160,11 +165,14 @@ module fan_assembly(type, thickness, include_fan = true, screw = false) { //! Fa
         nut = screw_nut(Screw);
         fan_hole_positions(type) {
             translate_z(thickness)
-                screw_and_washer(Screw, fan_screw_length(type, thickness));
+                screw_and_washer(Screw, fan_screw_length(type, thickness, full_depth));
 
-            translate_z(include_fan ? -fan_screw_depth(type) : 0)
+            translate_z(include_fan ? -fan_screw_depth(type, full_depth) : 0)
                 vflip()
-                    nut(nut, true);
+                    if(fan_screw_depth(type, full_depth) == fan_depth(type))
+                        nut_and_washer(nut, true);
+                    else
+                        nut(nut, true);
         }
      }
 }
