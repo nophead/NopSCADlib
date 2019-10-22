@@ -30,13 +30,13 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
@@ -3849,6 +3849,54 @@ Printed handle that can be printed without needing support material due to its t
 | Qty | Name |
 | ---:|:--- |
 |   1 | handle_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Pcb_mount"></a>
+## Pcb_mount
+A frame to mount a PCB by its corners when it has no mounting holes.
+The stl must be given a parameterless wrapper in the project that uses it.
+
+
+[printed/pcb_mount.scad](printed/pcb_mount.scad) Implementation.
+
+[tests/pcb_mount.scad](tests/pcb_mount.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```pcb_mount_length(pcb)``` | Outside length of the mount |
+| ```pcb_mount_width(pcb)``` | Outside width of the mount |
+| ```pillar_x_pitch(pcb)``` | x pitch of screw pillars |
+| ```pillar_y_pitch(pcb)``` | y pitch of screw pillars |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```pcb_mount(pcb, height = 5, washers = true)``` | Make the STL of a pcb mount for the specified PCB. |
+| ```pcb_mount_assembly(pcb, thickness, height = 5)``` | A PCB mount assembly with fasteners |
+| ```pcb_mount_holes(pcb, h = 0)``` | Drill holes for PCB mount |
+| ```pcb_mount_screw_positions(pcb)``` | Positions of the screws and pillars |
+| ```pcb_mount_washer_stl()``` | A plastic washer to clamp a PCB |
+
+![pcb_mount](tests/png/pcb_mount.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
+|   1 | ```pin_socket(2p54header, 13, 2)``` |  Pin socket 13 x 2 |
+|   4 | ```screw(M3_cap_screw, 16)``` |  Screw M3 cap x 16mm |
+|   3 | ```terminal_35(2)``` |  Terminal block 2 way 3.5mm |
+|   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | pcb_mount_PI_IO_5.stl |
 
 
 <a href="#top">Top</a>

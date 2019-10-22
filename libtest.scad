@@ -91,6 +91,7 @@ use <tests/strap_handle.scad>
 use <tests/ssr_shroud.scad>
 use <tests/psu_shroud.scad>
 use <tests/flat_hinge.scad>
+use <tests/pcb_mount.scad>
 
 x5 = 800;
 
@@ -303,6 +304,9 @@ translate([x3, veroboard_y])
 
 translate([x3 + 70, veroboard_y + 30])
     geared_steppers();
+
+translate([x3 + 140, veroboard_y + 20])
+    pcb_mounts();
 
 translate([x3, d_connectors_y])
     d_connectors();
