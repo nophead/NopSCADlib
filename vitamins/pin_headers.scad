@@ -17,14 +17,14 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-//                          p     p   b    p     p       b
-//                          i     i   e    i     i       a
-//                          t     n   l    n     n       s
-//                          c         o                  e
-//                          h     l   w    w     c
-//                                                       c
+//                          p     p     b    p     p       b      Socket depth
+//                          i     i     e    i     i       a
+//                          t     n     l    n     n       s
+//                          c           o                  e
+//                          h     l     w    w     c
+//                                                         c
 //
-2p54header = ["2p54header", 2.54, 12, 3.2, 0.66, "gold", grey20, 8.5];
+2p54header = ["2p54header", 2.54, 11.6, 3.2, 0.66, "gold", grey20, 8.5];
 
 pin_headers = [ 2p54header ];
 

@@ -43,30 +43,52 @@ module pin(type, length = undef) { //! Draw a header pin
             }
 }
 
-module pin_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! Draw pin header
+module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false) { //! Draw pin header
     pitch =  hdr_pitch(type);
     h = pitch;
+    ra_offset = 2.4;
+    width = pitch * rows;
 
     if(cutout)
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
     else
-        vitamin(str("pin_header(", type[0], ", ", cols, ", ", rows, arg(smt, false, "smt"), "): Pin header ", cols, " x ", rows));
+        vitamin(str("pin_header(", type[0], ", ", cols, ", ", rows,
+                    arg(smt, false, "smt"), arg(right_angle, false, "right_angle"), "): Pin header ", cols, " x ", rows, right_angle ? " right_angle" : ""));
 
         translate_z(smt ? 3.5 - h : 0) {
-            for(x = [0 : cols - 1], y = [0 : rows - 1])
+            for(x = [0 : cols - 1], y = [0 : rows - 1]) {
                 translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type);
+                    if(right_angle)
+                        pin(type, hdr_pin_below(type) + width / 2 + (y - 0.5) * pitch);
+                    else
+                        pin(type);
 
-            color(hdr_base_colour(type))
-                linear_extrude(height = h)
-                    for(x = [0 : cols - 1], y = [0 : rows - 1])
-                        translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), pitch / 2])
-                            hull() {
-                                chamfer = pitch / 4;
-                                square([pitch + eps, pitch - chamfer], center = true);
+                if(right_angle) {
+                    w = hdr_pin_width(type);
+                    rotate([-90, 0, 180])
+                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) -width / 2, hdr_pin_below(type) - (y - 0.5) * pitch])
+                            pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + pitch / 2 + (y - 0.5) * pitch);
 
-                                square([pitch - chamfer, pitch + eps], center = true);
-                            }
+                    translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
+                        rotate([0, -90, 0])
+                            color(hdr_pin_colour(type))
+                                rotate_extrude(angle = 90, $fn = 32)
+                                    translate([0, -w / 2])
+                                        square(w);
+                }
+            }
+            translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
+                rotate([right_angle ? 90 : 0, 0, 0])
+                    color(hdr_base_colour(type))
+                        linear_extrude(height = h)
+                            for(x = [0 : cols - 1], y = [0 : rows - 1])
+                                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), pitch / 2])
+                                    hull() {
+                                        chamfer = pitch / 4;
+                                        square([pitch + eps, pitch - chamfer], center = true);
+
+                                        square([pitch - chamfer, pitch + eps], center = true);
+                                    }
         }
 }
 
@@ -85,7 +107,7 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
         translate_z(smt ? 3.5 - h : 0) {
             for(x = [0 : cols - 1], y = [0 : rows - 1])
                 translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type);
+                    pin(type, hdr_pin_length(type) - pitch + base);
 
             color(hdr_base_colour(type)) {
                 linear_extrude(height = base)
@@ -138,16 +160,16 @@ module idc_transition(type, cols = 5, skip = [], cutout = false) { //! Draw IDC 
     }
 }
 
-module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, cutout = false) { //! Draw pin socket
+module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false) { //! Draw pin socket
     pitch = hdr_pitch(type);
     length = pitch * cols + 0.5;
     width = pitch * rows - 0.08;
-    depth = max(hdr_socket_depth(type), height);
+    depth = height ? height : hdr_socket_depth(type);
     ra_offset = 1.5;
     if(cutout)
         ;
     else {
-        vitamin(str("pin_socket(", type[0], ", ", cols, ", ", rows, arg(right_angle, false, "right_angle"), arg(height, 0, "height"),
+        vitamin(str("pin_socket(", type[0], ", ", cols, ", ", rows, arg(right_angle, false, "right_angle"), arg(height, 0, "height"), arg(smt, false, "smt"),
                                "): Pin socket ", cols, " x ", rows, right_angle ? " right_angle" : ""));
         color(hdr_base_colour(type))
             translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
@@ -164,8 +186,9 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, cut
 
         color(hdr_pin_colour(type))
             for(x = [0 : cols - 1], y = [0 : rows -1]) {
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type, hdr_pin_below(type) + width / 2 + (y - 0.5) * pitch);
+                if(!smt)
+                    translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
+                        pin(type, hdr_pin_below(type) + width / 2 + (y - 0.5) * pitch);
 
                 if(right_angle) {
                     rotate([-90, 0, 0])

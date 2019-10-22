@@ -28,15 +28,18 @@ module pin_headers()
         idc_transition(pin_headers[$i], 10);
 
         translate([0, 20])
-            pin_header(pin_headers[$i], 10, 2);
+            pin_header(pin_headers[$i], 10, 2, right_angle = true);
 
         translate([0, 40])
+            pin_header(pin_headers[$i], 10, 2);
+
+        translate([0, 60])
             box_header(pin_headers[$i], 10, 2);
 
-        translate([0, 65])
+        translate([0, 80])
             pin_socket(pin_headers[$i], 10, 2);
 
-        translate([0, 95])
+        translate([0, 110])
             pin_socket(pin_headers[$i], 10, 2, right_angle = true);
 
     }
