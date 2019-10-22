@@ -3258,7 +3258,6 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ```bbox_base(type)``` | Default base, can be overridden to customise |
 | ```bbox_base_blank(type)``` | 2D template for the base |
 | ```bbox_front(type)``` | Default front, can be overridden to customise |
-| ```bbox_front_blank(type, sheet = false)``` | 2D template for the front |
 | ```bbox_front_blank(type, sheet = false, width = 0)``` | 2D template for the front |
 | ```bbox_left(type)``` | Default left side, can be overridden to customise |
 | ```bbox_left_blank(type, sheet = false)``` | 2D template for the left side |

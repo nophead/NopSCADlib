@@ -169,7 +169,7 @@ module bbox_right_blank(type, sheet = false) { //! 2D template for the right sid
     }
 }
 
-module bbox_front_blank(type, sheet = false) { //! 2D template for the front
+module bbox_front_blank(type, sheet = false, width = 0) { //! 2D template for the front
     dxf(str(bbox_name(type), "_front"));
 
     t = sheet_thickness(bbox_sheets(type));
@@ -178,7 +178,7 @@ module bbox_front_blank(type, sheet = false) { //! 2D template for the front
 
     difference() {
         translate([0, (bt - bb) / 2])
-            sheet_2D(subst_sheet(type, sheet), bbox_width(type) + 2 * t, bbox_height(type) + bb + bt);
+            sheet_2D(subst_sheet(type, sheet), max(bbox_width(type) + 2 * t, width), bbox_height(type) + bb + bt);
 
         drill_holes(type, rotate([-90, 0, 0]) * translate([0, bbox_depth(type) / 2]));
     }
