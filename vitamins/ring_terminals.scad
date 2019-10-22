@@ -20,16 +20,17 @@
 //
 // Ring terminals
 //
-//                                  o  i   l  w    h    t  s
-//                                  d  d   e  i    o    h  c
-//                                         n  d    l    i  r
-//                                         g  t    e    c  e
-//                                         t  h         k  w
-//                                         h
+//                                        o    i     l  w      h    t  s              c
+//                                        d    d     e  i      o    h  c              r
+//                                                   n  d      l    i  r              i
+//                                                   g  t      e    c  e              m
+//                                                   t  h           k  w              p
+//                                                   h
 //
-M3_ringterm    = ["M3_ringterm",    6, 3, 12, 3, 1.5, 0.2, M3_dome_screw];
-M3_ringterm_cs = ["M3_ringterm_cs", 6, 3, 12, 3, 1.5, 0.2, M3_cap_screw];
+M3_ringterm       = ["M3_ringterm",       6,   3,   12, 3,   1.5, 0.2, M3_dome_screw, 0];
+M3_ringterm_cs    = ["M3_ringterm_cs",    6,   3,   12, 3,   1.5, 0.2, M3_cap_screw,  0];
+M3_ringterm_crimp = ["M3_ringterm_crimp", 5.5, 3,   13, 4.1, 0,   0.7, M3_dome_screw, 4.5];
 
-ring_terminals = [M3_ringterm, M3_ringterm_cs];
+ring_terminals = [M3_ringterm, M3_ringterm_cs, M3_ringterm_crimp];
 
 use <ring_terminal.scad>

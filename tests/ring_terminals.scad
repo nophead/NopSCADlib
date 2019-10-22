@@ -24,7 +24,7 @@ include <../vitamins/ring_terminals.scad>
 
 module ring_terminals()
     layout([for(t = ring_terminals) ringterm_od(t)], 5)
-        rotate(90)
+        rotate(180)
             ring_terminal_assembly(ring_terminals[$i], 3);
 
 if($preview)

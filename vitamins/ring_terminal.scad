@@ -26,48 +26,96 @@ use <nut.scad>
 use <washer.scad>
 use <../utils/tube.scad>
 
-function ringterm_od(type)        = type[1];    //! Outside diameter
-function ringterm_id(type)        = type[2];    //! Inside diameter
-function ringterm_length(type)    = type[3];    //! Length of the tail including the ring
-function ringterm_width(type)     = type[4];    //! Width of the tail
-function ringterm_hole(type)      = type[5];    //! Wire hole diameter
-function ringterm_thickness(type) = type[6];    //! Metal thickness
-function ringterm_screw(type)     = type[7];    //! Screw type
+function ringterm_od(type)           = type[1];    //! Outside diameter
+function ringterm_id(type)           = type[2];    //! Inside diameter
+function ringterm_length(type)       = type[3];    //! Length of the tail including the ring
+function ringterm_width(type)        = type[4];    //! Width of the tail
+function ringterm_hole(type)         = type[5];    //! Wire hole diameter
+function ringterm_thickness(type)    = type[6];    //! Metal thickness
+function ringterm_screw(type)        = type[7];    //! Screw type
+function ringterm_crimp_length(type) = type[8];    //! If non-zero the length of the crimp tube
 function ringterm_extent(type)    = ringterm_length(type) / sqrt(2); //! Space to leave
 
 module ring_terminal(type) { //! Draw specifeid ring terminal
     screw = ringterm_screw(type);
     d = 2 * screw_radius(screw);
-    vitamin(str("ring_terminal(", type[0], "): Ring terminal ",d,"mm"));
+    crimp = ringterm_crimp_length(type);
+    vitamin(str("ring_terminal(", type[0], "): Ring terminal ", crimp ? "crimp " : "", d, "mm"));
 
     t = ringterm_thickness(type);
     w = ringterm_width(type);
     od = ringterm_od(type);
     id = ringterm_id(type);
     l = ringterm_length(type);
-    angle = 45;
-    bend = washer_radius(screw_washer(screw)) + t * tan(angle / 2);
+    angle = crimp ? 0 : 45;
+    transition = 1;
+    bend = crimp ? l - od / 2 - crimp - transition : washer_radius(screw_washer(screw)) + t * tan(angle / 2);
+    hole_d = ringterm_hole(type);
+
+    module hull_if_crimp()
+        if(crimp)
+            hull()
+                children();
+        else
+            children();
+
     color("silver") union() {
-        tube(or = od / 2, ir = id / 2, h = t, center = false);
+        linear_extrude(height = t)
+            difference() {
+                hull_if_crimp() {
+                    circle(d = od);
 
-        translate([-w / 2, -bend, 0])
-            cube([w, bend - id / 2, t]);
+                    translate([-w / 2, -bend, 0])
+                        square([w, bend - id / 2]);
+                }
+                circle(d = id);
+            }
 
-        translate([0, -bend])
-            rotate([-angle, 0, 0])
-                linear_extrude(height = t)
-                    difference() {
-                        length = l - od / 2 - bend;
-                        hull() {
-                            translate([-w / 2, -eps])
-                                square([w, eps]);
+        if(crimp) {
+            translate([0, -bend, w / 2])
+                rotate([90, 0, 0]) {
+                    render() difference() {
+                        union() {
+                            translate_z(transition)
+                                cylinder(d = w, h = crimp);
 
-                            translate([0, -length + w / 2])
-                                circle(d = w);
+                            hull() {
+                                translate_z(transition)
+                                    cylinder(d = w, h = eps);
+
+                                translate([-w / 2, -w / 2])
+                                    cube([w, t, eps]);
+                            }
                         }
-                        translate([0, -length + w / 2])
-                            circle(d = ringterm_hole(type));
+                        hull() {
+                            translate_z(-eps)
+                                cylinder(d = w - 2 * t, h = crimp + transition + 2 * eps);
+
+                            translate([-w / 2 + t,  -w / 2 + t])
+                                cube([w - 2 * t, w / 2 - t, eps]);
+                         }
+                         translate([0, w / 2])
+                            cube([0.1, w, 100], center = true);
                     }
+                }
+            }
+        else
+            translate([0, -bend])
+                rotate([-angle, 0, 0])
+                    linear_extrude(height = t)
+                        difference() {
+                            length = l - od / 2 - bend;
+                            hull() {
+                                translate([-w / 2, -eps])
+                                    square([w, eps]);
+
+                                translate([0, -length + w / 2])
+                                    circle(d = w);
+                            }
+                            if(hole_d)
+                                translate([0, -length + w / 2])
+                                    circle(d = hole_d);
+                        }
     }
     translate_z(ringterm_thickness(type))
         children();
