@@ -49,9 +49,12 @@ function pcb_grid(type)         = type[13]; //! Grid if a perfboard
 function pcb_polygon(type)      = type[14]; //! Optional outline polygon for odd shaped boards
 function pcb_screw(type, cap = hs_cap) = Len(type[15]) ? type[15] : find_screw(cap, screw_smaller_than(pcb_hole_d(type))); //! Mounting screw type
 
-module pcb_grid(type, x, y, z = 0)  //! Positions children at specified grid positions
-    translate([-pcb_length(type) / 2 + pcb_grid(type).x + 2.54 * x,
-               -pcb_width(type)  / 2 + pcb_grid(type).y + 2.54 * y, pcb_thickness(type) + z])
+function pcb_grid_pos(type, x, y, z = 0) = //! Returns a pcb grid position
+    [-pcb_length(type) / 2 + pcb_grid(type).x + 2.54 * x,
+     -pcb_width(type)  / 2 + pcb_grid(type).y + 2.54 * y, pcb_thickness(type) + z];
+
+module pcb_grid(type, x, y, z = 0)  //! Positions children at specified grid position
+    translate(pcb_grid_pos(type, x, y, z))
         children();
 
 // allows negative ordinates to represent offsets from the far edge
@@ -730,8 +733,8 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     }
 }
 
-function pcb_component_position(type, name) = //! Return x y position of specified component
-    [for(comp = pcb_components(type), p = [pcb_coord(type, [comp.x, comp.y])]) if(comp[3] == name) [p.x, p.y]][0];
+function pcb_component_position(type, name, index = 0) = //! Return x y position of specified component
+    [for(comp = pcb_components(type), p = [pcb_coord(type, [comp.x, comp.y])]) if(comp[3] == name) [p.x, p.y]][index];
 
 module pcb_component_position(type, name) { //! Position child at the specified component position
     for(comp = pcb_components(type)) {
@@ -807,9 +810,9 @@ module pcb(type) { //! Draw specified PCB
             pcb_screw_positions(type)
                 tube(or =  max(pcb_land_d(type), 1) / 2, ir = pcb_hole_d(type) / 2, h = t + 2 * eps);
 
-    fr4 = pcb_colour(type) == "green";
+    fr4 = pcb_colour(type) != "sienna";
     plating = 0.15;
-    color(fr4 ? "silver" : "gold")
+    color(pcb_colour(type) == "green" ? "silver" : "gold")
         translate_z(-plating)
             linear_extrude(height = fr4 ? t + 2 * plating : plating)
                 if(Len(grid)) {
