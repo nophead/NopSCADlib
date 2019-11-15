@@ -40,7 +40,8 @@ fan50x15 = [50, 15, 48, 20,    M4_dome_screw, 25,   12.5,100,7, 0,   undef];
 fan40x11 = [40, 11, 37, 16,    M3_dome_screw, 25,   7.5,100, 9, 0,   undef];
 fan30x10 = [30, 10, 27, 12,    M3_dome_screw, 17,   10, 100, 5, 0,   undef];
 fan25x10 = [25, 10, 24, 10,   M2p5_pan_screw, 16,   10, 100, 5, 0,   undef];
+fan17x8  = [17,  8, 16, 6.75,  M2_cap_screw,  12.6,  8, 100, 7, 0,   undef];
 
-fans = [fan25x10, fan30x10, fan40x11, fan50x15, fan60x15, fan60x25, fan70x15, fan80x25, fan80x38, fan120x25];
+fans = [fan17x8, fan25x10, fan30x10, fan40x11, fan50x15, fan60x15, fan60x25, fan70x15, fan80x25, fan80x38, fan120x25];
 
 use <fan.scad>

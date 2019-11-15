@@ -630,6 +630,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```fan(fan120x25)``` |  Fan 120mm x 25mm |
+|   1 | ```fan(fan17x8)``` |  Fan 17mm x 8mm |
 |   1 | ```fan(fan25x10)``` |  Fan 25mm x 10mm |
 |   1 | ```fan(fan30x10)``` |  Fan 30mm x 10mm |
 |   1 | ```fan(fan40x11)``` |  Fan 40mm x 11mm |
@@ -639,14 +640,17 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 |   1 | ```fan(fan70x15)``` |  Fan 70mm x 15mm |
 |   1 | ```fan(fan80x25)``` |  Fan 80mm x 25mm |
 |   1 | ```fan(fan80x38)``` |  Fan 80mm x 38mm |
+|   4 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
 |   4 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |   8 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |  28 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
+|   4 | ```screw(M2_cap_screw, 16)``` |  Screw M2 cap x 16mm |
 |   4 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
 |   8 | ```screw(M3_dome_screw, 20)``` |  Screw M3 dome x 20mm |
 |  20 | ```screw(M4_dome_screw, 16)``` |  Screw M4 dome x 16mm |
 |   4 | ```screw(M4_dome_screw, 25)``` |  Screw M4 dome x 25mm |
 |   4 | ```screw(M4_dome_screw, 30)``` |  Screw M4 dome x 30mm |
+|   8 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
 |   8 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  32 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
@@ -3577,6 +3581,7 @@ The ring spacing as well as the number of spokes can be specified, if zero a gas
 | Qty | Filename |
 | ---:|:--- |
 |   1 | fan_guard_120.stl |
+|   1 | fan_guard_17.stl |
 |   1 | fan_guard_25.stl |
 |   1 | fan_guard_30.stl |
 |   1 | fan_guard_40.stl |
