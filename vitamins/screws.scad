@@ -110,7 +110,7 @@ screw_lists = [
 [ M2_cap_screw, M2p5_cap_screw, M3_cap_screw, M4_cap_screw, M5_cap_screw, M6_cap_screw, M8_cap_screw],
 [ 0,            0,              M3_low_cap_screw],
 [ 0,            0,              M3_hex_screw, M4_hex_screw, M5_hex_screw, M6_hex_screw, M8_hex_screw],
-[ 0,            M2p5_pan_screw, M3_pan_screw, M4_pan_screw, No632_pan_screw, M5_pan_screw, M6_pan_screw],
+[ 0,            M2p5_pan_screw, M3_pan_screw, M4_pan_screw, M5_pan_screw, M6_pan_screw, No632_pan_screw],
 [ 0,            No2_screw,      No4_screw,    No6_screw,    No6_cs_screw],
 [ 0,            M2_cs_cap_screw,M3_cs_cap_screw, M4_cs_cap_screw],
 [ 0,            0,              M3_dome_screw, M4_dome_screw],
