@@ -2164,7 +2164,7 @@ Ring terminals and earth assemblies for DiBond panels.
 ---
 <a name="Rockers"></a>
 ## Rockers
-Rocket switch. Also used for neon indicator in the same form factor.
+Rocker switch. Also used for neon indicator in the same form factor.
 
 
 [vitamins/rockers.scad](vitamins/rockers.scad) Object definitions.
