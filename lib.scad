@@ -62,6 +62,7 @@ include <vitamins/spools.scad>
 include <vitamins/mains_sockets.scad>
 include <vitamins/ldrs.scad>
 include <vitamins/geared_steppers.scad>
+include <vitamins/extrusions.scad>
 
 use <vitamins/jack.scad>
 use <vitamins/meter.scad>
