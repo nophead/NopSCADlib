@@ -68,16 +68,16 @@ module e3d_resistor(type, resistor_wire_rotate = [0,0,0]) {
                 cylinder(r = resistor_dia / 2, h = resistor_len);
 
         color("red")
-			translate([0, resistor_len + 3.5/2 + 1, 0]) {
-				rotate(resistor_wire_rotate) {
-					translate([-3.5/2, 0, 0]) {
-						cylinder(d = 3.5, h = 36);
+            translate([0, resistor_len + 3.5/2 + 1, 0]) {
+              rotate(resistor_wire_rotate) {
+                   translate([-3.5/2, 0, 0]) {
+                       cylinder(d = 3.5, h = 36);
 
-						translate([3.5, 0, 0])
-							cylinder(r = 3.5 / 2, h = 36);
-					}
-				}
-			}
+                       translate([3.5, 0, 0])
+                           cylinder(r = 3.5 / 2, h = 36);
+                   }
+               }
+           }
     }
 }
 
