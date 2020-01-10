@@ -35,4 +35,5 @@ module d_connectors()
                 }
 
 if($preview)
-    d_connectors();
+    let($show_threads = true)
+        d_connectors();

@@ -21,6 +21,7 @@
 //! Steel rods and studding with chamfered ends.
 //
 include <../core.scad>
+use <../utils/thread.scad>
 
 rod_colour = grey80;
 studding_colour = grey70;
@@ -41,10 +42,14 @@ module studding(d , l) { //! Draw a threaded rod with specified length and diame
     vitamin(str("studding(", d, ", ", l,"): Threaded rod M", d, " x ", l, "mm"));
 
     chamfer = d / 20;
+    pitch = metric_coarse_pitch(d);
     color(studding_colour)
-        hull() {
-            cylinder(d = d, h = l - 2 * chamfer, center = true);
+        if(show_threads && pitch)
+            male_metric_thread(d, pitch, l);
+        else
+            hull() {
+                cylinder(d = d, h = l - 2 * chamfer, center = true);
 
-            cylinder(d = d - 2 * chamfer, h = l, center = true);
-        }
+                cylinder(d = d - 2 * chamfer, h = l, center = true);
+            }
 }

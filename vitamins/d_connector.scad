@@ -21,6 +21,7 @@
 //! D-connectors. Can be any number of ways, male or female, solder buckets, PCB mount or IDC, with or without pillars.
 //
 include <../core.scad>
+use <../utils/thread.scad>
 
 d_pillar_color                   = grey90;
 d_plug_shell_color               = grey80;
@@ -51,16 +52,21 @@ module d_pillar() { //! Draw a pillar for a D-connector
     height = 4.5;
     screw = 2.5;
     screw_length = 8;
-    color(d_pillar_color)  {
-        translate_z(-screw_length)
-            cylinder(d = screw, h = screw_length + 1);
 
+    translate_z(-screw_length)
+        if(show_threads)
+            color(d_pillar_color * 0.7)
+                male_metric_thread(screw, metric_coarse_pitch(screw), screw_length, false, false);
+        else
+            color(d_pillar_color)
+                cylinder(d = screw, h = screw_length + 1);
+
+    color(d_pillar_color)
         linear_extrude(height = height)
             difference() {
                 circle(r = rad, $fn = 6);
                 circle(d = screw);
             }
-    }
 }
 
 module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specified D plug, which can be IDC, PCB or plain solder bucket

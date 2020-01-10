@@ -33,4 +33,5 @@ module rods()
     }
 
 if($preview)
-    rods();
+    let($show_threads = true)
+        rods();

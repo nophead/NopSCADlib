@@ -43,7 +43,7 @@ module ellipse(xr, yr) scale([1, yr / xr]) circle4n(xr);                        
 
 module extrude_if(h, center = true)                 //! Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D
     if(h)
-        linear_extrude(height = h, center = center) // 3D
+        linear_extrude(height = h, center = center, convexity = 2) // 3D
             children();
     else
         children();                                 // 2D

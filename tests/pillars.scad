@@ -26,4 +26,5 @@ module pillars()
         pillar(pillars[$i]);
 
 if($preview)
-    pillars();
+    let($show_threads = true)
+        pillars();

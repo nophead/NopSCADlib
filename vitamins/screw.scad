@@ -24,6 +24,7 @@ include <../core.scad>
 
 use <washer.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/thread.scad>
 
 function screw_head_type(type)        = type[2];     //! Head style hs_cap, hs_pan, hs_cs, hs_hex, hs_grub, hs_cs_cap, hs_dome
 function screw_radius(type)           = type[3] / 2; //! Nominal radius
@@ -69,24 +70,33 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     socket_depth= screw_socket_depth(type);
     socket_rad  = socket_af / cos(30) / 2;
     max_thread  = screw_max_thread(type);
-    thread = max_thread ? min(length, max_thread) : length;
+    thread = max_thread ? length >= max_thread + 5 ? max_thread
+                                                   : length
+                        : length;
     shank  = length - thread;
     colour = nylon || head_type == hs_grub ? grey40 : grey80;
 
-
     module shaft(headless = 0) {
         point = screw_nut(type) ? 0 : 3 * rad;
-        color(colour * 0.9 )
-            rotate_extrude() {
-                translate([0, -length + point])
-                    square([rad, length - headless - point]);
+        d = 2 * screw_radius(type);
+        pitch = metric_coarse_pitch(d);
+        l = length - shank;
+        if(show_threads && !point && pitch)
+            translate_z(-l - shank)
+                color(colour * 0.7)
+                    male_metric_thread(d, pitch, l, !!headless, false);
+        else
+            color(colour * 0.9)
+                rotate_extrude() {
+                    translate([0, -length + point])
+                        square([rad, length - headless - point]);
 
-                if(point)
-                    polygon([
-                        [0, -length], [0, point - length], [rad - 0.1, point - length]
-                    ]);
-            }
-        if(shank >= 5)
+                    if(point)
+                        polygon([
+                            [0, -length], [0, point - length], [rad - 0.1, point - length]
+                        ]);
+                }
+        if(shank - headless > 0)
             color(colour)
                 translate_z(-shank)
                     cylinder(r = rad + eps, h = shank - headless);
@@ -102,6 +112,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     linear_extrude(height = socket_depth)
                         difference() {
                             circle(head_rad);
+
                             circle(socket_rad, $fn = 6);
                         }
 
@@ -110,14 +121,23 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
         if(head_type == hs_grub) {
             color(colour) {
-                translate_z(-socket_depth)
-                    linear_extrude(height = socket_depth)
-                        difference() {
-                            circle(r = rad);
-                            circle(socket_rad, $fn = 6);
-                        }
+                if(!show_threads) {
+                    translate_z(-socket_depth)
+                        linear_extrude(height = socket_depth)
+                            difference() {
+                                circle(r = rad);
 
-                shaft(socket_depth);
+                                circle(socket_rad, $fn = 6);
+                            }
+
+                    shaft(socket_depth);
+                }
+                else
+                    render() difference() {
+                        shaft(socket_depth);
+
+                        cylinder(r = socket_rad, $fn = 6, h = 2 * socket_depth, center = true);
+                    }
             }
         }
         if(head_type == hs_hex) {

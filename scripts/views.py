@@ -154,7 +154,7 @@ def views(target, do_assemblies = None):
                                         f.write("use <%s/%s>\n" % (dir, filename))
                                         f.write("%s();\n" % module);
                                     #
-                                    # Run openscad on th created file
+                                    # Run openscad on the created file
                                     #
                                     dname = deps_name(deps_dir, filename)
                                     for explode in [0, 1]:
@@ -167,7 +167,7 @@ def views(target, do_assemblies = None):
                                         if changed:
                                             print(changed)
                                             t = time.time()
-                                            openscad.run("-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
+                                            openscad.run("-D$show_threads=1", "-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
                                             times.add_time(png_name, t)
                                             do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
                                             update_image(tmp_name, png_name)

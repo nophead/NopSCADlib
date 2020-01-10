@@ -34,4 +34,5 @@ for(y = [0 : len(screw_lists) -1])
     }
 
 if($preview)
-    screws();
+    let($show_threads = true)
+        screws();
