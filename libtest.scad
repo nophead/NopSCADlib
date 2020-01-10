@@ -32,6 +32,7 @@ use <tests/cable_strips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
 use <tests/displays.scad>
+use <tests/extrusions.scad>
 use <tests/fans.scad>
 use <tests/fuseholder.scad>
 use <tests/geared_steppers.scad>
@@ -152,7 +153,7 @@ leadnuts_y = pillars_y + 40;
 pulleys_y = leadnuts_y +40;
 hot_ends_y = pulleys_y + 60;
 linear_bearings_y = hot_ends_y + 50;
-sheets_y = linear_bearings_y + 50;
+sheets_y = linear_bearings_y + 100;
 pcbs_y = sheets_y + 40;
 displays_y = pcbs_y + 150;
 fans_y = displays_y + 100;
@@ -201,6 +202,10 @@ translate([x0, pulleys_y])
 translate([x0, linear_bearings_y]) {
     linear_bearings();
     rods();
+}
+
+translate([x0+120, linear_bearings_y+30]) {
+    extrusions();
 }
 
 translate([x0 + 10, hot_ends_y])
