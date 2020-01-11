@@ -136,7 +136,7 @@ translate([x5, cable_grommets_y + 250])
 translate([900, 600])
     box_test();
 
-translate([850, 1170])
+translate([850, 1220])
     bbox_test();
 
 x0 = 0;
@@ -204,7 +204,7 @@ translate([x0, linear_bearings_y]) {
     rods();
 }
 
-translate([x0+120, linear_bearings_y+30]) {
+translate([x0+150, linear_bearings_y+30]) {
     extrusions();
 }
 

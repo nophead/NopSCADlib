@@ -28,7 +28,7 @@ module rods()
 
         rod(bearing_rod_dia(linear_bearings[$i]), 80);
 
-        translate([0, 20])
+        translate([0, 30])
             studding(bearing_rod_dia(linear_bearings[$i]), 80);
     }
 

@@ -38,6 +38,7 @@ LM4LUU  = ["LM4LUU",  23,  8,  4,   0,    0,    0];
 LM3UU   = ["LM3UU",   10,  7,  3,   0,    0,    0];
 LM3LUU  = ["LM3LUU",  19,  7,  3,   0,    0,    0];
 
-linear_bearings = [LM3UU, LM4UU, LM5UU, LM6UU, LM8UU, LM10UU, LM12UU, LM16UU, LM3LUU, LM4LUU, LM5LUU, LM6LUU, LM8LUU, LM10LUU, LM12LUU, LM16LUU];
+linear_bearings      = [LM3UU,  LM4UU,  LM5UU,  LM6UU,  LM8UU,  LM10UU,  LM12UU,  LM16UU];
+long_linear_bearings = [LM3LUU, LM4LUU, LM5LUU, LM6LUU, LM8LUU, LM10LUU, LM12LUU, LM16LUU];
 
 use <linear_bearing.scad>

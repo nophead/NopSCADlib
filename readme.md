@@ -1293,6 +1293,9 @@ LMnUU linear bearings.
 | Function | Description |
 |:--- |:--- |
 | ```bearing_dia(type)``` | Outside diameter |
+| ```bearing_groove_dia(type)``` | Groove diameter |
+| ```bearing_groove_length(type)``` | Groove length |
+| ```bearing_groove_spacing(type)``` | Spacing between grooves, outer to outer, ie includes the grooves themselves |
 | ```bearing_length(type)``` | Total length |
 | ```bearing_rod_dia(type)``` | Internal diameter |
 
@@ -1311,12 +1314,21 @@ LMnUU linear bearings.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```linear_bearing(LM10LUU)``` |  Linear bearing LM10LUU |
 |   1 | ```linear_bearing(LM10UU)``` |  Linear bearing LM10UU |
+|   1 | ```linear_bearing(LM12LUU)``` |  Linear bearing LM12LUU |
 |   1 | ```linear_bearing(LM12UU)``` |  Linear bearing LM12UU |
+|   1 | ```linear_bearing(LM16LUU)``` |  Linear bearing LM16LUU |
+|   1 | ```linear_bearing(LM16UU)``` |  Linear bearing LM16UU |
+|   1 | ```linear_bearing(LM3LUU)``` |  Linear bearing LM3LUU |
 |   1 | ```linear_bearing(LM3UU)``` |  Linear bearing LM3UU |
+|   1 | ```linear_bearing(LM4LUU)``` |  Linear bearing LM4LUU |
 |   1 | ```linear_bearing(LM4UU)``` |  Linear bearing LM4UU |
+|   1 | ```linear_bearing(LM5LUU)``` |  Linear bearing LM5LUU |
 |   1 | ```linear_bearing(LM5UU)``` |  Linear bearing LM5UU |
+|   1 | ```linear_bearing(LM6LUU)``` |  Linear bearing LM6LUU |
 |   1 | ```linear_bearing(LM6UU)``` |  Linear bearing LM6UU |
+|   1 | ```linear_bearing(LM8LUU)``` |  Linear bearing LM8LUU |
 |   1 | ```linear_bearing(LM8UU)``` |  Linear bearing LM8UU |
 
 
@@ -2279,6 +2291,7 @@ Steel rods and studding with chamfered ends.
 | ---:|:--- |:---|
 |   1 | ```rod(10, 80)``` |  Smooth rod 10mm x 80mm |
 |   1 | ```rod(12, 80)``` |  Smooth rod 12mm x 80mm |
+|   1 | ```rod(16, 80)``` |  Smooth rod 16mm x 80mm |
 |   1 | ```rod(3, 80)``` |  Smooth rod 3mm x 80mm |
 |   1 | ```rod(4, 80)``` |  Smooth rod 4mm x 80mm |
 |   1 | ```rod(5, 80)``` |  Smooth rod 5mm x 80mm |
@@ -2286,6 +2299,7 @@ Steel rods and studding with chamfered ends.
 |   1 | ```rod(8, 80)``` |  Smooth rod 8mm x 80mm |
 |   1 | ```studding(10, 80)``` |  Threaded rod M10 x 80mm |
 |   1 | ```studding(12, 80)``` |  Threaded rod M12 x 80mm |
+|   1 | ```studding(16, 80)``` |  Threaded rod M16 x 80mm |
 |   1 | ```studding(3, 80)``` |  Threaded rod M3 x 80mm |
 |   1 | ```studding(4, 80)``` |  Threaded rod M4 x 80mm |
 |   1 | ```studding(5, 80)``` |  Threaded rod M5 x 80mm |
