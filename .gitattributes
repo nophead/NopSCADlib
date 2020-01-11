@@ -1,0 +1,16 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto eol=lf
+
+# Declare text files that are normalized and converted on checkout.
+*.scad text
+*.py   text
+*.md   text
+
+# Handle Windows batch and command files 
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+
+# Denote files that are binary and should not be modified.
+*.png binary
+*.jpg binary
+
