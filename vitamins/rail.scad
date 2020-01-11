@@ -100,19 +100,30 @@ module carriage(type, rail) { //! Draw the specified carriage
                     carriage_hole_positions(type)
                         circle(screw_pilot_hole(screw));
                 }
-
     }
-    color(grey20)
-        for(end = [-1, 1])
-            translate([end * (block_l / 2 + end_l / 2), 0])
-                rotate([90, 0, 90])
-                    linear_extrude(height = end_l, center = true)
-                        difference() {
-                            translate([-end_w / 2,  carriage_clearance(type)])
-                                square([end_w, end_h]);
 
-                            cutout();
-                        }
+    module carriage_end(type, end_w, end_h, end_l) {
+        red_length = 0.5;
+        color("red") translate_z(-end_l/2) linear_extrude(red_length)
+            difference() {
+                translate([-end_w/2, carriage_clearance(type)])
+                    square([end_w, end_h]);
+                cutout();
+            }
+        color("green") translate_z(red_length-end_l/2) linear_extrude(end_l-red_length)
+            difference() {
+                translate([-end_w/2, carriage_clearance(type)])
+                    square([end_w, end_h]);
+                cutout();
+            }
+    }
+
+    translate([-(block_l+end_l)/2,0,0])
+        rotate([90, 0, 90])
+            carriage_end(type, end_w, end_h, end_l);
+    translate([(block_l+end_l)/2,0,0])
+        rotate([90, 0, -90])
+            carriage_end(type, end_w, end_h, end_l);
 }
 
 module rail(type, length) { //! Draw the specified rail
