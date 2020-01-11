@@ -45,6 +45,19 @@ module nuts() {
             if(n == M8_nut)
                 #nut_trap(M8_cap_screw, n, h = 30);
         }
+
+    translate([0, 60])
+        layout([for(n = nuts) 2 * nut_radius(n)], 5) let(n = nuts[$i]) {
+            if(n == M3_nut)
+                sliding_t_nut(M3_sliding_t);
+
+            if(n == M4_nut)
+                sliding_t_nut(M4_sliding_t);
+
+            if(n == M5_nut)
+                sliding_t_nut(M5_sliding_t);
+
+        }
 }
 
 if($preview)

@@ -108,6 +108,45 @@ module wingnut(type) { //! Draw a wingnut
                 }
     }
 }
+
+module sliding_t_nut(type) { //! Draw a sliding T-nut
+    vitamin(str("sliding_t_nut(", type[0], "): Sliding T-nut M", nut_size(type)));
+
+    hole_diameter  = nut_size(type);
+    sizeX = type[7];
+    sizeY = type[2];
+    tabSizeY1 = type[8];
+    tabSizeY2 = type[9];
+    nut_thickness = nut_thickness(type);
+    tabSizeZ = type[10];
+
+    color(grey70) {
+        // center section
+        linear_extrude(nut_thickness - tabSizeZ)
+            difference() {
+                square([sizeX, sizeY], center = true);
+                circle(d = hole_diameter);
+            }
+        translate_z(nut_thickness - tabSizeZ)
+            linear_extrude(tabSizeZ)
+                difference() {
+                    square([sizeX, tabSizeY2], center = true);
+                    circle(d = hole_diameter);
+                }
+        // add the side tabs
+        for(m = [0, 1])
+            mirror([0, m, 0])
+                translate([0, tabSizeY2 / 2, nut_thickness - tabSizeZ]) {
+                    cubeZ = 1;
+                    translate([-sizeX / 2, 0, 0])
+                        cube([sizeX, (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
+                    translate_z(cubeZ)
+                        rotate([0, -90, 0])
+                            right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, sizeX, center = true);
+                }
+    }
+}
+
 function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height / 4 : 0); //! Radius across the corners of a nut trap
 function nut_trap_flat_radius(nut, horizontal = false) = nut_trap_radius(nut, horizontal) * cos(30);       //! Radius across the flats of a nut trap
 
