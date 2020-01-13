@@ -64,18 +64,19 @@ function comp_spring(type, l = 0) = //! Calculate the mesh for spring
         profile = circle_points(wire_d / 2 - eps, $fn = 16)
        ) concat(type, [concat(sweep(path, profile), [l])]);
 
-module comp_spring(type, l = 0) { //! Draw specified spring, l can be set to specify the compressed length.
+module comp_spring(type, l = 0, vitamin = true) { //! Draw specified spring, l can be set to specify the compressed length.
     length = spring_length(type);
     closed = spring_closed(type);
     od = spring_od(type);
     od2 = spring_od2(type);
     gauge = spring_gauge(type);
     ground = spring_ground(type);
-    vitamin(str("comp_spring(", type[0], arg(l, 0),
-                "): Spring ", od, od != od2 ? str(" - ", od2, "mm spiral") : "mm", " OD, ", gauge, "mm gauge x ",
-                length, "mm long, ",
-                closed ? "closed" : "open",
-                ground ? " ground" : "", " end" ));
+    if (vitamin)
+        vitamin(str("comp_spring(", type[0], arg(l, 0),
+                    "): Spring ", od, od != od2 ? str(" - ", od2, "mm spiral") : "mm", " OD, ", gauge, "mm gauge x ",
+                    length, "mm long, ",
+                    closed ? "closed" : "open",
+                    ground ? " ground" : "", " end" ));
 
     mesh = len(type) > 9 ? spring_mesh(type) : spring_mesh(comp_spring(type, l));
     assert(l == mesh[2], "can't change the length of a pre-generated spring");

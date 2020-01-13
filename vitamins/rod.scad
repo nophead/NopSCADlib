@@ -21,6 +21,7 @@
 //! Steel rods and studding with chamfered ends.
 //
 include <../core.scad>
+include <springs.scad>
 
 rod_colour = grey80;
 studding_colour = grey70;
@@ -37,14 +38,20 @@ module rod(d , l) { //! Draw a smooth rod with specified length and diameter
         }
 }
 
-module studding(d , l) { //! Draw a threaded rod with specified length and diameter
+module studding(d , l, pitch = 0) { //! Draw a threaded rod with specified length, diameter and thread pitch. Thread not drawn if pitch is zero.
     vitamin(str("studding(", d, ", ", l,"): Threaded rod M", d, " x ", l, "mm"));
 
+    guage = pitch * 0.75;
+    if (pitch) {
+        turnCount = l/pitch;
+        thread  =  ["thread", d, guage, l, turnCount,  1, false, 0, studding_colour];
+        translate_z(-l/2) comp_spring(thread, vitamin = false);
+    }
     chamfer = d / 20;
     color(studding_colour)
         hull() {
-            cylinder(d = d, h = l - 2 * chamfer, center = true);
+            cylinder(d = d-guage/2, h = l - 2 * chamfer, center = true);
 
-            cylinder(d = d - 2 * chamfer, h = l, center = true);
+            cylinder(d = d-guage/2 - 2 * chamfer, h = l, center = true);
         }
 }
