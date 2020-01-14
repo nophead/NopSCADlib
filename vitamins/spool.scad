@@ -32,7 +32,7 @@ function spool_hub_taper(type)     = type[8]; //! Diameter at which it tapers do
 function spool_height(type)        = spool_width(type) + 2 * spool_hub_thickness(type); //! Outside width
 function spool_pitch(type)         = spool_width(type) + spool_rim_thickness(type); //! Spacing of the rims
 
-module spool(type) { //! Draw specified spool
+module spool(type, filament_depth = 0, filament_color = "white") { //! Draw specified spool with optional filament
     vitamin(str("spool(", type[0], "): Filament spool ", spool_diameter(type), " x ", spool_width(type)));
 
     h = spool_height(type);
@@ -57,4 +57,13 @@ module spool(type) { //! Draw specified spool
             [r3, h - spool_hub_thickness(type) + spool_rim_thickness(type)],
             [r2, h],
         ]);
+
+    if (filament_depth) {
+        color(filament_color) translate_z(-h / 2 + spool_rim_thickness(type)) linear_extrude(spool_width(type)) {
+            difference() {
+                circle(d = (r5 + filament_depth) * 2);
+                circle(d = r5 * 2);
+            }
+        }
+    }
 }
