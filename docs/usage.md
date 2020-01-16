@@ -26,7 +26,7 @@ OpenSCAD has to be setup to find libraries by setting the ```OPENSCADPATH``` env
 in the directory it points to. This can be done with ```git clone https://github.com/nophead/NopSCADlib.git``` while in that directory or, if you don't want to use GIT,
 by downloading https://github.com/nophead/NopSCADlib/archive/master.zip and unzipping it to a directory called NopSCADlib.
 
-The ```NopSCADlib/scripts``` directory needs to be added to the executable search path.
+The ```NopSCADlib/scripts``` directory needs to be added to the python search path by setting the ```PYTHONPATH``` environment variable.
 
 The installation can be tested by opening ```NopSCADlib/libtest.scad``` in the OpenSCAD GUI. It should render all the objects in the library in about 1 minute.
 
