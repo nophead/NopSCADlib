@@ -30,6 +30,10 @@ module rods()
 
         translate([0, 30])
             studding(bearing_rod_dia(linear_bearings[$i]), 80);
+
+        if(bearing_rod_dia(linear_bearings[$i]) >=6)
+            translate([0, 60])
+                leadscrew(bearing_rod_dia(linear_bearings[$i]), 80);
     }
 
 if($preview)

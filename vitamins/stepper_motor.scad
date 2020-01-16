@@ -24,6 +24,7 @@ include <../core.scad>
 
 include <screws.scad>
 use <washer.scad>
+use <rod.scad>
 include <ring_terminals.scad>
 use <../utils/tube.scad>
 
@@ -88,9 +89,13 @@ module NEMA(type) { //! Draw specified NEMA stepper motor
                         }
         }
 
-        color(NEMA_shaft_length(type) > 50 ? "silver" : stepper_cap_colour)
-            translate_z(-5)
-                cylinder(r = shaft_rad, h = NEMA_shaft_length(type) + 5);  // shaft
+        if (NEMA_shaft_length(type) > 50 )
+            translate_z(-5 + NEMA_shaft_length(type) / 2)
+                leadscrew(d = shaft_rad * 2, l = NEMA_shaft_length(type) + 5, p = 2);
+        else
+            color(stepper_cap_colour)
+                translate_z(-5)
+                    cylinder(r = shaft_rad, h = NEMA_shaft_length(type) + 5);  // shaft
 
         translate([0, side / 2, -length + cap / 2])
             rotate([90, 0, 0])
