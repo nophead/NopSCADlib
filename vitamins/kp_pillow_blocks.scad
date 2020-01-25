@@ -16,11 +16,20 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-BB624 = ["624", 4, 13, 5, "blue"];      // 624 ball bearing for idlers
-BB608 = ["608", 8, 22, 7, "OrangeRed"]; // 608 bearings for wades
-BB6200 = ["6200", 10, 30, 9, "black"];  // 6200 bearings for KP pillow blocks
-BB6201 = ["6201", 12, 32, 10, "black"]; // 6201 bearings for KP pillow blocks
 
-ball_bearings = [BB624, BB608, BB6200, BB6201];
+//
+//! KP pillow block bearings
+//
 
-use <ball_bearing.scad>
+include <../core.scad>
+include <screws.scad>
+include <ball_bearings.scad>
+
+//                 d   H   L   J   A    N  H1  H0     K  S  b   bolthole             bearing
+KP08 =  ["KP08",   8, 18, 55, 42, 13, 4.5,  5, 29,  0.0, 0, 22, M4_clearance_radius, BB608];
+KP000 = ["KP000", 10, 18, 67, 53, 16, 7.0,  6, 35, 14.0, 4, 30, M6_clearance_radius, BB6200];
+KP001 = ["KP001", 12, 19, 71, 56, 16, 7.0,  6, 38, 14.5, 4, 32, M6_clearance_radius, BB6201];
+
+kp_pillow_blocks = [KP08,  KP000, KP001];
+
+use <kp_pillow_block.scad>
