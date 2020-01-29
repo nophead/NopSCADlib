@@ -160,18 +160,19 @@ module idc_transition(type, cols = 5, skip = [], cutout = false) { //! Draw IDC 
     }
 }
 
-module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false) { //! Draw pin socket
+module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false, colour) { //! Draw pin socket
     pitch = hdr_pitch(type);
     length = pitch * cols + 0.5;
     width = pitch * rows - 0.08;
     depth = height ? height : hdr_socket_depth(type);
+    base_colour = colour ? colour : hdr_base_colour(type);
     ra_offset = 1.5;
     if(cutout)
         ;
     else {
         vitamin(str("pin_socket(", type[0], ", ", cols, ", ", rows, arg(right_angle, false, "right_angle"), arg(height, 0, "height"), arg(smt, false, "smt"),
                                "): Pin socket ", cols, " x ", rows, right_angle ? " right_angle" : ""));
-        color(hdr_base_colour(type))
+        color(base_colour)
             translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
                 rotate([right_angle ? 90 : 0, 0, 0])
                     translate_z(depth / 2)

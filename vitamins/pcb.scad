@@ -712,7 +712,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     rotate(comp.z) {
         if(show(comp, "2p54header")) pin_header(2p54header, comp[4], comp[5], param(6), cutouts);
         if(show(comp, "2p54boxhdr")) box_header(2p54header, comp[4], comp[5], param(6), cutouts);
-        if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7), param(8, false), cutouts);
+        if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], param(7, grey30), cutouts);
         if(show(comp, "rj45")) rj45(cutouts);
         if(show(comp, "usb_Ax2")) usb_Ax2(cutouts);
