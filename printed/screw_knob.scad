@@ -34,7 +34,7 @@ knob_waves = 5;
 knob_height = knob_stem_h + knob_thickness;
 function knob_height() = knob_height;
 
-module screw_knob(screw) { //! Generate the STL foe a knob to fit the specified hex screw
+module screw_knob(screw) { //! Generate the STL for a knob to fit the specified hex screw
     stl(str("screw_knob_M", screw_radius(screw) * 20));
 
     knob_stem_r = nut_trap_radius(screw_nut(screw)) + knob_wall;
