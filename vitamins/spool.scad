@@ -20,6 +20,7 @@
 //! Filament spool models
 
 include <../core.scad>
+include <../utils/tube.scad>
 
 function spool_diameter(type)      = type[1]; //! Outside diameter
 function spool_width(type)         = type[2]; //! Internal width
@@ -58,12 +59,7 @@ module spool(type, filament_depth = 0, filament_color = "white") { //! Draw spec
             [r2, h],
         ]);
 
-    if (filament_depth) {
-        color(filament_color) translate_z(-h / 2 + spool_rim_thickness(type)) linear_extrude(spool_width(type)) {
-            difference() {
-                circle(d = (r5 + filament_depth) * 2);
-                circle(d = r5 * 2);
-            }
-        }
-    }
+    if(filament_depth)
+        color(filament_color)
+            tube(r5 + filament_depth, r5, spool_width(type));
 }
