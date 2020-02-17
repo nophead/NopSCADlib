@@ -27,6 +27,7 @@ include <screws.scad>
 include <buttons.scad>
 include <green_terminals.scad>
 include <pin_headers.scad>
+include <microswitches.scad>
 
 use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
@@ -727,6 +728,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             color(comp[7]) if(!cutouts) translate_z(comp[6] / 2) cube([comp[4], comp[5], comp[6]], center = true);
                            else if(comp[8]) translate([-50, 0, comp[6] / 2 - panel_clearance]) cube([100, comp[5] + 2 * panel_clearance, comp[6] + 2 * panel_clearance], center = true);
         if(show(comp, "button_6mm")) square_button(button_6mm);
+        if(show(comp, "microswitch")) translate_z(microswitch_thickness(comp[4])/2) microswitch(comp[4]);
         if(show(comp, "pcb")) if(!cutouts) translate_z(comp[4]) pcb(comp[5]);
         if(show(comp, "standoff")) if(!cutouts) standoff(comp[4], comp[5], comp[6], comp[7]);
         if(show(comp, "uSD")) uSD(comp[4], cutouts);
