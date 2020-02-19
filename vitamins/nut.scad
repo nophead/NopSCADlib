@@ -25,6 +25,7 @@
 include <../core.scad>
 use <washer.scad>
 use <screw.scad>
+use <../utils/fillet.scad>
 use <../utils/rounded_cylinder.scad>
 brass_colour = brass;
 
@@ -109,42 +110,72 @@ module wingnut(type) { //! Draw a wingnut
     }
 }
 
-module sliding_t_nut(type) { //! Draw a sliding T-nut
-    vitamin(str("sliding_t_nut(", type[0], "): Sliding T-nut M", nut_size(type)));
+module sliding_t_nut(type) {
+    vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), " sliding T"));
 
-    hole_diameter  = nut_size(type);
-    sizeX = type[7];
-    sizeY = type[2];
+    size = [type[7], type[2], nut_thickness(type)];
     tabSizeY1 = type[8];
     tabSizeY2 = type[9];
-    nut_thickness = nut_thickness(type);
     tabSizeZ = type[10];
+    holeRadius  = nut_size(type) / 2;
 
-    color(grey70) {
-        // center section
-        linear_extrude(nut_thickness - tabSizeZ)
-            difference() {
-                square([sizeX, sizeY], center = true);
-                circle(d = hole_diameter);
+    if($preview)
+        color(grey80)
+            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius);
+
+}
+
+module hammer_nut(type) {
+    vitamin(str("hammer_nut(", type[0], "): Nut M", nut_size(type), " hammer"));
+
+    size = [type[7], type[2], nut_thickness(type)];
+    tabSizeY1 = type[8];
+    tabSizeY2 = type[9];
+    tabSizeZ = type[10];
+    holeRadius  = nut_size(type) / 2;
+
+    if($preview)
+        color(grey80)
+            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut = true);
+
+}
+
+module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
+    // center section
+    linear_extrude(size[2] - tabSizeZ)
+        difference() {
+            square([size[0], size[1]], center = true);
+            if(hammerNut) {
+                translate([size[0] / 2, size[1] / 2])
+                    rotate(180)
+                        fillet(1);
+                translate([-size[0] / 2, -size[1] / 2])
+                    fillet(1);
             }
-        translate_z(nut_thickness - tabSizeZ)
-            linear_extrude(tabSizeZ)
-                difference() {
-                    square([sizeX, tabSizeY2], center = true);
-                    circle(d = hole_diameter);
-                }
-        // add the side tabs
-        for(m = [0, 1])
-            mirror([0, m, 0])
-                translate([0, tabSizeY2 / 2, nut_thickness - tabSizeZ]) {
-                    cubeZ = 1;
-                    translate([-sizeX / 2, 0, 0])
-                        cube([sizeX, (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
-                    translate_z(cubeZ)
-                        rotate([0, -90, 0])
-                            right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, sizeX, center = true);
-                }
-    }
+            if(holeRadius)
+                translate([holeOffset, 0])
+                    circle(holeRadius);
+        }
+    translate_z(size[2] - tabSizeZ)
+        linear_extrude(tabSizeZ)
+            difference() {
+                square([size[0], tabSizeY2], center = true);
+                if(holeRadius)
+                    translate([holeOffset, 0])
+                        circle(holeRadius);
+            }
+
+    // add the side tabs
+    for(m = [0, 1])
+        mirror([0, m, 0])
+            translate([0, tabSizeY2 / 2, size[2] - tabSizeZ]) {
+                cubeZ = 1;
+                translate([-size[0] / 2, 0, 0])
+                    cube([size[0], (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
+                translate_z(cubeZ)
+                    rotate([0, -90, 0])
+                        right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size[0], center = true);
+            }
 }
 
 function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height / 4 : 0); //! Radius across the corners of a nut trap

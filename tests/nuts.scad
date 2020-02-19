@@ -22,13 +22,12 @@ use <../utils/layout.scad>
 include <../vitamins/screws.scad>
 
 module nuts() {
-    for(nyloc = [false, true])
-        translate([0, nyloc ? 20 : 0])
-            layout([for(n = nuts) 2 * nut_radius(n)], 5)
-                nut(nuts[$i], nyloc);
+    layout([for(n = nuts) 2 * nut_radius(n)], 5) let(n = nuts[$i]) {
+        for(nyloc = [false, true])
+            translate([0, nyloc ? 20 : 0])
+                nut(n, nyloc);
 
-    translate([0, 40])
-        layout([for(n = nuts) 2 * nut_radius(n)], 5) let(n = nuts[$i]) {
+        translate([0, 40]) {
             if(n == M3_nut)
                 nut(n, brass = true);
 
@@ -46,18 +45,25 @@ module nuts() {
                 #nut_trap(M8_cap_screw, n, h = 30);
         }
 
-    translate([0, 60])
-        layout([for(n = nuts) 2 * nut_radius(n)], 5) let(n = nuts[$i]) {
+        translate([0, 60]) {
             if(n == M3_nut)
-                sliding_t_nut(M3_sliding_t);
+                sliding_t_nut(M3_sliding_t_nut);
 
             if(n == M4_nut)
-                sliding_t_nut(M4_sliding_t);
+                sliding_t_nut(M4_sliding_t_nut);
 
             if(n == M5_nut)
-                sliding_t_nut(M5_sliding_t);
-
+                sliding_t_nut(M5_sliding_t_nut);
         }
+
+        translate([0, 80]) {
+            if(n == M3_nut)
+                hammer_nut(M3_hammer_nut);
+
+            if(n == M4_nut)
+                hammer_nut(M4_hammer_nut);
+       }
+    }
 }
 
 if($preview)

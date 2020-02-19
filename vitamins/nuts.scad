@@ -51,10 +51,12 @@ toggle_nut  = ["toggle_nut",  6.1, 9.2, 1.5, 1.5,  M6_washer,     1.5];
 
 M4_wingnut  = ["M4_wingnut",  4,  10,   3.75,8,    M4_washer,     0, 22, 10, 6, 3];
 
-//                                                                   sx ty1 ty2 tz
-M3_sliding_t= ["M3_sliding_t_nut",3, 6, 4.0, 0,    M3_washer,     0, 10, 10,  6, 3];
-M4_sliding_t= ["M4_sliding_t_nut",4, 6, 4.5, 0,    M4_washer,     0, 11, 10,  6, 3.25];
-M5_sliding_t= ["M5_sliding_t_nut",5, 7, 4.5, 0,    M5_washer,     0, 11, 10,  7, 3.25];
+//                                                                          sx  ty1 ty2 tz
+M3_sliding_t_nut = ["M3_sliding_t_nut", 3, 6, 4.0, 0,    M3_washer,     0,  10,  10,  6, 3];
+M4_sliding_t_nut = ["M4_sliding_t_nut", 4, 6, 4.5, 0,    M4_washer,     0,  11,  10,  6, 3.25];
+M5_sliding_t_nut = ["M5_sliding_t_nut", 5, 6, 4.5, 0,    M5_washer,     0,  11,  10,  7, 3.25];
+M3_hammer_nut =    ["M3_hammer_nut",    3, 6, 4.0, 0,    M3_washer,     0, 5.5,  10,  6, 2.75];
+M4_hammer_nut =    ["M4_hammer_nut",    4, 6, 4.5, 0,    M4_washer,     0, 5.5,  10,  6, 3.25];
 
 nuts = [M2_nut, M2p5_nut, M3_nut, M4_nut, M5_nut, M6_nut, M8_nut];
 
