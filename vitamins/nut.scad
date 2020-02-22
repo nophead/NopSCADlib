@@ -25,6 +25,7 @@
 include <../core.scad>
 use <washer.scad>
 use <screw.scad>
+use <../utils/fillet.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/thread.scad>
 use <../utils/tube.scad>
@@ -129,6 +130,80 @@ module wingnut(type) { //! Draw a wingnut
             female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
     }
 }
+
+module sliding_t_nut(type) {
+    vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), " sliding T"));
+
+    size = [type[7], type[2], nut_thickness(type)];
+    tabSizeY1 = type[8];
+    tabSizeY2 = type[9];
+    tabSizeZ = type[10];
+    holeRadius  = nut_size(type) / 2;
+
+    if($preview)
+        color(grey80)
+            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius);
+
+}
+
+module hammer_nut(type) {
+    vitamin(str("hammer_nut(", type[0], "): Nut M", nut_size(type), " hammer"));
+
+    size = [type[7], type[2], nut_thickness(type)];
+    tabSizeY1 = type[8];
+    tabSizeY2 = type[9];
+    tabSizeZ = type[10];
+    holeRadius  = nut_size(type) / 2;
+
+    if($preview)
+        color(grey80)
+            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut = true);
+
+}
+
+module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
+    // center section
+    linear_extrude(size[2] - tabSizeZ)
+        difference() {
+            square([size[0], size[1]], center = true);
+            if(hammerNut) {
+                translate([size[0] / 2, size[1] / 2])
+                    rotate(180)
+                        fillet(1);
+                translate([-size[0] / 2, -size[1] / 2])
+                    fillet(1);
+            }
+            if(holeRadius)
+                translate([holeOffset, 0])
+                    circle(holeRadius);
+        }
+    translate_z(size[2] - tabSizeZ)
+        linear_extrude(tabSizeZ)
+            difference() {
+                square([size[0], tabSizeY2], center = true);
+                if(holeRadius)
+                    translate([holeOffset, 0])
+                        circle(holeRadius);
+            }
+
+    thread_d = 2 * holeRadius;
+    if(show_threads)
+        translate([holeOffset, 0])
+            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), size[2], center = false);
+
+    // add the side tabs
+    for(m = [0, 1])
+        mirror([0, m, 0])
+            translate([0, tabSizeY2 / 2, size[2] - tabSizeZ]) {
+                cubeZ = 1;
+                translate([-size[0] / 2, 0, 0])
+                    cube([size[0], (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
+                translate_z(cubeZ)
+                    rotate([0, -90, 0])
+                        right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size[0], center = true);
+            }
+}
+
 function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height / 4 : 0); //! Radius across the corners of a nut trap
 function nut_trap_flat_radius(nut, horizontal = false) = nut_trap_radius(nut, horizontal) * cos(30);       //! Radius across the flats of a nut trap
 

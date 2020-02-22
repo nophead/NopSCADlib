@@ -1623,11 +1623,16 @@ If a nut is given a child then it gets placed on its top surface.
 |   1 | ```nut(M2p5_nut)``` |  Nut M2.5 x 2.2mm  |
 |   1 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |   1 | ```nut(M2p5_nut, nylon = true)``` |  Nut M2.5 x 2.2mm nylon |
+|   1 | ```hammer_nut(M3_hammer_nut)``` |  Nut M3 hammer |
+|   1 | ```sliding_t_nut(M3_sliding_t_nut)``` |  Nut M3 sliding T |
 |   1 | ```nut(M3_nut)``` |  Nut M3 x 2.4mm  |
 |   1 | ```nut(M3_nut, brass = true)``` |  Nut M3 x 2.4mm brass |
 |   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   1 | ```hammer_nut(M4_hammer_nut)``` |  Nut M4 hammer |
+|   1 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   1 | ```nut(M4_nut)``` |  Nut M4 x 3.2mm  |
 |   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
+|   1 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
 |   1 | ```nut(M5_nut)``` |  Nut M5 x 4mm  |
 |   1 | ```nut(M5_nut, nyloc = true)``` |  Nut M5 x 4mm nyloc |
 |   1 | ```nut(M6_half_nut)``` |  Nut M6 x 3mm  |
