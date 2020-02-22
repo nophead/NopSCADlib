@@ -18,7 +18,7 @@
 //
 
 //
-//! Rocket switch. Also used for neon indicator in the same form factor.
+//! Rocker switch. Also used for neon indicator in the same form factor.
 //
 include <../core.scad>
 use <spade.scad>

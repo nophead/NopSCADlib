@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -19,19 +19,12 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/linear_bearings.scad>
+include <../vitamins/extrusions.scad>
 
-use <../vitamins/rod.scad>
+module extrusions()
+    layout([for(e = extrusions) extrusion_width(e)], 10)
+        extrusion(extrusions[$i], 80);
 
-module rods()
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
+if ($preview)
+    extrusions();
 
-        rod(bearing_rod_dia(linear_bearings[$i]), 80);
-
-        translate([0, 30])
-            studding(bearing_rod_dia(linear_bearings[$i]), 80);
-    }
-
-if($preview)
-    let($show_threads = true)
-        rods();

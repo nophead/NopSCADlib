@@ -61,34 +61,35 @@ heater_y = heater_width / 2;
 
 fan_x_offset = rad_dia / 2 + 4;
 
-module e3d_resistor(type, resistor_wire_rotate = [0,0,0]) {
+module e3d_resistor(type, naked = false, resistor_wire_rotate = [0,0,0]) {
     translate([11 - heater_x, -3 - heater_y, heater_height / 2 + nozzle_h]) {
         color("grey")
             rotate([-90, 0, 0])
                 cylinder(r = resistor_dia / 2, h = resistor_len);
 
-        color("red")
-			translate([0, resistor_len + 3.5/2 + 1, 0]) {
-				rotate(resistor_wire_rotate) {
-					translate([-3.5/2, 0, 0]) {
-						cylinder(d = 3.5, h = 36);
+        if(!naked)
+            color("red")
+                translate([0, resistor_len + 3.5/2 + 1, 0]) {
+                rotate(resistor_wire_rotate) {
+                    translate([-3.5/2, 0, 0]) {
+                        cylinder(d = 3.5, h = 36);
 
-						translate([3.5, 0, 0])
-							cylinder(r = 3.5 / 2, h = 36);
-					}
-				}
-			}
+                        translate([3.5, 0, 0])
+                            cylinder(r = 3.5 / 2, h = 36);
+                    }
+                }
+            }
     }
 }
 
-module heater_block(type, resistor_wire_rotate = [0,0,0]) {
+module heater_block(type, naked = false, resistor_wire_rotate = [0,0,0]) {
     translate_z(-hot_end_length(type))  {
         translate_z(nozzle_h)
             color("lightgrey")
                 translate([-heater_x, -heater_y, 0])
                     cube([heater_length, heater_width, heater_height]);
 
-        e3d_resistor(type, resistor_wire_rotate);
+        e3d_resistor(type, naked, resistor_wire_rotate);
         e3d_nozzle(type);
     }
 }
@@ -150,7 +151,7 @@ module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]
             }
 
     rotate(90)
-        heater_block(type, resistor_wire_rotate);
+        heater_block(type, naked, resistor_wire_rotate);
 
     if(!naked)
         translate_z(inset - insulator_length)
