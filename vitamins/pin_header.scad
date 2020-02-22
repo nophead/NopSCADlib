@@ -205,3 +205,71 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
             }
     }
 }
+
+module jst_xh_header(type, pin_count, right_angle=false, colour, pin_colour) { //! Draw JST XH connector
+    colour = colour ? colour : hdr_base_colour(type);
+    pin_colour = pin_colour ? pin_colour : hdr_pin_colour(type);
+    sizeY = 5.75;
+    pitch = hdr_pitch(type);
+
+    module jst_xh_socket(type, pin_count) {
+        socketSizeZ = hdr_socket_depth(type);
+        pinOffsetX = 2.45;
+        sizeY = 5.75;
+        wallThickness = 0.8;
+        size = [pinOffsetX * 2 + (pin_count - 1) * pitch, sizeY, socketSizeZ];
+        translate([-size[0] / 2, -size[1] / 2, 0]) {
+            // the base
+            cube([size[0], size[1], wallThickness]);
+            // the three full sides
+            translate([0, size[1] - wallThickness, 0])
+                cube([size[0], wallThickness, size[2]]);
+            cube([wallThickness, size[1], size[2]]);
+            translate([size[0] - wallThickness, 0, 0])
+                cube([wallThickness, size[1], size[2]]);
+            // the sides with cutouts
+            cube([size[0], wallThickness, 2]);
+            cutoutWidth = 1;
+            cutoutOffset = pinOffsetX - cutoutWidth / 2;
+            cube([cutoutOffset, wallThickness, size[2]]);
+            translate([size[0] - cutoutOffset, 0, 0])
+                cube([cutoutOffset, wallThickness, size[2]]);
+            cube([cutoutOffset, wallThickness, size[2]]);
+            translate([size[0]-cutoutOffset, 0, 0])
+                cube([cutoutOffset, wallThickness, size[2]]);
+            translate([cutoutOffset + cutoutWidth, 0, 0])
+                cube([size[0] - 2 * (cutoutWidth + cutoutOffset), wallThickness, size[2]]);
+        }
+    } // end module
+
+
+    color(colour)
+        if(right_angle)
+            translate([0, -1, sizeY / 2])
+                rotate([-90, 0, 180])
+                    jst_xh_socket(type, pin_count);
+        else
+            jst_xh_socket(type, pin_count);
+
+    color(pin_colour)
+        for(x = [0 : pin_count - 1]) {
+            pinWidth = hdr_pin_width(type);
+            verticalPinLength = right_angle ? hdr_pin_below(type) + sizeY / 2 : hdr_pin_length(type);
+            translate([pitch * (x - (pin_count - 1) / 2), 0, 0]) {
+                pin(type, verticalPinLength);
+
+                if(right_angle) {
+                    translate([0, -pinWidth / 2,  sizeY / 2 - pinWidth / 2])
+                        rotate([0, -90, 0])
+                            rotate_extrude(angle = 90, $fn = 32)
+                                translate([0, -pinWidth / 2])
+                                    square(pinWidth);
+
+                    translate([0, -sizeY / 2 - 3 * pinWidth / 4, sizeY / 2])
+                        rotate([90,0,0])
+                            pin(type, hdr_pin_length(type) - hdr_pin_below(type));
+                }
+            }
+        }
+}
+
