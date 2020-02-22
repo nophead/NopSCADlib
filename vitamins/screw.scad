@@ -73,34 +73,33 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     thread = max_thread ? length >= max_thread + 5 ? max_thread
                                                    : length
                         : length;
-    shank  = length - thread;
+    d = 2 * screw_radius(type);
+    pitch = metric_coarse_pitch(d);
     colour = nylon || head_type == hs_grub ? grey40 : grey80;
 
-    module shaft(headless = 0) {
+    module shaft(socket = 0, headless = false) {
         point = screw_nut(type) ? 0 : 3 * rad;
-        d = 2 * screw_radius(type);
-        pitch = metric_coarse_pitch(d);
-        l = length - shank;
+        shank  = length - thread - socket;
+
         if(show_threads && !point && pitch)
-            translate_z(-l - shank)
-                color(colour * 0.7)
-                    male_metric_thread(d, pitch, l, !!headless, false);
+            translate_z(-length)
+                male_metric_thread(d, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
         else
             color(colour * 0.9)
                 rotate_extrude() {
                     translate([0, -length + point])
-                        square([rad, length - headless - point]);
+                        square([rad, length - socket - point]);
 
                     if(point)
                         polygon([
-                            [0, -length], [0, point - length], [rad - 0.1, point - length]
+                            [0.4, -length], [0, point - length], [rad, point - length]
                         ]);
                 }
-        if(shank - headless > 0)
-            color(colour)
-                translate_z(-shank)
-                    cylinder(r = rad + eps, h = shank - headless);
 
+        if(shank > 0)
+            color(colour)
+                translate_z(-shank - socket)
+                    cylinder(r = rad + eps, h = shank);
     }
 
     explode(length + 10) {
@@ -121,23 +120,20 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
         if(head_type == hs_grub) {
             color(colour) {
-                if(!show_threads) {
-                    translate_z(-socket_depth)
-                        linear_extrude(height = socket_depth)
-                            difference() {
-                                circle(r = rad);
+                r = show_threads ? rad - pitch / 2 : rad;
+                translate_z(-socket_depth)
+                    linear_extrude(height = socket_depth)
+                        difference() {
+                            circle(r);
 
-                                circle(socket_rad, $fn = 6);
-                            }
+                            circle(socket_rad, $fn = 6);
+                        }
 
-                    shaft(socket_depth);
-                }
-                else
-                    render() difference() {
-                        shaft(socket_depth);
+                shaft(socket_depth, true);
 
-                        cylinder(r = socket_rad, $fn = 6, h = 2 * socket_depth, center = true);
-                    }
+                if(show_threads)
+                    translate_z(-length)
+                        cylinder(r = r, h = length - socket_depth);
             }
         }
         if(head_type == hs_hex) {

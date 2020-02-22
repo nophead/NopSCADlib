@@ -48,4 +48,5 @@ module nuts() {
 }
 
 if($preview)
-    nuts();
+    let($show_threads = true)
+        nuts();

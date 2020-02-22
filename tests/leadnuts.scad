@@ -27,4 +27,5 @@ module leadnuts()
         leadnut(leadnuts[$i]);
 
 if($preview)
-    leadnuts();
+    let($show_threads = true)
+        leadnuts();

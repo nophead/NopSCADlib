@@ -52,21 +52,24 @@ module d_pillar() { //! Draw a pillar for a D-connector
     height = 4.5;
     screw = 2.5;
     screw_length = 8;
+    pitch = metric_coarse_pitch(screw);
 
     translate_z(-screw_length)
         if(show_threads)
-            color(d_pillar_color * 0.7)
-                male_metric_thread(screw, metric_coarse_pitch(screw), screw_length, false, false);
+            male_metric_thread(screw, pitch, screw_length, false, top = 0, colour = d_pillar_color);
         else
             color(d_pillar_color)
                 cylinder(d = screw, h = screw_length + 1);
 
-    color(d_pillar_color)
+    color(d_pillar_color) {
         linear_extrude(height = height)
             difference() {
                 circle(r = rad, $fn = 6);
                 circle(d = screw);
             }
+        }
+    if(show_threads)
+        female_metric_thread(screw, pitch, height, false, colour = d_pillar_color);
 }
 
 module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specified D plug, which can be IDC, PCB or plain solder bucket

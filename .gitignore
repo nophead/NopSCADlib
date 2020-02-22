@@ -7,6 +7,7 @@ tests/bom/
 *.log
 *.html
 bounds.json
+options.json
 times.txt
 *_diff.png
 *.echo

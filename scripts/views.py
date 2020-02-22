@@ -28,6 +28,7 @@ import openscad
 from tests import do_cmd, update_image, colour_scheme, background
 import time
 import times
+import options
 from deps import *
 import os
 import json
@@ -102,6 +103,7 @@ def views(target, do_assemblies = None):
         os.makedirs(deps_dir)
 
     times.read_times(target_dir)
+    options.check_options(deps_dir)
     bounds_fname = top_dir + 'stls/bounds.json'
     with open(bounds_fname) as json_file:
         bounds_map = json.load(json_file)
@@ -163,11 +165,12 @@ def views(target, do_assemblies = None):
                                             png_name = png_name.replace('_assembly', '_assembled')
                                         changed = check_deps(png_name, dname)
                                         changed = times.check_have_time(changed, png_name)
+                                        changed = options.have_changed(changed, png_name)
                                         tmp_name = 'tmp.png'
                                         if changed:
                                             print(changed)
                                             t = time.time()
-                                            openscad.run("-D$show_threads=1", "-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name);
+                                            openscad.run_list(options.list() + ["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name]);
                                             times.add_time(png_name, t)
                                             do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
                                             update_image(tmp_name, png_name)

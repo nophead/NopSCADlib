@@ -62,6 +62,7 @@ function rotate_from_to(a, b) =
 function calculate_twist(A, B) = let(D = transpose3(B) * A) atan2(D[1][0], D[0][0]);
 //
 // Compute a 4x3 matrix to orientate a frame of the sweep given the position and a 3x3 rotation matrix.
+// Note that the rotation matrix is transposed to allow post multiplication.
 //
 function orientate(p, r) =
     let(x = r[0], y = r[1], z = r[2])
@@ -79,12 +80,21 @@ function rot3_z(a) =
         [ [ c, -s,  0],
           [ s,  c,  0],
           [ 0,  0,  1] ];
-
 //
 // Calculate the unit tangent at a vertex given the indices before and after. One of these can be the same as i in the case
-// of the start and end of a non closed path.
+// of the start and end of a non closed path. Note that the edges are converted to unit vectors so that their relative lengths
+// don't affect the direction of the tangent.
 //
-function tangent(path, before, i, after) = unit(unit(path[after] - path[i]) - unit(path[before] - path[i]));
+function tangent(path, before, i, after) = unit(unit(path[i] - path[before]) + unit(path[after] - path[i]));
+//
+// Calculate the twist per segment caused by rotate_from_to() instead of a simple Euler rotation around Z.
+//
+function helical_twist_per_segment(r, pitch, sides) = //! Calculate the twist around Z that rotate_from_to() introduces
+    let(step_angle = 360 / sides,
+        lt = 2 * r * sin(step_angle),               // length of tangent between two facets
+        slope = atan(2 * pitch / sides / lt)        // slope of tangents
+       ) step_angle * sin(slope);                   // angle tangent should rotate around z projected onto axis rotate_from_to() uses
+
 //
 // Generate all the surface points of the swept volume.
 //
@@ -111,24 +121,28 @@ function skin_points(profile, path, loop, twist = 0) =
             each profile4 * orientate(path[i], rotations[i] * rot3_z(za))
     ];
 
-function cap(facets, segment = 0) = [for(i = [0 : facets - 1]) segment ? facets * segment + i : facets - 1 - i];
+function cap(facets, segment = 0, end) = //! Create the mesh for an end cap
+    let(reverse = is_undef(end) ? segment : end)
+        [for(i = [0 : facets - 1]) facets * segment + (reverse ? i : facets - 1 - i)];
 
 function quad(p, a, b, c, d) = norm(p[a] - p[c]) > norm(p[b] - p[d]) ? [[b, c, d], [b, d, a]] : [[a, b, c], [a, c, d]];
 
-function skin_faces(points, segs, facets, loop) = [for(i = [0 : facets - 1], s = [0 : segs - (loop ? 1 : 2)])
-   each quad(points,
-        s * facets + i,
-        s * facets + (i + 1) % facets,
-       ((s + 1) % segs) * facets + (i + 1) % facets,
-       ((s + 1) % segs) * facets + i)];
+function skin_faces(points, npoints, facets, loop, offset = 0) = //! Create the mesh for the swept volume without end caps
+    [for(i = [0 : facets - 1], s = [0 : npoints - (loop ? 1 : 2)])
+       let(j = s + offset, k = loop ? (j + 1) % npoints : j + 1)
+       each quad(points,
+            j * facets + i,
+            j * facets + (i + 1) % facets,
+            k * facets + (i + 1) % facets,
+            k * facets + i)];
 
 function sweep(path, profile, loop = false, twist = 0) = //! Generate the point list and face list of the swept volume
     let(
-        segments = len(path),
+        npoints = len(path),
         facets = len(profile),
         points = skin_points(profile, path, loop, twist),
-        skin_faces = skin_faces(points, segments, facets, loop),
-        faces = loop ? skin_faces : concat([cap(facets)], skin_faces, [cap(facets, segments - 1)])
+        skin_faces = skin_faces(points, npoints, facets, loop),
+        faces = loop ? skin_faces : concat([cap(facets)], skin_faces, [cap(facets, npoints - 1)])
         ) [points, faces];
 
 module sweep(path, profile, loop = false, twist = 0) { //! Draw a polyhedron that is the swept volume
@@ -141,9 +155,9 @@ function path_length(path, i = 0, length = 0) = //! Calculated the length along 
     i >= len(path) - 1 ? length
                        : path_length(path, i + 1, length + norm(path[i + 1] - path[i]));
 
-function circle_points(r = 1, z = 0) = //! Generate the points of a circle, setting z makes a single turn spiral
+function circle_points(r = 1, z = 0, dir = -1) = //! Generate the points of a circle, setting z makes a single turn spiral
     let(sides = r2sides(r))
-        [for(i = [0 : sides - 1]) let(a = i * 360 / sides) [r * sin(a), r * cos(a), z * a / 360]];
+        [for(i = [0 : sides - 1]) let(a = dir * i * 360 / sides) [r * cos(a), r * sin(a), z * i / sides]];
 
 function rectangle_points(w, h) = [[-w/2, -h/2, 0], [-w/2, h/2, 0], [w/2, h/2, 0], [w/2, -h/2, 0]]; //! Generate the points of a rectangle
 

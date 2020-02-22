@@ -56,7 +56,7 @@ module maths() {
     //
     z = [0, 0, 1];
     v = cross(u, z);
-    a = acos(u * z);
+    a = angle_between(u, z);
 
 
     l = 20;
@@ -64,6 +64,11 @@ module maths() {
         translate_z(l)
             vflip()
                 arrow(l);
+
+    //
+    // Test Euler
+    //
+    assert(euler(rotate(r)) == r, "euler() failed");
 }
 
 rotate(45)

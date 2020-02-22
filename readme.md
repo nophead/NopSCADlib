@@ -32,8 +32,8 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
 <tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
@@ -1152,7 +1152,9 @@ Nuts for leadscrews.
 | ```leadnut_hole_dia(type)``` | The diameter of the screw holes |
 | ```leadnut_hole_pitch(type)``` | The radia pitch of the screw holes |
 | ```leadnut_holes(type)``` | The number of screw holes |
+| ```leadnut_lead(type)``` | Screw lead |
 | ```leadnut_od(type)``` | Outer diameter of the shank |
+| ```leadnut_pitch(type)``` | Screw pitch |
 | ```leadnut_screw(type)``` | The type of the fixing screws |
 
 ### Functions
@@ -2281,14 +2283,20 @@ Steel rods and studding with chamfered ends.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```rod(d , l)``` | Draw a smooth rod with specified length and diameter |
-| ```studding(d , l)``` | Draw a threaded rod with specified length and diameter |
+| ```leadscrew(d , l, lead, starts, center = true)``` | Draw a leadscrew with specified diameter, length, lead and number of starts |
+| ```rod(d , l, center = true)``` | Draw a smooth rod with specified diameter and length |
+| ```studding(d , l, center = true)``` | Draw a threaded rod with specified diameter and length |
 
 ![rod](tests/png/rod.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```leadscrew(10, 80, 8, 4)``` |  Leadscrew 10 x 80mm, 8mm lead, 4 starts |
+|   1 | ```leadscrew(12, 80, 12, 4)``` |  Leadscrew 12 x 80mm, 12mm lead, 4 starts |
+|   1 | ```leadscrew(16, 80, 16, 4)``` |  Leadscrew 16 x 80mm, 16mm lead, 4 starts |
+|   1 | ```leadscrew(6, 80, 2, 1)``` |  Leadscrew 6 x 80mm, 2mm lead, 1 starts |
+|   1 | ```leadscrew(8, 80, 8, 4)``` |  Leadscrew 8 x 80mm, 8mm lead, 4 starts |
 |   1 | ```rod(10, 80)``` |  Smooth rod 10mm x 80mm |
 |   1 | ```rod(12, 80)``` |  Smooth rod 12mm x 80mm |
 |   1 | ```rod(16, 80)``` |  Smooth rod 16mm x 80mm |
@@ -2358,17 +2366,17 @@ Machine screws and wood screws with various head styles.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```screw(No632_pan_screw, 30)``` |  Screw 6-32 pan x 30mm |
-|   1 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
-|   1 | ```screw(M2_cs_cap_screw, 25)``` |  Screw M2 cs cap x 25mm |
-|   1 | ```screw(M2p5_cap_screw, 25)``` |  Screw M2.5 cap x 25mm |
-|   1 | ```screw(M2p5_pan_screw, 30)``` |  Screw M2.5 pan x 30mm |
-|   1 | ```screw(M3_cap_screw, 25)``` |  Screw M3 cap x 25mm |
-|   1 | ```screw(M3_cs_cap_screw, 25)``` |  Screw M3 cs cap x 25mm |
-|   1 | ```screw(M3_dome_screw, 25)``` |  Screw M3 dome x 25mm |
+|   1 | ```screw(M2_cap_screw, 10)``` |  Screw M2 cap x 10mm |
+|   1 | ```screw(M2_cs_cap_screw, 10)``` |  Screw M2 cs cap x 10mm |
+|   1 | ```screw(M2p5_cap_screw, 10)``` |  Screw M2.5 cap x 10mm |
+|   1 | ```screw(M2p5_pan_screw, 10)``` |  Screw M2.5 pan x 10mm |
+|   1 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
+|   1 | ```screw(M3_cs_cap_screw, 10)``` |  Screw M3 cs cap x 10mm |
+|   1 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
 |   1 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x 6mm |
-|   1 | ```screw(M3_hex_screw, 30)``` |  Screw M3 hex x 30mm |
-|   1 | ```screw(M3_low_cap_screw, 25)``` |  Screw M3 low cap x 25mm |
-|   1 | ```screw(M3_pan_screw, 30)``` |  Screw M3 pan x 30mm |
+|   1 | ```screw(M3_hex_screw, 10)``` |  Screw M3 hex x 10mm |
+|   1 | ```screw(M3_low_cap_screw, 10)``` |  Screw M3 low cap x 10mm |
+|   1 | ```screw(M3_pan_screw, 10)``` |  Screw M3 pan x 10mm |
 |   1 | ```screw(M4_cap_screw, 25)``` |  Screw M4 cap x 25mm |
 |   1 | ```screw(M4_cs_cap_screw, 25)``` |  Screw M4 cs cap x 25mm |
 |   1 | ```screw(M4_dome_screw, 25)``` |  Screw M4 dome x 25mm |
@@ -2383,8 +2391,8 @@ Machine screws and wood screws with various head styles.
 |   1 | ```screw(M6_pan_screw, 30)``` |  Screw M6 pan x 30mm |
 |   1 | ```screw(M8_cap_screw, 35)``` |  Screw M8 cap x 35mm |
 |   1 | ```screw(M8_hex_screw, 30)``` |  Screw M8 hex x 30mm |
-|   1 | ```screw(No2_screw, 30)``` |  Screw No2 pan wood x 30mm |
-|   1 | ```screw(No4_screw, 30)``` |  Screw No4 pan wood x 30mm |
+|   1 | ```screw(No2_screw, 10)``` |  Screw No2 pan wood x 10mm |
+|   1 | ```screw(No4_screw, 10)``` |  Screw No4 pan wood x 10mm |
 |   1 | ```screw(No6_cs_screw, 30)``` |  Screw No6 cs wood x 30mm |
 |   1 | ```screw(No6_screw, 30)``` |  Screw No6 pan wood x 30mm |
 
@@ -2672,7 +2680,7 @@ NEMA stepper motor model.
 | ```NEMA_length(type)``` | Body length |
 | ```NEMA_radius(type)``` | End cap radius |
 | ```NEMA_shaft_dia(type)``` | Shaft diameter |
-| ```NEMA_shaft_length(type)``` | Shaft length above the face |
+| ```NEMA_shaft_length(type)``` | Shaft length above the face, if a list then a leadscrew: length, lead, starts |
 | ```NEMA_width(type)``` | Width of the square face |
 
 ### Functions
@@ -2684,7 +2692,7 @@ NEMA stepper motor model.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```NEMA(type)``` | Draw specified NEMA stepper motor |
+| ```NEMA(type, shaft_angle = 0)``` | Draw specified NEMA stepper motor |
 | ```NEMA_outline(type)``` | 2D outline |
 | ```NEMA_screw_positions(type, n = 4)``` | Positions children at the screw holes |
 | ```NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef)``` | Place screws and optional earth tag |
@@ -4431,6 +4439,8 @@ Maths utilities for manipulating vectors and matrices.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```angle_between(v1, v2)``` | Return the angle between two vectors |
+| ```euler(R)``` | Convert a rotation matrix to a Euler rotation vector. |
 | ```identity(n, x = 1)``` | Construct an arbitrary size identity matrix |
 | ```reverse(v)``` | Reverse a vector |
 | ```rotate(a, v)``` | Generate a 4x4 rotation matrix, ```a``` can be a vector of three angles or a single angle around ```z```, or around axis ```v``` |
@@ -4441,6 +4451,7 @@ Maths utilities for manipulating vectors and matrices.
 | ```transpose(m)``` | Transpose an arbitrary size matrix |
 | ```unit(v)``` | Convert ```v``` to a unit vector |
 | ```vec3(v)``` | Return a 3 vector with the first three elements of ```v``` |
+| ```vec4(v)``` | Return a 4 vector with the first three elements of ```v``` |
 
 ![maths](tests/png/maths.png)
 
@@ -4607,9 +4618,12 @@ An additional twist around the path can be specified. If the path is closed this
 | ```after(path1, path2)``` | Translate ```path2``` so its start meets the end of ```path1``` and then concatenate |
 | ```arc_points(r, a = [90, 0, 180], al = 90)``` | Generate the points of a circular arc |
 | ```before(path1, path2)``` | Translate ```path1``` so its end meets the start of ```path2``` and then concatenate |
-| ```circle_points(r = 1, z = 0)``` | Generate the points of a circle, setting z makes a single turn spiral |
+| ```cap(facets, segment = 0, end)``` | Create the mesh for an end cap |
+| ```circle_points(r = 1, z = 0, dir = -1)``` | Generate the points of a circle, setting z makes a single turn spiral |
+| ```helical_twist_per_segment(r, pitch, sides)``` | Calculate the twist around Z that rotate_from_to() introduces |
 | ```path_length(path, i = 0, length = 0)``` | Calculated the length along a path |
 | ```rectangle_points(w, h)``` | Generate the points of a rectangle |
+| ```skin_faces(points, npoints, facets, loop, offset = 0)``` | Create the mesh for the swept volume without end caps |
 | ```sweep(path, profile, loop = false, twist = 0)``` | Generate the point list and face list of the swept volume |
 
 ### Modules
@@ -4618,6 +4632,50 @@ An additional twist around the path can be specified. If the path is closed this
 | ```sweep(path, profile, loop = false, twist = 0)``` | Draw a polyhedron that is the swept volume |
 
 ![sweep](tests/png/sweep.png)
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Thread"></a>
+## Thread
+Utilities for making threads with sweep. They can be used to model screws, nuts, studding, leadscrews, etc, and also to make printed threads.
+
+The ends can be tapered, flat or chamfered by setting the ```top``` and ```bot``` parameters to -1 for tapered, 0 for a flat cut and positive to
+specify a chamfer angle.
+
+Threads are by default solid, so the male version is wrapped around a cylinder and the female inside a tube. This can be suppressed to just get the helix, for
+example to make a printed pot with a screw top lid.
+
+Threads with a typical 60 degree angle appear too bright with OpenSCAD's primitive lighting model as they face towards the lights more than the top and sides of
+a cylinder. To get around this a colour can be passed to thread that is used to colour the cylinder and then toned down to colour the helix.
+
+Making the ends requires a CGAL intersection, which make threads relatively slow. For this reason they are generally disabled when using the GUI but can
+be enabled by setting ```$show_threads``` to ```true```. When the tests are run, by default, threads are enabled only for things that feature them like screws.
+This behaviour can be changed by setting a ```SHOW_THREADS``` environment variable to ```false``` to disable all threads and ```true``` to enable all threads.
+The same variable also affects the generation of assembly diagrams.
+
+Threads obey the $fn, $fa, $fs variables.
+
+
+[utils/thread.scad](utils/thread.scad) Implementation.
+
+[tests/thread.scad](tests/thread.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```metric_coarse_pitch(d)``` | Convert metric diameter to pitch |
+| ```thread_profile(h, crest, angle, overlap = 0.1)``` | Create thread profile path |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```female_metric_thread(d, pitch, length, center = true, top = -1, bot = -1, colour = undef)``` | Create female thread with metric profile |
+| ```male_metric_thread(d, pitch, length, center = true, top = -1, bot = -1, solid = true, colour = undef)``` | Create male thread with metric profile |
+| ```thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef)``` | Create male or femail thread, ends can be tapered, chamfered or square |
+
+![thread](tests/png/thread.png)
 
 
 <a href="#top">Top</a>

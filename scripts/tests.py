@@ -27,6 +27,7 @@ import openscad
 import subprocess
 import bom
 import times
+import options
 import time
 import json
 import shutil
@@ -96,6 +97,7 @@ def tests(tests):
     index = {}
     bodies = {}
     times.read_times()
+    options.check_options(deps_dir)
     #
     # Make cover pic if does not exist as very slow. Delete it to force an update.
     #
@@ -190,11 +192,12 @@ def tests(tests):
             oldest = png_name if mtime(png_name) < mtime(bom_name) else bom_name
             changed = check_deps(oldest, dname)
             changed = times.check_have_time(changed, scad_name)
+            changed = options.have_changed(changed, oldest)
             if changed:
                 print(changed)
                 t = time.time()
                 tmp_name = 'tmp.png'
-                openscad.run("-D", "$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name);
+                openscad.run_list(options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name]);
                 times.add_time(scad_name, t)
                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", background, "-border", "10", tmp_name])
                 update_image(tmp_name, png_name)

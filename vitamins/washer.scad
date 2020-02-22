@@ -103,12 +103,14 @@ module spring_washer(type) { //! Draw spring version of washer
     vitamin(str("spring_washer(", type[0], "_washer): Washer spring M", hole, " x ", thickness, "mm"));
     ir =  washer_id(type) / 2;
     or = diameter / 2;
-    path = circle_points((ir + or) / 2, exploded() ? thickness / 2 : 0);
+    pitch = exploded() ? thickness / 2 : 0;
+    path = circle_points((ir + or) / 2, pitch);
     profile = rectangle_points(thickness, or - ir);
+    len = len(path);
     color(hard_washer_colour)
         translate_z(thickness / 2)
-            rotate(180)
-                sweep(path, profile);
+            rotate(-90)
+                sweep(path, profile, twist = -helical_twist_per_segment(ir, pitch, len) * (len - 1));
 
     if($children)
         translate_z(thickness)

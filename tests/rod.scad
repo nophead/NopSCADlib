@@ -24,12 +24,21 @@ include <../vitamins/linear_bearings.scad>
 use <../vitamins/rod.scad>
 
 module rods()
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
+    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) let(d = bearing_rod_dia(linear_bearings[$i])){
 
-        rod(bearing_rod_dia(linear_bearings[$i]), 80);
+        rod(d, 80);
 
         translate([0, 30])
-            studding(bearing_rod_dia(linear_bearings[$i]), 80);
+            studding(d, 80);
+
+        if(d >= 6)
+            translate([0, 60]) {
+                starts = d > 6 ? 4 : 1;
+                pitch = d > 14 ? 4
+                               : d > 10 ? 3 : 2;
+                let($show_threads = true)
+                    leadscrew(d, 80, starts * pitch, starts);
+            }
     }
 
 if($preview)

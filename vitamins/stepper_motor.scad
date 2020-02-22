@@ -26,6 +26,7 @@ include <screws.scad>
 use <washer.scad>
 include <ring_terminals.scad>
 use <../utils/tube.scad>
+use <rod.scad>
 
 function NEMA_width(type)       = type[1]; //! Width of the square face
 function NEMA_length(type)      = type[2]; //! Body length
@@ -34,7 +35,7 @@ function NEMA_body_radius(type) = type[4]; //! Body radius
 function NEMA_boss_radius(type) = type[5]; //! Boss around the spindle radius
 function NEMA_boss_height(type) = type[6]; //! Boss height
 function NEMA_shaft_dia(type)   = type[7]; //! Shaft diameter
-function NEMA_shaft_length(type)= type[8]; //! Shaft length above the face
+function NEMA_shaft_length(type)= type[8]; //! Shaft length above the face, if a list then a leadscrew: length, lead, starts
 function NEMA_hole_pitch(type)  = type[9]; //! Screw hole pitch
 function NEMA_holes(type)       = [-NEMA_hole_pitch(type) / 2, NEMA_hole_pitch(type) / 2]; //! Screw positions for for loop
 function NEMA_big_hole(type)    = NEMA_boss_radius(type) + 0.2; //! Clearance hole for the big boss
@@ -50,7 +51,7 @@ module NEMA_outline(type) //! 2D outline
         circle(NEMA_radius(type));
     }
 
-module NEMA(type) { //! Draw specified NEMA stepper motor
+module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
     side = NEMA_width(type);
     length = NEMA_length(type);
     body_rad = NEMA_body_radius(type);
@@ -88,9 +89,15 @@ module NEMA(type) { //! Draw specified NEMA stepper motor
                         }
         }
 
-        color(NEMA_shaft_length(type) > 50 ? "silver" : stepper_cap_colour)
-            translate_z(-5)
-                cylinder(r = shaft_rad, h = NEMA_shaft_length(type) + 5);  // shaft
+        shaft =  NEMA_shaft_length(type);
+        translate_z(-5)
+            rotate(shaft_angle)
+                if(!is_list(shaft))
+                    color(stepper_cap_colour)
+                        cylinder(r = shaft_rad, h = shaft + 5);  // shaft
+                else
+                    not_on_bom()
+                        leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false)
 
         translate([0, side / 2, -length + cap / 2])
             rotate([90, 0, 0])
