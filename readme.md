@@ -1803,7 +1803,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
 |   1 | ```molex_254(3)``` |  Molex KK header 3 way |
 |  16 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
-|  28 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
+|  32 | ```nut(M2p5_nut, nyloc = true)``` |  Nut M2.5 x 2.2mm nyloc |
 |  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |  12 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |   1 | ```pcb(PI_IO)``` |  PI_IO V2 |
@@ -1814,11 +1814,13 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```pcb(PERF74x51)``` |  Perfboard 74 x 51mm |
 |   1 | ```pcb(PERF80x20)``` |  Perfboard 80 x 20mm |
 |   1 | ```pin_socket(2p54header, 13, 2, right_angle = true)``` |  Pin socket 13 x 2 right_angle |
+|   1 | ```pcb(RAMPSEndstop)``` |  RAMPS Endstop Switch |
 |   1 | ```pcb(RPI3)``` |  Raspberry Pi 3 |
 |   1 | ```pcb(RPI0)``` |  Raspberry Pi Zero |
 |  16 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
 |   4 | ```screw(M2p5_cap_screw, 16)``` |  Screw M2.5 cap x 16mm |
 |   8 | ```screw(M2p5_cap_screw, 20)``` |  Screw M2.5 cap x 20mm |
+|   4 | ```screw(M2p5_cap_screw, 35)``` |  Screw M2.5 cap x 35mm |
 |   8 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
 |   4 | ```screw(M2p5_pan_screw, 25)``` |  Screw M2.5 pan x 25mm |
 |   4 | ```screw(M2p5_pan_screw, 35)``` |  Screw M2.5 pan x 35mm |
@@ -1830,7 +1832,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
 |  16 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
-|  28 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  32 | ```washer(M2p5_washer)``` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | ```pcb(ZC_A0591)``` |  ZC-A0591 ULN2003 driver PCB |
@@ -1846,6 +1848,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer25110_2.stl |
 |   4 | pcb_spacer25120_2.stl |
 |   4 | pcb_spacer25230.stl |
+|   4 | pcb_spacer25240.stl |
 |   4 | pcb_spacer2570.stl |
 |   4 | pcb_spacer2580.stl |
 |   4 | pcb_spacer2590.stl |
@@ -1935,6 +1938,7 @@ Pin headers and sockets, etc.
 |:--- |:--- |
 | ```box_header(type, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw box header |
 | ```idc_transition(type, cols = 5, skip = [], cutout = false)``` | Draw IDC transition header |
+| ```jst_xh_header(type, pin_count, right_angle=false, colour, pin_colour)``` | Draw JST XH connector |
 | ```pin(type, length = undef)``` | Draw a header pin |
 | ```pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false)``` | Draw pin header |
 | ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false)``` | Draw pin socket |
