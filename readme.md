@@ -992,10 +992,11 @@ IEC mains inlets and outlet.
 |   1 | ```iec(IEC_inlet)``` |  IEC inlet |
 |   1 | ```iec(IEC_inlet_atx)``` |  IEC inlet for ATX |
 |   1 | ```iec(IEC_outlet)``` |  IEC outlet RS 811-7193 |
-|  10 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   1 | ```iec(IEC_switched_fused_inlet)``` |  IEC320 C14 switched fused inlet module |
+|  12 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   4 | ```screw(M3_cs_cap_screw, 10)``` |  Screw M3 cs cap x 10mm |
-|   6 | ```screw(M3_cs_cap_screw, 12)``` |  Screw M3 cs cap x 12mm |
-|  10 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|   8 | ```screw(M3_cs_cap_screw, 12)``` |  Screw M3 cs cap x 12mm |
+|  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 
 
 <a href="#top">Top</a>
