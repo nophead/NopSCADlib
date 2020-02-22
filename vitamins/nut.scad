@@ -186,6 +186,11 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
                         circle(holeRadius);
             }
 
+    thread_d = 2 * holeRadius;
+    if(show_threads)
+        translate([holeOffset, 0])
+            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), size[2], center = false);
+
     // add the side tabs
     for(m = [0, 1])
         mirror([0, m, 0])
