@@ -2143,10 +2143,10 @@ Linear rails with carriages.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```carriage(type, rail)``` | Draw the specified carriage |
+| ```carriage(type, rail, end_color = grey20, wiper_color = grey20)``` | Draw the specified carriage |
 | ```carriage_hole_positions(type)``` | Position children over screw holes |
 | ```rail(type, length)``` | Draw the specified rail |
-| ```rail_assembly(type, length, pos)``` | Rail and carriage assembly |
+| ```rail_assembly(type, length, pos, carriage_end_color = grey20, carriage_wiper_color = grey20)``` | Rail and carriage assembly |
 | ```rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true)``` | Position children over screw holes |
 | ```rail_screws(type, length, thickness, screws = 100)``` | Place screws in the rail |
 
