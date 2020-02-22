@@ -4102,7 +4102,7 @@ Knob with embedded hex head screw.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```screw_knob(screw)``` | Generate the STL foe a knob to fit the specified hex screw |
+| ```screw_knob(screw)``` | Generate the STL for a knob to fit the specified hex screw |
 | ```screw_knob_assembly(screw, length)``` | Assembly with the screw in place |
 
 ![screw_knob](tests/png/screw_knob.png)
