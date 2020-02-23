@@ -39,6 +39,7 @@ pp2_colour      = is_undef($pp2_colour)      ? "red"  : $pp2_colour;      // pri
 pp3_colour      = is_undef($pp3_colour)      ? "blue" : $pp3_colour;      // printed part colour 3
 pp4_colour      = is_undef($pp4_colour)      ? "darkorange" : $pp4_colour;// printed part colour 4
 show_rays       = is_undef($show_rays)       ? false  : $show_rays;       // show camera sight lines and light direction
+show_threads    = is_undef($show_threads)    ? false  : $show_threads;    // show screw threads
 
 // Minimum wall is about two filaments wide but we extrude it closer to get better bonding
 squeezed_wall = $preview ? 2 * extrusion_width - layer_height * (1 - PI / 4)
@@ -59,7 +60,8 @@ grey60                          = [0.6, 0.6, 0.6];
 grey70                          = [0.7, 0.7, 0.7];
 grey80                          = [0.8, 0.8, 0.8];
 grey90                          = [0.9, 0.9, 0.9];
-brass                           = "gold";
+brass                           = [255/255, 215/255, 0/255];
+silver                          = [0.75, 0.75, 0.75];
 
 /*
  * Enums

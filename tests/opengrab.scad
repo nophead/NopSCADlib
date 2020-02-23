@@ -29,4 +29,5 @@ module opengrab_test() {
 }
 
 if($preview)
-    opengrab_test();
+    let($show_threads = true)
+        opengrab_test();

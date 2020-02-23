@@ -136,13 +136,13 @@ translate([x5, cable_grommets_y + 250])
 translate([900, 600])
     box_test();
 
-translate([850, 1220])
+translate([850, 1260])
     bbox_test();
 
 x0 = 0;
 inserts_y = 0;
 nuts_y = inserts_y + 20;
-washers_y = nuts_y + 60;
+washers_y = nuts_y + 100;
 screws_y = washers_y + 120;
 o_rings_y = screws_y + 130;
 springs_y = o_rings_y + 20;
@@ -254,7 +254,7 @@ buttons_y = spades_y + 40;
 jacks_y = buttons_y + 40;
 microswitches_y = jacks_y + 40;
 rockers_y = microswitches_y + 40;
-toggles_y = rockers_y + 40;
+toggles_y = rockers_y + 60;
 components_y = toggles_y + 40;
 
 translate([x2, leds_y])

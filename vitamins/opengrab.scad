@@ -23,6 +23,7 @@
 //! A permanent magnet that can be magnatized and de-magnatized electronically.
 //
 include <../core.scad>
+use <../utils/thread.scad>
 
 pitch = 33.8;
 width = 40;
@@ -64,15 +65,20 @@ module opengrab() { //! Draw OpenGrab module
         translate_z(depth - pillar - pcb / 2)
             cube([width, width, pcb], center = true);
 
-    color(brass)
-        translate_z(1)
-            opengrab_hole_positions()
+
+    translate_z(1)
+        opengrab_hole_positions() {
+            color(brass)
                 linear_extrude(height = depth - 1)
                     difference() {
                             circle(d = 4.7 / cos(30), $fn = 6);
 
                             circle(r = 3/2);
                     }
+
+            if(show_threads)
+                female_metric_thread(3, metric_coarse_pitch(3), depth - 1, center = false, colour = brass);
+        }
 }
 
 module opengrab_target() { //! Draw OpenGrab target

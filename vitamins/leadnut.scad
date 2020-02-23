@@ -21,7 +21,8 @@
 //! Nuts for leadscrews.
 //
 include <../core.scad>
-include <../utils/tube.scad>
+use <../utils/tube.scad>
+use <../utils/thread.scad>
 
 function leadnut_bore(type)          = type[2];     //! Thread size
 function leadnut_od(type)            = type[3];     //! Outer diameter of the shank
@@ -33,6 +34,8 @@ function leadnut_holes(type)         = type[8];     //! The number of screw hole
 function leadnut_hole_dia(type)      = type[9];     //! The diameter of the screw holes
 function leadnut_hole_pitch(type)    = type[10];    //! The radia pitch of the screw holes
 function leadnut_screw(type)         = type[11];    //! The type of the fixing screws
+function leadnut_pitch(type)         = type[12];    //! Screw pitch
+function leadnut_lead(type)          = type[13];    //! Screw lead
 
 function leadnut_shank(type)         = leadnut_height(type) - leadnut_flange_t(type) - leadnut_flange_offset(type); //! The length of the shank below the flange
 
@@ -47,11 +50,18 @@ module leadnut_screw_positions(type) { //! Position children at the screw holes
 
 module leadnut(type) { //! Draw specified leadnut
     vitamin(str("leadnut(", type[0], "): ", type[1]));
-    bore_r = (leadnut_bore(type) + 0.5) / 2;
+    bore_d = leadnut_bore(type);
+    bore_r = bore_d / 2;
+    h = leadnut_height(type);
+    pitch = leadnut_pitch(type);
+    lead = leadnut_lead(type);
 
     color("dimgrey") vflip()
         translate_z(-leadnut_flange_offset(type) - leadnut_flange_t(type)) {
-            tube(or = leadnut_od(type) / 2, ir = bore_r, h = leadnut_height(type), center = false);
+            tube(or = leadnut_od(type) / 2, ir = bore_r, h = h, center = false);
+
+            if(show_threads)
+                thread(bore_d, lead, h, thread_profile(pitch / 2, pitch * 0.366, 30), false, starts = lead / pitch, female = true, solid = false);
 
             translate_z(leadnut_flange_offset(type))
                 linear_extrude(height = leadnut_flange_t(type))

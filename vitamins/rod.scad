@@ -21,30 +21,57 @@
 //! Steel rods and studding with chamfered ends.
 //
 include <../core.scad>
+use <../utils/thread.scad>
 
 rod_colour = grey80;
 studding_colour = grey70;
+leadscrew_colour = grey70;
 
-module rod(d , l) { //! Draw a smooth rod with specified length and diameter
+module rod(d , l, center = true) { //! Draw a smooth rod with specified diameter and length
     vitamin(str("rod(", d, ", ", l, "): Smooth rod ", d, "mm x ", l, "mm"));
 
     chamfer = d / 10;
     color(rod_colour)
-        hull() {
-            cylinder(d = d, h = l - 2 * chamfer, center = true);
+        translate_z(center ? 0 : l / 2)
+            hull() {
+                cylinder(d = d, h = l - 2 * chamfer, center = true);
 
-            cylinder(d = d - 2 * chamfer, h = l, center = true);
-        }
+                cylinder(d = d - 2 * chamfer, h = l, center = true);
+            }
 }
 
-module studding(d , l) { //! Draw a threaded rod with specified length and diameter
+module studding(d , l, center = true) { //! Draw a threaded rod with specified diameter and length
     vitamin(str("studding(", d, ", ", l,"): Threaded rod M", d, " x ", l, "mm"));
 
     chamfer = d / 20;
-    color(studding_colour)
-        hull() {
-            cylinder(d = d, h = l - 2 * chamfer, center = true);
+    pitch = metric_coarse_pitch(d);
 
-            cylinder(d = d - 2 * chamfer, h = l, center = true);
-        }
+    translate_z(center ? 0 : l / 2)
+        if(show_threads && pitch)
+            male_metric_thread(d, pitch, l, colour = rod_colour);
+        else
+            color(studding_colour)
+                hull() {
+                    cylinder(d = d, h = l - 2 * chamfer, center = true);
+
+                    cylinder(d = d - 2 * chamfer, h = l, center = true);
+                }
+}
+
+module leadscrew(d , l, lead, starts, center = true) { //! Draw a leadscrew with specified diameter, length, lead and number of starts
+    vitamin(str("leadscrew(", d, ", ", l, ", ", lead, ", ", starts, "): Leadscrew ", d, " x ", l, "mm, ", lead, "mm lead, ", starts, " starts"));
+
+    pitch = lead / starts;
+    chamfer = pitch / 2;
+
+    translate_z(center ? 0 : l / 2)
+        if(show_threads && pitch)
+            thread(d - pitch, lead, l, thread_profile(pitch / 2, pitch * 0.366, 30), top = 45, bot = 45, starts = starts, center = center, colour = rod_colour);
+        else
+            color(leadscrew_colour)
+                hull() {
+                    cylinder(d = d, h = l - 2 * chamfer, center = true);
+
+                    cylinder(d = d - 2 * chamfer, h = l, center = true);
+                }
 }

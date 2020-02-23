@@ -27,4 +27,5 @@ module toggles()
          toggle(toggles[$i], 3);
 
 if($preview)
-    toggles();
+    let($show_threads = true)
+        toggles();

@@ -22,6 +22,7 @@
 //
 include <../core.scad>
 use <../utils/quadrant.scad>
+use <../utils/thread.scad>
 
 function insert_length(type)         = type[1]; //! Length
 function insert_outer_d(type)        = type[2]; //! Outer diameter at the top
@@ -45,17 +46,18 @@ module insert(type) { //! Draw specified insert
 
     vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type)));
     $fn = 64;
-    explode(20, offset =[0, 0, -5]) color(brass) translate_z(eps) {
-        vflip(){
-            r1 = insert_screw_diameter(type) / 2;
-            r2 = insert_barrel_d(type) / 2;
-            r3 = insert_ring3_d(type) / 2;
-            r4 = insert_ring2_d(type) / 2;
-            r5 = insert_outer_d(type) / 2;
-            h1 = ring1_h;
-            h2 = ring1_h + gap;
-            h3 = ring1_h + gap + ring2_h;
-            h4 = ring1_h + gap + ring2_h + gap;
+    thread_d = insert_screw_diameter(type);
+    explode(20, offset =[0, 0, -5]) translate_z(eps) vflip() {
+        r1 = thread_d / 2;
+        r2 = insert_barrel_d(type) / 2;
+        r3 = insert_ring3_d(type) / 2;
+        r4 = insert_ring2_d(type) / 2;
+        r5 = insert_outer_d(type) / 2;
+        h1 = ring1_h;
+        h2 = ring1_h + gap;
+        h3 = ring1_h + gap + ring2_h;
+        h4 = ring1_h + gap + ring2_h + gap;
+        color(brass)
             rotate_extrude()
                 polygon([
                     [r1, 0],
@@ -72,7 +74,9 @@ module insert(type) { //! Draw specified insert
                     [r5, h1],
                     [r5, 0],
                 ]);
-        }
+
+        if(show_threads)
+            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), length, center = false, colour = brass);
     }
 }
 

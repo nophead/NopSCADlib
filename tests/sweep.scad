@@ -44,7 +44,7 @@ knot = [ for(i=[0:.2:359])
            (19*cos(3*i) + 40)*sin(2*i),
             19*sin(3*i) ] ];
 
-sweep(knot, L_points, loop = true, twist = 0);
+sweep(knot, L_points, loop = true);
 
 p = transform_points([[0,0,0], [20,0,5], [10,30,4], [0,0,0], [0,0,20]], scale(10));
 n = 100;

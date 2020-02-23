@@ -37,4 +37,5 @@ module inserts() {
 }
 
 if($preview)
-    inserts();
+    let($show_threads = true)
+        inserts();

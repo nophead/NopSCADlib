@@ -20,6 +20,7 @@
 //! Filament spool models
 
 include <../core.scad>
+include <../utils/tube.scad>
 
 function spool_diameter(type)      = type[1]; //! Outside diameter
 function spool_width(type)         = type[2]; //! Internal width
@@ -32,7 +33,7 @@ function spool_hub_taper(type)     = type[8]; //! Diameter at which it tapers do
 function spool_height(type)        = spool_width(type) + 2 * spool_hub_thickness(type); //! Outside width
 function spool_pitch(type)         = spool_width(type) + spool_rim_thickness(type); //! Spacing of the rims
 
-module spool(type) { //! Draw specified spool
+module spool(type, filament_depth = 0, filament_colour = "white", filament_d = 3) { //! Draw specified spool with optional filament
     vitamin(str("spool(", type[0], "): Filament spool ", spool_diameter(type), " x ", spool_width(type)));
 
     h = spool_height(type);
@@ -57,4 +58,25 @@ module spool(type) { //! Draw specified spool
             [r3, h - spool_hub_thickness(type) + spool_rim_thickness(type)],
             [r2, h],
         ]);
+
+    if(filament_depth) {
+        w = spool_width(type);
+        r = r5 + filament_depth;
+        color(filament_colour)
+            if(filament_d) {
+                n = round(w / filament_d) + 1;
+                fd = w / n;
+                rotate_extrude($fn = 180) {
+                    for(i = [0 : n -1])
+                        translate([r - fd / 2, i * fd - w / 2 + fd / 2])
+                            circle(d = fd, $fn = 32);
+
+                    translate([r5, -w / 2])
+                        square([filament_depth - fd / 2, w]);
+                }
+            }
+
+            else
+                tube(r, r5, w, $fn = 180);
+    }
 }

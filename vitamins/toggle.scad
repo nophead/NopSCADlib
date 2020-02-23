@@ -23,6 +23,8 @@
 include <../core.scad>
 use <nut.scad>
 use <washer.scad>
+use <../utils/thread.scad>
+use <../utils/tube.scad>
 
 function toggle_part(type)     = type[1];       //! Part description
 function toggle_width(type)    = type[2];       //! Body width
@@ -80,7 +82,29 @@ module toggle(type, thickness) { //! Draw specified toggle switch with the nuts 
             translate_z(-h1 / 2 - t)
                 cube([toggle_width(type), toggle_height(type), h1], center = true);
 
-        color("silver") {
+        if(show_threads) {
+            d = toggle_od(type);
+            pitch = inch(1/40);
+            h = 5 * pitch * sqrt(3) / 16;
+
+            male_metric_thread(d, pitch, thread, center = false, solid = false, colour = silver);
+
+            color(silver)
+                tube(or = d / 2 - h, ir = toggle_id(type) / 2, h = thread, center = false);
+        }
+        else
+            color(silver)
+                rotate_extrude()
+                    difference() {
+                        hull() {
+                            square([toggle_od(type) / 2, thread - chamfer]);
+
+                            square([toggle_od(type) / 2 - chamfer, thread]);
+                        }
+                        square([toggle_id(type) / 2, thread + 1]);
+                    }
+
+        color(silver) {
             if(toggle_collar_t(type))
                 cylinder(d = toggle_collar_d(type), h = toggle_collar_t(type));
 
@@ -90,15 +114,6 @@ module toggle(type, thickness) { //! Draw specified toggle switch with the nuts 
             translate_z(-h2 / 2)
                 cube([toggle_width(type) + 2 * eps, toggle_height(type) - 2 * inset, h2], center = true);
 
-            rotate_extrude()
-                difference() {
-                    hull() {
-                        square([toggle_od(type) / 2, thread - chamfer]);
-
-                        square([toggle_od(type) / 2 - chamfer, thread]);
-                    }
-                    square([toggle_id(type) / 2, thread + 1]);
-                }
 
             translate_z(toggle_pivot(type)) {
                 angle = toggle_angle(type);

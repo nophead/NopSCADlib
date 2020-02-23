@@ -41,9 +41,7 @@ function no_point(str) = chr([for(c = str) if(c == ".") ord("p") else ord(c)]);
 // We model the belt path at the pitch radius of the pulleys and the pitch line of the belt to get an accurate length.
 // The belt is then drawn by offseting each side from the pitch line.
 //
-module belt(type, points, gap = 0, gap_pt = undef) { //! Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified
-    belt_colour = grey20;
-    tooth_colour = grey50;
+module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey20, tooth_colour = grey50) { //! Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified
     width = belt_width(type);
     pitch = belt_pitch(type);
     thickness = belt_thickness(type);
