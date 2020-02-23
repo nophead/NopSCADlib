@@ -25,7 +25,7 @@ use <spade.scad>
 
 function rocker_part(type)     = type[1];   //! Part description
 function rocker_slot_w(type)   = type[2];   //! Panel slot width
-function rocker_slot_h(type)   = type[3];   //! Panel slow height
+function rocker_slot_h(type)   = type[3];   //! Panel slot height
 function rocker_flange_w(type) = type[4];   //! Flange width
 function rocker_flange_h(type) = type[5];   //! Flange height
 function rocker_flange_t(type) = type[6];   //! Flange thickness
@@ -37,7 +37,7 @@ function rocker_pivot(type)    = type[11];  //! Pivot distance from the back of 
 function rocker_button(type)   = type[12];  //! How far the button extends from the bezel
 function rocker_spades(type)   = type[13];  //! Spade types and positions
 
-module rocker(type) { //! Draw the specified rocker switch
+module rocker(type, colour) { //! Draw the specified rocker switch
     vitamin(str("rocker(", type[0], "): ", rocker_part(type)));
 
     bezel = rocker_bezel(type);
@@ -65,7 +65,7 @@ module rocker(type) { //! Draw the specified rocker switch
                 rounded_rectangle([rocker_width(type), rocker_height(type), rocker_depth(type) + eps], 0.5, center = false);
         }
         if(rocker_pivot(type))
-            color(grey30)
+            color(colour ? colour : grey30)
                 translate_z(rocker_pivot(type))
                     rotate([90, 0, 90])
                         linear_extrude(height = rocker_w, center = true)
@@ -78,7 +78,7 @@ module rocker(type) { //! Draw the specified rocker switch
                             }
 
         else
-            color("red") cube([rocker_w, rocker_h, 2 * (rocker_flange_t(type) + rocker_button(type))], center = true);
+            color(colour ? colour : "red") cube([rocker_w, rocker_h, 2 * (rocker_flange_t(type) + rocker_button(type))], center = true);
 
         for(spade = rocker_spades(type))
             translate([spade[2], spade[3], -rocker_depth(type)])

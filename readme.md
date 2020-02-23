@@ -2259,7 +2259,7 @@ Rocker switch. Also used for neon indicator in the same form factor.
 | ```rocker_height(type)``` | Body height |
 | ```rocker_part(type)``` | Part description |
 | ```rocker_pivot(type)``` | Pivot distance from the back of the flange |
-| ```rocker_slot_h(type)``` | Panel slow height |
+| ```rocker_slot_h(type)``` | Panel slot height |
 | ```rocker_slot_w(type)``` | Panel slot width |
 | ```rocker_spades(type)``` | Spade types and positions |
 | ```rocker_width(type)``` | Body width |
@@ -2267,7 +2267,7 @@ Rocker switch. Also used for neon indicator in the same form factor.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```rocker(type)``` | Draw the specified rocker switch |
+| ```rocker(type, colour)``` | Draw the specified rocker switch |
 | ```rocker_hole(type, h = 0)``` | Make a hole to accept a rocker switch, by default 2D, set h for 3D |
 
 ![rockers](tests/png/rockers.png)
@@ -2275,8 +2275,8 @@ Rocker switch. Also used for neon indicator in the same form factor.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```rocker(neon_indicator)``` |  Neon Indicator H8630FBNAL |
-|   1 | ```rocker(small_rocker)``` |  Rocker Switch PRASA1-16F-BB0BW |
+|   2 | ```rocker(neon_indicator)``` |  Neon Indicator H8630FBNAL |
+|   2 | ```rocker(small_rocker)``` |  Rocker Switch PRASA1-16F-BB0BW |
 
 
 <a href="#top">Top</a>

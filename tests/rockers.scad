@@ -21,9 +21,13 @@ use <../utils/layout.scad>
 
 include <../vitamins/rockers.scad>
 
-module rockers()
-    layout([for(r = rockers) rocker_flange_w(r)], 5)
+module rockers() {
+    layout([for(r = rockers) rocker_flange_w(r)], 5) {
         rocker(rockers[$i]);
+        translate([0, 25])
+            rocker(rockers[$i], $i==0 ? "red" : "green");
+    }
+}
 
 if($preview)
     rockers();
