@@ -33,20 +33,20 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
 <tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
 <tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microview">Microview</a> </td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
 </table>
 
@@ -2495,6 +2495,54 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 |   1 | ```sheet(PMMA8, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 8mm |
 |   1 | ```sheet(glass2, 30, 30, 2)``` |  Sheet glass 30mm x 30mm x 2mm |
 |   1 | ```sheet(Steel06, 30, 30, 2)``` |  Sheet mild steel 30mm x 30mm x 0.6mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Sk_brackets"></a>
+## Sk_brackets
+SK shaft support brackets
+
+
+[vitamins/sk_brackets.scad](vitamins/sk_brackets.scad) Object definitions.
+
+[vitamins/sk_bracket.scad](vitamins/sk_bracket.scad) Implementation.
+
+[tests/sk_brackets.scad](tests/sk_brackets.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```sk_base_height(type)``` | Height of base containing the screws |
+| ```sk_diameter(type)``` | Rod hole diameter |
+| ```sk_hole_offset(type)``` | Rod hole offset |
+| ```sk_screw_separation(type)``` | Separation of screws in the base |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```sk_size(type)``` | Size of bracket |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```sk_bracket(type)``` | SK shaft support bracket |
+| ```sk_bracket_assembly(type, screw_length = 16, screw_type = M5_cap_screw, nut_type = undef)``` | Assembly with fasteners in place |
+
+![sk_brackets](tests/png/sk_brackets.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
+|   4 | ```nut(M5_nut)``` |  Nut M5 x 4mm  |
+|   1 | ```sk_bracket(SK10)``` |  SK10 shaft support bracket |
+|   1 | ```sk_bracket(SK12)``` |  SK12 shaft support bracket |
+|   1 | ```sk_bracket(SK16)``` |  SK16 shaft support bracket |
+|   1 | ```sk_bracket(SK8)``` |  SK8 shaft support bracket |
+|   8 | ```screw(M5_cap_screw, 16)``` |  Screw M5 cap x 16mm |
+|  12 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |
 
 
 <a href="#top">Top</a>
