@@ -200,6 +200,13 @@ module jack(cutout = false) { //! Draw 3.5mm jack
                 }
 }
 
+module buzzer(height, diameter, colour) { //! Draw PCB buzzer with specified height, diameter and color
+    color (colour)
+        tube(or = diameter / 2, ir = height > 5 ? 1 : 0.75, h = height);
+    color("white")
+        cylinder(d = 2, h = max(height - 3 , 0.5));
+}
+
 function hdmi_depth(type)     = type[2]; //! Front to back depth
 function hdmi_width1(type)    = type[3]; //! Inside width at the top
 function hdmi_width2(type)    = type[4]; //! Inside width at the bottom
@@ -710,6 +717,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "usb_Ax2")) usb_Ax2(cutouts);
         if(show(comp, "usb_uA")) usb_uA(cutouts);
         if(show(comp, "usb_B")) usb_B(cutouts);
+        if(show(comp, "buzzer")) buzzer(param(4, 9), param(5, 12), param(6, grey20));
         if(show(comp, "jack")) jack(cutouts);
         if(show(comp, "barrel_jack")) barrel_jack(cutouts);
         if(show(comp, "hdmi")) hdmi(hdmi_full, cutouts);
