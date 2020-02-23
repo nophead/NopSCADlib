@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -42,4 +42,3 @@ scs_bearing_blocks = [SCS6UU, SCS8UU,  SCS10UU, SCS12UU, SCS16UU];
 scs_bearing_blocks_long = [SCS8LUU,  SCS10LUU, SCS12LUU, SCS16LUU];
 
 use <scs_bearing_block.scad>
-

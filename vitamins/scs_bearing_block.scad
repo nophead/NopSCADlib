@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -154,4 +154,3 @@ module scs_bearing_block_assembly(type, part_thickness, screw_type, nut_type) { 
                     washer(washer_type);
     }
 }
-
