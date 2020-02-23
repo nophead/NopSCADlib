@@ -39,9 +39,8 @@ function gt_y_offset(type)     = type[13];  //! Offset of the pins from centre o
 function gt_y_offset2(type)    = type[14];  //! Offset of the pins screws from the screws
 function gt_tube_h(type)       = type[15];  //! Height of optional tubes around the screws
 
-module green_terminal(type, ways, skip = []) { //! Draw green terminal blocks, skip can be used to remove pins.
+module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green terminal blocks, skip can be used to remove pins.
     pitch = gt_pitch(type);
-
     imperial = str(pitch / inch(1));
     vitamin(str("green_terminal(", type[0], ", ", ways, "): Terminal block ", ways, " way ", len(imperial) < 5 ? str(pitch / inch(1), "\"") : str(pitch, "mm")));
     width = ways * pitch;
@@ -79,7 +78,7 @@ module green_terminal(type, ways, skip = []) { //! Draw green terminal blocks, s
                     }
             }
 
-        color("lime") {
+        color(colour) {
             rotate([90, 0, 0])
                 linear_extrude(height = pitch, center = true, convexity = 5)
                     polygon(points = [                          // Vertical section
