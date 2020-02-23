@@ -36,15 +36,15 @@ function sk_screw_separation(type) = type[9]; //! Separation of screws in the ba
 module sk_bracket(type) { //! SK shaft support bracket
     vitamin(str("sk_bracket(", type[0], "): SK", sk_diameter(type), " shaft support bracket"));
 
-    d = type[1];
-    h = type[2];
+    d = sk_diameter(type);
+    h = sk_hole_offset(type);
     E = type[3];
-    W = type[4];
-    L = type[5];
-    F = type[6];
-    G = type[7];
+    W = sk_size(type)[0];
+    L = sk_size(type)[2];
+    F = sk_size(type)[1];
+    G = sk_base_height(type);
     P = type[8];
-    B = type[9];
+    B = sk_screw_separation(type);
     S = type[10];
     bolthole_radius = type[11];
 
@@ -93,24 +93,35 @@ module sk_bracket(type) { //! SK shaft support bracket
                     screw(M3_cap_screw, P - screw_head_height(M3_cap_screw) / 2 + eps);
 }
 
-
-module sk_bracket_assembly(type, screw_length = 16, screw_type = M5_cap_screw, nut_type = undef) { //! Assembly with fasteners in place
-    sk_bracket(type);
-
-    nut_type = is_undef(nut_type) ? screw_nut(screw_type) : nut_type;
-
+module sk_bracket_hole_positions(type) { //! Place children at hole positions
     for (x = [-sk_screw_separation(type), sk_screw_separation(type)])
         translate([x / 2, sk_base_height(type) - sk_hole_offset(type), 0])
-            rotate([-90, 0, 0]) {
-                screw_and_washer(screw_type, screw_length);
-                translate_z(-screw_length + 2 * washer_thickness(screw_washer(screw_type)))
-                    if(nut_type == M5_sliding_t_nut)
-                        translate_z(nut_thickness(nut_type))
-                            vflip()
-                                sliding_t_nut(nut_type);
-                    else
-                        nut(nut_type)
-                            washer(nut_washer(nut_type));
-            }
+            rotate([-90, 0, 0])
+                children();
+}
+
+module sk_bracket_assembly(type, part_thickness, screw_type = M5_cap_screw, nut_type = undef) { //! Assembly with fasteners in place
+    sk_bracket(type);
+
+    screw_type = is_undef(screw_type) ? scs_screw(type) : screw_type;
+    screw_washer_thickness = washer_thickness(screw_washer(screw_type));
+    nut_type = is_undef(nut_type) ? screw_nut(screw_type) : nut_type;
+    nut_washer_type = nut_washer(nut_type);
+    nut_washer_thickness = nut_washer_type ? washer_thickness(nut_washer_type) : 0;
+
+    nut_offset = sk_base_height(type) + part_thickness + nut_thickness(nut_type) + nut_washer_thickness;
+    screw_length = screw_longer_than(nut_offset + screw_washer_thickness);
+
+    sk_bracket_hole_positions(type) {
+        screw_and_washer(screw_type, screw_length);
+        translate_z(-nut_offset)
+            if(nut_type == M5_sliding_t_nut)
+                translate_z(nut_thickness(nut_type))
+                    vflip()
+                        sliding_t_nut(nut_type);
+            else
+                nut(nut_type)
+                    washer(nut_washer(nut_type));
+    }
 }
 
