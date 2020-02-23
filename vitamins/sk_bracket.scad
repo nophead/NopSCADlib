@@ -94,19 +94,23 @@ module sk_bracket(type) { //! SK shaft support bracket
 }
 
 
-module sk_bracket_assembly(type, screw_length = 16, screw_type = M5_cap_screw) { //! Assembly with fasteners in place
+module sk_bracket_assembly(type, screw_length = 16, screw_type = M5_cap_screw, nut_type = undef) { //! Assembly with fasteners in place
     sk_bracket(type);
 
-    washer_type = screw_washer(screw_type);
-    washer_thickness = washer_thickness(washer_type);
+    nut_type = is_undef(nut_type) ? screw_nut(screw_type) : nut_type;
 
     for (x = [-sk_screw_separation(type), sk_screw_separation(type)])
         translate([x / 2, sk_base_height(type) - sk_hole_offset(type), 0])
             rotate([-90, 0, 0]) {
                 screw_and_washer(screw_type, screw_length);
-                translate_z(-screw_length + 2 * washer_thickness)
-                    nut(screw_nut(screw_type))
-                        washer(washer_type);
+                translate_z(-screw_length + 2 * washer_thickness(screw_washer(screw_type)))
+                    if(nut_type == M5_sliding_t_nut)
+                        translate_z(nut_thickness(nut_type))
+                            vflip()
+                                sliding_t_nut(nut_type);
+                    else
+                        nut(nut_type)
+                            washer(nut_washer(nut_type));
             }
 }
 

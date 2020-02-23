@@ -21,9 +21,11 @@ use <../utils/layout.scad>
 
 include <../vitamins/sk_brackets.scad>
 
-module sk_brackets()
+module sk_brackets() {
+    nuts = [undef, M5_nut, M5_sliding_t_nut, M5_sliding_t_nut];
     layout([for(s = sk_brackets) 1.5 * sk_size(s)[1]])
-        sk_bracket_assembly(sk_brackets[$i]);
+        sk_bracket_assembly(sk_brackets[$i], nut_type = nuts[$i]);
+}
 
 if($preview)
     sk_brackets();
