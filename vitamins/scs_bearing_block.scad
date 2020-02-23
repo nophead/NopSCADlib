@@ -23,8 +23,10 @@
 
 
 include <NopSCADlib/core.scad>
-include <NopSCADlib/vitamins/screws.scad>
-include <NopSCADlib/vitamins/linear_bearings.scad>
+use <NopSCADlib/vitamins/screw.scad>
+use <NopSCADlib/vitamins/nut.scad>
+use <NopSCADlib/vitamins/washer.scad>
+use <NopSCADlib/vitamins/linear_bearing.scad>
 
 function scs_size(type)                 = [type[4],type[6],type[5]]; //! Size of scs bracket bounding block
 function scs_hole_offset(type)          = type[2]; //! Offset of bearing hole from base of block
@@ -119,29 +121,37 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
         linear_bearing(scs_bearing(type));
 }
 
-
-module scs_bearing_block_assembly(type, screw_length, screw_type) { //! Assembly with screws and nuts in place
-
-    scs_bearing_block(type);
-
+module scs_bearing_block_hole_positions(type) {
+    screw_separation_x = scs_screw_separation_x(type);
+    screw_separation_z = scs_screw_separation_z(type);
     G = scs_block_side_height(type);
     h = scs_hole_offset(type);
 
-    screw_type = screw_type ? screw_type : scs_screw(type);
-    screw_length = screw_length ? screw_length : screw_longer_than(G + 10);
-    washer_type = screw_washer(screw_type);
-    washer_thickness = washer_thickness(washer_type);
-
-    screw_separation_x = scs_screw_separation_x(type);
-    screw_separation_z = scs_screw_separation_z(type);
-
     for(x = [-screw_separation_x, screw_separation_x], z = [-screw_separation_z, screw_separation_z])
         translate([x / 2, G - h, z / 2])
-            rotate([-90, 0, 0]) {
-                screw(screw_type, screw_length);
-                translate_z(-screw_length  + washer_thickness)
-                    nut(screw_nut(screw_type))
-                        washer(washer_type);
-            }
+            rotate([-90, 0, 0])
+                children();
+}
+
+module scs_bearing_block_assembly(type, sheet_thickness, screw_type, nut_type) { //! Assembly with screws and nuts in place
+
+    scs_bearing_block(type);
+
+    screw_type = is_undef(screw_type) ? scs_screw(type) : screw_type;
+    nut_type = is_undef(nut_type) ? screw_nut(screw_type) : nut_type;
+    washer_type = nut_washer(nut_type);
+    washer_thickness = washer_type ? washer_thickness(washer_type) : 0;
+
+    G = scs_block_side_height(type);
+    nut_offset = G + sheet_thickness + nut_thickness(nut_type) + washer_thickness;
+    screw_length = screw_longer_than(nut_offset);
+
+    scs_bearing_block_hole_positions(type) {
+        screw(screw_type, screw_length);
+        translate_z(-nut_offset)
+            nut(nut_type)
+                if (washer_type)
+                    washer(washer_type);
+    }
 }
 
