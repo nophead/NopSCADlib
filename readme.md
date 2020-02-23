@@ -2562,7 +2562,7 @@ Filament spool models
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```spool(type)``` | Draw specified spool |
+| ```spool(type, filament_depth = 0, filament_colour = "white", filament_d = 3)``` | Draw specified spool with optional filament |
 
 ![spools](tests/png/spools.png)
 

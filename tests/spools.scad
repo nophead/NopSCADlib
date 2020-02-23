@@ -23,9 +23,9 @@ use <../utils/layout.scad>
 include <../vitamins/spools.scad>
 
 module spools()
-    layout([for(s = spools) spool_height(s)], 100)
+    layout([for(s = spools) spool_height(s)], 100) let(s = spools[$i])
         rotate([90, 0, 90])
-            spool(spools[$i]);
+            spool(s, filament_depth =  spool_depth(s) / 2, filament_colour = [pp1_colour, pp2_colour, pp3_colour, pp4_colour][$i % 4], filament_d = $i ? 3 : 1.75);
 
 if($preview)
     spools();
