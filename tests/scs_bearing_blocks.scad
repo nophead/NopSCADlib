@@ -23,12 +23,12 @@ include <../vitamins/scs_bearing_blocks.scad>
 
 module scs_bearing_blocks()
     layout([for(s = scs_bearing_blocks) 2 * scs_size(s)[0]]) {
-        sheet_thickness = 5;
-        scs_bearing_block_assembly(scs_bearing_blocks[$i], sheet_thickness);
+        part_thickness = 5;
+        scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
 
         if($i > 0) // skip $i==0, since no SCS6LUU long variant to match SCS6UU
             translate([0, 60])
-                scs_bearing_block_assembly(scs_bearing_blocks_long[$i - 1], sheet_thickness);
+                scs_bearing_block_assembly(scs_bearing_blocks_long[$i - 1], part_thickness);
     }
 
 if($preview)

@@ -133,7 +133,7 @@ module scs_bearing_block_hole_positions(type) {
                 children();
 }
 
-module scs_bearing_block_assembly(type, sheet_thickness, screw_type, nut_type) { //! Assembly with screws and nuts in place
+module scs_bearing_block_assembly(type, part_thickness, screw_type, nut_type) { //! Assembly with screws and nuts in place
 
     scs_bearing_block(type);
 
@@ -143,7 +143,7 @@ module scs_bearing_block_assembly(type, sheet_thickness, screw_type, nut_type) {
     washer_thickness = washer_type ? washer_thickness(washer_type) : 0;
 
     G = scs_block_side_height(type);
-    nut_offset = G + sheet_thickness + nut_thickness(nut_type) + washer_thickness;
+    nut_offset = G + part_thickness + nut_thickness(nut_type) + washer_thickness;
     screw_length = screw_longer_than(nut_offset);
 
     scs_bearing_block_hole_positions(type) {
