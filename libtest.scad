@@ -254,7 +254,7 @@ buttons_y = spades_y + 40;
 jacks_y = buttons_y + 40;
 microswitches_y = jacks_y + 40;
 rockers_y = microswitches_y + 40;
-toggles_y = rockers_y + 40;
+toggles_y = rockers_y + 60;
 components_y = toggles_y + 40;
 
 translate([x2, leds_y])
