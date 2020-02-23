@@ -44,17 +44,17 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     vitamin(str("scs_bearing_block(", type[0], "): ", type[0], " bearing block"));
 
     T = type[1];
-    h = type[2];
+    h = scs_hole_offset(type);
     E = type[3];
-    W = type[4];
+    W = scs_size(type)[0];
     assert(W == 2 * E, str("W or E wrong for scs_bearing_block", type[0]));
-    L = type[5];
-    F = type[6];
-    G = type[7];
-    B = type[8];
-    C = type[9];
+    L = scs_size(type)[2];
+    F = scs_block_center_height(type);
+    G = scs_block_side_height(type);
+    B = scs_screw_separation_x(type);
+    C = scs_screw_separation_z(type);
     K = type[10];
-    S1 = type[11];
+    S1 = scs_screw(type);
     S2 = type[12];
     L1 = type[13];
 
