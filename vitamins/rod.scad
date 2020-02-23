@@ -66,7 +66,7 @@ module leadscrew(d , l, lead, starts, center = true) { //! Draw a leadscrew with
 
     translate_z(center ? 0 : l / 2)
         if(show_threads && pitch)
-            thread(d - pitch, lead, l, thread_profile(pitch / 2, pitch * 0.366, 30), top = 45, bot = 45, starts = starts, center = center, colour = rod_colour);
+            thread(d - pitch, lead, l, thread_profile(pitch / 2, pitch * 0.366, 30), top = 45, bot = 45, starts = starts, colour = rod_colour);
         else
             color(leadscrew_colour)
                 hull() {
