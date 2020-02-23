@@ -59,7 +59,7 @@ function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns longes
 function screw_smaller_than(d) = d >= 2.5 && d < 3 ? 2.5 : floor(d); // Largest diameter screw less than or equal to specified diameter
 
 module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified screw, optionally hobbed or nylon
-    description = str("Screw ", nylon ? "Nylon " : "", type[1], " x ", length, "mm", hob_point ? str(", hobbed at ", hob_point) : "");
+    description = str("Screw ", nylon ? "Nylon " : "", type[1], length < 10 ? " x  " : " x ", length, "mm", hob_point ? str(", hobbed at ", hob_point) : "");
     vitamin(str("screw(", type[0], "_screw, ", length, arg(hob_point, 0, "hob_point"), arg(nylon, false, "nylon"), "): ", description));
 
     head_type   = screw_head_type(type);
