@@ -121,7 +121,7 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
         linear_bearing(scs_bearing(type));
 }
 
-module scs_bearing_block_hole_positions(type) {
+module scs_bearing_block_hole_positions(type) { //! Place children at hole positions
     screw_separation_x = scs_screw_separation_x(type);
     screw_separation_z = scs_screw_separation_z(type);
     G = scs_block_side_height(type);
