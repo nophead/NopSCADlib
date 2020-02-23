@@ -17,6 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <screws.scad>
+include <microswitches.scad>
 //
 //                                   l      w      t    r     h     l  c        b     h
 //                                   e      i      h    a     o     a  o        o     o
@@ -284,7 +285,6 @@ ArduinoLeonardo = ["ArduinoLeonardo", "Arduino Leonardo", 68.58, 53.34, 1.6, 0, 
     M2p5_pan_screw
    ];
 
-
 Keyes5p1 = ["Keyes5p1", "Keyes5.1 Arduino Uno expansion board", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
     [[30.226, -2.54, 0, "-2p54header", 10, 1],
      [54.61,  -2.54, 0, "-2p54header", 8, 1],
@@ -339,19 +339,17 @@ PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
 
+include <microswitches.scad>
+
 RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     40.0, 16.0, 1.6, 0, 2.54, 0, "red",  false,
     [
         [2, 2], [2, 13.5], [17, 13.5], [36, 13.5]
     ],
     [
-        [ 12,    8,   -90, "jst_xh", 3, true, "white", "silver"],
-        [ 26,   13.5,   0, "chip", 12, 4, 5.5],
-        [ 26,   10.5,   0, "chip", 12, 2, 5.5, "white"],
-        [ 27.5, 17,    15, "chip", 15, 0.5, 4.5, "silver"],
+        [ 26.5, 12.75,  0, "microswitch", small_microswitch],
     ],
     []];
-
 
 pcbs = [ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591, RAMPSEndstop];
 
