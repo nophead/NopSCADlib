@@ -213,7 +213,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 |   2 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth 9.63mm |
 |   2 | ```pulley(GT2x20ob_pulley)``` |  Pulley GT2OB 20 teeth |
 |   1 | ```screw(M3_cs_cap_screw, 20)``` |  Screw M3 cs cap x 20mm |
-|   4 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x 6mm |
+|   4 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x  6mm |
 
 
 <a href="#top">Top</a>
@@ -2027,10 +2027,10 @@ Face order is bottom, top, left, right, front, back.
 |   1 | ```psu(PD_150_12)``` |  PSU PD-150-12 |
 |   1 | ```psu(S_250_48)``` |  PSU S-250-48 |
 |   1 | ```psu(S_300_12)``` |  PSU S-300-12 |
-|   4 | ```screw(No632_pan_screw, 8)``` |  Screw 6-32 pan x 8mm |
-|   4 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x 8mm |
-|   8 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x 8mm |
-|   4 | ```screw(M4_cap_screw, 8)``` |  Screw M4 cap x 8mm |
+|   4 | ```screw(No632_pan_screw, 8)``` |  Screw 6-32 pan x  8mm |
+|   4 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x  8mm |
+|   8 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x  8mm |
+|   4 | ```screw(M4_cap_screw, 8)``` |  Screw M4 cap x  8mm |
 |  12 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
@@ -2096,10 +2096,10 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 |   1 | ```pulley(GT2x20um_pulley)``` |  Pulley GT2UM 20 teeth |
 |   1 | ```pulley(T2p5x16_pulley)``` |  Pulley T2.5 16 teeth |
 |   1 | ```pulley(T5x10_pulley)``` |  Pulley T5 10 teeth |
-|   1 | ```screw(M3_grub_screw, 3)``` |  Screw M3 grub x 3mm |
-|   2 | ```screw(M3_grub_screw, 4)``` |  Screw M3 grub x 4mm |
-|   4 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x 6mm |
-|   1 | ```screw(M4_grub_screw, 6)``` |  Screw M4 grub x 6mm |
+|   1 | ```screw(M3_grub_screw, 3)``` |  Screw M3 grub x  3mm |
+|   2 | ```screw(M3_grub_screw, 4)``` |  Screw M3 grub x  4mm |
+|   4 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x  6mm |
+|   1 | ```screw(M4_grub_screw, 6)``` |  Screw M4 grub x  6mm |
 
 
 <a href="#top">Top</a>
@@ -2384,14 +2384,14 @@ Machine screws and wood screws with various head styles.
 |   1 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
 |   1 | ```screw(M3_cs_cap_screw, 10)``` |  Screw M3 cs cap x 10mm |
 |   1 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
-|   1 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x 6mm |
+|   1 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x  6mm |
 |   1 | ```screw(M3_hex_screw, 10)``` |  Screw M3 hex x 10mm |
 |   1 | ```screw(M3_low_cap_screw, 10)``` |  Screw M3 low cap x 10mm |
 |   1 | ```screw(M3_pan_screw, 10)``` |  Screw M3 pan x 10mm |
 |   1 | ```screw(M4_cap_screw, 25)``` |  Screw M4 cap x 25mm |
 |   1 | ```screw(M4_cs_cap_screw, 25)``` |  Screw M4 cs cap x 25mm |
 |   1 | ```screw(M4_dome_screw, 25)``` |  Screw M4 dome x 25mm |
-|   1 | ```screw(M4_grub_screw, 6)``` |  Screw M4 grub x 6mm |
+|   1 | ```screw(M4_grub_screw, 6)``` |  Screw M4 grub x  6mm |
 |   1 | ```screw(M4_hex_screw, 30)``` |  Screw M4 hex x 30mm |
 |   1 | ```screw(M4_pan_screw, 30)``` |  Screw M4 pan x 30mm |
 |   1 | ```screw(M5_cap_screw, 30)``` |  Screw M5 cap x 30mm |
@@ -2713,7 +2713,7 @@ NEMA stepper motor model.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|  24 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x 8mm |
+|  24 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x  8mm |
 |   1 | ```NEMA(NEMA14)``` |  Stepper motor NEMA14 x 36mm |
 |   1 | ```NEMA(NEMA16)``` |  Stepper motor NEMA16 x 19.2mm |
 |   1 | ```NEMA(NEMA17S)``` |  Stepper motor NEMA17 x 34mm |
@@ -3507,7 +3507,7 @@ Star washers can be omitted by setting ```star_washers``` to false.
 |   3 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
 |   3 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   3 | ```insert(F1BM4)``` |  Heatfit insert M4 |
-|   3 | ```screw(M2_cap_screw, 8)``` |  Screw M2 cap x 8mm |
+|   3 | ```screw(M2_cap_screw, 8)``` |  Screw M2 cap x  8mm |
 |   3 | ```screw(M2p5_pan_screw, 10)``` |  Screw M2.5 pan x 10mm |
 |   3 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
 |   3 | ```screw(M4_dome_screw, 12)``` |  Screw M4 dome x 12mm |
@@ -3727,7 +3727,7 @@ Star washers can be omitted by setting ```star_washers``` to false.
 |   3 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
 |   3 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   3 | ```insert(F1BM4)``` |  Heatfit insert M4 |
-|   3 | ```screw(M2_cap_screw, 8)``` |  Screw M2 cap x 8mm |
+|   3 | ```screw(M2_cap_screw, 8)``` |  Screw M2 cap x  8mm |
 |   3 | ```screw(M2p5_pan_screw, 10)``` |  Screw M2.5 pan x 10mm |
 |   3 | ```screw(M3_dome_screw, 10)``` |  Screw M3 dome x 10mm |
 |   3 | ```screw(M4_dome_screw, 16)``` |  Screw M4 dome x 16mm |
@@ -3871,7 +3871,7 @@ inserts don't grip well in rubber.
 | ---:|:--- |:---|
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
-|   1 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x 8mm |
+|   1 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x  8mm |
 |   1 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
 |   1 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
@@ -4286,7 +4286,7 @@ be fully customised by passing a list of properties.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | ```insert(F1BM3)``` |  Heatfit insert M3 |
-|   2 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x 8mm |
+|   2 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x  8mm |
 |   2 | ```washer(M3_penny_washer)``` |  Washer penny  M3 x 12mm x 0.8mm |
 |   2 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
@@ -4758,7 +4758,7 @@ heirachical BOMs are also generated for real projects.
 | ---:|:--- |:---|
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```widget(3)``` |  Rivit like thing for 3mm sheets |
-|   1 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x 8mm |
+|   1 | ```screw(M3_cap_screw, 8)``` |  Screw M3 cap x  8mm |
 |   1 | ```sheet(PMMA3, 20, 20, 1)``` |  Sheet acrylic 20mm x 20mm x 3mm |
 |   1 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   1 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
