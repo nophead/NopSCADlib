@@ -22,25 +22,47 @@ include <../core.scad>
 module teardrops() {
     color(pp1_colour)
         rotate([90, 0, -45])
-            linear_extrude(height = 3)
-                difference() {
-                    square(40);
+            difference() {
+                linear_extrude(height = 3) {
+                    difference() {
+                        square([80, 40]);
+
+                        translate([10, 10])
+                            teardrop(h = 0, r = 3);
+
+                        translate([10, 20])
+                            teardrop_plus(h = 0, r = 3);
+
+                        translate([20, 30])
+                            tearslot(h = 0, r = 3, w = 10);
+
+                        translate([30, 15])
+                            vertical_tearslot(h = 0, r =3, l = 10);
+
+                        translate([20, 10])
+                            semi_teardrop(h = 0, r = 3);
+                    }
+                }
+                translate([40, 0, 1.5]) {
+                    h = 3 + eps;
+                    chamfer = 0.5;
 
                     translate([10, 10])
-                        teardrop(h = 0, r = 3);
+                        teardrop(h = h, r = 3, chamfer = chamfer);
 
                     translate([10, 20])
-                        teardrop_plus(h = 0, r = 3);
+                        teardrop_plus(h = h, r = 3, chamfer = chamfer);
 
                     translate([20, 30])
-                        tearslot(h = 0, r = 3, w = 10);
+                        tearslot(h = h, r = 3, w = 10, chamfer = chamfer);
 
                     translate([30, 15])
-                        vertical_tearslot(h = 0, r =3, l = 10);
+                        vertical_tearslot(h = h, r =3, l = 10, chamfer = chamfer);
 
                     translate([20, 10])
-                        semi_teardrop(h = 0, r = 3);
+                        semi_teardrop(h = h, r = 3, chamfer = chamfer);
                 }
+            }
 }
 
 teardrops();
