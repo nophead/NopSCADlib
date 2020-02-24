@@ -140,10 +140,8 @@ module sliding_t_nut(type) {
     tabSizeZ = type[10];
     holeRadius  = nut_size(type) / 2;
 
-    if($preview)
-        color(grey80)
-            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius);
-
+    color(grey80)
+        extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius);
 }
 
 module hammer_nut(type) {
@@ -155,32 +153,30 @@ module hammer_nut(type) {
     tabSizeZ = type[10];
     holeRadius  = nut_size(type) / 2;
 
-    if($preview)
-        color(grey80)
-            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut = true);
-
+    color(grey80)
+        extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut = true);
 }
 
 module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
     // center section
-    linear_extrude(size[2] - tabSizeZ)
+    linear_extrude(size.z - tabSizeZ)
         difference() {
-            square([size[0], size[1]], center = true);
+            square([size.x, size.y], center = true);
             if(hammerNut) {
-                translate([size[0] / 2, size[1] / 2])
+                translate([size.x / 2, size.y / 2])
                     rotate(180)
                         fillet(1);
-                translate([-size[0] / 2, -size[1] / 2])
+                translate([-size.x / 2, -size.y / 2])
                     fillet(1);
             }
             if(holeRadius)
                 translate([holeOffset, 0])
                     circle(holeRadius);
         }
-    translate_z(size[2] - tabSizeZ)
+    translate_z(size.z - tabSizeZ)
         linear_extrude(tabSizeZ)
             difference() {
-                square([size[0], tabSizeY2], center = true);
+                square([size.x, tabSizeY2], center = true);
                 if(holeRadius)
                     translate([holeOffset, 0])
                         circle(holeRadius);
@@ -189,18 +185,18 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
     thread_d = 2 * holeRadius;
     if(show_threads)
         translate([holeOffset, 0])
-            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), size[2], center = false);
+            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), size.z, center = false);
 
     // add the side tabs
     for(m = [0, 1])
         mirror([0, m, 0])
-            translate([0, tabSizeY2 / 2, size[2] - tabSizeZ]) {
+            translate([0, tabSizeY2 / 2, size.z - tabSizeZ]) {
                 cubeZ = 1;
-                translate([-size[0] / 2, 0, 0])
-                    cube([size[0], (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
+                translate([-size.z / 2, 0, 0])
+                    cube([size.x, (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
                 translate_z(cubeZ)
                     rotate([0, -90, 0])
-                        right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size[0], center = true);
+                        right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size.x, center = true);
             }
 }
 
