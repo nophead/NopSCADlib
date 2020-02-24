@@ -134,10 +134,10 @@ module wingnut(type) { //! Draw a wingnut
 module sliding_t_nut(type) {
     vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), " sliding T"));
 
-    size = [type[7], type[2], nut_thickness(type)];
+    size = [type[7], type[2], nut_thickness(type, true)];
     tabSizeY1 = type[8];
     tabSizeY2 = type[9];
-    tabSizeZ = type[10];
+    tabSizeZ = nut_thickness(type);
     holeRadius  = nut_size(type) / 2;
 
     color(grey80)
@@ -147,10 +147,10 @@ module sliding_t_nut(type) {
 module hammer_nut(type) {
     vitamin(str("hammer_nut(", type[0], "): Nut M", nut_size(type), " hammer"));
 
-    size = [type[7], type[2], nut_thickness(type)];
+    size = [type[7], type[2], nut_thickness(type, true)];
     tabSizeY1 = type[8];
     tabSizeY2 = type[9];
-    tabSizeZ = type[10];
+    tabSizeZ = nut_thickness(type);
     holeRadius  = nut_size(type) / 2;
 
     color(grey80)
@@ -159,9 +159,9 @@ module hammer_nut(type) {
 
 module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
     // center section
-    h = size.z - tabSizeZ;
-    translate_z(-h)
-        linear_extrude(h)
+    stem_h = size.z - tabSizeZ;
+    translate_z(-stem_h)
+        linear_extrude(stem_h)
             difference() {
                 square([size.x, size.y], center = true);
                 if(hammerNut) {
@@ -185,15 +185,15 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
 
     thread_d = 2 * holeRadius;
     if(show_threads)
-        translate([holeOffset, 0, -h])
+        translate([holeOffset, 0, -stem_h])
             female_metric_thread(thread_d, metric_coarse_pitch(thread_d), size.z, center = false);
 
     // add the side tabs
     for(m = [0, 1])
         mirror([0, m, 0])
-            translate([0, tabSizeY2 / 2, 0]) {
+            translate([0, tabSizeY2 / 2]) {
                 cubeZ = 1;
-                translate([-size.x / 2, 0, 0])
+                translate([-size.x / 2, 0])
                     cube([size.x, (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
                 translate_z(cubeZ)
                     rotate([0, -90, 0])
