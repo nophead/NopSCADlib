@@ -142,8 +142,7 @@ module sliding_t_nut(type) {
     holeRadius  = nut_size(type) / 2;
 
     color(grey80)
-        vflip()
-            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut);
+        extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut);
 }
 
 module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
