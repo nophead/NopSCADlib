@@ -58,10 +58,10 @@ module nuts() {
 
         translate([0, 80]) {
             if(n == M3_nut)
-                hammer_nut(M3_hammer_nut);
+                sliding_t_nut(M3_hammer_nut);
 
             if(n == M4_nut)
-                hammer_nut(M4_hammer_nut);
+                sliding_t_nut(M4_hammer_nut);
        }
     }
 }
