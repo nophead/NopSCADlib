@@ -31,23 +31,23 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Scs_bearing_blocks">Scs_bearing_blocks</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -2406,6 +2406,64 @@ Machine screws and wood screws with various head styles.
 |   1 | ```screw(No4_screw, 10)``` |  Screw No4 pan wood x 10mm |
 |   1 | ```screw(No6_cs_screw, 30)``` |  Screw No6 cs wood x 30mm |
 |   1 | ```screw(No6_screw, 30)``` |  Screw No6 pan wood x 30mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Scs_bearing_blocks"></a>
+## Scs_bearing_blocks
+[vitamins/scs_bearing_blocks.scad](vitamins/scs_bearing_blocks.scad) Object definitions.
+
+[vitamins/scs_bearing_block.scad](vitamins/scs_bearing_block.scad) Implementation.
+
+[tests/scs_bearing_blocks.scad](tests/scs_bearing_blocks.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```scs_bearing(type)``` | Linear bearing used |
+| ```scs_block_center_height(type)``` | Height of the center of the block |
+| ```scs_block_side_height(type)``` | Height of the side of the block, this determines the minimum screw length |
+| ```scs_hole_offset(type)``` | Offset of bearing hole from base of block |
+| ```scs_screw(type)``` | Screw type |
+| ```scs_screw_separation_x(type)``` | Screw separation in X direction |
+| ```scs_screw_separation_z(type)``` | Screw separation in Z direction |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```scs_size(type)``` | Size of scs bracket bounding block |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```scs_bearing_block(type)``` | Draw the specified SCS bearing block |
+| ```scs_bearing_block_assembly(type, part_thickness, screw_type, nut_type)``` | Assembly with screws and nuts in place |
+| ```scs_bearing_block_hole_positions(type)``` | Place children at hole positions |
+
+![scs_bearing_blocks](tests/png/scs_bearing_blocks.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|  12 | ```nut(M4_nut)``` |  Nut M4 x 3.2mm  |
+|  24 | ```nut(M5_nut)``` |  Nut M5 x 4mm  |
+|   1 | ```scs_bearing_block(SCS10LUU)``` |  SCS10LUU bearing block |
+|   1 | ```scs_bearing_block(SCS10UU)``` |  SCS10UU bearing block |
+|   1 | ```scs_bearing_block(SCS12LUU)``` |  SCS12LUU bearing block |
+|   1 | ```scs_bearing_block(SCS12UU)``` |  SCS12UU bearing block |
+|   1 | ```scs_bearing_block(SCS16LUU)``` |  SCS16LUU bearing block |
+|   1 | ```scs_bearing_block(SCS16UU)``` |  SCS16UU bearing block |
+|   1 | ```scs_bearing_block(SCS6UU)``` |  SCS6UU bearing block |
+|   1 | ```scs_bearing_block(SCS8LUU)``` |  SCS8LUU bearing block |
+|   1 | ```scs_bearing_block(SCS8UU)``` |  SCS8UU bearing block |
+|   4 | ```screw(M4_cap_screw, 25)``` |  Screw M4 cap x 25mm |
+|   8 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
+|  16 | ```screw(M5_cap_screw, 35)``` |  Screw M5 cap x 35mm |
+|   8 | ```screw(M5_cap_screw, 45)``` |  Screw M5 cap x 45mm |
+|  12 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|  24 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |
 
 
 <a href="#top">Top</a>

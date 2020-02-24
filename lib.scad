@@ -64,6 +64,7 @@ include <vitamins/ldrs.scad>
 include <vitamins/geared_steppers.scad>
 include <vitamins/extrusions.scad>
 include <vitamins/sk_brackets.scad>
+include <vitamins/scs_bearing_blocks.scad>
 
 use <vitamins/jack.scad>
 use <vitamins/meter.scad>
