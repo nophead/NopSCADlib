@@ -2601,7 +2601,7 @@ SK shaft support brackets
 |   1 | ```sk_bracket(SK12)``` |  SK12 shaft support bracket |
 |   1 | ```sk_bracket(SK16)``` |  SK16 shaft support bracket |
 |   1 | ```sk_bracket(SK8)``` |  SK8 shaft support bracket |
-|   2 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
+|   2 | ```screw(M4_cap_screw, 12)``` |  Screw M4 cap x 12mm |
 |   6 | ```screw(M5_cap_screw, 16)``` |  Screw M5 cap x 16mm |
 |   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 |  10 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |

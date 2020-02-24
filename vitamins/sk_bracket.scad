@@ -110,7 +110,8 @@ module sk_bracket_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, 
     nut_washer_thickness = nut_washer_type ? washer_thickness(nut_washer_type) : 0;
 
     nut_offset = sk_base_height(type) + part_thickness;
-    screw_length = screw_longer_than(nut_offset + screw_washer_thickness + nut_washer_thickness + nut_thickness(nut_type));
+    screw_length = nut_washer_type ? screw_longer_than(nut_offset + screw_washer_thickness + nut_washer_thickness + nut_thickness(nut_type))
+                                   : screw_shorter_than(nut_offset + screw_washer_thickness + nut_thickness(nut_type) + 2);
 
     sk_bracket_hole_positions(type) {
         screw_and_washer(screw_type, screw_length);
