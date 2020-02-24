@@ -125,65 +125,66 @@ def views(target, do_assemblies = None):
     main_blurb = None
     lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib/printed'
     for dir in [source_dir, source_dir + '/printed', lib_dir]:
-        for filename in os.listdir(dir):
-            if filename.endswith('.scad'):
-                #
-                # find any modules with names ending in _assembly
-                #
-                with open(dir + "/" + filename, "r") as f:
-                    lines = f.readlines()
-                line_no = 0
-                for line in lines:
-                    words = line.split()
-                    if len(words) and words[0] == "module":
-                        module = words[1].split('(')[0]
-                        if is_assembly(module):
-                            if module in assemblies:
-                                #
-                                # Scrape the assembly instructions
-                                #
-                                for ass in flat_bom:
-                                    if ass["name"] == module:
-                                        if not "blurb" in ass:
-                                            ass["blurb"] = blurb.scrape_module_blurb(lines[:line_no])
-                                        break
-                                if not do_assemblies or module in do_assemblies:
+        if os.path.isdir(dir):
+            for filename in os.listdir(dir):
+                if filename.endswith('.scad'):
+                    #
+                    # find any modules with names ending in _assembly
+                    #
+                    with open(dir + "/" + filename, "r") as f:
+                        lines = f.readlines()
+                    line_no = 0
+                    for line in lines:
+                        words = line.split()
+                        if len(words) and words[0] == "module":
+                            module = words[1].split('(')[0]
+                            if is_assembly(module):
+                                if module in assemblies:
                                     #
-                                    # make a file to use the module
+                                    # Scrape the assembly instructions
                                     #
-                                    png_maker_name = 'png.scad'
-                                    with open(png_maker_name, "w") as f:
-                                        f.write("use <%s/%s>\n" % (dir, filename))
-                                        f.write("%s();\n" % module);
-                                    #
-                                    # Run openscad on the created file
-                                    #
-                                    dname = deps_name(deps_dir, filename)
-                                    for explode in [0, 1]:
-                                        png_name = target_dir + '/' + module + '.png'
-                                        if not explode:
-                                            png_name = png_name.replace('_assembly', '_assembled')
-                                        changed = check_deps(png_name, dname)
-                                        changed = times.check_have_time(changed, png_name)
-                                        changed = options.have_changed(changed, png_name)
-                                        tmp_name = 'tmp.png'
-                                        if changed:
-                                            print(changed)
-                                            t = time.time()
-                                            openscad.run_list(options.list() + ["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name]);
-                                            times.add_time(png_name, t)
-                                            do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
-                                            update_image(tmp_name, png_name)
-                                        tn_name = png_name.replace('.png', '_tn.png')
-                                        if mtime(png_name) > mtime(tn_name):
-                                            do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background " + background + " -gravity Center -extent 280x280 -bordercolor " + background + " -border 10 " + tmp_name).split())
-                                            update_image(tmp_name, tn_name)
-                                    os.remove(png_maker_name)
-                                done_assemblies.append(module)
-                            else:
-                                if module == 'main_assembly':
-                                    main_blurb = blurb.scrape_module_blurb(lines[:line_no])
-                    line_no += 1
+                                    for ass in flat_bom:
+                                        if ass["name"] == module:
+                                            if not "blurb" in ass:
+                                                ass["blurb"] = blurb.scrape_module_blurb(lines[:line_no])
+                                            break
+                                    if not do_assemblies or module in do_assemblies:
+                                        #
+                                        # make a file to use the module
+                                        #
+                                        png_maker_name = 'png.scad'
+                                        with open(png_maker_name, "w") as f:
+                                            f.write("use <%s/%s>\n" % (dir, filename))
+                                            f.write("%s();\n" % module);
+                                        #
+                                        # Run openscad on the created file
+                                        #
+                                        dname = deps_name(deps_dir, filename)
+                                        for explode in [0, 1]:
+                                            png_name = target_dir + '/' + module + '.png'
+                                            if not explode:
+                                                png_name = png_name.replace('_assembly', '_assembled')
+                                            changed = check_deps(png_name, dname)
+                                            changed = times.check_have_time(changed, png_name)
+                                            changed = options.have_changed(changed, png_name)
+                                            tmp_name = 'tmp.png'
+                                            if changed:
+                                                print(changed)
+                                                t = time.time()
+                                                openscad.run_list(options.list() + ["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name]);
+                                                times.add_time(png_name, t)
+                                                do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
+                                                update_image(tmp_name, png_name)
+                                            tn_name = png_name.replace('.png', '_tn.png')
+                                            if mtime(png_name) > mtime(tn_name):
+                                                do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background " + background + " -gravity Center -extent 280x280 -bordercolor " + background + " -border 10 " + tmp_name).split())
+                                                update_image(tmp_name, tn_name)
+                                        os.remove(png_maker_name)
+                                    done_assemblies.append(module)
+                                else:
+                                    if module == 'main_assembly':
+                                        main_blurb = blurb.scrape_module_blurb(lines[:line_no])
+                        line_no += 1
     times.print_times()
     #
     # Build the document

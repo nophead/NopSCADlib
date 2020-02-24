@@ -86,47 +86,48 @@ def make_parts(target, part_type, parts = None):
     lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib/printed'
     module_suffix = '_dxf' if part_type == 'svg' else '_' + part_type
     for dir in [source_dir, source_dir + '/printed', lib_dir]:
-        for filename in os.listdir(dir):
-            if filename[-5:] == ".scad":
-                #
-                # find any modules ending in _<part_type>
-                #
-                with open(dir + "/" + filename, "r") as f:
-                    for line in f.readlines():
-                        words = line.split()
-                        if(len(words) and words[0] == "module"):
-                            module = words[1].split('(')[0]
-                            if module.endswith(module_suffix):
-                                base_name = module[:-4]
-                                part = base_name + '.' + part_type
-                                if part in targets:
-                                    #
-                                    # make a file to use the module
-                                    #
-                                    part_maker_name = part_type + ".scad"
-                                    with open(part_maker_name, "w") as f:
-                                        f.write("use <%s/%s>\n" % (dir, filename))
-                                        f.write("%s();\n" % module);
-                                    #
-                                    # Run openscad on the created file
-                                    #
-                                    part_file = target_dir + "/" + part
-                                    dname = deps_name(deps_dir, filename)
-                                    changed = check_deps(part_file, dname)
-                                    changed = times.check_have_time(changed, part)
-                                    if part_type == 'stl' and not changed and not part in bounds_map:
-                                        changed = "No bounds"
-                                    if changed:
-                                        print(changed)
-                                        t = time.time()
-                                        openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
-                                        times.add_time(part, t)
-                                        if part_type == 'stl':
-                                            bounds = c14n_stl.canonicalise(part_file)
-                                            bounds_map[part] = bounds
+        if os.path.isdir(dir):
+            for filename in os.listdir(dir):
+                if filename[-5:] == ".scad":
+                    #
+                    # find any modules ending in _<part_type>
+                    #
+                    with open(dir + "/" + filename, "r") as f:
+                        for line in f.readlines():
+                            words = line.split()
+                            if(len(words) and words[0] == "module"):
+                                module = words[1].split('(')[0]
+                                if module.endswith(module_suffix):
+                                    base_name = module[:-4]
+                                    part = base_name + '.' + part_type
+                                    if part in targets:
+                                        #
+                                        # make a file to use the module
+                                        #
+                                        part_maker_name = part_type + ".scad"
+                                        with open(part_maker_name, "w") as f:
+                                            f.write("use <%s/%s>\n" % (dir, filename))
+                                            f.write("%s();\n" % module);
+                                        #
+                                        # Run openscad on the created file
+                                        #
+                                        part_file = target_dir + "/" + part
+                                        dname = deps_name(deps_dir, filename)
+                                        changed = check_deps(part_file, dname)
+                                        changed = times.check_have_time(changed, part)
+                                        if part_type == 'stl' and not changed and not part in bounds_map:
+                                            changed = "No bounds"
+                                        if changed:
+                                            print(changed)
+                                            t = time.time()
+                                            openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
+                                            times.add_time(part, t)
+                                            if part_type == 'stl':
+                                                bounds = c14n_stl.canonicalise(part_file)
+                                                bounds_map[part] = bounds
 
-                                    targets.remove(part)
-                                    os.remove(part_maker_name)
+                                        targets.remove(part)
+                                        os.remove(part_maker_name)
     #
     # Write new bounds file
     #
