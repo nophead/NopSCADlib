@@ -132,29 +132,18 @@ module wingnut(type) { //! Draw a wingnut
 }
 
 module sliding_t_nut(type) {
-    vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), " sliding T"));
+    hammerNut = type[11];
+    vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), hammerNut ? " hammer" : " sliding T"));
 
-    size = [type[7], type[2], nut_thickness(type, true)];
+    size = [type[7], type[2], nut_thickness(type)];
     tabSizeY1 = type[8];
     tabSizeY2 = type[9];
-    tabSizeZ = nut_thickness(type);
+    tabSizeZ = type[10];
     holeRadius  = nut_size(type) / 2;
 
     color(grey80)
-        extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius);
-}
-
-module hammer_nut(type) {
-    vitamin(str("hammer_nut(", type[0], "): Nut M", nut_size(type), " hammer"));
-
-    size = [type[7], type[2], nut_thickness(type, true)];
-    tabSizeY1 = type[8];
-    tabSizeY2 = type[9];
-    tabSizeZ = nut_thickness(type);
-    holeRadius  = nut_size(type) / 2;
-
-    color(grey80)
-        extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut = true);
+        vflip()
+            extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut);
 }
 
 module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
