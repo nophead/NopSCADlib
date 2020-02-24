@@ -23,6 +23,7 @@ include <../core.scad>
 include <../utils/fillet.scad>
 
 include <screws.scad>
+include <nuts.scad>
 use <washer.scad>
 
 sk_bracket_color = grey70;
@@ -100,23 +101,22 @@ module sk_bracket_hole_positions(type) { //! Place children at hole positions
                 children();
 }
 
-module sk_bracket_assembly(type, part_thickness, screw_type = M5_cap_screw, nut_type = undef) { //! Assembly with fasteners in place
+module sk_bracket_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = M5_sliding_t_nut) { //! Assembly with fasteners in place
     sk_bracket(type);
 
-    screw_type = is_undef(screw_type) ? scs_screw(type) : screw_type;
     screw_washer_thickness = washer_thickness(screw_washer(screw_type));
     nut_type = is_undef(nut_type) ? screw_nut(screw_type) : nut_type;
     nut_washer_type = nut_washer(nut_type);
     nut_washer_thickness = nut_washer_type ? washer_thickness(nut_washer_type) : 0;
 
     nut_offset = sk_base_height(type) + part_thickness + nut_thickness(nut_type) + nut_washer_thickness;
-    screw_length = screw_longer_than(nut_offset + screw_washer_thickness);
+    screw_length = screw_shorter_than(nut_offset + screw_washer_thickness + 1);
 
     sk_bracket_hole_positions(type) {
         screw_and_washer(screw_type, screw_length);
         translate_z(-nut_offset)
-            if(nut_type == M5_sliding_t_nut)
-                translate_z(nut_thickness(nut_type))
+            if(nut_type == M4_sliding_t_nut || nut_type == M5_sliding_t_nut)
+                translate_z(nut_thickness(nut_type) + 1.75)
                     vflip()
                         sliding_t_nut(nut_type);
             else

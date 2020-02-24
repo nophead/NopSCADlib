@@ -22,13 +22,12 @@ use <../utils/layout.scad>
 include <../vitamins/sk_brackets.scad>
 
 module sk_brackets() {
-    part_thickness = 5;
-    nuts = [undef, M5_nut, M5_sliding_t_nut, M5_sliding_t_nut];
+    screws = [M5_cap_screw, M5_cap_screw, M4_cap_screw, M5_cap_screw];
+    nuts = [undef, M5_nut, M4_sliding_t_nut, M5_sliding_t_nut];
     layout([for(s = sk_brackets) 1.5 * sk_size(s)[1]])
-        sk_bracket_assembly(sk_brackets[$i], part_thickness, nut_type = nuts[$i]);
+        sk_bracket_assembly(sk_brackets[$i], screw_type = screws[$i], nut_type = nuts[$i]);
 }
 
 if($preview)
-    let($show_threads = true)
-        sk_brackets();
+    sk_brackets();
 
