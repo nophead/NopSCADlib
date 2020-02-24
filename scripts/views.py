@@ -124,7 +124,7 @@ def views(target, do_assemblies = None):
     #
     main_blurb = None
     lib_dir = os.environ['OPENSCADPATH'] + '/NopSCADlib/printed'
-    for dir in [source_dir, lib_dir]:
+    for dir in [source_dir, source_dir + '/printed', lib_dir]:
         for filename in os.listdir(dir):
             if filename.endswith('.scad'):
                 #
