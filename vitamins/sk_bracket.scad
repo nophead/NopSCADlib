@@ -100,7 +100,7 @@ module sk_bracket_hole_positions(type) { //! Place children at hole positions
                 children();
 }
 
-module sk_bracket_assembly(type, part_thickness, screw_type = M5_cap_screw, nut_type = undef) { //! Assembly with fasteners in place
+module sk_bracket_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = undef) { //! Assembly with fasteners in place
     sk_bracket(type);
 
     screw_type = is_undef(screw_type) ? scs_screw(type) : screw_type;
