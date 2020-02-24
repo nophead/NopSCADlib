@@ -116,7 +116,7 @@ module sk_bracket_assembly(type, part_thickness, screw_type = M5_cap_screw, nut_
         screw_and_washer(screw_type, screw_length);
         translate_z(-nut_offset)
             vflip()
-                if(nut_type == M5_sliding_t_nut)
+                if(!nut_washer_type)
                     sliding_t_nut(nut_type);
                 else
                     nut_and_washer(nut_type);
