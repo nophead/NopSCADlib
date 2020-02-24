@@ -148,6 +148,7 @@ module scs_bearing_block_assembly(type, part_thickness, screw_type, nut_type) { 
 
     scs_bearing_block_hole_positions(type) {
         screw(screw_type, screw_length);
+
         translate_z(-nut_offset)
             nut(nut_type)
                 if (washer_type)
