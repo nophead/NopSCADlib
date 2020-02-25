@@ -38,16 +38,17 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Kp_pillow_blocks">Kp_pillow_blocks</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -93,8 +94,10 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```ball_bearing(BB608)``` |  Ball bearing 608-2RS 8mm x 22mm x 7mm |
+|   1 | ```ball_bearing(BB6200)``` |  Ball bearing 6200-2RS 10mm x 30mm x 9mm |
+|   1 | ```ball_bearing(BB6201)``` |  Ball bearing 6201-2RS 12mm x 32mm x 10mm |
 |   1 | ```ball_bearing(BB624)``` |  Ball bearing 624-2RS 4mm x 13mm x 5mm |
-|   2 | ``` bearing_ball(3)``` |  Steel ball 3mm |
+|   4 | ``` bearing_ball(3)``` |  Steel ball 3mm |
 
 
 <a href="#top">Top</a>
@@ -1085,6 +1088,57 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 |   1 | ```post_4mm("red", 3)``` |  4mm jack binding post red |
 |   1 | ```jack_4mm("blue", 3, "royalblue")``` |  4mm jack socket blue |
 |   1 | ```jack_4mm_shielded("brown", 3, "sienna")``` |  4mm shielded jack socket brown |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Kp_pillow_blocks"></a>
+## Kp_pillow_blocks
+KP pillow block bearings
+
+
+[vitamins/kp_pillow_blocks.scad](vitamins/kp_pillow_blocks.scad) Object definitions.
+
+[vitamins/kp_pillow_block.scad](vitamins/kp_pillow_block.scad) Implementation.
+
+[tests/kp_pillow_blocks.scad](tests/kp_pillow_blocks.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```kp_base_height(type)``` | Height of base containing the bolts |
+| ```kp_diameter(type)``` | Rod hole diameter |
+| ```kp_hole_offset(type)``` | Rod hole offset |
+| ```kp_screw_separation(type)``` | Separation of bolts in the base |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```kp_size(type)``` | Size of bracket |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```kp_pillow_block(type)``` | Draw the KP pillow block |
+| ```kp_pillow_block_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = undef)``` | Assembly with fasteners in place |
+| ```kp_pillow_block_hole_positions(type)``` | Place children at hole positions |
+
+![kp_pillow_blocks](tests/png/kp_pillow_blocks.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```kp_pillow_block(KP000)``` |  KP000 pillow block |
+|   1 | ```kp_pillow_block(KP001)``` |  KP001 pillow block |
+|   1 | ```kp_pillow_block(KP08)``` |  KP08 pillow block |
+|   2 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
+|   2 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
+|   2 | ```nut(M5_nut, nyloc = undef)``` |  Nut M5 x 4mm  |
+|   2 | ```screw(M4_cap_screw, 10)``` |  Screw M4 cap x 10mm |
+|   4 | ```screw(M5_cap_screw, 12)``` |  Screw M5 cap x 12mm |
+|   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|   6 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |
 
 
 <a href="#top">Top</a>

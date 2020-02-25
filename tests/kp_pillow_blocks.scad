@@ -16,11 +16,19 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-BB624 = ["624", 4, 13, 5, "blue"];      // 624 ball bearing for idlers
-BB608 = ["608", 8, 22, 7, "OrangeRed"]; // 608 bearings for wades
-BB6200 = ["6200", 10, 30, 9, "black"];  // 6200 bearings for KP pillow blocks
-BB6201 = ["6201", 12, 32, 10, "black"]; // 6201 bearings for KP pillow blocks
+include <../core.scad>
+use <../utils/layout.scad>
 
-ball_bearings = [BB624, BB608, BB6200, BB6201];
+include <../vitamins/kp_pillow_blocks.scad>
+include <../vitamins/nuts.scad>
 
-use <ball_bearing.scad>
+module kp_pillow_blocks() {
+    screws = [M4_cap_screw, M5_cap_screw, M5_cap_screw];
+    nuts = [M4_sliding_t_nut, M5_sliding_t_nut, M5_nut];
+    layout([for(k = kp_pillow_blocks) 2 * kp_size(k)[1]])
+        kp_pillow_block_assembly(kp_pillow_blocks[$i], screw_type = screws[$i], nut_type = nuts[$i]);
+}
+
+if($preview)
+    kp_pillow_blocks();
+
