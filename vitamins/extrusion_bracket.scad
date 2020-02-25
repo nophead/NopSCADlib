@@ -42,8 +42,8 @@ module extrusion20InnerCornerBracket(grubScrews = true) { //! Inner corner brack
         }
 }
 
-function extrusion20CornerBracket_base_thickness() = 2;
-function extrusion20CornerBracket_hole_offset() = 19.5;
+function extrusion20CornerBracket_base_thickness() = 2; //! Thickness of base of bracket
+function extrusion20CornerBracket_hole_offset() = 19.5; //! Hole offset from corner
 
 module extrusion20CornerBracket() { //! Corner bracket for 20mm extrusion
     vitamin(str("extrusion20CornerBracket(): Extrusion20 corner bracket"));

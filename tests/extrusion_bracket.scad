@@ -18,7 +18,7 @@
 //
 include <../core.scad>
 
-use <../vitamins/extrusionBracket.scad>
+use <../vitamins/extrusion_bracket.scad>
 include <../vitamins/extrusions.scad>
 include <../vitamins/washers.scad>
 include <../vitamins/nuts.scad>
