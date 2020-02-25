@@ -31,6 +31,7 @@ include <microswitches.scad>
 
 use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
+use <../utils/thread.scad>
 use <../utils/tube.scad>
 use <d_connector.scad>
 
@@ -79,16 +80,21 @@ module chip(length, width, thickness, colour, cutout = false) //! Draw a coloure
         color(colour)
             translate_z(thickness / 2) cube([length, width, thickness], center = true);
 
+module usb_Ax1(cutout = false) { //! Draw USB type A single socket
+    usb_A(h = 6.5, v_flange_l = 4.5, bar = 0, cutout = cutout);
+}
+
 module usb_Ax2(cutout = false) { //! Draw USB type A dual socket
+    usb_A(h = 15.6, v_flange_l = 12.15, bar = 3.4, cutout = cutout);
+}
+
+module usb_A(h, v_flange_l, bar, cutout) {
     l = 17;
     w = 13.25;
-    h = 15.6;
     flange_t = 0.4;
     h_flange_h = 0.8;
     h_flange_l = 11;
     v_flange_h = 1;
-    v_flange_l = 12.15;
-    bar = 3.4;
     socket_h = (h - 2 * flange_t - bar) / 2;
 
     translate_z(h / 2)
@@ -203,9 +209,30 @@ module jack(cutout = false) { //! Draw 3.5mm jack
 
 module buzzer(height, diameter, colour) { //! Draw PCB buzzer with specified height, diameter and color
     color (colour)
-        tube(or = diameter / 2, ir = height > 5 ? 1 : 0.75, h = height);
+        tube(or = diameter / 2, ir = height > 5 ? 1 : 0.75, h = height, center = false);
     color("white")
         cylinder(d = 2, h = max(height - 3 , 0.5));
+}
+
+module potentiometer(h1, h2) {
+    color("silver") {
+        baseSize = [12, 11, 6];
+        translate_z(baseSize.z / 2)
+            cube(baseSize, center = true);
+        translate_z(baseSize.z) {
+            cylinder(d = 5, h = h1 - 0.5);
+            if (show_threads)
+                male_metric_thread(6, metric_coarse_pitch(5), length = h1 - 0.5, center = false);
+        }
+        translate_z(baseSize.z + h1 - 0.5)
+            cylinder(d = 3, h = 0.5);
+        translate_z(baseSize.z + h1)
+            linear_extrude(h2)
+                difference() {
+                    circle(d=5);
+                    square([0.75,5], center = true);
+                }
+    }
 }
 
 function hdmi_depth(type)     = type[2]; //! Front to back depth
@@ -715,10 +742,12 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], param(7, grey30), cutouts);
         if(show(comp, "rj45")) rj45(cutouts);
+        if(show(comp, "usb_A")) usb_Ax1(cutouts);
         if(show(comp, "usb_Ax2")) usb_Ax2(cutouts);
         if(show(comp, "usb_uA")) usb_uA(cutouts);
         if(show(comp, "usb_B")) usb_B(cutouts);
         if(show(comp, "buzzer")) buzzer(param(4, 9), param(5, 12), param(6, grey20));
+        if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
         if(show(comp, "jack")) jack(cutouts);
         if(show(comp, "barrel_jack")) barrel_jack(cutouts);
         if(show(comp, "hdmi")) hdmi(hdmi_full, cutouts);
