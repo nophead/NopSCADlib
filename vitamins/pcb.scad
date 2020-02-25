@@ -758,6 +758,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "molex_hdr")) if(!cutouts) molex_254(comp[4]);
         if(show(comp, "jst_xh")) if(!cutouts) jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
         if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5]);
+        if(show(comp, "gterm")) if(!cutouts) green_terminal(comp[4], comp[5], comp[6], param(7,"lime"));
         if(show(comp, "gterm35")) if(!cutouts) green_terminal(gt_3p5, comp[4], comp[5]);
         if(show(comp, "gterm635")) if(!cutouts) green_terminal(gt_6p35, comp[4], comp[5]);
         if(show(comp, "term35")) if(!cutouts) terminal_35(comp[4]);

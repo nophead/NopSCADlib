@@ -22,10 +22,11 @@ use <../vitamins/pcb.scad>
 include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
 
-
+gt_5x17 = ["gt_5x17",    5,   10,   17, 5,   11, 0.4,  9,   2,1.5,     1,  3,   6,     0,  0,   0];
+gt_5x11 = ["gt_5x11",    5,    8,   11, 5,    7, 0.4,  7,   1.5,1.5,   1,2.5,   6,     0,  0,   0];
 
 test_pcb = ["TestPCB", "Test PCB",
-    40, 480, 1.6, // length, width, thickness
+    50, 480, 1.6, // length, width, thickness
     3,      // Corner radius
     2.75,   // Mounting hole diameter
     6,      // Pad around mounting hole
@@ -36,10 +37,10 @@ test_pcb = ["TestPCB", "Test PCB",
     // components
     [
         [ 10,  10,  0, "2p54header", 3, 1],
-        [ 20,  10,  0, "2p54header", 3, 1, undef, "blue" ],
+        [ 25,  10,  0, "2p54header", 3, 1, undef, "blue" ],
         [ 10,  20,  0, "2p54boxhdr", 2, 1],
         [ 10,  30,  0, "2p54socket", 2, 1],
-        [ 20,  30,  0, "2p54socket", 3, 1, undef, undef, undef, "red" ],
+        [ 25,  30,  0, "2p54socket", 3, 1, undef, undef, undef, "red" ],
         [ 10,  40,  0, "chip", 5, 10, 1, grey20],             // E2 stop
         [ 10,  60,  0, "rj45"],
         [ 10,  80,  0, "usb_A"],
@@ -58,11 +59,14 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 10, 300,  0, "molex_hdr", 2],
         [ 10, 310,  0, "jst_xh", 2],
         [ 10, 320,  0, "term254", 3],
-        [ 10, 340,  0, "gterm35", 4],
+        [ 10, 340,  0, "gterm35", 4, [1,2]],
+        [ 25, 340,  0, "gterm", gt_5x11, 3],
         [ 10, 360,  0, "gterm635", 2],
+        [ 25, 360,  0, "gterm", gt_5x17, 2, undef, grey20],
+        [ 40, 360,  0, "gterm", gt_5x17, 3, [1], "red"],
         [ 10, 380,  0, "term35", 4],
         [ 10, 400,  0, "transition", 5],
-        [ 10, 410,  0, "block", 10,5, 8],
+        [ 10, 410,  0, "block", 10, 5, 8, "orange"],
         [ 10, 420,  0, "button_6mm"],
         [ 10, 435,  0, "microswitch", small_microswitch],
         //[ 10, 440,  0, "pcb"],
