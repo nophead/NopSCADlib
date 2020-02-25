@@ -43,8 +43,9 @@ module pin(type, length = undef) { //! Draw a header pin
             }
 }
 
-module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false) { //! Draw pin header
+module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false, colour) { //! Draw pin header
     pitch =  hdr_pitch(type);
+    base_colour = colour ? colour : hdr_base_colour(type);
     h = pitch;
     ra_offset = 2.4;
     width = pitch * rows;
@@ -79,7 +80,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
             }
             translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
                 rotate([right_angle ? 90 : 0, 0, 0])
-                    color(hdr_base_colour(type))
+                    color(base_colour)
                         linear_extrude(height = h)
                             for(x = [0 : cols - 1], y = [0 : rows - 1])
                                 translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), pitch / 2])
