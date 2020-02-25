@@ -2,11 +2,12 @@ include <NopSCADlib/core.scad>
 include <screws.scad>
 include <nuts.scad>
 
+function extrusion_inner_corner_racket_size(type)             = type[1]; //! Size of bracket
 
-module extrusion20InnerCornerBracket(grubScrews = true) { //! Inner corner bracket for 20mm extrusion
-    vitamin(str("extrusion20InnerCornerBracket(): Extrusion20 inner corner bracket"));
+module extrusion_inner_corner_bracket(type, grub_screws = true) { //! Inner corner bracket for extrusion
+    vitamin(str("extrusion_inner_corner_bracket(", type[0], ", ", grub_screws, "): Extrusion inner corner bracket ", type[1].z));
 
-    size = [25, 25, 4.5];
+    size = extrusion_inner_corner_racket_size(type);
     armLength = size.x;
     bottomTabOffset = 4;
     topTabOffset = 10;
@@ -31,7 +32,7 @@ module extrusion20InnerCornerBracket(grubScrews = true) { //! Inner corner brack
                     cube([size.z, size.z, topTabOffset]);
                 }
             }
-            if(grubScrews)
+            if(grub_screws)
                 not_on_bom() no_explode() {
                     grubScrewLength = 6;
                     for(angle = [[0, 0, 0], [0, -90, 180]])
@@ -42,15 +43,18 @@ module extrusion20InnerCornerBracket(grubScrews = true) { //! Inner corner brack
         }
 }
 
-function extrusion20CornerBracket_base_thickness() = 2; //! Thickness of base of bracket
-function extrusion20CornerBracket_hole_offset() = 19.5; //! Hole offset from corner
+function extrusion_corner_bracket_size(type)             = type[1]; //! Size of bracket
+function extrusion_corner_bracket_base_thickness(type)   = type[2]; //! Thickness of base of bracket
+function extrusion_corner_bracket_side_thickness(type)   = type[3]; //! Thickness of side of bracket
+function extrusion_corner_bracket_hole_offset(type)      = type[4]; //! Hole offset from corner
 
-module extrusion20CornerBracket() { //! Corner bracket for 20mm extrusion
-    vitamin(str("extrusion20CornerBracket(): Extrusion20 corner bracket"));
+module extrusion_corner_bracket(type) { //! Corner bracket for extrusion
+echo(type=type);
+    vitamin(str("extrusion_corner_bracket(", type[0], "): Extrusion corner bracket ", type[1].z));
 
-    eSize = 20;
-    cbSize = 28;
-    baseThickness = extrusion20CornerBracket_base_thickness();
+    eSize = extrusion_corner_bracket_size(type).z;
+    cbSize = extrusion_corner_bracket_size(type).x;
+    baseThickness = extrusion_corner_bracket_base_thickness(type);
 
     module base() {
         linear_extrude(baseThickness)
@@ -58,9 +62,9 @@ module extrusion20CornerBracket() { //! Corner bracket for 20mm extrusion
                 translate([0, -eSize / 2, 0])
                     square([cbSize, eSize]);
                 hull() {
-                    translate([extrusion20CornerBracket_hole_offset() + 1.5, 0, 0])
+                    translate([extrusion_corner_bracket_hole_offset(type) + 1.5, 0, 0])
                         circle(r = M5_clearance_radius);
-                    translate([extrusion20CornerBracket_hole_offset() - 1.5, 0, 0])
+                    translate([extrusion_corner_bracket_hole_offset(type) - 1.5, 0, 0])
                         circle(r = M5_clearance_radius);
                 }
             }
@@ -72,7 +76,7 @@ module extrusion20CornerBracket() { //! Corner bracket for 20mm extrusion
         translate([0, baseThickness, 0])
             rotate([90, 0, 0])
                 base();
-        sideThickness = 3;
+        sideThickness = extrusion_corner_bracket_side_thickness(type);
         for(z = [-eSize / 2, eSize / 2 - sideThickness]) {
             translate_z(z) {
                 right_triangle(cbSize, cbSize, sideThickness, center = false);
@@ -83,25 +87,25 @@ module extrusion20CornerBracket() { //! Corner bracket for 20mm extrusion
     }
 }
 
-module extrusion20CornerBracket_hole_positions() { //! Place children at hole positions
+module extrusion_corner_bracket_hole_positions(type) { //! Place children at hole positions
     for(angle = [ [0, 90, 0], [-90, -90, 0] ])
         rotate(angle)
-            translate([0, extrusion20CornerBracket_hole_offset(), extrusion20CornerBracket_base_thickness()])
+            translate([0, extrusion_corner_bracket_hole_offset(type), extrusion_corner_bracket_base_thickness(type)])
                 children();
 }
 
-module extrusion20CornerBracket_assembly(part_thickness = 2, screw_type = M4_cap_screw, nut_type = M4_sliding_t_nut, max_screw_depth = 6) { //! Assembly with fasteners in place
-    extrusion20CornerBracket();
+module extrusion_corner_bracket_assembly(type, part_thickness = 2, screw_type = M4_cap_screw, nut_type = M4_sliding_t_nut, max_screw_depth = 6) { //! Assembly with fasteners in place
+    extrusion_corner_bracket(type);
 
     screw_washer_thickness = washer_thickness(screw_washer(screw_type));
     nut_washer_type = nut_washer(nut_type);
     nut_washer_thickness = nut_washer_type ? washer_thickness(nut_washer_type) : 0;
 
-    nut_offset = extrusion20CornerBracket_base_thickness() + part_thickness;
-    screw_length = max_screw_depth ? screw_shorter_than(extrusion20CornerBracket_base_thickness() + screw_washer_thickness + max_screw_depth)
+    nut_offset = extrusion_corner_bracket_base_thickness(type) + part_thickness;
+    screw_length = max_screw_depth ? screw_shorter_than(extrusion_corner_bracket_base_thickness(type) + screw_washer_thickness + max_screw_depth)
                                    : screw_longer_than(nut_offset + screw_washer_thickness + nut_washer_thickness + nut_thickness(nut_type));
 
-    extrusion20CornerBracket_hole_positions() {
+    extrusion_corner_bracket_hole_positions(type) {
         screw_and_washer(screw_type, screw_length);
         translate_z(-nut_offset)
             vflip()

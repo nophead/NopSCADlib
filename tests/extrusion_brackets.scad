@@ -18,24 +18,24 @@
 //
 include <../core.scad>
 
-use <../vitamins/extrusion_bracket.scad>
+include <../vitamins/extrusion_brackets.scad>
 include <../vitamins/extrusions.scad>
 include <../vitamins/washers.scad>
 include <../vitamins/nuts.scad>
 
-module extrusionBrackets() {
-    extrusion20InnerCornerBracket();
+module extrusion_brackets() {
+    extrusion_inner_corner_bracket(extrusion_inner_corner_bracket);
 
     translate([30, 0])
-        extrusion20InnerCornerBracket(grubScrews = false);
+        extrusion_inner_corner_bracket(extrusion_inner_corner_bracket, grub_screws = false);
 
     translate([60, 0])
-        extrusion20CornerBracket_assembly();
+        extrusion_corner_bracket_assembly(extrusion_corner_bracket);
 
     eWidth = extrusion_width(E2020);
 
     translate([0, 60]) {
-        extrusion20InnerCornerBracket();
+        extrusion_inner_corner_bracket(extrusion_inner_corner_bracket);
         translate([-eWidth / 2, 0, 0])
             rotate([-90, 0, 0])
                 extrusion(E2020, 20);
@@ -45,7 +45,7 @@ module extrusionBrackets() {
     }
 
     translate([60, 60]) {
-        extrusion20CornerBracket_assembly();
+        extrusion_corner_bracket_assembly(extrusion_corner_bracket);
         translate([-eWidth / 2, 0, 0])
             rotate([-90, 0, 0])
                 extrusion(E2020, 30);
@@ -57,5 +57,5 @@ module extrusionBrackets() {
 
 if($preview)
     let($show_threads = true)
-        extrusionBrackets();
+        extrusion_brackets();
 
