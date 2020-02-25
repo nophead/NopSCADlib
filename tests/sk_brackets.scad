@@ -20,12 +20,19 @@ include <../core.scad>
 use <../utils/layout.scad>
 
 include <../vitamins/sk_brackets.scad>
+include <../vitamins/extrusions.scad>
 
 module sk_brackets() {
-    screws = [M5_cap_screw, M5_cap_screw, M4_cap_screw, M5_cap_screw];
-    nuts = [undef, M5_nut, M4_sliding_t_nut, M5_sliding_t_nut];
-    layout([for(s = sk_brackets) 1.5 * sk_size(s)[1]])
-        sk_bracket_assembly(sk_brackets[$i], screw_type = screws[$i], nut_type = nuts[$i]);
+    screws = [M4_dome_screw, M4_cap_screw, M5_cap_screw, M5_cap_screw];
+    nuts = [M4_hammer_nut, M4_sliding_t_nut, M5_sliding_t_nut, undef];
+    // channel depth = 6 for 2020 extrusion, 9 for 3030 extrusion
+    depths = [6, 6, 9, 0];
+    layout([for(s = sk_brackets) 1.5 * sk_size(s)[1]]) {
+        sk_bracket_assembly(sk_brackets[$i], screw_type = screws[$i], nut_type = nuts[$i], max_screw_depth = depths[$i]);
+        translate([0, -sk_hole_offset(sk_brackets[$i]) - extrusion_width($i < 2 ? E2020 : E3030) / 2, 0])
+            rotate([0, 90, 0])
+                extrusion($i < 2 ? E2020 : E3030, 20);
+    }
 }
 
 if($preview)
