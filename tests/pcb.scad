@@ -41,7 +41,7 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 10,  20,  0, "2p54boxhdr", 2, 1],
         [ 10,  30,  0, "2p54socket", 2, 1],
         [ 25,  30,  0, "2p54socket", 3, 1, undef, undef, undef, "red" ],
-        [ 10,  40,  0, "chip", 5, 10, 1, grey20],             // E2 stop
+        [ 10,  40,  0, "chip", 5, 10, 1, grey20],
         [ 10,  60,  0, "rj45"],
         [ 10,  80,  0, "usb_A"],
         [ 10, 100,  0, "usb_Ax2"],
@@ -80,3 +80,4 @@ test_pcb = ["TestPCB", "Test PCB",
 
 if($preview)
     pcb(test_pcb);
+
