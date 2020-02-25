@@ -2640,7 +2640,7 @@ SK shaft support brackets
 | Module | Description |
 |:--- |:--- |
 | ```sk_bracket(type)``` | SK shaft support bracket |
-| ```sk_bracket_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = undef)``` | Assembly with fasteners in place |
+| ```sk_bracket_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = undef, max_screw_depth = 6)``` | Assembly with fasteners in place |
 | ```sk_bracket_hole_positions(type)``` | Place children at hole positions |
 
 ![sk_brackets](tests/png/sk_brackets.png)
@@ -2648,17 +2648,21 @@ SK shaft support brackets
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   2 | ```extrusion(E2020, 20)``` |  Extrusion E2020 x 20mm |
+|   2 | ```extrusion(E3030, 20)``` |  Extrusion E3030 x 20mm |
+|   2 | ```sliding_t_nut(M4_hammer_nut)``` |  Nut M4 hammer |
 |   2 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   2 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
-|   4 | ```nut(M5_nut, nyloc = undef)``` |  Nut M5 x 4mm  |
+|   2 | ```nut(M5_nut, nyloc = undef)``` |  Nut M5 x 4mm  |
 |   1 | ```sk_bracket(SK10)``` |  SK10 shaft support bracket |
 |   1 | ```sk_bracket(SK12)``` |  SK12 shaft support bracket |
 |   1 | ```sk_bracket(SK16)``` |  SK16 shaft support bracket |
 |   1 | ```sk_bracket(SK8)``` |  SK8 shaft support bracket |
 |   2 | ```screw(M4_cap_screw, 12)``` |  Screw M4 cap x 12mm |
-|   6 | ```screw(M5_cap_screw, 16)``` |  Screw M5 cap x 16mm |
-|   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
-|  10 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |
+|   2 | ```screw(M4_dome_screw, 12)``` |  Screw M4 dome x 12mm |
+|   4 | ```screw(M5_cap_screw, 16)``` |  Screw M5 cap x 16mm |
+|   4 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|   6 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |
 
 
 <a href="#top">Top</a>
