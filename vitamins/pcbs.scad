@@ -339,17 +339,18 @@ PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
 
-include <microswitches.scad>
-
 RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
-    40.0, 16.0, 1.6, 0, 2.54, 0, "red",  false,
+    40.0, 16.0, 1.6, 0.5, 2.54, 0, "red",  false,
     [
         [2, 2], [2, 13.5], [17, 13.5], [36, 13.5]
     ],
     [
+        [ 12,    8,   -90, "jst_xh", 3, true, "white", "silver"],
         [ 26.5, 12.75,  0, "microswitch", small_microswitch],
+        [ 27.5, 17.5,  15, "chip", 15, 0.5, 4.5, "silver"],
     ],
     []];
+
 
 pcbs = [ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591, RAMPSEndstop];
 
