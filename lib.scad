@@ -22,7 +22,7 @@
 //
 include <core.scad>
 
-include <vitamins/fans.scad>
+include <vitamins/psus.scad>
 include <vitamins/inserts.scad>
 include <vitamins/ring_terminals.scad>
 include <vitamins/rails.scad>
@@ -39,7 +39,6 @@ include <vitamins/rod.scad>
 include <vitamins/leadnuts.scad>
 include <vitamins/bulldogs.scad>
 include <vitamins/pillars.scad>
-include <vitamins/psus.scad>
 include <vitamins/ssrs.scad>
 include <vitamins/d_connectors.scad>
 include <vitamins/buttons.scad>
