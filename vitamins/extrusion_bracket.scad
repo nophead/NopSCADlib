@@ -1,13 +1,34 @@
+//
+// NopSCADlib Copyright Chris Palmer 2020
+// nop.head@gmail.com
+// hydraraptor.blogspot.com
+//
+// This file is part of NopSCADlib.
+//
+// NopSCADlib is free software: you can redistribute it and/or modify it under the terms of the
+// GNU General Public License as published by the Free Software Foundation, either version 3 of
+// the License, or (at your option) any later version.
+//
+// NopSCADlib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along with NopSCADlib.
+// If not, see <https://www.gnu.org/licenses/>.
+//
+
+//! Brackets for joining extrusions at a corner.
+
 include <NopSCADlib/core.scad>
 include <screws.scad>
 include <nuts.scad>
 
-function extrusion_inner_corner_racket_size(type)             = type[1]; //! Size of bracket
+function extrusion_inner_corner_bracket_size(type)             = type[1]; //! Size of inner bracket
 
 module extrusion_inner_corner_bracket(type, grub_screws = true) { //! Inner corner bracket for extrusion
     vitamin(str("extrusion_inner_corner_bracket(", type[0], ", ", grub_screws, "): Extrusion inner corner bracket ", type[1].z));
 
-    size = extrusion_inner_corner_racket_size(type);
+    size = extrusion_inner_corner_bracket_size(type);
     armLength = size.x;
     bottomTabOffset = 4;
     topTabOffset = 10;
@@ -116,4 +137,3 @@ module extrusion_corner_bracket_assembly(type, part_thickness = 2, screw_type = 
                         sliding_t_nut(nut_type);
     }
 }
-

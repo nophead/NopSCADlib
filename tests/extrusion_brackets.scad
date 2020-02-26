@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -58,4 +58,3 @@ module extrusion_brackets() {
 if($preview)
     let($show_threads = true)
         extrusion_brackets();
-
