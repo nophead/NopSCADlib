@@ -21,34 +21,34 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
 <tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
 <tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Scs_bearing_blocks">Scs_bearing_blocks</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Kp_pillow_blocks">Kp_pillow_blocks</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Modules">Modules</a> </td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Pcb">Pcb</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Scs_bearing_blocks">Scs_bearing_blocks</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Spools">Spools</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Kp_pillow_blocks">Kp_pillow_blocks</a> </td><td> <a href = "#Springs">Springs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -1768,6 +1768,88 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 <a href="#top">Top</a>
 
 ---
+<a name="Pcb"></a>
+## Pcb
+PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
+
+
+[vitamins/pcb.scad](vitamins/pcb.scad) Implementation.
+
+[tests/pcb.scad](tests/pcb.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```hdmi_depth(type)``` | Front to back depth |
+| ```hdmi_height(type)``` | Outside height above the PCB |
+| ```hdmi_height1(type)``` | Inside height at the sides |
+| ```hdmi_height2(type)``` | Inside height in the middle |
+| ```hdmi_thickness(type)``` | Wall thickness of the metal |
+| ```hdmi_width1(type)``` | Inside width at the top |
+| ```hdmi_width2(type)``` | Inside width at the bottom |
+| ```pcb_accessories(type)``` | List of accessories to go on the BOM, SD cards, USB cables, etc. |
+| ```pcb_colour(type)``` | Colour of the subtrate |
+| ```pcb_components(type)``` | List of components |
+| ```pcb_grid(type)``` | Grid if a perfboard |
+| ```pcb_hole_d(type)``` | Mounting hole diameter |
+| ```pcb_holes(type)``` | List of hole positions |
+| ```pcb_land_d(type)``` | Pad around mounting hole |
+| ```pcb_length(type)``` | Length |
+| ```pcb_name(type)``` | Description |
+| ```pcb_parts_on_bom(type)``` | True if the parts should be separate BOM items |
+| ```pcb_polygon(type)``` | Optional outline polygon for odd shaped boards |
+| ```pcb_radius(type)``` | Corner radius |
+| ```pcb_thickness(type)``` | Thickness |
+| ```pcb_width(type)``` | Width |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```pcb_component_position(type, name, index = 0)``` | Return x y position of specified component |
+| ```pcb_coord(type, p)``` | Convert offsets from the edge to coordinates relative to the centre |
+| ```pcb_grid_pos(type, x, y, z = 0)``` | Returns a pcb grid position |
+| ```pcb_screw(type, cap = hs_cap)``` | Mounting screw type |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```barrel_jack(cutout = false)``` | Draw barrel power jack |
+| ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and color |
+| ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
+| ```flat_flex(cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
+| ```flex(cutout = false)``` | Draw flexistrip connector |
+| ```hdmi(type, cutout = false)``` | Draw HDMI socket |
+| ```jack(cutout = false)``` | Draw 3.5mm jack |
+| ```molex_254(ways)``` | Draw molex header |
+| ```pcb(type)``` | Draw specified PCB |
+| ```pcb_assembly(type, height, thickness)``` | Draw PCB assembly with spaces and fasteners in place |
+| ```pcb_base(type, height, thickness, wall = 2)``` | Generate STL for a base with PCB spacers |
+| ```pcb_component(comp, cutouts = false, angle = undef)``` | Draw pcb component from description |
+| ```pcb_component_position(type, name)``` | Position child at the specified component position |
+| ```pcb_components(type, cutouts = false, angle = undef)``` | Draw list of PCB components on the PCB |
+| ```pcb_cutouts(type, angle = undef)``` | Make cut outs to clear components on a PCB |
+| ```pcb_grid(type, x, y, z = 0)``` | Positions children at specified grid position |
+| ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
+| ```pcb_spacer(screw, height, wall = 1.8, taper = 0)``` | Generate STL for PCB spacer |
+| ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
+| ```terminal_35(ways, colour = "blue")``` | Draw 3.5mm terminal block |
+| ```uSD(size, cutout = false)``` | Draw uSD socket |
+| ```usb_Ax1(cutout = false)``` | Draw USB type A single socket |
+| ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |
+| ```usb_B(cutout = false)``` | Draw USB B connector |
+| ```usb_uA(cutout = false)``` | Draw USB micro A connector |
+
+![pcb](tests/png/pcb.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```pcb(TestPCB)``` |  Test PCB |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Pcbs"></a>
 ## Pcbs
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
@@ -1834,8 +1916,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
 | ```pcb_spacer(screw, height, wall = 1.8, taper = 0)``` | Generate STL for PCB spacer |
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
-| ```terminal_35(ways)``` | Draw 3.5mm terminal block |
+| ```terminal_35(ways, colour = "blue")``` | Draw 3.5mm terminal block |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
+| ```usb_Ax1(cutout = false)``` | Draw USB type A single socket |
 | ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |
 | ```usb_B(cutout = false)``` | Draw USB B connector |
 | ```usb_uA(cutout = false)``` | Draw USB micro A connector |
@@ -1997,8 +2080,8 @@ Pin headers and sockets, etc.
 | ```idc_transition(type, cols = 5, skip = [], cutout = false)``` | Draw IDC transition header |
 | ```jst_xh_header(type, pin_count, right_angle=false, colour, pin_colour)``` | Draw JST XH connector |
 | ```pin(type, length = undef)``` | Draw a header pin |
-| ```pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false)``` | Draw pin header |
-| ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false)``` | Draw pin socket |
+| ```pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false, colour)``` | Draw pin header |
+| ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false, colour)``` | Draw pin socket |
 
 ![pin_headers](tests/png/pin_headers.png)
 
