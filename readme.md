@@ -1131,7 +1131,8 @@ KP pillow block bearings
 | ---:|:--- |:---|
 |   1 | ```kp_pillow_block(KP000)``` |  KP000 pillow block |
 |   1 | ```kp_pillow_block(KP001)``` |  KP001 pillow block |
-|   1 | ```kp_pillow_block(KP08)``` |  KP08 pillow block |
+|   1 | ```kp_pillow_block(KP08_15)``` |  KP08 pillow block (15mm variant)|
+|   1 | ```kp_pillow_block(KP08_18)``` |  KP08 pillow block (18mm variant)|
 |   2 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   2 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
 |   2 | ```nut(M5_nut, nyloc = undef)``` |  Nut M5 x 4mm  |
