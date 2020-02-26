@@ -601,7 +601,7 @@ module flat_flex(cutout = false) { //! Draw flat flexistrip connector as used on
     }
 }
 
-module terminal_35(ways) { //! Draw 3.5mm terminal block
+module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
     vitamin(str("terminal_35(", ways, "): Terminal block ", ways, " way 3.5mm"));
     pitch = 3.5;
     width = ways * pitch;
@@ -619,7 +619,7 @@ module terminal_35(ways) { //! Draw 3.5mm terminal block
 
     module single() {
         screw_r = 1;
-        color("blue") {
+        color(colour) {
             rotate([90, 0, 0])
                 linear_extrude(height = pitch, center = true)
                     polygon(points = [
@@ -757,11 +757,11 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "D_plug")) if(!cutouts) translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
         if(show(comp, "molex_hdr")) if(!cutouts) molex_254(comp[4]);
         if(show(comp, "jst_xh")) if(!cutouts) jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
-        if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5]);
+        if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5], param(6,"lime"));
         if(show(comp, "gterm")) if(!cutouts) green_terminal(comp[4], comp[5], comp[6], param(7,"lime"));
-        if(show(comp, "gterm35")) if(!cutouts) green_terminal(gt_3p5, comp[4], comp[5]);
-        if(show(comp, "gterm635")) if(!cutouts) green_terminal(gt_6p35, comp[4], comp[5]);
-        if(show(comp, "term35")) if(!cutouts) terminal_35(comp[4]);
+        if(show(comp, "gterm35")) if(!cutouts) green_terminal(gt_3p5, comp[4], comp[5], param(6,"lime"));
+        if(show(comp, "gterm635")) if(!cutouts) green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
+        if(show(comp, "term35")) if(!cutouts) terminal_35(comp[4], param(5,"blue"));
         if(show(comp, "transition")) if(!cutouts) idc_transition(2p54header, comp[4], comp[5]);
         if(show(comp, "block"))
             color(comp[7]) if(!cutouts) translate_z(comp[6] / 2) cube([comp[4], comp[5], comp[6]], center = true);
