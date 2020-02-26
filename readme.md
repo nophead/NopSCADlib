@@ -1131,14 +1131,15 @@ KP pillow block bearings
 | ---:|:--- |:---|
 |   1 | ```kp_pillow_block(KP000)``` |  KP000 pillow block |
 |   1 | ```kp_pillow_block(KP001)``` |  KP001 pillow block |
-|   1 | ```kp_pillow_block(KP08_15)``` |  KP08 pillow block (15mm variant)|
-|   1 | ```kp_pillow_block(KP08_18)``` |  KP08 pillow block (18mm variant)|
+|   1 | ```kp_pillow_block(KP08_15)``` |  KP08_15 pillow block |
+|   1 | ```kp_pillow_block(KP08_18)``` |  KP08_18 pillow block |
+|   2 | ```sliding_t_nut(M4_hammer_nut)``` |  Nut M4 hammer |
 |   2 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   2 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
 |   2 | ```nut(M5_nut, nyloc = undef)``` |  Nut M5 x 4mm  |
-|   2 | ```screw(M4_cap_screw, 10)``` |  Screw M4 cap x 10mm |
+|   4 | ```screw(M4_cap_screw, 10)``` |  Screw M4 cap x 10mm |
 |   4 | ```screw(M5_cap_screw, 12)``` |  Screw M5 cap x 12mm |
-|   2 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
+|   4 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 |   6 | ```washer(M5_washer)``` |  Washer  M5 x 10mm x 1mm |
 
 
