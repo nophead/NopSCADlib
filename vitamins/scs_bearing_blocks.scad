@@ -21,9 +21,8 @@
 // SCS bearing blocks
 //
 
-include <NopSCADlib/core.scad>
-include <NopSCADlib/vitamins/screws.scad>
-include <NopSCADlib/vitamins/linear_bearings.scad>
+include <screws.scad>
+include <linear_bearings.scad>
 
 //                        T  h   E   W   L   F     G   B     C   K     S1            S2   L1  LB
 SCS6UU    = ["SCS6UU",    6,  9, 15, 30, 25, 18,   15, 20,   15, 5,    M4_cap_screw, 3.4,  8, LM6UU];

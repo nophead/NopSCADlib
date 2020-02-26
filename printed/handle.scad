@@ -22,7 +22,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 
 dia = 18;
 length = 90; // inside length

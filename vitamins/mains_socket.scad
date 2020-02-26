@@ -23,7 +23,7 @@
 include <../core.scad>
 include <screws.scad>
 include <ring_terminals.scad>
-include <inserts.scad>
+use <insert.scad>
 
 function mains_socket_width(type)  = type[1]; //! Width at the base
 function mains_socket_depth(type)  = type[2]; //! Depth at the base

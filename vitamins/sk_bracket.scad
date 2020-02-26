@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -122,4 +122,3 @@ module sk_bracket_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, 
                     sliding_t_nut(nut_type);
     }
 }
-

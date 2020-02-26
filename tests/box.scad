@@ -20,7 +20,7 @@ include <../core.scad>
 
 include <../vitamins/screws.scad>
 include <../vitamins/sheets.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 
 use <../printed/box.scad>
 

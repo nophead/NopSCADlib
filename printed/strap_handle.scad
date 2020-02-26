@@ -23,7 +23,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 
 strap = [18, 2, M3_pan_screw, 3, 25];
 function strap() = strap;

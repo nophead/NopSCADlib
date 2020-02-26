@@ -32,7 +32,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/maths.scad>
 

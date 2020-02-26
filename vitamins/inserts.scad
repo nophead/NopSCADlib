@@ -36,8 +36,4 @@ F1BM4   = [ "F1BM4",   8.2, 6.3, 5.6, 4,   5.15, 2.3, 6.0, 5.55 ];
 
 inserts = [ F1BM2, F1BM2p5, F1BM3, F1BM4 ];
 
-function screw_insert(screw, i = 0) = let(d = screw_radius(screw) * 2)
-     i >= len(inserts) ? undef
-                       : insert_screw_diameter(inserts[i]) == d ? inserts[i]
-                                                                : screw_insert(screw, i + 1);
 use <insert.scad>

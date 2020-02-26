@@ -23,7 +23,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 
 foot        = [25, 12, 3, 2, M4_cap_screw, 10];
 insert_foot = [20, 10, 0, 2, M3_cap_screw, 10];

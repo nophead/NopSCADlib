@@ -34,14 +34,12 @@ include <vitamins/components.scad>
 include <vitamins/hot_ends.scad>
 include <vitamins/tubings.scad>
 include <vitamins/zipties.scad>
-include <vitamins/linear_bearings.scad>
+include <vitamins/scs_bearing_blocks.scad>
 include <vitamins/rod.scad>
 include <vitamins/leadnuts.scad>
 include <vitamins/bulldogs.scad>
 include <vitamins/pillars.scad>
 include <vitamins/psus.scad>
-include <vitamins/iecs.scad>
-include <vitamins/rockers.scad>
 include <vitamins/ssrs.scad>
 include <vitamins/d_connectors.scad>
 include <vitamins/buttons.scad>
@@ -55,7 +53,6 @@ include <vitamins/transformers.scad>
 include <vitamins/variacs.scad>
 include <vitamins/springs.scad>
 include <vitamins/batteries.scad>
-include <vitamins/microswitches.scad>
 include <vitamins/ball_bearings.scad>
 include <vitamins/light_strips.scad>
 include <vitamins/spools.scad>
@@ -64,7 +61,6 @@ include <vitamins/ldrs.scad>
 include <vitamins/geared_steppers.scad>
 include <vitamins/extrusions.scad>
 include <vitamins/sk_brackets.scad>
-include <vitamins/scs_bearing_blocks.scad>
 
 use <vitamins/jack.scad>
 use <vitamins/meter.scad>

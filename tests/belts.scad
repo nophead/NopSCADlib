@@ -20,8 +20,8 @@ include <../core.scad>
 
 include <../vitamins/belts.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
 include <../vitamins/pulleys.scad>
+use <../vitamins/insert.scad>
 use <../utils/layout.scad>
 
 module belt_test() {

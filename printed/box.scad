@@ -35,8 +35,7 @@ include <../core.scad>
 use <../vitamins/sheet.scad>
 use <../vitamins/screw.scad>
 use <../vitamins/washer.scad>
-
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 use <../utils/quadrant.scad>
 
 bezel_clearance = 0.2;

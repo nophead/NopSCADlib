@@ -22,7 +22,7 @@
 //
 include <../core.scad>
 use <pcb.scad>
-include <../vitamins/screws.scad>
+include <screws.scad>
 
 function vero_assembly(type)       = type[1];   //! Name of the assembly
 function vero_holes(type)          = type[2];   //! Number of holes in each strip

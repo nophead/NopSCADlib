@@ -23,7 +23,7 @@
 include <../core.scad>
 include <../vitamins/mains_sockets.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 include <../vitamins/ring_terminals.scad>
 
 box_height = 19;

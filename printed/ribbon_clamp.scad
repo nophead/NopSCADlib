@@ -22,7 +22,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 use <../vitamins/cable_strip.scad>
 
 wall = 2;

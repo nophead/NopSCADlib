@@ -23,7 +23,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 
 use <../vitamins/wire.scad>
 use <../vitamins/ssr.scad>

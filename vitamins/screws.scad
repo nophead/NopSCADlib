@@ -20,7 +20,6 @@
 //
 // Screws
 //
-include <washers.scad>
 include <nuts.scad>
 
 No2_pilot_radius = 1.7 / 2;       // self tapper into ABS
@@ -119,7 +118,7 @@ screw_lists = [
 
 use <screw.scad>
 
-screws = [for(list = screw_lists) for(screw = list) screw];
+screws = [for(list = screw_lists) each list];
 
 function find_screw(type, size, i = 0) =
     i >= len(screws) ? undef

@@ -25,7 +25,7 @@ use <screw.scad>
 use <nut.scad>
 use <washer.scad>
 use <spade.scad>
-include <inserts.scad>
+use <insert.scad>
 
 function iec_part(type)     = type[1];  //! Description
 function iec_screw(type)    = type[2];  //! Screw type

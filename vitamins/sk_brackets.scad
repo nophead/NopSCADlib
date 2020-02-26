@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -21,8 +21,7 @@
 // SK shaft support brackets
 //
 
-include <../core.scad>
-include <../vitamins/screws.scad>
+include <screws.scad>
 
 //               d   h   E   W   L   F    G   P   B    S  bolthole
 SK8  = ["SK8",   8, 20, 21, 42, 14, 32.8, 6, 18, 32, 5.5, M5_clearance_radius];
@@ -32,4 +31,3 @@ SK16 = ["SK16", 16, 27, 24, 48, 16, 44.0, 8, 25, 38, 5.5, M5_clearance_radius];
 
 sk_brackets = [SK8,  SK10, SK12, SK16];
 use <sk_bracket.scad>
-

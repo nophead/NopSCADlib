@@ -32,7 +32,7 @@
 //
 include <../core.scad>
 include <../vitamins/screws.scad>
-include <../vitamins/inserts.scad>
+use <../vitamins/insert.scad>
 use <../utils/maths.scad>
 
 def_screw = M3_cap_screw;

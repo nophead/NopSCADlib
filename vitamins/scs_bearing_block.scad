@@ -22,11 +22,11 @@
 //
 
 
-include <NopSCADlib/core.scad>
-use <NopSCADlib/vitamins/screw.scad>
-use <NopSCADlib/vitamins/nut.scad>
-use <NopSCADlib/vitamins/washer.scad>
-use <NopSCADlib/vitamins/linear_bearing.scad>
+include <../core.scad>
+use <screw.scad>
+use <nut.scad>
+use <washer.scad>
+use <linear_bearing.scad>
 
 function scs_size(type)                 = [type[4],type[6],type[5]]; //! Size of scs bracket bounding block
 function scs_hole_offset(type)          = type[2]; //! Offset of bearing hole from base of block

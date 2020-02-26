@@ -25,6 +25,7 @@ include <../core.scad>
 use <washer.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/thread.scad>
+include <inserts.scad>
 
 function screw_head_type(type)        = type[2];     //! Head style hs_cap, hs_pan, hs_cs, hs_hex, hs_grub, hs_cs_cap, hs_dome
 function screw_radius(type)           = type[3] / 2; //! Nominal radius
@@ -57,6 +58,11 @@ function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns longes
                                  5;
 
 function screw_smaller_than(d) = d >= 2.5 && d < 3 ? 2.5 : floor(d); // Largest diameter screw less than or equal to specified diameter
+
+function screw_insert(screw, i = 0) = let(d = screw_radius(screw) * 2)
+     i >= len(inserts) ? undef
+                       : insert_screw_diameter(inserts[i]) == d ? inserts[i]
+                                                                : screw_insert(screw, i + 1);
 
 module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified screw, optionally hobbed or nylon
     description = str("Screw ", nylon ? "Nylon " : "", type[1], length < 10 ? " x  " : " x ", length, "mm", hob_point ? str(", hobbed at ", hob_point) : "");
