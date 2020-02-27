@@ -33,6 +33,7 @@ use <tests/components.scad>
 use <tests/d_connectors.scad>
 use <tests/displays.scad>
 use <tests/extrusions.scad>
+use <tests/extrusion_brackets.scad>
 use <tests/fans.scad>
 use <tests/fuseholder.scad>
 use <tests/geared_steppers.scad>
@@ -40,6 +41,7 @@ use <tests/hot_ends.scad>
 use <tests/iecs.scad>
 use <tests/inserts.scad>
 use <tests/jack.scad>
+use <tests/kp_pillow_blocks.scad>
 use <tests/leadnuts.scad>
 use <tests/leds.scad>
 use <tests/ldrs.scad>
@@ -60,8 +62,10 @@ use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
 use <tests/screws.scad>
+use <tests/scs_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
 use <tests/sheets.scad>
+use <tests/sk_brackets.scad>
 use <tests/spades.scad>
 use <tests/springs.scad>
 use <tests/ssrs.scad>
@@ -94,7 +98,13 @@ use <tests/psu_shroud.scad>
 use <tests/flat_hinge.scad>
 use <tests/pcb_mount.scad>
 
-x5 = 800;
+x0 = 0;
+x1 = x0 + 100;
+x2 = x1 + 90;
+x3 = x2 + 130;
+x4 = x3 + 200;
+x5 = 850;
+x6 = x5 + 150;
 
 cable_grommets_y = 0;
 
@@ -133,13 +143,12 @@ translate([x5 + 60, cable_grommets_y + 200])
 translate([x5, cable_grommets_y + 250])
     handle();
 
-translate([900, 600])
+translate([950, 600])
     box_test();
 
 translate([850, 1260])
     bbox_test();
 
-x0 = 0;
 inserts_y = 0;
 nuts_y = inserts_y + 20;
 washers_y = nuts_y + 100;
@@ -204,10 +213,6 @@ translate([x0, linear_bearings_y]) {
     rods();
 }
 
-translate([x0+150, linear_bearings_y+30]) {
-    extrusions();
-}
-
 translate([x0 + 10, hot_ends_y])
     hot_ends();
 
@@ -236,7 +241,6 @@ translate([x0, psus_y]) {
     psu_shrouds();
 }
 
-x1 = x0 + 100;
 zipties_y = 0;
 bulldogs_y = zipties_y + 40;
 
@@ -246,7 +250,6 @@ translate([x1, zipties_y])
 translate([x1, bulldogs_y])
     bulldogs();
 
-x2 = x1 + 90;
 leds_y = 0;
 carriers_y = leds_y + 40;
 spades_y = carriers_y + 40;
@@ -293,8 +296,6 @@ translate([x2, toggles_y])
 translate([x2, components_y])
     components();
 
-
-x3 = x2 + 150;
 veroboard_y = 0;
 d_connectors_y = veroboard_y + 110;
 iecs_y = d_connectors_y + 80;
@@ -303,6 +304,7 @@ ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
 batteries_y = blowers_y + 100;
 steppers_y = batteries_y + 70;
+extrusions_y = steppers_y + 100;
 
 translate([x3, veroboard_y])
     veroboard_test();
@@ -343,16 +345,22 @@ translate([x3, batteries_y])
 translate([x2, steppers_y])  // interloper
     stepper_motors();
 
+translate([x2, extrusions_y]) {
+    extrusions();
+}
+
 translate([x3, transformers_y])
     transformers();
 
 
-x4 = x3 + 220;
 belts_y = 0;
 rails_y = belts_y + 200;
-cable_strips_y = rails_y + 300;
+extrusion_brackets_y = rails_y + 250;
+sk_brackets_y = extrusion_brackets_y + 80;
+kp_pillow_blocks_y = sk_brackets_y + 50;
+scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
 
-translate([x4 + 112, belts_y + 58]) {
+translate([x4 + 130, belts_y + 58]) {
     belt_test();
 
     translate([0, 60])
@@ -362,9 +370,22 @@ translate([x4 + 112, belts_y + 58]) {
 translate([x4, rails_y + 130])
     rails();
 
-translate([x4, cable_strips_y])
-    cable_strips();
+translate([780, 0])
+    rotate(90)
+        cable_strips();
 
-x6 = x5 + 150;
+translate([x4, kp_pillow_blocks_y])
+    kp_pillow_blocks();
+
+translate([x4, sk_brackets_y])
+    sk_brackets();
+
+translate([x4, extrusion_brackets_y])
+    extrusion_brackets();
+
+translate([x4, scs_bearing_blocks_y])
+    scs_bearing_blocks();
+
+
 translate([x6, 125])
     light_strips();

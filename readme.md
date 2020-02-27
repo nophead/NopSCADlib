@@ -626,10 +626,10 @@ Brackets for joining extrusions at a corner.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```extrusion(E2020, 20, false)``` |  Extrusion E2020 x 20mm |
-|   1 | ```extrusion(E2020, 30, false)``` |  Extrusion E2020 x 30mm |
-|   1 | ```extrusion(E2020, 40, false)``` |  Extrusion E2020 x 40mm |
-|   1 | ```extrusion(E2020, 50, false)``` |  Extrusion E2020 x 50mm |
+|   1 | ```extrusion(E2020, 20)``` |  Extrusion E2020 x 20mm |
+|   1 | ```extrusion(E2020, 30)``` |  Extrusion E2020 x 30mm |
+|   1 | ```extrusion(E2020, 40)``` |  Extrusion E2020 x 40mm |
+|   1 | ```extrusion(E2020, 50)``` |  Extrusion E2020 x 50mm |
 |   2 | ```extrusion_corner_bracket(E20_corner_bracket)``` |  Extrusion corner bracket 20 |
 |   2 | ```extrusion_inner_corner_bracket(E20_inner_corner_bracket, true)``` |  Extrusion inner corner bracket 4.5 |
 |   1 | ```extrusion_inner_corner_bracket(E20_inner_corner_bracket, false)``` |  Extrusion inner corner bracket 4.5 |
@@ -669,21 +669,21 @@ Aluminium  extrusion.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```extrusion(type, length, center = false, cornerHole = false)``` | Draw the specified extrusion |
+| ```extrusion(type, length, center = true, cornerHole = false)``` | Draw the specified extrusion |
 
 ![extrusions](tests/png/extrusions.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```extrusion(E2020, 80, false)``` |  Extrusion E2020 x 80mm |
-|   1 | ```extrusion(E2040, 80, false)``` |  Extrusion E2040 x 80mm |
-|   1 | ```extrusion(E2060, 80, false)``` |  Extrusion E2060 x 80mm |
-|   1 | ```extrusion(E2080, 80, false)``` |  Extrusion E2080 x 80mm |
-|   1 | ```extrusion(E3030, 80, false)``` |  Extrusion E3030 x 80mm |
-|   1 | ```extrusion(E3060, 80, false)``` |  Extrusion E3060 x 80mm |
-|   1 | ```extrusion(E4040, 80, false)``` |  Extrusion E4040 x 80mm |
-|   1 | ```extrusion(E4080, 80, false)``` |  Extrusion E4080 x 80mm |
+|   1 | ```extrusion(E2020, 80)``` |  Extrusion E2020 x 80mm |
+|   1 | ```extrusion(E2040, 80)``` |  Extrusion E2040 x 80mm |
+|   1 | ```extrusion(E2060, 80)``` |  Extrusion E2060 x 80mm |
+|   1 | ```extrusion(E2080, 80)``` |  Extrusion E2080 x 80mm |
+|   1 | ```extrusion(E3030, 80)``` |  Extrusion E3030 x 80mm |
+|   1 | ```extrusion(E3060, 80)``` |  Extrusion E3060 x 80mm |
+|   1 | ```extrusion(E4040, 80)``` |  Extrusion E4040 x 80mm |
+|   1 | ```extrusion(E4080, 80)``` |  Extrusion E4080 x 80mm |
 
 
 <a href="#top">Top</a>
@@ -2008,15 +2008,13 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```pcb(RPI0)``` |  Raspberry Pi Zero |
 |  16 | ```screw(M2_cap_screw, 25)``` |  Screw M2 cap x 25mm |
 |   4 | ```screw(M2p5_cap_screw, 16)``` |  Screw M2.5 cap x 16mm |
-|   8 | ```screw(M2p5_cap_screw, 20)``` |  Screw M2.5 cap x 20mm |
-|   4 | ```screw(M2p5_cap_screw, 35)``` |  Screw M2.5 cap x 35mm |
-|   8 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
-|   4 | ```screw(M2p5_pan_screw, 25)``` |  Screw M2.5 pan x 25mm |
+|  12 | ```screw(M2p5_cap_screw, 20)``` |  Screw M2.5 cap x 20mm |
+|   4 | ```screw(M2p5_pan_screw, 20)``` |  Screw M2.5 pan x 20mm |
+|   8 | ```screw(M2p5_pan_screw, 25)``` |  Screw M2.5 pan x 25mm |
 |   4 | ```screw(M2p5_pan_screw, 35)``` |  Screw M2.5 pan x 35mm |
 |   8 | ```screw(M3_cap_screw, 30)``` |  Screw M3 cap x 30mm |
 |   4 | ```screw(M3_cap_screw, 35)``` |  Screw M3 cap x 35mm |
-|   4 | ```screw(M4_cap_screw, 30)``` |  Screw M4 cap x 30mm |
-|   8 | ```screw(M4_cap_screw, 35)``` |  Screw M4 cap x 35mm |
+|  12 | ```screw(M4_cap_screw, 35)``` |  Screw M4 cap x 35mm |
 |   3 | ```terminal_35(2)``` |  Terminal block 2 way 3.5mm |
 |   2 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead |
@@ -2029,24 +2027,24 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   4 | pcb_spacer20130.stl |
 |   4 | pcb_spacer20140.stl |
 |   4 | pcb_spacer20150.stl |
 |   4 | pcb_spacer20160.stl |
-|   4 | pcb_spacer25100_2.stl |
+|   4 | pcb_spacer20170.stl |
+|   4 | pcb_spacer25100.stl |
 |   4 | pcb_spacer25110_2.stl |
 |   4 | pcb_spacer25120_2.stl |
-|   4 | pcb_spacer25230.stl |
+|   4 | pcb_spacer25130_2.stl |
 |   4 | pcb_spacer25240.stl |
-|   4 | pcb_spacer2570.stl |
+|   4 | pcb_spacer2550.stl |
 |   4 | pcb_spacer2580.stl |
 |   4 | pcb_spacer2590.stl |
-|   4 | pcb_spacer30170.stl |
 |   4 | pcb_spacer30180.stl |
-|   4 | pcb_spacer30220.stl |
-|   4 | pcb_spacer40190.stl |
+|   4 | pcb_spacer30190.stl |
+|   4 | pcb_spacer30230.stl |
 |   4 | pcb_spacer40200.stl |
 |   4 | pcb_spacer40210.stl |
+|   4 | pcb_spacer40220.stl |
 
 
 <a href="#top">Top</a>
@@ -2603,6 +2601,9 @@ Machine screws and wood screws with various head styles.
 ---
 <a name="Scs_bearing_blocks"></a>
 ## Scs_bearing_blocks
+SCSnUU and SCSnLUU bearing blocks
+
+
 [vitamins/scs_bearing_blocks.scad](vitamins/scs_bearing_blocks.scad) Object definitions.
 
 [vitamins/scs_bearing_block.scad](vitamins/scs_bearing_block.scad) Implementation.
@@ -2784,8 +2785,8 @@ SK shaft support brackets
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | ```extrusion(E2020, 20, false)``` |  Extrusion E2020 x 20mm |
-|   2 | ```extrusion(E3030, 20, false)``` |  Extrusion E3030 x 20mm |
+|   2 | ```extrusion(E2020, 20)``` |  Extrusion E2020 x 20mm |
+|   2 | ```extrusion(E3030, 20)``` |  Extrusion E3030 x 20mm |
 |   2 | ```sliding_t_nut(M4_hammer_nut)``` |  Nut M4 hammer |
 |   2 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   2 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |

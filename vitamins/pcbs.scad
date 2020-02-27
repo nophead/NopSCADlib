@@ -352,6 +352,6 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     []];
 
 
-pcbs = [ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591, RAMPSEndstop];
+pcbs = [RAMPSEndstop, ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
 
 use <pcb.scad>

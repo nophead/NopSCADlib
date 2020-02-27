@@ -23,7 +23,7 @@ include <../vitamins/extrusions.scad>
 include <../vitamins/washers.scad>
 include <../vitamins/nuts.scad>
 
-module extrusion_brackets() {
+module extrusion_brackets(examples = false) {
     extrusion_inner_corner_bracket(E20_inner_corner_bracket);
 
     translate([30, 0])
@@ -34,27 +34,32 @@ module extrusion_brackets() {
 
     eWidth = extrusion_width(E2020);
 
-    translate([0, 60]) {
-        extrusion_inner_corner_bracket(E20_inner_corner_bracket);
-        translate([-eWidth / 2, 0, 0])
-            rotate([-90, 0, 0])
-                extrusion(E2020, 20);
-        translate([-eWidth, -eWidth / 2, 0])
-            rotate([0, 90, 0])
-                extrusion(E2020, 40);
-    }
+    if(examples) {
+        translate([20, 60, 10]) rotate([90, 0, 180]) {
+            extrusion_inner_corner_bracket(E20_inner_corner_bracket);
 
-    translate([60, 60]) {
-        extrusion_corner_bracket_assembly(E20_corner_bracket);
-        translate([-eWidth / 2, 0, 0])
-            rotate([-90, 0, 0])
-                extrusion(E2020, 30);
-        translate([-eWidth, -eWidth / 2, 0])
-            rotate([0, 90, 0])
-                extrusion(E2020, 50);
+            translate([-eWidth / 2, 0, 0])
+                rotate([-90, 0, 0])
+                    extrusion(E2020, 20, false);
+
+            translate([-eWidth, -eWidth / 2, 0])
+                rotate([0, 90, 0])
+                    extrusion(E2020, 40, false);
+        }
+
+        translate([100, 60, 10]) rotate([90, 0, 180]) {
+            extrusion_corner_bracket_assembly(E20_corner_bracket);
+
+            translate([-eWidth / 2, 0, 0])
+                rotate([-90, 0, 0])
+                    extrusion(E2020, 30, false);
+
+            translate([-eWidth, -eWidth / 2, 0])
+                rotate([0, 90, 0])
+                    extrusion(E2020, 50, false);
+        }
     }
 }
 
 if($preview)
-    let($show_threads = true)
-        extrusion_brackets();
+    extrusion_brackets(true);

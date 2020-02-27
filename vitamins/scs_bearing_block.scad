@@ -18,7 +18,7 @@
 //
 
 //
-// SCSnUU and SCSnLUU bearing blocks
+//! SCSnUU and SCSnLUU bearing blocks
 //
 
 

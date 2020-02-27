@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 include <../vitamins/scs_bearing_blocks.scad>
 
 module scs_bearing_blocks()
-    layout([for(s = scs_bearing_blocks) 2 * scs_size(s)[0]]) {
+    layout([for(s = scs_bearing_blocks) scs_size(s).x], 10) {
         part_thickness = 5;
         scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
 
