@@ -240,7 +240,7 @@ def views(target, do_assemblies = None):
                 print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
             print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
 
-            print(('|--:' * len(flat_bom) + '|--:|:--|'), file = doc_file)
+            print(('|---:' * len(flat_bom) + '|---:|:---|'), file = doc_file)
 
             for t in types:
                 if things[t]:
@@ -283,7 +283,7 @@ def views(target, do_assemblies = None):
                 if vitamins:
                     print("### Vitamins",         file = doc_file)
                     print("|Qty|Description|",    file = doc_file)
-                    print("|--:|:----------|",    file = doc_file)
+                    print("|---:|:----------|",    file = doc_file)
                     for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
                         print("|%d|%s|" % (vitamins[v], v.split(":")[1]),     file = doc_file)
                     print("\n", file = doc_file)
@@ -297,7 +297,7 @@ def views(target, do_assemblies = None):
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p], p), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(printed) - 1:
                             n = (i % 3) + 1
-                            print('\n|%s' % ('--|' * n), file =  doc_file)
+                            print('\n|%s' % ('---|' * n), file =  doc_file)
                             for j in range(n):
                                 part = keys[i - n + j + 1]
                                 print('| ![%s](stls/%s) %s' % (part, part.replace('.stl','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
@@ -313,7 +313,7 @@ def views(target, do_assemblies = None):
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r], r), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(routed) - 1:
                             n = (i % 3) + 1
-                            print('\n|%s' % ('--|' * n), file =  doc_file)
+                            print('\n|%s' % ('---|' * n), file =  doc_file)
                             for j in range(n):
                                 part = keys[i - n + j + 1]
                                 print('| ![%s](dxfs/%s) %s' % (part, part.replace('.dxf','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
@@ -329,7 +329,7 @@ def views(target, do_assemblies = None):
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', sub_assemblies[a], a), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(keys) - 1:
                             n = (i % 3) + 1
-                            print('\n|%s' % ('--|' * n), file =  doc_file)
+                            print('\n|%s' % ('---|' * n), file =  doc_file)
                             for j in range(n):
                                 a = keys[i - n + j + 1].replace('_assembly', '_assembled')
                                 print('| ![%s](assemblies/%s) %s' % (a, a + '_tn.png', '|\n' if j == j - 1 else ''), end = '', file = doc_file)

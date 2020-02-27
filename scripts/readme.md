@@ -5,7 +5,7 @@ These are located in the ```scripts``` subdirectory, which needs to be added to 
 They should work with both Python 2 and Python 3.
 
 | Script  | Function  |
-|:--|:--|
+|:---|:---|
 | ```bom.py``` | Generates BOM files for the project. |
 | ```c14n_stl.py``` | OpenSCAD produces randomly ordered STL files. This script re-orders them consistently so that GIT can tell if they have changed or not. |
 | ```doc_scripts.py``` | Makes this document and doc/usage.md. |

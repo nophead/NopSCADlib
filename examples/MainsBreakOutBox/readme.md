@@ -30,7 +30,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 <a name="Parts_list"></a>
 ## Parts list
 | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Base</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Feet</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Mains&nbsp;In</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Main</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |
-|--:|--:|--:|--:|--:|:--|
+|---:|---:|---:|---:|---:|:---|
 |  |  |  |  | | **Vitamins** |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket blue |
 | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket brown |
@@ -61,14 +61,14 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ## Base Assembly
 ### Vitamins
 |Qty|Description|
-|--:|:----------|
+|---:|:----------|
 |2| Heatfit insert M3|
 
 
 ### 3D Printed parts
 
 | 1 x socket_box.stl |
-|--|
+|---|
 | ![socket_box.stl](stls/socket_box.png) 
 
 
@@ -88,7 +88,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ## Feet Assembly
 ### Vitamins
 |Qty|Description|
-|--:|:----------|
+|---:|:----------|
 |4| Nut M3 x 2.4mm nyloc|
 |4| Screw M3 dome x 10mm|
 |8| Washer  M3 x 7mm x 0.5mm|
@@ -97,7 +97,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### 3D Printed parts
 
 | 4 x foot.stl |
-|--|
+|---|
 | ![foot.stl](stls/foot.png) 
 
 
@@ -105,7 +105,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### Sub-assemblies
 
 | 1 x base_assembly |
-|--|
+|---|
 | ![base_assembled](assemblies/base_assembled_tn.png) 
 
 
@@ -124,7 +124,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ## Mains In Assembly
 ### Vitamins
 |Qty|Description|
-|--:|:----------|
+|---:|:----------|
 |3| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
 |1| IEC inlet for ATX|
 |2| Nut M3 x 2.4mm nyloc|
@@ -138,7 +138,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### Sub-assemblies
 
 | 1 x feet_assembly |
-|--|
+|---|
 | ![feet_assembled](assemblies/feet_assembled_tn.png) 
 
 
@@ -163,7 +163,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ## Main Assembly
 ### Vitamins
 |Qty|Description|
-|--:|:----------|
+|---:|:----------|
 |2| 4mm shielded jack socket blue|
 |1| 4mm shielded jack socket brown|
 |2| 4mm shielded jack socket green|
@@ -178,7 +178,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ### Sub-assemblies
 
 | 1 x mains_in_assembly |
-|--|
+|---|
 | ![mains_in_assembled](assemblies/mains_in_assembled_tn.png) 
 
 

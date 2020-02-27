@@ -40,7 +40,7 @@ These are located in the ```scripts``` subdirectory, which needs to be added to 
 They should work with both Python 2 and Python 3.
 
 | Script  | Function  |
-|:--|:--|''', file = doc_file)
+|:---|:---|''', file = doc_file)
         for file in os.listdir('scripts'):
             if file.endswith('.py'):
                 blurb = ''
