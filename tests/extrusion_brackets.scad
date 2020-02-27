@@ -38,20 +38,20 @@ module extrusion_brackets() {
         extrusion_inner_corner_bracket(E20_inner_corner_bracket);
         translate([-eWidth / 2, 0, 0])
             rotate([-90, 0, 0])
-                extrusion(E2020, 20);
+                extrusion(E2020, 20, center = false);
         translate([-eWidth, -eWidth / 2, 0])
             rotate([0, 90, 0])
-                extrusion(E2020, 40);
+                extrusion(E2020, 40, center = false);
     }
 
     translate([60, 60]) {
         extrusion_corner_bracket_assembly(E20_corner_bracket);
         translate([-eWidth / 2, 0, 0])
             rotate([-90, 0, 0])
-                extrusion(E2020, 30);
+                extrusion(E2020, 30, center = false);
         translate([-eWidth, -eWidth / 2, 0])
             rotate([0, 90, 0])
-                extrusion(E2020, 50);
+                extrusion(E2020, 50, center = false);
     }
 }
 

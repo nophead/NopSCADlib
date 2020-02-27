@@ -31,7 +31,7 @@ module sk_brackets() {
         sk_bracket_assembly(sk_brackets[$i], screw_type = screws[$i], nut_type = nuts[$i], max_screw_depth = depths[$i]);
         translate([0, -sk_hole_offset(sk_brackets[$i]) - extrusion_width($i < 2 ? E2020 : E3030) / 2, 0])
             rotate([0, 90, 0])
-                extrusion($i < 2 ? E2020 : E3030, 20);
+                extrusion($i < 2 ? E2020 : E3030, 20, center = false);
     }
 }
 

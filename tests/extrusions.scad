@@ -23,7 +23,7 @@ include <../vitamins/extrusions.scad>
 
 module extrusions()
     layout([for(e = extrusions) extrusion_width(e)], 10)
-        extrusion(extrusions[$i], 80, false);
+        extrusion(extrusions[$i], 80, center = false);
 
 if ($preview)
     extrusions();
