@@ -351,7 +351,36 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     ],
     []];
 
+BigTreeTech_TFT35v3_0 = ["BigTreeTech_TFT35v3_0", "BigTreeTech TFT35 v3.0",
+    110, 55.77, 1.6, 0, 3, 0, "green",  false,
+    [ [-3.12, 3.17], [-3.12, -3.17], [3.12, -3.17], [3.12, 3.17] ],
+    [
+        // mock up an LCD screen
+        [  61,  28,    0, "-chip", 84, 54.5, 4, grey70 ],
+        [  61,  28,    0, "-chip", 80, 50, 4.1, "#0000cc" ],
+        [  10, 7.5,    0, "-button_6mm" ],
+        [  10,45.5,    0, "-buzzer", 4.5, 8 ],
+        [   9,  27,    0, "-potentiometer" ],
+        [ 102,28.82,   0, "uSD", [26.5, 16, 3] ],
+        [16.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
+        [36.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
+        [56.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
+        [82.5,   4,    0, "jst_xh", 5 ],
+        [26.5, 52.5, 180, "jst_xh", 2 ],
+        [39.5, 52.5, 180, "jst_xh", 3 ],
+        [52.5, 52.5, 180, "jst_xh", 3 ],
+        [65.5, 52.5, 180, "jst_xh", 3 ],
+        [78.5, 52.5, 180, "jst_xh", 3 ],
+        [94.5, 52.5, 180, "jst_xh", 5 ],
+        [   8, 42.4, 180, "usb_A" ],
+        [  97,   4,    0, "chip", 9, 3.5, 1, grey20 ],
+        // ESP-8266
+        [  23,  28.5,  90, "2p54socket", 4, 2 ],
+    ],
+    []
+];
 
-pcbs = [ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591, RAMPSEndstop];
+
+pcbs = [ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591, RAMPSEndstop, BigTreeTech_TFT35v3_0];
 
 use <pcb.scad>
