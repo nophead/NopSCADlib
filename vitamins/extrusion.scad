@@ -43,7 +43,7 @@ module extrusion_cross_section(type, cornerHole) {
         fillet = extrusion_fillet(type);
         cornerSize = (width-channelWidth)/2;
         cornerSquare = (width-extrusion_channel_width_internal(type))/2;
-        cornerHoleDiameter =extrusion_corner_hole(type);
+        cornerHoleDiameter = extrusion_corner_hole(type);
 
         translate([-width/2,-width/2]) {
             difference() {
@@ -57,7 +57,7 @@ module extrusion_cross_section(type, cornerHole) {
                     translate([fillet,fillet])
                         square([cornerSquare-fillet,cornerSquare-fillet]);
                 }
-                if(cornerHole)
+                if(cornerHole && cornerHoleDiameter > 0)
                     translate([cornerSquare/2,cornerSquare/2])
                         circle(d=cornerHoleDiameter);
             }
@@ -117,12 +117,12 @@ module extrusion_cross_section(type, cornerHole) {
                 extrusion_center_section(type);
 }
 
-module extrusion(type, length, cornerHole = false) { //! Draw the specified extrusion
+module extrusion(type, length, center = false, cornerHole = false) { //! Draw the specified extrusion
 
-    vitamin(str("extrusion(", type[0], ", ", length, "): Extrusion ", type[0], " x ", length, "mm"));
+    vitamin(str("extrusion(", type[0], ", ", length, ", ", center, "): Extrusion ", type[0], " x ", length, "mm"));
 
     color(grey90)
-        linear_extrude(height = length)
+        linear_extrude(length, center = center)
             extrusion_cross_section(type, cornerHole);
 }
 
