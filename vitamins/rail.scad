@@ -133,20 +133,36 @@ module rail(type, length) { //! Draw the specified rail
     vitamin(str("rail(", type[0], ", ", length, "): Linear rail ", type[0], " x ", length, "mm"));
 
     color(grey90) {
-        linear_extrude(height = height - rail_bore_depth(type)) difference() {
+        linear_extrude(height - rail_bore_depth(type)) difference() {
             square([length, width], center = true);
-
             rail_hole_positions(type, length)
                  circle(d = rail_hole(type));
         }
 
-        translate_z(rail_height(type) - rail_bore_depth(type))
-            linear_extrude(height = rail_bore_depth(type)) difference() {
-                square([length, width], center = true);
+        translate_z(rail_height(type) - rail_bore_depth(type)) {
+            h1 = rail_bore_depth(type) > 2 ? rail_bore_depth(type) / 3 : rail_bore_depth(type) / 2;
+            h0 = rail_bore_depth(type) > 2 ? (rail_bore_depth(type) - h1) / 2 : 0;
+            h2 = rail_bore_depth(type) - h1 - h0;
 
+            linear_extrude(h0) difference() {
+                square([length, width], center = true);
                 rail_hole_positions(type, length)
                      circle(d = rail_bore(type));
             }
+            translate_z(h0)
+                linear_extrude(h1) difference() {
+                    w1 = max(width - 2, rail_bore(type));
+                    square([length, w1], center = true);
+                    rail_hole_positions(type, length)
+                        circle(d = rail_bore(type));
+                }
+            translate_z(h0 + h1)
+                linear_extrude(h2) difference() {
+                    square([length, width], center = true);
+                    rail_hole_positions(type, length)
+                        circle(d = rail_bore(type));
+                }
+        }
     }
 }
 
