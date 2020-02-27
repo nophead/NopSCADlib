@@ -626,10 +626,10 @@ Brackets for joining extrusions at a corner.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```extrusion(E2020, 20)``` |  Extrusion E2020 x 20mm |
-|   1 | ```extrusion(E2020, 30)``` |  Extrusion E2020 x 30mm |
-|   1 | ```extrusion(E2020, 40)``` |  Extrusion E2020 x 40mm |
-|   1 | ```extrusion(E2020, 50)``` |  Extrusion E2020 x 50mm |
+|   1 | ```extrusion(E2020, 20, false)``` |  Extrusion E2020 x 20mm |
+|   1 | ```extrusion(E2020, 30, false)``` |  Extrusion E2020 x 30mm |
+|   1 | ```extrusion(E2020, 40, false)``` |  Extrusion E2020 x 40mm |
+|   1 | ```extrusion(E2020, 50, false)``` |  Extrusion E2020 x 50mm |
 |   2 | ```extrusion_corner_bracket(E20_corner_bracket)``` |  Extrusion corner bracket 20 |
 |   2 | ```extrusion_inner_corner_bracket(E20_inner_corner_bracket, true)``` |  Extrusion inner corner bracket 4.5 |
 |   1 | ```extrusion_inner_corner_bracket(E20_inner_corner_bracket, false)``` |  Extrusion inner corner bracket 4.5 |
@@ -669,21 +669,21 @@ Aluminium  extrusion.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```extrusion(type, length, cornerHole = false)``` | Draw the specified extrusion |
+| ```extrusion(type, length, center = false, cornerHole = false)``` | Draw the specified extrusion |
 
 ![extrusions](tests/png/extrusions.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```extrusion(E2020, 80)``` |  Extrusion E2020 x 80mm |
-|   1 | ```extrusion(E2040, 80)``` |  Extrusion E2040 x 80mm |
-|   1 | ```extrusion(E2060, 80)``` |  Extrusion E2060 x 80mm |
-|   1 | ```extrusion(E2080, 80)``` |  Extrusion E2080 x 80mm |
-|   1 | ```extrusion(E3030, 80)``` |  Extrusion E3030 x 80mm |
-|   1 | ```extrusion(E3060, 80)``` |  Extrusion E3060 x 80mm |
-|   1 | ```extrusion(E4040, 80)``` |  Extrusion E4040 x 80mm |
-|   1 | ```extrusion(E4080, 80)``` |  Extrusion E4080 x 80mm |
+|   1 | ```extrusion(E2020, 80, false)``` |  Extrusion E2020 x 80mm |
+|   1 | ```extrusion(E2040, 80, false)``` |  Extrusion E2040 x 80mm |
+|   1 | ```extrusion(E2060, 80, false)``` |  Extrusion E2060 x 80mm |
+|   1 | ```extrusion(E2080, 80, false)``` |  Extrusion E2080 x 80mm |
+|   1 | ```extrusion(E3030, 80, false)``` |  Extrusion E3030 x 80mm |
+|   1 | ```extrusion(E3060, 80, false)``` |  Extrusion E3060 x 80mm |
+|   1 | ```extrusion(E4040, 80, false)``` |  Extrusion E4040 x 80mm |
+|   1 | ```extrusion(E4080, 80, false)``` |  Extrusion E4080 x 80mm |
 
 
 <a href="#top">Top</a>
@@ -2784,8 +2784,8 @@ SK shaft support brackets
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | ```extrusion(E2020, 20)``` |  Extrusion E2020 x 20mm |
-|   2 | ```extrusion(E3030, 20)``` |  Extrusion E3030 x 20mm |
+|   2 | ```extrusion(E2020, 20, false)``` |  Extrusion E2020 x 20mm |
+|   2 | ```extrusion(E3030, 20, false)``` |  Extrusion E3030 x 20mm |
 |   2 | ```sliding_t_nut(M4_hammer_nut)``` |  Nut M4 hammer |
 |   2 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   2 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
