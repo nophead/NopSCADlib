@@ -2474,6 +2474,8 @@ Rocker switch. Also used for neon indicator in the same form factor.
 ## Rod
 Steel rods and studding with chamfered ends.
 
+These items are sysmtrical, so by default the origin is in the centre but it can be changed to the bottom.
+
 
 [vitamins/rod.scad](vitamins/rod.scad) Implementation.
 
@@ -2885,6 +2887,8 @@ Filament spool models
 ## Springs
 Compression springs. Can be tapered, have open, closed or ground ends. Ground ends will render a lot slower.
 
+By default springs have their origin at the bottom but can be centered.
+
 
 [vitamins/springs.scad](vitamins/springs.scad) Object definitions.
 
@@ -2913,7 +2917,7 @@ Compression springs. Can be tapered, have open, closed or ground ends. Ground en
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```comp_spring(type, l = 0)``` | Draw specified spring, l can be set to specify the compressed length. |
+| ```comp_spring(type, l = 0, center = false)``` | Draw specified spring, l can be set to specify the compressed length. |
 
 ![springs](tests/png/springs.png)
 

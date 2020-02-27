@@ -19,6 +19,8 @@
 
 //
 //! Compression springs. Can be tapered, have open, closed or ground ends. Ground ends will render a lot slower.
+//!
+//! By default springs have their origin at the bottom but can be centered.
 //
 include <../core.scad>
 
@@ -64,7 +66,7 @@ function comp_spring(type, l = 0) = //! Calculate the mesh for spring
         profile = circle_points(wire_d / 2 - eps, $fn = 16)
        ) concat(type, [concat(sweep(path, profile), [l])]);
 
-module comp_spring(type, l = 0) { //! Draw specified spring, l can be set to specify the compressed length.
+module comp_spring(type, l = 0, center = false) { //! Draw specified spring, l can be set to specify the compressed length.
     length = spring_length(type);
     closed = spring_closed(type);
     od = spring_od(type);
@@ -79,14 +81,17 @@ module comp_spring(type, l = 0) { //! Draw specified spring, l can be set to spe
 
     mesh = len(type) > 9 ? spring_mesh(type) : spring_mesh(comp_spring(type, l));
     assert(l == mesh[2], "can't change the length of a pre-generated spring");
-    color(spring_colour(type))
-        if(ground)
-            clip(zmin = 0, zmax = h)
+    len = l ? l : length;
+    translate_z(center ? - len / 2 : 0) {
+        color(spring_colour(type))
+            if(ground)
+                clip(zmin = 0, zmax = h)
+                    polyhedron(mesh[0], mesh[1]);
+            else
                 polyhedron(mesh[0], mesh[1]);
-        else
-            polyhedron(mesh[0], mesh[1]);
 
-    if($children)
-        translate_z(l)
-            children();
+        if($children)
+            translate_z(len)
+                children();
+    }
 }
