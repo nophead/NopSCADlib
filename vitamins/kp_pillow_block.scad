@@ -72,13 +72,16 @@ module kp_pillow_block(type) { //! Draw the KP pillow block
                 for(x = [- L / 2 + squareSizeX - fillet, L / 2 - squareSizeX + fillet - 2])
                     translate([x, 0, 0])
                         cube([2, H, A]);
-                stripLength = J - 2 * bolthole_radius;
-                stripThickness = 4;
-                translate([-stripLength / 2, 0, (H1 + stripThickness) / 2])
-                    cube([stripLength, H1, stripThickness]);
                 translate([0 , H, 0])
                     tube(H0 / 2, b / 2, A, center = false);
             }
+            stripThickness = 4;
+            translate([-H0 / 2, 0, -stripThickness / 2])
+                linear_extrude(stripThickness) difference() {
+                    square([H0, H]);
+                    translate([H0 / 2, H])
+                        circle(b / 2);
+                }
         }
 
     not_on_bom() no_explode()
