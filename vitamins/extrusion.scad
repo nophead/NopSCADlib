@@ -117,7 +117,7 @@ module extrusion_cross_section(type, cornerHole) {
                 extrusion_center_section(type);
 }
 
-module extrusion(type, length, center = false, cornerHole = false) { //! Draw the specified extrusion
+module extrusion(type, length, center = true, cornerHole = false) { //! Draw the specified extrusion
 
     vitamin(str("extrusion(", type[0], ", ", length, ", ", center, "): Extrusion ", type[0], " x ", length, "mm"));
 
