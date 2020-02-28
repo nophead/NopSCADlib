@@ -4333,23 +4333,25 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
-|   4 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
-|   4 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
-|   4 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
-|   2 | ```ziptie(small_ziptie, 3)``` |  Ziptie 2.5mm x 100mm min length |
+|   6 | ```insert(F1BM3)``` |  Heatfit insert M3 |
+|   6 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
+|   6 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|   6 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+|   3 | ```ziptie(small_ziptie, 3)``` |  Ziptie 2.5mm x 100mm min length |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
 |   1 | psu_shroud_PD_150_12.stl |
 |   1 | psu_shroud_S_250_48.stl |
+|   1 | psu_shroud_S_300_12.stl |
 
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
 |   1 | psu_shroud_PD_150_12_assembly |
 |   1 | psu_shroud_S_250_48_assembly |
+|   1 | psu_shroud_S_300_12_assembly |
 
 
 <a href="#top">Top</a>
