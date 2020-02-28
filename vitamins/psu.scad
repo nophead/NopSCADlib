@@ -259,23 +259,26 @@ module psu(type) { //! Draw a power supply
                             square(16, center = true);
                     }
 
-        // earth strap
         tab_w = w / 2 + cutout[2].x;
-        color("silver")
-            translate([-l / 2, w / 2 - tab_w, z])
-                cube([left, tab_w - bt, lt]);
-
-        // Earth pilar and screw
-        earth_inset = 4.5;
-        earth_d = 5;
-        translate([-l / 2 + earth_inset, w / 2 - tab_w / 2]) {
+        // if the cutout is too wide, then don't draw earth strap, pillar and screw
+        if (tab_w - bt > 0) {
+            // earth strap
             color("silver")
-                cylinder(d = earth_d, h = z - pcb_thickness);
+                translate([-l / 2, w / 2 - tab_w, z])
+                    cube([left, tab_w - bt, lt]);
 
-            translate_z(z + lt)
-                not_on_bom() no_explode()
-                    spring_washer(M3_washer)
-                        screw(M3_pan_screw, 8);
+            // Earth pillar and screw
+            earth_inset = 4.5;
+            earth_d = 5;
+            translate([-l / 2 + earth_inset, w / 2 - tab_w / 2]) {
+                color("silver")
+                    cylinder(d = earth_d, h = z - pcb_thickness);
+
+                translate_z(z + lt)
+                    not_on_bom() no_explode()
+                        spring_washer(M3_washer)
+                            screw(M3_pan_screw, 8);
+            }
         }
 
         // terminal block

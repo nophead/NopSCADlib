@@ -83,15 +83,76 @@ KY240W =
 // This PSU, and ones very like it, are sold by LulzBot, and various sellers on eBay.
 // The screw layout specified here uses the inner set of screw-mounts on the PSU, which are M4.
 // The outer set don't appear to be M3, even though the datasheet claims they are.
-S_300_12 =
-    ["S_300_12", "S-300-12", 215, 115, 50, M4_cap_screw, M4_clearance_radius, false, 0, 0, [],
-        [  [[[ 215 / 2 - 32.5,  115 / 2 - 82.5],
-            [ 215 / 2 - 32.5,  115 / 2 - 32.5],
-            [ 215 / 2 - 182.5, 115 / 2 - 82.5],
-            [ 215 / 2 - 182.5, 115 / 2 - 32.5]]]
+S_300_12 = [
+    "S_300_12",
+    "S-300-12",// part name
+    215, 115, 50,// length, width, height
+    M4_cap_screw, M4_clearance_radius,// screw type and clearance
+    false,// true if ATX style
+    13,// terminals bay depth
+    0,// heatsink bay depth
+    [// terminals
+        9,// count
+        18,// y offset
+        st_terminals
+    ],
+    // faces
+    [
+        [// f_bottom, bottom
+            [// holes
+                [215/2 - 32.5, 115/2 - 82.5], [215/2 - 32.5, 115/2 - 32.5], [215/2 - 182.5, 115/2 - 82.5], [215/2 - 182.5, 115/2 - 32.5]
+            ],
+            1.5,// thickness
+            [],// cutouts
+            false,// grill
+            [],[],[]// fan, iec, rocker
         ],
-       []
-    ];
+        [// f_top, top
+            [],// holes
+            0.5,// thickness
+            [],// coutouts
+            false,// grill
+            [215/2 - 47.5, 115/2 - 37.5, fan50x15]
+        ],
+        [// f_left, front (terminals) after rotation
+            [],// holes
+            0.5,// thickness
+            [// cutouts
+                [
+                [-56, -25], [-56, -17],
+                [-60, -17], [-60, 0],
+                [115/2, 0], [115/2, -25]
+                ]
+            ],
+            false,// grill
+        ],
+        [// f_right, back after rotation
+            [], // holes
+            1.5,// thickness
+            [],// cutouts
+            false,// grill
+        ],
+        [// f_front, right after rotation
+            [// holes, offset from center
+                [215/2 -  32.5,-15], [215/2 - 182.5,-15],
+                [215/2 -  32.5, 10], [215/2 - 182.5, 10]
+            ],
+            1.5,// thickness
+            [],// cutouts
+            false,// grill
+        ],
+        [// f_back, left after rotation
+            [// holes, offset from center
+                [215/2 -  32.5, 15], [215/2 - 182.5, 15]
+            ],
+            1.5,// thickness
+            [],// cutouts
+            false,// grill
+        ],
+    ],
+    // accessories to add to BOM
+    []
+];
 
 External =
     ["External", "X Box", 0, 0, 0, false, false, false, 0, 0, [],
@@ -102,3 +163,4 @@ External =
 psus = [PD_150_12, S_250_48, ATX500, KY240W, S_300_12];
 
 use <psu.scad>
+
