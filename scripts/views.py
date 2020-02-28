@@ -71,9 +71,10 @@ def bom_to_assemblies(bom_dir, bounds_map):
     #
     # Remove the main assembly if it is a shell
     #
-    ass =  flat_bom[-1]
-    if len(ass["assemblies"]) < 2 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
-        flat_bom = flat_bom[:-1]
+    if flat_bom:
+        ass =  flat_bom[-1]
+        if len(ass["assemblies"]) < 2 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
+            flat_bom = flat_bom[:-1]
     return [assembly["name"] for  assembly in flat_bom]
 
 def eop(print_mode, doc_file, last = False, first = False):
