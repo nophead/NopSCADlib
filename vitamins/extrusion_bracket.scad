@@ -70,7 +70,6 @@ function extrusion_corner_bracket_side_thickness(type)   = type[3]; //! Thicknes
 function extrusion_corner_bracket_hole_offset(type)      = type[4]; //! Hole offset from corner
 
 module extrusion_corner_bracket(type) { //! Corner bracket for extrusion
-echo(type=type);
     vitamin(str("extrusion_corner_bracket(", type[0], "): Extrusion corner bracket ", type[1].z));
 
     eSize = extrusion_corner_bracket_size(type).z;
