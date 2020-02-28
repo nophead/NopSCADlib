@@ -27,8 +27,10 @@ module stepper_motors()
         rotate(180)
             NEMA(stepper_motors[$i]);
 
-        NEMA_screws(stepper_motors[$i], M3_pan_screw);
+        translate_z(4)
+            NEMA_screws(stepper_motors[$i], M3_pan_screw, n = $i, earth = $i > 4 ? undef : 0);
     }
 
 if($preview)
-    stepper_motors();
+    let($show_threads = 1)
+        stepper_motors();

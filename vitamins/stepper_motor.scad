@@ -26,6 +26,7 @@ include <screws.scad>
 use <washer.scad>
 include <ring_terminals.scad>
 use <../utils/tube.scad>
+use <../utils/thread.scad>
 use <rod.scad>
 
 function NEMA_width(type)       = type[1]; //! Width of the square face
@@ -60,6 +61,7 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
     shaft_rad = NEMA_shaft_dia(type) / 2;
     cap = 8;
     vitamin(str("NEMA(", type[0], "): Stepper motor NEMA", round(NEMA_width(type) / 2.54), " x ", length, "mm"));
+    thread_d = 3;                                                           // Is this always the case?
 
     union() {
         color(stepper_body_colour)                                          // black laminations
@@ -75,7 +77,7 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
             tube(or = boss_rad, ir =  shaft_rad + 2, h = boss_height * 2); // raised boss
 
             for(end = [-1, 1])
-                translate_z(-length / 2 + end * (length - cap) / 2)
+                translate_z(-length / 2 + end * (length - cap) / 2) {
                     linear_extrude(height = cap, center = true)
                         difference() {
                             intersection() {
@@ -85,9 +87,14 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
                             if(end > 0)
                                 for(x = NEMA_holes(type), y = NEMA_holes(type))
                                     translate([x, y])
-                                        circle(r = 3/2);
+                                        circle(d = thread_d);
                         }
+                }
         }
+        if(show_threads)
+            for(x = NEMA_holes(type), y = NEMA_holes(type))
+                translate([x, y, -cap / 2])
+                    female_metric_thread(thread_d, metric_coarse_pitch(thread_d), cap, colour = stepper_cap_colour);
 
         shaft =  NEMA_shaft_length(type);
         translate_z(-5)
@@ -112,7 +119,7 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
 module NEMA_screw_positions(type, n = 4) { //! Positions children at the screw holes
     pitch = NEMA_hole_pitch(type);
 
-    for($i = [0 : n - 1])
+    for($i = [0 : 1 : min(n - 1, 4)])
         rotate($i * 90)
             translate([pitch / 2, pitch / 2])
                 rotate($i * -90)

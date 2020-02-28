@@ -3020,15 +3020,16 @@ NEMA stepper motor model.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|  24 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x  8mm |
+|   4 | ```ring_terminal(M3_ringterm)``` |  Ring terminal 3mm |
+|  15 | ```screw(M3_pan_screw, 8)``` |  Screw M3 pan x  8mm |
 |   1 | ```NEMA(NEMA14)``` |  Stepper motor NEMA14 x 36mm |
 |   1 | ```NEMA(NEMA16)``` |  Stepper motor NEMA16 x 19.2mm |
 |   1 | ```NEMA(NEMA17S)``` |  Stepper motor NEMA17 x 34mm |
 |   1 | ```NEMA(NEMA17M)``` |  Stepper motor NEMA17 x 40mm |
 |   1 | ```NEMA(NEMA17)``` |  Stepper motor NEMA17 x 47mm |
 |   1 | ```NEMA(NEMA23)``` |  Stepper motor NEMA22 x 51.2mm |
-|  24 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
-|  24 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+|  11 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|  15 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 
 <a href="#top">Top</a>
