@@ -66,7 +66,7 @@ module door_latch_assembly(sheet_thickness = 3) { //! The assembly for a specifi
 
     translate([0, -height - washer_thickness(washer)])
         rotate([-90, 0, 0]) {
-            color("lime") render() door_latch_stl();
+            color(pp1_colour) render() door_latch_stl();
 
             translate_z(nut_trap_depth)
                 vflip()
