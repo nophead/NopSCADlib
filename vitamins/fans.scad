@@ -17,8 +17,6 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-include <screws.scad>
-
 //          w   d   b   h      s              h     t    o   b  b    a
 //          i   e   o   o      c              u     h    u   l  o    p
 //          d   p   r   l      r              b     i    t   a  s    p

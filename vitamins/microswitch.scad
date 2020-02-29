@@ -20,7 +20,7 @@
 //
 //! Used for limit switches.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 microswitch_contact_color        =  brass;
 

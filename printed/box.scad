@@ -31,7 +31,7 @@
 //!
 //! Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../vitamins/sheet.scad>
 use <../vitamins/screw.scad>
 use <../vitamins/washer.scad>

@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/ring_terminals.scad>
+
+use <../utils/layout.scad>
 
 module ring_terminals()
     layout([for(t = ring_terminals) ringterm_od(t)], 5)

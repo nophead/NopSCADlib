@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/rails.scad>
+
+use <../utils/layout.scad>
 use <../vitamins/nut.scad>
 
 sheet = 3;

@@ -20,9 +20,8 @@
 //! KP pillow block bearings
 //
 include <../core.scad>
-use <../utils/tube.scad>
 
-include <screws.scad>
+use <../utils/tube.scad>
 use <washer.scad>
 use <ball_bearing.scad>
 

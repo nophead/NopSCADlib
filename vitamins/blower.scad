@@ -20,7 +20,7 @@
 //
 //! Models of radial blowers.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
 
 function blower_length(type)      = type[2]; //! Length of enclosing rectangle

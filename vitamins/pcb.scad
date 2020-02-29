@@ -23,7 +23,6 @@
 panel_clearance = 0.2;
 
 include <../core.scad>
-include <screws.scad>
 include <buttons.scad>
 include <green_terminals.scad>
 include <pin_headers.scad>

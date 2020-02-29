@@ -20,7 +20,7 @@
 //
 //! Threaded pillars. Each end can be male or female.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
 function pillar_name(type)       = type[1];     //! Name of part

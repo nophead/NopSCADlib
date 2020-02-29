@@ -23,14 +23,13 @@
 //! Face order is bottom, top, left, right, front, back.
 //
 include <../core.scad>
+include <../printed/fan_guard.scad>
 use <../utils/maths.scad>
 use <../utils/sector.scad>
 use <../utils/round.scad>
-include <screws.scad>
 use <fan.scad>
 use <iec.scad>
 use <rocker.scad>
-include <../printed/fan_guard.scad>
 
 function psu_face_holes(type)        = type[0];     //! List of screw hole positions
 function psu_face_thickness(type)    = type[1];     //! The thickness

@@ -19,8 +19,6 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/screws.scad>
-
 module nuts() {
     layout([for(n = nuts) 2 * nut_radius(n)], 5) let(n = nuts[$i]) {
         for(nyloc = [false, true])

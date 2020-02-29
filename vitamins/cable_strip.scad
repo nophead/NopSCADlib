@@ -25,7 +25,7 @@
 //!
 //! When the sides are constrained then a circular model is more accurate.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 cable_strip_thickness = 0.8;
 function ribbon_clamp_slot(ways) = ways * inch(0.05) + 1;
 function ribbon_clamp_slot_depth() = cable_strip_thickness + inch(0.05);

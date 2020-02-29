@@ -20,7 +20,7 @@
 //
 //! Rounded fillet for adding to corners.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module fillet(r, h, center = false) //! Fillet with specified radius and height
     extrude_if(h, center = center)

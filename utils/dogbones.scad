@@ -21,7 +21,7 @@
 //! When square holes are cut with a CNC bit they get rounded corners. If it is important that
 //! a square cornered part fits in the hole then circles are placed in the corners making a bone shape.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module dogbone_square(size, r = cnc_bit_r, center = true) //! Square with circles at the corners
 {

@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 //! Pin headers and sockets, etc.
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/dogbones.scad>
 
 panel_clearance = 0.2;
@@ -274,4 +274,3 @@ module jst_xh_header(type, pin_count, right_angle=false, colour, pin_colour) { /
             }
         }
 }
-

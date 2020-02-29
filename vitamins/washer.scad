@@ -22,7 +22,7 @@
 //!
 //! If a washer is given a child, usually a screw or a nut, then it is placed on its top surface.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 include <../utils/sweep.scad>
 
 soft_washer_colour = grey20;

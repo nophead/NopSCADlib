@@ -19,7 +19,7 @@
 //
 //! Linear rails with carriages.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 use <screw.scad>
 

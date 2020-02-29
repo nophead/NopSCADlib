@@ -31,7 +31,6 @@
 //! Star washers can be omitted by setting ```star_washers``` to false.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 use <../utils/maths.scad>
 

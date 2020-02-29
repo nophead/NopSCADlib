@@ -21,7 +21,6 @@
 //! KP pillow block bearings
 //
 
-include <screws.scad>
 include <ball_bearings.scad>
 
 //                      d   H   L   J   A    N  H1  H0     K  S  b   bolthole             bearing

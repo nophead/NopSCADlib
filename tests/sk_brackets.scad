@@ -17,10 +17,10 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
 include <../vitamins/sk_brackets.scad>
 include <../vitamins/extrusions.scad>
+
+use <../utils/layout.scad>
 
 module sk_brackets() {
     screws = [M4_dome_screw, M4_cap_screw, M5_cap_screw, M5_cap_screw];

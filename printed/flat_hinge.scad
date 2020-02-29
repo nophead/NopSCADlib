@@ -30,7 +30,6 @@
 //! This allows the hinges and one set of screws to belong to one assembly and the other set of screws to another assembly.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 
 function hinge_width(type)       = type[1]; //! Width
 function hinge_depth(type)       = type[2]; //! Depth of each leaf

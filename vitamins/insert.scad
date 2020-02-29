@@ -20,7 +20,7 @@
 //
 //! Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering iron with a conical bit set to 200&deg;C.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/quadrant.scad>
 use <../utils/thread.scad>
 

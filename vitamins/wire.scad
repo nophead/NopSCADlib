@@ -20,7 +20,7 @@
 //
 //! Just a BOM entry at the moment and cable bundle size functions for holes, plus cable ties.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 include <zipties.scad>
 
 module wire(color, strands, length, strand = 0.2)   //! Add stranded wire to the BOM

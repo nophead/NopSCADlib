@@ -21,7 +21,7 @@
 //! Annotation used in this documentation
 //
 
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module label(str, scale = 0.25, valign = "baseline", halign = "left") //! Draw text that always faces the camera
     color("black")

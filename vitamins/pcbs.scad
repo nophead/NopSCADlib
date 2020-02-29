@@ -16,8 +16,8 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <screws.scad>
 include <microswitches.scad>
+include <d_connectors.scad>
 //
 //                                   l      w      t    r     h     l  c        b     h
 //                                   e      i      h    a     o     a  o        o     o

@@ -26,7 +26,7 @@
 //! The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 //! An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 use <maths.scad>
 

@@ -20,7 +20,7 @@
 //
 //! Spade terminals used as parts of electrical components.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function spade_l(type)     = type[0]; //! Length of the narrow part
 function spade_w(type)     = type[1]; //! Width

@@ -20,7 +20,7 @@
 //
 //! Cylinder with a rounded end.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module rounded_corner(r, h, r2, ir = 0) { //! 2D version
     assert(ir <= r - r2);

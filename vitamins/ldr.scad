@@ -22,7 +22,7 @@
 //!
 //! Larger ones seem to have both a higher dark resistance and a lower bright light resistance.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function ldr_description(type) = type[1]; //! Description
 function ldr_diameter(type)    = type[2]; //! The diameter of the round bit

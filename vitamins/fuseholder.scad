@@ -20,7 +20,7 @@
 //
 //! 20mm panel mount fuse holder.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 include <spades.scad>
 use <../utils/tube.scad>
 

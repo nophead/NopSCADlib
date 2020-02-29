@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module clips() {
     clip(xmin = 0, ymin = 0, zmin = 0, zmax = 40) sphere(50);

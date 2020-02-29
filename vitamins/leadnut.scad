@@ -20,7 +20,7 @@
 //
 //! Nuts for leadscrews.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/tube.scad>
 use <../utils/thread.scad>
 

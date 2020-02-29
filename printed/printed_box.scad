@@ -27,7 +27,6 @@
 //! It can also have printed feet on the base with the screws doubling up to hold the base on.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 use <foot.scad>
 

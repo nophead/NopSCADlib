@@ -116,8 +116,8 @@ get shared if other files in the project include ```lib.scad``` as well, or if y
 
 One downside is that any change to the library will mean all the project files need regenerating.
 A more optimised approach for large projects is to include [NopSCADlib/core.scad](../core.scad) instead.
-That only has the a small set of utilities and the global settings in [global_defs.scad](../global_defs.scad). Any vitamins used need to be included explicitly.
-One can copy the include or use line from [NopSCADlib/lib.scad](../lib.scad).
+That only has the a small set of utilities and the global settings in [global_defs.scad](../global_defs.scad) plus screws, nuts and washers that are required by a lot of other vitamins.
+Any other vitamins used need to be included explicitly. One can copy the includes or use a line from [NopSCADlib/lib.scad](../lib.scad).
 
 ### Parametric parts.
 

@@ -22,7 +22,7 @@
 //!
 //! If a nut is given a child then it gets placed on its top surface.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <washer.scad>
 use <screw.scad>
 use <../utils/fillet.scad>

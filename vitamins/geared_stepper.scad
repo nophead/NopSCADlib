@@ -20,7 +20,7 @@
 //
 //! Geared tin can steppers
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/round.scad>
 

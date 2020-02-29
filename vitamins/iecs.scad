@@ -16,7 +16,6 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <screws.scad>
 include <spades.scad>
 
 fused_spades = [[spade4p8, 8.5,  7,  3, 90],

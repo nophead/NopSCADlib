@@ -17,7 +17,6 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../utils/layout.scad>
 use <../printed/flat_hinge.scad>
 

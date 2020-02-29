@@ -18,8 +18,6 @@
 //
 include <../core.scad>
 
-include <../vitamins/screws.scad>
-
 module screws()
 for(y = [0 : len(screw_lists) -1])
     for(x = [0 : len(screw_lists[y]) -1]) {

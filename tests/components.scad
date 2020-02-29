@@ -19,7 +19,6 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/screws.scad>
 include <../vitamins/components.scad>
 
 module resistors()

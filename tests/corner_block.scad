@@ -19,8 +19,6 @@
 include <../core.scad>
 use <../printed/corner_block.scad>
 
-include <../vitamins/screws.scad>
-
 screws = [M2_cap_screw, M2p5_pan_screw, M3_dome_screw, M4_dome_screw];
 
 module do_corner_block(screw)

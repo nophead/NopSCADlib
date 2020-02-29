@@ -19,9 +19,7 @@
 
 //! Brackets for joining extrusions at a corner.
 
-include <NopSCADlib/core.scad>
-include <screws.scad>
-include <nuts.scad>
+include <../core.scad>
 
 function extrusion_inner_corner_bracket_size(type)             = type[1]; //! Size of inner bracket
 

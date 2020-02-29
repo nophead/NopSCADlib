@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-
+include <belts.scad>
 //
 //                                               n       t   o      b         w    h  h    b     f    f  s   s    s              s
 //                                               a       e   d      e         i    u  u    o     l    l  c   c    c              c

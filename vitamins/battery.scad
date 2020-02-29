@@ -25,7 +25,7 @@
 //! The battery length includes its contacts and the origin is the centre of that length. As well as drawing the battery and contacts there are functions
 //! exposing enough information to make a battery box.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <spring.scad>
 use <../utils/rounded_cylinder.scad>
 

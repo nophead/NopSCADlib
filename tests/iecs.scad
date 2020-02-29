@@ -17,9 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
 include <../vitamins/iecs.scad>
+
+use <../utils/layout.scad>
 
 module iecs()
     layout([for(i = iecs) iec_flange_h(i)], 10)

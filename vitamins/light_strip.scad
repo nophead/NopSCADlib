@@ -25,7 +25,7 @@
 //!
 //! The `light_strip_clip()` module makes a clip to go around the light that can be incorporated into a printed bracket to hold it.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function light_strip_length(type)        = type[2]; //! Un-cut length
 function light_strip_leds(type)          = type[3]; //! Total number of LEDs

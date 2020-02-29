@@ -20,7 +20,7 @@
 //
 //! Square with one rounded corner.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module quadrant(w, r, center = false) { //! Draw a square with one rounded corner, can be centered on the arc centre, when ```center``` is ```true```.
     offset = center ? r - w : 0;

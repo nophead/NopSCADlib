@@ -17,9 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
 include <../vitamins/scs_bearing_blocks.scad>
+
+use <../utils/layout.scad>
 
 module scs_bearing_blocks()
     layout([for(s = scs_bearing_blocks) scs_size(s).x], 10) {

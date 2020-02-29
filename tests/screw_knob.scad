@@ -17,9 +17,8 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../printed/screw_knob.scad>
 
-include <../vitamins/screws.scad>
+use <../printed/screw_knob.scad>
 
 screws = [M3_hex_screw, M4_hex_screw];
 

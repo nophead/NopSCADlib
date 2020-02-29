@@ -4585,7 +4585,7 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 <a name="Ssr_shroud"></a>
 ## Ssr_shroud
 A cover to go over the mains end of an SSR to make it safe to be touched.
-The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
+The STL and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
 
 
 [printed/ssr_shroud.scad](printed/ssr_shroud.scad) Implementation.

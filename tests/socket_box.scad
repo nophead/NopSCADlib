@@ -18,7 +18,7 @@
 //
 $explode = 1;
 
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/layout.scad>
 include <../vitamins/mains_sockets.scad>
 use <../printed/socket_box.scad>

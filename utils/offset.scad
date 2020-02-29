@@ -22,7 +22,7 @@
 //! Can be used to round corners. Positive offsets will round convex corners, negative offsets round concave corners. To round both use [`round_3D()`](#round).
 //!
 //! If `chamfer_base` is true then the bottom edge is made suitable for 3D printing by chamfering when the angle gets shallower than 45 degrees.
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module offset_3D(r, chamfer_base = false) { //! Offset 3D shape by specified radius ```r```, positive or negative.
     module ball(r)

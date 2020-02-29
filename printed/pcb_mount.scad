@@ -22,7 +22,6 @@
 //! The stl must be given a parameterless wrapper in the project that uses it.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/pcb.scad>
 
 clearance = 0.2;

@@ -36,7 +36,7 @@
 //!
 //! Threads obey the $fn, $fa, $fs variables.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <sweep.scad>
 use <maths.scad>
 use <tube.scad>

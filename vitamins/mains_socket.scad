@@ -21,7 +21,6 @@
 //! UK 13A sockets at the moment.
 //
 include <../core.scad>
-include <screws.scad>
 include <ring_terminals.scad>
 use <insert.scad>
 

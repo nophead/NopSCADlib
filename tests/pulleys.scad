@@ -19,8 +19,6 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/screws.scad>
-include <../vitamins/belts.scad>
 include <../vitamins/pulleys.scad>
 
 module pulleys()

@@ -20,7 +20,7 @@
 //
 //! Variable auto transformers.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <screw.scad>
 
 function variac_diameter(type)       = type[2];     //! Body diameter

@@ -20,7 +20,7 @@
 //
 //! LCD dispays.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 use <pcb.scad>
 use <screw.scad>

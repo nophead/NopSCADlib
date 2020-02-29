@@ -20,7 +20,7 @@
 //
 //! Toggle switches
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <nut.scad>
 use <washer.scad>
 use <../utils/thread.scad>

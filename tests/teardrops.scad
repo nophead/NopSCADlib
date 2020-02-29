@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module teardrops() {
     color(pp1_colour)

@@ -20,7 +20,7 @@
 //
 //! PCB mounted buttons. Can optionally have a coloured cap
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
 
 function square_button_width(type)        = type[1];  //! Width and depth of the base

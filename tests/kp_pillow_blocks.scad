@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
 include <../vitamins/kp_pillow_blocks.scad>
-include <../vitamins/nuts.scad>
+
+use <../utils/layout.scad>
 
 module kp_pillow_blocks() {
     screws = [M4_cap_screw, M4_cap_screw, M5_cap_screw, M5_cap_screw];

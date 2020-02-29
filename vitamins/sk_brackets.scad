@@ -21,8 +21,6 @@
 // SK shaft support brackets
 //
 
-include <screws.scad>
-
 //               d   h   E   W   L   F    G   P   B    S  bolthole
 SK8  = ["SK8",   8, 20, 21, 42, 14, 32.8, 6, 18, 32, 5.5, M5_clearance_radius];
 SK10 = ["SK10", 10, 20, 21, 42, 14, 32.8, 6, 18, 32, 5.5, M5_clearance_radius];

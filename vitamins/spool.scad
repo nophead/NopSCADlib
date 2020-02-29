@@ -19,7 +19,7 @@
 
 //! Filament spool models
 
-include <../core.scad>
+include <../utils/core/core.scad>
 include <../utils/tube.scad>
 
 function spool_diameter(type)      = type[1]; //! Outside diameter

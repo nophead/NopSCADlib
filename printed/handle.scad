@@ -21,7 +21,6 @@
 //! Printed handle that can be printed without needing support material due to its truncated teardrop profile.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 
 dia = 18;

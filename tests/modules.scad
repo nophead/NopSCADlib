@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
+include <../vitamins/modules.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/screws.scad>
-include <../vitamins/modules.scad>
 
 module modules()
     layout([for(m = modules) mod_length(m)], 5)

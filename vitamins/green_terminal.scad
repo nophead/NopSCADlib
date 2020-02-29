@@ -20,7 +20,7 @@
 //
 //! Parametric green terminal blocks
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/tube.scad>
 
 function gt_pitch(type)        = type[1];   //! Pitch between terminals

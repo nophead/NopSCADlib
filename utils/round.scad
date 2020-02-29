@@ -22,7 +22,7 @@
 //! A single radius can be specified or separate internal and external radii.
 //! If `chamfer_base` is `true` for `round_3D()` then the bottom edge is made suitable for 3D printing by chamfering once the
 //! the angle gets shallower than 45 degrees.
-include <../core.scad>
+include <../utils/core/core.scad>
 use <offset.scad>
 
 module round(r, ir = undef, or = undef) { //! Round a 2D child, single radius or separate inside and outside radii

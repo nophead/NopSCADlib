@@ -21,7 +21,6 @@
 //! Clamp for ribbon cable and polypropylene strip.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 use <../vitamins/cable_strip.scad>
 

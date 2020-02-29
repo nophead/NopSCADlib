@@ -20,7 +20,7 @@
 //
 //! Rocker switch. Also used for neon indicator in the same form factor.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <spade.scad>
 
 function rocker_part(type)     = type[1];   //! Part description

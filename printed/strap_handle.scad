@@ -22,7 +22,6 @@
 //! be fully customised by passing a list of properties.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 
 strap = [18, 2, M3_pan_screw, 3, 25];

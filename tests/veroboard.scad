@@ -17,9 +17,8 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
 
-include <../vitamins/screws.scad>
+use <../utils/layout.scad>
 use <../vitamins/veroboard.scad>
 
 z_cable_ways = 20;

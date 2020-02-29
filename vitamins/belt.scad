@@ -27,7 +27,7 @@
 //!
 //! Individual teeth are not drawn, instead they are represented by a lighter colour.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_polygon.scad>
 
 function belt_pitch(type)        = type[1]; //! Pitch in mm

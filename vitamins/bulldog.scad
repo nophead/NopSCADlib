@@ -22,7 +22,7 @@
 //! accessed to allow clearance. Used for holding glass on 3D printer beds but Swiss picture clips can be
 //! better.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_polygon.scad>
 use <../utils/sector.scad>
 

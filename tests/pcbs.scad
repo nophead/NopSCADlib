@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/d_connectors.scad>
 include <../vitamins/pcbs.scad>
+
+use <../utils/layout.scad>
 
 module pcbs()
     layout([for(p = pcbs) pcb_width(p)], 10)

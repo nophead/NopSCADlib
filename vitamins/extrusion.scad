@@ -19,7 +19,7 @@
 //
 //! Aluminium  extrusion.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function extrusion_width(type)          = type[1];   //! Width of extrusion
 function extrusion_height(type)         = type[2];   //! Height of extrusion

@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/ssrs.scad>
+
+use <../utils/layout.scad>
 
 module ssrs()
     layout([for(s = ssrs) ssr_width(s)], 15)

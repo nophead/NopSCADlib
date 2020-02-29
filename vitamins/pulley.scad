@@ -20,7 +20,7 @@
 //
 //! Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 use <screw.scad>
 use <belt.scad>

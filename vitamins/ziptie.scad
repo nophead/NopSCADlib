@@ -21,7 +21,7 @@
 //! Cable zipties.
 //
 
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_polygon.scad>
 
 function ziptie_width(type)     = type[1]; //! Width

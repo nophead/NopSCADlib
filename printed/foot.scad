@@ -22,7 +22,6 @@
 //! inserts don't grip well in rubber.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 
 foot        = [25, 12, 3, 2, M4_cap_screw, 10];

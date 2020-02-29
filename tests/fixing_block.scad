@@ -20,8 +20,6 @@ include <../core.scad>
 use <../printed/fixing_block.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/screws.scad>
-
 screws = [M2_cap_screw, M2p5_pan_screw, M3_dome_screw, M4_dome_screw];
 
 module fixing_block_test(screw)

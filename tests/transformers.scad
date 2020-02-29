@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/transformers.scad>
+
+use <../utils/layout.scad>
 
 module transformers()
     layout([for(t = transformers) tx_depth(t)], 10)

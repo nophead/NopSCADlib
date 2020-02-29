@@ -20,7 +20,7 @@
 //
 //!Iron core transformers. The grey shaded area is the keep out region where the terminals are.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <screw.scad>
 
 function tx_part(type)              = type[1];  //! Part description

@@ -18,8 +18,6 @@
 //
 include <../core.scad>
 
-include <../vitamins/belts.scad>
-include <../vitamins/screws.scad>
 include <../vitamins/pulleys.scad>
 use <../vitamins/insert.scad>
 use <../utils/layout.scad>

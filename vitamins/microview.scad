@@ -24,7 +24,7 @@
 //!
 //! Uses STL files copyright geekammo and licenced with MIT license, see [microview/LICENSE.txt](vitamins/microview/LICENSE.txt).
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 include <pin_headers.scad>
 
 panel_clearance = 0.2;

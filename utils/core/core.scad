@@ -18,16 +18,22 @@
 //
 
 //
-//! Simple tube or ring
+// Include this file to use the miniumum library
 //
-include <../utils/core/core.scad>
+include <../../global_defs.scad>
+//
+// Global functions and modules
+//
+use <global.scad>
 
-module ring(or, ir) //! Create a ring with specified external and internal radii
-        difference() {
-            circle4n(or);
-            circle4n(ir);
-        }
+module use_stl(name) {               //! Import an STL to make a build platter
+    stl(name);
 
-module tube(or, ir, h, center = true) //! Create a tube with specified external and internal radii and height ```h```
-    linear_extrude(height = h, center = center, convexity = 5)
-        ring(or, ir);
+    import(str("../stls/", name, ".stl"));
+}
+
+module use_dxf(name) {               //! Import a DXF to make a build panel
+    dxf(name);
+
+    import(str("../dxfs/", name, ".dxf"));
+}

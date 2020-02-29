@@ -18,7 +18,6 @@
 //
 
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../printed/foot.scad>
 use <../printed/printed_box.scad>
 

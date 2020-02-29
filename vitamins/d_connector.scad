@@ -20,7 +20,7 @@
 //
 //! D-connectors. Can be any number of ways, male or female, solder buckets, PCB mount or IDC, with or without pillars.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
 d_pillar_color                   = grey90;

@@ -17,11 +17,11 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
+include <../vitamins/fans.scad>
 include <../printed/fan_guard.scad>
 
-include <../vitamins/fans.scad>
+use <../utils/layout.scad>
+
 
 module fans()
     layout([for(f = fans) fan_width(f)], 10)

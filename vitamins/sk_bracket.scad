@@ -22,7 +22,6 @@
 include <../core.scad>
 include <../utils/fillet.scad>
 
-include <screws.scad>
 use <washer.scad>
 
 sk_bracket_color = grey70;

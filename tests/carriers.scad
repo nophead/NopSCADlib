@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../printed/carriers.scad>
 
 module carriers()

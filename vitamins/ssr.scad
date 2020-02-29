@@ -20,7 +20,7 @@
 //
 //! Solid state relays.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function ssr_part(type)       = type[1]; //! Description
 function ssr_length(type)     = type[2]; //! Length

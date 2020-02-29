@@ -21,12 +21,11 @@
 //! NEMA stepper motor model.
 //
 include <../core.scad>
-
-include <screws.scad>
-use <washer.scad>
 include <ring_terminals.scad>
+
 use <../utils/tube.scad>
 use <../utils/thread.scad>
+use <washer.scad>
 use <rod.scad>
 
 function NEMA_width(type)       = type[1]; //! Width of the square face

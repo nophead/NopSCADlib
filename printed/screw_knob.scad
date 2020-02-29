@@ -21,7 +21,6 @@
 //! Knob with embedded hex head screw.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../utils/hanging_hole.scad>
 
 knob_wall = 2;

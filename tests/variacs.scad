@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/variacs.scad>
+
+use <../utils/layout.scad>
 
 module variacs()
     layout([for(v = variacs) 2 * (variac_bulge_dia(v) - variac_diameter(v) / 2)], 25)

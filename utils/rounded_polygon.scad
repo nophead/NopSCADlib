@@ -22,7 +22,7 @@
 //!
 //! Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function circle_tangent(p1, p2) =
     let(

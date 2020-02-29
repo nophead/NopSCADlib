@@ -20,7 +20,7 @@
 //
 //! Machine screws and wood screws with various head styles.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 use <washer.scad>
 use <../utils/rounded_cylinder.scad>

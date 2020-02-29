@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../printed/pcb_mount.scad>
 
 PI_IO = ["PI_IO", "PI_IO V2",       35.56, 25.4, 1.6, 0,    0,   0, "green", true, [],

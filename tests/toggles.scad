@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/toggles.scad>
+
+use <../utils/layout.scad>
 
 module toggles()
     layout([for(t = toggles) toggle_width(t)], 16)

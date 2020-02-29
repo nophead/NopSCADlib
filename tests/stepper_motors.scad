@@ -17,10 +17,9 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../utils/layout.scad>
-
-include <../vitamins/screws.scad>
 include <../vitamins/stepper_motors.scad>
+
+use <../utils/layout.scad>
 
 module stepper_motors()
     layout([for(s = stepper_motors) NEMA_width(s)], 5) {

@@ -21,7 +21,6 @@
 // SCS bearing blocks
 //
 
-include <screws.scad>
 include <linear_bearings.scad>
 
 //                        T  h   E   W   L   F     G   B     C   K     S1            S2   L1  LB

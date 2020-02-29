@@ -22,7 +22,7 @@
 //!
 //! By default springs have their origin at the bottom but can be centered.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 use <../utils/sweep.scad>
 

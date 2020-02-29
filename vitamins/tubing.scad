@@ -20,7 +20,7 @@
 //
 //! Tubing and sleeving. The internal diameter can be forced to stretch it over something.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function tubing_material(type) = type[1]; //! Material description
 function tubing_od(type)       = type[2]; //! Outside diameter

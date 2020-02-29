@@ -24,7 +24,7 @@
 //!
 //! The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to get realistic digits.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 led_meter = ["led_meter", 22.72, 10.14, 6.3, 22.72, 11.04, 0.96, 30, 4.2, 26, 2.2 / 2];
 

@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/offset.scad>
 
 module shape()

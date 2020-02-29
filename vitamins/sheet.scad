@@ -30,7 +30,7 @@
 //! For speed sheets should be modelled in 2D by subtracting holes from 2D templates made by ```sheet_2D()``` and then extruded to 3D with ```render_2D_sheet()```.
 //! Note that modules that drill holes will return a 2D object if ```h``` is set to 0 to facilitate this.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function sheet_thickness(type) = type[2]; //! Thickness
 function sheet_colour(type)    = type[3]; //! Colour

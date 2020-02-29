@@ -26,7 +26,6 @@
 //
 include <../core.scad>
 include <tubings.scad>
-include <screws.scad>
 include <spades.scad>
 use <../utils/rounded_cylinder.scad>
 

@@ -20,7 +20,7 @@
 //
 //! Standard domed through hole LEDs. Can specify colour and lead length.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
 
 function led_diameter(type) = type[1]; //! Body diameter

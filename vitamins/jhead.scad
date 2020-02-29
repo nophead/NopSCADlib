@@ -20,7 +20,7 @@
 //
 //! J-Head hot ends from Brian Reifsnider, hotends.com.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 include <hot_ends.scad>
 include <components.scad>
 include <tubings.scad>

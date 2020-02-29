@@ -17,10 +17,10 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-
-use <../vitamins/pcb.scad>
 include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
+
+use <../vitamins/pcb.scad>
 
 gt_5x17 = ["gt_5x17",    5,   10,   17, 5,   11, 0.4,  9,   2,1.5,     1,  3,   6,     0,  0,   0];
 gt_5x11 = ["gt_5x11",    5,    8,   11, 5,    7, 0.4,  7,   1.5,1.5,   1,2.5,   6,     0,  0,   0];

@@ -22,7 +22,7 @@
 //!
 //! These items are sysmtrical, so by default the origin is in the centre but it can be changed to the bottom.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
 rod_colour = grey80;

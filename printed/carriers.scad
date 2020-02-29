@@ -22,7 +22,7 @@
 //
 $extrusion_width = 0.5;
 
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module ESP12F_carrier_stl() { //! Generate the STL for an ESP12 carrier
     stl("ESP12F_carrier");

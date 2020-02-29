@@ -23,7 +23,7 @@
 //! Just a black torus specified by internal diameter, ```id``` and ```minor_d``` plus a BOM entry.
 //! Can be shown stretched by specifying the ```actual_id```.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module O_ring(id, minor_d, actual_id = 0) { //! Draw O-ring with specified internal diameter and minor diameter. ```actual_id``` can be used to stretch it around something.
     vitamin(str("O_ring(", id, ", ", minor_d, "): O-ring nitrile ", id, "mm x ", minor_d, "mm"));

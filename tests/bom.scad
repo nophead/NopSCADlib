@@ -21,7 +21,6 @@
 //! BOM and assembly demonstration
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 include <../vitamins/sheets.scad>
 use <../vitamins/insert.scad>
 $explode = 1; // Normally set on the command line when generating assembly views with views.py

@@ -21,7 +21,7 @@
 //! Printed cable grommets for passing cables through panels avoiding sharp edges and in the case
 //! of conductive panels, an extra layer of insulation.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../vitamins/cable_strip.scad>
 
 base = 1.25;

@@ -20,7 +20,7 @@
 //
 //! Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/buried-nuts-and-hanging-holes.html>
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius ```ir``` hanging at the specified ```z``` value above a void who's shape is given by a 2D child
     module polyhole(r, h, n = 8) {

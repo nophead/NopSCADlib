@@ -20,7 +20,7 @@
 //
 //! A sector of a circle between two angles.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 module sector(r, start_angle, end_angle) { //! Create specified sector given radius ```r```, ```start_angle``` and ```end_angle```
     R = r * sqrt(2) + 1;

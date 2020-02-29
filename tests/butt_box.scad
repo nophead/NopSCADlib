@@ -18,7 +18,6 @@
 //
 include <../core.scad>
 
-include <../vitamins/screws.scad>
 include <../vitamins/sheets.scad>
 use <../vitamins/insert.scad>
 

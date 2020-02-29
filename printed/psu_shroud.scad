@@ -22,7 +22,6 @@
 //! The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
 //
 include <../core.scad>
-include <../vitamins/screws.scad>
 use <../vitamins/insert.scad>
 
 use <../vitamins/wire.scad>

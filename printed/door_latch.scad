@@ -22,7 +22,6 @@
 //
 include <../core.scad>
 use <../utils/hanging_hole.scad>
-include <../vitamins/screws.scad>
 
 length = 35;
 width = 12;

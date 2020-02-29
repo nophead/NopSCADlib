@@ -25,7 +25,7 @@
 //!
 //! Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 function bb_name(type)     = type[0]; //! Part code without shield type suffix
 function bb_bore(type)     = type[1]; //! Internal diameter
