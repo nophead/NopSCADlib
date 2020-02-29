@@ -82,7 +82,8 @@ module blower(type) { //! Draw specified blower
                         translate(blower_axis(type))
                             circle(d = blower_screw_hole(type) + 2 * blower_wall(type) + 7);
                     }
-                    circle(d = blower_screw_hole(type));
+                    translate(hole)
+                        circle(d = blower_screw_hole(type));
 
                     shape(true);
                }
