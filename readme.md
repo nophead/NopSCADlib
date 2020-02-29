@@ -2171,6 +2171,7 @@ Face order is bottom, top, left, right, front, back.
 | ```psu_face_iec(type)``` | IEC connector x,y, rotation and type |
 | ```psu_face_switch(type)``` | Rocker switch x,y, rotation and type |
 | ```psu_face_thickness(type)``` | The thickness |
+| ```psu_face_vents(type)``` | Vents array position x,y, rotation, size and corner radius |
 | ```psu_faces(type)``` | List of face descriptions |
 | ```psu_height(type)``` | Height |
 | ```psu_left_bay(type)``` | Bay for terminals |
