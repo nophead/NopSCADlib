@@ -59,7 +59,7 @@ def render(target, type):
         if mtime(part_file) > mtime(png_name):
             png_maker_name = "png.scad"
             with open(png_maker_name, "w") as f:
-                f.write('color("lime") import("%s");\n' % part_file)
+                f.write('color([0, 146/255, 0]) import("%s");\n' % part_file)
             cam = "--camera=0,0,0,70,0,315,500" if type == 'stl' else "--camera=0,0,0,0,0,0,500"
             render = "--preview" if type == 'stl' else "--render"
             tmp_name = 'tmp.png'
