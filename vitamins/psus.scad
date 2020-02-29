@@ -179,7 +179,6 @@ External =
         [": IEC mains lead"]
     ];
 
-psus = [PD_150_12, S_250_48, ATX500, KY240W, S_300_12];
+psus = [PD_150_12, S_250_48, S_300_12, ATX500, KY240W];
 
 use <psu.scad>
-
