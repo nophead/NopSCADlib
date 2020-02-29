@@ -39,6 +39,7 @@ function psu_face_grill(type)        = type[3];     //! Is this face a grill
 function psu_face_fan(type)          = type[4];     //! Fan x,y position and type
 function psu_face_iec(type)          = type[5];     //! IEC connector x,y, rotation and type
 function psu_face_switch(type)       = type[6];     //! Rocker switch x,y, rotation and type
+function psu_face_vents(type)        = type[7];     //! Vents array position x,y, rotation, size and corner radius
 
 function psu_name(type)              = type[1];     //! The part name
 function psu_length(type)            = type[2];     //! Length
@@ -166,6 +167,7 @@ module psu(type) { //! Draw a power supply
             fan = psu_face_fan(f);
             iec = psu_face_iec(f);
             switch = psu_face_switch(f);
+            vents = psu_face_vents(f);
 
             multmatrix(psu_face_transform(type, i))
                 translate([xo, 0, -t]) {
@@ -208,6 +210,14 @@ module psu(type) { //! Draw a power supply
                                     translate([switch.x, switch.y])
                                         rotate(switch.z)
                                             rocker_hole(switch[3], 0);
+                                if(vents)
+                                    for(i = [0 : len(vents) - 1]) {
+                                        // vent is of form: [ [pos.x, pos.y, angle], [size.x, size.y], corner radius ]
+                                        vent = vents[i];
+                                        translate([vent[0].x, vent[0].y])
+                                            rotate(vent[0].z)
+                                                rounded_square(vent[1], vent[2]-eps, center = true);
+                                    }
                              }
                         }
 
