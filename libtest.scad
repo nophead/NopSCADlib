@@ -87,16 +87,17 @@ use <tests/door_hinge.scad>
 use <tests/door_latch.scad>
 use <tests/fan_guard.scad>
 use <tests/fixing_block.scad>
+use <tests/flat_hinge.scad>
 use <tests/foot.scad>
 use <tests/handle.scad>
+use <tests/pcb_mount.scad>
+use <tests/printed_box.scad>
 use <tests/ribbon_clamp.scad>
 use <tests/screw_knob.scad>
 use <tests/socket_box.scad>
 use <tests/strap_handle.scad>
 use <tests/ssr_shroud.scad>
 use <tests/psu_shroud.scad>
-use <tests/flat_hinge.scad>
-use <tests/pcb_mount.scad>
 
 x0 = 0;
 x1 = x0 + 100;
@@ -146,8 +147,13 @@ translate([x5, cable_grommets_y + 250])
 translate([950, 600])
     box_test();
 
+translate([890, 730])
+    printed_boxes();
+
+
 translate([850, 1260])
     bbox_test();
+
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;

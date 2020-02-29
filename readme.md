@@ -31,13 +31,13 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Scs_bearing_blocks">Scs_bearing_blocks</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Scs_bearing_blocks">Scs_bearing_blocks</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Springs">Springs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Kp_pillow_blocks">Kp_pillow_blocks</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td></td><td></td><td></td></tr>
@@ -4293,6 +4293,87 @@ The stl must be given a parameterless wrapper in the project that uses it.
 | Qty | Filename |
 | ---:|:--- |
 |   1 | pcb_mount_PI_IO_5.stl |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Printed_box"></a>
+## Printed_box
+A fully parametric 3D printed case that can be customised with cutouts and additions specified by children.
+
+The walls can be made wavy, which possibly reduces warping when printing and looks nice, however if holes need to be made
+in the sides you can't print a wavy bridge. Any holes need to be surrounded by a 45&deg; chamfer to make the bridges straight.
+See the mounting points for the feet in the first example.
+
+It can also have printed feet on the base with the screws doubling up to hold the base on.
+
+
+[printed/printed_box.scad](printed/printed_box.scad) Implementation.
+
+[tests/printed_box.scad](tests/printed_box.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```pbox_base(type)``` | Base thickness, can be zero for no base |
+| ```pbox_base_screw(type)``` | Screw type if no feet |
+| ```pbox_depth(type)``` | Internal depth |
+| ```pbox_foot(type)``` | Printed foot, can be false to suppress feet |
+| ```pbox_height(type)``` | Internal height |
+| ```pbox_name(type)``` | Name to allow more than one box in a project |
+| ```pbox_radius(type)``` | Internal corner radius |
+| ```pbox_ridges(type)``` | Ridge wavelength and amplitude |
+| ```pbox_top(type)``` | Top thickness |
+| ```pbox_wall(type)``` | Wall thickness |
+| ```pbox_width(type)``` | Internal width |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```pbox_inclusion(type)``` | How far the ledge for the base extends inwards |
+| ```pbox_insert(type)``` | The insert for the base screws |
+| ```pbox_screw(type)``` | Foot screw if got feet else base_screw |
+| ```pbox_screw_inset(type)``` | How far the base screws are inset |
+| ```pbox_screw_length(type, panel_thickness = 0)``` | Length of the base screw |
+| ```pbox_total_height(type)``` | Total height including base overlap |
+| ```pbox_washer(type)``` | The washer for the base screws |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```pbox(type)``` | Generate the STL for the main case |
+| ```pbox_base(type)``` | Generate the STL for the base |
+| ```pbox_base_screws(type, thickness = 0)``` | Place the screws and feet |
+| ```pbox_inserts(type)``` | Place the inserts for the base screws |
+
+![printed_box](tests/png/printed_box.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | ```insert(F1BM)``` |  Heatfit insert M2 |
+|   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
+|   4 | ```screw(M2_cap_screw, 6)``` |  Screw M2 cap x  6mm |
+|   3 | ```screw(M3_pan_screw, 6)``` |  Screw M3 pan x  6mm |
+|   4 | ```screw(M3_pan_screw, 10)``` |  Screw M3 pan x 10mm |
+|   4 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
+|   7 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | box1.stl |
+|   1 | box1_base.stl |
+|   7 | foot.stl |
+|   1 | smooth_box.stl |
+|   1 | smooth_box_base.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | box1_assembly |
+|   1 | box2_assembly |
 
 
 <a href="#top">Top</a>
