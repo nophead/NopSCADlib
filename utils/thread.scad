@@ -31,7 +31,7 @@
 //!
 //! Making the ends requires a CGAL intersection, which make threads relatively slow. For this reason they are generally disabled when using the GUI but can
 //! be enabled by setting ```$show_threads``` to ```true```. When the tests are run, by default, threads are enabled only for things that feature them like screws.
-//! This behaviour can be changed by setting a ```SHOW_THREADS``` environment variable to ```false``` to disable all threads and ```true``` to enable all threads.
+//! This behaviour can be changed by setting a ```NOPSCADLIB_SHOW_THREADS``` environment variable to ```false``` to disable all threads and ```true``` to enable all threads.
 //! The same variable also affects the generation of assembly diagrams.
 //!
 //! Threads obey the $fn, $fa, $fs variables.

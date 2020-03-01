@@ -23,7 +23,7 @@ import json, os, deps
 
 def check_options(dir = '.'):
     global options, options_mtime
-    options = { "show_threads": str(os.getenv("SHOW_THREADS")) }
+    options = { "show_threads": str(os.getenv("NOPSCADLIB_SHOW_THREADS")) }
     options_fname = dir + '/options.json'
     try:
         with open(options_fname) as json_file:
