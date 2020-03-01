@@ -102,13 +102,6 @@ def make_parts(target, part_type, parts = None):
                                     part = base_name + '.' + part_type
                                     if part in targets:
                                         #
-                                        # make a file to use the module
-                                        #
-                                        part_maker_name = part_type + ".scad"
-                                        with open(part_maker_name, "w") as f:
-                                            f.write("use <%s/%s>\n" % (dir, filename))
-                                            f.write("%s();\n" % module);
-                                        #
                                         # Run openscad on the created file
                                         #
                                         part_file = target_dir + "/" + part
@@ -119,15 +112,21 @@ def make_parts(target, part_type, parts = None):
                                             changed = "No bounds"
                                         if changed:
                                             print(changed)
+                                            #
+                                            # make a file to use the module
+                                            #
+                                            part_maker_name = part_type + ".scad"
+                                            with open(part_maker_name, "w") as f:
+                                                f.write("use <%s/%s>\n" % (dir, filename))
+                                                f.write("%s();\n" % module);
                                             t = time.time()
                                             openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
                                             times.add_time(part, t)
                                             if part_type == 'stl':
                                                 bounds = c14n_stl.canonicalise(part_file)
                                                 bounds_map[part] = bounds
-
+                                            os.remove(part_maker_name)
                                         targets.remove(part)
-                                        os.remove(part_maker_name)
     #
     # Write new bounds file
     #
