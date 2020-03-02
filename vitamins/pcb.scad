@@ -26,7 +26,7 @@ include <../core.scad>
 include <buttons.scad>
 include <green_terminals.scad>
 include <pin_headers.scad>
-include <microswitches.scad>
+use <microswitch.scad>
 
 use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
