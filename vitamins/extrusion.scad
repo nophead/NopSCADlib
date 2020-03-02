@@ -101,7 +101,8 @@ module extrusion_cross_section(type, cornerHole) {
         translate([0,i*width+(width-height)/2])
             difference() {
                 square([centerSquare,centerSquare],center=true);
-                circle(d=extrusion_center_hole(type));
+                if(extrusion_center_hole(type)>0)
+                    circle(d=extrusion_center_hole(type));
             }
     translate([0,(width-height)/2])
         for(angle=[0,90])
