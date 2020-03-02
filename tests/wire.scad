@@ -18,7 +18,7 @@
 //
 include <../utils/core/core.scad>
 
-include <../vitamins/wire.scad>
+use <../vitamins/wire.scad>
 
 bundle = [7, 1.4];
 
