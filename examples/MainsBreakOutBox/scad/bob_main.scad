@@ -35,7 +35,14 @@ $extrusion_width = 0.5;
 $pp1_colour = "dimgrey";
 $pp2_colour = [0.9, 0.9, 0.9];
 
-include <NopSCADlib/lib.scad>
+include <NopSCADlib/core.scad>
+include <NopSCADlib/vitamins/iecs.scad>
+include <NopSCADlib/vitamins/mains_sockets.scad>
+include <NopSCADlib/vitamins/tubings.scad>
+
+use <NopSCADlib/vitamins/insert.scad>
+use <NopSCADlib/vitamins/wire.scad>
+use <NopSCADlib/vitamins/jack.scad>
 use <NopSCADlib/printed/foot.scad>
 
 echo(extrusion_width = extrusion_width, layer_height = layer_height);
