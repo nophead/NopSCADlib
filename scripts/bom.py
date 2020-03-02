@@ -184,6 +184,9 @@ def parse_bom(file = "openscad.log", name = None):
                     main.add_part(s)
                     if stack:
                         main.assemblies[stack[-1]].add_part(s)
+        else:
+            if 'ERROR:' in line or 'WARNING:' in line:
+                print(line[:-1])
     return main
 
 def boms(target = None, assembly = None):
