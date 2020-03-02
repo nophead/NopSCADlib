@@ -7,6 +7,13 @@ Arduino thermostat to control a beer fridge to use it as an environmental chambe
 
 
 <a name="TOP"></a>
+## EnviroPlus
+Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
+
+![](EnviroPlus.png)
+
+
+<a name="TOP"></a>
 ## FilamentDryBox
 A small fan oven with a spool holder to keep the filament warm and dry.
 
