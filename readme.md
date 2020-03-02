@@ -876,7 +876,6 @@ Parametric green terminal blocks
 | Module | Description |
 |:--- |:--- |
 | ```green_terminal(type, ways, skip = [], colour = "lime")``` | Draw green terminal blocks, skip can be used to remove pins. |
-| ```terminal_254(ways, skip = [])``` | Draw 0.1" terminal block |
 
 ![green_terminals](tests/png/green_terminals.png)
 

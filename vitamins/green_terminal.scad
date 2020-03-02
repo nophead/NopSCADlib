@@ -177,6 +177,3 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
         translate([0, i * pitch - width / 2 + pitch / 2])
             single(in(skip, i));
 }
-
-module terminal_254(ways, skip = []) //! Draw 0.1" terminal block
-    green_terminal(gt_2p54, ways, skip);
