@@ -32,9 +32,11 @@ include <vitamins/buttons.scad>
 include <vitamins/components.scad>
 include <vitamins/displays.scad>
 include <vitamins/extrusions.scad>
+include <vitamins/extrusion_brackets.scad>
 include <vitamins/geared_steppers.scad>
 include <vitamins/hot_ends.scad>
 include <vitamins/inserts.scad>
+include <vitamins/kp_pillow_blocks.scad>
 include <vitamins/ldrs.scad>
 include <vitamins/leadnuts.scad>
 include <vitamins/leds.scad>
