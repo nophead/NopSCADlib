@@ -676,14 +676,15 @@ Aluminium  extrusion.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```extrusion(E1515, 80)``` |  Extrusion E1515 x 80mm |
 |   1 | ```extrusion(E2020, 80)``` |  Extrusion E2020 x 80mm |
 |   1 | ```extrusion(E2040, 80)``` |  Extrusion E2040 x 80mm |
 |   1 | ```extrusion(E2060, 80)``` |  Extrusion E2060 x 80mm |
 |   1 | ```extrusion(E2080, 80)``` |  Extrusion E2080 x 80mm |
-|   1 | ```extrusion(E3030, 80)``` |  Extrusion E3030 x 80mm |
-|   1 | ```extrusion(E3060, 80)``` |  Extrusion E3060 x 80mm |
-|   1 | ```extrusion(E4040, 80)``` |  Extrusion E4040 x 80mm |
-|   1 | ```extrusion(E4080, 80)``` |  Extrusion E4080 x 80mm |
+|   1 | ```extrusion(E3030, 80, cornerHole = true)``` |  Extrusion E3030 x 80mm |
+|   1 | ```extrusion(E3060, 80, cornerHole = true)``` |  Extrusion E3060 x 80mm |
+|   1 | ```extrusion(E4040, 80, cornerHole = true)``` |  Extrusion E4040 x 80mm |
+|   1 | ```extrusion(E4080, 80, cornerHole = true)``` |  Extrusion E4080 x 80mm |
 
 
 <a href="#top">Top</a>
