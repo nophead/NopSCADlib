@@ -109,13 +109,14 @@ def tests(tests):
     #
     # List of individual part files
     #
-    scads = [i for i in sorted(os.listdir(scad_dir)) if i[-5:] == ".scad"]
+    scads = [i for i in sorted(os.listdir(scad_dir), key = lambda s: s.lower()) if i[-5:] == ".scad"]
 
     for scad in scads:
         base_name = scad[:-5]
         if not tests or base_name in tests:
             print(base_name)
             cap_name = base_name[0].capitalize() + base_name[1:]
+            base_name = base_name.lower()
             scad_name = scad_dir + '/' + scad
             png_name = png_dir + '/' + base_name + '.png'
             bom_name = bom_dir + '/' + base_name + '.json'
@@ -191,10 +192,10 @@ def tests(tests):
 
             body += ["![%s](%s)\n" %(base_name, png_name)]
 
-            dname = deps_name(deps_dir, scad)
+            dname = deps_name(deps_dir, scad.lower())
             oldest = png_name if mtime(png_name) < mtime(bom_name) else bom_name
             changed = check_deps(oldest, dname)
-            changed = times.check_have_time(changed, scad_name)
+            changed = times.check_have_time(changed, scad_name.lower())
             changed = options.have_changed(changed, oldest)
             if changed:
                 print(changed)

@@ -89,6 +89,14 @@ def eop(print_mode, doc_file, last = False, first = False):
 def pad(s, before, after = 0):
     return '&nbsp;' * before + str(s) + '&nbsp;' * after
 
+def titalise(name):
+    cap_next = True
+    result = ''
+    for c in name.replace('_', ' '):
+        result = result + (c.upper() if cap_next else c);
+        cap_next = c == ' '
+    return result
+
 def views(target, do_assemblies = None):
     done_assemblies = []
     #
@@ -216,7 +224,7 @@ def views(target, do_assemblies = None):
             print('1. [Parts list](#Parts_list)', file = doc_file)
             for ass in flat_bom:
                 name =  ass["name"]
-                cap_name = name.replace('_', ' ').title()
+                cap_name = titalise(name)
                 print('1. [%s](#%s)' % (cap_name, name), file = doc_file)
             print(file = doc_file)
             eop(print_mode, doc_file)
@@ -237,7 +245,7 @@ def views(target, do_assemblies = None):
                         else:
                             things[t][thing] = ass[t][thing]
             for ass in flat_bom:
-                name = ass["name"][:-9].replace('_', ' ').title().replace(' ','&nbsp;')
+                name = titalise(ass["name"][:-9]).replace(' ','&nbsp;')
                 print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
             print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
 
@@ -274,7 +282,7 @@ def views(target, do_assemblies = None):
             #
             for ass in flat_bom:
                 name = ass["name"]
-                cap_name = name.replace('_', ' ').title()
+                cap_name = titalise(name)
 
                 if ass["count"] > 1:
                     print('<a name="%s"></a>\n## %d x %s' % (name, ass["count"], cap_name), file = doc_file)

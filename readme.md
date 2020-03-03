@@ -18,25 +18,25 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 ## Table of Contents<a name="top"/>
 <table><tr>
 <th align="left"> Vitamins A-J </th><th align="left"> Vitamins K-Q </th><th align="left"> Vitamins R-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Kp_pillow_blocks">Kp_pillow_blocks</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#Bom">Bom</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#Ldrs">Ldrs</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Leds">Leds</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Scs_bearing_blocks">Scs_bearing_blocks</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sk_brackets">Sk_brackets</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Ssrs">Ssrs</a> </td><td> <a href = "#Pcb_mount">Pcb_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pcb">Pcb</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Psu_shroud">Psu_shroud</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pcbs">Pcbs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Iecs">Iecs</a> </td><td> <a href = "#Psus">Psus</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ssr_shroud">Ssr_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#KP_pillow_blocks">KP_pillow_blocks</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SCS_bearing_blocks">SCS_bearing_blocks</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Jack">Jack</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
 <tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
@@ -976,8 +976,8 @@ Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge
 <a href="#top">Top</a>
 
 ---
-<a name="Iecs"></a>
-## Iecs
+<a name="IECs"></a>
+## IECs
 IEC mains inlets and outlet.
 
 
@@ -985,7 +985,7 @@ IEC mains inlets and outlet.
 
 [vitamins/iec.scad](vitamins/iec.scad) Implementation.
 
-[tests/iecs.scad](tests/iecs.scad) Code for this example.
+[tests/IECs.scad](tests/IECs.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -1132,8 +1132,8 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 <a href="#top">Top</a>
 
 ---
-<a name="Kp_pillow_blocks"></a>
-## Kp_pillow_blocks
+<a name="KP_pillow_blocks"></a>
+## KP_pillow_blocks
 KP pillow block bearings
 
 
@@ -1141,7 +1141,7 @@ KP pillow block bearings
 
 [vitamins/kp_pillow_block.scad](vitamins/kp_pillow_block.scad) Implementation.
 
-[tests/kp_pillow_blocks.scad](tests/kp_pillow_blocks.scad) Code for this example.
+[tests/KP_pillow_blocks.scad](tests/KP_pillow_blocks.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -1185,8 +1185,8 @@ KP pillow block bearings
 <a href="#top">Top</a>
 
 ---
-<a name="Ldrs"></a>
-## Ldrs
+<a name="LDRs"></a>
+## LDRs
 Light dependent resistors.
 
 Larger ones seem to have both a higher dark resistance and a lower bright light resistance.
@@ -1196,7 +1196,7 @@ Larger ones seem to have both a higher dark resistance and a lower bright light 
 
 [vitamins/ldr.scad](vitamins/ldr.scad) Implementation.
 
-[tests/ldrs.scad](tests/ldrs.scad) Code for this example.
+[tests/LDRs.scad](tests/LDRs.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -1276,8 +1276,8 @@ Nuts for leadscrews.
 <a href="#top">Top</a>
 
 ---
-<a name="Leds"></a>
-## Leds
+<a name="LEDs"></a>
+## LEDs
 Standard domed through hole LEDs. Can specify colour and lead length.
 
 
@@ -1285,7 +1285,7 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 
 [vitamins/led.scad](vitamins/led.scad) Implementation.
 
-[tests/leds.scad](tests/leds.scad) Code for this example.
+[tests/LEDs.scad](tests/LEDs.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -1807,14 +1807,14 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 <a href="#top">Top</a>
 
 ---
-<a name="Pcb"></a>
-## Pcb
+<a name="PCB"></a>
+## PCB
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
 
 
 [vitamins/pcb.scad](vitamins/pcb.scad) Implementation.
 
-[tests/pcb.scad](tests/pcb.scad) Code for this example.
+[tests/PCB.scad](tests/PCB.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -1889,8 +1889,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 <a href="#top">Top</a>
 
 ---
-<a name="Pcbs"></a>
-## Pcbs
+<a name="PCBs"></a>
+## PCBs
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
 
 
@@ -1898,7 +1898,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 
 [vitamins/pcb.scad](vitamins/pcb.scad) Implementation.
 
-[tests/pcbs.scad](tests/pcbs.scad) Code for this example.
+[tests/PCBs.scad](tests/PCBs.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -2136,8 +2136,8 @@ Pin headers and sockets, etc.
 <a href="#top">Top</a>
 
 ---
-<a name="Psus"></a>
-## Psus
+<a name="PSUs"></a>
+## PSUs
 Powersupplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
 
 Face order is bottom, top, left, right, front, back.
@@ -2147,7 +2147,7 @@ Face order is bottom, top, left, right, front, back.
 
 [vitamins/psu.scad](vitamins/psu.scad) Implementation.
 
-[tests/psus.scad](tests/psus.scad) Code for this example.
+[tests/PSUs.scad](tests/PSUs.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -2590,8 +2590,8 @@ Machine screws and wood screws with various head styles.
 <a href="#top">Top</a>
 
 ---
-<a name="Scs_bearing_blocks"></a>
-## Scs_bearing_blocks
+<a name="SCS_bearing_blocks"></a>
+## SCS_bearing_blocks
 SCSnUU and SCSnLUU bearing blocks
 
 
@@ -2599,7 +2599,7 @@ SCSnUU and SCSnLUU bearing blocks
 
 [vitamins/scs_bearing_block.scad](vitamins/scs_bearing_block.scad) Implementation.
 
-[tests/scs_bearing_blocks.scad](tests/scs_bearing_blocks.scad) Code for this example.
+[tests/SCS_bearing_blocks.scad](tests/SCS_bearing_blocks.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -2740,8 +2740,8 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 <a href="#top">Top</a>
 
 ---
-<a name="Sk_brackets"></a>
-## Sk_brackets
+<a name="SK_brackets"></a>
+## SK_brackets
 SK shaft support brackets
 
 
@@ -2749,7 +2749,7 @@ SK shaft support brackets
 
 [vitamins/sk_bracket.scad](vitamins/sk_bracket.scad) Implementation.
 
-[tests/sk_brackets.scad](tests/sk_brackets.scad) Code for this example.
+[tests/SK_brackets.scad](tests/SK_brackets.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -2923,8 +2923,8 @@ By default springs have their origin at the bottom but can be centered.
 <a href="#top">Top</a>
 
 ---
-<a name="Ssrs"></a>
-## Ssrs
+<a name="SSRs"></a>
+## SSRs
 Solid state relays.
 
 
@@ -2932,7 +2932,7 @@ Solid state relays.
 
 [vitamins/ssr.scad](vitamins/ssr.scad) Implementation.
 
-[tests/ssrs.scad](tests/ssrs.scad) Code for this example.
+[tests/SSRs.scad](tests/SSRs.scad) Code for this example.
 
 ### Properties
 | Function | Description |
@@ -4241,15 +4241,15 @@ Printed handle that can be printed without needing support material due to its t
 <a href="#top">Top</a>
 
 ---
-<a name="Pcb_mount"></a>
-## Pcb_mount
+<a name="PCB_mount"></a>
+## PCB_mount
 A frame to mount a PCB by its corners when it has no mounting holes.
 The stl must be given a parameterless wrapper in the project that uses it.
 
 
 [printed/pcb_mount.scad](printed/pcb_mount.scad) Implementation.
 
-[tests/pcb_mount.scad](tests/pcb_mount.scad) Code for this example.
+[tests/PCB_mount.scad](tests/PCB_mount.scad) Code for this example.
 
 ### Functions
 | Function | Description |
@@ -4370,15 +4370,15 @@ It can also have printed feet on the base with the screws doubling up to hold th
 <a href="#top">Top</a>
 
 ---
-<a name="Psu_shroud"></a>
-## Psu_shroud
+<a name="PSU_shroud"></a>
+## PSU_shroud
 A cover to go over the mains end of a PSU terminal strip to make it safe.
 The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
 
 
 [printed/psu_shroud.scad](printed/psu_shroud.scad) Implementation.
 
-[tests/psu_shroud.scad](tests/psu_shroud.scad) Code for this example.
+[tests/PSU_shroud.scad](tests/PSU_shroud.scad) Code for this example.
 
 ### Functions
 | Function | Description |
@@ -4572,15 +4572,15 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 <a href="#top">Top</a>
 
 ---
-<a name="Ssr_shroud"></a>
-## Ssr_shroud
+<a name="SSR_shroud"></a>
+## SSR_shroud
 A cover to go over the mains end of an SSR to make it safe to be touched.
 The STL and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
 
 
 [printed/ssr_shroud.scad](printed/ssr_shroud.scad) Implementation.
 
-[tests/ssr_shroud.scad](tests/ssr_shroud.scad) Code for this example.
+[tests/SSR_shroud.scad](tests/SSR_shroud.scad) Code for this example.
 
 ### Functions
 | Function | Description |
@@ -5095,8 +5095,8 @@ Simple tube or ring
 <a href="#top">Top</a>
 
 ---
-<a name="Bom"></a>
-## Bom
+<a name="BOM"></a>
+## BOM
 Bill Of Materials generation via echo and the ```bom.py``` script. Also handles exploded assembly views and posing. Assembly instructions can precede the module
 definition that makes the assembly.
 
@@ -5106,7 +5106,7 @@ heirachical BOMs are also generated for real projects.
 
 [utils/core/bom.scad](utils/core/bom.scad) Implementation.
 
-[tests/bom.scad](tests/bom.scad) Code for this example.
+[tests/BOM.scad](tests/BOM.scad) Code for this example.
 
 ### Functions
 | Function | Description |

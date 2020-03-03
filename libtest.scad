@@ -38,13 +38,13 @@ use <tests/fans.scad>
 use <tests/fuseholder.scad>
 use <tests/geared_steppers.scad>
 use <tests/hot_ends.scad>
-use <tests/iecs.scad>
+use <tests/IECs.scad>
 use <tests/inserts.scad>
 use <tests/jack.scad>
-use <tests/kp_pillow_blocks.scad>
+use <tests/KP_pillow_blocks.scad>
 use <tests/leadnuts.scad>
-use <tests/leds.scad>
-use <tests/ldrs.scad>
+use <tests/LDRs.scad>
+use <tests/LEDs.scad>
 use <tests/light_strips.scad>
 use <tests/linear_bearings.scad>
 use <tests/meter.scad>
@@ -53,22 +53,22 @@ use <tests/modules.scad>
 use <tests/nuts.scad>
 use <tests/o_ring.scad>
 use <tests/opengrab.scad>
-use <tests/pcbs.scad>
+use <tests/PCBs.scad>
 use <tests/pillars.scad>
-use <tests/psus.scad>
+use <tests/PSUs.scad>
 use <tests/pulleys.scad>
 use <tests/rails.scad>
 use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
 use <tests/screws.scad>
-use <tests/scs_bearing_blocks.scad>
+use <tests/SCS_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
 use <tests/sheets.scad>
-use <tests/sk_brackets.scad>
+use <tests/SK_brackets.scad>
 use <tests/spades.scad>
 use <tests/springs.scad>
-use <tests/ssrs.scad>
+use <tests/SSRs.scad>
 use <tests/stepper_motors.scad>
 use <tests/toggles.scad>
 use <tests/transformers.scad>
@@ -90,14 +90,14 @@ use <tests/fixing_block.scad>
 use <tests/flat_hinge.scad>
 use <tests/foot.scad>
 use <tests/handle.scad>
-use <tests/pcb_mount.scad>
+use <tests/PCB_mount.scad>
 use <tests/printed_box.scad>
 use <tests/ribbon_clamp.scad>
 use <tests/screw_knob.scad>
 use <tests/socket_box.scad>
 use <tests/strap_handle.scad>
-use <tests/ssr_shroud.scad>
-use <tests/psu_shroud.scad>
+use <tests/SSR_shroud.scad>
+use <tests/PSU_shroud.scad>
 
 x0 = 0;
 x1 = x0 + 100;
