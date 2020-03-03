@@ -140,11 +140,14 @@ def tests(tests):
                 print("Can't find implementation!")
                 continue
 
-            vsplit = "M"
+            vsplit = "AKR" + chr(ord('Z') + 1)
             vtype = locations[0][1]
-            types = [vtype + ' A-' + vsplit[0], vtype + ' ' + chr(ord(vsplit) + 1) + '-Z'] + [loc[1] for loc in locations[1 :]]
+            types = [vtype + ' ' + vsplit[i] + '-'  + chr(ord(vsplit[i + 1]) - 1) for i in range(len(vsplit) - 1)] + [loc[1] for loc in locations[1 :]]
             if type == vtype:
-                type = types[0] if cap_name[0] <= vsplit else types[1]
+                for i in range(1, len(vsplit)):
+                    if cap_name[0] < vsplit[i]:
+                         type = types[i - 1]
+                         break
 
             for t in types:
                 if not t in bodies:
