@@ -143,7 +143,7 @@ module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file f
  }
 
 module psu_shroud_assembly(type, cable_d, name, cables = 1) //! The printed parts with inserts fitted
-assembly(str("psu_shroud_", name)) {
+assembly(str("PSU_shroud_", name)) {
 
     translate_z(psu_shroud_height(type))
         vflip()

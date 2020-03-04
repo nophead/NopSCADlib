@@ -117,9 +117,10 @@ def views(target, do_assemblies = None):
     with open(bounds_fname) as json_file:
         bounds_map = json.load(json_file)
     #
-    # Find all the assemblies
+    # Find all the assemblies and remove any old views
     #
     assemblies = bom_to_assemblies(bom_dir, bounds_map)
+    lc_assemblies = [ass.lower() for ass in assemblies]
     for file in os.listdir(target_dir):
         if file.endswith('.png'):
             assembly = file[:-4].replace('_assembled', '_assembly')
@@ -148,22 +149,24 @@ def views(target, do_assemblies = None):
                         if len(words) and words[0] == "module":
                             module = words[1].split('(')[0]
                             if is_assembly(module):
-                                if module in assemblies:
+                                lc_module = module.lower()
+                                if lc_module in lc_assemblies:
+                                    real_name = assemblies[lc_assemblies.index(lc_module)]
                                     #
                                     # Scrape the assembly instructions
                                     #
                                     for ass in flat_bom:
-                                        if ass["name"] == module:
+                                        if ass["name"] == real_name:
                                             if not "blurb" in ass:
                                                 ass["blurb"] = blurb.scrape_module_blurb(lines[:line_no])
                                             break
-                                    if not do_assemblies or module in do_assemblies:
+                                    if not do_assemblies or real_name in do_assemblies:
                                         #
                                         # Run openscad on the created file
                                         #
                                         dname = deps_name(deps_dir, filename)
                                         for explode in [0, 1]:
-                                            png_name = target_dir + '/' + module + '.png'
+                                            png_name = target_dir + '/' + real_name + '.png'
                                             if not explode:
                                                 png_name = png_name.replace('_assembly', '_assembled')
                                             changed = check_deps(png_name, dname)
@@ -189,7 +192,7 @@ def views(target, do_assemblies = None):
                                             if mtime(png_name) > mtime(tn_name):
                                                 do_cmd(("magick "+ png_name + " -trim -resize 280x280 -background " + background + " -gravity Center -extent 280x280 -bordercolor " + background + " -border 10 " + tmp_name).split())
                                                 update_image(tmp_name, tn_name)
-                                    done_assemblies.append(module)
+                                    done_assemblies.append(real_name)
                                 else:
                                     if module == 'main_assembly':
                                         main_blurb = blurb.scrape_module_blurb(lines[:line_no])
