@@ -32,4 +32,5 @@ module jacks() {
 }
 
 if($preview)
-    jacks();
+    let($show_threads = true)
+        jacks();

@@ -4422,9 +4422,9 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
-|   1 | psu_shroud_PD_150_12_assembly |
-|   1 | psu_shroud_S_250_48_assembly |
-|   1 | psu_shroud_S_300_12_assembly |
+|   1 | PSU_shroud_PD_150_12_assembly |
+|   1 | PSU_shroud_S_250_48_assembly |
+|   1 | PSU_shroud_S_300_12_assembly |
 
 
 <a href="#top">Top</a>
@@ -4620,8 +4620,8 @@ The STL and assembly must be given a name and parameterless wrappers for the stl
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
-|   1 | ssr_shroud_SSR10DA_assembly |
-|   1 | ssr_shroud_SSR25DA_assembly |
+|   1 | SSR_shroud_SSR10DA_assembly |
+|   1 | SSR_shroud_SSR25DA_assembly |
 
 
 <a href="#top">Top</a>

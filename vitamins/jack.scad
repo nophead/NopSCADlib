@@ -25,6 +25,7 @@ include <../core.scad>
 include <spades.scad>
 use <../utils/tube.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/thread.scad>
 use <ring_terminal.scad>
 
 function jack_4mm_hole_radius() = 8/2; //! Panel hole radius for 4mm jack
@@ -39,6 +40,7 @@ module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack
     sleaved_d = 6.4;
     thread = 10.4;
     thread_d = 8;
+    thread_p = 0.75;
     nut_d = 9.8;
     nut_t = 3;
     barrel_d = 5.4;
@@ -56,28 +58,33 @@ module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack
             }
             square([flange_id, 100], center = true);
         }
-        color("silver") rotate_extrude() difference() {
+        color(silver) rotate_extrude() difference() {
             union() {
                 translate([0, -thread])
-                    square([thread_d / 2, thread]);
-
-                *translate([0, -nut_t - thickness])
-                    square([nut_d / 2,  nut_t]);
+                    square([thread_d / 2 - (show_threads ? thread_p / 2 : 0), thread]);
 
                 translate([0, -barrel])
                     square([barrel_d / 2, barrel]);
             }
             square([4, 2 * (barrel - 1)], center = true);
         }
+        if(show_threads)
+            translate_z(-thread)
+                male_metric_thread(thread_d, thread_p, thread, false, solid = false, colour = silver);
+
         translate_z(-length + flange_t + spade)
             vflip()
                 spade(spade4p8l, spade);
     }
     translate_z(-thickness)
         explode(-length)
-            color("silver")
-                vflip()
+            vflip() {
+                color(silver)
                     tube(ir = thread_d / 2, or = nut_d / 2, h = nut_t, center = false);
+
+                if(show_threads)
+                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
+            }
 }
 
 function jack_4mm_shielded_hole_radius() = 12/2; //! Panel hole radius for 4mm shielded jack
@@ -90,14 +97,16 @@ module jack_4mm_shielded(colour, thickness, display_colour = false) { //! Draw a
     sleaved = 21;
     sleaved_d = 10.7;
     thread = 14;
-    thread_d = 11.7;
+    thread_d = 12;
+    thread_p = 0.75;
     nut_d = 14.4;
     nut_t = 5;
     length = 32;
     spade = 8.5;
+    actual_colour = display_colour ? display_colour : colour;
 
     explode(length, offset = -length + flange_t) {
-        color(display_colour ? display_colour : colour) {
+        color(actual_colour) {
             rounded_cylinder(r = flange_d / 2, h = flange_t, r2 = 1, ir = 4.5);
 
             rotate_extrude() difference() {
@@ -105,8 +114,9 @@ module jack_4mm_shielded(colour, thickness, display_colour = false) { //! Draw a
                     translate([0, -sleaved])
                         square([sleaved_d  / 2, sleaved + flange_t]);
 
-                    translate([0, -thread])
-                        square([thread_d / 2, thread]);
+                    if(!show_threads)
+                        translate([0, -thread])
+                            square([thread_d / 2, thread]);
                 }
                 square([flange_id, 100], center = true);
 
@@ -115,8 +125,13 @@ module jack_4mm_shielded(colour, thickness, display_colour = false) { //! Draw a
                     square([6, 2 * sleaved], center = true);
                 }
             }
+
+            if(show_threads)
+                translate_z(-thread)
+                    male_metric_thread(thread_d, thread_p, thread, false, solid = false);
         }
-        color("silver")
+
+        color(silver)
             translate_z(-length + flange_t + spade - 0.5)
                 cylinder(d = 4.8, h = 0.5);
 
@@ -127,10 +142,13 @@ module jack_4mm_shielded(colour, thickness, display_colour = false) { //! Draw a
 
     translate_z(-thickness)
         explode(-length)
-            color("silver")
-                vflip()
+            vflip() {
+                color(silver)
                     tube(ir = thread_d / 2, or = nut_d / 2, h = nut_t, center = false);
 
+                if(show_threads)
+                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
+            }
 }
 
 function post_4mm_diameter() = 13; //! Outer diameter of 4mm binding post
@@ -167,14 +185,15 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
 
     post_od = 9.5;
     post_metal = 0.2;
-    thread_d = 3.5;
+    thread_d = 3.6;
+    thread_p = 0.66;
     thread_l = 15;
     post_d = 7;
     post_h = 14;
 
     ringterm = ["", 6.3, 3.8, 16.7, 3, 1.6, 0.3, M4_dome_screw];
 
-    module washer() {
+    module washer() color(silver) {
         washer_t = 0.65;
 
         tube(or = 7.6 / 2, ir = thread_d / 2, h = washer_t, center = false);
@@ -186,11 +205,14 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
     module nut() {
         nut_t = 2.3;
 
-        linear_extrude(height = nut_t) difference() {
-            circle(d = 6.3 / cos(30), $fn = 6);
+        color(silver)
+            linear_extrude(height = nut_t) difference() {
+                circle(d = 6.3 / cos(30), $fn = 6);
 
-            circle(d = thread_d);
-        }
+                circle(d = thread_d);
+            }
+        if(show_threads)
+            female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
 
         translate_z(nut_t)
             children();
@@ -219,8 +241,7 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
                         render() difference() {
                             rotate_extrude(angle = 360 / 8)
                                 polygon([
-                                    [0,          0],
-                                    [0,          2],
+                                    [post_d / 2, 0],
                                     [post_d / 2, 2],
                                     [post_d / 2, 17.5],
                                     [11 / 2,     17.5],
@@ -238,7 +259,7 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
                 }
         }
 
-        color("silver") {
+        color(silver) {
             translate_z(post_metal)
                 cylinder(d = post_od, h = base_h);
 
@@ -252,9 +273,13 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
                     square([2, post_h]);
 
             }
-            vflip()
-                cylinder(d = thread_d, h = thread_l);
+            if(!show_threads)
+                vflip()
+                    cylinder(d = thread_d, h = thread_l);
         }
+        if(show_threads)
+            vflip()
+                male_metric_thread(thread_d, thread_p, thread_l, false, colour = silver);
     }
     explode(-15)
         color(actual_colour) {
@@ -272,12 +297,11 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
         }
     translate_z(-thickness - base_h)
         explode(-20, true)
-            color("silver")
-                vflip()
-                    not_on_bom()
-                        washer()
-                        explode(5, true) nut()
-                        explode(5, true) ring_terminal(ringterm)
-                        explode(5, true) washer()
-                        explode(5, true) nut();
+            vflip()
+                not_on_bom()
+                    washer()
+                    explode(5, true) nut()
+                    explode(5, true) ring_terminal(ringterm)
+                    explode(5, true) washer()
+                    explode(5, true) nut();
 }
