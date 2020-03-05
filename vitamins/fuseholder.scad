@@ -23,6 +23,7 @@
 include <../utils/core/core.scad>
 include <spades.scad>
 use <../utils/tube.scad>
+use <../utils/thread.scad>
 
 module fuseholder_hole(h = 100) //! Hole with flats for fuseholder
     extrude_if(h)
@@ -39,7 +40,8 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
     flange_d = fuseholder_diameter();
     flange_t = 2;
     height = 33.2;
-    thread_d = 11.7;
+    thread_d = 12;
+    thread_p = 1;
     thread = 15;
     bot_d = 10.4;
     top_d = 8.7;
@@ -59,24 +61,28 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
     //
     // Nut
     //
+    colour = grey40;
     vflip()
         translate_z(thickness)
-            explode(height)
-                color("dimgrey") {
-                    tube(or = nut_d / 2, ir = 5, h = nut_flange_t, center = false);
+            explode(height) {
+                color(colour) {
+                    tube(or = nut_d / 2, ir = thread_d / 2, h = nut_flange_t, center = false);
 
                     linear_extrude(height = nut_t)
                         difference() {
                             circle(d = nut_d, $fn = 6);
 
-                            circle(5);
+                            circle(d = thread_d);
                         }
                 }
+                if(show_threads)
+                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = colour);
+            }
     //
     // Body
     //
     explode(height + 5, offset = -height - 4) {
-        color("dimgrey") {
+        color(colour) {
             tube(or = flange_d / 2, ir = 5.2, h = flange_t, center = false);
 
             cylinder(r = 5, h = flange_t - 1);
@@ -89,26 +95,35 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
                 }
 
             vflip() {
-                linear_extrude(height = thread)
-                    intersection() {
-                        circle(d = thread_d);
+                if(!show_threads)
+                    linear_extrude(height = thread)
+                        intersection() {
+                            circle(d = thread_d - 0.3);
 
-                        square([100, 10.8], center = true);
-                    }
-                    render() difference() {
-                        translate_z(thread)
-                            cylinder(d1 = bot_d, d2 = top_d, h = height - flange_t - thread);
+                            square([100, 10.8], center = true);
+                        }
+                render() difference() {
+                    translate_z(thread)
+                        cylinder(d1 = bot_d, d2 = top_d, h = height - flange_t - thread);
 
-                        for(side = [-1, 1])
-                            translate([side * (contact_slot_d / 2 + 1) - 1, -contact_slot_w / 2, contact_slot_z])
-                                 cube([2, contact_slot_w, 100]);
-                    }
+                    for(side = [-1, 1])
+                        translate([side * (contact_slot_d / 2 + 1) - 1, -contact_slot_w / 2, contact_slot_z])
+                             cube([2, contact_slot_w, 100]);
+                }
             }
+            if(show_threads)
+                vflip()
+                    render() intersection() {
+                        male_metric_thread(thread_d, thread_p, thread, false, colour = colour);
+
+                        translate_z(thread / 2)
+                            cube([100, 10.8, thread + 1], center = true);
+                    }
         }
         //
         // Side contacts
         //
-        color("silver") vflip()
+        color(silver) vflip()
             for(side = [-1, 1])
                 translate([side * contact_slot_d / 2, 0, contact_slot_z])
                     rotate([0, -70, 90 - side * 90])

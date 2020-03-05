@@ -24,4 +24,5 @@ module fuseholders()
     fuseholder(6);
 
 if($preview)
-    fuseholders();
+    let($show_threads = 1)
+        fuseholders();
