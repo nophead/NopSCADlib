@@ -366,7 +366,7 @@ sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 50;
 scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
 
-translate([x4 + 130, belts_y + 58]) {
+translate([x4 + 150, belts_y + 58]) {
     belt_test();
 
     translate([0, 60])
@@ -376,9 +376,8 @@ translate([x4 + 130, belts_y + 58]) {
 translate([x4, rails_y + 130])
     rails();
 
-translate([780, 0])
-    rotate(90)
-        cable_strips();
+translate([900, fans_y + 50])
+    cable_strips();
 
 translate([x4, kp_pillow_blocks_y])
     kp_pillow_blocks();
