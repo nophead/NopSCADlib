@@ -63,16 +63,19 @@ function pcb_coord(type, p) = let(l = pcb_length(type), w = pcb_width(type)) //!
     [(p.x >= 0 ? p.x : l + p.x) - l / 2,
      (p.y >= 0 ? p.y : w + p.y) - w / 2];
 
-module pcb_screw_positions(type) { //! Positions children at the mounting hole positions
+module pcb_hole_positions(type, all = true) { // Positition children at the hole positions, including holes not used for screws
     holes = pcb_holes(type);
 
-    if(len(holes))
-        for($i = [0 : len(holes) - 1]) {
-            p = pcb_coord(type, holes[$i]);
-            translate([p.x, p.y, 0])
+    for($i = [0 : 1 : len(holes) - 1]) {
+        hole = holes[$i];
+        if(len(hole) == 2 || all)
+            translate(pcb_coord(type, hole))
                 children();
-       }
+   }
 }
+
+module pcb_screw_positions(type)  //! Positions children at the mounting hole positions
+    pcb_hole_positions(type, false) children();
 
 module chip(length, width, thickness, colour, cutout = false) //! Draw a coloured cube to represent a chip, or other rectangular component
     if(!cutout)
@@ -837,7 +840,7 @@ module pcb(type) { //! Draw specified PCB
         else
             rounded_square([pcb_length(type), pcb_width(type)], r = pcb_radius(type));
 
-        pcb_screw_positions(type)
+        pcb_hole_positions(type)
             circle(d = pcb_hole_d(type) + eps);
 
         if(Len(grid))
@@ -847,7 +850,7 @@ module pcb(type) { //! Draw specified PCB
 
     color("silver")
         translate_z(t / 2)
-            pcb_screw_positions(type)
+            pcb_hole_positions(type)
                 tube(or =  max(pcb_land_d(type), 1) / 2, ir = pcb_hole_d(type) / 2, h = t + 2 * eps);
 
     fr4 = pcb_colour(type) != "sienna";

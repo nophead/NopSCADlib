@@ -342,7 +342,7 @@ PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3
 RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     40.0, 16.0, 1.6, 0.5, 2.54, 0, "red",  false,
     [
-        [2, 2], [2, 13.5], [17, 13.5], [36, 13.5]
+        [2, 2, false], [2, 13.5, false], [17, 13.5], [36, 13.5]
     ],
     [
         [ 12,    8,   -90, "jst_xh", 3, true, "white", "silver"],
