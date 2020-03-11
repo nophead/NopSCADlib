@@ -31,11 +31,11 @@ from shutil import copyfile
 source_dirs = { "stl" : "platters", "dxf" : "panels" }
 target_dirs = { "stl" : "printed",  "dxf" : "routed" }
 
-def plateup(target, part_type):
+def plateup(target, part_type, usage = None):
     #
     # Make the target directory
     #
-    top_dir = set_config(target)
+    top_dir = set_config(target, usage)
     parts_dir = top_dir + part_type + 's'
     target_dir = parts_dir + '/' + target_dirs[part_type]
     source_dir = top_dir + source_dirs[part_type]

@@ -26,6 +26,7 @@ from __future__ import print_function
 
 import os
 from tests import do_cmd
+import argparse
 
 dir = 'scripts'
 
@@ -74,4 +75,5 @@ They should work with both Python 2 and Python 3.
 
 
 if __name__ == '__main__':
+    argparse.ArgumentParser().parse_args()
     doc_scripts()

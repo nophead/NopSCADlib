@@ -30,6 +30,7 @@ import re
 from shutil import copyfile
 from tests import update_image
 import sys
+import argparse
 
 project_dirs = ['../..', 'examples']
 target_dir = 'gallery'
@@ -38,7 +39,6 @@ output_name = target_dir + '/readme.md'
 def gallery(force):
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
-
 
     paths = sorted([pdir + '/' + i for pdir in project_dirs for i in os.listdir(pdir) if os.path.isdir(pdir + '/' + i + '/assemblies')], key = lambda s: os.path.basename(s))
     with open(output_name, 'wt') as output_file:
@@ -78,4 +78,8 @@ def gallery(force):
 
 if __name__ == '__main__':
     init()
-    gallery(force = len(sys.argv) > 1 and sys.argv[1] == '-f')
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", help = "run make_all in each project to force update", action="store_true")
+    args = parser.parse_args()
+
+    gallery(force = args.f)

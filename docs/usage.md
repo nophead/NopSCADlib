@@ -233,3 +233,13 @@ Vitamins are only ever previewed, so they are optimised to draw quickly in F5 an
 In OpenCSG 3D difference and intersection are relatively slow and the negative volumes interfere with nearby objects when they are composed into assemblies. For this reason as much
 as possible is done by unioning primitives and extruded 2D shapes. Any 3D differences or intersections are wrapped in ```render()``` so that CGAL will compute a polyhedron
 that is cached and reused. This will be very slow the first time it renders but very fast afterwards.
+
+### Multiple configurations
+
+Some parametric designs might have several configurations, for example a 3D printer with different size options. If several configurations need to be supported at the
+ same time multiple sets of BOMS, STLS and DXFs need to be generated in separate diectories. NopSCADlib supports this by having multiple configuration files named
+```config_<target_name>.scad```. All the scripts take an optional first parameter that selects one of these config files by specifying ```target_name```.
+
+The target config file is selected by generating ```target.scad``` that includes ```config_<target_name>.scad```.
+The rest of the project includes ```target.scad``` to use the configuration.
+Additionally all the generated file directories (assemblies, bom, stls, dxfs, etc. are placed in a sub-directory called ```<target_name>```.

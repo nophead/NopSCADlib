@@ -25,9 +25,15 @@ import sys
 
 from plateup import plateup
 
+def usage():
+    print("\nusage:\n\tplatters [target_config] - Aggregate STL files for printing together.")
+    sys.exit(1)
+
 if __name__ == '__main__':
+   if len(sys.argv) > 2: usage()
+
     if len(sys.argv) > 1:
         target = sys.argv[1]
     else:
         target = None
-    plateup(target, 'stl')
+    plateup(target, 'stl', usage)

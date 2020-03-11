@@ -189,8 +189,12 @@ def parse_bom(file = "openscad.log", name = None):
                 print(line[:-1])
     return main
 
+def usage():
+    print("\nusage:\n\tbom [target_config] [<accessory_name>_assembly] - Generate BOMs for a project or an accessory to a project.")
+    sys.exit(1)
+
 def boms(target = None, assembly = None):
-    bom_dir = set_config(target) + "bom"
+    bom_dir = set_config(target, usage) + "bom"
     if assembly:
         bom_dir += "/accessories"
         if not os.path.isdir(bom_dir):
@@ -239,11 +243,24 @@ def boms(target = None, assembly = None):
     print("done")
 
 if __name__ == '__main__':
-    args = len(sys.argv)
-    if args > 1:
-        if args > 2:
-            boms(sys.argv[1], sys.argv[2])
-        else:
-            boms(sys.argv[1])
+    if len(sys.argv) > 3: usage()
+
+    if len(sys.argv) == 3:
+        target, assembly = sys.argv[1], sys.argv[2]
     else:
-        boms();
+        if len(sys.argv) == 2:
+            if sys.argv[1][-9:] == "_assembly":
+                target, assembly = None, sys.argv[1]
+            else:
+                target, assembly = sys.argv[1], None
+        else:
+            target, assembly = None, None
+
+    if assembly:
+        if assembly[-9:] != "_assembly": usage()
+
+    try:
+        boms(target, assembly)
+    except Exception as e:
+        print(str(e))
+        sys.exit(1)

@@ -97,12 +97,16 @@ def titalise(name):
         cap_next = c == ' '
     return result
 
+def usage():
+    print("\nusage:\n\t views [target_config] [<name1>_assembly] ... [<nameN>_assembly] - Create assembly images and readme.")
+    sys.exit(1)
+
 def views(target, do_assemblies = None):
     done_assemblies = []
     #
     # Make the target directory
     #
-    top_dir = set_config(target)
+    top_dir = set_config(target, usage)
     target_dir = top_dir + 'assemblies'
     deps_dir = top_dir + "deps"
     bom_dir = top_dir + "bom"
@@ -395,5 +399,8 @@ if __name__ == '__main__':
         target, assemblies = sys.argv[1], sys.argv[2:]
     else:
         target, assemblies = None, sys.argv[1:]
+
+    for a in assemblies:
+        if a[-9:] != "_assembly": usage()
 
     views(target, assemblies)

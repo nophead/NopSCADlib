@@ -85,6 +85,10 @@ def depluralise(name):
 def is_plural(name):
     return name != depluralise(name)
 
+def usage():
+    print("\nusage:\n\ttests [test_name1] ... [test_nameN] - Run specified tests or all tests in none specified.");
+    sys.exit(1)
+
 def tests(tests):
     scad_dir = "tests"
     deps_dir = scad_dir + "/deps"
@@ -96,6 +100,7 @@ def tests(tests):
     doc_name = "readme.md"
     index = {}
     bodies = {}
+    done = []
     times.read_times()
     options.check_options(deps_dir)
     #
@@ -114,6 +119,7 @@ def tests(tests):
     for scad in scads:
         base_name = scad[:-5]
         if not tests or base_name in tests:
+            done.append(base_name)
             print(base_name)
             cap_name = base_name[0].capitalize() + base_name[1:]
             base_name = base_name.lower()
@@ -234,6 +240,14 @@ def tests(tests):
             body += ['\n<a href="#top">Top</a>']
             body += ["\n---"]
 
+    for test in done:
+        if test in tests:
+            tests.remove(test)
+    if tests:
+        for test in tests:
+            print(Fore.MAGENTA + "Could not find a test called", test, Fore.WHITE)
+        usage()
+
     with open(doc_name, "wt") as doc_file:
         print('# NopSCADlib', file = doc_file)
         print('''\
@@ -279,4 +293,6 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
     do_cmd('codespell -L od readme.md'.split())
 
 if __name__ == '__main__':
+    for arg in sys.argv[1:]:
+        if arg[:1] == '-': usage()
     tests(sys.argv[1:])

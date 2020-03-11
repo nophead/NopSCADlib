@@ -46,11 +46,21 @@ def bom_to_parts(target_dir, part_type, assembly = None):
                    part_files.append(last_word[:-4] + '.' + part_type)
     return part_files
 
+def usage(t):
+    print("\nusage:\n\t%ss [target_config] [<name1>.%s] ... [<nameN>.%s] - Generate specified %s files or all if none specified." % ( t, t, t, t.upper()))
+    sys.exit(1)
+
 def make_parts(target, part_type, parts = None):
+    #
+    # Check list of parts is the correct type
+    #
+    if parts:
+        for p in parts:
+            if not p.endswith('.' + part_type): usage(part_type)
     #
     # Make the target directory
     #
-    top_dir = set_config(target)
+    top_dir = set_config(target, lambda: usage(part_type))
     target_dir = top_dir + part_type + 's'
     deps_dir = top_dir + "deps"
     if not os.path.isdir(target_dir):
@@ -142,5 +152,5 @@ def make_parts(target, part_type, parts = None):
                 print(part, "is not a", part_type, "file")
             else:
                 print("Could not find a module called", part[:-4] + module_suffix, "to make", part)
-        sys.exit(1)
+        usage(part_type)
     times.print_times()

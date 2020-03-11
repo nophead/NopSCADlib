@@ -27,9 +27,17 @@ from bom import boms
 from render import render
 from views import views
 from plateup import plateup
+from set_config import set_config
+
+
+def usage():
+    print("\nusage:\n\tmake_all [target_config] - Make all the manufacturing files and readme for a project.")
+    sys.exit(1)
 
 if __name__ == '__main__':
+    if len(sys.argv) > 2: usage()
     target = None if len(sys.argv) == 1 else sys.argv[1]
+    set_config(target, usage)
     boms(target)
     for part in ['stl', 'dxf']:
         make_parts(target, part)

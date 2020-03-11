@@ -30,11 +30,15 @@ from tests import do_cmd, update_image, colour_scheme, background
 from deps import mtime
 from colorama import init
 
+def usage():
+    print("\nusage:\n\trender [target_config] - Render images of the stl and dxf files.");
+    sys.exit(1)
+
 def render(target, type):
     #
     # Make the target directory
     #
-    target_dir = set_config(target) + type + 's'
+    target_dir = set_config(target, usage) + type + 's'
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
     #
@@ -71,6 +75,7 @@ def render(target, type):
 
 if __name__ == '__main__':
     init()
+    if len(sys.argv) > 2: usage()
     target =  sys.argv[1] if len(sys.argv) > 1 else None
     render(target, 'stl')
     render(target, 'dxf')

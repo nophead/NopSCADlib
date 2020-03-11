@@ -45,20 +45,27 @@ def valid_targets_string():
     return result
 
 
-def set_config(target):
+def set_config(target, usage = None):
+    if target and target[:1] == '-' and usage: usage()
     targets = valid_targets()
     if not target:
         if not targets:
             return ""
         print("Must specify a configuration: " + valid_targets_string())
+        if usage:
+            usage()
         sys.exit(1)
 
     if not targets:
         print("Not a muli-configuration project (no config_<target>.scad files found)")
+        if usage:
+            usage()
         sys.exit(1)
 
     if not target in targets:
         print(target + " is not a configuration, avaliable configurations are: " + valid_targets_string())
+        if usage:
+            usage()
         sys.exit(1)
 
     fname = source_dir + "/target.scad"
@@ -75,10 +82,13 @@ def set_config(target):
             f. write(text);
     return target + "/"
 
+def usage():
+        print("\nusage:\n\tset_config config_name")
+        sys.exit(1)
+
 if __name__ == '__main__':
     args = len(sys.argv)
     if args == 2:
-       set_config(sys.argv[1])
+       set_config(sys.argv[1], usage)
     else:
-        print("usage: set_config config_name")
-        sys.exit(1)
+        usage()

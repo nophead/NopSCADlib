@@ -25,9 +25,15 @@ import sys
 
 from plateup import plateup
 
+def usage():
+    print("\nusage:\n\tpanels [target_config] - Aggregate DXF files for routing together.")
+    sys.exit(1)
+
 if __name__ == '__main__':
+    if len(sys.argv) > 2: usage()
+
     if len(sys.argv) > 1:
         target = sys.argv[1]
     else:
         target = None
-    plateup(target, 'dxf')
+    plateup(target, 'dxf', usage)
