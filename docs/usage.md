@@ -242,4 +242,4 @@ Some parametric designs might have several configurations, for example a 3D prin
 
 The target config file is selected by generating ```target.scad``` that includes ```config_<target_name>.scad```.
 The rest of the project includes ```target.scad``` to use the configuration.
-Additionally all the generated file directories (assemblies, bom, stls, dxfs, etc. are placed in a sub-directory called ```<target_name>```.
+Additionally all the generated file directories (assemblies, bom, stls, dxfs, etc.) are placed in a sub-directory called ```<target_name>```.
