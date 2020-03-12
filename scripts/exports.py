@@ -30,14 +30,14 @@ import times
 from deps import *
 import json
 
-def bom_to_parts(target_dir, part_type, assembly = None):
+def bom_to_parts(bom_dir, part_type, assembly = None):
     #
     # Make a list of all the parts in the BOM
     #
     part_files = []
     bom = assembly + '.txt' if assembly else "bom.txt"
     suffix = ".dxf" if part_type == 'svg' else '.' + part_type
-    with open(target_dir + "/../bom/" + bom, "rt") as f:
+    with open(bom_dir + '/' + bom, "rt") as f:
         for line in f.readlines():
             words = line.split()
             if words:
@@ -63,6 +63,7 @@ def make_parts(target, part_type, parts = None):
     top_dir = set_config(target, lambda: usage(part_type))
     target_dir = top_dir + part_type + 's'
     deps_dir = top_dir + "deps"
+    bom_dir = top_dir + "bom"
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
     if not os.path.isdir(deps_dir):
@@ -74,7 +75,7 @@ def make_parts(target, part_type, parts = None):
     if parts:
         targets = list(parts)           #copy the list so we dont modify the list passed in
     else:
-        targets = bom_to_parts(target_dir, part_type)
+        targets = bom_to_parts(bom_dir, part_type)
         for file in os.listdir(target_dir):
             if file.endswith('.' + part_type):
                 if not file in targets:
@@ -93,12 +94,11 @@ def make_parts(target, part_type, parts = None):
     #
     # Find all the scad files
     #
-    lib_dirs = [path + '/' + lib + '/printed' for path in os.environ['OPENSCADPATH'].split(os.pathsep) for lib in sorted(os.listdir(path))]
     module_suffix = '_dxf' if part_type == 'svg' else '_' + part_type
-    for dir in [source_dir, source_dir + '/printed'] + lib_dirs:
-        if os.path.isdir(dir):
+    for dir in source_dirs(bom_dir):
+        if targets and os.path.isdir(dir):
             for filename in os.listdir(dir):
-                if filename[-5:] == ".scad":
+                if targets and filename[-5:] == ".scad":
                     #
                     # find any modules ending in _<part_type>
                     #
@@ -148,9 +148,6 @@ def make_parts(target, part_type, parts = None):
     #
     if targets:
         for part in targets:
-            if part[-4:] != '.' + part_type:
-                print(part, "is not a", part_type, "file")
-            else:
-                print("Could not find a module called", part[:-4] + module_suffix, "to make", part)
+            print("Could not find a module called", part[:-4] + module_suffix, "to make", part)
         usage(part_type)
     times.print_times()

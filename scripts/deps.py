@@ -48,3 +48,17 @@ def check_deps(target, dname):
         if mtime(dep) > target_mtime:
             return dep + ' changed'
     return None
+
+def source_dirs(bom_dir):
+    dirs = set()
+    lib_dirs = set()
+    deps = read_deps(bom_dir + '/bom.deps')
+    cwd = os.getcwd().replace('\\', '/')
+    for dep in deps:
+        dir = os.path.dirname(dep)
+        if dir.startswith(cwd):
+            dirs.add(dir[len(cwd) + 1:])
+        else:
+            if dir.endswith('/printed'):
+                lib_dirs.add(dir)
+    return sorted(dirs) + sorted(lib_dirs)

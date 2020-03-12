@@ -243,3 +243,10 @@ Some parametric designs might have several configurations, for example a 3D prin
 The target config file is selected by generating ```target.scad``` that includes ```config_<target_name>.scad```.
 The rest of the project includes ```target.scad``` to use the configuration.
 Additionally all the generated file directories (assemblies, bom, stls, dxfs, etc.) are placed in a sub-directory called ```<target_name>```.
+
+### Other libraries
+
+The build scripts need to be able to locate the source files where the modules to generate the STL files and assemblies reside. They will search all the scad files
+in the project plus any ```printed``` directories outside the project. This covers the printed parts in NopSCADlib but also allows other libraries of printed parts.
+
+Other libraries of vitamins and utilities can be used provided they follow the same convensions of NopSCADlib. The build scripts don't need to search those.

@@ -38,13 +38,15 @@ def render(target, type):
     #
     # Make the target directory
     #
-    target_dir = set_config(target, usage) + type + 's'
+    top_dir = set_config(target, usage)
+    target_dir = top_dir + type + 's'
+    bom_dir = top_dir + 'bom'
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
     #
     # Find all the parts
     #
-    parts = bom_to_parts(target_dir, type)
+    parts = bom_to_parts(bom_dir, type)
     #
     # Remove unused png files
     #
