@@ -17,6 +17,7 @@
 # If not, see <https://www.gnu.org/licenses/>.
 #
 import os
+from set_config import source_dir
 
 def mtime(file):
     if os.path.isfile(file):
@@ -61,4 +62,5 @@ def source_dirs(bom_dir):
         else:
             if dir.endswith('/printed'):
                 lib_dirs.add(dir)
-    return sorted(dirs) + sorted(lib_dirs)
+    dirs.remove(source_dir)
+    return [source_dir] + sorted(dirs) + sorted(lib_dirs)
