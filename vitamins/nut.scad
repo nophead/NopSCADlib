@@ -201,21 +201,21 @@ module nut_square(type, brass = false, nylon = false) { //! Draw specified squar
     desc = brass ? "brass" : nylon ? "nylon" : "";
     vitamin(str("nut(", type[0], arg(brass, false, "brass"), arg(nylon, false, "nylon"),
                    "): Nut M", nut_size(type), "nS ", width, " x ", thickness, "mm ", desc));
-    
+
     colour = brass ? brass_colour : nylon ? grey30 : grey70;
     color(colour)
-    difference() {
-        linear_extrude(height = thickness) {
-            difference() {
-                square([width, width], center = true);
+        difference() {
+            linear_extrude(height = thickness) {
+                difference() {
+                    square([width, width], center = true);
 
-                circle(hole_rad);
+                    circle(hole_rad);
+                }
             }
-        }
 
-        if(show_threads)
-            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
-    }
+        }
+    if(show_threads)
+        female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
 }
 
 function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height / 4 : 0); //! Radius across the corners of a nut trap
