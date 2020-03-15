@@ -78,7 +78,7 @@ def gallery(force):
 
 if __name__ == '__main__':
     init()
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Creates a galley of projects by copying the top level image and description to gallery/readme.md.')
     parser.add_argument("-f", help = "run make_all in each project to force update", action="store_true")
     args = parser.parse_args()
 

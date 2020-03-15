@@ -75,5 +75,5 @@ They should work with both Python 2 and Python 3.
 
 
 if __name__ == '__main__':
-    argparse.ArgumentParser().parse_args()
+    argparse.ArgumentParser(description='Generate scripts/readme.md and make html versions of that and doc/usage.md').parse_args()
     doc_scripts()
