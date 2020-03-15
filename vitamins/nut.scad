@@ -39,6 +39,10 @@ function nut_trap_depth(type) = type[6];        //! Depth of nut trap
 
 function nut_flat_radius(type) = nut_radius(type) * cos(30); //! Radius across the flats
 
+function nut_square_size(type)      = type[1]; //! Diameter of the corresponding screw
+function nut_square_width(type)     = type[2]; //! Width of the square nut
+function nut_square_thickness(type) = type[3]; //! Thickness of the square nut
+
 module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specified nut
     thread_d = nut_size(type);
     hole_rad  = thread_d / 2;
@@ -187,6 +191,31 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
                     rotate([0, -90, 0])
                         right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size.x, center = true);
             }
+}
+
+module nut_square(type, brass = false, nylon = false) { //! Draw specified square nut
+    thread_d = nut_size(type);
+    hole_rad  = thread_d / 2;
+    width = nut_square_width(type);
+    thickness = nut_square_thickness(type);
+    desc = brass ? "brass" : nylon ? "nylon" : "";
+    vitamin(str("nut(", type[0], arg(brass, false, "brass"), arg(nylon, false, "nylon"),
+                   "): Nut M", nut_size(type), "nS ", width, " x ", thickness, "mm ", desc));
+    
+    colour = brass ? brass_colour : nylon ? grey30 : grey70;
+    color(colour)
+    difference() {
+        linear_extrude(height = thickness) {
+            difference() {
+                square([width, width], center = true);
+
+                circle(hole_rad);
+            }
+        }
+
+        if(show_threads)
+            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
+    }
 }
 
 function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height / 4 : 0); //! Radius across the corners of a nut trap

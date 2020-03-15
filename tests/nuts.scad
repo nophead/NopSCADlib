@@ -61,6 +61,19 @@ module nuts() {
             if(n == M4_nut)
                 sliding_t_nut(M4_hammer_nut);
        }
+
+       translate([0, 100]) {
+            if(n == M3_nut)
+               nut_square(M3nS_thin_nut);
+            if(n == M4_nut)
+               nut_square(M4nS_thin_nut);
+            if(n == M5_nut)
+               nut_square(M5nS_thin_nut);
+            if(n == M6_nut)
+               nut_square(M6nS_thin_nut);
+            if(n == M8_nut)
+               nut_square(M8nS_thin_nut);
+       }
     }
 }
 

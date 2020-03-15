@@ -51,6 +51,20 @@ toggle_nut  =      ["toggle_nut",       6.1, 9.2, 1.5, 1.5,  M6_washer,     1.5]
 
 M4_wingnut  =      ["M4_wingnut",       4,  10,   3.75,8,    M4_washer,     0, 22, 10, 6, 3];
 
+// DIN 562 (thin) square nuts
+//                                                s    w    h
+//                                                c    i    e
+//                                                r    d    i
+//                                                e    t    g
+//                                                w    h    h
+//                                                          t
+//
+M3nS_thin_nut    =      ["M3nS_thin_nut",         3, 5.5, 1.8];
+M4nS_thin_nut    =      ["M4nS_thin_nut",         4,   7, 2.2];
+M5nS_thin_nut    =      ["M5nS_thin_nut",         5,   8, 2.7];
+M6nS_thin_nut    =      ["M6nS_thin_nut",         6,  10, 3.2];
+M8nS_thin_nut    =      ["M8nS_thin_nut",         8,  13,   4];
+
 //                                                                              sx  ty1 ty2 hammer
 M3_sliding_t_nut = ["M3_sliding_t_nut", 3,   6,   3.0, 4.0,  false,         0,  10,  10,  6, false];
 M4_sliding_t_nut = ["M4_sliding_t_nut", 4,   6,   3.25,4.5,  false,         0,  11,  10,  6, false];
