@@ -234,6 +234,19 @@ In OpenCSG 3D difference and intersection are relatively slow and the negative v
 as possible is done by unioning primitives and extruded 2D shapes. Any 3D differences or intersections are wrapped in ```render()``` so that CGAL will compute a polyhedron
 that is cached and reused. This will be very slow the first time it renders but very fast afterwards.
 
+### Panels and Platters
+
+The ```stls``` and ```dxfs``` scripts produce a file for each part but often it is desirable to print or route collections of parts laid out together.
+This can be done by adding scad files to folders called ```platters``` for STL files and ```panels``` for DXF files.
+These can aggregate and lay out parts by including ```NopSCADlib/core.scad``` and using modules ```use_stl(name)``` and ```use_dxf(name)```.
+These modules import the already generated singular STL and DXF files, so they are relatively fast. The name does not include the suffix.
+The scad files typically also need to include other files from the project to get the dimensions of the parts to calculate their positions.
+
+The composite part files have the same name as the scad file that generates them, with the suffix changed to ```.stl``` or ```.dxf```.
+
+The generated files are placed in ```stls/printed``` and ```dxfs/routed```.
+Any parts that are not covered by the platters / panels are copied into the ```printed``` / ```routed``` directories, so that they contain everything to be made.
+
 ### Multiple configurations
 
 Some parametric designs might have several configurations, for example a 3D printer with different size options. If several configurations need to be supported at the
