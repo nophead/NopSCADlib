@@ -1689,6 +1689,9 @@ If a nut is given a child then it gets placed on its top surface.
 |:--- |:--- |
 | ```nut_radius(type)``` | Radius across the corners |
 | ```nut_size(type)``` | Diameter of the corresponding screw |
+| ```nut_square_size(type)``` | Diameter of the corresponding screw |
+| ```nut_square_thickness(type)``` | Thickness of the square nut |
+| ```nut_square_width(type)``` | Width of the square nut |
 | ```nut_trap_depth(type)``` | Depth of nut trap |
 | ```nut_washer(type)``` | Corresponding washer |
 
@@ -1705,6 +1708,7 @@ If a nut is given a child then it gets placed on its top surface.
 |:--- |:--- |
 | ```nut(type, nyloc = false, brass = false, nylon = false)``` | Draw specified nut |
 | ```nut_and_washer(type, nyloc)``` | Draw nut with corresponding washer |
+| ```nut_square(type, brass = false, nylon = false)``` | Draw specified square nut |
 | ```nut_trap(screw, nut, depth = 0, horizontal = false, supported = false, h = 200)``` | Make a nut trap |
 | ```wingnut(type)``` | Draw a wingnut |
 
@@ -1723,18 +1727,23 @@ If a nut is given a child then it gets placed on its top surface.
 |   1 | ```nut(M3_nut)``` |  Nut M3 x 2.4mm  |
 |   1 | ```nut(M3_nut, brass = true)``` |  Nut M3 x 2.4mm brass |
 |   1 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|   1 | ```nut(M3nS_thin_nut)``` |  Nut M3nS 5.5 x 1.8mm  |
 |   1 | ```sliding_t_nut(M4_hammer_nut)``` |  Nut M4 hammer |
 |   1 | ```sliding_t_nut(M4_sliding_t_nut)``` |  Nut M4 sliding T |
 |   1 | ```nut(M4_nut)``` |  Nut M4 x 3.2mm  |
 |   1 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
+|   1 | ```nut(M4nS_thin_nut)``` |  Nut M4nS 7 x 2.2mm  |
 |   1 | ```sliding_t_nut(M5_sliding_t_nut)``` |  Nut M5 sliding T |
 |   1 | ```nut(M5_nut)``` |  Nut M5 x 4mm  |
 |   1 | ```nut(M5_nut, nyloc = true)``` |  Nut M5 x 4mm nyloc |
+|   1 | ```nut(M5nS_thin_nut)``` |  Nut M5nS 8 x 2.7mm  |
 |   1 | ```nut(M6_half_nut)``` |  Nut M6 x 3mm  |
 |   1 | ```nut(M6_nut)``` |  Nut M6 x 5mm  |
 |   1 | ```nut(M6_nut, nyloc = true)``` |  Nut M6 x 5mm nyloc |
+|   1 | ```nut(M6nS_thin_nut)``` |  Nut M6nS 10 x 3.2mm  |
 |   1 | ```nut(M8_nut)``` |  Nut M8 x 6.5mm  |
 |   1 | ```nut(M8_nut, nyloc = true)``` |  Nut M8 x 6.5mm nyloc |
+|   1 | ```nut(M8nS_thin_nut)``` |  Nut M8nS 13 x 4mm  |
 |   1 | ```washer(M6_washer)``` |  Washer  M6 x 12.5mm x 1.5mm |
 |   1 | ```wingnut(M4_wingnut)``` |  Wingnut M4 |
 

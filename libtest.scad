@@ -151,13 +151,13 @@ translate([890, 730])
     printed_boxes();
 
 
-translate([850, 1260])
+translate([850, 1300])
     bbox_test();
 
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
-washers_y = nuts_y + 100;
+washers_y = nuts_y + 120;
 screws_y = washers_y + 120;
 o_rings_y = screws_y + 130;
 springs_y = o_rings_y + 20;
