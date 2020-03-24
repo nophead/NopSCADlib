@@ -36,6 +36,7 @@ function nut_radius(type)     = type[2] / 2;    //! Radius across the corners
 function nut_thickness(type, nyloc = false) = nyloc ? type[4] : type[3]; //! Thickness of plain or nyloc version
 function nut_washer(type)     = type[5];        //! Corresponding washer
 function nut_trap_depth(type) = type[6];        //! Depth of nut trap
+function nut_pitch(type)      = type[7];        //! Pitch if not standard metric course thread
 
 function nut_flat_radius(type) = nut_radius(type) * cos(30); //! Radius across the flats
 
@@ -45,6 +46,7 @@ function nut_square_thickness(type) = type[3]; //! Thickness of the square nut
 
 module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specified nut
     thread_d = nut_size(type);
+    thread_p = nut_pitch(type) ? nut_pitch(type) : metric_coarse_pitch(thread_d);
     hole_rad  = thread_d / 2;
     outer_rad = nut_radius(type);
     thickness = nut_thickness(type);
@@ -69,7 +71,7 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
         }
 
         if(show_threads)
-            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
+            female_metric_thread(thread_d, thread_p, thickness, center = false, colour = colour);
 
         if(nyloc)
             translate_z(thickness)
