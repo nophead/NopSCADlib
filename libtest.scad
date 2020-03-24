@@ -29,6 +29,7 @@ use <tests/blowers.scad>
 use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
+use <tests/circlips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
 use <tests/displays.scad>
@@ -147,11 +148,10 @@ translate([x5, cable_grommets_y + 250])
 translate([950, 600])
     box_test();
 
-translate([890, 730])
+translate([890, 750])
     printed_boxes();
 
-
-translate([850, 1300])
+translate([850, 1330])
     bbox_test();
 
 
@@ -159,8 +159,9 @@ inserts_y = 0;
 nuts_y = inserts_y + 20;
 washers_y = nuts_y + 120;
 screws_y = washers_y + 120;
-o_rings_y = screws_y + 130;
-springs_y = o_rings_y + 20;
+circlips_y = screws_y + 160;
+springs_y = circlips_y + 20;
+o_rings_y = springs_y;
 sealing_strip_y = springs_y + 20;
 tubings_y = sealing_strip_y + 20;
 pillars_y = tubings_y + 20;
@@ -190,10 +191,13 @@ translate([x0, washers_y])
 translate([x0, screws_y])
     screws();
 
+translate([x0, circlips_y])
+    circlips();
+
 translate([x0, o_rings_y])
     o_rings();
 
-translate([x0, springs_y])
+translate([x0 + 20, springs_y])
     springs();
 
 translate([x0 + 50, sealing_strip_y])
@@ -208,7 +212,7 @@ translate([x0, pillars_y])
 translate([x0, leadnuts_y ])
     leadnuts();
 
-translate([x0 + 80, leadnuts_y])
+translate([x0 + 60, leadnuts_y])
     ball_bearings();
 
 translate([x0, pulleys_y])
@@ -376,7 +380,7 @@ translate([x4 + 150, belts_y + 58]) {
 translate([x4, rails_y + 130])
     rails();
 
-translate([900, fans_y + 50])
+translate([800, fans_y])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])

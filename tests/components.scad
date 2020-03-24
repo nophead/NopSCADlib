@@ -26,14 +26,13 @@ module resistors()
         resistor(resistors[$i]);
 
 module al_clad_resistors()
-    layout([for(a = al_clad_resistors) al_clad_width(a)])
+    layout([for(a = al_clad_resistors) al_clad_width(a)], 5, true)
         rotate(90)
             al_clad_resistor_assembly(al_clad_resistors[$i], 4.7)
                 screw(al_clad_hole(al_clad_resistors[$i]) > 3 ? M3_pan_screw : M2p5_pan_screw, 16);
 
-
 module thermal_cutouts()
-    layout([for(t = thermal_cutouts) tc_length(t)])
+    layout([for(t = thermal_cutouts) tc_length(t)], 5, true)
         thermal_cutout(thermal_cutouts[$i]);
 
 module components() {
@@ -42,7 +41,7 @@ module components() {
     translate([0, 50])
         TO220("Generic TO220 package");
 
-    translate([30, 50])
+    translate([50, 50])
         panel_USBA();
 
     translate([0,80])

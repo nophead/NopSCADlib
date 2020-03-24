@@ -56,6 +56,13 @@ function rotate(a, v) = //! Generate a 4x4 rotation matrix, ```a``` can be a vec
                               [ 0,                           0,                           0,                           1]
                          ];
 
+function rot3_z(a) = //! Generate a 3x3 matrix to rotate around z
+    let(c = cos(a),
+        s = sin(a))
+        [ [ c, -s,  0],
+          [ s,  c,  0],
+          [ 0,  0,  1] ];
+
 function scale(v) = let(s = is_list(v) ? v : [v, v, v]) //!  Generate a 4x4 matrix that scales by ```v```, which can be a vector of xyz factors or a scalar to scale all axes equally
                         [
                           [s.x, 0,   0,   0],
