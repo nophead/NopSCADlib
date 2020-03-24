@@ -26,7 +26,7 @@ use <../utils/tube.scad>
 
 bearing_colour = grey70;
 groove_colour = grey60;
-seal_colour = grey20;
+seal_colour = grey30;
 
 
 function bearing_length(type)           = type[1];   //! Total length
@@ -61,5 +61,10 @@ module linear_bearing(type) { //! Draw specified linear bearing
             color(bearing_colour) translate_z(offset+gs) tube(or = or, ir = casing_ir, h = offset, center = false);
         }
     }
-    color(seal_colour) tube(or = casing_ir, ir = bearing_rod_dia(type) / 2, h = length - 0.5);
+    rod_r =  bearing_rod_dia(type) / 2;
+    color(seal_colour)
+        tube(or = casing_ir, ir = rod_r + eps, h = length - 0.5);
+
+    color(seal_colour * 0.8)
+        tube(or = rod_r * 1.12, ir = rod_r, h = length);
 }
