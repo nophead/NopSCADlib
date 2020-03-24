@@ -79,7 +79,7 @@ module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, st
     sides = r2sides4n(r);
     step_angle = 360 / sides;
     segs = ceil(turns * sides);
-    leadin = ceil(sides / starts);
+    leadin = min(ceil(sides / starts), floor(turns * sides / 2));
     final = floor(turns * sides) - leadin;
     path = [for(i = [0 : segs],
                 R = i < leadin && bot < 0 ? r + dir * (h - h * i / leadin)
