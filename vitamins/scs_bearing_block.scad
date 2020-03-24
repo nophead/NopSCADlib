@@ -27,6 +27,7 @@ use <screw.scad>
 use <nut.scad>
 use <washer.scad>
 use <linear_bearing.scad>
+use <circlip.scad>
 
 function scs_size(type)                 = [type[4],type[6],type[5]]; //! Size of scs bracket bounding block
 function scs_hole_offset(type)          = type[2]; //! Offset of bearing hole from base of block
@@ -36,6 +37,8 @@ function scs_screw(type)                = type[11]; //! Screw type
 function scs_screw_separation_x(type)   = type[8];  //! Screw separation in X direction
 function scs_screw_separation_z(type)   = type[9];  //! Screw separation in Z direction
 function scs_bearing(type)              = type[14]; //! Linear bearing used
+function scs_circlip(type)              = type[15]; //! Circlip used
+function scs_spacer(type)               = type[16]; //! Spacer used in long bearings
 
 
 sks_bearing_block_color = grey90;
@@ -57,6 +60,8 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     S1 = scs_screw(type);
     S2 = type[12];
     L1 = type[13];
+    bearing = scs_bearing(type);
+    clip = scs_circlip(type);
 
     module right_trapezoid(base, top, height, h = 0, center = true) {//! A right angled trapezoid with the 90&deg; corner at the origin. 3D when ```h``` is nonzero, otherwise 2D
         extrude_if(h, center = center)
@@ -64,11 +69,11 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     }
 
     boltHoleRadius = screw_clearance_radius(S1);
-    footHeight = min(0.75, (G - bearing_dia(scs_bearing(type)) - 1.5) / 2); // estimate, not specified on drawings
+    footHeight = min(0.75, (G - bearing_dia(bearing) - 1.5) / 2); // estimate, not specified on drawings
 
     color(sks_bearing_block_color) {
         linear_extrude(L, center = true) {
-            bearingRadius = bearing_dia(scs_bearing(type)) / 2;
+            bearingRadius = bearing_dia(bearing) / 2;
             // center section with bearing hole
             difference() {
                 union() {
@@ -117,8 +122,17 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
                                     circle(r = boltHoleRadius);
                         }
     }
-    not_on_bom() no_explode()
-        linear_bearing(scs_bearing(type));
+    not_on_bom() no_explode() {
+        spacer = scs_spacer(type);
+        for(end = spacer ? [-1, 1] : 0)
+            translate_z(end * (bearing_length(bearing) + spacer) / 2)
+                    linear_bearing(bearing);
+
+        for(end = [-1, 1])
+            translate_z(end * ((spacer ? 2 * bearing_length(bearing) + spacer : bearing_length(bearing)) + circlip_thickness(clip)) / 2)
+                rotate(180)
+                    internal_circlip(clip);
+    }
 }
 
 module scs_bearing_block_hole_positions(type) { //! Place children at hole positions
