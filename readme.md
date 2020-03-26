@@ -3789,7 +3789,7 @@ of conductive panels, an extra layer of insulation.
 ---
 <a name="Carriers"></a>
 ## Carriers
-Adapts ESP12 module to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/esp-12-module-breakout-adaptor.html>.
+Adapts ESP12 modules and various small PCBs to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/esp-12-module-breakout-adaptor.html>.
 
 
 [printed/carriers.scad](printed/carriers.scad) Implementation.
@@ -3800,6 +3800,8 @@ Adapts ESP12 module to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/
 | Module | Description |
 |:--- |:--- |
 | ```ESP12F_carrier_stl()``` | Generate the STL for an ESP12 carrier |
+| ```MT3608_carrier_stl()``` | Generate the STL for an MT3608 carrier, two required |
+| ```TP4056_carrier_stl()``` | Generate the STL for an TP4056 carrier, two required |
 
 ![carriers](tests/png/carriers.png)
 
@@ -3807,6 +3809,8 @@ Adapts ESP12 module to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/
 | Qty | Filename |
 | ---:|:--- |
 |   1 | ESP12F_carrier.stl |
+|   1 | MT3608_carrier.stl |
+|   1 | TP4056_carrier.stl |
 
 
 <a href="#top">Top</a>
