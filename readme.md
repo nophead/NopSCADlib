@@ -3800,6 +3800,11 @@ Adapts ESP12 modules and various small PCBs to 0.1" grid. See <https://hydrarapt
 
 [tests/carriers.scad](tests/carriers.scad) Code for this example.
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```carrier_height()``` | Height of PCB carrier |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |

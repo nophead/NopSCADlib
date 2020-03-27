@@ -24,6 +24,8 @@ $extrusion_width = 0.5;
 
 include <../utils/core/core.scad>
 
+function carrier_height() = 3; //! Height of PCB carrier
+
 module ESP12F_carrier_stl() { //! Generate the STL for an ESP12 carrier
     stl("ESP12F_carrier");
     pins = 8;
@@ -33,7 +35,7 @@ module ESP12F_carrier_stl() { //! Generate the STL for an ESP12 carrier
     hole2 = pitch2 - 3 * extrusion_width;
     length1 = (pins - 1) * pitch1 + hole + squeezed_wall * 2;
     length2 = (pins - 1) * pitch2 + hole + squeezed_wall * 2;
-    height = 3;
+    height = carrier_height();
 
     wpitch1 = (pins - 1) * pitch1;
     wpitch2 = ceil(wpitch1 / 2.54) * 2.54;
@@ -71,7 +73,7 @@ module TP4056_carrier_stl() { //! Generate the STL for an TP4056 carrier, two re
     pins = 6;
     length1 = outer_pitch + hole + squeezed_wall * 2;
     length2 = (pins - 1) * pitch + hole + squeezed_wall * 2;
-    height = 3;
+    height = carrier_height();
 
     width = hole + squeezed_wall * 2;
     spacing = inch(0.9);
@@ -106,7 +108,7 @@ module MT3608_carrier_stl() { //! Generate the STL for an MT3608 carrier, two re
     l_pitch_top = 30.855;
     l_pitch_bot = inch(1.2);
     hole = 1;
-    height = 3;
+    height = carrier_height();
     wall = 2 * extrusion_width;
     width = hole + 2 * wall;
     offset = (l_pitch_top - l_pitch_bot) / 2;
