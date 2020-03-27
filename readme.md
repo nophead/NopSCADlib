@@ -1923,7 +1923,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
 | ```pcb_spacer(screw, height, wall = 1.8, taper = 0)``` | Generate STL for PCB spacer |
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
+| ```standoff(h, d, h2, d2)``` | Draw a standoff |
 | ```terminal_35(ways, colour = "blue")``` | Draw 3.5mm terminal block |
+| ```trimpot10(vertical, coutout = false)``` | Draw a ten turn trimpot |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
 | ```usb_Ax1(cutout = false)``` | Draw USB type A single socket |
 | ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |
@@ -2007,7 +2009,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_screw_positions(type)``` | Positions children at the mounting hole positions |
 | ```pcb_spacer(screw, height, wall = 1.8, taper = 0)``` | Generate STL for PCB spacer |
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
+| ```standoff(h, d, h2, d2)``` | Draw a standoff |
 | ```terminal_35(ways, colour = "blue")``` | Draw 3.5mm terminal block |
+| ```trimpot10(vertical, coutout = false)``` | Draw a ten turn trimpot |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
 | ```usb_Ax1(cutout = false)``` | Draw USB type A single socket |
 | ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |

@@ -98,6 +98,8 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 12, 444,   0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
         [ 10, 470,   0, "standoff",  5, 4.5, 12.5, 2.54],
         [  6, 480, 180, "uSD", [12, 11.5, 1.4]],
+        [ 20, -5, 180, "trimpot10"],
+        [ 20, -15,  0, "trimpot10", true],
     ],
     // accessories
     []
