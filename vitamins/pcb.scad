@@ -887,10 +887,20 @@ module pcb(type) { //! Draw specified PCB
                 circle(d = 1 + eps);
     }
 
+    land = pcb_land_d(type);
+    hole = pcb_hole_d(type);
     color("silver")
         translate_z(t / 2)
             pcb_hole_positions(type)
-                tube(or =  max(pcb_land_d(type), 1) / 2, ir = pcb_hole_d(type) / 2, h = t + 2 * eps);
+                if(is_list(land))
+                    linear_extrude(height = t + 2 * eps, center = true)
+                        difference() {
+                            square(land, center = true);
+
+                            circle(d = hole);
+                        }
+                else
+                    tube(or =  max(land, 1) / 2, ir = hole / 2, h = t + 2 * eps);
 
     fr4 = pcb_colour(type) != "sienna";
     plating = 0.15;
