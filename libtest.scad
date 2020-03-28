@@ -171,8 +171,8 @@ hot_ends_y = pulleys_y + 60;
 linear_bearings_y = hot_ends_y + 50;
 sheets_y = linear_bearings_y + 100;
 pcbs_y = sheets_y + 40;
-displays_y = pcbs_y + 150;
-fans_y = displays_y + 100;
+displays_y = pcbs_y + 170;
+fans_y = displays_y + 80;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;
 
@@ -380,7 +380,7 @@ translate([x4 + 150, belts_y + 58]) {
 translate([x4, rails_y + 130])
     rails();
 
-translate([800, fans_y])
+translate([800, fans_y + 50])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])

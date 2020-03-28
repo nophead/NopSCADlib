@@ -327,6 +327,16 @@ ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "
     [], [], [], [], M2p5_pan_screw];
 
 
+MT3608 = ["MT3608", "MT3608 boost converter module",        37, 17, 1.2, 2, 1.5, [5, 3], "#2140BE", false, [[3.0725, 5.095], [3.0725, -5.095], [-3.0725, 5.095], [-3.0725, -5.095]],
+    [ [-12.05 , -6.8, 180, "trimpot10"]
+    ]];
+
+TP4056 = ["TP4056", "TP4056 Li-lon Battery charger module", 26.2, 17.5, 1.0, 0, 1.0, [2.4, 2.4], "#2140BE", false,
+    [[1.67, 1.8], [1.67, -1.8], [-1.67, 1.8], [-1.67, -1.8], [-1.67, -4.98], [-1.67, 4.98]],
+    [ [  2, 17.5 / 2, 180, "usb_uA"],
+
+    ]];
+
 PERF80x20 = ["PERF80x20", "Perfboard 80 x 20mm", 80, 20, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
 
 PERF70x50 = ["PERF70x50", "Perfboard 70 x 50mm", 70, 50, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
@@ -352,6 +362,8 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     []];
 
 
-pcbs = [RAMPSEndstop, ExtruderPCB, PI_IO, RPI0, EnviroPlus, RPI3, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PERF80x20, PERF70x50, PERF70x30, PERF60x40, PERF74x51, PSU12V1A, DuetE, Duex2, Duex5, Melzi, ZC_A0591];
+pcbs = [TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, RPI3, DuetE, Duex2, Duex5, Melzi];
+
+perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
 use <pcb.scad>
