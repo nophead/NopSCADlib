@@ -1925,7 +1925,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
 | ```standoff(h, d, h2, d2)``` | Draw a standoff |
 | ```terminal_35(ways, colour = "blue")``` | Draw 3.5mm terminal block |
-| ```trimpot10(vertical, coutout = false)``` | Draw a ten turn trimpot |
+| ```trimpot10(vertical, cutout = false)``` | Draw a ten turn trimpot |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
 | ```usb_Ax1(cutout = false)``` | Draw USB type A single socket |
 | ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |
@@ -2011,7 +2011,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```rj45(cutout = false)``` | Draw RJ45 Ethernet connector |
 | ```standoff(h, d, h2, d2)``` | Draw a standoff |
 | ```terminal_35(ways, colour = "blue")``` | Draw 3.5mm terminal block |
-| ```trimpot10(vertical, coutout = false)``` | Draw a ten turn trimpot |
+| ```trimpot10(vertical, cutout = false)``` | Draw a ten turn trimpot |
 | ```uSD(size, cutout = false)``` | Draw uSD socket |
 | ```usb_Ax1(cutout = false)``` | Draw USB type A single socket |
 | ```usb_Ax2(cutout = false)``` | Draw USB type A dual socket |

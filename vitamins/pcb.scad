@@ -735,7 +735,7 @@ module standoff(h, d, h2, d2) { //! Draw a standoff
     }
 }
 
-module trimpot10(vertical, coutout = false) { //! Draw a ten turn trimpot
+module trimpot10(vertical, cutout = false) { //! Draw a ten turn trimpot
     l = 10;
     w = 9.5;
     h = 4.8;
@@ -746,21 +746,29 @@ module trimpot10(vertical, coutout = false) { //! Draw a ten turn trimpot
     slot_w =  0.6;
     slot_h = 0.8;
 
+    module screw_pos()
+        translate([-w / 2 + screw_d / 2, -l / 2, h - screw_d / 2])
+            rotate([90, 0, 0])
+                children();
+
     translate(vertical ? [0, -h / 2, l / 2] : [0, 0])
         rotate([vertical ? -90 : 0, 0, 0]) {
-            color("#2CA1FD") {
-                translate([0, -foot_h / 2, foot_h / 2 + h / 2])
-                    cube([w, l - foot_h, h - foot_h], center = true);
+            if(cutout)
+                screw_pos()
+                    cylinder(d = screw_d + 1, h = 100);
+            else
+                color("#2CA1FD") {
+                    translate([0, -foot_h / 2, foot_h / 2 + h / 2])
+                        cube([w, l - foot_h, h - foot_h], center = true);
 
-                for(x = [-1, 1], y = [-1, 1])
-                    translate([x * (w - foot_w) / 2, y * (l - foot_w) / 2, h / 2])
-                        cube([foot_w, foot_w, h], center = true);
+                    for(x = [-1, 1], y = [-1, 1])
+                        translate([x * (w - foot_w) / 2, y * (l - foot_w) / 2, h / 2])
+                            cube([foot_w, foot_w, h], center = true);
 
-            }
+                }
 
-            color(brass)
-                translate([-w / 2 + screw_d / 2, -l / 2, h - screw_d / 2])
-                    rotate([90, 0, 0]) {
+                color(brass)
+                    screw_pos() {
                         cylinder(d = screw_d, h = screw_h - slot_h);
 
                         linear_extrude(height = screw_h)
@@ -770,7 +778,7 @@ module trimpot10(vertical, coutout = false) { //! Draw a ten turn trimpot
                                 square([slot_w, screw_d + 1], center = true);
                             }
                     }
-         }
+             }
 }
 
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
