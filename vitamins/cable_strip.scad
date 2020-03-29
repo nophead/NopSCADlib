@@ -34,7 +34,7 @@ function cable_strip_thickness() = cable_strip_thickness;
 use <../utils/bezier.scad>
 use <../utils/sweep.scad>
 
-cable_strip_color = "green";
+cable_strip_colour = "green";
 
 function cable_strip_control_points(depth, min_z, pos) = let(z = min(min_z, min_z + pos))
 [
@@ -62,7 +62,7 @@ module bezier_cable_strip(ways, depth, length, below, extra, pos = 0) { //! Draw
 
     path = [v[0] + extra_v, each bezier_path(v, steps), v[3] + extra_v];
 
-    color(cable_strip_color)
+    color(cable_strip_colour)
         translate_z(-extra)
             sweep(path, rectangle_points(width, thickness));
     *echo(cable_strip_lengh = length);
@@ -89,7 +89,7 @@ module cable_strip(ways, depth, travel, extra = 15, pos = 0) {  //! Draw a cable
 
     vitamin(str("cable_strip(", ways, ", ", depth, ", ", travel, arg(extra, 15), "): Polypropylene strip ", total, "mm x ", w, "mm x ", thickness, "mm"));
 
-    color(cable_strip_color) linear_extrude(w, center = true, convexity = 4)
+    color(cable_strip_colour) linear_extrude(w, center = true, convexity = 4)
         difference() {
             union() {
                 translate([-bottom, radius])
@@ -142,7 +142,7 @@ module elliptical_cable_strip(ways, p1, p2, pmax, extra = 15) {
                          [delta[2] / delta[0], 0, 1, delta[2] / 2],
                          [0, 0, 0, 1] ])
 
-        color(cable_strip_color) linear_extrude(w, center = true, convexity = 4)
+        color(cable_strip_colour) linear_extrude(w, center = true, convexity = 4)
             difference() {
                 union()  {
                     square([(a + thickness) * 2, extra * 2], center = true);

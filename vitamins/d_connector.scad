@@ -23,9 +23,9 @@
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
-d_pillar_color                   = grey90;
-d_plug_shell_color               = grey80;
-d_plug_insulator_color           = grey20;
+d_pillar_colour                   = grey90;
+d_plug_shell_colour               = grey80;
+d_plug_insulator_colour           = grey20;
 
 function  d_flange_length(type)    = type[1];   //! Length of the flange
 function  d_lengths(type)          = type[2];   //! Lengths of the D for plug and socket
@@ -56,12 +56,12 @@ module d_pillar() { //! Draw a pillar for a D-connector
 
     translate_z(-screw_length)
         if(show_threads)
-            male_metric_thread(screw, pitch, screw_length, false, top = 0, colour = d_pillar_color);
+            male_metric_thread(screw, pitch, screw_length, false, top = 0, colour = d_pillar_colour);
         else
-            color(d_pillar_color)
+            color(d_pillar_colour)
                 cylinder(d = screw, h = screw_length + 1);
 
-    color(d_pillar_color) {
+    color(d_pillar_colour) {
         linear_extrude(height)
             difference() {
                 circle(r = rad, $fn = 6);
@@ -69,7 +69,7 @@ module d_pillar() { //! Draw a pillar for a D-connector
             }
         }
     if(show_threads)
-        female_metric_thread(screw, pitch, height, false, colour = d_pillar_color);
+        female_metric_thread(screw, pitch, height, false, colour = d_pillar_colour);
 }
 
 module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specified D plug, which can be IDC, PCB or plain solder bucket
@@ -106,7 +106,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     //
     // Shell
     //
-    color(d_plug_shell_color)  {
+    color(d_plug_shell_colour)  {
         linear_extrude( d_flange_thickness(type))
             difference() {
                 rounded_square([flange_length, flange_width], 2);
@@ -130,7 +130,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     //
     // Insulator
     //
-    color(d_plug_insulator_color) {
+    color(d_plug_insulator_colour) {
         translate_z(d_flange_thickness(type) + eps)
             rotate([0, 180, 0])
                 linear_extrude(back_height + 1 + d_flange_thickness(type), convexity = 5)

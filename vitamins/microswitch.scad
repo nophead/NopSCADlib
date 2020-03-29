@@ -22,7 +22,7 @@
 //
 include <../utils/core/core.scad>
 
-microswitch_contact_color        =  brass;
+microswitch_contact_colour        =  brass;
 
 function microswitch_thickness(type) = type[2];     //! Body thickness
 function microswitch_width(type)     = type[3];     //! Body width
@@ -81,7 +81,7 @@ module microswitch(type) { //! Draw specified microswitch
                         circle(d = d);
                 }
 
-    color(microswitch_contact_color)                            // yellow contacts
+    color(microswitch_contact_colour)                            // yellow contacts
         for(pos = microswitch_legs(type))
             translate(pos) {
                 leg = microswitch_leg(type);

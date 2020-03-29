@@ -41,7 +41,7 @@ function scs_circlip(type)              = type[15]; //! Circlip used
 function scs_spacer(type)               = type[16]; //! Spacer used in long bearings
 
 
-sks_bearing_block_color = grey90;
+sks_bearing_block_colour = grey90;
 
 module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     vitamin(str("scs_bearing_block(", type[0], "): ", type[0], " bearing block"));
@@ -71,7 +71,7 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     boltHoleRadius = screw_clearance_radius(S1);
     footHeight = min(0.75, (G - bearing_dia(bearing) - 1.5) / 2); // estimate, not specified on drawings
 
-    color(sks_bearing_block_color) {
+    color(sks_bearing_block_colour) {
         linear_extrude(L, center = true) {
             bearingRadius = bearing_dia(bearing) / 2;
             // center section with bearing hole

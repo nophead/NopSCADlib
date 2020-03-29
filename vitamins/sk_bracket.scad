@@ -24,7 +24,7 @@ include <../utils/fillet.scad>
 
 use <washer.scad>
 
-sk_bracket_color = grey70;
+sk_bracket_colour = grey70;
 
 function sk_diameter(type)        = type[1]; //! Rod hole diameter
 function sk_hole_offset(type)     = type[2]; //! Rod hole offset
@@ -47,7 +47,7 @@ module sk_bracket(type) { //! SK shaft support bracket
     S = type[10];
     bolthole_radius = type[11];
 
-    color(sk_bracket_color) {
+    color(sk_bracket_colour) {
         translate([0 , -h, 0]) {
             fillet = 0.5;
             rotate([-90, 0, 0])
