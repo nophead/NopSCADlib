@@ -23,8 +23,8 @@
 include <../utils/core/core.scad>
 include <zipties.scad>
 
-module wire(color, strands, length, strand = 0.2)   //! Add stranded wire to the BOM
-    vitamin(str(": Wire ", color, " ", strands, "/", strand, "mm strands, length ",length, "mm"));
+module wire(colour, strands, length, strand = 0.2)   //! Add stranded wire to the BOM
+    vitamin(str(": Wire ", colour, " ", strands, "/", strand, "mm strands, length ",length, "mm"));
 
 module ribbon_cable(ways, length)                   //! Add ribbon cable to the BOM
     vitamin(str(": Ribbon cable ", ways, " way ", length, "mm"));

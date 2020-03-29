@@ -51,7 +51,7 @@ $fa = 6;
 $fs = extrusion_width / 2;
 
 function round_to_layer(z) = ceil(z / layer_height) * layer_height;
-// Some additional named colors
+// Some additional named colours
 grey20                          = [0.2, 0.2, 0.2];
 grey30                          = [0.3, 0.3, 0.3];
 grey40                          = [0.4, 0.4, 0.4];

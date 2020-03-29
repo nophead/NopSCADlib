@@ -25,7 +25,7 @@
 //! * If soft, wood screws will be used, with a pilot hole.
 //! * If not soft, either tapped holes or a clearance hole and nuts will be used to retain screws.
 //!
-//! The "Color" parameter is a quad-array: [R, G, B, Alpha], or can be a named color, see [OpenSCAD_User_Manual](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#color).
+//! The "Colour" parameter is a quad-array: [R, G, B, Alpha], or can be a named colour, see [OpenSCAD_User_Manual](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#color).
 //!
 //! For speed sheets should be modelled in 2D by subtracting holes from 2D templates made by ```sheet_2D()``` and then extruded to 3D with ```render_2D_sheet()```.
 //! Note that modules that drill holes will return a 2D object if ```h``` is set to 0 to facilitate this.
@@ -78,11 +78,11 @@ module sheet(type, w, d, corners = [0, 0, 0, 0]) //! Draw specified sheet
     linear_extrude(sheet_thickness(type), center = true)
         sheet_2D(type, w, d, corners);
 
-module render_sheet(type, color = false) //! Render a sheet in the correct colour after holes have been subtracted
-    color(color ? color : sheet_colour(type))
+module render_sheet(type, colour = false) //! Render a sheet in the correct colour after holes have been subtracted
+    color(colour ? colour : sheet_colour(type))
         render() children();
 
-module render_2D_sheet(type, color = false) //! Extrude a 2D sheet template and give it the correct colour
-    color(color ? color : sheet_colour(type))
+module render_2D_sheet(type, colour = false) //! Extrude a 2D sheet template and give it the correct colour
+    color(colour ? colour : sheet_colour(type))
         linear_extrude(sheet_thickness(type), center = true)
             children();

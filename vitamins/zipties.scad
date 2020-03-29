@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-// [width, thickness, [latch_x, latch_y, latch_z], color, tail]
+// [width, thickness, [latch_x, latch_y, latch_z], colour, tail]
 small_ziptie = ["small_ziptie", 2.5, 1.0, [4.7, 4.25, 3.0], "white", 25];
 ziptie_3mm   = ["ziptie_3mm",   3.0, 1.0, [5.4, 5.44, 4.5], "white", 25];
 ziptie_3p6mm = ["ziptie_3p6mm", 3.6, 1.2, [6.4, 6.62, 4.7], "white", 25];

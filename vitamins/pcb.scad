@@ -209,7 +209,7 @@ module jack(cutout = false) { //! Draw 3.5mm jack
                 }
 }
 
-module buzzer(height, diameter, colour) { //! Draw PCB buzzer with specified height, diameter and color
+module buzzer(height, diameter, colour) { //! Draw PCB buzzer with specified height, diameter and colour
     color (colour)
         tube(or = diameter / 2, ir = height > 5 ? 1 : 0.75, h = height, center = false);
     color("white")

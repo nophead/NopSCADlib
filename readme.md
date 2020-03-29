@@ -1905,7 +1905,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Module | Description |
 |:--- |:--- |
 | ```barrel_jack(cutout = false)``` | Draw barrel power jack |
-| ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and color |
+| ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and colour |
 | ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
 | ```flat_flex(cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
 | ```flex(cutout = false)``` | Draw flexistrip connector |
@@ -1991,7 +1991,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Module | Description |
 |:--- |:--- |
 | ```barrel_jack(cutout = false)``` | Draw barrel power jack |
-| ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and color |
+| ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and colour |
 | ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
 | ```flat_flex(cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
 | ```flex(cutout = false)``` | Draw flexistrip connector |
@@ -2749,7 +2749,7 @@ The "Soft" parameter can be used to determinesif the sheet material needs machin
 * If soft, wood screws will be used, with a pilot hole.
 * If not soft, either tapped holes or a clearance hole and nuts will be used to retain screws.
 
-The "Color" parameter is a quad-array: [R, G, B, Alpha], or can be a named color, see [OpenSCAD_User_Manual](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#color).
+The "Colour" parameter is a quad-array: [R, G, B, Alpha], or can be a named colour, see [OpenSCAD_User_Manual](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#color).
 
 For speed sheets should be modelled in 2D by subtracting holes from 2D templates made by ```sheet_2D()``` and then extruded to 3D with ```render_2D_sheet()```.
 Note that modules that drill holes will return a 2D object if ```h``` is set to 0 to facilitate this.
@@ -2771,8 +2771,8 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```render_2D_sheet(type, color = false)``` | Extrude a 2D sheet template and give it the correct colour |
-| ```render_sheet(type, color = false)``` | Render a sheet in the correct colour after holes have been subtracted |
+| ```render_2D_sheet(type, colour = false)``` | Extrude a 2D sheet template and give it the correct colour |
+| ```render_sheet(type, colour = false)``` | Render a sheet in the correct colour after holes have been subtracted |
 | ```sheet(type, w, d, corners = [0, 0, 0, 0])``` | Draw specified sheet |
 | ```sheet_2D(type, w, d, corners = [0, 0, 0, 0])``` | 2D sheet template with specified size and optionally rounded corners |
 
@@ -3492,7 +3492,7 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 | ```cable_tie_holes(cable_r, h = 100)``` | Holes to thread a ziptie through a panel to make a cable tie. |
 | ```mouse_hole(cable, h = 100, teardrop = false)``` | A mouse hole to allow a panel to go over a wire bundle. |
 | ```ribbon_cable(ways, length)``` | Add ribbon cable to the BOM |
-| ```wire(color, strands, length, strand = 0.2)``` | Add stranded wire to the BOM |
+| ```wire(colour, strands, length, strand = 0.2)``` | Add stranded wire to the BOM |
 
 ![wire](tests/png/wire.png)
 
