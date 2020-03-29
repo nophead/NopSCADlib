@@ -40,7 +40,7 @@ module led(type, colour = "red", lead = 5) { //! Draw specified LED with desired
         rotate_extrude()
             rounded_corner(r = d / 2, h = led_height(type), r2 =  d / 2);
 
-        linear_extrude(height = led_rim_t(type))
+        linear_extrude(led_rim_t(type))
             difference() {
                 circle(d = led_rim_dia(type));
 

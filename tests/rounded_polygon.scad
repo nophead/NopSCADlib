@@ -46,7 +46,7 @@ module rounded_polygons() {
     length = rounded_polygon_length(profile, tangents);
 
     rotate([70, 0, 315])
-        linear_extrude(height = eps)
+        linear_extrude(eps)
             rounded_polygon(profile, tangents);
 
     translate([0, -10])

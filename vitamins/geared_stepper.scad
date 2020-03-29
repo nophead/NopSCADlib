@@ -61,7 +61,7 @@ module geared_stepper(type) { //! Draw the specified geared stepper
 
         cylinder(d = gs_boss_d(type), h = 2 * gs_boss_h(type), center = true);
 
-        linear_extrude(height = gs_lug_t(type))
+        linear_extrude(gs_lug_t(type))
             difference() {
                 hull()
                     geared_stepper_screw_positions(type)
@@ -78,7 +78,7 @@ module geared_stepper(type) { //! Draw the specified geared stepper
         color(brass) {
             d = gs_shaft_d(type);
             h = gs_shaft_length(type);
-            linear_extrude(height = h)
+            linear_extrude(h)
                 intersection() {
                     circle(d = d);
 
@@ -95,7 +95,7 @@ module geared_stepper(type) { //! Draw the specified geared stepper
 
         h2 = gs_bulge2_h(type);
         translate([0, - offset, h1 + 1 - h2])
-            linear_extrude(height = h2)
+            linear_extrude(h2)
                 round(0.5)
                     intersection() {
                         circle(gs_bulge2_d(type));

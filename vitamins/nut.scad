@@ -58,7 +58,7 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
     colour = brass ? brass_colour : nylon ? grey30: grey70;
     explode(nyloc ? 10 : 0) {
         color(colour) {
-            linear_extrude(height = thickness)
+            linear_extrude(thickness)
                 difference() {
                     circle(outer_rad, $fn = 6);
 
@@ -120,7 +120,7 @@ module wingnut(type) { //! Draw a wingnut
                     [hole_rad, thickness]
                 ]);
             for(rot = [0, 180])
-                rotate([90, 0, rot]) linear_extrude(height = wing_thickness, center = true)
+                rotate([90, 0, rot]) linear_extrude(wing_thickness, center = true)
                     hull() {
                         translate([wing_span / 2  - wing_width / 2, wing_height - wing_width / 2])
                             circle(wing_width / 2);
@@ -207,7 +207,7 @@ module nut_square(type, brass = false, nylon = false) { //! Draw specified squar
     colour = brass ? brass_colour : nylon ? grey30 : grey70;
     color(colour)
         difference() {
-            linear_extrude(height = thickness) {
+            linear_extrude(thickness) {
                 difference() {
                     square([width, width], center = true);
 

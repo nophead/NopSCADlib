@@ -129,7 +129,7 @@ module box_corner_profile(type) { //! Generates the corner profile STL for 3D pr
 
     length = box_height(type) - 2 * box_margin(type);
     difference() {
-        linear_extrude(height = length, center = true, convexity = 5)
+        linear_extrude(length, center = true, convexity = 5)
             box_corner_profile_2D(type);
 
         for(z = [-1, 1])
@@ -148,24 +148,24 @@ module box_corner_profile_section(type, section, sections) { //! Generates inter
 
     difference() {
         union() {
-            linear_extrude(height = h, convexity = 5)
+            linear_extrude(h, convexity = 5)
                 box_corner_profile_2D(type);
 
             if(!last_section)                              // male end always at the top
                 translate_z(section_length - 1)
                     for(i = [0 : 1], offset = i * layer_height)
-                        linear_extrude(height = overlap + 1 - offset)
+                        linear_extrude(overlap + 1 - offset)
                             offset(1 + offset - layer_height)
                                 offset(-overlap_wall - 1)
                                     box_corner_profile_2D(type);
         }
         if(section > 0)
             translate_z(last_section ? h : 0) {       // female at bottom unless last section
-                linear_extrude(height = 2 * (overlap + layer_height), center = true, convexity = 5)
+                linear_extrude(2 * (overlap + layer_height), center = true, convexity = 5)
                     offset(-overlap_wall)
                         box_corner_profile_2D(type);
 
-                linear_extrude(height = 2 * layer_height, center = true, convexity = 5)
+                linear_extrude(2 * layer_height, center = true, convexity = 5)
                     offset(-overlap_wall + layer_height)
                         box_corner_profile_2D(type);
             }
@@ -223,7 +223,7 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
         // slots for side panels
         //
         translate_z(-box_profile_overlap(type))
-            linear_extrude(height = 2 * box_profile_overlap(type), center = true)
+            linear_extrude(2 * box_profile_overlap(type), center = true)
                 for(i = [-1, 1]) {
                     translate([i * (box_width(type) / 2 + t / 2 - sheet_slot_clearance / 2), 0])
                          square([t, box_depth(type) - 2 * box_corner_gap(type)], center = true);
@@ -240,7 +240,7 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
         // leave plastic over the corner profiles
         //
         translate_z(-box_profile_overlap(type) - 1)
-            linear_extrude(height = box_profile_overlap(type) + box_corner_gap(type) + 2)
+            linear_extrude(box_profile_overlap(type) + box_corner_gap(type) + 2)
                 union() {
                     difference() {
                         square([box_width(type) - 2 * box_inset(type),
@@ -273,7 +273,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
     end_clearance = 0.5;
     module male() {
         rotate([90, 0, 90])
-            linear_extrude(height = dowel_length - 2 * end_clearance, center = true)
+            linear_extrude(dowel_length - 2 * end_clearance, center = true)
                 difference() {
                     union() {
                         h = dh - layer_height;

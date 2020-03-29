@@ -80,7 +80,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
 
         color(colour) {
             rotate([90, 0, 0])
-                linear_extrude(height = pitch, center = true, convexity = 5)
+                linear_extrude(pitch, center = true, convexity = 5)
                     polygon(points = [                          // Vertical section
                         [y + depth / 2,                  0],
                         [y + depth / 2,                  ledge_height / 2 - box_h1 / 2],
@@ -105,7 +105,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
                     ]);
 
             translate([y2, 0, ledge_height / 2 + box_h2 / 2])   // Screw socket
-                linear_extrude(height = height - ledge_height / 2 - box_h2 / 2)
+                linear_extrude(height - ledge_height / 2 - box_h2 / 2)
                     difference() {
                         square([screw_r * 2 + 0.1, pitch], center = true);
 
@@ -113,7 +113,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
                     }
 
 
-            linear_extrude(height = ledge_height)
+            linear_extrude(ledge_height)
                 intersection() {
                     horizontal_section();
 
@@ -121,7 +121,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
                         square([10, 10]);
                 }
 
-            linear_extrude(height = back)
+            linear_extrude(back)
                 intersection() {
                     horizontal_section();
 
@@ -131,7 +131,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
 
             if(tube_h)
                 translate([y2, 0, height])
-                    linear_extrude(height = tube_h - height)
+                    linear_extrude(tube_h - height)
                         intersection() {
                             ring(or = top / 2, ir = screw_r);
 
@@ -149,7 +149,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
                             cylinder(r = screw_r, h = slot_depth);
 
                         translate_z(screw_top - slot_depth)         // screw head
-                            linear_extrude(height = slot_depth)
+                            linear_extrude(slot_depth)
                                 difference() {
                                     circle(screw_r);
 
@@ -158,7 +158,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
                     }
                     translate([box_back, 0, ledge_height / 2]) {
                         rotate([0, 90, 0])
-                            linear_extrude(height = box_front - box_back)
+                            linear_extrude(box_front - box_back)
                                 difference() {
                                     square([box_h2, box_w2], center = true);
 

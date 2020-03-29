@@ -81,7 +81,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
             translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
                 rotate([right_angle ? 90 : 0, 0, 0])
                     color(base_colour)
-                        linear_extrude(height = h)
+                        linear_extrude(h)
                             for(x = [0 : cols - 1], y = [0 : rows - 1])
                                 translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), pitch / 2])
                                     hull() {
@@ -111,10 +111,10 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
                     pin(type, hdr_pin_length(type) - pitch + base);
 
             color(hdr_base_colour(type)) {
-                linear_extrude(height = base)
+                linear_extrude(base)
                     square([w, l], center = true);
 
-                linear_extrude(height = h)
+                linear_extrude(h)
                     difference() {
                         square([w, l], center = true);
 
@@ -140,7 +140,7 @@ module idc_transition(type, cols = 5, skip = [], cutout = false) { //! Draw IDC 
 
         color(hdr_base_colour(type))
             rotate([90, 0, 0])
-                linear_extrude(height = width, center = true, convexity = cols * rows)
+                linear_extrude(width, center = true, convexity = cols * rows)
                     difference() {
                         translate([0, height / 2])
                             square([length, height], center = true);
@@ -177,7 +177,7 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
             translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
                 rotate([right_angle ? 90 : 0, 0, 0])
                     translate_z(depth / 2)
-                        linear_extrude(height = depth, center = true)
+                        linear_extrude(depth, center = true)
                             difference() {
                                 square([length, width], center = true);
 

@@ -52,7 +52,7 @@ module heater_block(type, resistor, thermistor) {
     color(brass) {
         render() difference() {
             rotate([90, 0, 0])
-                linear_extrude(height = heater_width(type), center = true) difference() {
+                linear_extrude(heater_width(type), center = true) difference() {
                     square([heater_length(type), h], center = true);
 
                     translate([resistor_x(type), 0])

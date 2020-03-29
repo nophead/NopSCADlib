@@ -81,7 +81,7 @@ module fixing_block(screw = def_screw) { //! Generate the STL
 
     difference() {
         union() {
-            linear_extrude(height = fb_height, convexity = 5)
+            linear_extrude(fb_height, convexity = 5)
                 difference() {
                     hull() {
                         for(side = [-1, 1]) {

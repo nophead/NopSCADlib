@@ -129,7 +129,7 @@ module pbox_base(type) { //! Generate the STL for the base
     t = pbox_base(type);
     difference() {
         union() {
-            linear_extrude(height = t)
+            linear_extrude(t)
                 offset(base_outset - 0.2)
                     pbox_inner_shape(type);
 
@@ -157,7 +157,7 @@ module pbox(type) { //! Generate the STL for the main case
 
     difference() {
         union() {
-            linear_extrude(height = total_height)
+            linear_extrude(total_height)
                 offset(wall / 2) pbox_mid_shape(type);
 
             if($children > 2)
@@ -166,11 +166,11 @@ module pbox(type) { //! Generate the STL for the main case
         difference() {
             translate_z(top_thickness)
                 union() {
-                    linear_extrude(height = height + eps)
+                    linear_extrude(height + eps)
                          offset(-wall / 2) pbox_mid_shape(type);
 
                      translate_z(height)                                     // Recess for the base
-                        linear_extrude(height = total_height - height)
+                        linear_extrude(total_height - height)
                             offset(base_outset)
                                 pbox_inner_shape(type);
                 }
@@ -181,11 +181,11 @@ module pbox(type) { //! Generate the STL for the main case
                         rounded_rectangle([pbox_width(type) + 2 * outset, pbox_depth(type) + 2 * outset, ledge_h], 1, center = false);
 
                         hull() {
-                            linear_extrude(height = ledge_h + eps)
+                            linear_extrude(ledge_h + eps)
                                 offset(ledge_inset)
                                     pbox_inner_shape(type);
 
-                            linear_extrude(height = eps)
+                            linear_extrude(eps)
                                 offset(ledge_outset)
                                      pbox_inner_shape(type);
                         }

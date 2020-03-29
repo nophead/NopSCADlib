@@ -37,7 +37,7 @@ module spade(type, height = 14) { //! Draw a spade of the specified type and tot
 
     color("silver")
     rotate([90, 0, 0])
-        linear_extrude(height = spade_t(type), center = true)
+        linear_extrude(spade_t(type), center = true)
             difference() {
                 union() {
                     if(shank_l > 0)

@@ -206,7 +206,7 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
         nut_t = 2.3;
 
         color(silver)
-            linear_extrude(height = nut_t) difference() {
+            linear_extrude(nut_t) difference() {
                 circle(d = 6.3 / cos(30), $fn = 6);
 
                 circle(d = thread_d);
@@ -229,7 +229,7 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
             cylinder(d = d, h = base_h);
 
             translate_z(-collar_t)
-                linear_extrude(height = base_h) {
+                linear_extrude(base_h) {
                     circle(post_4mm_hole_radius - 0.1);
 
                     spigot();
@@ -284,7 +284,7 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
     explode(-15)
         color(actual_colour) {
             translate_z(-thickness - base_h) {
-                linear_extrude(height = base_h)
+                linear_extrude(base_h)
                     difference() {
                         circle(d = d);
 

@@ -130,7 +130,7 @@ module toggle(type, thickness) { //! Draw specified toggle switch with the nuts 
                     rotate([max(angle, 0), 0, 0])
                         if(toggle_paddle_w(type))
                             translate_z(l)
-                                linear_extrude(height = eps, center = true)
+                                linear_extrude(eps, center = true)
                                     intersection() {
                                         circle(d = d1);
 
@@ -151,7 +151,7 @@ module toggle(type, thickness) { //! Draw specified toggle switch with the nuts 
         rows = pins > 3 ? 2 : 1;
         color("gold")
             translate_z(-toggle_depth(type) - toggle_pin_l(type) / 2)
-                linear_extrude(height = toggle_pin_l(type), center = true)
+                linear_extrude(toggle_pin_l(type), center = true)
                     for(i = [0 : pins - 1]) {
                         x = rows < 2 ? 0 : (i % 2) - 0.5;
                         y = rows < 2 ? i - 1 : floor(i / 2) - 1;

@@ -77,7 +77,7 @@ module strap(length, type = strap) { //! Generate the STL for the rubber strap
     len = length - 2 * (wall + clearance);
     w = strap_width(type);
 
-    linear_extrude(height = strap_thickness(type), convexity = 3)
+    linear_extrude(strap_thickness(type), convexity = 3)
         difference() {
             rounded_square([len, w], w / 2 - eps);
 
@@ -119,12 +119,12 @@ module strap_end(type = strap) { //! Generate the STL for end piece
         }
 
     union() {
-        linear_extrude(height = z1)
+        linear_extrude(z1)
             with_hole()
                 outer();
 
         translate_z(z1)
-            linear_extrude(height = strap_height(type) - z1)
+            linear_extrude(strap_height(type) - z1)
                 difference() {
                     outer();
 
@@ -137,11 +137,11 @@ module strap_end(type = strap) { //! Generate the STL for end piece
                     }
                 }
 
-        linear_extrude(height = strap_height(type) - layer_height)
+        linear_extrude(strap_height(type) - layer_height)
             with_hole()
                 strap_boss_shape(type);
 
-        linear_extrude(height = z2)
+        linear_extrude(z2)
             with_hole()
                  offset(cnc_bit_r)
                     offset(-step - cnc_bit_r)

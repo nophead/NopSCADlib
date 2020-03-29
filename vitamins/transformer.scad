@@ -44,7 +44,7 @@ module transformer(type) { //! Draw specified transformer
     vitamin(str("transformer(", type[0], "): Transformer ", tx_part(type)));
 
     color("silver") {
-        linear_extrude(height = tx_foot_thickness(type))
+        linear_extrude(tx_foot_thickness(type))
             difference() {
                 rounded_square([tx_foot_width(type), tx_foot_depth(type)], r = 2);
 

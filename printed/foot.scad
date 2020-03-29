@@ -56,7 +56,7 @@ module foot(type = foot) { //! Generate STL
                         circle4n(r);
             }
         }
-        linear_extrude(height = t)
+        linear_extrude(t)
             difference() {
                 circle(r1 + eps);
 
@@ -116,7 +116,7 @@ module insert_foot(type = insert_foot) { //! Generate STL for foot with insert
                 }
             }
         }
-        linear_extrude(height = h2 + eps)
+        linear_extrude(h2 + eps)
             difference() {
                 circle(r5 + eps);
 

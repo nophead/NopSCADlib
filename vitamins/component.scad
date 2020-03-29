@@ -147,7 +147,7 @@ module al_clad_resistor(type, value, leads = true) { //! Draw an aluminium clad 
 
     color("silver") {
         rotate([90, 0, 90])
-            linear_extrude(height = length, center = true)
+            linear_extrude(length, center = true)
                 hull() {
                     translate([0, al_clad_height(type) / 2])
                         intersection() {
@@ -158,7 +158,7 @@ module al_clad_resistor(type, value, leads = true) { //! Draw an aluminium clad 
                     translate([0, thickness / 2])
                         square([body, thickness], center = true);
                 }
-        linear_extrude(height = thickness)
+        linear_extrude(thickness)
             difference() {
                 for(end = [-1, 1])
                     translate([end * (length - tab) / 2, end * (width - width / 2) / 2])
@@ -176,7 +176,7 @@ module al_clad_resistor(type, value, leads = true) { //! Draw an aluminium clad 
             for(end = [-1, 1])
                 translate([end * (al_clad_wire_length(type) - terminal_l) / 2, 0, height / 2])
                     rotate([90, 0, 0])
-                        linear_extrude(height = terminal_t, center = true) difference() {
+                        linear_extrude(terminal_t, center = true) difference() {
                             square([terminal_l, terminal_h], center = true);
 
                             circle(r = 1);
@@ -226,7 +226,7 @@ module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 packa
 
     translate([0, -length + hole_y]) {
         color("silver") {
-            linear_extrude(height = TO220_thickness())
+            linear_extrude(TO220_thickness())
                 difference() {
                     translate([-width / 2, inset])
                         square([width, length - inset]);
@@ -305,7 +305,7 @@ module panel_USBA() { //! Draw a panel mount USBA connector
 
     vflip() {
         color("dimgrey")  {
-            linear_extrude(height = thickness)
+            linear_extrude(thickness)
                 difference() {
                     hull()
                         for(side = [-1, 1])
@@ -345,14 +345,14 @@ module panel_USBA() { //! Draw a panel mount USBA connector
             }
 
             translate_z(height3)
-                linear_extrude(height = l - height3)
+                linear_extrude(l - height3)
                     difference() {
                         rounded_square([length2, width], r = r1);
 
                         square([w - flange_t, h - flange_t], center = true);
                     }
 
-            linear_extrude(height = height3)
+            linear_extrude(height3)
                 difference() {
                     rounded_square([length2, width], r = r1);
 
@@ -363,7 +363,7 @@ module panel_USBA() { //! Draw a panel mount USBA connector
         *cube([12, 4.5, 32], center = true);
 
         color("silver") {
-            linear_extrude(height = l)
+            linear_extrude(l)
                 difference() {
                     square([w, h], center = true);
 
@@ -373,7 +373,7 @@ module panel_USBA() { //! Draw a panel mount USBA connector
             translate_z(l - flange_t / 2)
                 cube([w, h, flange_t], center = true);
 
-            linear_extrude(height = flange_t)
+            linear_extrude(flange_t)
                 difference() {
                     union() {
                         square([h_flange_l, h + 2 * h_flange_h], center = true);
@@ -418,7 +418,7 @@ module thermal_cutout(type) { //! Draw specified thermal cutout
     spade = spade6p4;
 
     color("silver") {
-        linear_extrude(height = tc_thickness(type))
+        linear_extrude(tc_thickness(type))
             difference() {
                 hull()
                     for(side = [-1, 1])

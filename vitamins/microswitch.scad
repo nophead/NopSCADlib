@@ -63,7 +63,7 @@ module microswitch(type) { //! Draw specified microswitch
     d = microswitch_button_t(type);
 
     color(microswitch_body_clr(type))
-        linear_extrude(height = microswitch_thickness(type), center = true)
+        linear_extrude(microswitch_thickness(type), center = true)
             difference() {    // main body
                 rounded_square([microswitch_length(type), microswitch_width(type)], microswitch_radius(type));
 
@@ -73,7 +73,7 @@ module microswitch(type) { //! Draw specified microswitch
 
     color(microswitch_button_clr(type))                          // orange button
         translate(microswitch_button_pos(type) - [0, d / 2])
-            linear_extrude(height = microswitch_button_w(type), center = true)
+            linear_extrude(microswitch_button_w(type), center = true)
                 hull() {
                     circle(d = d);
 
@@ -89,7 +89,7 @@ module microswitch(type) { //! Draw specified microswitch
 
                 if(vertical)
                     rotate([0, 90, 0])
-                        linear_extrude(height = leg.x, center = true)
+                        linear_extrude(leg.x, center = true)
                             difference() {
                                 square([leg.z, leg.y], center = true);
 
@@ -99,7 +99,7 @@ module microswitch(type) { //! Draw specified microswitch
                             }
                 else
                     rotate([90, 0, 0])
-                        linear_extrude(height = leg.y, center = true)
+                        linear_extrude(leg.y, center = true)
                             difference() {
                                 square([leg.x, leg.z], center = true);
 

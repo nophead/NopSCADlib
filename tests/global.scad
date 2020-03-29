@@ -20,7 +20,7 @@
 include <../utils/core/core.scad>
 
 module globals() {
-    linear_extrude(height = eps) {
+    linear_extrude(eps) {
         semi_circle(r = 10);
 
         translate([30, 0])

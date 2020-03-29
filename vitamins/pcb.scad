@@ -106,7 +106,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
                                    h + 2 * h_flange_h + 2 * panel_clearance, 100], r = cnc_bit_r, center = false);
         else
             color("silver") rotate([0, 90, 0]) {
-                linear_extrude(height = l, center = true)
+                linear_extrude(l, center = true)
                     difference() {
                         square([h, w], center = true);
 
@@ -119,7 +119,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
                     cube([h, w, 1], center = true);
 
                 translate_z(l / 2 - flange_t)
-                    linear_extrude(height = flange_t) difference() {
+                    linear_extrude(flange_t) difference() {
                         union() {
                             square([h + 2 * h_flange_h, h_flange_l], center = true);
 
@@ -150,7 +150,7 @@ module rj45(cutout = false) { //! Draw RJ45 Ethernet connector
             rotate([0, 90, 0]) {
                 mouth = plug_z + plug_h - tab_z;
                 color("silver") {
-                    linear_extrude(height = l, center = true)
+                    linear_extrude(l, center = true)
                         difference() {
                             square([h, w], center = true);
 
@@ -163,7 +163,7 @@ module rj45(cutout = false) { //! Draw RJ45 Ethernet connector
                 }
 
                 color(grey30) {
-                    linear_extrude(height = l - 0.2, center = true)
+                    linear_extrude(l - 0.2, center = true)
                         difference() {
                             square([h - 0.1, w - 0.1], center = true);
 
@@ -195,7 +195,7 @@ module jack(cutout = false) { //! Draw 3.5mm jack
         else
             color(grey20)
                 rotate([0, 90, 0]) {
-                    linear_extrude(height = l / 2)
+                    linear_extrude(l / 2)
                         difference() {
                             square([h, w], center = true);
 
@@ -271,13 +271,13 @@ module hdmi(type, cutout = false) { //! Draw HDMI socket
 
     if(cutout)
         rotate([90, 0, 90])
-            linear_extrude(height = 100)
+            linear_extrude(100)
                 offset(t + panel_clearance)
                     D();
     else
         color("silver")
             rotate([90, 0, 90]) {
-                linear_extrude(height = l, center = true)
+                linear_extrude(l, center = true)
                     difference() {
                         offset(t)
                             D();
@@ -285,7 +285,7 @@ module hdmi(type, cutout = false) { //! Draw HDMI socket
                     }
 
                 translate_z(-l / 2)
-                    linear_extrude(height = 1)
+                    linear_extrude(1)
                         offset(t)
                             D();
             }
@@ -314,12 +314,12 @@ module usb_uA(cutout = false) { //! Draw USB micro A connector
 
     if(cutout)
         rotate([90, 0, 90])
-            linear_extrude(height = 100)
+            linear_extrude(100)
                 offset((flange_h - ih2) / 2 + 2 * panel_clearance)
                     D();
     else
         color("silver") rotate([90, 0, 90]) {
-            linear_extrude(height = l, center = true)
+            linear_extrude(l, center = true)
                 difference() {
                     offset(t)
                         D();
@@ -328,12 +328,12 @@ module usb_uA(cutout = false) { //! Draw USB micro A connector
                 }
 
             translate_z(-l / 2)
-                linear_extrude(height = 1)
+                linear_extrude(1)
                     offset(t)
                         D();
 
             translate_z(l / 2 - t)
-                linear_extrude(height = t) difference() {
+                linear_extrude(t) difference() {
                     union() {
                         translate([0, h - t - ih1 / 2])
                             square([flange_w, ih1], center = true);
@@ -375,7 +375,7 @@ module usb_B(cutout = false) {  //! Draw USB B connector
     else
         translate_z(h / 2) rotate([90, 0, 90]) {
             color("silver")  {
-                linear_extrude(height = l, center = true)
+                linear_extrude(l, center = true)
                     difference() {
                         square([w, h], center = true);
 
@@ -388,7 +388,7 @@ module usb_B(cutout = false) {  //! Draw USB B connector
             }
 
             color("white") {
-                linear_extrude(height = l - 0.4, center = true)
+                linear_extrude(l - 0.4, center = true)
                     difference() {
                         square([w - 0.2, h - 0.2], center = true);
 
@@ -423,7 +423,7 @@ module barrel_jack(cutout = false) { //! Draw barrel power jack
         ;
     else {
         color(grey20) rotate([0, 90, 0]) {
-            linear_extrude(height = l, center = true) {
+            linear_extrude(l, center = true) {
                 difference() {
                     translate([-h / 2, 0])
                         rounded_square([h, w], r);
@@ -437,7 +437,7 @@ module barrel_jack(cutout = false) { //! Draw barrel power jack
                 }
             }
             translate_z(l / 2 - front)
-                linear_extrude(height = front) {
+                linear_extrude(front) {
                     difference() {
                         translate([-h / 2, 0])
                             rounded_square([h, w], r);
@@ -484,7 +484,7 @@ module uSD(size, cutout = false) { //! Draw uSD socket
         translate_z(size.z / 2) {
             color("silver")
                 rotate([90, 0, 90]) {
-                    linear_extrude(height = size.y, center = true)
+                    linear_extrude(size.y, center = true)
                         difference() {
                             square([size.x, size.z], center = true);
                             square([size.x - 2 * t, size.z - 2 * t], center = true);
@@ -497,7 +497,7 @@ module uSD(size, cutout = false) { //! Draw uSD socket
                 color(grey20)
                     rotate([90, 0, 90])
                         translate_z(t)
-                            linear_extrude(height = size.y - t, center = true)
+                            linear_extrude(size.y - t, center = true)
                                 difference() {
                                     square([size.x - 2 * t, size.z - 2 * t], center = true);
 
@@ -526,7 +526,7 @@ module flex(cutout = false) { //! Draw flexistrip connector
             translate_z(0.5)
                 cube([l, w, 1], center = true);
 
-            linear_extrude(height = h)
+            linear_extrude(h)
                 difference() {
                     square([l, w], center = true);
 
@@ -535,7 +535,7 @@ module flex(cutout = false) { //! Draw flexistrip connector
                 }
 
             translate_z(h - top_t)
-                linear_extrude(height = top_t)
+                linear_extrude(top_t)
                     difference() {
                         union() {
                             square([top_l, w], center = true);
@@ -581,7 +581,7 @@ module flat_flex(cutout = false) { //! Draw flat flexistrip connector as used on
         color(grey30) {
             translate([w / 2 - w1, 0, h1 / 2])
                 rotate([90, 0, 90])
-                    linear_extrude(height = w1)
+                    linear_extrude(w1)
                         difference() {
                             square([l1, h1], center = true);
 
@@ -623,7 +623,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
         screw_r = 1;
         color(colour) {
             rotate([90, 0, 0])
-                linear_extrude(height = pitch, center = true)
+                linear_extrude(pitch, center = true)
                     polygon(points = [
                         [ depth / 2,               0],
                         [ depth / 2,               box_z],
@@ -640,7 +640,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
                         [-depth / 2,               0],
                     ]);
 
-            linear_extrude(height = box_z + box_h)
+            linear_extrude(box_z + box_h)
                 difference() {
                     square([depth, pitch], center = true);
 
@@ -651,7 +651,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
                 }
 
             translate_z(box_z + box_h)
-                linear_extrude(height = height - box_z - box_h)
+                linear_extrude(height - box_z - box_h)
                     difference() {
                         square([2 * screw_r + 0.1, pitch], center = true);
 
@@ -663,7 +663,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
             translate_z(screw_z) {
                 cylinder(r = screw_r, h = height - screw_z - 1);      // screw
 
-                linear_extrude(height = height - screw_z - 0.5)
+                linear_extrude(height - screw_z - 0.5)
                     difference() {
                         circle(1);
 
@@ -678,7 +678,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
 
             translate_z(box_z + box_h / 2)                      // terminal
                 rotate([0, -90, 0]) {
-                    linear_extrude(height = depth - 2, center = true)
+                    linear_extrude(depth - 2, center = true)
                         difference() {
                             square([box_h, box_w], center = true);
 
@@ -771,7 +771,7 @@ module trimpot10(vertical, cutout = false) { //! Draw a ten turn trimpot
                     screw_pos() {
                         cylinder(d = screw_d, h = screw_h - slot_h);
 
-                        linear_extrude(height = screw_h)
+                        linear_extrude(screw_h)
                             difference() {
                                 circle(d = screw_d);
 
@@ -881,7 +881,7 @@ module pcb(type) { //! Draw specified PCB
 
     pcb_components(type);
 
-    color(pcb_colour(type)) linear_extrude(height = t) difference() {
+    color(pcb_colour(type)) linear_extrude(t) difference() {
         if(Len(pcb_polygon(type)))
             polygon(pcb_polygon(type));
         else
@@ -901,7 +901,7 @@ module pcb(type) { //! Draw specified PCB
         translate_z(t / 2)
             pcb_hole_positions(type)
                 if(is_list(land))
-                    linear_extrude(height = t + 2 * eps, center = true)
+                    linear_extrude(t + 2 * eps, center = true)
                         difference() {
                             square(land, center = true);
 
@@ -914,7 +914,7 @@ module pcb(type) { //! Draw specified PCB
     plating = 0.15;
     color(pcb_colour(type) == "green" ? "silver" : "gold")
         translate_z(-plating)
-            linear_extrude(height = fr4 ? t + 2 * plating : plating)
+            linear_extrude(fr4 ? t + 2 * plating : plating)
                 if(Len(grid)) {
                     pcb_grid_positions(type)
                         difference() {
@@ -943,11 +943,11 @@ module pcb_spacer(screw, height, wall = 1.8, taper = 0) { //! Generate STL for P
     or = corrected_radius(ir) + wall;
 
     if(height > taper)
-        linear_extrude(height = height - taper)
+        linear_extrude(height - taper)
             poly_ring(or, ir);
 
     if(taper)
-        linear_extrude(height = height)
+        linear_extrude(height)
             poly_ring(ir + 2 * extrusion_width, ir);
 }
 
@@ -957,7 +957,7 @@ module pcb_base(type, height, thickness, wall = 2) { //! Generate STL for a base
     or = corrected_radius(ir) + wall;
 
     union() {
-        linear_extrude(height = thickness)
+        linear_extrude(thickness)
             difference() {
                 hull()
                     pcb_screw_positions(type)
@@ -967,7 +967,7 @@ module pcb_base(type, height, thickness, wall = 2) { //! Generate STL for a base
                     poly_circle(ir);
             }
 
-        linear_extrude(height = height)
+        linear_extrude(height)
             pcb_screw_positions(type)
                 poly_ring(or, ir);
     }

@@ -44,7 +44,7 @@ module ball_bearing(type) { //! Draw a ball bearing
     id = bb_bore(type);
 
     module tube(od, id, h)
-        linear_extrude(height = h, center = true, convexity = 5)
+        linear_extrude(h, center = true, convexity = 5)
             difference() {
                 circle(d = od);
                 circle(d = id);

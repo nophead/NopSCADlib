@@ -87,10 +87,10 @@ module mains_socket(type) { //! Draw specified 13A socket
 
     color("white") render() difference() {
         hull() {
-            linear_extrude(height = eps)
+            linear_extrude(eps)
                 face_plate(type);
 
-            linear_extrude(height = height)
+            linear_extrude(height)
                 offset(-(mains_socket_width(type) - mains_socket_top_w(type)) / 2)
                     face_plate(type);
         }
@@ -105,7 +105,7 @@ module mains_socket(type) { //! Draw specified 13A socket
         }
         // Hollow out the back
         difference() {
-            linear_extrude(height = height - mains_socket_t(type))
+            linear_extrude(height - mains_socket_t(type))
                 offset(-mains_socket_t(type))
                     face_plate(type);
 

@@ -69,7 +69,7 @@ module opengrab() { //! Draw OpenGrab module
     translate_z(1)
         opengrab_hole_positions() {
             color(brass)
-                linear_extrude(height = depth - 1)
+                linear_extrude(depth - 1)
                     difference() {
                             circle(d = 4.7 / cos(30), $fn = 6);
 
@@ -85,7 +85,7 @@ module opengrab_target() { //! Draw OpenGrab target
     vitamin("opengrab_target(): OpenGrab  silicon steel target plate");
 
      color(grey80)
-        linear_extrude(height = target)
+        linear_extrude(target)
             difference() {
                 square([width, width], center = true);
 

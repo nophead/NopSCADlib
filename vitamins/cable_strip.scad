@@ -89,7 +89,7 @@ module cable_strip(ways, depth, travel, extra = 15, pos = 0) {  //! Draw a cable
 
     vitamin(str("cable_strip(", ways, ", ", depth, ", ", travel, arg(extra, 15), "): Polypropylene strip ", total, "mm x ", w, "mm x ", thickness, "mm"));
 
-    color(cable_strip_color) linear_extrude(height = w, center = true, convexity = 4)
+    color(cable_strip_color) linear_extrude(w, center = true, convexity = 4)
         difference() {
             union() {
                 translate([-bottom, radius])
@@ -142,7 +142,7 @@ module elliptical_cable_strip(ways, p1, p2, pmax, extra = 15) {
                          [delta[2] / delta[0], 0, 1, delta[2] / 2],
                          [0, 0, 0, 1] ])
 
-        color(cable_strip_color) linear_extrude(height = w, center = true, convexity = 4)
+        color(cable_strip_color) linear_extrude(w, center = true, convexity = 4)
             difference() {
                 union()  {
                     square([(a + thickness) * 2, extra * 2], center = true);

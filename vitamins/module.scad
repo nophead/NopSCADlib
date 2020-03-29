@@ -84,7 +84,7 @@ module mod(type) {  //! Draw specified module
 
         color("silver")
             rotate([90, 0, 90])
-                linear_extrude(height = body_l, center = true)
+                linear_extrude(body_l, center = true)
                     profile();
 
         color(grey20)
@@ -92,18 +92,18 @@ module mod(type) {  //! Draw specified module
                 translate([end * body_l / 2, 0, 0])
                     rotate([90, 0, end * 90])
                         union() {
-                            linear_extrude(height = end_t)              // endcap
+                            linear_extrude(end_t)              // endcap
                                 profile();
 
                             translate_z(end_t)
                                 rotate([90, 0, 180])
-                                    linear_extrude(height = lug_t)      // lug
+                                    linear_extrude(lug_t)      // lug
                                         lug();
 
                             for(side = [-1, 1]) {
                                 translate([side * vane_p / 2, lug_t, end_t]) // buttress vanes
                                     rotate([0, -90, 0])
-                                        linear_extrude(height = vane_t, center = true)
+                                        linear_extrude(vane_t, center = true)
                                             polygon([[0, 0], [0, vane_h - lug_t], [vane_l, 0]]);
 
                                 translate([side * vane_p / 2, h / 2, end_t]) // bosses

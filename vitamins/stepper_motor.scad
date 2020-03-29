@@ -65,7 +65,7 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
     union() {
         color(stepper_body_colour)                                          // black laminations
             translate_z(-length / 2)
-                linear_extrude(height = length - cap * 2, center = true)
+                linear_extrude(length - cap * 2, center = true)
                     intersection() {
                         square([side, side], center = true);
 
@@ -77,7 +77,7 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
 
             for(end = [-1, 1])
                 translate_z(-length / 2 + end * (length - cap) / 2) {
-                    linear_extrude(height = cap, center = true)
+                    linear_extrude(cap, center = true)
                         difference() {
                             intersection() {
                                 square([side, side], center = true);

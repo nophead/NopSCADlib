@@ -22,7 +22,7 @@ use <../utils/quadrant.scad>
 
 
 module quadrants() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         quadrant(10, 4);
 }
 

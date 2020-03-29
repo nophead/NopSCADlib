@@ -85,7 +85,7 @@ module terminal_block(type, ways) { //! Draw a power supply terminal block
             for(i = [0 : ways])
                 translate([0, i * pitch + div])
                     rotate([90, 0, 0])
-                        linear_extrude(height = div)
+                        linear_extrude(div)
                             hull() {
                                 r = 2;
                                 square([depth, eps]);
@@ -170,7 +170,7 @@ module psu(type) { //! Draw a power supply
 
             multmatrix(psu_face_transform(type, i))
                 translate([xo, 0, -t]) {
-                    color("silver") linear_extrude(height = t)
+                    color("silver") linear_extrude(t)
                         union() {
                             difference() {
                                 square([xw, yw], center = true);
@@ -260,7 +260,7 @@ module psu(type) { //! Draw a power supply
         heatsink_offset = 13.5;
         color("#FCD67E")
             translate([(-right - rt) / 2, (ft - bt) / 2, z - pcb_thickness])
-                linear_extrude(height = pcb_thickness)
+                linear_extrude(pcb_thickness)
                     difference() {
                         square([pl, pw], center = true);
 
@@ -306,7 +306,7 @@ module psu(type) { //! Draw a power supply
             color("silver")
                 translate([l / 2, -w / 2])
                     rotate([90, 0, 180])
-                        linear_extrude(height = length) {
+                        linear_extrude(length) {
                             translate([right + rt, z_top])
                                 rotate(135)
                                     square([rt, right * sqrt(2)]);
@@ -336,7 +336,7 @@ module atx_psu_cutout(type) { //! Cut out for the rear of an ATX
     holes = psu_face_holes(psu_faces(type)[f_front]);
     translate([holes[0].x, -psu_width(type) / 2, psu_height(type) / 2 + holes[0].y])
         rotate([90, 0, 0])
-            linear_extrude(height = 100, center = true)
+            linear_extrude(100, center = true)
                 round(5)
                 polygon([ // https://www.techpowerup.com/forums/threads/pc-component-dimensions.157239, tweaked
                     [18.7, -13],

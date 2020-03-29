@@ -54,7 +54,7 @@ module variac_holes(type, h = 100) {    //! Drill panel holes for specified vari
 }
 
 module variac_dial(type)            //! Draw the dial for the specified variac
-    color("silver") linear_extrude(height = variac_dial_thickness(type))
+    color("silver") linear_extrude(variac_dial_thickness(type))
         difference() {
             circle(d = variac_dial_dia(type));
 
@@ -81,7 +81,7 @@ module variac(type, thickness = 3, dial = true) {   //! Draw the specified varia
 
     translate_z(-h) {
         color("#A66955") {
-            linear_extrude(height = h)
+            linear_extrude(h)
                 difference() {
                     shape();
 
@@ -89,7 +89,7 @@ module variac(type, thickness = 3, dial = true) {   //! Draw the specified varia
                         circle(screw_radius(variac_screw(type)));
                 }
 
-            linear_extrude(height = h - 10)
+            linear_extrude(h - 10)
                 shape();
         }
         color("silver")

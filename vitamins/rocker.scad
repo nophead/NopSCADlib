@@ -54,7 +54,7 @@ module rocker(type, colour) { //! Draw the specified rocker switch
 
     explode(30) {
         color(grey20) {
-            linear_extrude(height = rocker_flange_t(type))
+            linear_extrude(rocker_flange_t(type))
                 difference() {
                     rounded_square([rocker_flange_w(type), rocker_flange_h(type)], 0.5);
 
@@ -68,7 +68,7 @@ module rocker(type, colour) { //! Draw the specified rocker switch
             color(colour ? colour : grey30)
                 translate_z(rocker_pivot(type))
                     rotate([90, 0, 90])
-                        linear_extrude(height = rocker_w, center = true)
+                        linear_extrude(rocker_w, center = true)
                             difference() {
                                 circle(rocker_r, $fa = 1);
 

@@ -20,7 +20,7 @@ include <../global_defs.scad>
 use <../utils/dogbones.scad>
 
 module dogbones() {
-    #linear_extrude(height = eps)
+    #linear_extrude(eps)
         dogbone_square([10, 20]);
 
     #translate([15, 0])

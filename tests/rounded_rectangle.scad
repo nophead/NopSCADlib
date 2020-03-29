@@ -20,7 +20,7 @@
 include <../utils/core/core.scad>
 
 module rounded_rectangles() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         rounded_square([30, 20], 3);
 
     translate([40, 0])

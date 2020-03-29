@@ -69,7 +69,7 @@ module hygrometer() { //! Draw a hygrometer
             cylinder(d = apperture_d, h = eps);
 
         color("black")
-            linear_extrude(height = 0.2, center = true) {
+            linear_extrude(0.2, center = true) {
                 translate([0, 3])
                     text("20_4", font = "7 segment", valign = "bottom", halign = "center", size = apperture_d / 6);
 

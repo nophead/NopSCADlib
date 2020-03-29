@@ -48,6 +48,6 @@ module sealing_strip(length) { //! Draw specified length of sealing strip
     vitamin(str("sealing_strip(", length, "): Sealing strip 10mm x 4mm x ", length, "mm"));
     rotate([90, 0, 90])
         color("Sienna")
-            linear_extrude(height = length, center = true)
+            linear_extrude(length, center = true)
                 rounded_polygon(profile);
 }

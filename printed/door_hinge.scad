@@ -60,7 +60,7 @@ module door_hinge(door_thickness) {                         //! Generates STL fo
 
     union() {
         rotate([90, 0, 0])
-            linear_extrude(height = width, center = true)
+            linear_extrude(width, center = true)
                 difference() {
                     hull() {
                         translate([dia / 2, thickness + door_thickness / 2])
@@ -76,7 +76,7 @@ module door_hinge(door_thickness) {                         //! Generates STL fo
                     translate([dia / 2, thickness + door_thickness / 2])
                         teardrop(r = screw_clearance_radius(pin_screw), h = 0);
                 }
-        linear_extrude(height = thickness)
+        linear_extrude(thickness)
             difference() {
                 hull() {
                     translate([0, -width / 2])
@@ -108,7 +108,7 @@ module door_hinge_stat_stl() { //! Generates the STL for the stationary part
     stl("door_hinge_stat");
 
     union() {
-        linear_extrude(height = thickness)
+        linear_extrude(thickness)
             difference() {
                 rounded_square([stat_length, stat_width], rad);
 
@@ -117,7 +117,7 @@ module door_hinge_stat_stl() { //! Generates the STL for the stationary part
             }
 
         rotate([90, 0, 0])
-            linear_extrude(height = stat_width, center = true)
+            linear_extrude(stat_width, center = true)
                 difference() {
                     hull() {
                         translate([0, dia / 2 + stat_clearance])

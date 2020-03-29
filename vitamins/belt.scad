@@ -62,7 +62,7 @@ module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey20, tooth_c
                 square([gap, thickness + eps], center = true);
 
     color(belt_colour)
-        linear_extrude(height = width, center = true)
+        linear_extrude(width, center = true)
             difference() {
                 offset(thickness - belt_pitch_height(type)) shape();
                 offset(-belt_pitch_height(type) + belt_tooth_height(type)) shape();
@@ -70,7 +70,7 @@ module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey20, tooth_c
 
             }
     color(tooth_colour)
-        linear_extrude(height = width, center = true)
+        linear_extrude(width, center = true)
             difference() {
                 offset(-belt_pitch_height(type) + belt_tooth_height(type)) shape();
                 offset(-belt_pitch_height(type)) shape();

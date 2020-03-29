@@ -62,7 +62,7 @@ module d_pillar() { //! Draw a pillar for a D-connector
                 cylinder(d = screw, h = screw_length + 1);
 
     color(d_pillar_color) {
-        linear_extrude(height = height)
+        linear_extrude(height)
             difference() {
                 circle(r = rad, $fn = 6);
                 circle(d = screw);
@@ -107,7 +107,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     // Shell
     //
     color(d_plug_shell_color)  {
-        linear_extrude(height =  d_flange_thickness(type))
+        linear_extrude( d_flange_thickness(type))
             difference() {
                 rounded_square([flange_length, flange_width], 2);
 
@@ -115,7 +115,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
                     circle(hole_r);
             }
 
-        linear_extrude(height = front_height, convexity = 5)
+        linear_extrude(front_height, convexity = 5)
             difference() {
                 D(d_length, d_width, 2.5);
                 D(d_length - 2 * dwall, d_width - 2 * dwall, 2.5 - dwall);
@@ -123,7 +123,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
 
         if(!idc)
             rotate([0,180,0])
-                linear_extrude(height = back_height, convexity = 5)
+                linear_extrude(back_height, convexity = 5)
                     D(d_lengths(type)[0] + 2 * dwall, d_widths(type)[0] + 2 * dwall, 2.5 + dwall);
 
     }
@@ -133,11 +133,11 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     color(d_plug_insulator_color) {
         translate_z(d_flange_thickness(type) + eps)
             rotate([0, 180, 0])
-                linear_extrude(height = back_height + 1 + d_flange_thickness(type), convexity = 5)
+                linear_extrude(back_height + 1 + d_flange_thickness(type), convexity = 5)
                     D(d_length - dwall, d_width - dwall, 2.5 - dwall/2);
 
         if(socket)
-            linear_extrude(height = front_height - eps, convexity = 5)
+            linear_extrude(front_height - eps, convexity = 5)
                 difference() {
                     D(d_length - dwall, d_width - dwall, 2.5 - dwall/2);
 
@@ -169,11 +169,11 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
 
         if(pcb)
            rotate([0, 180, 0]) {
-                linear_extrude(height = back_height + 1 + 4.5)
+                linear_extrude(back_height + 1 + 4.5)
                     pin_positions()
                          circle(r = 0.75 / 2, $fn = 12);
 
-                linear_extrude(height = back_height + 1 + 1)
+                linear_extrude(back_height + 1 + 1)
                     pin_positions()
                          circle(r = 0.75, $fn = 12);
             }
@@ -183,7 +183,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
                 pin_positions()
                     rotate(180 + ($i % 2) * 180)
                     render() difference() {
-                        linear_extrude(height = 8)
+                        linear_extrude(8)
                             difference() {
                                 circle(1);
 

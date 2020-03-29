@@ -22,7 +22,7 @@ use <../utils/rounded_cylinder.scad>
 
 
 module rounded_cylinders() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         rounded_corner(10, 20, 3, 5);
 
     translate([30, 10])

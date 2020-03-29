@@ -48,7 +48,7 @@ module screw_knob(screw) { //! Generate the STL for a knob to fit the specified 
                 rotate(45)
                     circle(r = nut_trap_radius(screw_nut(screw)), $fn = 6);
         }
-        linear_extrude(height = knob_thickness, convexity = 3)
+        linear_extrude(knob_thickness, convexity = 3)
             difference() {
                 polygon(points = [for(a = [0 : 359]) [wave(a) * sin(a), wave(a) * cos(a)]]);
 

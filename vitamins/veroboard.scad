@@ -86,7 +86,7 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
 
     vitamin(str("veroboard(", type[0], "): Veroboard ", holes, " holes x ", strips, "strips"));
 
-    color(colour) linear_extrude(height = vero_thickness(type))
+    color(colour) linear_extrude(vero_thickness(type))
         difference() {
             rounded_square([length, width], r = 0.5, center = true);
 
@@ -98,7 +98,7 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
                 circle(r = screw_radius(vero_screw(type)));
         }
 
-    color(tc) vflip() linear_extrude(height = vero_track_thickness(type))
+    color(tc) vflip() linear_extrude(vero_track_thickness(type))
         difference() {
             vflip()
                 for(y = [0 : strips -1])

@@ -56,7 +56,7 @@ module wires() {
 
     color(pp1_colour) {
         rotate([90, 0, 90])
-            linear_extrude(height = thickness)
+            linear_extrude(thickness)
                 difference() {
                     translate([-w / 2, 0])
                         square([w, h]);
@@ -65,7 +65,7 @@ module wires() {
                 }
 
         translate_z(-thickness)
-            linear_extrude(height = thickness)
+            linear_extrude(thickness)
                 difference() {
                     translate([thickness -d, -w / 2])
                         square([d, w]);

@@ -22,7 +22,7 @@ use <../utils/sector.scad>
 
 
 module sectors() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         sector(50, 45, 180);
 }
 

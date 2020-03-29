@@ -53,7 +53,7 @@ module washer(type) { //! Draw specified washer
     else
         vitamin(str("washer(", type[0], "_washer): Washer ", penny ? "penny " : "", " M", hole, " x ", diameter, "mm x ", thickness, "mm"));
     color(washer_colour(type))
-        linear_extrude(height =  thickness - 0.05)
+        linear_extrude( thickness - 0.05)
             difference() {
                 circle(d = diameter);
                 circle(d = washer_id(type));
@@ -80,7 +80,7 @@ module star_washer(type) { //! Draw star version of washer
     spoke  = rad - hole / 2;
     vitamin(str("star_washer(", type[0], "_washer): Washer star M", hole, " x ", thickness, "mm"));
     color(star_washer_colour)
-        linear_extrude(height = thickness)
+        linear_extrude(thickness)
             difference() {
                 circle(rad);
 
@@ -123,7 +123,7 @@ module printed_washer(type, name = false) { //! Create printed washer
     or = washer_radius(type);
     ir = washer_id(type) / 2;
     color(pp1_colour)
-        linear_extrude(height = t, center = false, convexity = 2)
+        linear_extrude(t, center = false, convexity = 2)
             poly_ring(or, ir);
 
     if($children)

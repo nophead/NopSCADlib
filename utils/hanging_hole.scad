@@ -47,7 +47,7 @@ module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius ```ir``` hanging
 
             difference() {
                 translate_z(-below)
-                    linear_extrude(height = below + 2 * layer_height)
+                    linear_extrude(below + 2 * layer_height)
                         children();
 
                 rotate(infill_angle)

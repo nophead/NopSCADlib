@@ -23,7 +23,7 @@ module teardrops() {
     color(pp1_colour)
         rotate([90, 0, -45])
             difference() {
-                linear_extrude(height = 3) {
+                linear_extrude(3) {
                     difference() {
                         square([80, 40]);
 

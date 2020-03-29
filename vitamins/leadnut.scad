@@ -64,7 +64,7 @@ module leadnut(type) { //! Draw specified leadnut
                 thread(bore_d, lead, h, thread_profile(pitch / 2, pitch * 0.366, 30), false, starts = lead / pitch, female = true, solid = false);
 
             translate_z(leadnut_flange_offset(type))
-                linear_extrude(height = leadnut_flange_t(type))
+                linear_extrude(leadnut_flange_t(type))
                     difference() {
                         circle(d = leadnut_flange_dia(type));
 

@@ -62,7 +62,7 @@ module pcb_mount_ring()
     }
 
 module pcb_mount_washer_stl() //! A plastic washer to clamp a PCB
-    linear_extrude(height = washer_thickness)
+    linear_extrude(washer_thickness)
         pcb_mount_ring();
 
 module pcb_mount(pcb, height = 5, washers = true) { //! Make the STL of a pcb mount for the specified PCB.
@@ -85,10 +85,10 @@ module pcb_mount(pcb, height = 5, washers = true) { //! Make the STL of a pcb mo
             cube([pillar_x_pitch(pcb) - 2 * wall, frame_w, frame_t], center = true);
 
     pcb_mount_screw_positions(pcb)
-        linear_extrude(height = height)
+        linear_extrude(height)
             pcb_mount_ring();
 
-    linear_extrude(height = height + pcb_thickness(pcb) - layer_height)
+    linear_extrude(height + pcb_thickness(pcb) - layer_height)
         difference() {
             pcb_mount_screw_positions(pcb)
                 pcb_mount_ring();

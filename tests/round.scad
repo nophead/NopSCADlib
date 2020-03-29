@@ -28,14 +28,14 @@ module shape()
     }
 
 module rounds() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         round(or = 4, ir = 2)
             shape();
 
 
     translate([50, 0])
         round_3D(or = 4, ir = 2, chamfer_base = true, $fn = 16)
-            linear_extrude(height = 40, center = true)
+            linear_extrude(40, center = true)
                 shape();
 }
 

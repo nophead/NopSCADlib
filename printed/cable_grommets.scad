@@ -59,7 +59,7 @@ module ribbon_grommet(ways, thickness) { //! Generate the STL for a printed ribb
         union() {
             for(side = [-1, 1])
                 translate_z(side * (width - wall) / 2)
-                    linear_extrude(height = wall, center = true, convexity = 5)
+                    linear_extrude(wall, center = true, convexity = 5)
                         difference() {
                             hull() {
                                 translate([-length / 2, 0])
@@ -73,7 +73,7 @@ module ribbon_grommet(ways, thickness) { //! Generate the STL for a printed ribb
                                 square([slot_length, slot_height]);
                         }
 
-            linear_extrude(height = width -1, center = true)
+            linear_extrude(width -1, center = true)
                 difference() {
                     ribbon_grommet_hole(ways, expand = false, h = 0);
 
@@ -170,14 +170,14 @@ module mouse_grommet(r, thickness) { //! Make the STL for a mouse grommet
         union() {
             for(side = [-1, 1])
                 translate_z(side * (width - wall) / 2)
-                    linear_extrude(height = wall, center = true)
+                    linear_extrude(wall, center = true)
                         difference() {
                             mouse_grommet_hole(r, z = r + wall, h = 0, expand = wall + overlap);
 
                         translate([0, wall])
                             mouse_grommet_hole(r, h = 0, expand = 0);
                     }
-            linear_extrude(height = width - 1, center = true)
+            linear_extrude(width - 1, center = true)
                 difference() {
                     mouse_grommet_hole(r, h = 0, z = r + wall, expand = wall);
 

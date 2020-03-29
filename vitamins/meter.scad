@@ -56,7 +56,7 @@ module meter(type = led_meter, colour = "red", value = "888", display_colour = f
 
     color("green")
         translate_z(meter_height(type))
-            linear_extrude(height = meter_pcb_thickness(type))
+            linear_extrude(meter_pcb_thickness(type))
                 difference() {
                     union() {
                         square([meter_pcb_length(type), meter_pcb_width(type)], center = true);
@@ -68,7 +68,7 @@ module meter(type = led_meter, colour = "red", value = "888", display_colour = f
                 }
 
     color(display_colour ? display_colour : colour)
-        linear_extrude(height = 0.2, center = true)
+        linear_extrude(0.2, center = true)
             mirror([1,0,0])
                 text(value, font = "7 segment", valign = "center", halign = "center", size = meter_width(type) - 2, spacing = 1.2);
 }
@@ -102,14 +102,14 @@ module meter_bezel(type = led_meter) { //! Generate the STL for the meter bezel
     h = meter_height(type);
 
     union() {
-        linear_extrude(height = h)
+        linear_extrude(h)
             difference() {
                 rounded_square([l + 2 * wall, w + 2 * wall], rad);
 
                 square([l + 2 * clearance, w + 2 * clearance], center = true);
             }
 
-        linear_extrude(height = flange_t)
+        linear_extrude(flange_t)
             difference() {
                 rounded_square([l + 2 * wall + 2 * overlap, w + 2 * wall + 2 * overlap], rad + overlap);
 

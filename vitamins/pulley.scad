@@ -69,7 +69,7 @@ module pulley(type) { //! Draw a pulley
     ir =  pulley_ir(type);
     module core() {
         translate_z(pulley_hub_length(type) + ft)
-            linear_extrude(height = w) let($fa  = 1, $fs = 0.1)
+            linear_extrude(w) let($fa  = 1, $fs = 0.1)
                  difference() {
                     circle(or);
 

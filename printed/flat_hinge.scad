@@ -82,7 +82,7 @@ module hinge_male(type, female = false) {       //! The half with the stationary
     teardrop_r = kr / cos(22.5);                // The corner on the teardrop
     inset = sqrt(sqr(teardrop_r + gap) - sqr(kr - t)) - kr;
 
-    linear_extrude(height =t)
+    linear_extrude(t)
         difference() {
             hull() {
                 for(side = [-1, 1])
@@ -102,7 +102,7 @@ module hinge_male(type, female = false) {       //! The half with the stationary
         rotate([90, 0, -90])
             for(z = [0 : (female ? fn : mn) - 1])
                 translate_z(-dir * w / 2 + z * dir * pitch + (female ? -fw - mw - gap : 0))
-                    linear_extrude(height = female ? fw : mw)
+                    linear_extrude(female ? fw : mw)
                         difference() {
                             hull() {
                                 rotate(180)

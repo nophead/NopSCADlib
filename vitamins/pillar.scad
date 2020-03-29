@@ -66,7 +66,7 @@ module pillar(type) { //! Draw specified pillar
                     cylinder(h = top_thread_l, d = thread_d);
 
     color(pillar_i_colour(type))  {
-        linear_extrude(height = height)
+        linear_extrude(height)
             difference() {
                 circle(d = pillar_id(type), $fn = fn(pillar_ifn(type)));
                 circle(d = thread_d);
@@ -90,7 +90,7 @@ module pillar(type) { //! Draw specified pillar
     }
 
     if(pillar_od(type) > pillar_id(type))
-        color(pillar_o_colour(type)) linear_extrude(height = height)
+        color(pillar_o_colour(type)) linear_extrude(height)
             difference() {
                 circle(d = pillar_od(type), $fn = fn(pillar_ofn(type)));
 

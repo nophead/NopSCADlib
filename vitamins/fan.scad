@@ -80,10 +80,10 @@ module fan(type) { //! Draw specified fan, origin in the centre
         if(middle > 0) {
             for(z = [-1, 1])
                 translate_z(z * (depth - thickness) / 2)
-                    linear_extrude(height = thickness, center = true)
+                    linear_extrude(thickness, center = true)
                         shape();
 
-            linear_extrude(height = middle, center = true)
+            linear_extrude(middle, center = true)
                 difference() {
                     shape();
                     difference() {
@@ -100,13 +100,13 @@ module fan(type) { //! Draw specified fan, origin in the centre
                 }
         }
         else
-            linear_extrude(height = depth, center = true)
+            linear_extrude(depth, center = true)
                 shape();
 
         // Blades
         blade_ir = fan_hub(type) / 2 - 1;
         blade_len = fan_bore(type) / 2 - 0.75 - blade_ir;
-        linear_extrude(height = depth - 1, center = true, convexity = 4, twist = -30, slices = round(depth / 2))
+        linear_extrude(depth - 1, center = true, convexity = 4, twist = -30, slices = round(depth / 2))
             for(i = [0 : fan_blades(type) - 1])
                 rotate((360 * i) / fan_blades(type))
                     translate([blade_ir, -1.5 / 2])

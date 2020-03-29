@@ -71,17 +71,17 @@ module LDR(type, lead_length = 3) { //! Draw an LDR, can specify the lead length
     t = ldr_thickness(type);
 
     color("white")
-        linear_extrude(height = t - 0.4)
+        linear_extrude(t - 0.4)
             shape();
 
     color("orange")
         translate_z(t - 0.4)
-            linear_extrude(height = 0.1)
+            linear_extrude(0.1)
                 shape();
 
     color([0.9, 0.9, 0.9])
         translate_z(t - 0.3)
-            linear_extrude(height = 0.1)
+            linear_extrude(0.1)
                 difference() {
                     offset(-serpentine_t())
                         shape();
@@ -100,6 +100,6 @@ module LDR(type, lead_length = 3) { //! Draw an LDR, can specify the lead length
             }
     color([1, 1, 1, 0.25])
         translate_z(t - 0.3 + eps)
-            linear_extrude(height = 0.3)
+            linear_extrude(0.3)
                 shape();
 }

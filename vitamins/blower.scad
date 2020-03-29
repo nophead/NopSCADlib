@@ -72,7 +72,7 @@ module blower(type) { //! Draw specified blower
 
     color(fan_colour) {
         // screw lugs
-        linear_extrude(height = blower_lug(type), center = false)
+        linear_extrude(blower_lug(type), center = false)
             for(hole = blower_screw_holes(type))
                 difference() {
                     hull() {
@@ -94,7 +94,7 @@ module blower(type) { //! Draw specified blower
         *%square([length, width]);
 
         // base
-        linear_extrude(height = blower_base(type))
+        linear_extrude(blower_base(type))
             difference() {
                 shape();
 
@@ -102,7 +102,7 @@ module blower(type) { //! Draw specified blower
                     circle(d = 2);
            }
         // sides
-        linear_extrude(height = depth)
+        linear_extrude(depth)
             difference() {
                 shape();
 
@@ -112,7 +112,7 @@ module blower(type) { //! Draw specified blower
 
         // top
         translate_z(depth -blower_top(type))
-            linear_extrude(height = blower_top(type))
+            linear_extrude(blower_top(type))
                 difference() {
                     shape();
 

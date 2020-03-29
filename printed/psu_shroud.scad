@@ -113,21 +113,21 @@ module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file f
     translate([centre_x, -centre_y]) {
         rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
 
-        linear_extrude(height = height)
+        linear_extrude(height)
             difference() {
                 shape();
 
                 translate([depth / 2, width / 2 - 5])
                     square([2 * (depth - extent + terminal_clearance), 10], center = true);
         }
-        linear_extrude(height = height - terminal_block_height(tb) - psu_terminal_block_z(type) - terminal_clearance)
+        linear_extrude(height - terminal_block_height(tb) - psu_terminal_block_z(type) - terminal_clearance)
             shape();
     }
     // cable slots
     for(i = [0 : 1 : cables - 1])
         translate([centre_x - depth / 2 + wall / 2, -centre_y + (i - cables / 2 + 0.5) *  psu_shroud_cable_pitch(cable_d), height / 2])
             rotate([90, 0, 90])
-                linear_extrude(height = wall, center = true)
+                linear_extrude(wall, center = true)
                     difference() {
                         square([cable_d + eps, height], center = true);
 

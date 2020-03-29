@@ -73,7 +73,7 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
     translate([center_x, 0]) {
         rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
 
-        linear_extrude(height = height) difference() {
+        linear_extrude(height) difference() {
             round(or = wall / 2 - eps, ir = 0) difference() {
                 rounded_square([depth, width], rad);
 
@@ -91,7 +91,7 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
     for(side = [-1, 1])
         translate([cable_x, side * (width / 2 - wall / 2), height / 2])
             rotate([90, 0, 0])
-                linear_extrude(height = wall, center = true)
+                linear_extrude(wall, center = true)
                     difference() {
                         square([cable_d + eps, height], center = true);
 

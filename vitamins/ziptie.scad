@@ -53,7 +53,7 @@ module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius ``
     vitamin(str("ziptie(", type[0], ", ", r, "): Ziptie ", width, "mm x ", len, "mm min length"));
 
     color(ziptie_colour(type)){
-        linear_extrude(height = width, center = true)
+        linear_extrude(width, center = true)
             difference() {
                 rounded_polygon(outside_path, tangents);
                 rounded_polygon(inside_path);

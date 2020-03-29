@@ -75,7 +75,7 @@ module battery(type) { //! Draw a battery
         if(battery_usb_offset(type))
             translate([battery_diameter(type) / 2, 0, len / 2 - battery_usb_offset(type) + h / 2])
                 rotate([-90, 0, 90])
-                    linear_extrude(height = l + 1)
+                    linear_extrude(l + 1)
                         offset(delta = t)
                             D();
     }
@@ -87,14 +87,14 @@ module battery(type) { //! Draw a battery
         if(battery_usb_offset(type))
             translate([battery_diameter(type) / 2 - 1, 0, len / 2 - battery_usb_offset(type) + h / 2])
                 rotate([-90, 0, 90]) {
-                    linear_extrude(height = l)
+                    linear_extrude(l)
                         difference() {
                             offset(t) D();
                             D();
                        }
 
                     translate_z(l - 1)
-                        linear_extrude(height = 1)
+                        linear_extrude(1)
                             D();
                 }
 
@@ -132,7 +132,7 @@ module battery_contact(type, pos = true) { //! Draw a positive or negative batte
 
         translate([0, -h / 2, t])
             rotate([90, 0, 0])
-                linear_extrude(height = t)
+                linear_extrude(t)
                     difference() {
                         hull() {
                             translate([-tw / 2, -1])

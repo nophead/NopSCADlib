@@ -68,7 +68,7 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
                 color(colour) {
                     tube(or = nut_d / 2, ir = thread_d / 2, h = nut_flange_t, center = false);
 
-                    linear_extrude(height = nut_t)
+                    linear_extrude(nut_t)
                         difference() {
                             circle(d = nut_d, $fn = 6);
 
@@ -87,7 +87,7 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
 
             cylinder(r = 5, h = flange_t - 1);
 
-            linear_extrude(height = flange_t)
+            linear_extrude(flange_t)
                 difference() {
                     circle(r = 5);
 
@@ -96,7 +96,7 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
 
             vflip() {
                 if(!show_threads)
-                    linear_extrude(height = thread)
+                    linear_extrude(thread)
                         intersection() {
                             circle(d = thread_d - 0.3);
 
@@ -127,7 +127,7 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
             for(side = [-1, 1])
                 translate([side * contact_slot_d / 2, 0, contact_slot_z])
                     rotate([0, -70, 90 - side * 90])
-                        linear_extrude(height = contact_t, center = true) difference() {
+                        linear_extrude(contact_t, center = true) difference() {
                             hull() {
                                 square([eps, contact_w], center = true);
 

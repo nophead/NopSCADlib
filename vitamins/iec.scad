@@ -137,7 +137,7 @@ module iec(type) { //! Draw specified IEC connector
     color(grey20) {
         // Flange
         flange_t = iec_flange_t(type);
-        linear_extrude(height = flange_t)
+        linear_extrude(flange_t)
             difference() {
                 hull() {
                     rounded_square([iec_flange_w(type), iec_flange_h(type)], iec_flange_r(type));
@@ -164,7 +164,7 @@ module iec(type) { //! Draw specified IEC connector
                 }
         // Bezel
         translate_z(iec_flange_t(type))
-            linear_extrude(height = iec_bezel_t(type))
+            linear_extrude(iec_bezel_t(type))
                 difference() {
                     rounded_square([iec_bezel_w(type), iec_bezel_h(type)], iec_bezel_r(type));
 
@@ -174,7 +174,7 @@ module iec(type) { //! Draw specified IEC connector
         // Body
         h = socket_d - iec_flange_t(type) - iec_bezel_t(type);
         translate_z(-h)
-            linear_extrude(height = h)
+            linear_extrude(h)
                 difference() {
                     body_shape();
 
@@ -182,7 +182,7 @@ module iec(type) { //! Draw specified IEC connector
                 }
         // Back
         translate_z(-iec_depth(type))
-            linear_extrude(height = iec_depth(type) - h)
+            linear_extrude(iec_depth(type) - h)
                 body_shape();
     }
     if(!iec_male(type))

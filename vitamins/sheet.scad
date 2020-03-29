@@ -75,7 +75,7 @@ module sheet_2D(type, w, d, corners = [0, 0, 0, 0]) { //! 2D sheet template with
 }
 
 module sheet(type, w, d, corners = [0, 0, 0, 0]) //! Draw specified sheet
-    linear_extrude(height = sheet_thickness(type), center = true)
+    linear_extrude(sheet_thickness(type), center = true)
         sheet_2D(type, w, d, corners);
 
 module render_sheet(type, color = false) //! Render a sheet in the correct colour after holes have been subtracted
@@ -84,5 +84,5 @@ module render_sheet(type, color = false) //! Render a sheet in the correct colou
 
 module render_2D_sheet(type, color = false) //! Extrude a 2D sheet template and give it the correct colour
     color(color ? color : sheet_colour(type))
-        linear_extrude(height = sheet_thickness(type), center = true)
+        linear_extrude(sheet_thickness(type), center = true)
             children();

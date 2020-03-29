@@ -85,7 +85,7 @@ module light_strip(type, segs = undef) { //! Draw specified light strip, segs ca
 
     color("silver")
         rotate([90, 0, 90])
-            linear_extrude(height = l, center = true)
+            linear_extrude(l, center = true)
                 polygon([
                     [ x1,  0], [ x1,  d], [ x2,  d], [ x3, y5], [ x3, y4], [ x2, y4],
                     [ x2, y3], [ x3, y3], [ x3, y2], [ x2, y2], [ x2, y1],
@@ -99,42 +99,42 @@ module light_strip(type, segs = undef) { //! Draw specified light strip, segs ca
 
     translate_z(y4) {
         color("white")
-            linear_extrude(height = 1.6)
+            linear_extrude(1.6)
                 led_positions()
                     square([5, 5], center = true);
 
         color("yellow")
-            linear_extrude(height = 1.6 + eps)
+            linear_extrude(1.6 + eps)
                 led_positions()
                     circle(d = 3.5);
 
         color("silver")
-            linear_extrude(height = 0.8)
+            linear_extrude(0.8)
                 led_positions()
                     for(side = [-1,1], end = [-1:1])
                         translate([side * 2.2, end * 1.6])
                             square([1, 0.9], center = true);
 
         color("black")
-            linear_extrude(height = 0.1)
+            linear_extrude(0.1)
                 segment_positions(segments - 1)
                     translate([segment_length, 0])
                         square([0.2, a], center = true);
 
         color("silver")
-            linear_extrude(height = 0.15)
+            linear_extrude(0.15)
                 segment_positions()
                     for(end = [-1, 1], side = [-1, 1])
                         translate([end * (segment_length / 2 - 1.25) + segment_length / 2, side * 2.5])
                             square(2.5, center = true);
 
         color("silver")
-            linear_extrude(height = 0.55)
+            linear_extrude(0.55)
                 resistor_positions()
                     square([3.2, 1.5], center = true);
 
         color("black")
-            linear_extrude(height = 0.55 + eps)
+            linear_extrude(0.55 + eps)
                 resistor_positions()
                     square([2.1, 1.5 + 2 * eps], center = true);
 
@@ -152,7 +152,7 @@ function light_strip_clip_length(light) = light_strip_clip_slot(light) + 2 * wal
 function light_strip_clip_width(light) = light_strip_depth(light) + 2 * wall;       //! Outside width
 
 module light_strip_clip(light) { //! Make a clip to go over the strip to be incorporated into a bracket
-    linear_extrude(height = light_strip_clip_depth(light), convexity = 2)
+    linear_extrude(light_strip_clip_depth(light), convexity = 2)
         difference() {
             translate([-light_strip_clip_length(light) / 2, -wall])
                 square([light_strip_clip_length(light), light_strip_clip_width(light)]);

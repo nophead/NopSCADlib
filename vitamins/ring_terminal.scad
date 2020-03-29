@@ -60,7 +60,7 @@ module ring_terminal(type) { //! Draw specifeid ring terminal
             children();
 
     color("silver") union() {
-        linear_extrude(height = t)
+        linear_extrude(t)
             difference() {
                 hull_if_crimp() {
                     circle(d = od);
@@ -102,7 +102,7 @@ module ring_terminal(type) { //! Draw specifeid ring terminal
         else
             translate([0, -bend])
                 rotate([-angle, 0, 0])
-                    linear_extrude(height = t)
+                    linear_extrude(t)
                         difference() {
                             length = l - od / 2 - bend;
                             hull() {

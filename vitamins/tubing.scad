@@ -37,7 +37,7 @@ module tubing(type, length = 15, forced_id = 0) { //! Draw specified tubing with
     else
         vitamin(str("tubing(", type[0], arg(length, 15), "): ", tubing_material(type), " OD ", original_od, "mm ID ", original_id,"mm x ",length, "mm"));
     color(tubing_colour(type))
-        linear_extrude(height = length, center = true, convexity = 4)
+        linear_extrude(length, center = true, convexity = 4)
             difference() {
                 circle(d = od);
                 circle(d = id);

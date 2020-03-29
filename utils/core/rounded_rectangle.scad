@@ -28,6 +28,6 @@ module rounded_square(size, r, center = true) //! Like ```square()``` but with w
 
 module rounded_rectangle(size, r, center = true, xy_center = true) //! Like ```cube()``` but corners rounded in XY plane and separate centre options for xy and z.
 {
-    linear_extrude(height = size[2], center = center)
+    linear_extrude(size[2], center = center)
         rounded_square([size[0], size[1]], r, xy_center);
 }

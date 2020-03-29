@@ -44,7 +44,7 @@ module ssr(type) { //! Draw specified SSR
     t = ssr_base_t(type);
     h = ssr_height(type);
 
-    color("silver") linear_extrude(height = t) difference() {
+    color("silver") linear_extrude(t) difference() {
         square([l, w], center = true);
 
         ssr_hole_positions(type)
@@ -52,7 +52,7 @@ module ssr(type) { //! Draw specified SSR
     }
     color([242/255, 236/255, 220/255])
         translate_z(t)
-            linear_extrude(height = h - t) difference() {
+            linear_extrude(h - t) difference() {
                 square([l, w], center = true);
 
                 for(end = [-1, 1])

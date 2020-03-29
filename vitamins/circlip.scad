@@ -57,7 +57,7 @@ module internal_circlip(type, open = 0) { //! Draw specified internal circlip, o
     y_offset = (sqr(p.x) + sqr(p.y) - sqr(or - b)) / (or - b - p.y) / 2;
     ir = or - b + y_offset;
     color(circlip_colour)
-        linear_extrude(height = circlip_thickness(type), center = true)
+        linear_extrude(circlip_thickness(type), center = true)
             round((a - d5) / 5)
             union() {
                 difference() {

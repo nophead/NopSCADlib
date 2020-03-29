@@ -22,7 +22,7 @@ use <../utils/tube.scad>
 
 
 module tubes() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         ring(10, 8);
 
     translate([50, 10])

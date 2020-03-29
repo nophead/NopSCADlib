@@ -108,10 +108,10 @@ module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to tak
         hull()
             poly_ring(or, ir);
 
-    linear_extrude(height = z)
+    linear_extrude(z)
         poly_ring(or, ir);
 
-    linear_extrude(height = z - insert_hole_length(type))
+    linear_extrude(z - insert_hole_length(type))
         difference() {
             shape();
 
@@ -119,7 +119,7 @@ module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to tak
         }
 
     if(z > insert_hole_length(type) + 2 * layer_height)
-        linear_extrude(height = 2 * layer_height)       // cap the end if room
+        linear_extrude(2 * layer_height)       // cap the end if room
             shape();
 }
 
@@ -143,7 +143,7 @@ module insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, f
         }
 
     translate_z(-boss_h)
-        linear_extrude(height = boss_h)
+        linear_extrude(boss_h)
              difference() {
                 shape();
 
@@ -152,7 +152,7 @@ module insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, f
 
     // insert boss counter_bore
     translate_z(-boss_h2) {
-        linear_extrude(height = counter_bore + eps)
+        linear_extrude(counter_bore + eps)
              difference() {
                 shape();
 
@@ -162,7 +162,7 @@ module insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, f
         // support cone
         if(flying)
             hull() {
-                linear_extrude(height = eps)
+                linear_extrude(eps)
                     shape();
 
                 translate([boss_r + extension - wall - eps, 0, - (2 * boss_r + extension - wall)])

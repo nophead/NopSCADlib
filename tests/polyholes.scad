@@ -34,7 +34,7 @@ module polyholes() {
                         children();
         }
 
-    color(pp1_colour) linear_extrude(height = 3, center = true)
+    color(pp1_colour) linear_extrude(3, center = true)
         difference() {
             square([100, 27]);
 

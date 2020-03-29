@@ -29,5 +29,5 @@ module ring(or, ir) //! Create a ring with specified external and internal radii
         }
 
 module tube(or, ir, h, center = true) //! Create a tube with specified external and internal radii and height ```h```
-    linear_extrude(height = h, center = center, convexity = 5)
+    linear_extrude(h, center = center, convexity = 5)
         ring(or, ir);

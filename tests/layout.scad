@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 diams = [3, 7, 5, 11];
 
 module layouts() {
-    linear_extrude(height = eps)
+    linear_extrude(eps)
         layout(diams, gap = 1)
             circle(d = diams[$i]);
 }

@@ -32,7 +32,7 @@ panel_clearance = 0.2;
 module microview(cutout = false) {  //! Draw microview or generate a panel cutout for it
     rotate([0, 0, -90])
         if(cutout)
-            linear_extrude(height = 100)
+            linear_extrude(100)
                 offset(panel_clearance)
                     projection()
                          hull()

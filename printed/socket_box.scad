@@ -52,12 +52,12 @@ module socket_box(type) { //! Generate STL of the backbox for the specified sock
     insert_hole_radius = insert_hole_radius(insert);
 
     difference() {
-        linear_extrude(height = height, convexity = 5)
+        linear_extrude(height, convexity = 5)
             face_plate(type);
 
         difference() {
             translate_z(base_thickness)
-                linear_extrude(height = height, convexity = 5)
+                linear_extrude(height, convexity = 5)
                      offset(-wall) offset(1) face_plate(type);
 
             for(side = [-1, 1])

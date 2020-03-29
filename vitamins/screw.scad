@@ -114,7 +114,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                 cylinder(r = head_rad, h = head_height - socket_depth);
 
                 translate_z(head_height - socket_depth)
-                    linear_extrude(height = socket_depth)
+                    linear_extrude(socket_depth)
                         difference() {
                             circle(head_rad);
 
@@ -128,7 +128,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
             color(colour) {
                 r = show_threads ? rad - pitch / 2 : rad;
                 translate_z(-socket_depth)
-                    linear_extrude(height = socket_depth)
+                    linear_extrude(socket_depth)
                         difference() {
                             circle(r);
 
@@ -161,7 +161,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                             square([socket_rad, 10]);
                     }
 
-                linear_extrude(height = head_height)
+                linear_extrude(head_height)
                     difference() {
                         circle(socket_rad + eps);
 
@@ -187,7 +187,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                             square([socket_rad, 10]);
                     }
                 }
-                linear_extrude(height = head_height)
+                linear_extrude(head_height)
                     difference() {
                         circle(socket_rad + eps);
                         circle(socket_rad, $fn = 6);
@@ -211,7 +211,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     }
 
                 translate_z(-socket_depth)
-                    linear_extrude(height = socket_depth)
+                    linear_extrude(socket_depth)
                         difference() {
                             circle(socket_rad + 0.1);
 
@@ -234,7 +234,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     }
 
                 translate_z(-socket_depth)
-                    linear_extrude(height = socket_depth)
+                    linear_extrude(socket_depth)
                         difference() {
                             circle(socket_rad + 0.1);
 

@@ -84,7 +84,7 @@ module carriage(type, rail, end_color = grey20, wiper_color = grey20) { //! Draw
 
     color(grey90) {
         rotate([90, 0, 90])
-            linear_extrude(height = block_l, center = true)
+            linear_extrude(block_l, center = true)
                  difference() {
                     translate([-block_w / 2, carriage_clearance(type)])
                         square([block_w, block_h - screw_depth]);
@@ -93,7 +93,7 @@ module carriage(type, rail, end_color = grey20, wiper_color = grey20) { //! Draw
                 }
 
         translate_z(carriage_height(type) - screw_depth)
-            linear_extrude(height = screw_depth)
+            linear_extrude(screw_depth)
                 difference() {
                     square([block_l, block_w], center = true);
 

@@ -26,7 +26,7 @@ include <../utils/core/core.scad>
 module label(str, scale = 0.25, valign = "baseline", halign = "left") //! Draw text that always faces the camera
     color("black")
         %rotate($vpr != [0, 0, 0] ? $vpr : [70, 0, 315])
-            linear_extrude(height = eps)
+            linear_extrude(eps)
                 scale(scale)
                     text(str, valign = valign, halign = halign);
 
