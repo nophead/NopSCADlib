@@ -42,6 +42,7 @@ function NEMA_big_hole(type)    = NEMA_boss_radius(type) + 0.2; //! Clearance ho
 
 stepper_body_colour = "black";
 stepper_cap_colour  = grey50;
+stepper_machined_colour = grey90;
 
 module NEMA_outline(type) //! 2D outline
     intersection() {
@@ -62,57 +63,63 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
     vitamin(str("NEMA(", type[0], "): Stepper motor NEMA", round(NEMA_width(type) / 2.54), " x ", length, "mm"));
     thread_d = 3;                                                           // Is this always the case?
 
-    union() {
-        color(stepper_body_colour)                                          // black laminations
-            translate_z(-length / 2)
-                linear_extrude(length - cap * 2, center = true)
-                    intersection() {
-                        square([side, side], center = true);
+    module cap_shape(end)
+        difference() {
+            intersection() {
+                square([side, side], center = true);
 
-                        circle(body_rad);
-                    }
-
-        color(stepper_cap_colour) {                                     // aluminium end caps
-            tube(or = boss_rad, ir =  shaft_rad + 2, h = boss_height * 2); // raised boss
-
-            for(end = [-1, 1])
-                translate_z(-length / 2 + end * (length - cap) / 2) {
-                    linear_extrude(cap, center = true)
-                        difference() {
-                            intersection() {
-                                square([side, side], center = true);
-                                circle(NEMA_radius(type));
-                            }
-                            if(end > 0)
-                                for(x = NEMA_holes(type), y = NEMA_holes(type))
-                                    translate([x, y])
-                                        circle(d = thread_d);
-                        }
-                }
+                circle(NEMA_radius(type), $fn = 360);
+            }
+            if(end > 0)
+                for(x = NEMA_holes(type), y = NEMA_holes(type))
+                    translate([x, y])
+                        circle(d = thread_d);
         }
-        if(show_threads)
-            for(x = NEMA_holes(type), y = NEMA_holes(type))
-                translate([x, y, -cap / 2])
-                    female_metric_thread(thread_d, metric_coarse_pitch(thread_d), cap, colour = stepper_cap_colour);
 
-        shaft =  NEMA_shaft_length(type);
-        translate_z(-5)
-            rotate(shaft_angle)
-                if(!is_list(shaft))
-                    color(stepper_cap_colour)
-                        cylinder(r = shaft_rad, h = shaft + 5);  // shaft
-                else
-                    not_on_bom()
-                        leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false)
+    color(stepper_body_colour)                                          // black laminations
+        translate_z(-length / 2)
+            linear_extrude(length - cap * 2, center = true)
+                intersection() {
+                    square([side, side], center = true);
 
-        translate([0, side / 2, -length + cap / 2])
-            rotate([90, 0, 0])
-                for(i = [0 : 3])
-                    rotate(225 + i * 90)
-                        color(["red", "blue","green","black"][i])
-                            translate([1, 0, 0])
-                                cylinder(r = 1.5 / 2, h = 12, center = true);
+                    circle(body_rad);
+                }
+
+    color(stepper_machined_colour) {
+        tube(or = boss_rad, ir =  shaft_rad + 2, h = boss_height * 2); // raised boss
+
+        linear_extrude(eps)
+            cap_shape(true);
     }
+
+    color(stepper_cap_colour)                                       // aluminium end caps
+        for(end = [-1, 1])
+            translate_z(-length / 2 + end * (length - cap) / 2)
+                linear_extrude(cap, center = true)
+                    cap_shape(end);
+
+    if(show_threads)
+        for(x = NEMA_holes(type), y = NEMA_holes(type))
+            translate([x, y, -cap / 2])
+                female_metric_thread(thread_d, metric_coarse_pitch(thread_d), cap, colour = stepper_cap_colour);
+
+    shaft =  NEMA_shaft_length(type);
+    translate_z(-5)
+        rotate(shaft_angle)
+            if(!is_list(shaft))
+                color(stepper_machined_colour)
+                    cylinder(r = shaft_rad, h = shaft + 5);  // shaft
+            else
+                not_on_bom()
+                    leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false)
+
+    translate([0, side / 2, -length + cap / 2])
+        rotate([90, 0, 0])
+            for(i = [0 : 3])
+                rotate(225 + i * 90)
+                    color(["red", "blue","green","black"][i])
+                        translate([1, 0, 0])
+                            cylinder(r = 1.5 / 2, h = 12, center = true);
 }
 
 module NEMA_screw_positions(type, n = 4) { //! Positions children at the screw holes
