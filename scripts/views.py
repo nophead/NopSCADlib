@@ -52,22 +52,23 @@ def bom_to_assemblies(bom_dir, bounds_map):
     # Decide if we need big or small assembly pictures
     #
     for bom in flat_bom:
-        big = False
-        for ass in bom["assemblies"]:
-            for b in flat_bom:
-                if b["name"] == ass:
-                    if b["big"]:
+        if  bom["big"] == None:
+            big = False
+            for ass in bom["assemblies"]:
+                for b in flat_bom:
+                    if b["name"] == ass:
+                        if b["big"]:
+                            big = True
+                        break
+            if not big:
+                for stl in bom["printed"]:
+                    bounds = bounds_map[stl]
+                    width = bounds[1][0] - bounds[0][0]
+                    depth = bounds[1][1] - bounds[0][1]
+                    if max(width, depth) > 80:
                         big = True
-                    break
-        if not big:
-            for stl in bom["printed"]:
-                bounds = bounds_map[stl]
-                width = bounds[1][0] - bounds[0][0]
-                depth = bounds[1][1] - bounds[0][1]
-                if max(width, depth) > 80:
-                    big = True
-                    break
-        bom["big"] = big or bom["routed"]
+                        break
+            bom["big"] = big or bom["routed"]
     #
     # Remove the main assembly if it is a shell
     #

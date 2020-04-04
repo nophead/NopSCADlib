@@ -21,8 +21,12 @@
 //! Bill Of Materials generation via echo and the ```bom.py``` script. Also handles exploded assembly views and posing. Assembly instructions can precede the module
 //! definition that makes the assembly.
 //!
-//! The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view. The resulting flat BOM is shown but
-//! heirachical BOMs are also generated for real projects.
+//! Assembly views shown in the instructions can be large or small and this is deduced by looking at the size of the printed parts involved and if any routed
+//! parts are used.
+//! This heuristic isn't always correct, so the default can be overridden by setting the ```big``` parameter of ```assembly``` to ```true``` or ```false```.
+//!
+//! The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view.
+//! The resulting flat BOM is shown but heirachical BOMs are also generated for real projects.
 //
 function bom_mode(n = 1) = $_bom >= n && (is_undef($on_bom) || $on_bom);  //! Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well
 function exploded() = is_undef($exploded_parent) ? $exploded : 0;   //! Returns the value of ```$exploded``` if it is defined, else ```0```
@@ -80,10 +84,11 @@ module pose_vflip(exploded = undef)       //! Pose an STL or assembly for render
                 children();
 
 
-module assembly(name) {                 //! Name an assembly that will appear on the BOM, there needs to a module named ```<name>_assembly``` to make it
-    if(bom_mode())
-        echo(str("~", name, "_assembly{"));
-
+module assembly(name, big = undef) {    //! Name an assembly that will appear on the BOM, there needs to a module named ```<name>_assembly``` to make it. ```big``` can force big or small assembly diagrams.
+    if(bom_mode()) {
+        args = is_undef(big) ? "" : str("(big=", big, ")");
+        echo(str("~", name, "_assembly", args, "{"));
+    }
     no_pose()
         if(is_undef($child_assembly))
             let($child_assembly = true)

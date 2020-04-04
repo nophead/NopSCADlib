@@ -5174,8 +5174,12 @@ Simple tube or ring
 Bill Of Materials generation via echo and the ```bom.py``` script. Also handles exploded assembly views and posing. Assembly instructions can precede the module
 definition that makes the assembly.
 
-The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view. The resulting flat BOM is shown but
-heirachical BOMs are also generated for real projects.
+Assembly views shown in the instructions can be large or small and this is deduced by looking at the size of the printed parts involved and if any routed
+parts are used.
+This heuristic isn't always correct, so the default can be overridden by setting the ```big``` parameter of ```assembly``` to ```true``` or ```false```.
+
+The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view.
+The resulting flat BOM is shown but heirachical BOMs are also generated for real projects.
 
 
 [utils/core/bom.scad](utils/core/bom.scad) Implementation.
@@ -5194,7 +5198,7 @@ heirachical BOMs are also generated for real projects.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```assembly(name)``` | Name an assembly that will appear on the BOM, there needs to a module named ```<name>_assembly``` to make it |
+| ```assembly(name, big = undef)``` | Name an assembly that will appear on the BOM, there needs to a module named ```<name>_assembly``` to make it. ```big``` can force big or small assembly diagrams. |
 | ```dxf(name)``` | Name a dxf that will appear on the BOM, there needs to a module named ```<name>_dxf``` to make it |
 | ```explode(d, explode_children = false, offset = [0,0,0])``` | Explode children by specified Z distance or vector ```d```, option to explode grand children |
 | ```hidden()``` | Make item invisible, except on the BOM |

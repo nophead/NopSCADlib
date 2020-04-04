@@ -29,6 +29,7 @@ import openscad
 from time import *
 from set_config import *
 import json
+import re
 
 def find_scad_file(mname):
     for filename in os.listdir(source_dir):
@@ -48,6 +49,7 @@ def find_scad_file(mname):
 class BOM:
     def __init__(self, name):
         self.name = name
+        self.big = None
         self.count = 1
         self.vitamins = {}
         self.printed = {}
@@ -60,6 +62,7 @@ class BOM:
             assemblies[ass] = self.assemblies[ass].count
         return {
              "name"       : self.name,
+             "big"        : self.big,
              "count"      : self.count,
              "assemblies" : assemblies,
              "vitamins"   : self.vitamins,
@@ -80,11 +83,15 @@ class BOM:
         else:
             parts[s] = 1
 
-    def add_assembly(self, ass):
+    def add_assembly(self, ass, args = []):
         if ass in self.assemblies:
             self.assemblies[ass].count += 1
         else:
-            self.assemblies[ass] = BOM(ass)
+            bom = BOM(ass)
+            for arg in args:
+                arg = arg.replace('true',  'True').replace('false', 'False').replace('undef', 'None')
+                exec('bom.' + arg, locals())
+            self.assemblies[ass] = bom
 
     def make_name(self, ass):
         if self.count == 1:
@@ -161,17 +168,22 @@ def parse_bom(file = "openscad.log", name = None):
     main = BOM(name)
     main.ordered_assemblies = []
     stack = []
-
+    prog = re.compile(r'^(.*)\((.*)\)$')
     for line in open(file):
         pos = line.find('ECHO: "~')
         if pos > -1:
             s = line[pos + 8 : line.rfind('"')]
             if s[-1] == '{':
                 ass = s[:-1]
+                args = []
+                match = prog.match(ass)                             #look for (...)
+                if match:
+                    ass = match.group(1)
+                    args = match.group(2).split(',')
                 if stack:
                     main.assemblies[stack[-1]].add_assembly(ass)    #add to nested BOM
                 stack.append(ass)
-                main.add_assembly(ass)                              #add to flat BOM
+                main.add_assembly(ass, args)                        #add to flat BOM
                 if ass in main.ordered_assemblies:
                     main.ordered_assemblies.remove(ass)
                 main.ordered_assemblies.insert(0, ass)
