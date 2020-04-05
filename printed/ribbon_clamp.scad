@@ -103,7 +103,7 @@ module ribbon_clamp_fastened_assembly(ways, thickness, screw = screw) { //! Clam
 
     ribbon_clamp_assembly(ways);
 
-    stl_colour("red") translate_z(tape_thickness / 2)
+    color("red") translate_z(tape_thickness / 2)
         cube([tape_l, tape_width, tape_thickness], center = true);
 
     ribbon_clamp_hole_positions(ways)
