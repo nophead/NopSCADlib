@@ -120,7 +120,7 @@ module corner_block_assembly(screw = def_screw, name = false) //! The printed bl
 assembly(str("corner_block_M", 20 * screw_radius(screw))) {
     insert = screw_insert(screw);
 
-    color(name ? pp2_colour : pp1_colour)
+    stl_colour(name ? pp2_colour : pp1_colour)
         render() corner_block(screw, name) children();
 
     corner_block_h_holes(screw)

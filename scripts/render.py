@@ -29,6 +29,7 @@ import openscad
 from tests import do_cmd, update_image, colour_scheme, background
 from deps import mtime
 from colorama import init
+import json
 
 def usage():
     print("\nusage:\n\trender [target_config] - Render images of the stl and dxf files.");
@@ -48,6 +49,20 @@ def render(target, type):
     #
     parts = bom_to_parts(bom_dir, type)
     #
+    # Read the json bom to get the colours
+    #
+    bom_file = bom_dir + "/bom.json"
+    with open(bom_file) as json_file:
+        flat_bom = json.load(json_file)
+
+    things = { 'stl' : 'printed', 'dxf' : 'routed' }[type]
+    colours = {}
+    for ass in flat_bom:
+        for part in ass[things]:
+             obj = ass[things][part]
+             if "colour" in obj:
+                colours[part] = obj["colour"]
+    #
     # Remove unused png files
     #
     for file in os.listdir(target_dir):
@@ -55,7 +70,9 @@ def render(target, type):
             if not file[:-4] + '.' + type in parts:
                 print("Removing %s" % file)
                 os.remove(target_dir + '/' + file)
-
+    #
+    # Render the parts
+    #
     for part in parts:
         part_file = target_dir + '/' + part
         png_name = target_dir + '/' + part[:-4] + '.png'
@@ -64,8 +81,13 @@ def render(target, type):
         #
         if mtime(part_file) > mtime(png_name):
             png_maker_name = "png.scad"
+            colour = [0, 146/255, 0]
+            if part in colours:
+                colour = colours[part]
+                if not '[' in colour:
+                    colour = '"' + colour + '"'
             with open(png_maker_name, "w") as f:
-                f.write('color([0, 146/255, 0]) import("%s");\n' % part_file)
+                f.write('color(%s) import("%s");\n' % (colour, part_file))
             cam = "--camera=0,0,0,70,0,315,500" if type == 'stl' else "--camera=0,0,0,0,0,0,500"
             render = "--preview" if type == 'stl' else "--render"
             tmp_name = 'tmp.png'

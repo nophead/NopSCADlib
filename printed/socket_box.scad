@@ -92,7 +92,7 @@ assembly(str("socket_box_", type[0])) {
     screw = mains_socket_screw(type);
     insert = screw_insert(screw);
 
-    color(pp1_colour) render() socket_box(type);
+    stl_colour(pp1_colour) render() socket_box(type);
 
     mains_socket_hole_positions(type)
         translate_z(height)

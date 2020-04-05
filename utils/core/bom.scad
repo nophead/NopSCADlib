@@ -101,9 +101,17 @@ module assembly(name, big = undef) {    //! Name an assembly that will appear on
         echo(str("~}", name, "_assembly"));
 }
 
-module stl(name) {                      //! Name an stl that will appear on the BOM, there needs to a module named ```<name>_stl``` to make it
-    if(bom_mode())
-        echo(str("~", name, ".stl"));
+module stl_colour(colour) { //! Colour an stl where it is placed in an assembly
+    $stl_colour = colour;
+    color(colour)
+        children();
+}
+
+module stl(name) { //! Name an stl that will appear on the BOM, there needs to a module named ```<name>_stl``` to make it
+    if(bom_mode()) {
+        colour = is_undef($stl_colour) ? pp1_colour : $stl_colour;
+        echo(str("~", name, ".stl(colour='", colour, "')"));
+    }
 }
 
 module dxf(name) {                      //! Name a dxf that will appear on the BOM, there needs to a module named ```<name>_dxf``` to make it

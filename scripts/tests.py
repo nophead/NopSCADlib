@@ -232,9 +232,10 @@ def tests(tests):
                                     j = name.find(']]') + 2
                                     name = name.replace(name[i : j], '[ ... ]')
                                 desc = vit[1]
-                                body += ['| %3d | %s | %s |' % (things[item], name, desc)]
+                                body += ['| %3d | %s | %s |' % (things[item]["count"], name, desc)]
                             else:
-                                body += ['| %3d | %s |' % (things[item], name)]
+                                count = things[item] if thing == 'assemblies' else things[item]["count"]
+                                body += ['| %3d | %s |' % (count, name)]
                         body += ['']
 
             body += ['\n<a href="#top">Top</a>']

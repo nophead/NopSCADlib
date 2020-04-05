@@ -147,7 +147,7 @@ assembly(str("PSU_shroud_", name)) {
 
     translate_z(psu_shroud_height(type))
         vflip()
-            color(pp1_colour) psu_shroud(type, cable_d, name, cables);
+            stl_colour(pp1_colour) psu_shroud(type, cable_d, name, cables);
 
     psu_shroud_hole_positions(type)
         vflip()

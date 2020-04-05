@@ -248,9 +248,9 @@ def views(target, do_assemblies = None):
                 for t in types:
                     for thing in ass[t]:
                         if thing in things[t]:
-                            things[t][thing] += ass[t][thing]
+                            things[t][thing] += ass[t][thing]["count"]
                         else:
-                            things[t][thing] = ass[t][thing]
+                            things[t][thing] = ass[t][thing]["count"]
             for ass in flat_bom:
                 name = titalise(ass["name"][:-9]).replace(' ','&nbsp;')
                 print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
@@ -265,7 +265,7 @@ def views(target, do_assemblies = None):
                     print(('|  ' * len(flat_bom) + '| | **%s** |') % heading, file = doc_file)
                     for thing in sorted(things[t], key = lambda s: s.split(":")[-1]):
                         for ass in flat_bom:
-                            count = ass[t][thing] if thing in ass[t] else 0
+                            count = ass[t][thing]["count"] if thing in ass[t] else 0
                             print('| %s ' % pad(count if count else '.', 2, 1), file = doc_file, end = '')
                             name = ass["name"]
                             if name in totals:
@@ -301,7 +301,7 @@ def views(target, do_assemblies = None):
                     print("|Qty|Description|",    file = doc_file)
                     print("|---:|:----------|",    file = doc_file)
                     for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
-                        print("|%d|%s|" % (vitamins[v], v.split(":")[1]),     file = doc_file)
+                        print("|%d|%s|" % (vitamins[v]["count"], v.split(":")[1]),     file = doc_file)
                     print("\n", file = doc_file)
 
                 printed = ass["printed"]
@@ -310,7 +310,7 @@ def views(target, do_assemblies = None):
                     keys = sorted(list(printed.keys()))
                     for i in range(len(keys)):
                         p = keys[i]
-                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p], p), file = doc_file, end = '')
+                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(printed) - 1:
                             n = (i % 3) + 1
                             print('\n|%s' % ('---|' * n), file =  doc_file)
@@ -326,7 +326,7 @@ def views(target, do_assemblies = None):
                     keys = sorted(list(routed.keys()))
                     for i in range(len(keys)):
                         r = keys[i]
-                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r], r), file = doc_file, end = '')
+                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(routed) - 1:
                             n = (i % 3) + 1
                             print('\n|%s' % ('---|' * n), file =  doc_file)

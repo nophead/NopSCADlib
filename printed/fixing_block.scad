@@ -109,7 +109,7 @@ module fixing_block_assembly(screw = def_screw) pose([55, 180, 25], [0, 4.8, 4.8
 assembly(str("fixing_block_M", 20 * screw_radius(screw))) {
     translate_z(fixing_block_height(screw))
         rotate([0, 180, 0])
-            color(pp1_colour) render() fixing_block(screw);
+            stl_colour(pp1_colour) render() fixing_block(screw);
 
     insert = screw_insert(screw);
 

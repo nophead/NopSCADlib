@@ -111,7 +111,7 @@ assembly(str("SSR_shroud_", name)) {
 
     translate_z(ssr_shroud_height(type))
         vflip()
-            color(pp1_colour) ssr_shroud(type, cable_d, name);
+            stl_colour(pp1_colour) ssr_shroud(type, cable_d, name);
 
     ssr_shroud_hole_positions(type)
         insert(insert);
@@ -135,7 +135,7 @@ module ssr_shroud_fastened_assembly(type, cable_d, thickness, name) //! Assembly
 
             *translate_z(cable_d / 2)
                 rotate([90, 0, 0])
-                    color(grey20)
+                    stl_colour(grey20)
                         cylinder(d = cable_d, h = 20, center = true);
         }
 }

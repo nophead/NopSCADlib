@@ -33,7 +33,7 @@ assembly("box") {
         y = [-1,-1,1,1][corner];
         translate([x * (box_width(type) / 2 + 25 * exploded()), y * (box_depth(type) / 2 + 25 * exploded())])
             rotate(corner * 90) {
-                color(pp2_colour) render()
+                stl_colour(pp2_colour) render()
                     box_corner_profile(type);
 
                 translate([box_hole_inset(type), box_hole_inset(type)])
@@ -50,7 +50,7 @@ assembly("box") {
         translate_z(z * (box_height(type) / 2 - box_corner_gap(type) + 50 * exploded()))
             rotate([z * 90 - 90, 0, 0])
                 if(bezels && (z > 0 ? top : base))
-                    color(pp1_colour) render() box_bezel(type, z < 0);
+                    stl_colour(pp1_colour) render() box_bezel(type, z < 0);
 
         translate_z(z * (box_height(type) / 2 + sheet_thickness + 50 * exploded()))
             box_screw_hole_positions(type)

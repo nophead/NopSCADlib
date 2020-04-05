@@ -46,6 +46,16 @@ def find_scad_file(mname):
                             return filename
     return None
 
+class Part:
+    def __init__(self, args):
+        self.count = 1
+        for arg in args:
+            arg = arg.replace('true',  'True').replace('false', 'False').replace('undef', 'None')
+            exec('self.' + arg)
+
+    def data(self):
+        return self.__dict__
+
 class BOM:
     def __init__(self, name):
         self.name = name
@@ -65,12 +75,17 @@ class BOM:
              "big"        : self.big,
              "count"      : self.count,
              "assemblies" : assemblies,
-             "vitamins"   : self.vitamins,
-             "printed"    : self.printed,
-             "routed"     : self.routed
+             "vitamins"   : {v : self.vitamins[v].data() for v in self.vitamins},
+             "printed"    : {p : self.printed[p].data() for p in self.printed},
+             "routed"     : {r : self.routed[r].data() for r in self.routed}
         }
 
     def add_part(self, s):
+        args = []
+        match = re.match(r'^(.*?\.stl)\((.*)\)$', s)                             #look for name.stl(...)
+        if match:
+            s = match.group(1)
+            args = [match.group(2)]
         if s[-4:] == ".stl":
             parts = self.printed
         else:
@@ -79,9 +94,9 @@ class BOM:
             else:
                 parts = self.vitamins
         if s in parts:
-            parts[s] += 1
+            parts[s].count += 1
         else:
-            parts[s] = 1
+            parts[s] = Part(args)
 
     def add_assembly(self, ass, args = []):
         if ass in self.assemblies:
@@ -126,10 +141,10 @@ class BOM:
                 for ass in sorted(self.assemblies):
                     bom = self.assemblies[ass]
                     if part in bom.vitamins:
-                        file.write("%2d|" % bom.vitamins[part])
+                        file.write("%2d|" % bom.vitamins[part].count)
                     else:
                         file.write("  |")
-            print("%3d" % self.vitamins[part], description, file=file)
+            print("%3d" % self.vitamins[part].count, description, file=file)
 
         if self.printed:
             if self.vitamins:
@@ -140,10 +155,10 @@ class BOM:
                     for ass in sorted(self.assemblies):
                         bom = self.assemblies[ass]
                         if part in bom.printed:
-                            file.write("%2d|" % bom.printed[part])
+                            file.write("%2d|" % bom.printed[part].count)
                         else:
                             file.write("  |")
-                print("%3d" % self.printed[part], part, file=file)
+                print("%3d" % self.printed[part].count, part, file=file)
 
         if self.routed:
             print(file=file)
@@ -153,10 +168,10 @@ class BOM:
                     for ass in sorted(self.assemblies):
                         bom = self.assemblies[ass]
                         if part in bom.routed:
-                            file.write("%2d|" % bom.routed[part])
+                            file.write("%2d|" % bom.routed[part].count)
                         else:
                             file.write("  |")
-                print("%3d" % self.routed[part], part, file=file)
+                print("%3d" % self.routed[part].count, part, file=file)
 
         if self.assemblies:
             print(file=file)

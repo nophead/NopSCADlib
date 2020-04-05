@@ -133,17 +133,17 @@ assembly(str("hinge_", type[0])) { //! Assembled hinge
 
     vitamin(str(": Hinge pin ", w, " x ", 2 * hr, "mm"));
 
-    color(pp1_colour) hinge_male(type);
+    stl_colour(pp1_colour) hinge_male(type);
 
     translate([0, -kr, kr]) {
         rotate([0, 90, 0])
             explode(w + 10)
-                color("silver") cylinder(r = hr , h = w, center = true);
+                stl_colour("silver") cylinder(r = hr , h = w, center = true);
 
         rotate([-angle, 0, 0])
             translate([0, -kr, -kr])
                 rotate(180)
-                     color(pp2_colour) hinge_female(type);
+                     stl_colour(pp2_colour) hinge_female(type);
     }
 }
 

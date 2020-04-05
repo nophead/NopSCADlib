@@ -83,7 +83,7 @@ module ribbon_clamp_assembly(ways) pose([55, 180, 25])  //! Printed part with in
     assembly(str("ribbon_clamp_", ways)) {
     h = ribbon_clamp_height();
 
-    color(pp1_colour) render()
+    stl_colour(pp1_colour) render()
         translate_z(h) vflip() ribbon_clamp(ways);
 
     ribbon_clamp_hole_positions(ways)
@@ -103,7 +103,7 @@ module ribbon_clamp_fastened_assembly(ways, thickness, screw = screw) { //! Clam
 
     ribbon_clamp_assembly(ways);
 
-    color("red") translate_z(tape_thickness / 2)
+    stl_colour("red") translate_z(tape_thickness / 2)
         cube([tape_l, tape_width, tape_thickness], center = true);
 
     ribbon_clamp_hole_positions(ways)

@@ -5209,6 +5209,7 @@ The resulting flat BOM is shown but heirachical BOMs are also generated for real
 | ```pose_hflip(exploded = undef)``` | Pose an STL or assembly for rendering to png by flipping around the Y axis, ```exploded = true for``` just the exploded view or ```false``` for unexploded only. |
 | ```pose_vflip(exploded = undef)``` | Pose an STL or assembly for rendering to png by flipping around the X axis, ```exploded = true for``` just the exploded view or ```false``` for unexploded only. |
 | ```stl(name)``` | Name an stl that will appear on the BOM, there needs to a module named ```<name>_stl``` to make it |
+| ```stl_colour(colour)``` | Colour an stl where it is placed in an assembly |
 | ```vitamin(description)``` | Describe a vitamin for the BOM entry and precede it with a module call that creates it, eg. "wigit(42): Type 42 widget" |
 
 ![bom](tests/png/bom.png)

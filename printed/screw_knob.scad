@@ -62,7 +62,7 @@ module screw_knob_assembly(screw, length) //! Assembly with the screw in place
 assembly(str("screw_knob_M", 20 * screw_radius(screw), "_", length)) {
     translate_z(knob_height)
         vflip()
-            color(pp1_colour) screw_knob(screw);
+            stl_colour(pp1_colour) screw_knob(screw);
 
     translate_z(knob_height - knob_nut_trap_depth(screw))
         rotate(-45)

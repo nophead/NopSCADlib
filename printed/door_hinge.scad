@@ -141,7 +141,7 @@ module door_hinge_assembly(top, door_thickness = 6) { //! The moving assembly th
 
     translate([0, pin_y - (thickness + door_thickness / 2), dir * width / 2]) {
         rotate([90, 0, 180])
-            color(pp2_colour) door_hinge(door_thickness);
+            stl_colour(pp2_colour) door_hinge(door_thickness);
 
         rotate([90, 0, 0])
             door_hinge_hole_positions()
@@ -165,7 +165,7 @@ module door_hinge_static_assembly(top, sheet_thickness = 3) { //! The stationary
 
     translate([pin_x, 0, -dir * (stat_width / 2 + washer_thickness(screw_washer(pin_screw)))])
         rotate([90, 0, 0]) {
-            color(pp1_colour) door_hinge_stat_stl();
+            stl_colour(pp1_colour) door_hinge_stat_stl();
 
             door_hinge_stat_hole_positions() {
                 screw_and_washer(stat_screw, stat_screw_length);

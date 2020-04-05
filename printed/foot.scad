@@ -73,7 +73,7 @@ module foot_assembly(t = 0, type = foot, flip = false) { //! Assembly with faste
     screw_length = screw_longer_than(foot_thickness(type) + t + 2 * washer_thickness(washer) + nut_thickness(nut, true) - squeeze);
 
     vflip() explode(15, true) {
-        color(pp4_colour) foot(type);
+        stl_colour(pp4_colour) foot(type);
 
         if(t)
             explode(15, true)
@@ -136,7 +136,7 @@ assembly("insert_foot") {
     insert = screw_insert(screw);
 
     vflip()
-        color(pp1_colour) insert_foot(type);
+        stl_colour(pp4_colour) insert_foot(type);
 
     translate_z(-foot_thickness(type))
         insert(insert);

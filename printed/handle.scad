@@ -83,7 +83,7 @@ module handle_stl() { //! generate the STL
 module handle_assembly() pose([225, 0, 150], [0, 0, 14]) //! Printed part with inserts in place
 assembly("handle") {
     translate_z(handle_height())
-        color(pp1_colour) vflip() handle_stl();
+        stl_colour(pp1_colour) vflip() handle_stl();
 
     handle_screw_positions()
         vflip()

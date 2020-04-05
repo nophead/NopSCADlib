@@ -221,7 +221,7 @@ module pbox_base_screws(type, thickness = 0)           //! Place the screws and 
         pbox_screw_positions(type) {
             foot = pbox_foot(type);
             if(foot)
-                color(pp4_colour)
+                stl_colour(pp4_colour)
                     foot(foot);
 
             translate_z(foot ? foot_thickness(foot) : thickness)

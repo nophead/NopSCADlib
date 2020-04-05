@@ -173,7 +173,7 @@ module socket_box_stl() {
 //
 module base_assembly()
 assembly("base") {
-    color(pp1_colour) render() /*clip(ymax = 0)*/ socket_box_stl();
+    stl_colour(pp1_colour) render() /*clip(ymax = 0)*/ socket_box_stl();
 
     mains_socket_hole_positions(socket)
         translate_z(height)

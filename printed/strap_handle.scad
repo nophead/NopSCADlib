@@ -160,7 +160,7 @@ module strap_end(type = strap) { //! Generate the STL for end piece
 //
 module strap_end_assembly(type = strap)
 assembly("strap_end") {
-    color(pp1_colour)
+    stl_colour(pp1_colour)
         strap_end(type);
 
     translate_z(strap_height(type) + strap_key(type))
@@ -175,7 +175,7 @@ module strap_assembly(length, type = strap) { //! Assembly with screws in place
 
     screw_length = screw_shorter_than(washer_thickness(washer) + washer_thickness(penny) + insert_length(insert) + panel_clearance + counterbore);
 
-    color(pp4_colour) strap(length, type);
+    stl_colour(pp4_colour) strap(length, type);
 
     strap_screw_positions(length, type)
         translate_z(strap_height(type))

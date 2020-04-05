@@ -133,12 +133,12 @@ module round_grommet_hole(diameter, h = 100) //! Make a hole for a round grommet
     drill(corrected_radius(diameter / 2) + wall + clearance, h);
 
 module round_grommet_assembly(diameter, thickness, od = undef) {
-    color(pp1_colour)
+    stl_colour(pp1_colour)
         translate_z(wall)
             vflip()
                 round_grommet_top(diameter, thickness, od);
 
-    color(pp2_colour)
+    stl_colour(pp2_colour)
         translate_z(-thickness)
             vflip()
                 round_grommet_bottom(diameter, od);
@@ -188,7 +188,7 @@ module mouse_grommet(r, thickness) { //! Make the STL for a mouse grommet
 }
 
 module mouse_grommet_assembly(r, thickness)
-    color(pp1_colour)
+    stl_colour(pp1_colour)
         rotate([-90, 0, 0])
             mouse_grommet(r, thickness);
 
