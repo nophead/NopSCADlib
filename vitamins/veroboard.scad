@@ -162,7 +162,7 @@ assembly(vero_assembly(type)) {
             else
                 screw_and_washer(screw, screw_length);
 
-        color(pp1_colour) pcb_spacer(screw, height);
+        stl_colour(pp1_colour) pcb_spacer(screw, height);
 
         translate_z(-thickness)
             vflip()

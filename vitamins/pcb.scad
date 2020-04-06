@@ -988,7 +988,7 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
             translate_z(height + pcb_thickness(type))
                 screw(screw, screw_length);
 
-            color(pp1_colour)
+            stl_colour(pp1_colour)
                 if(taper)
                     pcb_spacer(screw, height, taper = 2);
                 else

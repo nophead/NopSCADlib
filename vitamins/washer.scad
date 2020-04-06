@@ -122,7 +122,7 @@ module printed_washer(type, name = false) { //! Create printed washer
     t = round_to_layer(washer_thickness(type));
     or = washer_radius(type);
     ir = washer_id(type) / 2;
-    color(pp1_colour)
+    stl_colour(pp1_colour)
         linear_extrude(t, center = false, convexity = 2)
             poly_ring(or, ir);
 
