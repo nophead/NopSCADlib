@@ -54,7 +54,7 @@ module wires() {
             %cylinder(r = bundle_r, h = wire_l - 10, center = true);
         }
 
-    color(pp1_colour) {
+    stl_colour(pp1_colour) {
         rotate([90, 0, 90])
             linear_extrude(thickness)
                 difference() {

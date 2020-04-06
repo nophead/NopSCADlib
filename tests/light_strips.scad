@@ -29,7 +29,7 @@ module light_strips()
             for(end = [-1, 1])
                 translate([end * (light_strip_cut_length(light, segs) / 2 - d / 2), 0])
                     rotate([90, 0, 90])
-                        color(pp1_colour) render()
+                        stl_colour(pp1_colour) render()
                             translate_z(-d / 2)
                                 light_strip_clip(light);
         }

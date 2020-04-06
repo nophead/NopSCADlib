@@ -22,14 +22,14 @@ use <../printed/cable_grommets.scad>
 
 module cable_grommets() {
     rotate(90)
-        color(pp1_colour) ribbon_grommet(20, 3);
+        stl_colour(pp1_colour) ribbon_grommet(20, 3);
 
     translate([20, 0])
         round_grommet_assembly(6, 3);
 
     translate([40, 0])
         rotate(90)
-            color(pp1_colour) mouse_grommet(5, 3);
+            stl_colour(pp1_colour) mouse_grommet(5, 3);
 }
 
 if($preview)

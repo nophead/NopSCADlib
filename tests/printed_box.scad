@@ -93,7 +93,7 @@ module box1_base_stl()
 
 module box1_assembly()
 assembly("box1") {
-    color(pp1_colour) render() box1_case_stl();
+    stl_colour(pp1_colour) render() box1_case_stl();
 
     pbox_inserts(box1);
 
@@ -142,7 +142,7 @@ module box2_base_stl()
 
 module box2_assembly()
 assembly("box2") {
-    color(pp1_colour) render() box2_case_stl();
+    stl_colour(pp1_colour) render() box2_case_stl();
 
     pbox_inserts(box2);
 

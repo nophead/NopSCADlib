@@ -20,15 +20,15 @@ include <../utils/core/core.scad>
 use <../printed/carriers.scad>
 
 module carriers() {
-    color(pp1_colour) ESP12F_carrier_stl();
+    stl_colour(pp1_colour) ESP12F_carrier_stl();
 
     translate([0, 15])
         rotate(90)
-            color(pp1_colour) TP4056_carrier_stl();
+            stl_colour(pp1_colour) TP4056_carrier_stl();
 
     translate([0, 25])
         rotate(90)
-            color(pp1_colour) MT3608_carrier_stl();
+            stl_colour(pp1_colour) MT3608_carrier_stl();
 }
 
 carriers();

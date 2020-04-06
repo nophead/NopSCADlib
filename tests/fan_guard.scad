@@ -24,6 +24,6 @@ use <../utils/layout.scad>
 
 module fan_guards()
     layout([for(f = fans) fan_width(f)], 10)
-        color(pp1_colour) fan_guard(fans[$i], spokes = fan_width(fans[$i]) > 60 ? 8 : 4);
+        stl_colour(pp1_colour) fan_guard(fans[$i], spokes = fan_width(fans[$i]) > 60 ? 8 : 4);
 
 fan_guards();

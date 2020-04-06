@@ -20,7 +20,7 @@
 include <../utils/core/core.scad>
 
 module teardrops() {
-    color(pp1_colour)
+    stl_colour(pp1_colour)
         rotate([90, 0, -45])
             difference() {
                 linear_extrude(3) {

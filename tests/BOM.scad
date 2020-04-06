@@ -67,7 +67,7 @@ module widgit_dxf() {
 //! * Push the insert into the base with a soldering iron heated to 200&deg;C
 module widgit_base_assembly()
 assembly("widgit_base") {
-    color(pp1_colour)
+    stl_colour(pp1_colour)
         widgit_stl();
 
     translate_z(height)
