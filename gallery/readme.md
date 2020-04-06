@@ -84,7 +84,7 @@ Mains isolated and variable supply with metering.
 
 <a name="TOP"></a>
 ## SunBot
-A solar tracker to keep solar powerbanks pointing at the sun.
+A solar tracker to keep a solar panel pointing at the sun.
 
 ![](SunBot.png)
 
