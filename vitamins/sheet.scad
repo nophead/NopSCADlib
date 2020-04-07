@@ -83,6 +83,7 @@ module render_sheet(type, colour = false) //! Render a sheet in the correct colo
         render() children();
 
 module render_2D_sheet(type, colour = false) //! Extrude a 2D sheet template and give it the correct colour
-    color(colour ? colour : sheet_colour(type))
-        linear_extrude(sheet_thickness(type), center = true)
-            children();
+    let($dxf_colour = colour ? colour : sheet_colour(type))
+        color($dxf_colour)
+            linear_extrude(sheet_thickness(type), center = true)
+                children();

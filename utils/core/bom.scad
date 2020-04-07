@@ -107,7 +107,7 @@ module stl_colour(colour = pp1_colour, alpha = 1) { //! Colour an stl where it i
         children();
 }
 
-module stl(name) { //! Name an stl that will appear on the BOM, there needs to a module named ```<name>_stl``` to make it
+module stl(name) {                      //! Name an stl that will appear on the BOM, there needs to a module named ```<name>_stl``` to make it
     if(bom_mode()) {
         colour = is_undef($stl_colour) ? pp1_colour : $stl_colour;
         echo(str("~", name, ".stl(colour='", colour, "')"));
@@ -115,8 +115,12 @@ module stl(name) { //! Name an stl that will appear on the BOM, there needs to a
 }
 
 module dxf(name) {                      //! Name a dxf that will appear on the BOM, there needs to a module named ```<name>_dxf``` to make it
-    if(bom_mode())
-        echo(str("~", name, ".dxf"));
+    if(bom_mode()) {
+        if(is_undef($dxf_colour))
+            echo(str("~", name, ".dxf"));
+        else
+            echo(str("~", name, ".dxf(colour='", $dxf_colour, "')"));
+    }
 }
 
 function value_string(value) = is_string(value) ? str("\"", value, "\"") : str(value); //! Convert ```value``` to a string or quote it if it is already a string

@@ -81,7 +81,8 @@ def render(target, type):
         #
         if mtime(part_file) > mtime(png_name):
             png_maker_name = "png.scad"
-            colour = [0, 146/255, 0]
+            pp1 = [0, 146/255, 0]
+            colour = pp1
             if part in colours:
                 colour = colours[part]
                 if not '[' in colour:
@@ -89,7 +90,7 @@ def render(target, type):
             with open(png_maker_name, "w") as f:
                 f.write('color(%s) import("%s");\n' % (colour, part_file))
             cam = "--camera=0,0,0,70,0,315,500" if type == 'stl' else "--camera=0,0,0,0,0,0,500"
-            render = "--preview" if type == 'stl' else "--render"
+            render = "--preview" if type == 'stl' or colour != pp1 else "--render"
             tmp_name = 'tmp.png'
             openscad.run(colour_scheme, "--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall", "-o", tmp_name, png_maker_name);
             do_cmd(("magick "+ tmp_name + " -trim -resize 280x280 -background %s -gravity Center -extent 280x280 -bordercolor %s -border 10 %s"

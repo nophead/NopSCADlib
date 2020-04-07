@@ -82,7 +82,7 @@ class BOM:
 
     def add_part(self, s):
         args = []
-        match = re.match(r'^(.*?\.stl)\((.*)\)$', s)                             #look for name.stl(...)
+        match = re.match(r'^(.*?\.stl|.*?\.dxf)\((.*)\)$', s)                             #look for name.stl(...) or name.dxf(...)
         if match:
             s = match.group(1)
             args = [match.group(2)]
