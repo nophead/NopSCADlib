@@ -18,8 +18,8 @@
 //
 
 //
-//! Bill Of Materials generation via echo and the ```bom.py``` script. Also handles exploded assembly views and posing. Assembly instructions can precede the module
-//! definition that makes the assembly.
+//! Bill Of Materials generation via echo and the ```bom.py``` script. Also handles exploded assembly views and posing.
+//! Assembly instructions can precede the module definition that makes the assembly.
 //!
 //! Assembly views shown in the instructions can be large or small and this is deduced by looking at the size of the printed parts involved and if any routed
 //! parts are used.
@@ -101,9 +101,9 @@ module assembly(name, big = undef) {    //! Name an assembly that will appear on
         echo(str("~}", name, "_assembly"));
 }
 
-module stl_colour(colour) { //! Colour an stl where it is placed in an assembly
+module stl_colour(colour = pp1_colour, alpha = 1) { //! Colour an stl where it is placed in an assembly. ```alpha``` can be used to make it appear transparent.
     $stl_colour = colour;
-    color(colour)
+    color(colour, alpha)
         children();
 }
 
