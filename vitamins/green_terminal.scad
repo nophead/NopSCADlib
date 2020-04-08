@@ -35,9 +35,10 @@ function gt_screw_r(type)      = type[9];   //! Screw head radius
 function gt_front_t(type)      = type[10];  //! Thickness of frame around the front aperture
 function gt_box_w(type)        = type[11];  //! Width inside the cable entry box
 function gt_box_h(type)        = type[12];  //! Height of the cable entry box
-function gt_y_offset(type)     = type[13];  //! Offset of the pins from centre of the depth
-function gt_y_offset2(type)    = type[14];  //! Offset of the pins from the screws
-function gt_tube_h(type)       = type[15];  //! Height of optional tubes around the screws
+function gt_box_setback(type)  = type[13];  //! How far the contact box is set back from the front
+function gt_y_offset(type)     = type[14];  //! Offset of the pins from centre of the depth
+function gt_y_offset2(type)    = type[15];  //! Offset of the pins from the screws
+function gt_tube_h(type)       = type[16];  //! Height of optional tubes around the screws
 
 module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green terminal blocks, skip can be used to remove pins.
     pitch = gt_pitch(type);
@@ -60,7 +61,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
         box_h2 = gt_box_h(type);
         y = gt_y_offset(type);
         y2 = gt_y_offset2(type);
-        box_front = y + depth / 2 - 2;
+        box_front = y + depth / 2 - gt_box_setback(type);
         box_back = y - depth / 2 + 1;
 
         module horizontal_section()

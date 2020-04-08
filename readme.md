@@ -892,6 +892,7 @@ Parametric green terminal blocks
 | ```gt_back_depth(type)``` | Back ledge depth |
 | ```gt_back_height(type)``` | Height at the back |
 | ```gt_box_h(type)``` | Height of the cable entry box |
+| ```gt_box_setback(type)``` | How far the contact box is set back from the front |
 | ```gt_box_w(type)``` | Width inside the cable entry box |
 | ```gt_depth(type)``` | Total front to back depth |
 | ```gt_front_depth(type)``` | Front ledge depth |
@@ -916,8 +917,9 @@ Parametric green terminal blocks
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```green_terminal(gt_6p35, 2)``` |  Terminal block 2 way 0.25" |
-|   1 | ```green_terminal(gt_3p5, 3)``` |  Terminal block 3 way 3.5mm |
-|   1 | ```green_terminal(gt_2p54, 4)``` |  Terminal block 4 way 0.1" |
+|   1 | ```green_terminal(gt_5p08, 3)``` |  Terminal block 3 way 0.2" |
+|   1 | ```green_terminal(gt_3p5, 4)``` |  Terminal block 4 way 3.5mm |
+|   1 | ```green_terminal(gt_2p54, 5)``` |  Terminal block 5 way 0.1" |
 
 
 <a href="#top">Top</a>

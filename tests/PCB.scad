@@ -19,11 +19,12 @@
 include <../core.scad>
 include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
+include <../vitamins/green_terminals.scad>
 
 use <../vitamins/pcb.scad>
 
-gt_5x17 = ["gt_5x17",    5,   10,   17, 5,   11, 0.4,  9,   2,1.5,     1,  3,   6,     0,  0,   0];
-gt_5x11 = ["gt_5x11",    5,    8,   11, 5,    7, 0.4,  7,   1.5,1.5,   1,2.5,   6,     0,  0,   0];
+gt_5x17 = ["gt_5x17",    5,   10,   17, 5,   11, 0.4,  9,   2,1.5,     1,  3,   6,    0.5, 0,  0,   0];
+gt_5x11 = ["gt_5x11",    5,    8,   11, 5,    7, 0.4,  7,   1.5,1.5,   1,2.5,   6,    0.5, 0,  0,   0];
 
 TMC2130HeatSinkColor = "DeepSkyBlue";
 TMC2130 = ["TMC2130", "TMC2130",
@@ -80,6 +81,7 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 10, 310,   0, "jst_xh", 2],
         [ 10, 320, 180, "term254", 3],
         [ 20, 320, 180, "term254", 3, undef, grey20],
+        [ 30, 320, 180, "gterm", gt_5p08, 2, undef, "blue"],
         [ 10, 340, 180, "gterm35", 4, [1,2]],
         [ 20, 340, 180, "gterm35", 4, [1,2], "red"],
         [ 30, 340, 180, "gterm", gt_5x11, 3],
