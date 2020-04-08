@@ -903,7 +903,7 @@ Parametric green terminal blocks
 | ```gt_top(type)``` | Depth at the top |
 | ```gt_tube_h(type)``` | Height of optional tubes around the screws |
 | ```gt_y_offset(type)``` | Offset of the pins from centre of the depth |
-| ```gt_y_offset2(type)``` | Offset of the pins screws from the screws |
+| ```gt_y_offset2(type)``` | Offset of the pins from the screws |
 
 ### Modules
 | Module | Description |
@@ -2029,7 +2029,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```d_plug(DCONN15, pcb = true)``` |  D-type 15 way PCB mount plug |
 |   1 | ```pcb(DuetE)``` |  Duet 2 Ethernet electronics |
 |   1 | ```pcb(Duex2)``` |  Duex2 expansion board |
-|   1 | ```pcb(Duex5)``` |  Duex5 expasnion board |
+|   1 | ```pcb(Duex5)``` |  Duex5 expansion board |
 |   1 | ```pcb(EnviroPlus)``` |  Enviro+ |
 |   1 | ```pcb(ExtruderPCB)``` |  Extruder connection PCB |
 |   1 | ```pcb(Keyes5p1)``` |  Keyes5.1 Arduino Uno expansion board |

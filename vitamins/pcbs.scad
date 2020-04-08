@@ -177,7 +177,7 @@ Duex2 = ["Duex2", "Duex2 expansion board",
                                                                     ],
                                                                     []];
 
-Duex5 = ["Duex5", "Duex5 expasnion board",
+Duex5 = ["Duex5", "Duex5 expansion board",
                                      123,   100,   1.6, 0,    4.2,  0, "#2140BE",  false, [[-4, 4], [-4, -4], [4, -4],[4, 4]],
                                                                    concat(Duex2[11], [
                                                                      [ 61.5, -81.2,   0, "chip", 10, 10, 2],

@@ -36,7 +36,7 @@ function gt_front_t(type)      = type[10];  //! Thickness of frame around the fr
 function gt_box_w(type)        = type[11];  //! Width inside the cable entry box
 function gt_box_h(type)        = type[12];  //! Height of the cable entry box
 function gt_y_offset(type)     = type[13];  //! Offset of the pins from centre of the depth
-function gt_y_offset2(type)    = type[14];  //! Offset of the pins screws from the screws
+function gt_y_offset2(type)    = type[14];  //! Offset of the pins from the screws
 function gt_tube_h(type)       = type[15];  //! Height of optional tubes around the screws
 
 module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green terminal blocks, skip can be used to remove pins.
