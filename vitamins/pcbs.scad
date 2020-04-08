@@ -337,6 +337,16 @@ TP4056 = ["TP4056", "TP4056 Li-lon Battery charger module", 26.2, 17.5, 1.0, 0, 
 
     ]];
 
+WD2002SJ = ["WD2002SJ", "WD2002SJ Buck Boost DC-DC converter", 78, 47, 1.6, 0, 3.2, 0, "#2140BE", false, [[4,4], [-4,4], [-4,-4], [4,-4]],
+    [ [ 39,   -20.5,  0, "-chip", 63, 41, 4, "silver"],
+      [ -4,    12,    0, "gterm508", 2, [], "blue"],
+      [  4,    12,  180, "gterm508", 2, [], "blue"],
+      [ -25.5, 3.1,   0, "trimpot10", true],
+      [  30.5, 3.1,   0, "trimpot10", true],
+      [  41.5, 3.1,   0, "trimpot10", true],
+    ],
+    []];
+
 PERF80x20 = ["PERF80x20", "Perfboard 80 x 20mm", 80, 20, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
 
 PERF70x50 = ["PERF70x50", "Perfboard 70 x 50mm", 70, 50, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
@@ -362,7 +372,7 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     []];
 
 
-pcbs = [TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, RPI3, DuetE, Duex2, Duex5, Melzi];
+pcbs = [TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, DuetE, Duex2, Duex5, Melzi];
 
 perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
