@@ -808,6 +808,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5], param(6,"lime"));
         if(show(comp, "gterm")) if(!cutouts) green_terminal(comp[4], comp[5], comp[6], param(7,"lime"));
         if(show(comp, "gterm35")) if(!cutouts) green_terminal(gt_3p5, comp[4], comp[5], param(6,"lime"));
+        if(show(comp, "gterm508")) if(!cutouts) green_terminal(gt_5p08, comp[4], comp[5], param(6,"lime"));
         if(show(comp, "gterm635")) if(!cutouts) green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
         if(show(comp, "term35")) if(!cutouts) terminal_35(comp[4], param(5,"blue"));
         if(show(comp, "transition")) if(!cutouts) idc_transition(2p54header, comp[4], comp[5]);

@@ -19,7 +19,6 @@
 include <../core.scad>
 include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
-include <../vitamins/green_terminals.scad>
 
 use <../vitamins/pcb.scad>
 
@@ -81,7 +80,7 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 10, 310,   0, "jst_xh", 2],
         [ 10, 320, 180, "term254", 3],
         [ 20, 320, 180, "term254", 3, undef, grey20],
-        [ 30, 320, 180, "gterm", gt_5p08, 2, undef, "blue"],
+        [ 30, 320, 180, "gterm508",2, undef, "blue"],
         [ 10, 340, 180, "gterm35", 4, [1,2]],
         [ 20, 340, 180, "gterm35", 4, [1,2], "red"],
         [ 30, 340, 180, "gterm", gt_5x11, 3],
