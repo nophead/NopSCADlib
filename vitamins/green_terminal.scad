@@ -141,37 +141,37 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
         }
         if(!skip)
             color("silver") {
-                    slot_depth = 1;
-                    screw_top = height - 0.5;
-                    pin_l = 3.3;
-                    translate([y2, 0]) {
-                        translate_z(screw_top - 2 * slot_depth)        // screw head
-                            cylinder(r = screw_r, h = slot_depth);
+                slot_depth = 1;
+                screw_top = height - 0.5;
+                pin_l = 3.3;
+                translate([y2, 0]) {
+                    translate_z(screw_top - 2 * slot_depth)        // screw head
+                        cylinder(r = screw_r, h = slot_depth);
 
-                        translate_z(screw_top - slot_depth)         // screw head
-                            linear_extrude(slot_depth)
-                                difference() {
-                                    circle(screw_r);
+                    translate_z(screw_top - slot_depth)         // screw head
+                        linear_extrude(slot_depth)
+                            difference() {
+                                circle(screw_r);
 
-                                    square([10, screw_r / 4], center = true);
-                                }
-                    }
-                    translate([box_back, 0, ledge_height / 2]) {
-                        rotate([0, 90, 0])
-                            linear_extrude(box_front - box_back)
-                                difference() {
-                                    square([box_h2, box_w2], center = true);
-
-                                    square([box_h2 - 0.1, box_w2 - 0.1], center = true);
-
-                                }
-
-                        cube([1, box_w2, box_h2], center = true); // terminal back
-                    }
-
-                    translate_z(-pin_l)
-                        cube([0.44, 0.75, pin_l]);     // pin
+                                square([10, screw_r / 4], center = true);
+                            }
                 }
+                translate([box_back, 0, ledge_height / 2]) {
+                    rotate([0, 90, 0])
+                        linear_extrude(box_front - box_back)
+                            difference() {
+                                square([box_h2, box_w2], center = true);
+
+                                square([box_h2 - 0.1, box_w2 - 0.1], center = true);
+
+                            }
+
+                    cube([1, box_w2, box_h2], center = true); // terminal back
+                }
+
+                translate_z(-pin_l / 2)
+                    cube([0.44, 0.75, pin_l], center = true);     // pin
+            }
     }
     for(i = [0: ways - 1])
         translate([0, i * pitch - width / 2 + pitch / 2])
