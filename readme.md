@@ -1939,6 +1939,30 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```box_header(2p54header, 4, 2, smt = 0)``` |  Box header 4 x 2 |
+|   1 | ```d_plug(DCONN9, pcb = true)``` |  D-type 9 way PCB mount plug |
+|   1 | ```hdmi(hdmi_full)``` |  HDMI socket |
+|   1 | ```idc_transition(2p54header, 5)``` |  IDC transition header 5 x 2 |
+|   1 | ```microswitch(small_microswitch)``` |  Microswitch DM1-00P-110-3 |
+|   1 | ```hdmi(hdmi_mini)``` |  Mini HDMI socket |
+|   1 | ```molex_254(2)``` |  Molex KK header 2 way |
+|   1 | ```pin_header(2p54header, 4, 1, smt = 0)``` |  Pin header 4 x 1 |
+|   1 | ```pin_header(2p54header, 5, 1, smt = undef)``` |  Pin header 5 x 1 |
+|   1 | ```pin_socket(2p54header, 4, 1, right_angle = undef, height = undef, smt = undef)``` |  Pin socket 4 x 1 |
+|   1 | ```pin_socket(2p54header, 6, 1)``` |  Pin socket 6 x 1 |
+|   1 | ```pin_socket(2p54header, 8, 1)``` |  Pin socket 8 x 1 |
+|   1 | ```pin_socket(2p54header, 8, 1, right_angle = undef, height = undef, smt = undef)``` |  Pin socket 8 x 1 |
+|   1 | ```square_button(button_6mm)``` |  Square button 6mm |
+|   1 | ```pcb(TMC2130)``` |  TMC2130 |
+|   1 | ```green_terminal(gt_5p08, 2)``` |  Terminal block 2 way 0.2" |
+|   2 | ```green_terminal(gt_6p35, 2)``` |  Terminal block 2 way 0.25" |
+|   1 | ```green_terminal(gt_5x17, 2)``` |  Terminal block 2 way 5mm |
+|   2 | ```green_terminal(gt_2p54, 3)``` |  Terminal block 3 way 0.1" |
+|   1 | ```terminal_35(3)``` |  Terminal block 3 way 3.5mm |
+|   1 | ```green_terminal(gt_5x11, 3)``` |  Terminal block 3 way 5mm |
+|   1 | ```green_terminal(gt_5x17, 3)``` |  Terminal block 3 way 5mm |
+|   2 | ```green_terminal(gt_3p5, 4)``` |  Terminal block 4 way 3.5mm |
+|   1 | ```terminal_35(4)``` |  Terminal block 4 way 3.5mm |
 |   1 | ```pcb(TestPCB)``` |  Test PCB |
 
 
