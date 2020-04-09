@@ -23,6 +23,7 @@
 include <../utils/core/core.scad>
 
 use <washer.scad>
+use <nut.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/thread.scad>
 include <inserts.scad>
