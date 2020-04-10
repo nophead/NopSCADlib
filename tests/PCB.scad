@@ -19,6 +19,7 @@
 include <../core.scad>
 include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
+include <../vitamins/leds.scad>
 
 use <../vitamins/pcb.scad>
 
@@ -63,10 +64,13 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 10,  30,   0, "2p54socket", 6, 1],
         [ 25,  30,   0, "2p54socket", 4, 1, undef, undef, undef, "red" ],
         [ 10,  40,   0, "chip", 10, 5, 1, grey20],
-        [ 10,  60, 180, "rj45"],
-        [  8,  80, 180, "usb_A"],
-        [  8, 100, 180, "usb_Ax2"],
-        [  3, 120, 180, "usb_uA"],
+        [  5,  50,   0, "led", LED3mm, "red"],
+        [ 12,  50,   0, "led", LED5mm, "orange"],
+        [ 25,  50,   0, "led", LED10mm, "yellow"],
+        [ 10,  65, 180, "rj45"],
+        [  8,  85, 180, "usb_A"],
+        [  8, 105, 180, "usb_Ax2"],
+        [  3, 125, 180, "usb_uA"],
         [  8, 140, 180, "usb_B"],
         [  5, 160,   0, "buzzer", 4.5, 8.5],
         [ 20, 160,   0, "buzzer"],

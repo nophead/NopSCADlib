@@ -40,7 +40,6 @@ include <vitamins/inserts.scad>
 include <vitamins/kp_pillow_blocks.scad>
 include <vitamins/ldrs.scad>
 include <vitamins/leadnuts.scad>
-include <vitamins/leds.scad>
 include <vitamins/light_strips.scad>
 include <vitamins/mains_sockets.scad>
 include <vitamins/modules.scad>

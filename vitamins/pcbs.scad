@@ -18,6 +18,8 @@
 //
 include <microswitches.scad>
 include <d_connectors.scad>
+include <leds.scad>
+
 //
 //                                   l      w      t    r     h     l  c        b     h
 //                                   e      i      h    a     o     a  o        o     o
@@ -324,7 +326,15 @@ PI_IO = ["PI_IO", "PI_IO V2",       35.56, 25.4, 1.6, 0,    0,   0, "green", tru
     ], []];
 
 ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "green", false, [[2.25, 3.25], [-2.25, 3.25], [2.25, -3.25], [-2.25, -3.25] ],
-    [], [], [], [], M2p5_pan_screw];
+    [ [ 12.25,  8.3,  -90, "jst_xh", 5],
+      [ -6.5,  10,      0, "2p54header", 1, 4],
+      [-14,    -4.5,    0, "2p54header", 4, 1],
+      [  5.5,  6,       0, "led", LED3mm, [1,1,1, 0.5]],
+      [  5.5,  10.5,    0, "led", LED3mm, [1,1,1, 0.5]],
+      [  5.5,  15,      0, "led", LED3mm, [1,1,1, 0.5]],
+      [  5.5,  19.5,    0, "led", LED3mm, [1,1,1, 0.5]],
+
+    ], [], [], [], M2p5_pan_screw];
 
 
 MT3608 = ["MT3608", "MT3608 boost converter module",        37, 17, 1.2, 2, 1.5, [5, 3], "#2140BE", false, [[3.0725, 5.095], [3.0725, -5.095], [-3.0725, 5.095], [-3.0725, -5.095]],

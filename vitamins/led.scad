@@ -49,7 +49,7 @@ module led(type, colour = "red", lead = 5) { //! Draw specified LED with desired
             }
     }
     color("silver")
-        for(side = [-1, 1], len = lead - side)
+        for(side = [-1, 1], len = lead - (lead < 3 ? 0 : side))
             translate([side * led_pitch(type) / 2, 0, -len / 2])
                 vflip()
                     cube([led_lead_t(type), led_lead_t(type), len], center = true);

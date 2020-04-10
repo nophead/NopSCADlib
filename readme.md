@@ -1943,6 +1943,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```d_plug(DCONN9, pcb = true)``` |  D-type 9 way PCB mount plug |
 |   1 | ```hdmi(hdmi_full)``` |  HDMI socket |
 |   1 | ```idc_transition(2p54header, 5)``` |  IDC transition header 5 x 2 |
+|   1 | ```led(LED10mm, "yellow")``` |  LED 10 mm yellow |
+|   1 | ```led(LED3mm)``` |  LED 3 mm red |
+|   1 | ```led(LED5mm, "orange")``` |  LED 5 mm orange |
 |   1 | ```microswitch(small_microswitch)``` |  Microswitch DM1-00P-110-3 |
 |   1 | ```hdmi(hdmi_mini)``` |  Mini HDMI socket |
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
