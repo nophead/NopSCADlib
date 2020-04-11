@@ -49,7 +49,7 @@ module ball_bearing(type) { //! Draw a ball bearing
     color("silver") {
         $fn = 360;
 
-        rim_chamfer = rim / 5;
+        rim_chamfer = rim / 6;
         rotate_extrude()
             hull() {
                 translate([or - rim / 2, 0])
@@ -59,7 +59,7 @@ module ball_bearing(type) { //! Draw a ball bearing
                     square([rim - rim_chamfer, h], center = true);
             }
 
-        hub_chamfer = hub / 5;
+        hub_chamfer = hub / 6;
         rotate_extrude()
             hull() {
                 translate([ir + hub / 2, 0])
