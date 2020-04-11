@@ -65,13 +65,10 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 | ```bb_bore(type)``` | Internal diameter |
 | ```bb_colour(type)``` | Shield colour, "silver" for metal |
 | ```bb_diameter(type)``` | External diameter |
+| ```bb_hub(type)``` | Inner rim thickness guesstimate |
 | ```bb_name(type)``` | Part code without shield type suffix |
+| ```bb_rim(type)``` | Outer rim thickness guesstimate |
 | ```bb_width(type)``` | Width |
-
-### Functions
-| Function | Description |
-|:--- |:--- |
-| ```bb_rim(type)``` | Inner and outer rim thickness |
 
 ### Modules
 | Module | Description |
@@ -88,7 +85,8 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 |   1 | ```ball_bearing(BB6200)``` |  Ball bearing 6200-2RS 10mm x 30mm x 9mm |
 |   1 | ```ball_bearing(BB6201)``` |  Ball bearing 6201-2RS 12mm x 32mm x 10mm |
 |   1 | ```ball_bearing(BB624)``` |  Ball bearing 624-2RS 4mm x 13mm x 5mm |
-|   4 | ``` bearing_ball(3)``` |  Steel ball 3mm |
+|   1 | ```ball_bearing(BB6808)``` |  Ball bearing 6808-2RS 40mm x 52mm x 7mm |
+|   5 | ``` bearing_ball(3)``` |  Steel ball 3mm |
 
 
 <a href="#top">Top</a>

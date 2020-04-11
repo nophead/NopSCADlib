@@ -165,8 +165,8 @@ o_rings_y = springs_y;
 sealing_strip_y = springs_y + 20;
 tubings_y = sealing_strip_y + 20;
 pillars_y = tubings_y + 20;
-leadnuts_y = pillars_y + 40;
-pulleys_y = leadnuts_y +40;
+ball_bearings_y = pillars_y + 40;
+pulleys_y = ball_bearings_y +40;
 hot_ends_y = pulleys_y + 60;
 linear_bearings_y = hot_ends_y + 50;
 sheets_y = linear_bearings_y + 100;
@@ -209,10 +209,7 @@ translate([x0, tubings_y])
 translate([x0, pillars_y])
     pillars();
 
-translate([x0, leadnuts_y ])
-    leadnuts();
-
-translate([x0 + 60, leadnuts_y])
+translate([x0, ball_bearings_y])
     ball_bearings();
 
 translate([x0, pulleys_y])
@@ -252,13 +249,18 @@ translate([x0, psus_y]) {
 }
 
 zipties_y = 0;
-bulldogs_y = zipties_y + 40;
+bulldogs_y = zipties_y + 30;
+leadnuts_y = bulldogs_y + 50;
 
 translate([x1, zipties_y])
     zipties();
 
 translate([x1, bulldogs_y])
     bulldogs();
+
+translate([x1, leadnuts_y])
+    leadnuts();
+
 
 leds_y = 0;
 carriers_y = leds_y + 40;

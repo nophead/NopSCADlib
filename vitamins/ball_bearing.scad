@@ -26,36 +26,51 @@
 //! Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 //
 include <../utils/core/core.scad>
+include <../utils/tube.scad>
 
 function bb_name(type)     = type[0]; //! Part code without shield type suffix
 function bb_bore(type)     = type[1]; //! Internal diameter
 function bb_diameter(type) = type[2]; //! External diameter
 function bb_width(type)    = type[3]; //! Width
 function bb_colour(type)   = type[4]; //! Shield colour, "silver" for metal
-function bb_rim(type)      = bb_diameter(type) / 10;  //! Inner and outer rim thickness
+function bb_rim(type)      = type[5]; //! Outer rim thickness guesstimate
+function bb_hub(type)      = type[6]; //! Inner rim thickness guesstimate
 
 module ball_bearing(type) { //! Draw a ball bearing
     shield = bb_colour(type);
     suffix = shield == "silver" ? "ZZ " : "-2RS ";
     vitamin(str("ball_bearing(BB", bb_name(type), "): Ball bearing ", bb_name(type), suffix, bb_bore(type), "mm x ", bb_diameter(type), "mm x ", bb_width(type), "mm"));
     rim = bb_rim(type);
+    hub = bb_hub(type);
     h = bb_width(type);
-    od = bb_diameter(type);
-    id = bb_bore(type);
-
-    module tube(od, id, h)
-        linear_extrude(h, center = true, convexity = 5)
-            difference() {
-                circle(d = od);
-                circle(d = id);
-            }
+    or = bb_diameter(type) / 2;
+    ir = bb_bore(type) / 2;
 
     color("silver") {
-        tube(od, od - rim, h);
-        tube(id + rim, id, h);
+        $fn = 360;
+
+        rim_chamfer = rim / 5;
+        rotate_extrude()
+            hull() {
+                translate([or - rim / 2, 0])
+                    square([rim, h - 2 * rim_chamfer], center = true);
+
+                translate([or - rim / 2 - rim_chamfer, 0])
+                    square([rim - rim_chamfer, h], center = true);
+            }
+
+        hub_chamfer = hub / 5;
+        rotate_extrude()
+            hull() {
+                translate([ir + hub / 2, 0])
+                    square([hub, h - 2 * hub_chamfer], center = true);
+
+                translate([ir + hub / 2 + hub_chamfer, 0])
+                    square([hub - hub_chamfer, h], center = true);
+            }
     }
 
-    color(shield) tube(od - rim, id + rim, h - 1);
+    color(shield) tube(or - rim - eps, ir + hub + eps, h - 1);
 
     if($children)
         translate_z(bb_width(type) / 2)
