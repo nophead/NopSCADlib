@@ -147,7 +147,7 @@ def tests(tests):
                 print("Can't find implementation!")
                 continue
 
-            vsplit = "AKR" + chr(ord('Z') + 1)
+            vsplit = "AJR" + chr(ord('Z') + 1)
             vtype = locations[0][1]
             types = [vtype + ' ' + vsplit[i] + '-'  + chr(ord(vsplit[i + 1]) - 1) for i in range(len(vsplit) - 1)] + [loc[1] for loc in locations[1 :]]
             if type == vtype:
@@ -201,7 +201,7 @@ def tests(tests):
             dname = deps_name(deps_dir, scad.lower())
             oldest = png_name if mtime(png_name) < mtime(bom_name) else bom_name
             changed = check_deps(oldest, dname)
-            changed = times.check_have_time(changed, scad_name.lower())
+            changed = times.check_have_time(changed, scad_name)
             changed = options.have_changed(changed, oldest)
             if changed:
                 print(changed)

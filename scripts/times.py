@@ -48,6 +48,8 @@ def check_have_time(changed, name):
     return changed
 
 def add_time(name, start):
+    if name.lower() in times:
+        del times[name.lower()]
     times[name] = round(time.time() - start, 3)
 
 def print_times():
