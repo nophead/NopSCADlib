@@ -34,6 +34,7 @@ use <../utils/thread.scad>
 use <../utils/tube.scad>
 use <d_connector.scad>
 use <led.scad>
+use <dip.scad>
 
 function pcb_name(type)         = type[1];  //! Description
 function pcb_length(type)       = type[2];  //! Length
@@ -823,6 +824,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "uSD")) uSD(comp[4], cutouts);
         if(show(comp, "trimpot10")) trimpot10(param(4, false), cutouts);
         if(show(comp, "led")) led(comp[4], comp[5], 2.6);
+        if(show(comp, "pdip")) pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
     }
 }
 
