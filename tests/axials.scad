@@ -17,14 +17,27 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-use <../vitamins/dip.scad>
+include <../vitamins/pcbs.scad>
 
-dips = [[6, "OPTO"], [8, "NE555"], [14, "74HC00"], [16, "ULN2003"], [18, "ULN2803"], [20, "74HC245"], [28, "ATMEGA328"]];
 
-module dips()
-    for(i = [0 : len(dips) - 1]) let(dip = dips[i])
-        translate([i * inch(0.5), 0])
-            pdip(dip[0], dip[1], dip[0] > 20);
+module axials() {
+    pcb = PERF60x40;
+    pcb(pcb);
+
+    pcb_grid(pcb, 0, 2)
+        rotate(90)
+            wire_link(0.8, inch(0.4));
+
+    for(i = [0 : len(ax_resistors) - 1]) {
+        pcb_grid(pcb, 2 * i + 1, 1 + [0, 0.5, 1.5][i])
+            rotate(90)
+                ax_res(ax_resistors[i], [1000, 47000, 8200][i], 5);
+
+        pcb_grid(pcb, 2 * i + 1, 6.5)
+            rotate(-90)
+                ax_res(ax_resistors[i], [2200, 39000, 8250][i], 1, inch(0.1));
+    }
+}
 
 if($preview)
-    dips();
+    axials();

@@ -19,6 +19,7 @@
 include <microswitches.scad>
 include <d_connectors.scad>
 include <leds.scad>
+include <axials.scad>
 
 //
 //                                   l      w      t    r     h     l  c        b     h
@@ -335,6 +336,7 @@ ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "
       [  5.5,  10.5,    0, "led", LED3mm, [1,1,1, 0.5]],
       [  5.5,  15,      0, "led", LED3mm, [1,1,1, 0.5]],
       [  5.5,  19.5,    0, "led", LED3mm, [1,1,1, 0.5]],
+      for(i = [0 : 3]) [5.5 + inch(0.1) * i, -5.5, -90, "ax_res", res1_8, 510, 5, 5.5]
 
     ], [], [], [], M2p5_pan_screw];
 

@@ -20,6 +20,7 @@ include <../core.scad>
 include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
 include <../vitamins/leds.scad>
+include <../vitamins/axials.scad>
 
 use <../vitamins/pcb.scad>
 
@@ -79,6 +80,13 @@ test_pcb = ["TestPCB", "Test PCB",
         [  5, 218, 180, "hdmi"],
         [  3, 235, 180, "mini_hdmi"],
         [  6, 175, 180, "uSD", [12, 11.5, 1.4]],
+        [ 65,  12,   0, "ax_res", res1_8, 1000],
+        [ 65,  17,   0, "ax_res", res1_4, 10000],
+        [ 65,  22,   0, "ax_res", res1_2, 100000],
+
+        [ 80,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
+        [ 80,  17,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
+        [ 80,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
 
         [ 60,   3,   0, "flex"],
         [ 50,  15,   0, "flat_flex"],

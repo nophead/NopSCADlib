@@ -16,15 +16,15 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
-use <../vitamins/dip.scad>
 
-dips = [[6, "OPTO"], [8, "NE555"], [14, "74HC00"], [16, "ULN2003"], [18, "ULN2803"], [20, "74HC245"], [28, "ATMEGA328"]];
+//
+//! Axial components
+//
 
-module dips()
-    for(i = [0 : len(dips) - 1]) let(dip = dips[i])
-        translate([i * inch(0.5), 0])
-            pdip(dip[0], dip[1], dip[0] > 20);
+res1_8 = ["res1_8", 0.125, 3.3, 1.35, 1.7, 1,   0.33, "#FAE3AC"];
+res1_4 = ["res1_4", 0.25,  5.7, 1.85, 2.3, 1.5, 0.55, "#FAE3AC"];
+res1_2 = ["res1_2", 0.5,  10,   3.25, 3.7, 1.8, 0.70, "#FAE3AC"];
 
-if($preview)
-    dips();
+ax_resistors = [res1_8, res1_4, res1_2];
+
+use <axial.scad>
