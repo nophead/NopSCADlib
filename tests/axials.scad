@@ -29,11 +29,11 @@ module axials() {
             wire_link(0.8, inch(0.4));
 
     for(i = [0 : len(ax_resistors) - 1]) {
-        pcb_grid(pcb, 2 * i + 1, 1 + [0, 0.5, 1.5][i])
+        pcb_grid(pcb, 2 * i + 2, 1 + [0, 0.5, 1.5][i])
             rotate(90)
                 ax_res(ax_resistors[i], [1000, 47000, 8200][i], 5);
 
-        pcb_grid(pcb, 2 * i + 1, 6.5)
+        pcb_grid(pcb, 2 * i + 2, 6.5)
             rotate(-90)
                 ax_res(ax_resistors[i], [2200, 39000, 8250][i], 1, inch(0.1));
     }

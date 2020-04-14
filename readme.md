@@ -69,6 +69,7 @@ Axial components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| ```ax_res(type, value, tol = 5, pitch = 0)``` | Through hole axial resistor. If ```pitch``` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
 | ```wire_link(d, l, h = 1)``` | Draw a wire jumper link. |
 
 ![axials](tests/png/axials.png)
