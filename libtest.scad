@@ -71,6 +71,7 @@ use <tests/spades.scad>
 use <tests/springs.scad>
 use <tests/SSRs.scad>
 use <tests/stepper_motors.scad>
+use <tests/swiss_clips.scad>
 use <tests/toggles.scad>
 use <tests/transformers.scad>
 use <tests/tubings.scad>
@@ -101,7 +102,7 @@ use <tests/SSR_shroud.scad>
 use <tests/PSU_shroud.scad>
 
 x0 = 0;
-x1 = x0 + 100;
+x1 = x0 + 110;
 x2 = x1 + 90;
 x3 = x2 + 130;
 x4 = x3 + 200;
@@ -176,7 +177,7 @@ fans_y = displays_y + 80;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;
 
-translate([x0 + 30, inserts_y])
+translate([x0 + 35, inserts_y])
     inserts();
 
 translate([x0, inserts_y])
@@ -250,13 +251,17 @@ translate([x0, psus_y]) {
 
 zipties_y = 0;
 bulldogs_y = zipties_y + 30;
-leadnuts_y = bulldogs_y + 50;
+swiss_clips_y = bulldogs_y + 35;
+leadnuts_y = swiss_clips_y + 50;
 
 translate([x1, zipties_y])
     zipties();
 
 translate([x1, bulldogs_y])
     bulldogs();
+
+translate([x1, swiss_clips_y])
+    swiss_clips();
 
 translate([x1, leadnuts_y])
     leadnuts();

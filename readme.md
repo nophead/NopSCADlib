@@ -32,15 +32,15 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#IECs">IECs</a> </td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#IECs">IECs</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -3213,6 +3213,55 @@ NEMA stepper motor model.
 |   1 | ```NEMA(NEMA23)``` |  Stepper motor NEMA22 x 51.2mm |
 |  11 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |  15 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Swiss_clips"></a>
+## Swiss_clips
+Swiss picture clip.
+Used for holding glass on 3D printer beds.
+
+The bending model is an approximation because in real life the arms bend.
+Should be reasonably accurate if not close to fully open.
+
+
+[vitamins/swiss_clips.scad](vitamins/swiss_clips.scad) Object definitions.
+
+[vitamins/swiss_clip.scad](vitamins/swiss_clip.scad) Implementation.
+
+[tests/Swiss_clips.scad](tests/Swiss_clips.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```sclip_arm_length(type)``` | Length of arms |
+| ```sclip_arm_width(type)``` | Width of spring arms |
+| ```sclip_height(type)``` | External height |
+| ```sclip_hinge_offset(type)``` | Offset of hinge |
+| ```sclip_hook(type)``` | hook, length, width |
+| ```sclip_length(type)``` | Total external length |
+| ```sclip_max_gap(type)``` | Maximum opening |
+| ```sclip_radius(type)``` | Bend radius |
+| ```sclip_spigot(type)``` | Spigot length, width, height |
+| ```sclip_thickness(type)``` | Thickness of the metal |
+| ```sclip_width(type)``` | Width |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```swiss_clip(type, open = 0.9)``` | Draw a Swiss clip open by specified amount |
+| ```swiss_clip_hole(type, open, h = 0)``` | Drill hole for spigot |
+
+![swiss_clips](tests/png/swiss_clips.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```sheet(AL6, 40, 20, 1)``` |  Aluminium tooling plate 40mm x 20mm x 6mm |
+|   1 | ```sheet(glass2, 40, 20, 1)``` |  Sheet glass 40mm x 20mm x 2mm |
+|   2 | ```swiss_clip(UKPFS1008_10)``` |  Swiss picture clip UKPFS1008_10 11mm |
 
 
 <a href="#top">Top</a>
