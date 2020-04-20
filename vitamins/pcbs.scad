@@ -352,7 +352,7 @@ TP4056 = ["TP4056", "TP4056 Li-lon Battery charger module", 26.2, 17.5, 1.0, 0, 
     ]];
 
 WD2002SJ = ["WD2002SJ", "WD2002SJ Buck Boost DC-DC converter", 78, 47, 1.6, 0, 3.2, 0, "#2140BE", false, [[4,4], [-4,4], [-4,-4], [4,-4]],
-    [ [ 39,   -20.5,  0, "-chip", 63, 41, 4, "silver"],
+    [ [ 39,   -20.5,  0, "-chip", 63, 41, 3.4, "silver"],
       [ -4,    12,    0, "gterm508", 2, [], "blue"],
       [  4,    12,  180, "gterm508", 2, [], "blue"],
       [ -25.5, 3.1,   0, "trimpot10", true],
