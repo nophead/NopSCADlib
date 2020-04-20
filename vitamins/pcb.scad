@@ -161,7 +161,7 @@ module molex_usb_Ax2(cutout) { //! Draw Molex USB connector suitable for perf bo
     l = 17;
     pin_l = 2.8;
     clearance = 0.2;
-    tag_l = 4.8;
+    tag_l = 4.4;
     tag_r = 0.5;
     tag_w = 1.5;
     tag_t = 0.3;
