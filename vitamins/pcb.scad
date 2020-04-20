@@ -85,6 +85,23 @@ module chip(length, width, thickness, colour, cutout = false) //! Draw a coloure
         color(colour)
             translate_z(thickness / 2) cube([length, width, thickness], center = true);
 
+module usb_A_tongue() {
+    l = 9;
+    w = 12;
+    h = 2;
+
+    color("white")
+        translate([-1, 0 , h / 2])
+            rotate([90, 0, 90])
+                hull() {
+                    linear_extrude(l - 2)
+                        square([w, h], center = true);
+
+                    linear_extrude(l)
+                        square([w - 1, h - 1], center = true);
+                }
+}
+
 module usb_Ax1(cutout = false) { //! Draw USB type A single socket
     usb_A(h = 6.5, v_flange_l = 4.5, bar = 0, cutout = cutout);
 }
@@ -107,7 +124,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
             rotate([90, 0, 90])
                 rounded_rectangle([w + 2 * v_flange_h + 2 * panel_clearance,
                                    h + 2 * h_flange_h + 2 * panel_clearance, 100], r = cnc_bit_r, center = false);
-        else
+        else {
             color("silver") rotate([0, 90, 0]) {
                 linear_extrude(l, center = true)
                     difference() {
@@ -130,7 +147,14 @@ module usb_A(h, v_flange_l, bar, cutout) {
                         }
                         square([h - eps, w - eps], center = true);
                     }
-           }
+                }
+
+                for(z = bar ?  [-1, 1] : [0])
+                    translate_z(z * (bar / 2 + socket_h / 2))
+                        usb_A_tongue();
+            }
+}
+
 }
 
 module rj45(cutout = false) { //! Draw RJ45 Ethernet connector
