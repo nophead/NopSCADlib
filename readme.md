@@ -2002,6 +2002,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```hdmi(type, cutout = false)``` | Draw HDMI socket |
 | ```jack(cutout = false)``` | Draw 3.5mm jack |
 | ```molex_254(ways)``` | Draw molex header |
+| ```molex_usb_Ax2(cutout)``` | Draw Molex USB connector suitable for perf board |
 | ```pcb(type)``` | Draw specified PCB |
 | ```pcb_assembly(type, height, thickness)``` | Draw PCB assembly with spaces and fasteners in place |
 | ```pcb_base(type, height, thickness, wall = 2)``` | Generate STL for a base with PCB spacers |
@@ -2124,6 +2125,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```hdmi(type, cutout = false)``` | Draw HDMI socket |
 | ```jack(cutout = false)``` | Draw 3.5mm jack |
 | ```molex_254(ways)``` | Draw molex header |
+| ```molex_usb_Ax2(cutout)``` | Draw Molex USB connector suitable for perf board |
 | ```pcb(type)``` | Draw specified PCB |
 | ```pcb_assembly(type, height, thickness)``` | Draw PCB assembly with spaces and fasteners in place |
 | ```pcb_base(type, height, thickness, wall = 2)``` | Generate STL for a base with PCB spacers |

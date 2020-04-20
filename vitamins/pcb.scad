@@ -155,6 +155,64 @@ module usb_A(h, v_flange_l, bar, cutout) {
             }
 }
 
+module molex_usb_Ax2(cutout) { //! Draw Molex USB connector suitable for perf board
+    w = 15.9;
+    h = 16.6;
+    l = 17;
+    pin_l = 2.8;
+    clearance = 0.2;
+    tag_l = 4.8;
+    tag_r = 0.5;
+    tag_w = 1.5;
+    tag_t = 0.3;
+    tag_p = 5.65;
+
+    if(cutout)
+        translate([0, -w / 2 - clearance, -clearance])
+            cube([100, w + 2 * clearance, h + 2 * clearance]);
+    else {
+        color(silver)
+            translate([-l / 2, 0])
+                rotate([90, 0, 90])
+                    translate([-w / 2, 0]) {
+                        cube([w, h, l - 9]);
+
+                        linear_extrude(l)
+                            difference() {
+                                square([w, h]);
+
+                                for(z = [-1, 1])
+                                    translate([w / 2, h / 2 + z * 8.5 / 2])
+                                        square([12.6, 5.08], center = true);
+                            }
+                    }
+
+        for(z = [-1, 1])
+            translate_z(h / 2 + z * 8.5 / 2)
+                usb_A_tongue();
+
+        color(silver)
+            rotate(-90) {
+                for(x = [-1.5 : 1 : 1.5], y = [0.5 : 1 : 1.5])
+                    translate([inch(x / 10), -l / 2 + inch(y / 10)])
+                        hull() {
+                            cube([0.6, 0.3, 2 * pin_l - 2], center = true);
+
+                            cube([0.4, 0.3, 2 * pin_l], center = true);
+                        }
+
+                for(side = [-1, 1], end = [0, 1])
+                    translate([side * w / 2, -l / 2 + tag_w / 2 + end * tag_p])
+                        rotate(-side * 90)
+                            hull() {
+                                translate([0, tag_l - tag_r])
+                                    cylinder(r = tag_r, h = tag_t);
+
+                                translate([-tag_w / 2, 0])
+                                    cube([tag_w, eps, tag_t]);
+                            }
+            }
+    }
 }
 
 module rj45(cutout = false) { //! Draw RJ45 Ethernet connector
@@ -851,6 +909,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "led")) led(comp[4], comp[5], 2.6);
         if(show(comp, "pdip")) pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
         if(show(comp, "ax_res")) ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
+        if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
     }
 }
 
