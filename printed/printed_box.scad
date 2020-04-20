@@ -71,7 +71,7 @@ function pbox_mid_offset(type) = pbox_ridges(type).y + pbox_wall(type) / 2; // O
 
 function pbox_screw_inset(type) = //! How far the base screws are inset
     let(foot = pbox_foot(type),
-        r = foot ? foot_diameter(foot) / 2 : washer_radius(pbox_washer(type)),
+        r = foot ? foot_diameter(foot) / 2 : pbox_base(type) ? washer_radius(pbox_washer(type)) : insert_hole_radius(pbox_insert(type)),
         R =  pbox_radius(type)
     ) max(r, R - (R - r) / sqrt(2));
 
