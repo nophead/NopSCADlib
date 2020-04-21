@@ -23,9 +23,8 @@
 include <../utils/core/core.scad>
 include <../utils/round.scad>
 
-module wire_link(d, l, h = 1) { //! Draw a wire jumper link.
+module wire_link(d, l, h = 1, tail = 3) { //! Draw a wire jumper link.
     r = d;
-    tail = 3;
     $fn = 32;
 
     color("silver") {

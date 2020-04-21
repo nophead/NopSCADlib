@@ -40,6 +40,7 @@ include <vitamins/inserts.scad>
 include <vitamins/kp_pillow_blocks.scad>
 include <vitamins/ldrs.scad>
 include <vitamins/leadnuts.scad>
+include <vitamins/led_meter.scad>
 include <vitamins/light_strips.scad>
 include <vitamins/mains_sockets.scad>
 include <vitamins/modules.scad>
@@ -63,7 +64,6 @@ include <vitamins/variacs.scad>
 include <vitamins/zipties.scad>
 
 use <vitamins/jack.scad>
-use <vitamins/meter.scad>
 use <vitamins/fuseholder.scad>
 use <vitamins/hygrometer.scad>
 

@@ -17,23 +17,21 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../utils/core/core.scad>
+include <../utils/layout.scad>
 
-use <../vitamins/meter.scad>
+include <../vitamins/led_meters.scad>
 
-module meters()
-    if($preview) {
-        meter_assembly();
+module led_meters()
+    layout([for(m = led_meters) meter_bezel_length(m)], 5) let(m = led_meters[$i])
+        if($preview) {
+            hflip()
+                meter(m, colour = "blue", value = "123");
 
-        translate([0, meter_bezel_width() + 5])
-            vflip()
-                meter_assembly();
+            if(!$i)
+                translate([0, meter_bezel_width(m)])
+                    meter_assembly(m, value = "123");
+        }
+        else
+            meter_bezel(m);
 
-        translate([0, -meter_bezel_width()])
-            rotate([0, 180, 0])
-                meter(colour = "blue", value = "123");
-    }
-    else
-        meter_bezel();
-
-
-meters();
+led_meters();

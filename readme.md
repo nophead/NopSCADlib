@@ -21,12 +21,12 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Axials">Axials</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
 <tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#KP_pillow_blocks">KP_pillow_blocks</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
 <tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SCS_bearing_blocks">SCS_bearing_blocks</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Meter">Meter</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SCS_bearing_blocks">SCS_bearing_blocks</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Maths">Maths</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
 <tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
@@ -71,7 +71,7 @@ Axial components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | ```ax_res(type, value, tol = 5, pitch = 0)``` | Through hole axial resistor. If ```pitch``` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
-| ```wire_link(d, l, h = 1)``` | Draw a wire jumper link. |
+| ```wire_link(d, l, h = 1, tail = 3)``` | Draw a wire jumper link. |
 
 ![axials](tests/png/axials.png)
 
@@ -1409,6 +1409,68 @@ Nuts for leadscrews.
 <a href="#top">Top</a>
 
 ---
+<a name="LED_meters"></a>
+## LED_meters
+LED voltmeter and ammeter modules available from China and a printed bezel that allows the voltmeter to be mounted into a
+CNC cut panel. The meter is held in the bezel by melting the stakes with a soldering iron set to 200&deg;C. The
+bezel is fixed in the panel with hot glue.
+
+The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to get realistic digits.
+
+
+[vitamins/led_meters.scad](vitamins/led_meters.scad) Object definitions.
+
+[vitamins/led_meter.scad](vitamins/led_meter.scad) Implementation.
+
+[tests/LED_meters.scad](tests/LED_meters.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```meter_hole_pitch(type)``` | Lug hole pitch |
+| ```meter_hole_radius(type)``` | Lug hole radius |
+| ```meter_lug_offset(type)``` | Lug position, 0 = center, +1 = top |
+| ```meter_lug_size(type)``` | Lug length and width |
+| ```meter_offset(type)``` | Display position, 0 = center, +1 = top |
+| ```meter_pcb_size(type)``` | PCB size excluding lugs |
+| ```meter_shunt(type)``` | Ampmeter shunt wire |
+| ```meter_size(type)``` | Size of display |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```meter_bezel_length(type)``` | Printed bezel length |
+| ```meter_bezel_rad(type)``` | Printed bezel corner radius |
+| ```meter_bezel_wall(type)``` | Printed bezel wall thickness |
+| ```meter_bezel_width(type)``` | Printed bezel width |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```meter(type, colour = "red", value = "888", display_colour = false)``` | Draw a meter with optional colour and display value |
+| ```meter_assembly(type, colour = "red", value = "888", display_colour = false)``` | Meter assembled into the bezel |
+| ```meter_bezel(type)``` | Generate the STL for the meter bezel |
+| ```meter_bezel_hole(type, h = 100)``` | Make a hole to fit the meter Bezel |
+| ```meter_hole_positions(type)``` | Position children over the holes |
+
+![led_meters](tests/png/led_meters.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```meter(led_ameter, colour = "blue")``` |  LED ammeter blue |
+|   1 | ```meter(led_meter, colour = "blue")``` |  LED voltmeter blue |
+|   1 | ```meter(led_meter)``` |  LED voltmeter red |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | meter_bezel.stl |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="LEDs"></a>
 ## LEDs
 Standard domed through hole LEDs. Can specify colour and lead length.
@@ -1610,68 +1672,6 @@ UK 13A sockets at the moment.
 | ---:|:--- |:---|
 |   1 | ```mains_socket(Contactum)``` |  Mains socket 13A |
 |   1 | ```mains_socket(MKLOGIC)``` |  Mains socket 13A, switched |
-
-
-<a href="#top">Top</a>
-
----
-<a name="Meter"></a>
-## Meter
-LED volt meter modules available from China and a printed bezel that allows them to be mounted into a
-CNC cut panel. The meter is held in the bezel by melting the stakes with a soldering iron set to 200&deg;C. The
-bezel is fixed in the panel with hot glue.
-
-The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to get realistic digits.
-
-
-[vitamins/meter.scad](vitamins/meter.scad) Implementation.
-
-[tests/meter.scad](tests/meter.scad) Code for this example.
-
-### Properties
-| Function | Description |
-|:--- |:--- |
-| ```meter_height(type = led_meter)``` | Height of body excluding PCB |
-| ```meter_hole_pitch(type = led_meter)``` | Lug hole pitch |
-| ```meter_hole_radius(type = led_meter)``` | Lug hole radius |
-| ```meter_length(type = led_meter)``` | Length of body |
-| ```meter_lug_length(type = led_meter)``` | PCB length including lugs |
-| ```meter_lug_width(type = led_meter)``` | Lug width |
-| ```meter_pcb_length(type = led_meter)``` | PCB length excluding lugs |
-| ```meter_pcb_thickness(type = led_meter)``` | PCB thickness |
-| ```meter_pcb_width(type = led_meter)``` | PCB width |
-| ```meter_width(type = led_meter)``` | Width of body |
-
-### Functions
-| Function | Description |
-|:--- |:--- |
-| ```meter()``` | Default meter type |
-| ```meter_bezel_length(type = led_meter)``` | Printed bezel length |
-| ```meter_bezel_rad(type = led_meter)``` | Printed bezel corner radius |
-| ```meter_bezel_wall(type = led_meter)``` | Printed bezel wall thickness |
-| ```meter_bezel_width(type = led_meter)``` | Printed bezel width |
-
-### Modules
-| Module | Description |
-|:--- |:--- |
-| ```meter(type = led_meter, colour = "red", value = "888", display_colour = false)``` | Draw a meter with optional colour and display value |
-| ```meter_assembly(type = led_meter, colour = "red", value = "888", display_colour = false)``` | Meter assembled into the bezel |
-| ```meter_bezel(type = led_meter)``` | Generate the STL for the meter bezel |
-| ```meter_bezel_hole(type = led_meter, h = 100)``` | Make a hole to fit the meter Bezel |
-| ```meter_hole_positions(type = led_meter)``` | Position children over the holes |
-
-![meter](tests/png/meter.png)
-
-### Vitamins
-| Qty | Module call | BOM entry |
-| ---:|:--- |:---|
-|   1 | ```meter(led_meter, colour = "blue")``` |  LED meter blue |
-|   2 | ```meter(led_meter)``` |  LED meter red |
-
-### Printed
-| Qty | Filename |
-| ---:|:--- |
-|   2 | meter_bezel.stl |
 
 
 <a href="#top">Top</a>

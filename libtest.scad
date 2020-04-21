@@ -48,7 +48,7 @@ use <tests/LDRs.scad>
 use <tests/LEDs.scad>
 use <tests/light_strips.scad>
 use <tests/linear_bearings.scad>
-use <tests/meter.scad>
+use <tests/LED_meters.scad>
 use <tests/microswitches.scad>
 use <tests/modules.scad>
 use <tests/nuts.scad>
@@ -280,16 +280,16 @@ components_y = toggles_y + 40;
 translate([x2, leds_y])
     leds();
 
-translate([x2 + 40, leds_y])
+translate([x2 + 35, leds_y])
     ldrs();
 
 translate([x2 + 8, carriers_y])
     carriers();
 
-translate([x2+ 38, carriers_y])
-    meters();
+translate([x2 + 20, carriers_y])
+    led_meters();
 
-translate([x2 + 68, carriers_y])
+translate([x2 + 70, leds_y])
     fuseholders();
 
 translate([x2, spades_y])
