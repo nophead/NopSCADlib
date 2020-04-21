@@ -36,6 +36,7 @@ use <d_connector.scad>
 use <led.scad>
 use <dip.scad>
 use <axial.scad>
+use <smd.scad>
 
 function pcb_name(type)         = type[1];  //! Description
 function pcb_length(type)       = type[2];  //! Length
@@ -910,6 +911,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "pdip")) pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
         if(show(comp, "ax_res")) ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
+        if(show(comp, "smd_led")) smd_led(comp[4], comp[5], cutouts);
     }
 }
 

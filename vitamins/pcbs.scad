@@ -20,6 +20,7 @@ include <microswitches.scad>
 include <d_connectors.scad>
 include <leds.scad>
 include <axials.scad>
+include <smds.scad>
 
 //
 //                                   l      w      t    r     h     l  c        b     h
@@ -348,6 +349,8 @@ MT3608 = ["MT3608", "MT3608 boost converter module",        37, 17, 1.2, 2, 1.5,
 TP4056 = ["TP4056", "TP4056 Li-lon Battery charger module", 26.2, 17.5, 1.0, 0, 1.0, [2.4, 2.4], "#2140BE", false,
     [[1.67, 1.8], [1.67, -1.8], [-1.67, 1.8], [-1.67, -1.8], [-1.67, -4.98], [-1.67, 4.98]],
     [ [  2, 17.5 / 2, 180, "usb_uA"],
+      [  7, -2      ,   0, "smd_led", LED0805, "red"],
+      [ 11, -2      ,   0, "smd_led", LED0805, "blue"],
 
     ]];
 
@@ -358,6 +361,8 @@ WD2002SJ = ["WD2002SJ", "WD2002SJ Buck Boost DC-DC converter", 78, 47, 1.6, 0, 3
       [ -25.5, 3.1,   0, "trimpot10", true],
       [  30.5, 3.1,   0, "trimpot10", true],
       [  41.5, 3.1,   0, "trimpot10", true],
+      [ -10.5, 1.5,   0, "smd_led", LED0805, "blue"],
+      [  16,   1.8,   0, "smd_led", LED0805, "red"],
     ],
     []];
 

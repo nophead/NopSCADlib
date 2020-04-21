@@ -21,6 +21,7 @@ include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
 include <../vitamins/leds.scad>
 include <../vitamins/axials.scad>
+include <../vitamins/smds.scad>
 
 use <../vitamins/pcb.scad>
 
@@ -58,7 +59,7 @@ test_pcb = ["TestPCB", "Test PCB",
     [
         [ 20, -5, 180, "trimpot10"],
         [ 20, -15,  0, "trimpot10", true],
-
+        [ 10,  2,   0, "smd_led", LED0805, "red"],
         [ 10,  10,   0, "2p54header", 4, 1],
         [ 25,  10,   0, "2p54header", 5, 1, undef, "blue" ],
         [ 10,  20,   0, "2p54boxhdr", 4, 2],
