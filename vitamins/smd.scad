@@ -45,7 +45,7 @@ module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified ```col
     $fn = 32;
 
     if(cutout)
-        cylinder(d = 2.85, h = 100); // For lightguide made from transparent PLA filament
+        poly_drill(r = 2.85 / 2, h = 100, center = false); // For lightguide made from transparent PLA filament
     else {
         color("white")
             linear_extrude(size.z)

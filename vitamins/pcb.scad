@@ -841,7 +841,7 @@ module trimpot10(vertical, cutout = false) { //! Draw a ten turn trimpot
         rotate([vertical ? -90 : 0, 0, 0]) {
             if(cutout)
                 screw_pos()
-                    cylinder(d = screw_d + 1, h = 100);
+                    poly_drill(r = (screw_d + 1) / 2, h = 100, center = false);
             else
                 color("#2CA1FD") {
                     translate([0, -foot_h / 2, foot_h / 2 + h / 2])

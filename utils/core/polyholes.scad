@@ -66,9 +66,16 @@ module poly_tube(or, ir, h, center = false) //! Make a tube adjusted to have the
     extrude_if(h, center)
         poly_ring(or, ir);
 
-module drill(r, h = 100) //! Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle
-    extrude_if(h)
+module drill(r, h = 100, center = true) //! Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle
+    extrude_if(h, center)
         circle(r = corrected_radius(r, r2sides(r)));
+
+module poly_drill(r, h = 100, center = true) //! Make a cylinder for drilling holes suitable for CNC routing if cnc_bit_r is non zero, otherwise a poly_cylinder.
+    if(cnc_bit_r)
+        drill(r, h, center = true);
+    else
+        poly_cylinder(r, h, center);
+
 //
 // Horizontal slot
 //
