@@ -36,10 +36,10 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#IECs">IECs</a> </td><td></td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
 <tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
@@ -1945,6 +1945,60 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 | ---:|:--- |:---|
 |   1 | ```opengrab_target()``` |  OpenGrab  silicon steel target plate |
 |   1 | ```opengrab()``` |  OpenGrab V3 electro permanent magnet |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Panel_meters"></a>
+## Panel_meters
+Panel mounted digital meter modules
+
+Notes on the DSN_VC288:
+
+* The tabs aren't modelled because they can be fully retracted if the PCB is removed.
+* The current connector isn't moddelled as it is awkwardly tall. I remove it and solder wires instead.
+
+
+[vitamins/panel_meters.scad](vitamins/panel_meters.scad) Object definitions.
+
+[vitamins/panel_meter.scad](vitamins/panel_meter.scad) Implementation.
+
+[tests/panel_meters.scad](tests/panel_meters.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```pmeter_aperture(type)``` | Aperture length, width and bevel |
+| ```pmeter_bevel(type)``` | Bezel bevel inset and start height |
+| ```pmeter_bezel(type)``` | Bezel size |
+| ```pmeter_bezel_r(type)``` | Bezel radius |
+| ```pmeter_pcb(type)``` | Optional PCB for open types |
+| ```pmeter_pcb_z(type)``` | Distance of PCB from the back |
+| ```pmeter_size(type)``` | Body size including bezel height |
+| ```pmeter_tab(type)``` | Tab size |
+| ```pmeter_tab_z(type)``` | Tab vertical position |
+| ```pmeter_thickness(type)``` | Wall thickness if not closed |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```pmeter_depth(type)``` | Depth below bezel |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```panel_meter(type)``` | Draw panel mounted LCD meter module |
+| ```panel_meter_cutout(type, h = 0)``` | Make panel cutout |
+
+![panel_meters](tests/png/panel_meters.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```panel_meter(DSN_VC288)``` |  DSN-VC288 DC 100V 10A Voltmeter ammeter |
+|   1 | ```panel_meter(PZEM001)``` |  Peacefair PZEM-001 AC digital multi-function meter |
+|   1 | ```panel_meter(PZEM021)``` |  Peacefair PZEM-021 AC digital multi-function meter |
 
 
 <a href="#top">Top</a>

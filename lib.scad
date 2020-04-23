@@ -44,6 +44,7 @@ include <vitamins/led_meter.scad>
 include <vitamins/light_strips.scad>
 include <vitamins/mains_sockets.scad>
 include <vitamins/modules.scad>
+include <vitamins/panel_meters.scad>
 include <vitamins/pillars.scad>
 include <vitamins/pin_headers.scad>
 include <vitamins/pulleys.scad>

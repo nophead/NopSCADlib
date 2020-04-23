@@ -128,6 +128,7 @@ module meter_bezel(type) { //! Generate the STL for the meter bezel
 
                 square([l + 2 * clearance, w + 2 * clearance], center = true);
         }
+
         translate([0, -meter_pos(type)])
             meter_hole_positions(type)
                 cylinder(r = meter_hole_radius(type), h = h + meter_pcb_size(type).z * 2);

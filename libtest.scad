@@ -54,6 +54,7 @@ use <tests/modules.scad>
 use <tests/nuts.scad>
 use <tests/o_ring.scad>
 use <tests/opengrab.scad>
+use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
 use <tests/PSUs.scad>
@@ -321,7 +322,8 @@ ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
 batteries_y = blowers_y + 100;
 steppers_y = batteries_y + 70;
-extrusions_y = steppers_y + 100;
+panel_meters_y = steppers_y + 70;
+extrusions_y = panel_meters_y + 80;
 
 translate([x3, veroboard_y])
     veroboard_test();
@@ -362,9 +364,11 @@ translate([x3, batteries_y])
 translate([x2, steppers_y])  // interloper
     stepper_motors();
 
-translate([x2, extrusions_y]) {
+translate([x2, panel_meters_y])
+    panel_meters();
+
+translate([x2, extrusions_y])
     extrusions();
-}
 
 translate([x3, transformers_y])
     transformers();
