@@ -5557,7 +5557,7 @@ The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is
 | ```drill(r, h = 100)``` | Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle |
 | ```poly_circle(r, sides = 0)``` | Make a circle adjusted to print the correct size |
 | ```poly_cylinder(r, h, center = false, sides = 0)``` | Make a cylinder adjusted to print the correct size |
-| ```poly_ring(or, ir)``` | Make a 2D ring adjusted to have the correct internal radius |
+| ```poly_ring(or, ir, sides = 0)``` | Make a 2D ring adjusted to have the correct internal radius |
 | ```poly_tube(or, ir, h, center = false)``` | Make a tube adjusted to have the correct internal radius |
 | ```slot(r, l, h = 100)``` | Make a horizontal slot suitable for CNC routing, set h = 0 for 2D version |
 

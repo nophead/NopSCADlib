@@ -36,29 +36,29 @@ module poly_cylinder(r, h, center = false, sides = 0) //! Make a cylinder adjust
     extrude_if(h, center)
         poly_circle(r, sides);
 
-module poly_ring(or, ir) { //! Make a 2D ring adjusted to have the correct internal radius
-    cir = corrected_radius(ir);
+module poly_ring(or, ir, sides = 0) { //! Make a 2D ring adjusted to have the correct internal radius
+    cir = corrected_radius(ir, sides);
     filaments = (or - cir) / extrusion_width;
     if(filaments > 3 + eps)
         difference() {
             circle(or);
 
-            poly_circle(ir);
+            poly_circle(ir, sides);
         }
     else
         if(filaments >= 2)
             difference() {
                 offset(or - cir)
-                    poly_circle(ir);
+                    poly_circle(ir, sides);
 
-                poly_circle(ir);
+                poly_circle(ir, sides);
             }
             else
                 difference() {
-                    poly_circle(or);
+                    poly_circle(or, sides);
 
                     offset(-squeezed_wall)
-                        poly_circle(or);
+                        poly_circle(or, sides);
                 }
 }
 
