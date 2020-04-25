@@ -361,8 +361,8 @@ WD2002SJ = ["WD2002SJ", "WD2002SJ Buck Boost DC-DC converter", 78, 47, 1.6, 0, 3
       [ -25.5, 3.1,   0, "trimpot10", true],
       [  30.5, 3.1,   0, "trimpot10", true],
       [  41.5, 3.1,   0, "trimpot10", true],
-      [ -10.5, 1.5,   0, "smd_led", LED0805, "blue"],
-      [  16,   1.8,   0, "smd_led", LED0805, "red"],
+      [ -10.4, 1.4,   0, "smd_led", LED0805, "blue"],
+      [  15.7, 2.7,   0, "smd_led", LED0805, "red"],
     ],
     []];
 
