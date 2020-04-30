@@ -867,51 +867,64 @@ module trimpot10(vertical, cutout = false) { //! Draw a ten turn trimpot
              }
 }
 
+module block(size, colour, makes_cutout, cutouts) //! Draw a coloured cube to represent a random PCB component
+    if(cutouts) {
+        if(makes_cutout)
+             translate([-50, 0, size.z / 2 - panel_clearance])
+                cube([100, size.y + 2 * panel_clearance, size.z + 2 * panel_clearance], center = true);
+    }
+    else
+        color(colour)
+            translate_z(size.z / 2)
+                cube(size, center = true);
+
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
     function show(comp, part) = (comp[3] == part || comp[3] == str("-",part)) && (!cutouts || angle == undef || angle == comp.z);
     function param(n, default = 0) = len(comp) > n ? comp[n] : default;
     rotate(comp.z) {
-        if(show(comp, "2p54header")) pin_header(2p54header, comp[4], comp[5], param(6), cutouts, colour = param(7, undef));
-        if(show(comp, "2p54boxhdr")) box_header(2p54header, comp[4], comp[5], param(6), cutouts);
-        if(show(comp, "2p54socket")) pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7), param(8, false), cutouts, param(9, undef));
-        if(show(comp, "chip")) chip(comp[4], comp[5], comp[6], param(7, grey30), cutouts);
-        if(show(comp, "rj45")) rj45(cutouts);
-        if(show(comp, "usb_A")) usb_Ax1(cutouts);
-        if(show(comp, "usb_Ax2")) usb_Ax2(cutouts);
-        if(show(comp, "usb_uA")) usb_uA(cutouts);
-        if(show(comp, "usb_B")) usb_B(cutouts);
-        if(show(comp, "buzzer")) buzzer(param(4, 9), param(5, 12), param(6, grey20));
-        if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
-        if(show(comp, "jack")) jack(cutouts);
-        if(show(comp, "barrel_jack")) barrel_jack(cutouts);
-        if(show(comp, "hdmi")) hdmi(hdmi_full, cutouts);
-        if(show(comp, "mini_hdmi")) hdmi(hdmi_mini, cutouts);
-        if(show(comp, "flex")) flex(cutouts);
-        if(show(comp, "flat_flex")) flat_flex(cutouts);
-        if(show(comp, "D_plug")) if(!cutouts) translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
-        if(show(comp, "molex_hdr")) if(!cutouts) molex_254(comp[4]);
-        if(show(comp, "jst_xh")) if(!cutouts) jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
-        if(show(comp, "term254")) if(!cutouts) green_terminal(gt_2p54,comp[4], comp[5], param(6,"lime"));
-        if(show(comp, "gterm")) if(!cutouts) green_terminal(comp[4], comp[5], comp[6], param(7,"lime"));
-        if(show(comp, "gterm35")) if(!cutouts) green_terminal(gt_3p5, comp[4], comp[5], param(6,"lime"));
-        if(show(comp, "gterm508")) if(!cutouts) green_terminal(gt_5p08, comp[4], comp[5], param(6,"lime"));
-        if(show(comp, "gterm635")) if(!cutouts) green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
-        if(show(comp, "term35")) if(!cutouts) terminal_35(comp[4], param(5,"blue"));
-        if(show(comp, "transition")) if(!cutouts) idc_transition(2p54header, comp[4], comp[5]);
-        if(show(comp, "block"))
-            color(comp[7]) if(!cutouts) translate_z(comp[6] / 2) cube([comp[4], comp[5], comp[6]], center = true);
-                           else if(comp[8]) translate([-50, 0, comp[6] / 2 - panel_clearance]) cube([100, comp[5] + 2 * panel_clearance, comp[6] + 2 * panel_clearance], center = true);
-        if(show(comp, "button_6mm")) square_button(button_6mm);
-        if(show(comp, "microswitch")) translate_z(microswitch_thickness(comp[4])/2) microswitch(comp[4]);
-        if(show(comp, "pcb")) if(!cutouts) translate_z(comp[4]) pcb(comp[5]);
-        if(show(comp, "standoff")) if(!cutouts) standoff(comp[4], comp[5], comp[6], comp[7]);
-        if(show(comp, "uSD")) uSD(comp[4], cutouts);
-        if(show(comp, "trimpot10")) trimpot10(param(4, false), cutouts);
-        if(show(comp, "led")) led(comp[4], comp[5], 2.6);
-        if(show(comp, "pdip")) pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
-        if(show(comp, "ax_res")) ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
+        // Components that have a cutout parameter go in this section
+        if(show(comp, "2p54header"))    pin_header(2p54header, comp[4], comp[5], param(6), false, cutouts, colour = param(7, undef));
+        if(show(comp, "2p54boxhdr"))    box_header(2p54header, comp[4], comp[5], param(6), cutouts);
+        if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7), param(8, false), cutouts, param(9, undef));
+        if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey30), cutouts);
+        if(show(comp, "rj45"))          rj45(cutouts);
+        if(show(comp, "usb_A"))         usb_Ax1(cutouts);
+        if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
+        if(show(comp, "usb_uA"))        usb_uA(cutouts);
+        if(show(comp, "usb_B"))         usb_B(cutouts);
+        if(show(comp, "jack"))          jack(cutouts);
+        if(show(comp, "barrel_jack"))   barrel_jack(cutouts);
+        if(show(comp, "hdmi"))          hdmi(hdmi_full, cutouts);
+        if(show(comp, "mini_hdmi"))     hdmi(hdmi_mini, cutouts);
+        if(show(comp, "flex"))          flex(cutouts);
+        if(show(comp, "flat_flex"))     flat_flex(cutouts);
+        if(show(comp, "uSD"))           uSD(comp[4], cutouts);
+        if(show(comp, "trimpot10"))     trimpot10(param(4, false), cutouts);
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
-        if(show(comp, "smd_led")) smd_led(comp[4], comp[5], cutouts);
+        if(show(comp, "smd_led"))       smd_led(comp[4], comp[5], cutouts);
+        if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8));
+        if(!cutouts) {
+            // Components that don't have a cutout parameter go in this section
+            if(show(comp, "button_6mm"))    square_button(button_6mm);
+            if(show(comp, "microswitch"))   translate_z(microswitch_thickness(comp[4])/2) microswitch(comp[4]);
+            if(show(comp, "pcb"))           translate_z(comp[4]) pcb(comp[5]);
+            if(show(comp, "standoff"))      standoff(comp[4], comp[5], comp[6], comp[7]);
+            if(show(comp, "term254"))       green_terminal(gt_2p54,comp[4], comp[5], param(6,"lime"));
+            if(show(comp, "gterm"))         green_terminal(comp[4], comp[5], comp[6], param(7,"lime"));
+            if(show(comp, "gterm35"))       green_terminal(gt_3p5, comp[4], comp[5], param(6,"lime"));
+            if(show(comp, "gterm508"))      green_terminal(gt_5p08, comp[4], comp[5], param(6,"lime"));
+            if(show(comp, "gterm635"))      green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
+            if(show(comp, "term35"))        terminal_35(comp[4], param(5,"blue"));
+            if(show(comp, "transition"))    idc_transition(2p54header, comp[4], comp[5]);
+            if(show(comp, "led"))           led(comp[4], comp[5], 2.6);
+            if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
+            if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
+            if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
+            if(show(comp, "molex_hdr"))     molex_254(comp[4]);
+            if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
+            if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
+            if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey20));
+        }
     }
 }
 

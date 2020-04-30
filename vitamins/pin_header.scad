@@ -52,7 +52,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
 
     if(cutout)
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
-    else
+    else {
         vitamin(str("pin_header(", type[0], ", ", cols, ", ", rows,
                     arg(smt, false, "smt"), arg(right_angle, false, "right_angle"), "): Pin header ", cols, " x ", rows, right_angle ? " right_angle" : ""));
 
@@ -91,6 +91,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
                                         square([pitch - chamfer, pitch + eps], center = true);
                                     }
         }
+    }
 }
 
 module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! Draw box header
@@ -102,7 +103,7 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
 
     if(cutout)
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
-    else
+    else {
         vitamin(str("box_header(", type[0], ", ", cols, ", ", rows, arg(smt, false, "smt"), "): Box header ", cols, " x ", rows));
 
         translate_z(smt ? 3.5 - h : 0) {
@@ -125,6 +126,7 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
                     }
             }
         }
+    }
 }
 
 module idc_transition(type, cols = 5, skip = [], cutout = false) { //! Draw IDC transition header
