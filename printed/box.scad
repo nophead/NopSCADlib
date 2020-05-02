@@ -52,6 +52,9 @@ function box_width(type)     = type[6]; //! Internal width
 function box_depth(type)     = type[7]; //! Internal depth
 function box_height(type)    = type[8]; //! Internal height
 
+function box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false) = //! Construct a property list for a box.
+ concat([screw, wall, sheets, top_sheet, base_sheet, feet], size);
+
 function box_bezel_clearance(type) = bezel_clearance;
 
 function box_corner_gap(type) = 3; //! Gap between box_sheets at the corners to connect inside and outside profiles

@@ -24,8 +24,10 @@
 include <../core.scad>
 use <../vitamins/insert.scad>
 
-foot        = [25, 12, 3, 2, M4_cap_screw, 10];
-insert_foot = [20, 10, 0, 2, M3_cap_screw, 10];
+function Foot(d, h, t, r, screw, slant = 10) = [d, h, t, r, screw, slant]; //! Construct a foot property list
+
+foot        = Foot(25, 12, 3, 2, M4_cap_screw);
+insert_foot = Foot(20, 10, 0, 2, M3_cap_screw);
 
 function insert_foot() = insert_foot; //! Default foot with insert
 

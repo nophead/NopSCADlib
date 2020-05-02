@@ -3863,6 +3863,7 @@ Normally the side sheets are the same type but they can be overridden individual
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false)``` | Construct a property list for a box. |
 | ```box_bezel_height(type, bottom)``` | Bezel height for top or bottom |
 | ```box_corner_gap(type)``` | Gap between box_sheets at the corners to connect inside and outside profiles |
 | ```box_inset(type)``` | How much the bezel intrudes on the specified width and length, away from the corners |
@@ -3974,6 +3975,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true)``` | Construct the property list for a butt_box |
 | ```bbox_area(type)``` | Internal surdface area in m^2 |
 | ```bbox_volume(type)``` | Internal volume in litres |
 
@@ -4441,6 +4443,11 @@ This allows the hinges and one set of screws to belong to one assembly and the o
 | ```hinge_thickness(type)``` | Thickness of the leaves |
 | ```hinge_width(type)``` | Width |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```flat_hinge(name, size, pin_d, knuckle_d, knuckles, screw, screws, clearance, margin)``` | Construct the property list for a flat hinge. |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
@@ -4502,6 +4509,7 @@ inserts don't grip well in rubber.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```Foot(d, h, t, r, screw, slant = 10)``` | Construct a foot property list |
 | ```insert_foot()``` | Default foot with insert |
 
 ### Modules
@@ -4672,6 +4680,7 @@ It can also have printed feet on the base with the screws doubling up to hold th
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```pbox(name, wall, top_t, base_t, radius, size, foot = false, screw = false, ridges = [0, 0])``` | Construct a printed box property list |
 | ```pbox_inclusion(type)``` | How far the ledge for the base extends inwards |
 | ```pbox_insert(type)``` | The insert for the base screws |
 | ```pbox_screw(type)``` | Foot screw if got feet else base_screw |
@@ -4999,6 +5008,7 @@ be fully customised by passing a list of properties.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```strap(width = 18, thickness = 2, screw = M3_pan_screw, panel_thickness = 3, extension = 25)``` | Construct a property list for a strap |
 | ```strap_end_width(type = strap)``` | Width of the ends |
 | ```strap_height(type)``` | Height of the ends |
 | ```strap_insert(type)``` | The insert type |

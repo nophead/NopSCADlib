@@ -42,6 +42,9 @@ function hinge_screws(type)      = type[8]; //! How many screws
 function hinge_clearance(type)   = type[9]; //! Clearance between knuckles
 function hinge_margin(type)      = type[10]; //! How far to keep the screws from the knuckes
 
+function flat_hinge(name, size, pin_d, knuckle_d, knuckles, screw, screws, clearance, margin) = //! Construct the property list for a flat hinge.
+ [name, size.x, size.y, size.z, pin_d, knuckle_d, knuckles, screw, screws, clearance, margin];
+
 function hinge_radius(type)      = washer_radius(screw_washer(hinge_screw(type))) + 1;
 
 module hinge_screw_positions(type) { //! Place children at the screw positions

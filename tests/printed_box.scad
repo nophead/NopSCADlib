@@ -21,25 +21,25 @@ include <../core.scad>
 use <../printed/foot.scad>
 use <../printed/printed_box.scad>
 
-foot = [13, 5, 2, 1, M3_pan_screw, 10];
+foot = Foot(d = 13, h = 5, t = 2, r = 1, screw = M3_pan_screw);
 module foot_stl() foot(foot);
 
 wall = 2;
 top_thickness = 2;
 base_thickness = 2;
-case_inner_rad = 8;
+inner_rad = 8;
 
 width = 80;
 depth = 45;
 height = 40;
 
-box1 = ["box1",  wall, top_thickness, base_thickness, false, M2_cap_screw, case_inner_rad, [8, 1], width,  depth, height];
-box2 = ["smooth_box", wall, top_thickness, base_thickness, foot,  false,        case_inner_rad, [0, 0], width,  depth, height];
+box1 = pbox(name = "box1",       wall = wall, top_t = top_thickness, base_t = base_thickness, radius = inner_rad, size = [width, depth, height], screw = M2_cap_screw, ridges = [8, 1]);
+box2 = pbox(name = "smooth_box", wall = wall, top_t = top_thickness, base_t = base_thickness, radius = inner_rad, size = [width, depth, height], foot = foot);
 
 module box1_feet_positions() {
     clearance = 2;
     foot_r = foot_diameter(foot) / 2;
-    x_inset = case_inner_rad + foot_r - pbox_ridges(box1).y;
+    x_inset = inner_rad + foot_r - pbox_ridges(box1).y;
     z_inset = foot_r + clearance;
     h = height + base_thickness;
 

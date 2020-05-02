@@ -30,6 +30,9 @@ include <../core.scad>
 use <../vitamins/insert.scad>
 use <foot.scad>
 
+function pbox(name, wall, top_t, base_t, radius, size, foot = false, screw = false, ridges = [0, 0]) //! Construct a printed box property list
+    = concat([name, wall, top_t, base_t, foot, screw, radius, ridges], size);
+
 function pbox_name(type)       = type[0]; //! Name to allow more than one box in a project
 function pbox_wall(type)       = type[1]; //! Wall thickness
 function pbox_top(type)        = type[2]; //! Top thickness

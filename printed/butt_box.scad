@@ -50,6 +50,9 @@ function bbox_name(type)       = type[8] ? type[8] : "bbox"; //! Optional name i
 function bbox_skip_blocks(type)= type[9] ? type[9] : [];  //! List of fixing blocks to skip, used to allow a hinged panel for example
 function star_washers(type)    = type[10] ? type[10] : is_undef(type[10]); //! Set to false to remove star washers.
 
+function bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true) = //! Construct the property list for a butt_box
+ [ screw, sheets, base_sheet, top_sheet, span, size.x, size.y, size.z, name, skip_blocks, star_washers ];
+
 function bbox_volume(type) = bbox_width(type) * bbox_depth(type) * bbox_height(type) / 1000000; //! Internal volume in litres
 function bbox_area(type) = let(w =  bbox_width(type), d = bbox_depth(type), h = bbox_height(type)) //! Internal surdface area in m^2
     2 * (w * d + w * h + d * h) / 1000000;

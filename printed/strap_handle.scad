@@ -24,8 +24,7 @@
 include <../core.scad>
 use <../vitamins/insert.scad>
 
-strap = [18, 2, M3_pan_screw, 3, 25];
-function strap() = strap;
+strap = strap();
 
 wall = 2;
 clearance = 0.5;
@@ -39,6 +38,10 @@ function strap_thickness(type = strap) = type[1]; //! Thickness of strap
 function strap_screw(type = strap)     = type[2]; //! Screw type
 function strap_panel(type = strap)     = type[3]; //! Panel thickness
 function strap_extension(type = strap) = type[4]; //! How much length of the strap that can pull out
+
+
+function strap(width = 18, thickness = 2, screw = M3_pan_screw, panel_thickness = 3, extension = 25) = //! Construct a property list for a strap
+ [ width, thickness, screw, panel_thickness, extension ];
 
 function strap_insert(type) = screw_insert(strap_screw(type)); //! The insert type
 function strap_key(type) = strap_panel(type) - panel_clearance;
