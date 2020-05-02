@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 include <../vitamins/panel_meters.scad>
 
 module panel_meters()
-    layout([for(p = panel_meters) pmeter_size(p).x], 20)
+    layout([for(p = panel_meters) pmeter_bezel(p).x], 10)
         panel_meter(panel_meters[$i]);
 
 if($preview)
