@@ -28,20 +28,41 @@
 include <../utils/core/core.scad>
 
 use <../utils/dogbones.scad>
+use <../utils/rounded_cylinder.scad>
 use <pcb.scad>
 
-function pmeter_size(type)      = type[2]; //! Body size including bezel height
-function pmeter_bezel(type)     = type[3]; //! Bezel size
-function pmeter_bezel_r(type)   = type[4]; //! Bezel radius
-function pmeter_bevel(type)     = type[5]; //! Bezel bevel inset and start height
-function pmeter_aperture(type)  = type[6]; //! Aperture length, width and bevel
-function pmeter_tab(type)       = type[7]; //! Tab size
-function pmeter_tab_z(type)     = type[8]; //! Tab vertical position
-function pmeter_thickness(type) = type[9]; //! Wall thickness if not closed
-function pmeter_pcb(type)       = type[10]; //! Optional PCB for open types
-function pmeter_pcb_z(type)     = type[11]; //! Distance of PCB from the back
+function pmeter_size(type)        = type[2];  //! Body size including bezel height
+function pmeter_bezel(type)       = type[3];  //! Bezel size
+function pmeter_bezel_r(type)     = type[4];  //! Bezel radius
+function pmeter_bevel(type)       = type[5];  //! Bezel bevel inset and start height or a radius
+function pmeter_aperture(type)    = type[6];  //! Aperture length, width and bevel
+function pmeter_tab(type)         = type[7];  //! Tab size
+function pmeter_tab_z(type)       = type[8];  //! Tab vertical position
+function pmeter_thickness(type)   = type[9];  //! Wall thickness if not closed
+function pmeter_inner_ap(type)    = type[10]; //! Inner aperture
+function pmeter_inner_ap_o(type)  = type[11]; //! Inner aperture offset
+function pmeter_pcb(type)         = type[12]; //! Optional PCB for open types
+function pmeter_pcb_z(type)       = type[13]; //! Distance of PCB from the back
+function pmeter_pcb_h(type)       = type[14]; //! Component height from the front
+function pmeter_buttons(type)     = type[15]; //! List of buttons
+
+function pmeter_button_pos(type)    = type[0]; //! Button position
+function pmeter_button_size(type)   = type[1]; //! Button size
+function pmeter_button_r(type)      = type[2]; //! Button radius
+function pmeter_button_colour(type) = type[3]; //! Button colour
 
 function pmeter_depth(type) = pmeter_size(type).z - pmeter_bezel(type).z; //! Depth below bezel
+
+module panel_meter_button(type) { //! Draw panel meter button
+    size = pmeter_button_size(type);
+    r = pmeter_button_r(type);
+    color(pmeter_button_colour(type))
+        translate(pmeter_button_pos(type))
+            if(size.x)
+                rounded_rectangle(pmeter_button_size(type), r, center = false);
+            else
+                cylinder(r = r, h = size.z);
+}
 
 module panel_meter(type) { //! Draw panel mounted LCD meter module
     vitamin(str("panel_meter(", type[0], "): ", type[1]));
@@ -51,29 +72,52 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
     t = pmeter_thickness(type);
     r = pmeter_bezel_r(type);
     h = size.z - bezel.z;
-    app = pmeter_aperture(type);
+    ap = pmeter_aperture(type);
     tab = pmeter_tab(type);
     tab_z = pmeter_tab_z(type);
     pcb = pmeter_pcb(type);
+    ap2 = pmeter_inner_ap(type);
+    pcb_h = pmeter_pcb_h(type) - bezel.z;
+    buttons = pmeter_buttons(type);
 
     color("#94A7AB")
-        cube([app.x, app.y, 3 * eps], center = true);
+        cube([ap.x, ap.y, 3 * eps], center = true);
+
+    module corner(x, y)
+        translate([x * (bezel.x / 2 - bevel), y * (bezel.y / 2 - bevel)])
+            rounded_cylinder(r = r, r2 = bevel, h = bezel.z);
 
     color(grey30) union() {
+        //
+        // Bezel and aperture
+        //
         difference() {
-            hull() {
-                rounded_rectangle([bezel.x - 2 * bevel.x, bezel.y - 2 * bevel.x, bezel.z], r - bevel.x, center = false);
-                rounded_rectangle([bezel.x, bezel.y, bevel[1]],r, center = false);
-            }
-            hull() {
-                translate_z(bezel.z + eps) {
-                    cube([app.x + app.z, app.y + app.z, eps], center = true);
-
-                    cube([app.x, app.y, bezel.z * 2], center = true);
+            if(is_list(bevel))
+                hull() {
+                    rounded_rectangle([bezel.x - 2 * bevel.x, bezel.y - 2 * bevel.x, bezel.z], r - bevel.x, center = false);
+                    rounded_rectangle([bezel.x, bezel.y, bevel[1]], r, center = false);
                 }
+            else
+                hull() {
+                    corner(-1, -1);
+                    corner(-1,  1);
+                    corner( 1, -1);
+                    corner( 1,  1);
+                }
+
+            hull() {
+                r = max(0, -ap.z);
+                if(ap.z > 0)
+                    translate_z(bezel.z + eps)
+                        cube([ap.x + ap.z, ap.y + ap.z, eps], center = true);
+
+                translate_z(bezel.z + eps)
+                    rounded_rectangle([ap.x, ap.y, bezel.z * 2], r, center = true);
             }
         }
-
+        //
+        // Body
+        //
         translate_z(-h)
             linear_extrude(h)
                 difference() {
@@ -82,7 +126,9 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
                     if(t)
                         square([size.x - 2 * t, size.y - 2 * t], center = true);
                 }
-
+        //
+        // tabs
+        //
         if(tab)
             for(end = [-1, 1])
                 translate([end * (size.x / 2 + tab.x / 2), 0, -size.z + tab_z])
@@ -91,10 +137,27 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
                             cube([tab.x, tab.y, tab.z], center = true);
 
     }
+    if(ap2)
+        color("grey")
+            linear_extrude(ap2.z)
+                difference() {
+                    square([ap.x, ap.y], center = true);
+
+                    translate(pmeter_inner_ap_o(type))
+                        square([ap2.x, ap2.y], center = true);
+                }
     if(pcb)
         vflip()
             translate_z(h - pcb_thickness(pcb) - pmeter_pcb_z(type))
                 pcb(pcb);
+
+    if(pcb_h > 0)
+        %translate_z(-pcb_h / 2 - eps)
+            cube([size.x - 2 * t - eps, size.y - 2 * t - eps, pcb_h], center = true);
+
+    if(buttons)
+        for(b = buttons)
+            panel_meter_button(b);
 }
 
 module panel_meter_cutout(type, h = 0) { //! Make panel cutout

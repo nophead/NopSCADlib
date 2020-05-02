@@ -1970,10 +1970,18 @@ Notes on the DSN_VC288:
 | Function | Description |
 |:--- |:--- |
 | ```pmeter_aperture(type)``` | Aperture length, width and bevel |
-| ```pmeter_bevel(type)``` | Bezel bevel inset and start height |
+| ```pmeter_bevel(type)``` | Bezel bevel inset and start height or a radius |
 | ```pmeter_bezel(type)``` | Bezel size |
 | ```pmeter_bezel_r(type)``` | Bezel radius |
+| ```pmeter_button_colour(type)``` | Button colour |
+| ```pmeter_button_pos(type)``` | Button position |
+| ```pmeter_button_r(type)``` | Button radius |
+| ```pmeter_button_size(type)``` | Button size |
+| ```pmeter_buttons(type)``` | List of buttons |
+| ```pmeter_inner_ap(type)``` | Inner aperture |
+| ```pmeter_inner_ap_o(type)``` | Inner aperture offset |
 | ```pmeter_pcb(type)``` | Optional PCB for open types |
+| ```pmeter_pcb_h(type)``` | Component height from the front |
 | ```pmeter_pcb_z(type)``` | Distance of PCB from the back |
 | ```pmeter_size(type)``` | Body size including bezel height |
 | ```pmeter_tab(type)``` | Tab size |
@@ -1989,6 +1997,7 @@ Notes on the DSN_VC288:
 | Module | Description |
 |:--- |:--- |
 | ```panel_meter(type)``` | Draw panel mounted LCD meter module |
+| ```panel_meter_button(type)``` | Draw panel meter button |
 | ```panel_meter_cutout(type, h = 0)``` | Make panel cutout |
 
 ![panel_meters](tests/png/panel_meters.png)
@@ -1999,6 +2008,7 @@ Notes on the DSN_VC288:
 |   1 | ```panel_meter(DSN_VC288)``` |  DSN-VC288 DC 100V 10A Voltmeter ammeter |
 |   1 | ```panel_meter(PZEM001)``` |  Peacefair PZEM-001 AC digital multi-function meter |
 |   1 | ```panel_meter(PZEM021)``` |  Peacefair PZEM-021 AC digital multi-function meter |
+|   1 | ```panel_meter(DSP5005)``` |  Ruideng DSP5005 Power supply module |
 
 
 <a href="#top">Top</a>
