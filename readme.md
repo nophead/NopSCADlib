@@ -2094,7 +2094,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```box_header(2p54header, 4, 2, smt = 0)``` |  Box header 4 x 2 |
+|   1 | ```box_header(2p54header, 4, 2)``` |  Box header 4 x 2 |
 |   1 | ```d_plug(DCONN9, pcb = true)``` |  D-type 9 way PCB mount plug |
 |   1 | ```dil_socket(12, 15.24)``` |  DIL socket 24 x 0.6" |
 |   1 | ```hdmi(hdmi_full)``` |  HDMI socket |
@@ -2107,12 +2107,11 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```microswitch(small_microswitch)``` |  Microswitch DM1-00P-110-3 |
 |   1 | ```hdmi(hdmi_mini)``` |  Mini HDMI socket |
 |   1 | ```molex_254(2)``` |  Molex KK header 2 way |
-|   1 | ```pin_header(2p54header, 4, 1, smt = 0)``` |  Pin header 4 x 1 |
-|   1 | ```pin_header(2p54header, 5, 1, smt = undef)``` |  Pin header 5 x 1 |
-|   1 | ```pin_socket(2p54header, 4, 1, right_angle = undef, height = undef, smt = undef)``` |  Pin socket 4 x 1 |
+|   1 | ```pin_header(2p54header, 4, 1)``` |  Pin header 4 x 1 |
+|   1 | ```pin_header(2p54header, 5, 1)``` |  Pin header 5 x 1 |
+|   1 | ```pin_socket(2p54header, 4, 1)``` |  Pin socket 4 x 1 |
 |   1 | ```pin_socket(2p54header, 6, 1)``` |  Pin socket 6 x 1 |
-|   1 | ```pin_socket(2p54header, 8, 1)``` |  Pin socket 8 x 1 |
-|   1 | ```pin_socket(2p54header, 8, 1, right_angle = undef, height = undef, smt = undef)``` |  Pin socket 8 x 1 |
+|   2 | ```pin_socket(2p54header, 8, 1)``` |  Pin socket 8 x 1 |
 |   1 | ```ax_res(res1_2, 10, tol = 10)``` |  Resistor 10 Ohms 10% 0.5W |
 |   1 | ```ax_res(res1_4, 100, tol = 2)``` |  Resistor 100 Ohms 2% 0.25W |
 |   1 | ```ax_res(res1_8, 1000)``` |  Resistor 1000 Ohms 5% 0.125W |
