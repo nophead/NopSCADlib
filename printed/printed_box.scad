@@ -78,7 +78,7 @@ function pbox_screw_inset(type) = //! How far the base screws are inset
         R =  pbox_radius(type)
     ) max(r, R - (R - r) / sqrt(2));
 
-module pbox_screw_positions(type) {
+module pbox_screw_positions(type) { //! Place children at base screw positions
     foot = pbox_foot(type);
     inset = pbox_screw_inset(type);
     for(x = [-1, 1], y = [-1, 1])
@@ -127,6 +127,9 @@ module pbox_inner_shape(type) {
     rounded_square([w, d], rad, center = true);
 }
 
+module pbox_outer_shape(type) //! 2D outer shape of the box
+    offset(pbox_wall(type) / 2) pbox_mid_shape(type);
+
 module pbox_base(type) { //! Generate the STL for the base
     stl(str(pbox_name(type),"_base"));
     t = pbox_base(type);
@@ -161,7 +164,7 @@ module pbox(type) { //! Generate the STL for the main case
     difference() {
         union() {
             linear_extrude(total_height)
-                offset(wall / 2) pbox_mid_shape(type);
+                pbox_outer_shape(type);
 
             if($children > 2)
                 children(2);

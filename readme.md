@@ -4705,6 +4705,8 @@ It can also have printed feet on the base with the screws doubling up to hold th
 | ```pbox_base(type)``` | Generate the STL for the base |
 | ```pbox_base_screws(type, thickness = 0)``` | Place the screws and feet |
 | ```pbox_inserts(type)``` | Place the inserts for the base screws |
+| ```pbox_outer_shape(type)``` | 2D outer shape of the box |
+| ```pbox_screw_positions(type)``` | Place children at base screw positions |
 
 ![printed_box](tests/png/printed_box.png)
 
