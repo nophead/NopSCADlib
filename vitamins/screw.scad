@@ -259,22 +259,28 @@ module screw_countersink(type) { //! Countersink shape
 
 module screw_and_washer(type, length, star = false, penny = false) { //! Screw with a washer which can be standard or penny and an optional star washer on top
     washer = screw_washer(type);
+    head_type = screw_head_type(type);
 
-    translate_z(exploded() * 6)
-        if(penny)
-            penny_washer(washer);
-        else
-            washer(washer);
+    if(head_type != hs_cs && head_type != hs_cs_cap) {
+        translate_z(exploded() * 6)
+            if(penny)
+                penny_washer(washer);
+            else
+                washer(washer);
 
-    translate_z(washer_thickness(washer)) {
-        if(star) {
-            translate_z(exploded() * 8)
-                star_washer(washer);
+        translate_z(washer_thickness(washer)) {
+            if(star) {
+                translate_z(exploded() * 8)
+                    star_washer(washer);
 
-            translate_z(washer_thickness(washer))
+                translate_z(washer_thickness(washer))
+                    screw(type, length);
+            }
+            else
                 screw(type, length);
         }
-        else
-            screw(type, length);
     }
+    else
+        translate_z(eps)
+            screw(type, length);
 }
