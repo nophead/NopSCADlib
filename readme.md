@@ -1433,7 +1433,7 @@ The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to 
 | ```meter_lug_size(type)``` | Lug length and width |
 | ```meter_offset(type)``` | Display position, 0 = center, +1 = top |
 | ```meter_pcb_size(type)``` | PCB size excluding lugs |
-| ```meter_shunt(type)``` | Ampmeter shunt wire |
+| ```meter_shunt(type)``` | Ammeter shunt wire |
 | ```meter_size(type)``` | Size of display |
 
 ### Functions

@@ -34,7 +34,7 @@ function meter_lug_size(type)    = type[4];     //! Lug length and width
 function meter_lug_offset(type)  = type[5];     //! Lug position, 0 = center, +1 = top
 function meter_hole_pitch(type)  = type[6];     //! Lug hole pitch
 function meter_hole_radius(type) = type[7];     //! Lug hole radius
-function meter_shunt(type)       = type[8];     //! Ampmeter shunt wire
+function meter_shunt(type)       = type[8];     //! Ammeter shunt wire
 
 function meter_pos(type) = (meter_pcb_size(type).y - meter_size(type).y) * meter_offset(type) / 2;
 function meter_lug_pos(type) = (meter_pcb_size(type).y - meter_lug_size(type).y) * meter_lug_offset(type) / 2;
