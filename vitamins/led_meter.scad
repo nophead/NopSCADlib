@@ -44,6 +44,8 @@ module meter_hole_positions(type) //! Position children over the holes
         translate([side * meter_hole_pitch(type) / 2, meter_lug_pos(type)])
             children();
 
+function meter_shunt_y(type) = meter_pos(type) - meter_pcb_size(type).y / 2; //! Shunt y coordinate
+
 module meter(type, colour = "red", value = "888", display_colour = false) //! Draw a meter with optional colour and display value
 {
     vitamin(str("meter(", type[0], arg(colour, "red", "colour"), "): LED ", meter_shunt(type) ? "am" : "volt", "meter ", colour));
@@ -80,7 +82,7 @@ module meter(type, colour = "red", value = "888", display_colour = false) //! Dr
 
     shunt = meter_shunt(type);
     if(shunt)
-        translate([0, -meter_pcb_size(type).y / 2 + meter_pos(type), size.z])
+        translate([0, meter_shunt_y(type), size.z])
             vflip()
                 color("#b87333")
                     wire_link(shunt.y, shunt.x, shunt.z, tail = 2);

@@ -1443,6 +1443,7 @@ The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to 
 | ```meter_bezel_rad(type)``` | Printed bezel corner radius |
 | ```meter_bezel_wall(type)``` | Printed bezel wall thickness |
 | ```meter_bezel_width(type)``` | Printed bezel width |
+| ```meter_shunt_y(type)``` | Shunt y coordinate |
 
 ### Modules
 | Module | Description |
