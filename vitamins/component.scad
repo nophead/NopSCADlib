@@ -28,6 +28,7 @@ include <../core.scad>
 include <tubings.scad>
 include <spades.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/dogbones.scad>
 
 function resistor_length(type)        = type[2]; //! Body length
 function resistor_diameter(type)      = type[3]; //! Body diameter
@@ -446,4 +447,76 @@ module thermal_cutout(type) { //! Draw specified thermal cutout
     translate_z(t)
         thermal_cutout_hole_positions(type)
             children();
+}
+
+function fack2spm_bezel_size() = [19.2, 35.5, 2.6, 2]; //! FACK2SPM Bezel dimensions
+
+module fack2spm_hole_positions() //! Place children at the FACK2SPM mounting hole positions
+    for(end = [-1, 1])
+        translate([0, end * 28.96 / 2])
+            children();
+
+function fack2spm_screw() = M3_dome_screw; //! Screw type for FACK2SPM
+
+module fack2spm_holes(h = 0) { //! Cut the holes for a FACK2SPM
+    fack2spm_hole_positions()
+        drill(screw_clearance_radius(fack2spm_screw()), h);
+
+    dogbone_rectangle([17.15, 22.86, h]);
+}
+
+module fack2spm() { //! Draw a FACK2SPM Cat5E RJ45 shielded panel mount coupler
+    vitamin("tuk_fack2spm(): TUK FACK2SPM Cat5E RJ45 shielded panel mount coupler");
+
+    bezel = fack2spm_bezel_size();
+    body   = [16.8, 22.8, 9.8];
+    socket = [14.5, 16.1, 29.6];
+    y_offset = -(19.45 - 16.3) / 2;
+    plug = [12, 6.8, 10];
+    plug_y = y_offset - socket.y / 2 + 4 + plug.y / 2;
+    tab1 = [4, 3];
+    tab2 = [6.3, 1.6];
+
+    module socket()
+        translate([0, y_offset])
+            square([socket.x, socket.y], center = true);
+
+    color("silver") {
+        linear_extrude(bezel.z)
+            difference() {
+                rounded_square([bezel.x, bezel.y], bezel[3]);
+
+                fack2spm_hole_positions()
+                    circle(d = 3.15);
+
+                socket();
+            }
+
+        translate_z(bezel.z - body.z)
+            linear_extrude(body.z - eps)
+                difference() {
+                    square([body.x, body.y], center = true);
+
+                    socket();
+                }
+
+        translate_z(bezel.z - socket.z)
+            linear_extrude(socket.z - 0.1)
+                difference() {
+                    offset(-0.1) socket();
+
+                    translate([0, plug_y]) {
+                        square([plug.x, plug.y], center = true);
+
+                        translate([0, -plug.y / 2]) {
+                            square([tab1.x, 2 * tab1.y], center = true);
+
+                            square([tab2.x, 2 * tab2.y], center = true);
+                        }
+                    }
+                }
+
+        translate([0, plug_y, -socket.z / 2])
+            cube([plug.x, plug.y, socket.z - 2 * plug.z], center = true);
+    }
 }

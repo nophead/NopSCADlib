@@ -523,6 +523,8 @@ Various electronic components used in hot ends and heated beds.
 | Function | Description |
 |:--- |:--- |
 | ```TO220_thickness()``` | Thickness of the tab of a TO220 |
+| ```fack2spm_bezel_size()``` | FACK2SPM Bezel dimensions |
+| ```fack2spm_screw()``` | Screw type for FACK2SPM |
 
 ### Modules
 | Module | Description |
@@ -531,6 +533,9 @@ Various electronic components used in hot ends and heated beds.
 | ```al_clad_resistor(type, value, leads = true)``` | Draw an aluminium clad resistor |
 | ```al_clad_resistor_hole_positions(type)``` | Position children at the screw holes of an aluminium clad resistor |
 | ```al_clad_resistor_holes(type, h = 100)``` | Drill screw holes for an aluminium clad resistor |
+| ```fack2spm()``` | Draw a FACK2SPM Cat5E RJ45 shielded panel mount coupler |
+| ```fack2spm_hole_positions()``` | Place children at the FACK2SPM mounting hole positions |
+| ```fack2spm_holes(h = 0)``` | Cut the holes for a FACK2SPM |
 | ```panel_USBA()``` | Draw a panel mount USBA connector |
 | ```panel_USBA_hole_positions()``` | Place children at hole positions |
 | ```panel_USBA_holes(h = 100)``` | Make holes for USBA connector |
@@ -555,6 +560,7 @@ Various electronic components used in hot ends and heated beds.
 |   4 | ```screw(M2p5_pan_screw, 16)``` |  Screw M2.5 pan x 16mm |
 |   4 | ```screw(M3_pan_screw, 16)``` |  Screw M3 pan x 16mm |
 |   1 | ```panel_USBA()``` |  Socket USB A panel mount |
+|   1 | ```tuk_fack2spm()``` |  TUK FACK2SPM Cat5E RJ45 shielded panel mount coupler |
 |   1 | ```thermal_cutout(TC)``` |  Thermal cutout TC |
 |   1 | ```resistor(Epcos)``` |  Thermistor Epcos B57560G104F 100K 1% |
 |   1 | ```resistor(EpcosBlue)``` |  Thermistor Epcos B57861S104F40 100K 1% |
