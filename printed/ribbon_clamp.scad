@@ -31,7 +31,7 @@ insert = screw_insert(screw);
 screw_depth = insert_length(insert) + 1;
 
 function ribbon_clamp_hole_pitch(ways) = ribbon_clamp_slot(ways) + 2 * min_wall + 2 * corrected_radius(insert_hole_radius(insert)); //! Hole pitch
-function ribbon_clamp_width() = 2 * (insert_hole_radius(insert) + 2); //! Width
+function ribbon_clamp_width() = 2 * (insert_hole_radius(insert) + wall); //! Width
 function ribbon_clamp_length(ways) = ribbon_clamp_hole_pitch(ways) + ribbon_clamp_width(); //! Length given ways
 function ribbon_clamp_height() = screw_depth + 1; //! Height
 
