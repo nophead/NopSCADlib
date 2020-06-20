@@ -110,12 +110,9 @@ function fixing_block_positions(type) = let(
 
 function side_holes(type) = [for(p = fixing_block_positions(type), q = fixing_block_holes(bbox_screw(type))) p * q];
 
-module drill_holes(type, t)
-    for(list = [corner_holes(type), side_holes(type)], p = list)
-        let(q = t * p)
-            if(abs(transform([0, 0, 0], q).z) < eps)
-                multmatrix(q)
-                    drill(screw_clearance_radius(bbox_screw(type)), 0);
+module bbox_drill_holes(type, t)
+    position_children(concat(corner_holes(type), side_holes(type)), t)
+        drill(screw_clearance_radius(bbox_screw(type)), 0);
 
 module bbox_base_blank(type) { //! 2D template for the base
     dxf(str(bbox_name(type), "_base"));
@@ -123,7 +120,7 @@ module bbox_base_blank(type) { //! 2D template for the base
     difference() {
         sheet_2D(bbox_base_sheet(type), bbox_width(type), bbox_depth(type), 1);
 
-        drill_holes(type, translate(bbox_height(type) / 2));
+        bbox_drill_holes(type, translate(bbox_height(type) / 2));
     }
 }
 
@@ -136,7 +133,7 @@ module bbox_top_blank(type) { //! 2D template for the top
         translate([0, t / 2])
             sheet_2D(bbox_top_sheet(type), bbox_width(type) + 2 * t, bbox_depth(type) + t);
 
-        drill_holes(type, translate(-bbox_height(type) / 2));
+        bbox_drill_holes(type, translate(-bbox_height(type) / 2));
     }
 }
 
@@ -154,7 +151,7 @@ module bbox_left_blank(type, sheet = false) { //! 2D template for the left side
         translate([-t / 2, -bb / 2])
             sheet_2D(subst_sheet(type, sheet), bbox_depth(type) + t, bbox_height(type) + bb);
 
-        drill_holes(type, rotate([0, 90, 90]) * translate([bbox_width(type) / 2, 0]));
+        bbox_drill_holes(type, rotate([0, 90, 90]) * translate([bbox_width(type) / 2, 0]));
     }
 }
 
@@ -168,7 +165,7 @@ module bbox_right_blank(type, sheet = false) { //! 2D template for the right sid
         translate([t / 2, -bb / 2])
             sheet_2D(subst_sheet(type, sheet), bbox_depth(type) + t, bbox_height(type) + bb);
 
-        drill_holes(type, rotate([0, 90, 90]) * translate([-bbox_width(type) / 2, 0]));
+        bbox_drill_holes(type, rotate([0, 90, 90]) * translate([-bbox_width(type) / 2, 0]));
     }
 }
 
@@ -183,7 +180,7 @@ module bbox_front_blank(type, sheet = false, width = 0) { //! 2D template for th
         translate([0, (bt - bb) / 2])
             sheet_2D(subst_sheet(type, sheet), max(bbox_width(type) + 2 * t, width), bbox_height(type) + bb + bt);
 
-        drill_holes(type, rotate([-90, 0, 0]) * translate([0, bbox_depth(type) / 2]));
+        bbox_drill_holes(type, rotate([-90, 0, 0]) * translate([0, bbox_depth(type) / 2]));
     }
 }
 
@@ -197,7 +194,7 @@ module bbox_back_blank(type, sheet = false) { //! 2D template for the back
         translate([0, -bb / 2])
             sheet_2D(subst_sheet(type, sheet), bbox_width(type), bbox_height(type) + bb);
 
-        drill_holes(type, rotate([-90, 0, 0]) * translate([0, -bbox_depth(type) / 2]));
+        bbox_drill_holes(type, rotate([-90, 0, 0]) * translate([0, -bbox_depth(type) / 2]));
     }
 }
 

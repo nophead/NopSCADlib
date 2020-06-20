@@ -5231,6 +5231,11 @@ Maths utilities for manipulating vectors and matrices.
 | ```vec3(v)``` | Return a 3 vector with the first three elements of ```v``` |
 | ```vec4(v)``` | Return a 4 vector with the first three elements of ```v``` |
 
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```position_children(list, t)``` | Position children if they are on the Z = 0 plane when transformed by t |
+
 ![maths](tests/png/maths.png)
 
 

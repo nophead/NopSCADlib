@@ -90,6 +90,14 @@ function euler(R) = let(ay = asin(-R[2][0]), cy = cos(ay)) //! Convert a rotatio
     cy ? [ atan2(R[2][1] / cy, R[2][2] / cy), ay, atan2(R[1][0] / cy, R[0][0] / cy) ]
        : R[2][0] < 0 ? [atan2( R[0][1],  R[0][2]),  180, 0]
                      : [atan2(-R[0][1], -R[0][2]), -180, 0];
+
+module position_children(list, t) //! Position children if they are on the Z = 0 plane when transformed by t
+    for(p = list)
+        let(q = t * p)
+            if(abs(transform([0, 0, 0], q).z) < 0.01)
+                multmatrix(q)
+                    children();
+
 // Matrix inversion: https://www.mathsisfun.com/algebra/matrix-inverse-row-operations-gauss-jordan.html
 
 function augment(m) = let(l = len(m), n = identity(l)) [ //! Augment a matrix by adding an identity matrix to the right
