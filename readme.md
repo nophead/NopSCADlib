@@ -235,7 +235,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey20, tooth_colour = grey50)``` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified |
+| ```belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey(20)``` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified |
 
 ![belts](tests/png/belts.png)
 
@@ -2591,10 +2591,10 @@ Linear rails with carriages.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```carriage(type, rail, end_colour = grey20, wiper_colour = grey20)``` | Draw the specified carriage |
+| ```carriage(type, rail, end_colour = grey(20)``` | Draw the specified carriage |
 | ```carriage_hole_positions(type)``` | Position children over screw holes |
 | ```rail(type, length)``` | Draw the specified rail |
-| ```rail_assembly(type, length, pos, carriage_end_colour = grey20, carriage_wiper_colour = grey20)``` | Rail and carriage assembly |
+| ```rail_assembly(type, length, pos, carriage_end_colour = grey(20)``` | Rail and carriage assembly |
 | ```rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true)``` | Position children over screw holes |
 | ```rail_screws(type, length, thickness, screws = 100)``` | Place screws in the rail |
 
