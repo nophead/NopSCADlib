@@ -31,29 +31,29 @@
 //!
 //! Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
 //
-include <../utils/core/core.scad>
+include <../core.scad>
 use <../vitamins/sheet.scad>
-use <../vitamins/screw.scad>
-use <../vitamins/washer.scad>
 use <../vitamins/insert.scad>
 use <../utils/quadrant.scad>
+use <../utils/round.scad>
 
 bezel_clearance = 0.2;
 sheet_end_clearance = 1;
 sheet_slot_clearance = 0.2;
 
-function box_screw(type)     = type[0]; //! Screw type to be used at the corners
-function box_wall(type)      = type[1]; //! Wall thickness of 3D parts
-function box_sheets(type)    = type[2]; //! Sheet type used for the sides
-function box_top_sheet(type) = type[3]; //! Sheet type for the top
-function box_base_sheet(type)= type[4]; //! Sheet type for the bottom
-function box_feet(type)      = type[5]; //! True to enable feet on the bottom bezel
-function box_width(type)     = type[6]; //! Internal width
-function box_depth(type)     = type[7]; //! Internal depth
-function box_height(type)    = type[8]; //! Internal height
+function box_screw(type)       = type[0]; //! Screw type to be used at the corners
+function box_shelf_screw(type) = type[1]; //! Screw type to hold a shelf
+function box_wall(type)        = type[2]; //! Wall thickness of 3D parts
+function box_sheets(type)      = type[3]; //! Sheet type used for the sides
+function box_top_sheet(type)   = type[4]; //! Sheet type for the top
+function box_base_sheet(type)  = type[5]; //! Sheet type for the bottom
+function box_feet(type)        = type[6]; //! True to enable feet on the bottom bezel
+function box_width(type)       = type[7]; //! Internal width
+function box_depth(type)       = type[8]; //! Internal depth
+function box_height(type)      = type[9]; //! Internal height
 
-function box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false) = //! Construct a property list for a box.
- concat([screw, wall, sheets, top_sheet, base_sheet, feet], size);
+function box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = M3_dome_screw) = //! Construct a property list for a box.
+ concat([screw, shelf_screw, wall, sheets, top_sheet, base_sheet, feet], size);
 
 function box_bezel_clearance(type) = bezel_clearance;
 
@@ -62,6 +62,7 @@ function box_profile_overlap(type) = 3 + sheet_end_clearance / 2;
 
 function box_washer(type) = screw_washer(box_screw(type));
 function box_insert(type) = screw_insert(box_screw(type));
+function box_shelf_insert(type) = screw_insert(box_shelf_screw(type));
 
 function box_hole_inset(type) = washer_radius(box_washer(type)) + 1;
 function box_insert_r(type) = insert_hole_radius(box_insert(type));
@@ -90,23 +91,32 @@ function box_bezel_height(type, bottom) = //! Bezel height for top or bottom
 
 grill_hole = 5;
 grill_gap = 1.9;
-module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling.
+
+function box_grill_hole_r() = grill_hole / 2;
+
+module grill_hole_positions(width, height, r = 1000) {
     nx = floor(width / (grill_hole + grill_gap));
     xpitch = width / nx;
     ny = floor(height / ((grill_hole + grill_gap) * cos(30)));
     ypitch = height / ny;
 
+    for(y = [0 : ny - 1], x = [0 : nx - 1 - (y % 2)]) {
+        $x = -width / 2 + (x + 0.5 + (y % 2) / 2) * xpitch;
+        $y = -height / 2 + (y + 0.5) * ypitch;
+        if(sqrt(sqr($x) + sqr($y)) + grill_hole / 2 <= r)
+            translate([$x, $y])
+                children();
+    }
+}
+
+module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling.
     extrude_if(h)
-        for(y = [0 : ny - 1], x = [0 : nx - 1 - (y % 2)]) {
-            x = -width / 2 + (x + 0.5 + (y % 2) / 2) * xpitch;
-            y = -height / 2 + (y + 0.5) * ypitch;
-            if(sqrt(sqr(x) + sqr(y)) + grill_hole / 2 <= r)
-                translate([x, y])
-                    if(poly)
-                        poly_circle(r = grill_hole / 2);
-                    else
-                        circle(d = grill_hole);
-        }
+        if(poly)
+            grill_hole_positions(width, height, r)
+                poly_circle(r = grill_hole / 2);
+        else
+            grill_hole_positions(width, height, r)
+                circle(d = grill_hole);
 }
 
 module box_corner_profile_2D(type) { //! The 2D shape of the corner profile.
@@ -176,6 +186,15 @@ module box_corner_profile_section(type, section, sections) { //! Generates inter
             translate([box_hole_inset(type), box_hole_inset(type)])
                 insert_hole(box_insert(type), 5);
     }
+}
+
+module box_corner_profile_sections(type, section, sections) { //! Generate four copies of a corner profile section
+    stl("box_corner_profile");
+    offset = box_boss_r(type) + 1;
+    for(i = [0 : 3])
+        rotate(i * 90)
+            translate([offset, offset])
+                box_corner_profile_section(type, section, sections);
 }
 
 module box_corner_quadrants(type, width, depth)
@@ -261,10 +280,11 @@ dowel_length = 20;
 dowel_wall = extrusion_width * 3;
 dowel_h_wall = layer_height * 6;
 
-
 module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlocking sections of the bezel to allow it to be bigger than the printer
-    w = (box_width(type) + 2 * box_outset(type)) / cols;
-    h = (box_depth(type) + 2 * box_outset(type)) / rows;
+    tw = box_width(type) + 2 * box_outset(type);
+    w = tw / cols;
+    th = box_depth(type) + 2 * box_outset(type);
+    h = th / rows;
     bw = box_outset(type) - bezel_clearance / 2;
     bw2 = box_outset(type) + box_inset(type);
 
@@ -339,7 +359,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
         render() difference() {
             union() {
                 clip(xmin = 0, xmax = w, ymin = 0, ymax = h)
-                    translate([box_width(type) / 2 + box_outset(type) - x * w, box_depth(type) / 2 + box_outset(type) - y * h, box_profile_overlap(type)])
+                    translate([tw / 2 - x * w, th / 2 - y * h, box_profile_overlap(type)])
                         box_bezel(type, bottom);
 
                 if(x < cols - 1 && y == 0)
@@ -399,7 +419,6 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
     }
 }
 
-
 module box_screw_hole_positions(type)
     for(x = [-1, 1], y = [-1, 1])
         translate([x * (box_width(type) / 2 - box_hole_inset(type)), y * (box_depth(type) / 2 - box_hole_inset(type))])
@@ -440,6 +459,96 @@ module box_shelf_blank(type, sheet = false) { //! Generates a 2D template for a 
         offset(bezel_clearance / 2)
             box_corner_quadrants(type, box_width(type), box_depth(type));
     }
+}
+
+module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef) { //! Place children at the shelf screw positions
+    w = is_undef(wall) ? box_wall(type) : wall;
+    insert = box_shelf_insert(type);
+    translate_z(-insert_boss_radius(insert, w))
+        for(p = screw_positions)
+            multmatrix(p)
+                translate_z(thickness)
+                    children();
+}
+
+module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts
+    stl("shelf_bracket");
+    w = is_undef(wall) ? box_wall(type) : wall;
+    insert = box_shelf_insert(type);
+    lip = 2 * insert_boss_radius(insert, w);
+    width = insert_length(insert) + w;
+
+    module shape()
+        difference() {
+            square([box_width(type), box_depth(type)], center = true);
+
+            offset(bezel_clearance / 2)
+                box_corner_quadrants(type, box_width(type), box_depth(type));
+
+            if($children)
+                hflip()
+                    children();
+        }
+
+    module boss()
+        translate_z(-width + eps)
+            linear_extrude(width - 2 * eps)
+                hull() {
+                    circle4n(r = lip / 2 - eps);
+
+                    translate([-lip / 2, -lip / 2 + eps])
+                        square([lip, eps]);
+                }
+
+    difference() {
+        union() {
+            linear_extrude(w)
+                difference() {
+                    shape()
+                        if($children)
+                            children(0);
+
+                    round(2) offset(-width)
+                        shape()
+                            if($children)
+                                children(0);
+                }
+
+            linear_extrude(lip)
+                difference() {
+                    shape()
+                        if($children)
+                            children(0);
+
+                    offset(-w)
+                        shape()
+                            if($children)
+                                children(0);
+                }
+
+            hflip()
+                box_shelf_screw_positions(type, screw_positions, 0, w)
+                    boss();
+        }
+        if($children > 1)
+            hflip()
+                children(1);
+
+        hflip()
+            box_shelf_screw_positions(type, screw_positions, 0, w)
+                insert_hole(insert, counterbore = 1, horizontal = true);
+    }
+}
+
+module box_shelf_bracket_section(type, rows, cols, x, y) { //! Generates sections of the shelf bracket to allow it to be bigger than the printer
+    tw = box_width(type);
+    w = tw / cols;
+    th = box_depth(type);
+    h = th / rows;
+
+    clip(xmin = 0, xmax = w, ymin = 0, ymax = h)
+        translate([tw / 2 - x * w, th / 2 - y * h])
+            children();
 }
 
 module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, ```sheet``` can be set to override the type

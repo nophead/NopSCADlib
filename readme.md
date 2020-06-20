@@ -3872,6 +3872,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_height(type)``` | Internal height |
 | ```box_screw(type)``` | Screw type to be used at the corners |
 | ```box_sheets(type)``` | Sheet type used for the sides |
+| ```box_shelf_screw(type)``` | Screw type to hold a shelf |
 | ```box_top_sheet(type)``` | Sheet type for the top |
 | ```box_wall(type)``` | Wall thickness of 3D parts |
 | ```box_width(type)``` | Internal width |
@@ -3879,7 +3880,7 @@ Normally the side sheets are the same type but they can be overridden individual
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| ```box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false)``` | Construct a property list for a box. |
+| ```box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = M3_dome_screw)``` | Construct a property list for a box. |
 | ```box_bezel_height(type, bottom)``` | Bezel height for top or bottom |
 | ```box_corner_gap(type)``` | Gap between box_sheets at the corners to connect inside and outside profiles |
 | ```box_inset(type)``` | How much the bezel intrudes on the specified width and length, away from the corners |
@@ -3899,6 +3900,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_corner_profile(type)``` | Generates the corner profile STL for 3D printing. |
 | ```box_corner_profile_2D(type)``` | The 2D shape of the corner profile. |
 | ```box_corner_profile_section(type, section, sections)``` | Generates interlocking sections of the corner profile to allow it to be taller than the printer |
+| ```box_corner_profile_sections(type, section, sections)``` | Generate four copies of a corner profile section |
 | ```box_front(type)``` | Default front, can be overridden to customise |
 | ```box_front_blank(type, sheet = false)``` | Generates a 2D template for the front sheet, ```sheet``` can be set to override the type |
 | ```box_left(type)``` | Default left side, can be overridden to customise |
@@ -3906,6 +3908,9 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_right(type)``` | Default right side, can be overridden to customise |
 | ```box_right_blank(type, sheet = false)``` | Generates a 2D template for the right sheet, ```sheet``` can be set to override the type |
 | ```box_shelf_blank(type, sheet = false)``` | Generates a 2D template for a shelf sheet |
+| ```box_shelf_bracket(type, screw_positions, wall = undef)``` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts |
+| ```box_shelf_bracket_section(type, rows, cols, x, y)``` | Generates sections of the shelf bracket to allow it to be bigger than the printer |
+| ```box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef)``` | Place children at the shelf screw positions |
 | ```box_top(type)``` | Default top, can be overridden to customise |
 | ```box_top_blank(type)``` | Generates a 2D template for the top sheet |
 | ```grill(width, height, r = 1000, poly = false, h = 0)``` | A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling. |
