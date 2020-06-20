@@ -5211,12 +5211,18 @@ Maths utilities for manipulating vectors and matrices.
 | Function | Description |
 |:--- |:--- |
 | ```angle_between(v1, v2)``` | Return the angle between two vectors |
+| ```augment(m)``` | Augment a matrix by adding an identity matrix to the right |
 | ```euler(R)``` | Convert a rotation matrix to a Euler rotation vector. |
 | ```identity(n, x = 1)``` | Construct an arbitrary size identity matrix |
+| ```invert(m)``` | Invert a matrix |
+| ```nearly_zero(x)``` | True if x is close to zero |
 | ```reverse(v)``` | Reverse a vector |
 | ```rot3_z(a)``` | Generate a 3x3 matrix to rotate around z |
 | ```rotate(a, v)``` | Generate a 4x4 rotation matrix, ```a``` can be a vector of three angles or a single angle around ```z```, or around axis ```v``` |
+| ```rowswap(m, i, j)``` | Swap two rows of a matrix |
 | ```scale(v)``` |  Generate a 4x4 matrix that scales by ```v```, which can be a vector of xyz factors or a scalar to scale all axes equally |
+| ```solve(m, i = 0, j = 0)``` | Solve each row ensuring diagonal is not zero |
+| ```solve_row(m, i)``` | Make diagonal one by dividing the row by it and subtract from other rows to make column zero |
 | ```transform(v, m)``` | Apply 4x4 transform to a 3 vector by extending it and cropping it again |
 | ```transform_points(path, m)``` | Apply transform to a path |
 | ```translate(v)``` | Generate a 4x4 translation matrix, ```v``` can be ```[x, y]```, ```[x, y, z]``` or ```z``` |
