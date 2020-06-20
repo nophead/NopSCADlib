@@ -51,7 +51,7 @@ module hygrometer() { //! Draw a hygrometer
     vitamin("hygrometer(): Mini LCD Digital Thermometer / Hygrometer");
 
     explode(40) {
-        color(grey30)
+        color(grey(30))
             rotate_extrude()
                 polygon([
                     [0, 0],

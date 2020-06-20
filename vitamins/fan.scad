@@ -28,7 +28,7 @@ use <nut.scad>
 use <washer.scad>
 use <../utils/tube.scad>
 
-fan_colour = grey20;
+fan_colour = grey(20);
 
 function fan_width(type)          = type[0];    //! Width of square
 function fan_depth(type)          = type[1];    //! Depth of fan

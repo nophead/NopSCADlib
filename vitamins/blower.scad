@@ -39,7 +39,7 @@ function blower_top(type)         = type[14]; //! Thickness of the top
 function blower_wall(type)        = type[15]; //! Side wall thickness
 function blower_lug(type)         = type[16]; //! Height of the lugs
 
-fan_colour = grey20;
+fan_colour = grey(20);
 
 module blower(type) { //! Draw specified blower
     length = blower_length(type);

@@ -112,7 +112,7 @@ DuetE = ["DuetE", "Duet 2 Ethernet electronics",
                                                                      [109.8, -58.8,   0, "chip", inch(0.03), inch(0.06), 1, "red"],             // Bed heater
 
                                                                      [ 2.3,  -37.2,   0, "chip", 3.6, 4.8, 2.0, "silver"],  // Reset switch
-                                                                     [ 0.0,  -37.2,   0, "chip", 2.0, 2.6, 1.4, grey20],    // Reset button
+                                                                     [ 0.0,  -37.2,   0, "chip", 2.0, 2.6, 1.4, grey(20)],    // Reset button
                                                                     ],
                                                                     [": Micro SD card", ": Cat 5 patch cable 300mm"]];
 

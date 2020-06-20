@@ -24,8 +24,8 @@ small_leg  = [0.9,  3.3, 0.4, 0];
 medium_leg = [0.5,  3.9, 3.2, 1.6, [0, -0.5]];
 large_leg  = [11.4, 0.8, 6.3, 1.8, [1.7, 0]];
 
-small_microswitch  = ["small_microswitch", "DM1-00P-110-3",      5.8, 6.5,  12.8, 0, 2,    [[-3.25, -1.65], [3.25, -1.65]], 2.9, 1.2, [-1.95, 3.75], [[-5.08, -4.95], [0,    -4.9],  [5.08, -4.9]  ], small_leg,  grey20, "white"  ];
-medium_microswitch = ["medium_microswitch","SS-01 or SS-5GL",    6.4, 10.2, 19.8, 1, 2.35, [[-4.8,  -2.6 ], [4.7,  -2.6 ]], 3.2, 2,   [-2.8,  5.8 ], [[-8.05, -7.05], [0.75, -7.05], [8.05, -7.05] ], medium_leg, grey20, "burlywood" ];
+small_microswitch  = ["small_microswitch", "DM1-00P-110-3",      5.8, 6.5,  12.8, 0, 2,    [[-3.25, -1.65], [3.25, -1.65]], 2.9, 1.2, [-1.95, 3.75], [[-5.08, -4.95], [0,    -4.9],  [5.08, -4.9]  ], small_leg,  grey(20), "white"  ];
+medium_microswitch = ["medium_microswitch","SS-01 or SS-5GL",    6.4, 10.2, 19.8, 1, 2.35, [[-4.8,  -2.6 ], [4.7,  -2.6 ]], 3.2, 2,   [-2.8,  5.8 ], [[-8.05, -7.05], [0.75, -7.05], [8.05, -7.05] ], medium_leg, grey(20), "burlywood" ];
 large_microswitch  = ["large_microswitch", "Saia G3 low force", 10.4, 15.9, 28.0, 2, 3.1,  [[-11.1, -5.15], [11.2,  5.15]], 4,   2.75,[-9.1,  9.55], [[19.7,   2.19], [19.7, -3.45],  [8.3, -10.45] ], large_leg,  "ivory", "white" ];
 
 microswitches = [small_microswitch, medium_microswitch, large_microswitch];

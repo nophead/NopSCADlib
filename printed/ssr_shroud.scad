@@ -135,7 +135,7 @@ module ssr_shroud_fastened_assembly(type, cable_d, thickness, name) //! Assembly
 
             *translate_z(cable_d / 2)
                 rotate([90, 0, 0])
-                    stl_colour(grey20)
+                    stl_colour(grey(20))
                         cylinder(d = cable_d, h = 20, center = true);
         }
 }

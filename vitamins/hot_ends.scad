@@ -33,8 +33,8 @@
 //                                                                                       h      t     s   t              t     t
 //                                                                                              h
 //
-JHeadMk4  = ["JHeadMk4",  jhead, "JHead MK4",           64,  5.1, 16,    50, grey20,     12,    4.64, 14, [0, 2.94, -5], 20,   20];
-JHeadMk5  = ["JHeadMk5",  jhead, "JHead MK5",         51.2,  5.1, 16,    40, grey20,     12,    4.64, 13, [0, 2.38, -5], 20,   20];
+JHeadMk4  = ["JHeadMk4",  jhead, "JHead MK4",           64,  5.1, 16,    50, grey(20),     12,    4.64, 14, [0, 2.94, -5], 20,   20];
+JHeadMk5  = ["JHeadMk5",  jhead, "JHead MK5",         51.2,  5.1, 16,    40, grey(20),     12,    4.64, 13, [0, 2.38, -5], 20,   20];
 E3Dv5     = ["E3Dv5",     e3d,   "E3D V5 direct",       70,  3.7, 16,  50.1, "silver",   12,    6,    15, [1, 5,  -4.5], 14.5, 28];
 E3Dv6     = ["E3Dv6",     e3d,   "E3D V6 direct",       62,  3.7, 16,  42.7, "silver",   12,    6,    15, [1, 5,  -4.5], 14,   21];
 E3D_clone = ["E3D_clone", e3d,   "E3D clone aliexpress",66,  6.8, 16,    46, "silver",   12,    5.6,  15, [1, 5,  -4.5], 14.5, 21];

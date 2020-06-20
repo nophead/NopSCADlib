@@ -53,7 +53,7 @@ module opengrab() { //! Draw OpenGrab module
         translate_z(magnet / 2 + eps)
             cube([width, width, magnet - eps], center = true);
 
-    color(grey80) {
+    color(grey(80)) {
         gap = (width - poles * pole_w + 3 * eps) / (poles - 1);
         pitch = pole_w + gap;
         for(i = [0 : poles - 1])
@@ -84,7 +84,7 @@ module opengrab() { //! Draw OpenGrab module
 module opengrab_target() { //! Draw OpenGrab target
     vitamin("opengrab_target(): OpenGrab  silicon steel target plate");
 
-     color(grey80)
+     color(grey(80))
         linear_extrude(target)
             difference() {
                 square([width, width], center = true);

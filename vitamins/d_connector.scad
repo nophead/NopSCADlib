@@ -23,9 +23,9 @@
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
-d_pillar_colour                   = grey90;
-d_plug_shell_colour               = grey80;
-d_plug_insulator_colour           = grey20;
+d_pillar_colour                   = grey(90);
+d_plug_shell_colour               = grey(80);
+d_plug_insulator_colour           = grey(20);
 
 function  d_flange_length(type)    = type[1];   //! Length of the flange
 function  d_lengths(type)          = type[2];   //! Lengths of the D for plug and socket

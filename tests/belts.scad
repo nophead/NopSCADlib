@@ -65,7 +65,7 @@ module belt_test() {
     translate([-25, 0])
         layout([for(b = belts) belt_width(b)], 10)
             rotate([0, 90, 0])
-                belt(belts[$i], [[0, 0, 20], [0, 1, 20]], belt_colour = $i%2==0 ? grey90 : grey20, tooth_colour = $i%2==0 ? grey70 : grey50);
+                belt(belts[$i], [[0, 0, 20], [0, 1, 20]], belt_colour = $i%2==0 ? grey(90) : grey(20), tooth_colour = $i%2==0 ? grey(70) : grey(50));
 }
 
 if($preview)

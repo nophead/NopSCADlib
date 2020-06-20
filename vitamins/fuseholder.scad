@@ -61,7 +61,7 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
     //
     // Nut
     //
-    colour = grey40;
+    colour = grey(40);
     vflip()
         translate_z(thickness)
             explode(height) {

@@ -33,7 +33,7 @@ module rails()
             nut = screw_nut(screw);
             washer = screw_washer(screw);
 
-            rail_assembly(rail, length, rail_travel(rail, length) / 2, $i<2 ? grey20 : "green", $i<2 ? grey20 : "red");
+            rail_assembly(rail, length, rail_travel(rail, length) / 2, $i<2 ? grey(20) : "green", $i<2 ? grey(20) : "red");
 
             rail_screws(rail, length, sheet + nut_thickness(nut, true) + washer_thickness(washer));
 

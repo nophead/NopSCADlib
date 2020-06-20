@@ -55,7 +55,7 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
     vitamin(str("nut(", type[0], arg(nyloc, false, "nyloc"), arg(brass, false, "brass"), arg(nylon, false, "nylon"),
                    "): Nut M", nut_size(type), " x ", thickness, "mm ", desc));
 
-    colour = brass ? brass_colour : nylon ? grey30: grey70;
+    colour = brass ? brass_colour : nylon ? grey(30): grey(70);
     explode(nyloc ? 10 : 0) {
         color(colour) {
             linear_extrude(thickness)
@@ -147,7 +147,7 @@ module sliding_t_nut(type) {
     tabSizeZ = nut_thickness(type);
     holeRadius  = nut_size(type) / 2;
 
-    color(grey80)
+    color(grey(80))
         extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut);
 }
 
@@ -204,7 +204,7 @@ module nut_square(type, brass = false, nylon = false) { //! Draw specified squar
     vitamin(str("nut(", type[0], arg(brass, false, "brass"), arg(nylon, false, "nylon"),
                    "): Nut M", nut_size(type), "nS ", width, " x ", thickness, "mm ", desc));
 
-    colour = brass ? brass_colour : nylon ? grey30 : grey70;
+    colour = brass ? brass_colour : nylon ? grey(30) : grey(70);
     color(colour)
         difference() {
             linear_extrude(thickness) {

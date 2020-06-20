@@ -65,7 +65,7 @@ module carriage_hole_positions(type) { //! Position children over screw holes
                 children();
 }
 
-module carriage(type, rail, end_colour = grey20, wiper_colour = grey20) { //! Draw the specified carriage
+module carriage(type, rail, end_colour = grey(20), wiper_colour = grey(20)) { //! Draw the specified carriage
     total_l = carriage_length(type);
     block_l = carriage_block_length(type);
     block_w = carriage_width(type);
@@ -82,7 +82,7 @@ module carriage(type, rail, end_colour = grey20, wiper_colour = grey20) { //! Dr
             square([w , rail_height(rail) + 0.2]);
     }
 
-    color(grey90) {
+    color(grey(90)) {
         rotate([90, 0, 90])
             linear_extrude(block_l, center = true)
                  difference() {
@@ -132,7 +132,7 @@ module rail(type, length) { //! Draw the specified rail
 
     vitamin(str("rail(", type[0], ", ", length, "): Linear rail ", type[0], " x ", length, "mm"));
 
-    color(grey90) {
+    color(grey(90)) {
         linear_extrude(height - rail_bore_depth(type)) difference() {
             square([length, width], center = true);
             rail_hole_positions(type, length)
@@ -166,7 +166,7 @@ module rail(type, length) { //! Draw the specified rail
     }
 }
 
-module rail_assembly(type, length, pos, carriage_end_colour = grey20, carriage_wiper_colour = grey20) { //! Rail and carriage assembly
+module rail_assembly(type, length, pos, carriage_end_colour = grey(20), carriage_wiper_colour = grey(20)) { //! Rail and carriage assembly
     rail(type, length);
 
     translate([pos, 0])

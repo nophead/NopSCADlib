@@ -248,7 +248,7 @@ module rj45(cutout = false) { //! Draw RJ45 Ethernet connector
                         cube([h, w, eps], center = true);
                 }
 
-                color(grey30) {
+                color(grey(30)) {
                     linear_extrude(l - 0.2, center = true)
                         difference() {
                             square([h - 0.1, w - 0.1], center = true);
@@ -279,7 +279,7 @@ module jack(cutout = false) { //! Draw 3.5mm jack
             rotate([0, 90, 0])
                 cylinder(d = d + 2 * panel_clearance, h = 100);
         else
-            color(grey20)
+            color(grey(20))
                 rotate([0, 90, 0]) {
                     linear_extrude(l / 2)
                         difference() {
@@ -508,7 +508,7 @@ module barrel_jack(cutout = false) { //! Draw barrel power jack
     if(cutout)
         ;
     else {
-        color(grey20) rotate([0, 90, 0]) {
+        color(grey(20)) rotate([0, 90, 0]) {
             linear_extrude(l, center = true) {
                 difference() {
                     translate([-h / 2, 0])
@@ -580,7 +580,7 @@ module uSD(size, cutout = false) { //! Draw uSD socket
                         cube([size.x, size.z, t], center = true);
                 }
             if(w > 0)
-                color(grey20)
+                color(grey(20))
                     rotate([90, 0, 90])
                         translate_z(t)
                             linear_extrude(size.y - t, center = true)
@@ -608,7 +608,7 @@ module flex(cutout = false) { //! Draw flexistrip connector
     if(cutout)
         ;
     else {
-        color(grey30) {
+        color(grey(30)) {
             translate_z(0.5)
                 cube([l, w, 1], center = true);
 
@@ -664,7 +664,7 @@ module flat_flex(cutout = false) { //! Draw flat flexistrip connector as used on
     if(cutout)
         ;
     else {
-        color(grey30) {
+        color(grey(30)) {
             translate([w / 2 - w1, 0, h1 / 2])
                 rotate([90, 0, 90])
                     linear_extrude(w1)
@@ -676,7 +676,7 @@ module flat_flex(cutout = false) { //! Draw flat flexistrip connector as used on
                         }
 
         }
-        color(grey90) {
+        color(grey(90)) {
             translate([-w / 2 + w3 / 2, 0, h3 / 2])
                 cube([w3, l3, h3], center = true);
 
@@ -886,7 +886,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "2p54header"))    pin_header(2p54header, comp[4], comp[5], param(6, false), false, cutouts, colour = param(7, undef));
         if(show(comp, "2p54boxhdr"))    box_header(2p54header, comp[4], comp[5], param(6, false), cutouts);
         if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
-        if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey30), cutouts);
+        if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);
         if(show(comp, "usb_A"))         usb_Ax1(cutouts);
         if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
@@ -923,7 +923,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "molex_hdr"))     molex_254(comp[4]);
             if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
             if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
-            if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey20));
+            if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
         }
     }
 }

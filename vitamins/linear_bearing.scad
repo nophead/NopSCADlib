@@ -24,9 +24,9 @@ include <../utils/core/core.scad>
 
 use <../utils/tube.scad>
 
-bearing_colour = grey70;
-groove_colour = grey60;
-seal_colour = grey30;
+bearing_colour = grey(70);
+groove_colour = grey(60);
+seal_colour = grey(30);
 
 
 function bearing_length(type)           = type[1];   //! Total length

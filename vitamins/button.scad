@@ -46,7 +46,7 @@ module square_button(type, colour = "yellow") { //! Draw square button with spec
     pitch = (w/ 2 - wall - rivit * 0.75);
     stem = square_button_cap_stem(type);
 
-    color(grey20) {
+    color(grey(20)) {
         rounded_rectangle([w, w, h - 0.5], r = wall, center = false);
 
         for(x = [-1, 1], y = [-1, 1])

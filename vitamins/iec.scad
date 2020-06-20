@@ -134,7 +134,7 @@ module iec(type) { //! Draw specified IEC connector
         }
     }
 
-    color(grey20) {
+    color(grey(20)) {
         // Flange
         flange_t = iec_flange_t(type);
         linear_extrude(flange_t)

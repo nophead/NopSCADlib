@@ -87,7 +87,7 @@ module mod(type) {  //! Draw specified module
                 linear_extrude(body_l, center = true)
                     profile();
 
-        color(grey20)
+        color(grey(20))
             for(end = [-1, 1])
                 translate([end * body_l / 2, 0, 0])
                     rotate([90, 0, end * 90])

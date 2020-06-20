@@ -41,8 +41,8 @@ function NEMA_holes(type)       = [-NEMA_hole_pitch(type) / 2, NEMA_hole_pitch(t
 function NEMA_big_hole(type)    = NEMA_boss_radius(type) + 0.2; //! Clearance hole for the big boss
 
 stepper_body_colour = "black";
-stepper_cap_colour  = grey50;
-stepper_machined_colour = grey90;
+stepper_cap_colour  = grey(50);
+stepper_machined_colour = grey(90);
 
 module NEMA_outline(type) //! 2D outline
     intersection() {

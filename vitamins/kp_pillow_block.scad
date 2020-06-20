@@ -25,7 +25,7 @@ use <../utils/tube.scad>
 use <washer.scad>
 use <ball_bearing.scad>
 
-kp_pillow_block_colour = grey70;
+kp_pillow_block_colour = grey(70);
 
 function kp_diameter(type)        = type[1]; //! Rod hole diameter
 function kp_hole_offset(type)     = type[2]; //! Rod hole offset

@@ -52,14 +52,7 @@ $fs = extrusion_width / 2;
 
 function round_to_layer(z) = ceil(z / layer_height) * layer_height;
 // Some additional named colours
-grey20                          = [0.2, 0.2, 0.2];
-grey30                          = [0.3, 0.3, 0.3];
-grey40                          = [0.4, 0.4, 0.4];
-grey50                          = [0.5, 0.5, 0.5];
-grey60                          = [0.6, 0.6, 0.6];
-grey70                          = [0.7, 0.7, 0.7];
-grey80                          = [0.8, 0.8, 0.8];
-grey90                          = [0.9, 0.9, 0.9];
+function grey(n) = [0.01, 0.01, 0.01] * n;                                          //! Generate a shade of grey to pass to color().
 gold                            = [255/255, 215/255, 0/255];
 brass                           = [255/255, 220/255, 100/255];
 silver                          = [0.75, 0.75, 0.75];

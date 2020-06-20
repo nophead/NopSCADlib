@@ -87,7 +87,7 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
         translate([x * (bezel.x / 2 - bevel), y * (bezel.y / 2 - bevel)])
             rounded_cylinder(r = r, r2 = bevel, h = bezel.z);
 
-    color(grey30) union() {
+    color(grey(30)) union() {
         //
         // Bezel and aperture
         //

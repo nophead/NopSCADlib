@@ -82,7 +82,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                         : length;
     d = 2 * screw_radius(type);
     pitch = metric_coarse_pitch(d);
-    colour = nylon || head_type == hs_grub ? grey40 : grey80;
+    colour = nylon || head_type == hs_grub ? grey(40) : grey(80);
 
     module shaft(socket = 0, headless = false) {
         point = screw_nut(type) ? 0 : 3 * rad;

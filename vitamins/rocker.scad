@@ -53,7 +53,7 @@ module rocker(type, colour) { //! Draw the specified rocker switch
     rocker_r2 = (sqr(x2) + sqr(y2)) / (2 * y2);
 
     explode(30) {
-        color(grey20) {
+        color(grey(20)) {
             linear_extrude(rocker_flange_t(type))
                 difference() {
                     rounded_square([rocker_flange_w(type), rocker_flange_h(type)], 0.5);
@@ -65,7 +65,7 @@ module rocker(type, colour) { //! Draw the specified rocker switch
                 rounded_rectangle([rocker_width(type), rocker_height(type), rocker_depth(type) + eps], 0.5, center = false);
         }
         if(rocker_pivot(type))
-            color(colour ? colour : grey30)
+            color(colour ? colour : grey(30))
                 translate_z(rocker_pivot(type))
                     rotate([90, 0, 90])
                         linear_extrude(rocker_w, center = true)
