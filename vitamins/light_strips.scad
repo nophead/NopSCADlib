@@ -26,7 +26,7 @@
 //                                                                                         e     s    c
 //                                                                                               s    k
 Rigid5050 = ["Rigid5050", "rigid SMD5050 low profile",              500, 36, 3, 14.4,   7, 10.4, 0.9, 1.2];
-RIGID5050 = ["RIGID5050", "rigid SMD5050"            ,              500, 36, 3, 14.4, 8.6, 10.4, 0.9, 1.6];
+RIGID5050 = ["RIGID5050", "rigid SMD5050"            ,              500, 36, 3, 14.4, 8.6,  9.8, 0.8, 1.6];
 
 light_strips = [Rigid5050,  RIGID5050,];
 
