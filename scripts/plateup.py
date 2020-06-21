@@ -45,6 +45,7 @@ def plateup(target, part_type, usage = None):
     # Loop through source directories
     #
     used = []
+    all_sources = []
     for dir in [source_dir1, source_dir2]:
         if not os.path.isdir(dir):
             continue
@@ -60,6 +61,7 @@ def plateup(target, part_type, usage = None):
         # Decide which files to make
         #
         sources = [file for file in os.listdir(dir) if file.endswith('.scad')]
+        all_sources += sources
         #
         # Run OpenSCAD on the source files to make the targets
         #
@@ -100,7 +102,7 @@ def plateup(target, part_type, usage = None):
     #
     # Remove any cruft
     #
-    targets = [file[:-4] + part_type for file in sources]
+    targets = [file[:-4] + part_type for file in all_sources]
     for file in os.listdir(target_dir):
         if file.endswith('.' + part_type):
             if not file in targets and not file in copied:
