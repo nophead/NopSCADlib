@@ -27,6 +27,7 @@ import c14n_stl
 from set_config import *
 from deps import *
 from shutil import copyfile
+import re
 
 source_dirs = { "stl" : "platters", "dxf" : "panels" }
 target_dirs = { "stl" : "printed",  "dxf" : "routed" }
@@ -38,43 +39,52 @@ def plateup(target, part_type, usage = None):
     top_dir = set_config(target, usage)
     parts_dir = top_dir + part_type + 's'
     target_dir = parts_dir + '/' + target_dirs[part_type]
-    source_dir = top_dir + source_dirs[part_type]
-    deps_dir = source_dir + "/deps"
-    if not os.path.isdir(source_dir):
-        return
-    if not os.path.isdir(target_dir):
-        os.makedirs(target_dir)
-    if not os.path.isdir(deps_dir):
-        os.makedirs(deps_dir)
+    source_dir1 = source_dirs[part_type]
+    source_dir2 = top_dir + source_dirs[part_type]
     #
-    # Decide which files to make
-    #
-    sources = [file for file in os.listdir(source_dir) if file.endswith('.scad')]
-    #
-    # Run OpenSCAD on the source files to make the targets
+    # Loop through source directories
     #
     used = []
-    for src in sources:
-        src_file = source_dir + '/' + src
-        part_file = target_dir + '/' + src[:-4] + part_type
-        dname = deps_name(deps_dir, src)
-        changed = check_deps(part_file, dname)
-        if changed:
-            print(changed)
-            openscad.run("-D$bom=1", "-d", dname, "-o", part_file, src_file)
-            if part_type == 'stl':
-                c14n_stl.canonicalise(part_file)
-            log_name = 'openscad.log'
-        else:
-            log_name = 'openscad.echo'
-            openscad.run_silent("-D$bom=1", "-o", log_name, src_file)
+    for dir in [source_dir1, source_dir2]:
+        if not os.path.isdir(dir):
+            continue
+        if not os.path.isdir(target_dir):
+            os.makedirs(target_dir)
         #
-        # Add the files on the BOM to the used list
+        # Make the deps dir
         #
-        with open(log_name) as file:
-            for line in file.readlines():
-                if line.startswith('ECHO: "~') and line.endswith('.' + part_type + '"\n'):
-                    used.append(line[8:-2])
+        deps_dir = dir + "/deps"
+        if not os.path.isdir(deps_dir):
+            os.makedirs(deps_dir)
+        #
+        # Decide which files to make
+        #
+        sources = [file for file in os.listdir(dir) if file.endswith('.scad')]
+        #
+        # Run OpenSCAD on the source files to make the targets
+        #
+        for src in sources:
+            src_file = dir + '/' + src
+            part_file = target_dir + '/' + src[:-4] + part_type
+            dname = deps_name(deps_dir, src)
+            changed = check_deps(part_file, dname)
+            if changed:
+                print(changed)
+                openscad.run("-D$bom=1", "-d", dname, "-o", part_file, src_file)
+                if part_type == 'stl':
+                    c14n_stl.canonicalise(part_file)
+                log_name = 'openscad.log'
+            else:
+                log_name = 'openscad.echo'
+                openscad.run_silent("-D$bom=1", "-o", log_name, src_file)
+            #
+            # Add the files on the BOM to the used list
+            #
+            with open(log_name) as file:
+                for line in file.readlines():
+                    match = re.match(r'^ECHO: "~(.*?\.' + part_type + r').*"$', line)
+                    if match:
+                        used.append(match.group(1))
     #
     # Copy file that are not included
     #
