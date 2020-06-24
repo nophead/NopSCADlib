@@ -1554,9 +1554,10 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 | Function | Description |
 |:--- |:--- |
 | ```light_strip_clip_depth(light)``` | Depth of the clip |
-| ```light_strip_clip_length(light)``` | Outside length |
+| ```light_strip_clip_length(light)``` | Outside length of clip |
 | ```light_strip_clip_slot(light)``` | Clip slot size |
-| ```light_strip_clip_width(light)``` | Outside width |
+| ```light_strip_clip_wall()``` | Clip wall thickness |
+| ```light_strip_clip_width(light)``` | Outside width of clip |
 | ```light_strip_cut_length(type, segs)``` | Calculate cut length given segments |
 | ```light_strip_segments(type, max_length)``` | Calculate the maximum number of segments that fit in max_length |
 
