@@ -29,7 +29,7 @@ function smd_led_lens(type) = type[2]; //! Lens length width and height
 function smd_led_height(type) =        //! Total height
     smd_led_size(type).z + smd_led_lens(type).z;
 
-function smd_100th(x) = //! Convert dimesion to 1/100" notation
+function smd_100th(x) = //! Convert dimension to 1/100" notation
     let(s = str(round(x / inch(0.01))))
         len(s) < 2 ? str("0", s) : s;
 
@@ -77,4 +77,34 @@ module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified ```col
                         cube([lens.x - slant, lens.y - slant, lens.z], center = true);
                 }
     }
+}
+
+function smd_res_size(type)    = type[1]; //! Body length, width and height
+function smd_res_end_cap(type) = type[2]; //! End cap width
+function smd_res_power(type)   = type[3]; //! Power rating in Watts
+
+module smd_resistor(type, value) { //! Draw an SMD resistor with specified value
+    size = smd_res_size(type);
+    vitamin(str("smd_resistor(", type[0], ", ", value, "): SMD resistor ", smd_size(size), " ", value, " ", smd_res_power(type), "W"));
+
+    t = 0.04;
+    cap = smd_res_end_cap(type);
+    color("white")
+        translate_z(size.z / 2)
+            cube([size.x - 2 * t, size.y, size.z - 2 * t], center = true);
+
+    color(grey(20))
+        translate_z(size.z - t)
+            cube([size.x - 2 * cap, size.y, eps], center = true);
+
+    color(silver)
+        for(end = [-1, 1])
+            translate([end * (size.x / 2 - cap / 2), 0, size.z / 2])
+                cube([cap, size.y - 2 * eps, size.z], center = true);
+
+    color("white")
+        translate([0, 0, size.z])
+            linear_extrude(eps)
+                resize([(size.x - 2 * cap) * 0.75, size.y / 2])
+                    text(value, halign = "center", valign = "center");
 }

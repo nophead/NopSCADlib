@@ -21,9 +21,14 @@ use <../utils/layout.scad>
 
 include <../vitamins/smds.scad>
 
-module smds()
-    layout([for(l = smd_leds) smd_led_size(l).x], 1)
-        smd_led(smd_leds[$i], ["green", "blue", "red"][$i % 3]);
+module smds() {
+    layout([for(r = smd_resistors) smd_res_size(r).x], 1)
+        smd_resistor(smd_resistors[$i], ["1R0", "10M", "100K"][$i % 3]);
+
+    translate([0, 3])
+        layout([for(l = smd_leds) smd_led_size(l).x], 1)
+            smd_led(smd_leds[$i], ["green", "blue", "red"][$i % 3]);
+}
 
 if($preview)
     smds();

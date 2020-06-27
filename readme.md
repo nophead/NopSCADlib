@@ -2126,7 +2126,11 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```ax_res(res1_4, 10000)``` |  Resistor 10000 Ohms 5% 0.25W |
 |   1 | ```ax_res(res1_2, 100000)``` |  Resistor 100000 Ohms 5% 0.5W |
 |   1 | ```ax_res(res1_8, 1e+6, tol = 1)``` |  Resistor 1e+6 Ohms 1% 0.125W |
+|   1 | ```smd_led(LED0603, orange)``` |  SMD LED 0603 orange |
 |   1 | ```smd_led(LED0805, red)``` |  SMD LED 0805 red |
+|   1 | ```smd_resistor(RES0603, 1K)``` |  SMD resistor 0603 1K 0.1W |
+|   1 | ```smd_resistor(RES0805, 1K)``` |  SMD resistor 0805 1K 0.125W |
+|   1 | ```smd_resistor(RES1206, 1K)``` |  SMD resistor 1206 1K 0.25W |
 |   1 | ```square_button(button_6mm)``` |  Square button 6mm |
 |   1 | ```pcb(TMC2130)``` |  TMC2130 |
 |   1 | ```green_terminal(gt_5p08, 2)``` |  Terminal block 2 way 0.2" |
@@ -3081,11 +3085,14 @@ Surface mount components for PCBs.
 |:--- |:--- |
 | ```smd_led_lens(type)``` | Lens length width and height |
 | ```smd_led_size(type)``` | Body length, width and height |
+| ```smd_res_end_cap(type)``` | End cap width |
+| ```smd_res_power(type)``` | Power rating in Watts |
+| ```smd_res_size(type)``` | Body length, width and height |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| ```smd_100th(x)``` | Convert dimesion to 1/100" notation |
+| ```smd_100th(x)``` | Convert dimension to 1/100" notation |
 | ```smd_led_height(type)``` | Total height |
 | ```smd_size(size)``` | Convert size to 1/100" notation |
 
@@ -3093,13 +3100,18 @@ Surface mount components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | ```smd_led(type, colour, cutout)``` | Draw an SMD LED with specified ```colour``` |
+| ```smd_resistor(type, value)``` | Draw an SMD resistor with specified value |
 
 ![smds](tests/png/smds.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```smd_led(LED0805, green)``` |  SMD LED 0805 green |
+|   1 | ```smd_led(LED0603, green)``` |  SMD LED 0603 green |
+|   1 | ```smd_led(LED0805, blue)``` |  SMD LED 0805 blue |
+|   1 | ```smd_resistor(RES0603, 1R0)``` |  SMD resistor 0603 1R0 0.1W |
+|   1 | ```smd_resistor(RES0805, 10M)``` |  SMD resistor 0805 10M 0.125W |
+|   1 | ```smd_resistor(RES1206, 100K)``` |  SMD resistor 1206 100K 0.25W |
 
 
 <a href="#top">Top</a>
