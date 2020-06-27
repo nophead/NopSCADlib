@@ -28,6 +28,6 @@ function layout_offset(widths, i, gap = 2) = //! Calculate the offset for the ``
 
 module layout(widths, gap = 2, no_offset = false) //! Layout children passing ```$i```
     translate([no_offset ? -widths[0] / 2 : 0, 0])
-        for($i = [0 : len(widths) - 1])
+        for($i = [0 : 1 : len(widths) - 1])
             translate([layout_offset(widths, $i, gap), 0])
                 children();
