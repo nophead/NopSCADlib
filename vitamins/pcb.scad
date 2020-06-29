@@ -642,50 +642,47 @@ module flex(cutout = false) { //! Draw flexistrip connector
     }
 }
 
-module flat_flex(cutout = false) { //! Draw flat flexistrip connector as used on RPI0
-    l1 = 17;
-    w1 = 1.4;
-    h1 = 1.2;
+small_ff = [[11.8, 0.9], [17, 1.4, 1.2], [12, 1.6, 1.2], [16, 1.1, 1.2]];
+large_ff = [[16,  1.25], [22, 1.5, 2.25],[16, 4.0, 2.5], [21, 0,   2.5]];
 
-    l2 = 15.4;
-    w2 = 1.6;
-    h2 = 1.0;
+function ff_slot(type)  = type[0]; //! Flat flex slot size
+function ff_latch(type) = type[1]; //! Flat flex latch size
+function ff_mid(type)   = type[2]; //! Flat flex middle section size
+function ff_back(type)  = type[3]; //! Flat flex back section size
 
-    l3 = 16;
-    w3 = 1.1;
-    h3 = 1.2;
+module flat_flex(type, cutout = false) { //! Draw flat flexistrip connector as used on RPI0
+    slot = ff_slot(type);
+    latch = ff_latch(type);
+    mid =   ff_mid(type);
+    back =  ff_back(type);
 
-    l4 = 12;
-
-    slot_l = 11.8;
-    slot_h = 0.9;
-
-    w = w1 + w2 + w3;
+    w = latch.y + mid.y + back.y;
     if(cutout)
         ;
     else {
-        color(grey(30)) {
-            translate([w / 2 - w1, 0, h1 / 2])
-                rotate([90, 0, 90])
-                    linear_extrude(w1)
+        color(grey(30))
+            translate([0, w / 2 - latch.y])
+                rotate([90, 0, 180])
+                    linear_extrude(latch.y)
                         difference() {
-                            square([l1, h1], center = true);
+                            translate([-latch.x / 2, 0])
+                                square([latch.x, latch.z]);
 
-                            translate([0, -h1 / 2])
-                                square([slot_l, slot_h * 2], center = true);
+                            square([slot.x, slot.y * 2], center = true);
                         }
 
-        }
-        color(grey(90)) {
-            translate([-w / 2 + w3 / 2, 0, h3 / 2])
-                cube([w3, l3, h3], center = true);
+        color("ivory") {
+            translate([-back.x / 2, -w / 2])
+                if(back.y)
+                    cube(back);
 
-            translate([-w / 2 + w3 + w2 / 2, 0, h2 / 2])
-                cube([w2, l2, h2], center = true);
-
-             translate([-w / 2 + w3 + w2 / 2, 0, h3 / 2])
-                cube([w2, l4, h3], center = true);
+            translate([-mid.x / 2,  -w / 2 + back.y])
+                cube(mid);
        }
+
+       color(grey(80))
+            translate([-back.x / 2, -w / 2 + back.y])
+                cube([back.x, mid.y, mid.z - eps]);
     }
 }
 
@@ -897,7 +894,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "hdmi"))          hdmi(hdmi_full, cutouts);
         if(show(comp, "mini_hdmi"))     hdmi(hdmi_mini, cutouts);
         if(show(comp, "flex"))          flex(cutouts);
-        if(show(comp, "flat_flex"))     flat_flex(cutouts);
+        if(show(comp, "flat_flex"))     flat_flex(param(4, false) ? large_ff : small_ff, cutouts);
         if(show(comp, "uSD"))           uSD(comp[4], cutouts);
         if(show(comp, "trimpot10"))     trimpot10(param(4, false), cutouts);
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);

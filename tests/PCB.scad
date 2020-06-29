@@ -95,7 +95,8 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 80,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
 
         [ 60,   3,   0, "flex"],
-        [ 50,  15,   0, "flat_flex"],
+        [ 50,  15, -90, "flat_flex"],
+        [ 40,  15, -90, "flat_flex", true],
         [ 60,  35,   0, "D_plug", DCONN9],
 
         [ 50,  50,   0, "molex_hdr", 2],

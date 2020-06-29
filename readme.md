@@ -2034,6 +2034,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| ```ff_back(type)``` | Flat flex back section size |
+| ```ff_latch(type)``` | Flat flex latch size |
+| ```ff_mid(type)``` | Flat flex middle section size |
+| ```ff_slot(type)``` | Flat flex slot size |
 | ```hdmi_depth(type)``` | Front to back depth |
 | ```hdmi_height(type)``` | Outside height above the PCB |
 | ```hdmi_height1(type)``` | Inside height at the sides |
@@ -2071,7 +2075,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```block(size, colour, makes_cutout, cutouts)``` | Draw a coloured cube to represent a random PCB component |
 | ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and colour |
 | ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
-| ```flat_flex(cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
+| ```flat_flex(type, cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
 | ```flex(cutout = false)``` | Draw flexistrip connector |
 | ```hdmi(type, cutout = false)``` | Draw HDMI socket |
 | ```jack(cutout = false)``` | Draw 3.5mm jack |
@@ -2162,6 +2166,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| ```ff_back(type)``` | Flat flex back section size |
+| ```ff_latch(type)``` | Flat flex latch size |
+| ```ff_mid(type)``` | Flat flex middle section size |
+| ```ff_slot(type)``` | Flat flex slot size |
 | ```hdmi_depth(type)``` | Front to back depth |
 | ```hdmi_height(type)``` | Outside height above the PCB |
 | ```hdmi_height1(type)``` | Inside height at the sides |
@@ -2199,7 +2207,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```block(size, colour, makes_cutout, cutouts)``` | Draw a coloured cube to represent a random PCB component |
 | ```buzzer(height, diameter, colour)``` | Draw PCB buzzer with specified height, diameter and colour |
 | ```chip(length, width, thickness, colour, cutout = false)``` | Draw a coloured cube to represent a chip, or other rectangular component |
-| ```flat_flex(cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
+| ```flat_flex(type, cutout = false)``` | Draw flat flexistrip connector as used on RPI0 |
 | ```flex(cutout = false)``` | Draw flexistrip connector |
 | ```hdmi(type, cutout = false)``` | Draw HDMI socket |
 | ```jack(cutout = false)``` | Draw 3.5mm jack |
