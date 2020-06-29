@@ -29,6 +29,7 @@ use <tests/blowers.scad>
 use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
+use <tests/cameras.scad>
 use <tests/circlips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
@@ -333,6 +334,9 @@ translate([x3 + 70, veroboard_y + 30])
 
 translate([x3 + 140, veroboard_y + 20])
     pcb_mounts();
+
+translate([x3 + 170, veroboard_y + 16])
+    cameras();
 
 translate([x3, d_connectors_y])
     d_connectors();
