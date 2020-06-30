@@ -25,10 +25,10 @@ use <../vitamins/nut.scad>
 sheet = 3;
 
 module rails()
-    layout([for(l = rails) carriage_width(rail_carriage(l))], 25)
+    layout([for(l = rails) carriage_width(rail_carriage(l))], 20)
         rotate(-90) {
             rail = rails[$i];
-            length = rail == MGN15 ? 260 : 200;
+            length = 200;
             screw = rail_screw(rail);
             nut = screw_nut(screw);
             washer = screw_washer(screw);

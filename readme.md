@@ -2652,24 +2652,27 @@ Linear rails with carriages.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```rail(MGN15, 260)``` |  Linear rail MGN15 x 260mm |
+|   1 | ```rail(MGN12, 200)``` |  Linear rail MGN12 x 200mm |
+|   1 | ```rail(MGN12H, 200)``` |  Linear rail MGN12H x 200mm |
+|   1 | ```rail(MGN15, 200)``` |  Linear rail MGN15 x 200mm |
 |   1 | ```rail(MGN5, 200)``` |  Linear rail MGN5 x 200mm |
 |   1 | ```rail(MGN7, 200)``` |  Linear rail MGN7 x 200mm |
 |   1 | ```rail(MGN9, 200)``` |  Linear rail MGN9 x 200mm |
 |   1 | ```rail(SSR15, 200)``` |  Linear rail SSR15 x 200mm |
 |  26 | ```nut(M2_nut, nyloc = true)``` |  Nut M2 x 1.6mm nyloc |
-|  17 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
+|  31 | ```nut(M3_nut, nyloc = true)``` |  Nut M3 x 2.4mm nyloc |
 |   4 | ```nut(M4_nut, nyloc = true)``` |  Nut M4 x 3.2mm nyloc |
 |  11 | ```screw(M2_cap_screw, 10)``` |  Screw M2 cap x 10mm |
 |  15 | ```screw(M2_cs_cap_screw, 10)``` |  Screw M2 cs cap x 10mm |
 |   8 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
-|   5 | ```screw(M3_cap_screw, 16)``` |  Screw M3 cap x 16mm |
+|  12 | ```screw(M3_cap_screw, 12)``` |  Screw M3 cap x 12mm |
+|   3 | ```screw(M3_cap_screw, 16)``` |  Screw M3 cap x 16mm |
 |   2 | ```screw(M3_cs_cap_screw, 12)``` |  Screw M3 cs cap x 12mm |
-|   2 | ```screw(M3_cs_cap_screw, 16)``` |  Screw M3 cs cap x 16mm |
+|   6 | ```screw(M3_cs_cap_screw, 16)``` |  Screw M3 cs cap x 16mm |
 |   2 | ```screw(M4_cap_screw, 16)``` |  Screw M4 cap x 16mm |
 |   2 | ```screw(M4_cs_cap_screw, 20)``` |  Screw M4 cs cap x 20mm |
 |  26 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
-|  17 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|  31 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
 |   4 | ```washer(M4_washer)``` |  Washer  M4 x 9mm x 0.8mm |
 
 
