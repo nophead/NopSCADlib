@@ -21,8 +21,8 @@ include <smds.scad>
 rpi_camera_v1_pcb = ["", "",  25, 24, 1, 0, 2.1, 0, "green", false, [[2, -2], [-2, -2], [2, 9.6], [-2, 9.6]],
     [
         [12,   3.25,  0, "-flat_flex", true],
-        [-4.5, -4,    0, "smd_led", LED0603, "red"],
-        [-5.5, -3,    0, "smd_res", RES0603, "10K"],
+        [-4.5, -5,    0, "smd_led", LED0603, "red"],
+        [-5.5, -4,    0, "smd_res", RES0603, "10K"],
     ],
     []];
 
