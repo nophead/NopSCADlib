@@ -81,7 +81,7 @@ module camera(type) {           //! Draw specified PCB camera
                             cube([flex.x, eps, flex.y], center = true);
 
                     translate_z(conn.z - flex.y)
-                        translate(pos - [0, conn.y / 2])
+                        translate([camera_lens_offset(type).x, pos.y] - [0, conn.y / 2])
                              cube([flex.x, eps, flex.y], center = true);
                 }
         }

@@ -35,6 +35,21 @@ rpi_camera_v1 = ["rpi_camera_v1", "Raspberry Pi camera V1", rpi_camera_v1_pcb, [
     [0, 12 - 1.5 - 2.5], [8, 5, 1]
 ];
 
+rpi_camera_v2_pcb = ["", "",  25, 23.862, 1, 2, 2.2, 0, "green", false, [[2, -2], [-2, -2], [2, -14.5], [-2, -14.5]],
+    [
+        [12.5,   2.75,  0, "-flat_flex", true],
+    ],
+    []];
+
+rpi_camera_v2 = ["rpi_camera_v2", "Raspberry Pi camera V2", rpi_camera_v2_pcb, [0, 9.6 - 12],
+    [
+        [[8.5, 8.5, 3], 0],
+        [[0, 0, 4], 7.5 / 2],
+        [[0, 0, 5], 5.5 / 2, [1.5/2, 2/2, 0.5]],
+    ],
+    [-13.8 + 12.5, 23.862 / 2 - 4.7], [8.5, 4, 1]
+];
+
 rpi_camera_pcb = ["", "",  36, 36, 1.6, 0, 3.2, 0, "green", false, [[3.5, -3.5], [-3.5, -3.5], [3.5, 3.5], [-3.5, 3.5]],
     [
         [18,    4.25,  0, "-flat_flex", true],
@@ -53,6 +68,6 @@ rpi_camera = ["rpi_camera", "Raspberry Pi focusable camera", rpi_camera_pcb, [0,
     [0, 18 - 1.5 - 2.5], [8, 5, 1.6]
 ];
 
-cameras = [rpi_camera_v1, rpi_camera];
+cameras = [rpi_camera_v1, rpi_camera, rpi_camera_v2];
 
 use <camera.scad>

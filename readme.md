@@ -464,6 +464,7 @@ PCB cameras.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```camera(rpi_camera_v1)``` |  Raspberry Pi camera V1 |
+|   1 | ```camera(rpi_camera_v2)``` |  Raspberry Pi camera V2 |
 |   1 | ```camera(rpi_camera)``` |  Raspberry Pi focusable camera |
 
 
