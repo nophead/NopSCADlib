@@ -133,7 +133,8 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 |   1 | ```ball_bearing(BB6201)``` |  Ball bearing 6201-2RS 12mm x 32mm x 10mm |
 |   1 | ```ball_bearing(BB624)``` |  Ball bearing 624-2RS 4mm x 13mm x 5mm |
 |   1 | ```ball_bearing(BB6808)``` |  Ball bearing 6808-2RS 40mm x 52mm x 7mm |
-|   5 | ``` bearing_ball(3)``` |  Steel ball 3mm |
+|   1 | ```ball_bearing(BBSMR95)``` |  Ball bearing SMR95ZZ 5mm x 9mm x 2.5mm |
+|   6 | ``` bearing_ball(3)``` |  Steel ball 3mm |
 
 
 <a href="#top">Top</a>
