@@ -29,7 +29,7 @@ function camera_lens(type)          = type[4]; //! Stack of lens parts, can be r
 function camera_connector_pos(type) = type[5]; //! The flex connector block for the camera itself's position
 function camera_connector_size(type)= type[6]; //! The flex connector block for the camera itself's size
 
-module camera_lens(type, offset = 0)
+module camera_lens(type, offset = 0) //! Draw the lens stack, with optional offset for making a clearance hole
     color(grey(20))
         translate(camera_lens_offset(type))
             for(p = camera_lens(type)) {
