@@ -638,14 +638,13 @@ module flex(cutout = false) { //! Draw flexistrip connector
 
                         translate([0, -w / 2 + slot_offset + slot_w / 2])
                             square([slot_l, slot_w], center = true);
-
                     }
         }
     }
 }
 
 small_ff = [[11.8, 0.9], [17, 1.4, 1.2], [12, 1.6, 1.2], [16, 1.1, 1.2]];
-large_ff = [[16,  1.25], [22, 1.5, 2.25],[16, 4.0, 2.5], [21, 0,   2.5]];
+large_ff = [[16,  1.25], [22, 1.5, 2.5], [16, 4.0, 2.5], [21, 0,   2.5]];
 
 function ff_slot(type)  = type[0]; //! Flat flex slot size
 function ff_latch(type) = type[1]; //! Flat flex latch size
@@ -683,8 +682,8 @@ module flat_flex(type, cutout = false) { //! Draw flat flexistrip connector as u
        }
 
        color(grey(80))
-            translate([-back.x / 2, -w / 2 + back.y])
-                cube([back.x, mid.y, mid.z - eps]);
+            translate([-back.x / 2, -w / 2 + back.y + eps])
+                cube([back.x, mid.y - 2 * eps, mid.z - eps]);
     }
 }
 
