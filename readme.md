@@ -2103,6 +2103,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_coord(type, p)``` | Convert offsets from the edge to coordinates relative to the centre |
 | ```pcb_grid_pos(type, x, y, z = 0)``` | Returns a pcb grid position |
 | ```pcb_screw(type, cap = hs_cap)``` | Mounting screw type |
+| ```pcb_size(type)``` | Length, width and thickness in a vector |
 
 ### Modules
 | Module | Description |
@@ -2235,6 +2236,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ```pcb_coord(type, p)``` | Convert offsets from the edge to coordinates relative to the centre |
 | ```pcb_grid_pos(type, x, y, z = 0)``` | Returns a pcb grid position |
 | ```pcb_screw(type, cap = hs_cap)``` | Mounting screw type |
+| ```pcb_size(type)``` | Length, width and thickness in a vector |
 
 ### Modules
 | Module | Description |
