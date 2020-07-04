@@ -23,10 +23,38 @@
 include <../utils/core/core.scad>
 use <pcb.scad>
 
-function camera_pcb(type)         = type[2]; //! The PCB part of the camera
-function camera_lens_offset(type) = type[3]; //! Offset of the lens center from the PCB centre
-function camera_lens(type)        = type[4]; //! Stack of lens parts, can be round, rectanular or rounded rectangular, with optional tapered aperture
-function camera_connector(type)   = type[5]; //! The flex connector block for the camera itself
+function camera_pcb(type)           = type[2]; //! The PCB part of the camera
+function camera_lens_offset(type)   = type[3]; //! Offset of the lens center from the PCB centre
+function camera_lens(type)          = type[4]; //! Stack of lens parts, can be round, rectanular or rounded rectangular, with optional tapered aperture
+function camera_connector_pos(type) = type[5]; //! The flex connector block for the camera itself's position
+function camera_connector_size(type)= type[6]; //! The flex connector block for the camera itself's size
+
+module camera_lens(type, offset = 0)
+    color(grey(20))
+        translate(camera_lens_offset(type))
+            for(p = camera_lens(type)) {
+                size = p[0];
+                r = p[1] + offset;
+                app = p[2];
+                if(size.x)
+                    rounded_rectangle(size + [2 * offset, 2 * offset, round_to_layer(offset)], r, center = false);
+                else
+                    translate_z(size.y)
+                        rotate_extrude()
+                            difference() {
+                                square([r, size.z + round_to_layer(offset)]);
+
+                                if(app)
+                                    translate([0, size.z])
+                                        hull() {
+                                            translate([0, -eps])
+                                                square([app.y, eps * 2]);
+
+                                            translate([0, -app.z])
+                                                square([app.x, app.z]);
+                                        }
+                            }
+            }
 
 module camera(type) {           //! Draw specified PCB camera
     vitamin(str("camera(", type[0], "): ", type[1]));
@@ -36,36 +64,14 @@ module camera(type) {           //! Draw specified PCB camera
         pcb(pcb);
 
     translate_z(pcb_thickness(pcb)) {
-        color(grey(20))
-            translate(camera_lens_offset(type))
-                for(p = camera_lens(type)) {
-                    size = p[0];
-                    r = p[1];
-                    app = p[2];
-                    if(size.x)
-                        rounded_rectangle(size, r, center = false);
-                    else
-                        translate_z(size.y)
-                            rotate_extrude()
-                                difference() {
-                                    square([r, size.z]);
+        camera_lens(type);
 
-                                    if(app)
-                                        translate([0, size.z])
-                                            hull() {
-                                                translate([0, -eps])
-                                                    square([app.y, eps * 2]);
-
-                                                translate([0, -app.z])
-                                                    square([app.x, app.z]);
-                                            }
-                                }
-                }
-        conn = camera_connector(type);
+        conn = camera_connector_size(type);
         if(conn) {
+            pos = camera_connector_pos(type);
             color(grey(20))
-                translate(conn[0])
-                    rounded_rectangle(conn[1], 0.5, center = false);
+                translate(pos)
+                    rounded_rectangle(conn, 0.5, center = false);
 
             flex = [5, 0.1];
             color("orange")
@@ -74,8 +80,8 @@ module camera(type) {           //! Draw specified PCB camera
                         translate(camera_lens_offset(type) + [0, camera_lens(type)[0][0].y / 2])
                             cube([flex.x, eps, flex.y], center = true);
 
-                    translate_z(conn[1].z - flex.y)
-                        translate(conn[0] - [0, conn[1].y / 2])
+                    translate_z(conn.z - flex.y)
+                        translate(pos - [0, conn.y / 2])
                              cube([flex.x, eps, flex.y], center = true);
                 }
         }

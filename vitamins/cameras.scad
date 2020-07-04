@@ -22,7 +22,7 @@ rpi_camera_v1_pcb = ["", "",  25, 24, 1, 0, 2.1, 0, "green", false, [[2, -2], [-
     [
         [12,   3.25,  0, "-flat_flex", true],
         [-4.5, -5,    0, "smd_led", LED0603, "red"],
-        [-5.5, -4,    0, "smd_res", RES0603, "10K"],
+        [-5.5, -4,    0, "smd_res", RES0603, "1K2"],
     ],
     []];
 
@@ -32,7 +32,7 @@ rpi_camera_v1 = ["rpi_camera_v1", "Raspberry Pi camera V1", rpi_camera_v1_pcb, [
         [[0, 0, 4], 7.5 / 2],
         [[0, 0, 5], 5.5 / 2, [1.5/2, 2/2, 0.5]],
     ],
-    [[0, 12 - 1.5 - 2.5], [8, 5, 1]]
+    [0, 12 - 1.5 - 2.5], [8, 5, 1]
 ];
 
 rpi_camera_pcb = ["", "",  36, 36, 1.6, 0, 3.2, 0, "green", false, [[3.5, -3.5], [-3.5, -3.5], [3.5, 3.5], [-3.5, 3.5]],
@@ -50,7 +50,7 @@ rpi_camera = ["rpi_camera", "Raspberry Pi focusable camera", rpi_camera_pcb, [0,
         [[0, 0,  12], 6],
         [[0, 11, 4.3], 14 / 2, [8/2, 11/2, 1]],
     ],
-    [[0, 18 - 1.5 - 2.5], [8, 5, 1]]
+    [0, 18 - 1.5 - 2.5], [8, 5, 1.6]
 ];
 
 cameras = [rpi_camera_v1, rpi_camera];

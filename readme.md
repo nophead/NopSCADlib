@@ -447,7 +447,8 @@ PCB cameras.
 ### Properties
 | Function | Description |
 |:--- |:--- |
-| ```camera_connector(type)``` | The flex connector block for the camera itself |
+| ```camera_connector_pos(type)``` | The flex connector block for the camera itself's position |
+| ```camera_connector_size(type)``` | The flex connector block for the camera itself's size |
 | ```camera_lens(type)``` | Stack of lens parts, can be round, rectanular or rounded rectangular, with optional tapered aperture |
 | ```camera_lens_offset(type)``` | Offset of the lens center from the PCB centre |
 | ```camera_pcb(type)``` | The PCB part of the camera |
