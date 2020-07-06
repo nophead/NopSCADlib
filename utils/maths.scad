@@ -20,7 +20,10 @@
 //
 //! Maths utilities for manipulating vectors and matrices.
 //
-function sqr(x) = x * x;
+function sqr(x) = x * x;                        //! Square x
+function radians(degrees) = degrees * PI / 180; //! Convert radians to degrees
+function degrees(radians) = radians * 180 / PI; //! Convert degrees to radians
+
 
 function translate(v) = let(u = is_list(v) ? len(v) == 2 ? [v.x, v.y, 0] //! Generate a 4x4 translation matrix, ```v``` can be ```[x, y]```, ```[x, y, z]``` or ```z```
                                                          : v
@@ -62,6 +65,12 @@ function rot3_z(a) = //! Generate a 3x3 matrix to rotate around z
         [ [ c, -s,  0],
           [ s,  c,  0],
           [ 0,  0,  1] ];
+
+function rot2_z(a) = //! Generate a 2x2 matrix to rotate around z
+    let(c = cos(a),
+        s = sin(a))
+        [ [ c, -s],
+          [ s,  c] ];
 
 function scale(v) = let(s = is_list(v) ? v : [v, v, v]) //!  Generate a 4x4 matrix that scales by ```v```, which can be a vector of xyz factors or a scalar to scale all axes equally
                         [
