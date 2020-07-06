@@ -84,6 +84,7 @@ use <utils/rounded_cylinder.scad>
 use <utils/dogbones.scad>
 use <utils/tube.scad>
 use <utils/quadrant.scad>
+use <utils/gears.scad>
 use <utils/hanging_hole.scad>
 use <utils/fillet.scad>
 use <utils/rounded_polygon.scad>
