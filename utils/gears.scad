@@ -30,18 +30,20 @@
 //! the practical minimum.
 //!
 //! The clearance between tip and root defaults to module / 6, but can be overridden by setting the ```clearance``` parameter.
+//!
+//! The origin of the rack is the left end of the pitch line and its width is below the pitch line. I.e. it does not include the addendum.
 //
 include <core/core.scad>
 use <maths.scad>
 
 function involute(r, u) = let(a = degrees(u), c = cos(a), s = sin(a)) r * [c + u * s, s - u * c]; //! Involute of circle radius r at angle u in radians
 
-function profile_shift(z, pa) = max(1 - z * sqr(sin(pa)) / 2, 0); //! Calculate profile shift for small gears
+function profile_shift(z, pa) = z ? max(1 - z * sqr(sin(pa)) / 2, 0) : 0; //! Calculate profile shift for small gears
 
 function centre_distance(m, z1, z2, pa) = //! Calculate distance between centres taking profile shift into account
     let(x1 = profile_shift(z1, pa), x2 = profile_shift(z2, pa)) m * (z1/2 + z2/2 + x1 + x2);
 
-module involute_gear_profile(m, z, pa = 20, clearance = undef, steps = 20) { //! Calculate profile given module, number of teeth and pressure angle
+module involute_gear_profile(m, z, pa = 20, clearance = undef, steps = 20) { //! Calculate gear profile given module, number of teeth and pressure angle
     assert(z >= 7, "Gears must have at least 7 teeth.");
     d = m * z;                                                  // Reference pitch circle diameter
     x = profile_shift(z, pa);                                   // Profile shift
@@ -93,4 +95,37 @@ module involute_gear_profile(m, z, pa = 20, clearance = undef, steps = 20) { //!
 
             circle(root_r);
         }
+}
+
+module involute_rack_profile(m, z, w, pa = 20, clearance = undef) { //! Calculate rack profile given module, number of teeth and pressure angle
+    p = PI * m;                                     // Pitch
+    ha = m;                                         // Addendum
+    hf = 1.25 * m;                                  // Dedendum
+    hw = 2 * m;                                     // Working depth
+    h = ha + hf;                                    // Tooth depth
+    c = is_undef(clearance) ? m / 4 : clearance;    // Tip root clearance
+    crest_w = p / 2 - 2 * ha * tan(pa);             // Crest width
+    base_w = crest_w + 2 * hw * tan(pa);            // Base width
+    root_w = p - base_w;                            // Root width
+    clearance_w = root_w - 2 * c * tan(pa);         // Width of clearance without fillet
+    kx = tan(pa / 2 + 45);                          // Fillet ratio of radius and xoffset
+    pf = min(0.38 * m, kx * clearance_w / 2);       // Dedendum fillet radius
+    x = pf / kx;                                    // Fillet centre x offset from corner
+
+    tooth = [ [root_w / 2, -hw / 2], [p / 2 - crest_w / 2, ha], [p / 2 + crest_w / 2, ha], [p - root_w / 2, -hw / 2] ];
+    teeth = [for(i = [0 : z - 1], pt = tooth) [pt.x + i * p, pt.y] ];
+
+    difference() {
+        polygon(concat([[0, -w], [0, -hf]], teeth, [[z * p, -hf ], [z * p, -w]])); // Add the corners
+
+        for(i = [0 : z])                                // Add fillets
+            hull() {
+                for(side = [-1, 1])
+                    translate([i * p + side * (clearance_w / 2 - x), -hf + pf])
+                        circle(pf);
+
+                translate([i * p, -hw /2 + eps / 2])    // Need to extend to fillet up to meet the root at high pressure angles
+                    square([root_w, eps], center = true);
+           }
+    }
 }

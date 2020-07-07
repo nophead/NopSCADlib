@@ -5239,6 +5239,8 @@ the practical minimum.
 
 The clearance between tip and root defaults to module / 6, but can be overridden by setting the ```clearance``` parameter.
 
+The origin of the rack is the left end of the pitch line and its width is below the pitch line. I.e. it does not include the addendum.
+
 
 [utils/gears.scad](utils/gears.scad) Implementation.
 
@@ -5254,7 +5256,8 @@ The clearance between tip and root defaults to module / 6, but can be overridden
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```involute_gear_profile(m, z, pa = 20, clearance = undef, steps = 20)``` | Calculate profile given module, number of teeth and pressure angle |
+| ```involute_gear_profile(m, z, pa = 20, clearance = undef, steps = 20)``` | Calculate gear profile given module, number of teeth and pressure angle |
+| ```involute_rack_profile(m, z, w, pa = 20, clearance = undef)``` | Calculate rack profile given module, number of teeth and pressure angle |
 
 ![gears](tests/png/gears.png)
 

@@ -35,7 +35,7 @@ $show_numbers = false;
 
 module gears() {
     color(pp1_colour)
-        rotate($t * 360)
+        rotate(-$t * 360)
             linear_extrude(eps, center = true, convexity = z1)
                 difference() {
                     involute_gear_profile(m, z1, pa);
@@ -45,13 +45,21 @@ module gears() {
 
     color(pp2_colour)
         translate([centre_distance(m, z1, z2, pa), 0])
-            rotate(180 + 180 / z2 + -$t * 360 * z1 / z2)
+            rotate(180 + 180 / z2 + $t * 360 * z1 / z2)
                linear_extrude(eps, center = true, convexity = z2)
                     difference() {
                          involute_gear_profile(m, z2, pa);
 
                          circle(r = m * z2 / 10);
                     }
+
+    z3 = floor((z1 + z2) / PI);
+    angle = -$t * 360 + 90 - floor(z1 / 4) * 360 / z1; // Line up the rack 1/4 turn around the gear
+    pitch = m * PI;
+    color(pp3_colour)
+        translate([(angle % ((z3 / z1) * 360)) / 360 * z1 * pitch, -centre_distance(m, z1, 0, pa)])
+            linear_extrude(eps, center = true)
+                involute_rack_profile(m, z3, 3 * m, pa);
 }
 
 rotate(is_undef($bom) ? 0 : [70, 0, 315])
