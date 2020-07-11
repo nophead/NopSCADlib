@@ -73,7 +73,7 @@ use <tests/spades.scad>
 use <tests/springs.scad>
 use <tests/SSRs.scad>
 use <tests/stepper_motors.scad>
-use <tests/swiss_clips.scad>
+use <tests/Swiss_clips.scad>
 use <tests/toggles.scad>
 use <tests/transformers.scad>
 use <tests/tubings.scad>
