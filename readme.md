@@ -5546,6 +5546,8 @@ specify a chamfer angle.
 Threads are by default solid, so the male version is wrapped around a cylinder and the female inside a tube. This can be suppressed to just get the helix, for
 example to make a printed pot with a screw top lid.
 
+A left hand thread can be made by using mirror([0,1]).
+
 Threads with a typical 60 degree angle appear too bright with OpenSCAD's primitive lighting model as they face towards the lights more than the top and sides of
 a cylinder. To get around this a colour can be passed to thread that is used to colour the cylinder and then toned down to colour the helix.
 
