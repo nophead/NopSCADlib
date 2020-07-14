@@ -5229,6 +5229,7 @@ Rounded fillet for adding to corners.
 Utilities for making involute gears.
 
 Formulas from <https://khkgears.net/new/gear_knowledge/gear_technical_reference/involute_gear_profile.html>
+<https://khkgears.net/new/gear_knowledge/gear_technical_reference/calculation_gear_dimensions.html>
 and <https://www.tec-science.com/mechanical-power-transmission/involute-gear/calculation-of-involute-gears/>
 
 ```involute_gear_profile()``` returns a polygon that can have the bore and spokes, etc, subtracted from it before linear extruding it to 3D.
@@ -5241,6 +5242,8 @@ The clearance between tip and root defaults to module / 6, but can be overridden
 
 The origin of the rack is the left end of the pitch line and its width is below the pitch line. I.e. it does not include the addendum.
 
+```involute_worm_profile()``` returns a tooth profile that can be passed to ```thread()``` to make worms.
+
 
 [utils/gears.scad](utils/gears.scad) Implementation.
 
@@ -5249,8 +5252,10 @@ The origin of the rack is the left end of the pitch line and its width is below 
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| ```centre_distance(m, z1, z2, pa)``` | Calculate distance between centres taking profile shift into account |
+| ```centre_distance(m, z1, z2, pa = 20)``` | Calculate distance between centres taking profile shift into account |
 | ```involute(r, u)``` | Involute of circle radius r at angle u in radians |
+| ```involute_rack_tooth_profile(m, pa = 20, clearance = undef)``` | Calculate rack tooth profile given module and pressure angle |
+| ```involute_worm_profile(m, pa = 20, clearance = undef)``` | Calculate worm profile suitable for passing to thread() |
 | ```profile_shift(z, pa)``` | Calculate profile shift for small gears |
 
 ### Modules
