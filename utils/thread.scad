@@ -49,7 +49,7 @@ function thread_profile(h, crest, angle, overlap = 0.1) = //! Create thread prof
     let(base = crest + 2 * (h + overlap) * tan(angle / 2))
         [[-base / 2, -overlap, 0], [-crest / 2, h, 0], [crest / 2, h, 0], [base / 2, -overlap, 0]];
 
-module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or femail thread, ends can be tapered, chamfered or square
+module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or female thread, ends can be tapered, chamfered or square
     //
     // Apply colour if defined
     //
