@@ -5579,7 +5579,7 @@ Threads obey the $fn, $fa, $fs variables.
 |:--- |:--- |
 | ```female_metric_thread(d, pitch, length, center = true, top = -1, bot = -1, colour = undef)``` | Create female thread with metric profile |
 | ```male_metric_thread(d, pitch, length, center = true, top = -1, bot = -1, solid = true, colour = undef)``` | Create male thread with metric profile |
-| ```thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef)``` | Create male or femail thread, ends can be tapered, chamfered or square |
+| ```thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef)``` | Create male or female thread, ends can be tapered, chamfered or square |
 
 ![thread](tests/png/thread.png)
 
