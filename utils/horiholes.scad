@@ -18,7 +18,7 @@
 //
 
 //
-//! Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops).
+//! Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes_36.html>
 //
 include <../utils/core/core.scad>
 

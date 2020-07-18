@@ -5292,7 +5292,7 @@ Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/
 ---
 <a name="Horiholes"></a>
 ## Horiholes
-Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops).
+Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes_36.html>
 
 
 [utils/horiholes.scad](utils/horiholes.scad) Implementation.
@@ -5886,7 +5886,7 @@ For making horizontal holes that don't need support material.
 Small holes can get away without it, but they print better with truncated teardrops.
 
 Using teardrop_plus() or setting the plus option on other modules will elongate the teardrop vertically by the layer height, so when sliced the staircase tips
-do not intrude into the circle.
+do not intrude into the circle. See <https://hydraraptor.blogspot.com/2020/07/horiholes_36.html>
 
 
 [utils/core/teardrops.scad](utils/core/teardrops.scad) Implementation.
