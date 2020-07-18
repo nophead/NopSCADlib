@@ -20,18 +20,24 @@
 //
 //! For making horizontal holes that don't need support material.
 //! Small holes can get away without it, but they print better with truncated teardrops.
+//!
+//! Using teardrop_plus() or setting the plus option on other modules will elongate the teardrop vertically by the layer height, so when sliced the staircase tips
+//! do not intrude into the circle.
 //
-module teardrop(h, r, center = true, truncate = true, chamfer = 0) { //! For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging
-    module teardrop_2d(r, truncate) {
-        hull() {
-            circle4n(r);
-            if(truncate)
-                translate([0, r / 2])
-                    square([2 * r * (sqrt(2) - 1), r], center = true);
-            else
-                polygon([[0, 0], [eps, 0], [0, r * sqrt(2)]]);
-        }
-    }
+module teardrop(h, r, center = true, truncate = true, chamfer = 0, plus = false) { //! For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging
+    module teardrop_2d(r, truncate)
+        hull()
+            for(y = plus ? [-1 : 1] : 0)
+                translate([0, y * (layer_height / 2 - eps)]) {
+
+                circle4n(r);
+
+                if(truncate)
+                    translate([0, r / 2])
+                        square([2 * r * (sqrt(2) - 1), r], center = true);
+                else
+                    polygon([[0, 0], [eps, 0], [0, r * sqrt(2)]]);
+            }
 
     render(convexity = 5)
         extrude_if(h, center)
@@ -40,23 +46,23 @@ module teardrop(h, r, center = true, truncate = true, chamfer = 0) { //! For mak
     teardrop_chamfer(h, center, chamfer) {
         linear_extrude(eps, center = true)
             teardrop_2d(r + chamfer / 2, truncate);
+
         translate_z(-chamfer / 2)
             linear_extrude(eps, center = true)
                 teardrop_2d(r, truncate);
     }
 }
 
-module semi_teardrop(h, r, d = undef, center = true, chamfer = 0) { //! A semi teardrop in the positive Y domain
-    module semi_teardrop_2d(r, d) {
+module semi_teardrop(h, r, d = undef, center = true, chamfer = 0, plus = false) { //! A semi teardrop in the positive Y domain
+    module semi_teardrop_2d(r, d)
         intersection() {
             R = is_undef(d) ? r : d / 2;
-            teardrop(r = R, h = 0);
+            teardrop(r = R, h = 0, plus = plus);
 
             sq = R + 1;
             translate([-sq, 0])
                 square([2 * sq, sq]);
         }
-    }
 
     render(convexity = 5)
         extrude_if(h, center)
@@ -65,22 +71,21 @@ module semi_teardrop(h, r, d = undef, center = true, chamfer = 0) { //! A semi t
     teardrop_chamfer(h, center, chamfer) {
         linear_extrude(eps, center = true)
             semi_teardrop_2d(r + chamfer / 2, d);
+
         translate_z(-chamfer / 2)
             linear_extrude(eps, center = true)
                 semi_teardrop_2d(r, d);
     }
 }
 
-module teardrop_plus(h, r, center = true, truncate = true, chamfer = 0) //! Slightly bigger teardrop to allow for the 3D printing staircase effect
-    teardrop(h, r + layer_height / 4, center, truncate, chamfer);
+module teardrop_plus(h, r, center = true, truncate = true, chamfer = 0) //! Slightly elongated teardrop to allow for the 3D printing staircase effect
+    teardrop(h, r, center, truncate, chamfer, plus = true);
 
-module tearslot(h, r, w, center = true, chamfer = 0) { //! A horizontal slot that doesn't need support material
-    module tearslot_2d(r, w) {
-        hull() {
-            translate([-w / 2, 0]) teardrop(r = r, h = 0);
-            translate([w / 2, 0]) teardrop(r = r, h = 0);
-        }
-    }
+module tearslot(h, r, w, center = true, chamfer = 0, plus = false) { //! A horizontal slot that doesn't need support material
+    module tearslot_2d(r, w)
+        hull()
+            for(x = [-1, 1])
+                translate([x * w / 2, 0]) teardrop(r = r, h = 0, plus = plus);
 
     extrude_if(h, center)
         tearslot_2d(r, w);
@@ -88,19 +93,19 @@ module tearslot(h, r, w, center = true, chamfer = 0) { //! A horizontal slot tha
     teardrop_chamfer(h, center, chamfer) {
         linear_extrude(eps, center = true)
             tearslot_2d(r + chamfer / 2, w);
+
         translate_z(-chamfer / 2)
             linear_extrude(eps, center = true)
                 tearslot_2d(r, w);
     }
 }
 
-module vertical_tearslot(h, r, l, center = true, chamfer = 0) { //! A vertical slot that doesn't need support material
-    module vertical_tearslot_2d(r, l) {
-        hull() {
-            translate([0,  l / 2]) teardrop(0, r, true);
-            translate([0, -l / 2]) circle4n(r);
-        }
-    }
+module vertical_tearslot(h, r, l, center = true, chamfer = 0, plus = false) { //! A vertical slot that doesn't need support material
+    module vertical_tearslot_2d(r, l)
+        hull()
+            for(y = [-1, 1])
+                translate([0,  y * l / 2])
+                    teardrop(0, r, true, plus = plus);
 
     extrude_if(h, center)
         vertical_tearslot_2d(r, l);
@@ -108,6 +113,7 @@ module vertical_tearslot(h, r, l, center = true, chamfer = 0) { //! A vertical s
     teardrop_chamfer(h, center, chamfer) {
         linear_extrude(eps, center = true)
             vertical_tearslot_2d(r + chamfer / 2, l);
+
         translate_z(-chamfer / 2)
             linear_extrude(eps, center = true)
                 vertical_tearslot_2d(r, l);
@@ -123,4 +129,3 @@ module teardrop_chamfer(h, center, chamfer) { //! Helper module for adding chamf
                         hull()
                             children();
 }
-

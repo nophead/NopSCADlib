@@ -24,18 +24,18 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
 <tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SCS_bearing_blocks">SCS_bearing_blocks</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
 <tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Layout">Layout</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
@@ -5290,6 +5290,32 @@ Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/
 <a href="#top">Top</a>
 
 ---
+<a name="Horiholes"></a>
+## Horiholes
+Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops).
+
+
+[utils/horiholes.scad](utils/horiholes.scad) Implementation.
+
+[tests/horiholes.scad](tests/horiholes.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```teardrop_plus_x(r, y, h)``` | Calculate the ordinate of a compensated teardrop given y. |
+| ```teardrop_x(r, y)``` | Calculate the ordinate of a teardrop given y. Sweeping y from -r to + r yields the positive X half of the shape. |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```horihole(r, z, h = 0, center = true)``` | For making horizontal holes that don't need support material and are correct dimensions |
+
+![horiholes](tests/png/horiholes.png)
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Layout"></a>
 ## Layout
 Layout objects in a line with equal gaps given a vector of their widths.
@@ -5859,6 +5885,9 @@ This ensures `hull` and `minkowski` results have the correct dimensions when sph
 For making horizontal holes that don't need support material.
 Small holes can get away without it, but they print better with truncated teardrops.
 
+Using teardrop_plus() or setting the plus option on other modules will elongate the teardrop vertically by the layer height, so when sliced the staircase tips
+do not intrude into the circle.
+
 
 [utils/core/teardrops.scad](utils/core/teardrops.scad) Implementation.
 
@@ -5867,12 +5896,12 @@ Small holes can get away without it, but they print better with truncated teardr
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```semi_teardrop(h, r, d = undef, center = true, chamfer = 0)``` | A semi teardrop in the positive Y domain |
-| ```teardrop(h, r, center = true, truncate = true, chamfer = 0)``` | For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging |
+| ```semi_teardrop(h, r, d = undef, center = true, chamfer = 0, plus = false)``` | A semi teardrop in the positive Y domain |
+| ```teardrop(h, r, center = true, truncate = true, chamfer = 0, plus = false)``` | For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging |
 | ```teardrop_chamfer(h, center, chamfer)``` | Helper module for adding chamfer to a teardrop |
-| ```teardrop_plus(h, r, center = true, truncate = true, chamfer = 0)``` | Slightly bigger teardrop to allow for the 3D printing staircase effect |
-| ```tearslot(h, r, w, center = true, chamfer = 0)``` | A horizontal slot that doesn't need support material |
-| ```vertical_tearslot(h, r, l, center = true, chamfer = 0)``` | A vertical slot that doesn't need support material |
+| ```teardrop_plus(h, r, center = true, truncate = true, chamfer = 0)``` | Slightly elongated teardrop to allow for the 3D printing staircase effect |
+| ```tearslot(h, r, w, center = true, chamfer = 0, plus = false)``` | A horizontal slot that doesn't need support material |
+| ```vertical_tearslot(h, r, l, center = true, chamfer = 0, plus = false)``` | A vertical slot that doesn't need support material |
 
 ![teardrops](tests/png/teardrops.png)
 
