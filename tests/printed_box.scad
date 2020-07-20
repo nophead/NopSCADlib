@@ -67,7 +67,7 @@ module box1_external_additions() {
 
 module box1_holes() {
     box1_feet_positions()
-        teardrop(r = screw_pilot_hole(foot_screw(foot)), h = 10, center = true);
+        teardrop_plus(r = screw_pilot_hole(foot_screw(foot)), h = 10, center = true);
 }
 
 

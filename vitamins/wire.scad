@@ -50,7 +50,7 @@ module mouse_hole(cable, h = 100, teardrop = false) { //! A mouse hole to allow 
     r = wire_hole_radius(cable);
 
         if(teardrop)
-            vertical_tearslot(r = r, l = 2 * r, h = h);
+            vertical_tearslot(r = r, l = 2 * r, h = h, plus = true);
         else
             rotate(90)
                 slot(r, 2 * r, h = h);

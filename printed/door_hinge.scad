@@ -74,7 +74,7 @@ module door_hinge(door_thickness) {                         //! Generates STL fo
                             square([1, thickness + door_thickness]);
                     }
                     translate([dia / 2, thickness + door_thickness / 2])
-                        teardrop(r = screw_clearance_radius(pin_screw), h = 0);
+                        teardrop_plus(r = screw_clearance_radius(pin_screw), h = 0);
                 }
         linear_extrude(thickness)
             difference() {
@@ -127,7 +127,7 @@ module door_hinge_stat_stl() { //! Generates the STL for the stationary part
                             square([dia, 1], center = true);
                     }
                     translate([0, dia / 2 + stat_clearance])
-                        teardrop(r = screw_clearance_radius(pin_screw), h = 0);
+                        teardrop_plus(r = screw_clearance_radius(pin_screw), h = 0);
                }
     }
 }
