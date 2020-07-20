@@ -18,21 +18,20 @@
 //
 
 //
-//! Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes_36.html>
+//! Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
 //
 include <../utils/core/core.scad>
 
-function teardrop_x(r, y) = //! Calculate the ordinate of a teardrop given y. Sweeping y from -r to + r yields the positive X half of the shape.
-    let(x2 = sqr(r) - sqr(y))
-        y > r / sqrt(2) ? y >= r ? 0
-                                 : r * sqrt(2) - y
-                        : x2 > 0 ? sqrt(x2)
-                                 : 0;
-
-function teardrop_plus_x(r, y, h) = //! Calculate the ordinate of a compensated teardrop given y.
-    y < -h ? teardrop_x(r, y + h)
-           : y > h ? teardrop_x(r, y - h)
-                   : r;
+function teardrop_plus_x(r, y, h) = //! Calculate the ordinate of a compensated teardrop given y and layer height.
+    let(fr = h / 2,
+        hpot = r + fr,
+        x2 = sqr(hpot) - sqr(y),
+        x = x2 > 0 ? sqrt(x2) : 0
+    )
+    max(0,
+        y < hpot / sqrt(2) ? x - fr :
+        y < hpot           ? hpot * sqrt(2) - y - fr :
+        0);
 
 module horihole(r, z, h = 0, center = true) { //! For making horizontal holes that don't need support material and are correct dimensions
     bot_layer = floor((z - r) / layer_height);
@@ -41,9 +40,16 @@ module horihole(r, z, h = 0, center = true) { //! For making horizontal holes th
         extrude_if(h, center)
             for(i = [bot_layer : top_layer]) {
                 Z = i * layer_height;
-                x = teardrop_plus_x(r, Z - z + layer_height / 2, layer_height / 2);
+                y = Z - z + layer_height / 2;
+                x = teardrop_plus_x(r, y, layer_height);
                 if(x > 0)
-                    translate([-x, Z - z])
-                        square([2 * x, layer_height]);
+                    translate([0, y])
+                        difference() {
+                            square([2 * x + layer_height, layer_height], center = true);
+
+                            for(end = [-1, 1])
+                                translate([end * (x + layer_height / 2), 0])
+                                    circle(d = layer_height, $fn = 32);
+                        }
              }
 }

@@ -41,7 +41,10 @@ module teardrops() {
 
                         translate([20, 10])
                             semi_teardrop(h = 0, r = 3);
-                    }
+
+                        translate([20, 20])
+                            teardrop(h = 0, r = 3, truncate = false, plus = true);
+                   }
                 }
                 translate([40, 0, 1.5]) {
                     h = 3 + eps;
@@ -61,6 +64,9 @@ module teardrops() {
 
                     translate([20, 10])
                         semi_teardrop(h = h, r = 3, chamfer = chamfer);
+
+                    translate([20, 20])
+                        teardrop(h = h, r = 3, truncate = false, plus = false, chamfer = chamfer);
                 }
             }
 }

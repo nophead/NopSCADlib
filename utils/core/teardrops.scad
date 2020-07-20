@@ -22,22 +22,31 @@
 //! Small holes can get away without it, but they print better with truncated teardrops.
 //!
 //! Using teardrop_plus() or setting the plus option on other modules will elongate the teardrop vertically by the layer height, so when sliced the staircase tips
-//! do not intrude into the circle. See <https://hydraraptor.blogspot.com/2020/07/horiholes_36.html>
+//! do not intrude into the circle. See <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
 //
 module teardrop(h, r, center = true, truncate = true, chamfer = 0, plus = false) { //! For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging
-    module teardrop_2d(r, truncate)
+    module teardrop_2d(r, truncate) {
+        er = layer_height / 2 - eps;    // Extrustion edge radius
+        R = plus ? r + er : r;          // Corrected radius
+        offset = plus ? -er : 0;        // Offset inwards
         hull()
-            for(y = plus ? [-1 : 1] : 0)
-                translate([0, y * (layer_height / 2 - eps)]) {
+            for(side = [0 : 1])
+                mirror([side, 0, 0])
+                    intersection() {
+                        hull()
+                        translate([offset, 0]) {
+                            circle4n(R);
 
-                circle4n(r);
-
-                if(truncate)
-                    translate([0, r / 2])
-                        square([2 * r * (sqrt(2) - 1), r], center = true);
-                else
-                    polygon([[0, 0], [eps, 0], [0, r * sqrt(2)]]);
-            }
+                            if(truncate)
+                                translate([0, R / 2])
+                                    square([2 * R * (sqrt(2) - 1), R], center = true);
+                            else
+                                polygon([[0, 0], [eps, 0], [0, R * sqrt(2)]]);
+                        }
+                        translate([0, -2 * R])
+                            square([R, 4 * R]);
+                    }
+    }
 
     render(convexity = 5)
         extrude_if(h, center)

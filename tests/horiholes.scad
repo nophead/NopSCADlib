@@ -21,19 +21,21 @@ include <../utils/core/core.scad>
 use <../utils/horiholes.scad>
 
 show_disc = true;
-thickness = 3;
-length = 50;
+use_horihole = true;
+thickness = 6;
+length = 60;
 height = 20;
 overlap_x = 15;
-overlap_y = 5;
+overlap_y = 10;
 
 module hole_positions() {
+    x0 = (length - 40) / 2;
     for($i = [0 : 4], $z = 5 + $i * layer_height / 5, $r = 3)
-        translate([5 + $i * 10, $z])
+        translate([x0 + $i * 10, $z])
             children();
 
     for($i = [0 : 4], $z = 15 + $i * layer_height / 5, $r = 0.5 + $i / 2)
-        translate([5 + $i * 10, $z])
+        translate([x0 + $i * 10, $z])
             children();
 }
 
@@ -45,7 +47,10 @@ module horiholes_stl(t = thickness) {
                     square([length, height]);
 
                     hole_positions()
-                        horihole($r, $z);
+                        if(use_horihole)
+                            horihole($r, $z);
+                        else
+                            teardrop_plus(h = 0, r = $r);
                 }
             }
         }
@@ -67,16 +72,15 @@ module horiholes() {
     hole_positions()
         color("red")
             linear_extrude(2 * eps, center = true)
-                //offset(0.01, $fn = 360)
-                    intersection() {
-                        difference() {
-                            square(8, center = true);
+                intersection() {
+                    difference() {
+                        square(8, center = true);
 
-                            horihole($r, $z);
-                        }
-
-                        circle($r, $fn = 360);
+                        horihole($r, $z);
                     }
+
+                    circle($r, $fn = 360);
+                }
 }
 
 if($preview)
