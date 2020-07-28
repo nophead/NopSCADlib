@@ -46,6 +46,9 @@ function profile_shift(z, pa) = z ? max(1 - z * sqr(sin(pa)) / 2, 0) : 0; //! Ca
 function centre_distance(m, z1, z2, pa = 20) = //! Calculate distance between centres taking profile shift into account
     let(x1 = profile_shift(z1, pa), x2 = profile_shift(z2, pa)) m * (z1/2 + z2/2 + x1 + x2);
 
+function involute_gear_od(m, z, pa = 20) = //! involute gear outside diameter given modulus, tooth count and pressure angle
+    m * (z + 2 * profile_shift(z, pa) + 2);
+
 module involute_gear_profile(m, z, pa = 20, clearance = undef, steps = 20) { //! Calculate gear profile given module, number of teeth and pressure angle
     assert(z >= 7, "Gears must have at least 7 teeth.");
     d = m * z;                                                  // Reference pitch circle diameter

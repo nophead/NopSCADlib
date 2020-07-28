@@ -5254,6 +5254,7 @@ The origin of the rack is the left end of the pitch line and its width is below 
 |:--- |:--- |
 | ```centre_distance(m, z1, z2, pa = 20)``` | Calculate distance between centres taking profile shift into account |
 | ```involute(r, u)``` | Involute of circle radius r at angle u in radians |
+| ```involute_gear_od(m, z, pa = 20)``` | involute gear outside diameter given modulus, tooth count and pressure angle |
 | ```involute_rack_tooth_profile(m, pa = 20, clearance = undef)``` | Calculate rack tooth profile given module and pressure angle |
 | ```involute_worm_profile(m, pa = 20, clearance = undef)``` | Calculate worm profile suitable for passing to thread() |
 | ```profile_shift(z, pa)``` | Calculate profile shift for small gears |
