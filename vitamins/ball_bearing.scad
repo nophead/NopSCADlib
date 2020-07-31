@@ -52,21 +52,21 @@ module ball_bearing(type) { //! Draw a ball bearing
         rim_chamfer = rim / 6;
         rotate_extrude()
             hull() {
-                translate([or - rim / 2, 0])
-                    square([rim, h - 2 * rim_chamfer], center = true);
+                translate([or - rim, -h / 2 + rim_chamfer])
+                    square([rim, h - 2 * rim_chamfer]);
 
-                translate([or - rim / 2 - rim_chamfer, 0])
-                    square([rim - rim_chamfer, h], center = true);
+                translate([or - rim, -h / 2])
+                    square([rim - rim_chamfer, h]);
             }
 
         hub_chamfer = hub / 6;
         rotate_extrude()
             hull() {
-                translate([ir + hub / 2, 0])
-                    square([hub, h - 2 * hub_chamfer], center = true);
+                translate([ir, -h / 2 + hub_chamfer])
+                    square([hub, h - 2 * hub_chamfer]);
 
-                translate([ir + hub / 2 + hub_chamfer, 0])
-                    square([hub - hub_chamfer, h], center = true);
+                translate([ir + hub_chamfer, -h / 2])
+                    square([hub - hub_chamfer, h]);
             }
     }
 
