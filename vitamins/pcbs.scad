@@ -217,6 +217,25 @@ RPI3 =  ["RPI3", "Raspberry Pi 3",     85,    56,    1.4, 3,    2.75, 6, "green"
     [": Micro SD card"],
     [32.5 - 9.5 * 2.54, 52.5 - 1.27, 20, 2]];
 
+RPI4 = ["RPI4", "Raspberry Pi 4", 85, 56, 1.4, 3, 2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]], [
+    [32.5, -3.5, 0, "2p54header", 20, 2],
+    [-6.5, 9, 0, "usb_Ax2"],
+    [-6.5, 27, 0, "usb_Ax2"],
+    [-8.5, 45.75, 0, "rj45"],
+
+    [ 4, 28, 90, "flex"],
+    [11.2, 3.675 - 1.6, -90, "usb_C"],
+    [ 26,  2.5, -90, "micro_hdmi"],
+    [39.5, 2.5, -90, "micro_hdmi"],
+    [46.5, 11.5, -90, "flex"],
+    [ 54, 6, -90, "jack"],
+
+    [ 29.25, 32.5, 0, "chip", 14, 14, 2.4],
+    [ 60, -22.3, 0, "chip", 9, 9, 0.6],
+    [7.75, 28, 180, "-uSD", [12, 11.5, 1.28]]
+    ], [": Micro SD card"], [32.5 - 9.5 * 2.54, 52.5 - 1.27, 20, 2]
+];
+
 RPI0 =  ["RPI0", "Raspberry Pi Zero",     65,    30,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]],
     [//[32.5, -3.5,   0, "2p54header", 20, 2],
      [25.5,  13,      0, "chip",       12, 12, 1.2],
@@ -391,7 +410,7 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     []];
 
 
-pcbs = [TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, DuetE, Duex2, Duex5, Melzi];
+pcbs = [TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5, Melzi];
 
 perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 

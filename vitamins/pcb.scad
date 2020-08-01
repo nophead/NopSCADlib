@@ -333,8 +333,9 @@ function hdmi_height2(type)   = type[6]; //! Inside height in the middle
 function hdmi_height(type)    = type[7]; //! Outside height above the PCB
 function hdmi_thickness(type) = type[8]; //! Wall thickness of the metal
 
-hdmi_full = [ "hdmi_full", "HDMI socket",      12,  14,   10,  3,    4.5, 6.5, 0.5 ];
-hdmi_mini = [ "hdmi_mini", "Mini HDMI socket", 7.5, 10.5, 8.3, 1.28, 2.5, 3.2, 0.35 ];
+hdmi_full = [ "hdmi_full", "HDMI socket",        12,   14,   10,  3,    4.5, 6.5, 0.5 ];
+hdmi_mini = [ "hdmi_mini", "Mini HDMI socket",    7.5, 10.5, 8.3, 1.28, 2.5, 3.2, 0.35 ];
+hdmi_micro = [ "hdmi_micro", "Micro HDMI socket", 8.5,  5.9, 4.43, 1.4, 2.3, 3,   0.3 ];
 
 module hdmi(type, cutout = false) { //! Draw HDMI socket
     vitamin(str("hdmi(", type[0], "): ", type[1]));
@@ -437,6 +438,39 @@ module usb_uA(cutout = false) { //! Draw USB micro A connector
         }
 }
 
+module usb_C(cutout = false) { //! Draw USB C connector
+    l = 7.35;
+    w = 8.94;
+    h = 3.26;
+    t = 0.4;
+    flange_h = 3;
+    flange_w = 8;
+
+    module O()
+        translate([0, h / 2])
+            rounded_square([w, h], h / 2 - 0.5, center = true);
+
+    if(cutout)
+        rotate([90, 0, 90])
+            linear_extrude(100)
+                offset(2 * panel_clearance)
+                    O();
+    else
+        color("silver") rotate([90, 0, 90]) {
+            linear_extrude(l, center = true)
+                difference() {
+                    O();
+
+                    offset(-t)
+                        O();
+                }
+
+            translate_z(-l / 2)
+                linear_extrude(2.51)
+                    O();
+
+        }
+}
 module usb_B(cutout = false) {  //! Draw USB B connector
     l = 16.4;
     w = 12.2;
@@ -890,10 +924,12 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
         if(show(comp, "usb_uA"))        usb_uA(cutouts);
         if(show(comp, "usb_B"))         usb_B(cutouts);
+        if(show(comp, "usb_C"))         usb_C(cutouts);
         if(show(comp, "jack"))          jack(cutouts);
         if(show(comp, "barrel_jack"))   barrel_jack(cutouts);
         if(show(comp, "hdmi"))          hdmi(hdmi_full, cutouts);
         if(show(comp, "mini_hdmi"))     hdmi(hdmi_mini, cutouts);
+        if(show(comp, "micro_hdmi"))    hdmi(hdmi_micro, cutouts);
         if(show(comp, "flex"))          flex(cutouts);
         if(show(comp, "flat_flex"))     flat_flex(param(4, false) ? large_ff : small_ff, cutouts);
         if(show(comp, "uSD"))           uSD(comp[4], cutouts);
