@@ -3608,7 +3608,10 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 |   1 | ```tubing(NEOP85)``` |  Neoprene tubing OD 8mm ID 5mm x 15mm |
 |   1 | ```tubing(PTFE07)``` |  PTFE sleeving OD 1.2mm ID 0.71mm x 15mm |
 |   1 | ```tubing(PTFE20)``` |  PTFE sleeving OD 2.6mm ID 2mm x 15mm |
+|   1 | ```tubing(PTFE2_3)``` |  PTFE tubing OD 3mm ID 2mm x 15mm |
 |   1 | ```tubing(PF7)``` |  PTFE tubing OD 4.6mm ID 3.84mm x 15mm |
+|   1 | ```tubing(PTFE2_4)``` |  PTFE tubing OD 4mm ID 2mm x 15mm |
+|   1 | ```tubing(PTFE4_6)``` |  PTFE tubing OD 6mm ID 4mm x 15mm |
 |   1 | ```tubing(PVC64)``` |  PVC aquarium tubing OD 6mm ID 4mm x 15mm |
 |   1 | ```tubing(PVC85)``` |  PVC aquarium tubing OD 8mm ID 5mm x 15mm |
 
