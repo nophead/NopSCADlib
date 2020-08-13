@@ -24,14 +24,14 @@ include <../utils/core/core.scad>
 use <../utils/quadrant.scad>
 use <../utils/thread.scad>
 
-function insert_length(type)         = type[1]; //! Length
-function insert_outer_d(type)        = type[2]; //! Outer diameter at the top
+function insert_length(type)         = type[1];     //! Length
+function insert_outer_d(type)        = type[2];     //! Outer diameter at the top
 function insert_hole_radius(type)    = type[3] / 2; //! Radius of the required hole in the plastic
-function insert_screw_diameter(type) = type[4]; //! Screw size
-function insert_barrel_d(type)       = type[5]; //! Diameter of the main barrel
-function insert_ring1_h(type)        = type[6]; //! Height of the top and middle rings
-function insert_ring2_d(type)        = type[7]; //! Diameter of the middle ring
-function insert_ring3_d(type)        = type[8]; //! Diameter of the bottom ring
+function insert_screw_diameter(type) = type[4];     //! Screw size
+function insert_barrel_d(type)       = type[5];     //! Diameter of the main barrel
+function insert_ring1_h(type)        = type[6];     //! Height of the top and middle rings
+function insert_ring2_d(type)        = type[7];     //! Diameter of the middle ring
+function insert_ring3_d(type)        = type[8];     //! Diameter of the bottom ring
 
 function insert_hole_length(type) = round_to_layer(insert_length(type));
 
@@ -42,12 +42,12 @@ module insert(type) { //! Draw specified insert
     chamfer1 = (insert_ring2_d(type) - insert_barrel_d(type)) / 2;
     chamfer2 = (insert_ring3_d(type) - insert_barrel_d(type)) / 2;
     ring2_h = ring1_h + chamfer1;
-    gap = (length - ring1_h - ring2_h- chamfer2) / 3;
+    gap = (length - ring1_h - ring2_h - chamfer2) / 3;
 
     vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type)));
     $fn = 64;
     thread_d = insert_screw_diameter(type);
-    explode(20, offset =[0, 0, -5]) translate_z(eps) vflip() {
+    explode(20, offset = [0, 0, -5]) translate_z(eps) vflip() {
         r1 = thread_d / 2;
         r2 = insert_barrel_d(type) / 2;
         r3 = insert_ring3_d(type) / 2;
