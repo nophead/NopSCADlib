@@ -3586,10 +3586,15 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 | ```tubing_material(type)``` | Material description |
 | ```tubing_od(type)``` | Outside diameter |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```tubing_or(type)``` | Outside radius |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```tubing(type, length = 15, forced_id = 0)``` | Draw specified tubing with optional forced internal diameter |
+| ```tubing(type, length = 15, forced_id = 0, center = true)``` | Draw specified tubing with optional forced internal diameter |
 
 ![tubings](tests/png/tubings.png)
 

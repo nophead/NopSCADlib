@@ -27,7 +27,9 @@ function tubing_od(type)       = type[2]; //! Outside diameter
 function tubing_id(type)       = type[3]; //! Inside diameter
 function tubing_colour(type)   = type[4]; //! Colour
 
-module tubing(type, length = 15, forced_id = 0) { //! Draw specified tubing with optional forced internal diameter
+function tubing_or(type)        = tubing_od(type) / 2; //! Outside radius
+
+module tubing(type, length = 15, forced_id = 0, center = true) { //! Draw specified tubing with optional forced internal diameter
     original_od = tubing_od(type);
     original_id = tubing_id(type);
     id = forced_id ? forced_id : original_id;
@@ -37,7 +39,7 @@ module tubing(type, length = 15, forced_id = 0) { //! Draw specified tubing with
     else
         vitamin(str("tubing(", type[0], arg(length, 15), "): ", tubing_material(type), " OD ", original_od, "mm ID ", original_id,"mm x ",length, "mm"));
     color(tubing_colour(type))
-        linear_extrude(length, center = true, convexity = 4)
+        linear_extrude(length, center = center, convexity = 4)
             difference() {
                 circle(d = od);
                 circle(d = id);
