@@ -1984,6 +1984,7 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 |:--- |:--- |
 | ```opengrab()``` | Draw OpenGrab module |
 | ```opengrab_hole_positions()``` | Position children at the screw positions |
+| ```opengrab_side_hole_positions()``` | Position children at the two 4mm hole |
 | ```opengrab_target()``` | Draw OpenGrab target |
 
 ![opengrab](tests/png/opengrab.png)
@@ -1991,8 +1992,8 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```opengrab_target()``` |  OpenGrab  silicon steel target plate |
 |   1 | ```opengrab()``` |  OpenGrab V3 electro permanent magnet |
+|   1 | ```opengrab_target()``` |  OpenGrab silicon steel target plate |
 
 
 <a href="#top">Top</a>

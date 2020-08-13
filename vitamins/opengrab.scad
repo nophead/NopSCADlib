@@ -41,6 +41,10 @@ module opengrab_hole_positions()    //! Position children at the screw positions
         translate([x * pitch / 2, y * pitch / 2, 0])
             children();
 
+module opengrab_side_hole_positions() //! Position children at the two 4mm hole
+    for(side = [-1, 1])
+        translate([side * (width / 2 - 3.5), 0])
+            children();
 
 function opengrab_width() = width;              //! Module width
 function opengrab_depth() = depth;              //! Module height
@@ -82,7 +86,7 @@ module opengrab() { //! Draw OpenGrab module
 }
 
 module opengrab_target() { //! Draw OpenGrab target
-    vitamin("opengrab_target(): OpenGrab  silicon steel target plate");
+    vitamin("opengrab_target(): OpenGrab silicon steel target plate");
 
      color(grey(80))
         linear_extrude(target)
@@ -92,8 +96,7 @@ module opengrab_target() { //! Draw OpenGrab target
                 opengrab_hole_positions()
                     circle(d = 3.2);
 
-                for(side = [-1, 1])
-                    translate([side * (width / 2 - 3.5), 0])
-                        circle(d = 4);
+                opengrab_side_hole_positions()
+                    circle(d = 4);
         }
 }
