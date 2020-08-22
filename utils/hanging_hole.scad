@@ -39,11 +39,13 @@ module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius ```ir``` hanging
     infill_angle = z % (2 * layer_height) ? -45 : 45;
     below = min(z + eps, h2);
     big = 1000;
-
     render(convexity = 3) translate_z(z)
         union() {
             translate_z(2 * layer_height)
-                polyhole(ir - eps, h - 2 * layer_height);
+                if(sides(ir) > 4)
+                    polyhole(ir - eps, h - 2 * layer_height);
+                else
+                    poly_cylinder(ir, h - 2 * layer_height);
 
             difference() {
                 translate_z(-below)
