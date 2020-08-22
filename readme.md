@@ -1252,6 +1252,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | Function | Description |
 |:--- |:--- |
 | ```insert_boss_radius(type, wall)``` | Compute the outer radius of an insert boss |
+| ```insert_nose_length(type, d)``` | The length before the second ring. |
 
 ### Modules
 | Module | Description |

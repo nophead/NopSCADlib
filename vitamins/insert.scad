@@ -35,6 +35,15 @@ function insert_ring3_d(type)        = type[8];     //! Diameter of the bottom r
 
 function insert_hole_length(type) = round_to_layer(insert_length(type));
 
+function insert_nose_length(type, d) = let( //! The length before the second ring.
+        length = insert_length(type),
+        ring1_h = insert_ring1_h(type),
+        chamfer1 = (insert_ring2_d(type) - insert_barrel_d(type)) / 2,
+        chamfer2 = (insert_ring3_d(type) - insert_barrel_d(type)) / 2,
+        ring2_h = ring1_h + chamfer1,
+        gap = (length - ring1_h - ring2_h - chamfer2) / 3
+    ) ring1_h + gap + ring2_h - d + insert_barrel_d(type);
+
 module insert(type) { //! Draw specified insert
     length = insert_length(type);
     ring1_h = insert_ring1_h(type);
@@ -58,7 +67,7 @@ module insert(type) { //! Draw specified insert
         h3 = ring1_h + gap + ring2_h;
         h4 = ring1_h + gap + ring2_h + gap;
         color(brass)
-            rotate_extrude()
+            rotate_extrude(convexity = 3)
                 polygon([
                     [r1, 0],
                     [r1, length],
