@@ -25,7 +25,7 @@
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
-pitch = 33.8;
+pitch = 33.8 / 2;
 width = 40;
 depth = 18;
 magnet = 4.3;
@@ -37,14 +37,16 @@ pole_l = 36;
 poles = 15;
 
 module opengrab_hole_positions()    //! Position children at the screw positions
-    for(x = [-1, 1], y = [-1, 1])
-        translate([x * pitch / 2, y * pitch / 2, 0])
-            children();
+    let($d = 3.2)
+        for($x = [-pitch, pitch], $y = [-pitch, pitch])
+            translate([$x, $y])
+                children();
 
 module opengrab_side_hole_positions() //! Position children at the two 4mm hole
-    for(side = [-1, 1])
-        translate([side * (width / 2 - 3.5), 0])
-            children();
+    let($d = 4, pitch = width / 2 - 3.5)
+        for($x = [-pitch, pitch])
+            translate([$x, 0])
+                children();
 
 function opengrab_width() = width;              //! Module width
 function opengrab_depth() = depth;              //! Module height
@@ -94,9 +96,9 @@ module opengrab_target() { //! Draw OpenGrab target
                 square([width, width], center = true);
 
                 opengrab_hole_positions()
-                    circle(d = 3.2);
+                    circle(d = $d);
 
                 opengrab_side_hole_positions()
-                    circle(d = 4);
+                    circle(d = $d);
         }
 }
