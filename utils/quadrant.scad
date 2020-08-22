@@ -23,18 +23,21 @@
 include <../utils/core/core.scad>
 
 module quadrant(w, r, center = false) { //! Draw a square with one rounded corner, can be centered on the arc centre, when ```center``` is ```true```.
-    offset = center ? r - w : 0;
-    translate([offset, offset])
+    h = is_list(w) ? w.y : w;
+    w = is_list(w) ? w.x : w;
+    offset_w = center ? r - w : 0;
+    offset_h = center ? r - h : 0;
+    translate([offset_w, offset_h])
         hull() {
             intersection() {
-                translate([w - r, w - r])
+                translate([w - r, h - r])
                     circle4n(r);
 
-                square(w);
+                square([w, h]);
             }
 
             square([w, eps]);
 
-            square([eps, w]);
+            square([eps, h]);
         }
 }
