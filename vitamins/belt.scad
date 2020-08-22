@@ -34,7 +34,9 @@ function belt_pitch(type)        = type[1]; //! Pitch in mm
 function belt_width(type)        = type[2]; //! Width in mm
 function belt_thickness(type)    = type[3]; //! Total thickness including teeth
 function belt_tooth_height(type) = type[4]; //! Tooth height
-function belt_pitch_height(type) = belt_tooth_height(type) + type[4]; //! Offset of the pitch radius from the tips of the teeth
+function belt_pitch_height(type) = type[5] + belt_tooth_height(type); //! Offset of the pitch radius from the tips of the teeth
+
+function belt_pitch_to_back(type) = belt_thickness(type) - belt_pitch_height(type); //! Offset of the back from the pitch radius
 
 function no_point(str) = chr([for(c = str) if(c == ".") ord("p") else ord(c)]);
 //
@@ -56,24 +58,26 @@ module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey(20), tooth
 
     module shape() rounded_polygon(points, tangents);
 
+    ph = belt_pitch_height(type);
+    th = belt_tooth_height(type);
     module gap()
         if(gap)
-            translate(gap_pt)
+            translate(gap_pt + [0, -ph + thickness / 2])
                 square([gap, thickness + eps], center = true);
 
     color(belt_colour)
         linear_extrude(width, center = true)
             difference() {
-                offset(thickness - belt_pitch_height(type)) shape();
-                offset(-belt_pitch_height(type) + belt_tooth_height(type)) shape();
+                offset(-ph + thickness ) shape();
+                offset(-ph + th) shape();
                 gap();
 
             }
     color(tooth_colour)
         linear_extrude(width, center = true)
             difference() {
-                offset(-belt_pitch_height(type) + belt_tooth_height(type)) shape();
-                offset(-belt_pitch_height(type)) shape();
+                offset(-ph + th) shape();
+                offset(-ph) shape();
                 gap();
             }
 }

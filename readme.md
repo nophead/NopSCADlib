@@ -223,6 +223,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | Function | Description |
 |:--- |:--- |
 | ```belt_pitch(type)``` | Pitch in mm |
+| ```belt_pitch_height(type)``` | Offset of the pitch radius from the tips of the teeth |
 | ```belt_thickness(type)``` | Total thickness including teeth |
 | ```belt_tooth_height(type)``` | Tooth height |
 | ```belt_width(type)``` | Width in mm |
@@ -231,7 +232,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | Function | Description |
 |:--- |:--- |
 | ```belt_length(points, gap = 0)``` | Compute belt length given path and optional gap |
-| ```belt_pitch_height(type)``` | Offset of the pitch radius from the tips of the teeth |
+| ```belt_pitch_to_back(type)``` | Offset of the back from the pitch radius |
 
 ### Modules
 | Module | Description |
@@ -244,7 +245,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```belt(GT2x6, [ ... ])``` |  Belt GT2 x 6mm x 128mm |
-|   1 | ```belt(GT2x6, [ ... ], 80, [0, 0.81])``` |  Belt GT2 x 6mm x 694mm |
+|   1 | ```belt(GT2x6, [ ... ], 80, [0, 0.314])``` |  Belt GT2 x 6mm x 696mm |
 |   1 | ```belt(T2p5x6, [ ... ])``` |  Belt T2.5 x 6mm x 130mm |
 |   1 | ```belt(T5x10, [ ... ])``` |  Belt T5 x 10mm x 130mm |
 |   1 | ```belt(T5x6, [ ... ])``` |  Belt T5 x 6mm x 130mm |
