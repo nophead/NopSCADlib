@@ -24,11 +24,13 @@
 //! To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 //!
 //! By default the path is a closed loop but a gap length and position can be specified to make open loops.
+//! To draw the gap its XY position is specified by ```gap_pos```. ```gap_pos.z``` can be used to specify a rotation if the gap is not at the bottom of the loop.
 //!
 //! Individual teeth are not drawn, instead they are represented by a lighter colour.
 //
 include <../utils/core/core.scad>
 use <../utils/rounded_polygon.scad>
+use <../utils/maths.scad>
 
 function belt_pitch(type)        = type[1]; //! Pitch in mm
 function belt_width(type)        = type[2]; //! Width in mm
@@ -43,12 +45,12 @@ function no_point(str) = chr([for(c = str) if(c == ".") ord("p") else ord(c)]);
 // We model the belt path at the pitch radius of the pulleys and the pitch line of the belt to get an accurate length.
 // The belt is then drawn by offseting each side from the pitch line.
 //
-module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey(20), tooth_colour = grey(50)) { //! Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified
+module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), tooth_colour = grey(50)) { //! Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified
     width = belt_width(type);
     pitch = belt_pitch(type);
     thickness = belt_thickness(type);
     part = str(type[0],pitch);
-    vitamin(str("belt(", no_point(part), "x", width, ", ", points, arg(gap, 0), arg(gap_pt, undef), "): Belt ", part," x ", width, "mm x ", length, "mm"));
+    vitamin(str("belt(", no_point(part), "x", width, ", ", points, arg(gap, 0), arg(gap_pos, undef), "): Belt ", part," x ", width, "mm x ", length, "mm"));
 
     len = len(points);
 
@@ -62,8 +64,10 @@ module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey(20), tooth
     th = belt_tooth_height(type);
     module gap()
         if(gap)
-            translate(gap_pt + [0, -ph + thickness / 2])
-                square([gap, thickness + eps], center = true);
+            translate([gap_pos.x, gap_pos.y])
+                rotate(is_undef(gap_pos.z) ? 0 : gap_pos.z)
+                    translate([0, ph - thickness / 2])
+                        square([gap, thickness + eps], center = true);
 
     color(belt_colour)
         linear_extrude(width, center = true)
@@ -71,8 +75,8 @@ module belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey(20), tooth
                 offset(-ph + thickness ) shape();
                 offset(-ph + th) shape();
                 gap();
-
             }
+
     color(tooth_colour)
         linear_extrude(width, center = true)
             difference() {

@@ -60,7 +60,7 @@ module belt_test() {
              [p4.x, p4.y, pulley_pr(GT2x20ob_pulley)]
            ];
     belt = GT2x6;
-    belt(belt, path, 80, [0,  belt_pitch_height(belt) - belt_thickness(belt) / 2]);
+    belt(belt, path, 80, [0,  0]);
 
     translate([-25, 0])
         layout([for(b = belts) belt_width(b)], 10)

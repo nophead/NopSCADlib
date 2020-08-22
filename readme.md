@@ -209,6 +209,7 @@ Only models 2D paths, so not core XY!
 To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 
 By default the path is a closed loop but a gap length and position can be specified to make open loops.
+To draw the gap its XY position is specified by ```gap_pos```. ```gap_pos.z``` can be used to specify a rotation if the gap is not at the bottom of the loop.
 
 Individual teeth are not drawn, instead they are represented by a lighter colour.
 
@@ -237,7 +238,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```belt(type, points, gap = 0, gap_pt = undef, belt_colour = grey(20)``` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified |
+| ```belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20)``` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified |
 
 ![belts](tests/png/belts.png)
 
@@ -245,7 +246,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```belt(GT2x6, [ ... ])``` |  Belt GT2 x 6mm x 128mm |
-|   1 | ```belt(GT2x6, [ ... ], 80, [0, 0.314])``` |  Belt GT2 x 6mm x 696mm |
+|   1 | ```belt(GT2x6, [ ... ], 80, [0, 0])``` |  Belt GT2 x 6mm x 696mm |
 |   1 | ```belt(T2p5x6, [ ... ])``` |  Belt T2.5 x 6mm x 130mm |
 |   1 | ```belt(T5x10, [ ... ])``` |  Belt T5 x 10mm x 130mm |
 |   1 | ```belt(T5x6, [ ... ])``` |  Belt T5 x 6mm x 130mm |
