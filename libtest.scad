@@ -50,6 +50,7 @@ use <tests/LEDs.scad>
 use <tests/light_strips.scad>
 use <tests/linear_bearings.scad>
 use <tests/LED_meters.scad>
+use <tests/magnets.scad>
 use <tests/microswitches.scad>
 use <tests/modules.scad>
 use <tests/nuts.scad>
@@ -271,8 +272,9 @@ translate([x1, leadnuts_y])
 
 leds_y = 0;
 carriers_y = leds_y + 40;
-spades_y = carriers_y + 40;
-buttons_y = spades_y + 40;
+magnets_y = carriers_y + 40;
+spades_y = magnets_y + 20;
+buttons_y = spades_y + 20;
 jacks_y = buttons_y + 40;
 microswitches_y = jacks_y + 40;
 rockers_y = microswitches_y + 40;
@@ -287,6 +289,9 @@ translate([x2 + 35, leds_y])
 
 translate([x2 + 8, carriers_y])
     carriers();
+
+translate([x2, magnets_y])
+    magnets();
 
 translate([x2 + 20, carriers_y])
     led_meters();
