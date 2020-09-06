@@ -902,7 +902,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 | ---:|:--- |:---|
 |   1 | ```fan(fan120x25)``` |  Fan 120mm x 25mm |
 |   1 | ```fan(fan17x8)``` |  Fan 17mm x 8mm |
-|   1 | ```fan(fan25x10)``` |  Fan 25mm x 10mm |
+|   1 | ```fan(fan25.4x10)``` |  Fan 25.4mm x 10mm |
 |   1 | ```fan(fan30x10)``` |  Fan 30mm x 10mm |
 |   1 | ```fan(fan40x11)``` |  Fan 40mm x 11mm |
 |   1 | ```fan(fan50x15)``` |  Fan 50mm x 15mm |
@@ -4448,7 +4448,7 @@ The ring spacing as well as the number of spokes can be specified, if zero a gas
 | ---:|:--- |
 |   1 | fan_guard_120.stl |
 |   1 | fan_guard_17.stl |
-|   1 | fan_guard_25.stl |
+|   1 | fan_guard_25.4.stl |
 |   1 | fan_guard_30.stl |
 |   1 | fan_guard_40.stl |
 |   1 | fan_guard_50.stl |
