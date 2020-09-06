@@ -138,7 +138,7 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     //
     // silcone tape
     //
-    if(!naked)
+    if(is_undef(naked) || !naked)
         color("red")
             if(exploded())
                 translate([0, max(hot_end_insulator_diameter(type) / 2, heater_length(heater) / 2 - nozzle_x(heater)),
@@ -156,7 +156,7 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     //
     // Zip tie and heatshrink
     //
-    if(!naked)
+    if(!naked  && !is_undef(naked))
         rotate(10) {
             dia =  hot_end_insulator_diameter(type);
             scale([1, (bundle + dia) / dia])
