@@ -39,8 +39,6 @@ function belt_tooth_height(type) = type[4]; //! Tooth height
 function belt_pitch_height(type) = type[5] + belt_tooth_height(type); //! Offset of the pitch radius from the tips of the teeth
 
 function belt_pitch_to_back(type) = belt_thickness(type) - belt_pitch_height(type); //! Offset of the back from the pitch radius
-
-function no_point(str) = chr([for(c = str) if(c == ".") ord("p") else ord(c)]);
 //
 // We model the belt path at the pitch radius of the pulleys and the pitch line of the belt to get an accurate length.
 // The belt is then drawn by offseting each side from the pitch line.

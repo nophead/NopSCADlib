@@ -5798,6 +5798,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 | ```inch(x)``` | Inch to mm conversion (For fractional inches, 'inch(1 + 7/8)' will work as expected.) |
 | ```m(x)``` | m to mm conversion |
 | ```mm(x)``` | Explicit mm specified |
+| ```no_point(str)``` | Replace decimal point in string with 'p' |
 | ```r2sides(r)``` | Replicates the OpenSCAD logic to calculate the number of sides from the radius |
 | ```r2sides4n(r)``` | Round up the number of sides to a multiple of 4 to ensure points land on all axes |
 | ```sqr(x)``` | Returns the square of ```x``` |

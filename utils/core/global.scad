@@ -31,6 +31,7 @@ function m(x)    = x * 1000.0;                                                  
 
 function sqr(x) = x * x;                                                            //! Returns the square of ```x```
 function echoit(x) = echo(x) x;                                                     //! Echo expression and return it, useful for debugging
+function no_point(str) = chr([for(c = str(str)) if(c == ".") ord("p") else ord(c)]);//! Replace decimal point in string with 'p'
 function in(list, x) = !!len([for(v = list) if(v == x) true]);                      //! Returns true if ```x``` is an element in the ```list```
 function Len(x) = is_list(x) ? len(x) : 0;                                          //! Returns the length of a list or 0 if ```x``` is not a list
 function r2sides(r) = $fn ? $fn : ceil(max(min(360/ $fa, r * 2 * PI / $fs), 5));    //! Replicates the OpenSCAD logic to calculate the number of sides from the radius
