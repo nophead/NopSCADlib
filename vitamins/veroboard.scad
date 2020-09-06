@@ -132,8 +132,12 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
 module vero_components(type, cutouts = false, angle = undef)
     for(comp = vero_components(type))
         vero_grid_pos(type, comp.x, comp.y)
-            translate_z(vero_thickness(type))
-                pcb_component(comp, cutouts, angle);
+            if(comp[3][0] == "-")
+                vflip()
+                    pcb_component(comp, cutouts, angle);
+            else
+                translate_z(vero_thickness(type))
+                    pcb_component(comp, cutouts, angle);
 
 module vero_cutouts(type, angle = undef) vero_components(type, true, angle); //! Make cutouts to clear components
 
