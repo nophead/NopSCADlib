@@ -85,7 +85,8 @@ module meter(type, colour = "red", value = "888", display_colour = false) //! Dr
         translate([0, meter_shunt_y(type), size.z])
             vflip()
                 color("#b87333")
-                    wire_link(shunt.y, shunt.x, shunt.z, tail = 2);
+                    not_on_bom()
+                        wire_link(shunt.y, shunt.x, shunt.z, tail = 2);
 }
 
 clearance = 0.1;

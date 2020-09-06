@@ -24,6 +24,7 @@ include <../utils/core/core.scad>
 include <../utils/round.scad>
 
 module wire_link(d, l, h = 1, tail = 3) { //! Draw a wire jumper link.
+    vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"),  "): Wire link ", d, "mm x ", l / inch(1), "\""));
     r = d;
     $fn = 32;
 
@@ -57,13 +58,16 @@ module orientate_axial(length, height, pitch, wire_d) { // Orient horizontal or 
     min_pitch = ceil((length + 1) / inch(0.1)) * inch(0.1);
     lead_pitch = pitch ? pitch : min_pitch;
     if(lead_pitch >= min_pitch) {
-        wire_link(wire_d, lead_pitch, height);
+        not_on_bom()
+            wire_link(wire_d, lead_pitch, height);
+
         translate_z(height)
             rotate([0, 90, 0])
                 children();
     }
     else {
-        wire_link(wire_d, lead_pitch, length + 0.7 + wire_d);
+        not_on_bom()
+            wire_link(wire_d, lead_pitch, length + 0.7 + wire_d);
 
         translate([-pitch / 2, 0, length / 2 + 0.2])
             children();

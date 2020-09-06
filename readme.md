@@ -85,6 +85,7 @@ Axial components for PCBs.
 |   1 | ```ax_res(res1_4, 47000)``` |  Resistor 47000 Ohms 5% 0.25W |
 |   1 | ```ax_res(res1_2, 8200)``` |  Resistor 8200 Ohms 5% 0.5W |
 |   1 | ```ax_res(res1_2, 8250, tol = 1)``` |  Resistor 8250 Ohms 1% 0.5W |
+|   1 | ```wire_link(0.8, 10.16)``` |  Wire link 0.8mm x 0.4" |
 
 
 <a href="#top">Top</a>
@@ -2223,6 +2224,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | ```green_terminal(gt_3p5, 4)``` |  Terminal block 4 way 3.5mm |
 |   1 | ```terminal_35(4)``` |  Terminal block 4 way 3.5mm |
 |   1 | ```pcb(TestPCB)``` |  Test PCB |
+|   1 | ```wire_link(0.8, 5.08, h = 10.16)``` |  Wire link 0.8mm x 0.2" |
+|   1 | ```wire_link(0.8, 10.16)``` |  Wire link 0.8mm x 0.4" |
 
 
 <a href="#top">Top</a>
