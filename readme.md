@@ -1268,7 +1268,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | ```insert(F1BM)``` |  Heatfit insert M2 |
+|   1 | ```insert(F1BM2)``` |  Heatfit insert M2 |
 |   1 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
 |   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 | ```insert(F1BM4)``` |  Heatfit insert M4 |
@@ -4289,7 +4289,7 @@ Star washers can be omitted by setting ```star_washers``` to false.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   3 | ```insert(F1BM)``` |  Heatfit insert M2 |
+|   3 | ```insert(F1BM2)``` |  Heatfit insert M2 |
 |   3 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
 |   3 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   3 | ```insert(F1BM4)``` |  Heatfit insert M4 |
@@ -4509,7 +4509,7 @@ Star washers can be omitted by setting ```star_washers``` to false.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   3 | ```insert(F1BM)``` |  Heatfit insert M2 |
+|   3 | ```insert(F1BM2)``` |  Heatfit insert M2 |
 |   3 | ```insert(F1BM2p5)``` |  Heatfit insert M2.5 |
 |   3 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   3 | ```insert(F1BM4)``` |  Heatfit insert M4 |
@@ -4839,7 +4839,7 @@ It can also have printed feet on the base with the screws doubling up to hold th
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | ```insert(F1BM)``` |  Heatfit insert M2 |
+|   4 | ```insert(F1BM2)``` |  Heatfit insert M2 |
 |   4 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   4 | ```screw(M2_cap_screw, 6)``` |  Screw M2 cap x  6mm |
 |   3 | ```screw(M3_pan_screw, 6)``` |  Screw M3 pan x  6mm |
