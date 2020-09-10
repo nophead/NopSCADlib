@@ -2476,7 +2476,7 @@ Pin headers and sockets, etc.
 |:--- |:--- |
 | ```box_header(type, cols = 1, rows = 1, smt = false, cutout = false)``` | Draw box header |
 | ```idc_transition(type, cols = 5, skip = [], cutout = false)``` | Draw IDC transition header |
-| ```jst_xh_header(type, pin_count, right_angle=false, colour, pin_colour)``` | Draw JST XH connector |
+| ```jst_xh_header(type, pin_count, right_angle=false, colour = false, pin_colour = false)``` | Draw JST XH connector |
 | ```pin(type, length = undef)``` | Draw a header pin |
 | ```pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false, colour)``` | Draw pin header |
 | ```pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false, colour)``` | Draw pin socket |
@@ -2487,11 +2487,18 @@ Pin headers and sockets, etc.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```box_header(2p54header, 10, 2)``` |  Box header 10 x 2 |
+|   1 | ```box_header(2p54header, 8, 1)``` |  Box header 8 x 1 |
 |   1 | ```idc_transition(2p54header, 10)``` |  IDC transition header 10 x 2 |
 |   1 | ```pin_header(2p54header, 10, 2)``` |  Pin header 10 x 2 |
-|   1 | ```pin_header(2p54header, 10, 2, right_angle = true)``` |  Pin header 10 x 2 right_angle |
+|   1 | ```pin_header(2p54header, 3, 1, right_angle = true)``` |  Pin header 3 x 1 right_angle |
+|   1 | ```pin_header(2p54header, 3, 2, right_angle = true)``` |  Pin header 3 x 2 right_angle |
+|   1 | ```pin_header(2p54header, 3, 3, right_angle = true)``` |  Pin header 3 x 3 right_angle |
+|   1 | ```pin_header(2p54header, 8, 1)``` |  Pin header 8 x 1 |
 |   1 | ```pin_socket(2p54header, 10, 2)``` |  Pin socket 10 x 2 |
-|   1 | ```pin_socket(2p54header, 10, 2, right_angle = true)``` |  Pin socket 10 x 2 right_angle |
+|   1 | ```pin_socket(2p54header, 3, 1, right_angle = true)``` |  Pin socket 3 x 1 right_angle |
+|   1 | ```pin_socket(2p54header, 3, 2, right_angle = true)``` |  Pin socket 3 x 2 right_angle |
+|   1 | ```pin_socket(2p54header, 3, 3, right_angle = true)``` |  Pin socket 3 x 3 right_angle |
+|   1 | ```pin_socket(2p54header, 8, 1)``` |  Pin socket 8 x 1 |
 
 
 <a href="#top">Top</a>

@@ -915,7 +915,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     function param(n, default = 0) = len(comp) > n ? comp[n] : default;
     rotate(comp.z) {
         // Components that have a cutout parameter go in this section
-        if(show(comp, "2p54header"))    pin_header(2p54header, comp[4], comp[5], param(6, false), false, cutouts, colour = param(7, undef));
+        if(show(comp, "2p54header"))    pin_header(2p54header, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
         if(show(comp, "2p54boxhdr"))    box_header(2p54header, comp[4], comp[5], param(6, false), cutouts);
         if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);

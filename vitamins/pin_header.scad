@@ -58,18 +58,20 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
 
         translate_z(smt ? 3.5 - h : 0) {
             for(x = [0 : cols - 1], y = [0 : rows - 1]) {
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
+                // Vertical part of the pin
+                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2)])
                     if(right_angle)
-                        pin(type, hdr_pin_below(type) + width / 2 + (y - 0.5) * pitch);
+                        pin(type, hdr_pin_below(type) + (y + 0.5) * pitch);
                     else
                         pin(type);
 
                 if(right_angle) {
                     w = hdr_pin_width(type);
+                    // Horizontal part of the pin
                     rotate([-90, 0, 180])
-                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) -width / 2, hdr_pin_below(type) - (y - 0.5) * pitch])
+                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) - width / 2, hdr_pin_below(type) - (y - (rows - 1) / 2) * pitch])
                             pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + pitch / 2 + (y - 0.5) * pitch);
-
+                    // corner
                     translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
                         rotate([0, -90, 0])
                             color(hdr_pin_colour(type))
@@ -78,7 +80,8 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
                                         square(w);
                 }
             }
-            translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
+            // Insulator
+            translate([0, right_angle ? -ra_offset - (rows - 1) * pitch / 2 : 0, right_angle ? width / 2 : 0])
                 rotate([right_angle ? 90 : 0, 0, 0])
                     color(base_colour)
                         linear_extrude(h)
@@ -176,7 +179,7 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
         vitamin(str("pin_socket(", type[0], ", ", cols, ", ", rows, arg(right_angle, false, "right_angle"), arg(height, 0, "height"), arg(smt, false, "smt"),
                                "): Pin socket ", cols, " x ", rows, right_angle ? " right_angle" : ""));
         color(base_colour)
-            translate([0, right_angle ? -ra_offset - pitch / 2 : 0, right_angle ? width / 2 : 0])
+            translate([0, right_angle ? -ra_offset - (rows - 1) * pitch / 2 : 0, right_angle ? width / 2 : 0])
                 rotate([right_angle ? 90 : 0, 0, 0])
                     translate_z(depth / 2)
                         linear_extrude(depth, center = true)
@@ -192,11 +195,11 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
             for(x = [0 : cols - 1], y = [0 : rows -1]) {
                 if(!smt)
                     translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                        pin(type, hdr_pin_below(type) + width / 2 + (y - 0.5) * pitch);
+                        pin(type, hdr_pin_below(type) + (y + 0.5) * pitch);
 
                 if(right_angle) {
-                    rotate([-90, 0, 0])
-                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) -width / 2, 0])
+                    rotate([-90, 0, 180])
+                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) - width / 2, hdr_pin_below(type) - (y - (rows - 1) / 2) * pitch])
                             pin(type, hdr_pin_below(type) + (y - 0.5) * pitch);
 
                     w = hdr_pin_width(type);
@@ -210,7 +213,7 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
     }
 }
 
-module jst_xh_header(type, pin_count, right_angle=false, colour, pin_colour) { //! Draw JST XH connector
+module jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false) { //! Draw JST XH connector
     colour = colour ? colour : hdr_base_colour(type);
     pin_colour = pin_colour ? pin_colour : hdr_pin_colour(type);
     sizeY = 5.75;

@@ -23,26 +23,53 @@ include <../vitamins/pin_headers.scad>
 
 pins = 10;
 
-module pin_headers()
+module pin_headers() {
     layout([for(p = pin_headers) hdr_pitch(p) * pins], 15) {
         idc_transition(pin_headers[$i], 10);
 
         translate([0, 20])
-            pin_header(pin_headers[$i], 10, 2, right_angle = true);
+            pin_header(pin_headers[$i], 3, 2, right_angle = true);
+
+        translate([-10, 20])
+            pin_header(pin_headers[$i], 3, 1, right_angle = true);
+
+         translate([10, 20])
+            pin_header(pin_headers[$i], 3, 3, right_angle = true);
+
+        translate([0, 30])
+            pin_header(pin_headers[$i], 8, 1);
 
         translate([0, 40])
             pin_header(pin_headers[$i], 10, 2);
 
+        translate([0, 50])
+            box_header(pin_headers[$i], 8, 1);
+
         translate([0, 60])
             box_header(pin_headers[$i], 10, 2);
+
+        translate([0, 70])
+            pin_socket(pin_headers[$i], 8, 1);
 
         translate([0, 80])
             pin_socket(pin_headers[$i], 10, 2);
 
-        translate([0, 110])
-            pin_socket(pin_headers[$i], 10, 2, right_angle = true);
+        translate([-10, 105])
+            pin_socket(pin_headers[$i], 3, 1, right_angle = true);
 
+        translate([0, 105])
+            pin_socket(pin_headers[$i], 3, 2, right_angle = true);
+
+        translate([10, 105])
+            pin_socket(pin_headers[$i], 3, 3, right_angle = true);
     }
+
+    translate([-20, 0])
+        jst_xh_header(jst_xh_header, 5);
+
+    translate([-20, 20])
+        jst_xh_header(jst_xh_header, 5, true);
+}
 
 if($preview)
     pin_headers();
