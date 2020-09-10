@@ -175,12 +175,15 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
 
         if(head_type == hs_dome) {
             lift = 0.38;
+            h = head_height - lift;
+            r = min(2 * head_height, (sqr(head_rad) + sqr(h)) / 2 * h); // Special case for M2
+            y = sqrt(sqr(r) - sqr(head_rad));
             color(colour) {
                 rotate_extrude() {
                     difference() {
                         intersection() {
-                            translate([0, -head_height + lift])
-                                circle(2 * head_height);
+                            translate([0, -y + lift])
+                                circle(r);
 
                             square([head_rad, head_height]);
                         }
