@@ -2212,6 +2212,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | ```smd_resistor(RES0603, 1K)``` |  SMD resistor 0603 1K 0.1W |
 |   1 | ```smd_resistor(RES0805, 1K)``` |  SMD resistor 0805 1K 0.125W |
 |   1 | ```smd_resistor(RES1206, 1K)``` |  SMD resistor 1206 1K 0.25W |
+|   1 | ```square_button(button_4p5mm)``` |  Square button 4.5mm |
 |   1 | ```square_button(button_6mm)``` |  Square button 6mm |
 |   1 | ```pcb(TMC2130)``` |  TMC2130 |
 |   1 | ```green_terminal(gt_5p08, 2)``` |  Terminal block 2 way 0.2" |

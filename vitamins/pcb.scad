@@ -940,6 +940,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(!cutouts) {
             // Components that don't have a cutout parameter go in this section
             if(show(comp, "button_6mm"))    square_button(button_6mm);
+            if(show(comp, "button_4p5mm"))  square_button(button_4p5mm);
             if(show(comp, "microswitch"))   translate_z(microswitch_thickness(comp[4])/2) microswitch(comp[4]);
             if(show(comp, "pcb"))           translate_z(comp[4]) pcb(comp[5]);
             if(show(comp, "standoff"))      standoff(comp[4], comp[5], comp[6], comp[7]);
