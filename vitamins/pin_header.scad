@@ -50,8 +50,17 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
     ra_offset = 2.4;
     width = pitch * rows;
 
-    if(cutout)
+    module cutout()
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
+
+    if(cutout) {
+        if(right_angle)
+            translate_z(width / 2)
+                rotate([-90, 0, 180])
+                    cutout();
+        else
+            cutout();
+    }
     else {
         vitamin(str("pin_header(", type[0], ", ", cols, ", ", rows,
                     arg(smt, false, "smt"), arg(right_angle, false, "right_angle"), "): Pin header ", cols, " x ", rows, right_angle ? " right_angle" : ""));
