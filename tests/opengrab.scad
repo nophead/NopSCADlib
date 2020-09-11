@@ -21,11 +21,11 @@ include <../utils/core/core.scad>
 use <../vitamins/opengrab.scad>
 
 module opengrab_test() {
-    opengrab_target();
-
     rotate(45)
-        translate_z(opengrab_target_thickness())
-            opengrab();
+        opengrab_target();
+
+    translate_z(opengrab_target_thickness())
+        opengrab();
 }
 
 if($preview)

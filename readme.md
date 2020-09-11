@@ -2010,6 +2010,8 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 | Function | Description |
 |:--- |:--- |
 | ```opengrab_depth()``` | Module height |
+| ```opengrab_pcb()``` | The PCB |
+| ```opengrab_pcb_z()``` | PCB offset from the front |
 | ```opengrab_target_thickness()``` | Target sheet thickness |
 | ```opengrab_width()``` | Module width |
 
