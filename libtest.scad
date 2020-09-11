@@ -117,17 +117,17 @@ cable_grommets_y = 0;
 translate([x5, cable_grommets_y])
     cable_grommets();
 
-translate([x5, cable_grommets_y + 50])
-    feet();
+translate([x5 + 80, cable_grommets_y])
+    ribbon_clamps();
 
-translate([x5, cable_grommets_y + 75])
+translate([x5, cable_grommets_y + 60])
     fixing_blocks();
 
-translate([x5, cable_grommets_y + 100])
+translate([x5, cable_grommets_y + 90])
     corner_blocks();
 
 translate([x5, cable_grommets_y + 150])
-    ribbon_clamps();
+    feet();
 
 translate([x5 + 70, cable_grommets_y + 150])
     screw_knobs();

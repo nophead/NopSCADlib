@@ -4949,41 +4949,48 @@ Clamp for ribbon cable and polypropylene strip.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| ```ribbon_clamp_height()``` | Height |
-| ```ribbon_clamp_hole_pitch(ways)``` | Hole pitch |
-| ```ribbon_clamp_length(ways)``` | Length given ways |
-| ```ribbon_clamp_width()``` | Width |
+| ```ribbon_clamp_height(screw = screw)``` | Height |
+| ```ribbon_clamp_length(ways, screw = screw)``` | Length given ways |
+| ```ribbon_clamp_width(screw = screw)``` | Width |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```ribbon_clamp(ways)``` | Generate STL for given number of ways |
-| ```ribbon_clamp_assembly(ways)``` | Printed part with inserts in place |
+| ```ribbon_clamp(ways, screw = screw)``` | Generate STL for given number of ways |
+| ```ribbon_clamp_assembly(ways, screw)``` | Printed part with inserts in place |
 | ```ribbon_clamp_fastened_assembly(ways, thickness, screw = screw)``` | Clamp with fasteners in place |
-| ```ribbon_clamp_hole_positions(ways, side = undef)``` | Place children at hole positions |
-| ```ribbon_clamp_holes(ways, h = 20)``` | Drill screw holes |
+| ```ribbon_clamp_hole_positions(ways, screw = screw, side = undef)``` | Place children at hole positions |
+| ```ribbon_clamp_holes(ways, h = 20, screw = screw)``` | Drill screw holes |
 
 ![ribbon_clamp](tests/png/ribbon_clamp.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   2 | ```insert(F1BM2)``` |  Heatfit insert M2 |
 |   2 | ```insert(F1BM3)``` |  Heatfit insert M3 |
 |   1 |  |  Ribbon cable 20 way 100mm |
+|   1 |  |  Ribbon cable 8 way 100mm |
+|   2 | ```screw(M2_dome_screw, 8)``` |  Screw M2 dome x  8mm |
 |   2 | ```screw(M3_cap_screw, 10)``` |  Screw M3 cap x 10mm |
+|   1 |  |  Tape self amalgamating silicone 11 x 25mm |
 |   1 |  |  Tape self amalgamating silicone 26 x 25mm |
+|   2 | ```washer(M2_washer)``` |  Washer  M2 x 5mm x 0.3mm |
 |   2 | ```washer(M3_washer)``` |  Washer  M3 x 7mm x 0.5mm |
+|   2 | ```star_washer(M2_washer)``` |  Washer star M2 x 0.3mm |
 |   2 | ```star_washer(M3_washer)``` |  Washer star M3 x 0.5mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
 |   1 | ribbon_clamp_20.stl |
+|   1 | ribbon_clamp_8_2.stl |
 
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
 |   1 | ribbon_clamp_20_assembly |
+|   1 | ribbon_clamp_8_2_assembly |
 
 
 <a href="#top">Top</a>
