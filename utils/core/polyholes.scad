@@ -32,9 +32,13 @@ module poly_circle(r, sides = 0) { //! Make a circle adjusted to print the corre
     circle(r = corrected_radius(r,n), $fn = n);
 }
 
-module poly_cylinder(r, h, center = false, sides = 0) //! Make a cylinder adjusted to print the correct size
+module poly_cylinder(r, h, center = false, sides = 0, chamfer = false) {//! Make a cylinder adjusted to print the correct size
     extrude_if(h, center)
         poly_circle(r, sides);
+
+    if(h && chamfer)
+        poly_cylinder(r + layer_height, center ? layer_height * 2 : layer_height, center, sides = sides ? sides : sides(r));
+}
 
 module poly_ring(or, ir, sides = 0) { //! Make a 2D ring adjusted to have the correct internal radius
     cir = corrected_radius(ir, sides);
