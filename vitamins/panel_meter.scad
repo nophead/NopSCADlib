@@ -77,7 +77,6 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
     tab_z = pmeter_tab_z(type);
     pcb = pmeter_pcb(type);
     ap2 = pmeter_inner_ap(type);
-    pcb_h = pmeter_pcb_h(type) - bezel.z;
     buttons = pmeter_buttons(type);
 
     color("#94A7AB")
@@ -146,15 +145,16 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
                     translate(pmeter_inner_ap_o(type))
                         square([ap2.x, ap2.y], center = true);
                 }
-    if(pcb)
+    if(pcb) {
         vflip()
             translate_z(h - pcb_thickness(pcb) - pmeter_pcb_z(type))
                 pcb(pcb);
 
-    if(pcb_h > 0)
-        %translate_z(-pcb_h / 2 - eps)
-            cube([size.x - 2 * t - eps, size.y - 2 * t - eps, pcb_h], center = true);
-
+        pcb_h = pmeter_pcb_h(type) - bezel.z;
+        if(pcb_h > 0)
+            %translate_z(-pcb_h / 2 - eps)
+                cube([size.x - 2 * t - eps, size.y - 2 * t - eps, pcb_h], center = true);
+    }
     if(buttons)
         for(b = buttons)
             panel_meter_button(b);

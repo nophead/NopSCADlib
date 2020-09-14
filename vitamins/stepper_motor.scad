@@ -89,7 +89,7 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
         tube(or = boss_rad, ir =  shaft_rad + 2, h = boss_height * 2); // raised boss
 
         linear_extrude(eps)
-            cap_shape(true);
+            cap_shape(1);
     }
 
     color(stepper_cap_colour)                                       // aluminium end caps
