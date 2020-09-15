@@ -5420,7 +5420,13 @@ Maths utilities for manipulating vectors and matrices.
 | Function | Description |
 |:--- |:--- |
 | ```angle_between(v1, v2)``` | Return the angle between two vectors |
+| ```argcosh(x)``` | inverse hyperbolic cosine |
+| ```argcoth(x)``` | inverse hyperbolic cotangent |
+| ```argsinh(x)``` | inverse hyperbolic sine |
+| ```argtanh(x)``` | inverse hyperbolic tangent |
 | ```augment(m)``` | Augment a matrix by adding an identity matrix to the right |
+| ```cosh(x)``` | hyperbolic cosine |
+| ```coth(x)``` | hyperbolic cotangent |
 | ```degrees(radians)``` | Convert degrees to radians |
 | ```euler(R)``` | Convert a rotation matrix to a Euler rotation vector. |
 | ```identity(n, x = 1)``` | Construct an arbitrary size identity matrix |
@@ -5433,9 +5439,11 @@ Maths utilities for manipulating vectors and matrices.
 | ```rotate(a, v)``` | Generate a 4x4 rotation matrix, ```a``` can be a vector of three angles or a single angle around ```z```, or around axis ```v``` |
 | ```rowswap(m, i, j)``` | Swap two rows of a matrix |
 | ```scale(v)``` |  Generate a 4x4 matrix that scales by ```v```, which can be a vector of xyz factors or a scalar to scale all axes equally |
+| ```sinh(x)``` | hyperbolic sine |
 | ```solve(m, i = 0, j = 0)``` | Solve each row ensuring diagonal is not zero |
 | ```solve_row(m, i)``` | Make diagonal one by dividing the row by it and subtract from other rows to make column zero |
 | ```sqr(x)``` | Square x |
+| ```tanh(x)``` | hyperbolic tangent |
 | ```transform(v, m)``` | Apply 4x4 transform to a 3 vector by extending it and cropping it again |
 | ```transform_points(path, m)``` | Apply transform to a path |
 | ```translate(v)``` | Generate a 4x4 translation matrix, ```v``` can be ```[x, y]```, ```[x, y, z]``` or ```z``` |

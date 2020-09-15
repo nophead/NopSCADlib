@@ -24,6 +24,14 @@ function sqr(x) = x * x;                        //! Square x
 function radians(degrees) = degrees * PI / 180; //! Convert radians to degrees
 function degrees(radians) = radians * 180 / PI; //! Convert degrees to radians
 
+function sinh(x) = (exp(x) - exp(-x)) / 2;      //! hyperbolic sine
+function cosh(x) = (exp(x) + exp(-x)) / 2;      //! hyperbolic cosine
+function tanh(x) = sinh(x) / cosh(x);           //! hyperbolic tangent
+function coth(x) = cosh(x) / sinh(x);           //! hyperbolic cotangent
+function argsinh(x) = ln(x + sqrt(sqr(x) + 1)); //! inverse hyperbolic sine
+function argcosh(x) = ln(x + sqrt(sqr(x) - 1)); //! inverse hyperbolic cosine
+function argtanh(x) = ln((1 + x) / (1 - x)) / 2;//! inverse hyperbolic tangent
+function argcoth(x) = ln((x + 1) / (x - 1)) / 2;//! inverse hyperbolic cotangent
 
 function translate(v) = let(u = is_list(v) ? len(v) == 2 ? [v.x, v.y, 0] //! Generate a 4x4 translation matrix, ```v``` can be ```[x, y]```, ```[x, y, z]``` or ```z```
                                                          : v
