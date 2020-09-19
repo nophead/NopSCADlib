@@ -5268,7 +5268,7 @@ The coordinates of the lowest point on the curve can be retrieved by calling ```
 |:--- |:--- |
 | ```catenary(t, a)``` | Parametric catenary function linear along the length of the curve. |
 | ```catenary_ds_by_da(d, a)``` | First derivative of the length with respect to ```a```. |
-| ```catenary_find_a(d, l, a = 1)``` | Find the catenary constant ```a```, given half the horizontal span and the length. |
+| ```catenary_find_a(d, l, a = 1, best_e = inf, best_a = 1)``` | Find the catenary constant ```a```, given half the horizontal span and the length. |
 | ```catenary_points(l, x, y, steps = 100)``` | Returns a list of 2D points on the curve that goes from the origin to ```(x,y)``` and has length ```l```. |
 | ```catenary_s(d, a)``` | Length of a symmetric catenary with width ```2d```. |
 
