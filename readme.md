@@ -5455,6 +5455,7 @@ Maths utilities for manipulating vectors and matrices.
 | ```argsinh(x)``` | inverse hyperbolic sine |
 | ```argtanh(x)``` | inverse hyperbolic tangent |
 | ```augment(m)``` | Augment a matrix by adding an identity matrix to the right |
+| ```circle_intersect(c1, r1, c2, r2)``` | Calculate one point where two circles in the X-Z plane intersect, clockwise around c1 |
 | ```cosh(x)``` | hyperbolic cosine |
 | ```coth(x)``` | hyperbolic cotangent |
 | ```degrees(radians)``` | Convert degrees to radians |
