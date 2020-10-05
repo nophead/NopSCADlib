@@ -5387,6 +5387,8 @@ Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/
 ## Horiholes
 Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
 
+horicylinder() makes cylinders that fit inside a round hole. Layers that are less than 2 filaments wide and layers that need more than a 45 degree overhang are ommitted.
+
 
 [utils/horiholes.scad](utils/horiholes.scad) Implementation.
 
@@ -5395,11 +5397,13 @@ Utilities for depicting the staircase slicing of horizontal holes made with [`te
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| ```teardrop_minus_x(r, y, h)``` | Calculate the ordinate of a compensated teardrop given y and layer height. |
 | ```teardrop_plus_x(r, y, h)``` | Calculate the ordinate of a compensated teardrop given y and layer height. |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| ```horicylinder(r, z, h = 0, center = true)``` | For making horizontal cylinders that don't need support material and are correct dimensions |
 | ```horihole(r, z, h = 0, center = true)``` | For making horizontal holes that don't need support material and are correct dimensions |
 
 ![horiholes](tests/png/horiholes.png)
