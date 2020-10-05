@@ -62,9 +62,10 @@ module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified ```col
                 intersection() {
                     square([size.x, size.y], center = true);
 
-                    for(end = [-1, 1])
-                        translate([end * size.x / 2, 0])
-                            ring(or = r, ir = r / 2);
+                    union()
+                        for(end = [-1, 1])
+                            translate([end * size.x / 2, 0])
+                                ring(or = r, ir = r / 2);
                 }
 
         color(colour, 0.9)
