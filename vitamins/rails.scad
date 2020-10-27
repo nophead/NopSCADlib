@@ -27,6 +27,8 @@ MGN9_carriage  = [ 29.7, 20.8, 20, 10, 2,   10, 15, M3_cap_screw ];
 MGN12_carriage = [ 34.7, 21.7, 27, 13, 3,   15, 20, M3_cap_screw ];
 MGN12H_carriage= [ 45.4, 32.4, 27, 13, 3,   20, 20, M3_cap_screw ];
 MGN15_carriage = [ 43.3, 27.7, 32, 16, 4,   20, 25, M3_cap_screw ];
+HGH15CA_carriage = [ 61.4, 39.4, 34, 28, 4,   26, 26, M4_cap_screw ];
+HGH20CA_carriage = [ 77.5, 50.5, 44, 30, 4.6,   35, 32, M5_cap_screw ];
 SSR15_carriage = [ 40.3, 23.3, 34, 24, 4.5, 0,  26, M4_cap_screw ];
 //
 // Rails
@@ -39,6 +41,8 @@ MGN9 = [ "MGN9",  9,  6,   7.5, 20, 6.0, 3.5, 3.5, M3_cap_screw,    MGN9_carriag
 MGN12= [ "MGN12", 12, 8,   10,  25, 6.0, 3.5, 4.5, M3_cap_screw,   MGN12_carriage, M3_cs_cap_screw ];
 MGN12H=[ "MGN12H",12, 8,    10, 25, 6.0, 3.5, 4.5, M3_cap_screw,   MGN12H_carriage,M3_cs_cap_screw ];
 MGN15= [ "MGN15", 15, 10,  10,  40, 6.0, 3.5, 5.0, M3_cap_screw,   MGN15_carriage, M3_cs_cap_screw ];
+HGH15CA= [ "HGH15CA", 15, 15,  20,  60, 7.5, 4.5, 5.3, M4_cap_screw,   HGH15CA_carriage, M4_cap_screw ];
+HGH20CA= [ "HGH20CA", 20, 17.5,  20,  60, 9.5, 6.0, 8.5, M5_cap_screw,   HGH20CA_carriage, M5_cap_screw ];
 SSR15= [ "SSR15", 15, 12.5,10,  60, 7.5, 4.5, 5.3, M4_cap_screw,   SSR15_carriage, M4_cs_cap_screw ];
 
 rails = [MGN5, MGN7, MGN9, MGN12, MGN12H, MGN15, SSR15];
