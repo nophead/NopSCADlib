@@ -69,6 +69,33 @@ module maths() {
     // Test Euler
     //
     assert(euler(rotate(r)) == r, "euler() failed");
+    //
+    // Circle intersect
+    //
+    r1 = 10;
+    c1 = [50, 0, 10];
+    r2 = 20;
+    c2 = [67, 0, 0];
+    p1 = circle_intersect(c1, r1, c2, r2);
+    p2 = circle_intersect(c2, r2, c1, r1);
+
+    rotate(90) {
+        color(grey(90))
+            translate(c1) rotate([90, 0, 0]) cylinder(r = r1, h = 4 * eps, center = true);
+
+        color(grey(80))
+            translate(c2) rotate([90, 0, 0]) cylinder(r = r2, h = eps, center = true);
+
+        color("red")
+            translate(p1) rotate([90, 0, 0]) cylinder(r = 0.1, h = 6 * eps, center = true);
+
+        color("blue")
+            translate(p2) rotate([90, 0, 0]) cylinder(r = 0.1, h = 6 * eps, center = true);
+
+        translate(p1) arrow();
+
+        translate(p2) vflip() arrow();
+    }
 }
 
 rotate(45)

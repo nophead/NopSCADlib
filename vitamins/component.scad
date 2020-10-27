@@ -161,13 +161,13 @@ module al_clad_resistor(type, value, leads = true) { //! Draw an aluminium clad 
                 }
         linear_extrude(thickness)
             difference() {
-                for(end = [-1, 1])
-                    translate([end * (length - tab) / 2, end * (width - width / 2) / 2])
-                        square([tab, width / 2], center = true);
+                union()
+                    for(end = [-1, 1])
+                        translate([end * (length - tab) / 2, end * (width - width / 2) / 2])
+                            square([tab, width / 2], center = true);
 
                 al_clad_resistor_hole_positions(type)
                     circle(d = al_clad_hole(type));
-
             }
         if(leads) {
             translate_z(height / 2)

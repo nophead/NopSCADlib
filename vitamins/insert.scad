@@ -137,19 +137,26 @@ module insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, f
     boss_h = insert_hole_length(insert);
     boss_h2 = boss_h + counter_bore;
 
-    module shape()
-        intersection() {
+    module shape() {
+        module _shape()
             hull() {
                 circle(boss_r);
 
                 translate([boss_r + extension - eps, 0])
                     square([eps, 2 * boss_r], center = true);
             }
-            if(corner_r)
+
+        if(corner_r)
+            intersection() {
+                _shape();
+
                 translate([boss_r + extension - corner_r, 0])
                     rotate(-45)
                         quadrant(w = 100, r = corner_r - eps, center = true);
-        }
+            }
+        else
+            _shape();
+    }
 
     translate_z(-boss_h)
         linear_extrude(boss_h)

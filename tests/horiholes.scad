@@ -70,8 +70,12 @@ module horiholes() {
                 cylinder(r = $r, h = eps, center = true, $fn = 360);
 
     hole_positions()
+        color("blue")
+            horicylinder(r = $r, z = $z, h = 2 * eps, center = true, $fn = 360);
+
+    hole_positions()
         color("red")
-            linear_extrude(2 * eps, center = true)
+            linear_extrude(3 * eps, center = true)
                 intersection() {
                     difference() {
                         square(8, center = true);

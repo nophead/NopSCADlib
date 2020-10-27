@@ -146,3 +146,10 @@ function invert(m) = let(n =len(m), m = solve(augment(m))) [ //! Invert a matrix
              each m[i][j]
     ]
 ];
+
+function circle_intersect(c1, r1, c2, r2) =     //! Calculate one point where two circles in the X-Z plane intersect, clockwise around c1
+    let(
+        v = c1 - c2,                            // Line between centres
+        d = norm(v),                            // Distance between centres
+        a = atan2(v.z, v.x) - acos((sqr(d) + sqr(r2) - sqr(r1)) / (2 * d * r2)) // Cosine rule to find angle from c2
+     ) c2 + r2 * [cos(a), 0, sin(a)];           // Point on second circle

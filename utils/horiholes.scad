@@ -19,6 +19,8 @@
 
 //
 //! Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
+//!
+//! ```horicylinder()``` makes cylinders that fit inside a round hole. Layers that are less than 2 filaments wide and layers that need more than a 45 degree overhang are omitted.
 //
 include <../utils/core/core.scad>
 
@@ -51,5 +53,31 @@ module horihole(r, z, h = 0, center = true) { //! For making horizontal holes th
                                 translate([end * (x + layer_height / 2), 0])
                                     circle(d = layer_height, $fn = 32);
                         }
+             }
+}
+
+function teardrop_minus_x(r, y, h) = //! Calculate the ordinate of a compensated teardrop given y and layer height.
+    let(fr = h / 2,
+        hpot = r - fr,
+        x2 = sqr(hpot) - sqr(y),
+        x = x2 > 0 ? sqrt(x2) : 0,
+        X = y >= -hpot / sqrt(2) ? x + fr : 0
+    )
+    X >= extrusion_width ? X : 0;
+
+module horicylinder(r, z, h = 0, center = true) { //! For making horizontal cylinders that don't need support material and are correct dimensions
+    bot_layer = floor((z - r) / layer_height);
+    top_layer = ceil((z + r) / layer_height);
+    render(convexity = 5)
+        extrude_if(h, center)
+            for(i = [bot_layer : top_layer]) {
+                Z = i * layer_height;
+                y = Z - z + layer_height / 2;
+                x = teardrop_minus_x(r, y, layer_height);
+                if(x >= extrusion_width)
+                    hull()
+                        for(end = [-1, 1])
+                            translate([end * (x - layer_height / 2), y])
+                                circle(d = layer_height, $fn = 32);
              }
 }

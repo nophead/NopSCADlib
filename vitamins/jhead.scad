@@ -179,23 +179,27 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     //
     // heater block
     //
-    rotate(90)
-        translate([-nozzle_x(heater), 0, inset - insulator_length - heater_height(heater) / 2]) {
-            intersection() {
-                group() {
-                    translate([resistor_x(heater), -exploded() * 15, 0])
-                        rotate([90, 0, 0])
-                             sleeved_resistor(resistor, PTFE20, bare = -10);
+    module heater_components() {
+        translate([resistor_x(heater), -exploded() * 15, 0])
+            rotate([90, 0, 0])
+                 sleeved_resistor(resistor, PTFE20, bare = -10);
 
-                    translate([-heater_length(heater) / 2 + resistor_length(thermistor) / 2 - exploded() * 10, thermistor_y(heater), 0])
-                        rotate([90, 0, -90])
-                             sleeved_resistor(thermistor, PTFE07, heatshrink = HSHRNK16);
-                }
-                if(!exploded())
+        translate([-heater_length(heater) / 2 + resistor_length(thermistor) / 2 - exploded() * 10, thermistor_y(heater), 0])
+            rotate([90, 0, -90])
+                 sleeved_resistor(thermistor, PTFE07, heatshrink = HSHRNK16);
+    }
+
+    rotate(90)
+        translate([-nozzle_x(heater), 0, inset - insulator_length - heater_height(heater) / 2])
+            if(exploded())
+                heater_components();
+            else
+                intersection() {
+                    heater_components();
+
                     if(naked)
                         color("grey") cylinder(r = 12, h = 100, center = true);
                     else
                         cube(1, true);             // hide the wires when not exploded
-            }
-    }
+                }
 }
