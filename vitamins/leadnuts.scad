@@ -19,7 +19,8 @@
 
 LSN8x2 = ["LSN8x2", "Leadscrew nut 8 x 2",          8, 10.2, 15, 22,   3.5, 1.5, 4, 3.5, 8,       M3_cap_screw, 2, 2];
 LSN8x8 = ["LSN8x8", "Leadscrew nut 8 x 8 RobotDigg",8, 12.75,19, 25.4, 4.1, 0,   3, 3.5, 19.05/2, M3_cap_screw, 2, 8];
+SFU1610 = ["SFU1610", "Leadscrew nut for SFU1610", 16, 22, 32, 35, 10, 0, 4, 4, 22.05/2, M3_cap_screw, 10, 16 ];
 
-leadnuts = [LSN8x2, LSN8x8];
+leadnuts = [LSN8x2, LSN8x8, SFU1610];
 
 use <leadnut.scad>
