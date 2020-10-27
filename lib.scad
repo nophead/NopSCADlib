@@ -54,6 +54,7 @@ include <vitamins/ring_terminals.scad>
 include <vitamins/rails.scad>
 include <vitamins/rod.scad>
 include <vitamins/scs_bearing_blocks.scad>
+include <vitamins/servos.scad>
 include <vitamins/sheets.scad>
 include <vitamins/sk_brackets.scad>
 include <vitamins/spools.scad>
