@@ -17,7 +17,7 @@
 
 
 //                     Code, Description, w, t1, t2, h,   dia, flange_dia 
-M80ST = [ "M80ST", "80ST standard mount", 80, 6, 3, 63.63, 4, 70 ];
+M80ST = [ "M80ST", "80ST standard mount", 80, 6, 3, 63.63, 6, 70 ];
 
 //                 Code, Description, 
 Shaft_19mm_keyed = ["19mm_keyed", "19mm Shaft with key", "keyed", 19, 35, [6, 3.5], 25 ];
