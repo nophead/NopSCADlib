@@ -21,8 +21,10 @@
 //
 
 E20_inner_corner_bracket  = [ "E20_inner_corner_bracket", [25, 25, 4.5] ];
+E40_inner_corner_bracket  = [ "E40_inner_corner_bracket", [38, 31, 8.5] ];
 
 E20_corner_bracket = [ "E20_corner_bracket", [28, 28, 20], 2, 3, 19.5];
+E40_corner_bracket = [ "E40_corner_bracket", [40, 40, 35], 2, 3, 19.5];
 
 
 use <extrusion_bracket.scad>
