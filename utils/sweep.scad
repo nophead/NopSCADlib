@@ -152,10 +152,10 @@ function sweep(path, profile, loop = false, twist = 0) = //! Generate the point 
         faces = loop ? skin_faces : concat([cap(facets)], skin_faces, [cap(facets, npoints - 1)])
         ) [points, faces];
 
-module sweep(path, profile, loop = false, twist = 0) { //! Draw a polyhedron that is the swept volume
+module sweep(path, profile, loop = false, twist = 0, convexity = 1) { //! Draw a polyhedron that is the swept volume
     mesh = sweep(path, profile, loop, twist);
 
-    polyhedron(points = mesh[0], faces = mesh[1]);
+    polyhedron(points = mesh[0], faces = mesh[1], convexity = convexity);
 }
 
 function path_length(path, i = 0, length = 0) = //! Calculated the length along a path

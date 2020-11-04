@@ -5664,7 +5664,7 @@ An additional twist around the path can be specified. If the path is closed this
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```sweep(path, profile, loop = false, twist = 0)``` | Draw a polyhedron that is the swept volume |
+| ```sweep(path, profile, loop = false, twist = 0, convexity = 1)``` | Draw a polyhedron that is the swept volume |
 
 ![sweep](tests/png/sweep.png)
 
