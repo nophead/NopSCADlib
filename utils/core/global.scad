@@ -36,11 +36,21 @@ function in(list, x) = !!len([for(v = list) if(v == x) true]);                  
 function Len(x) = is_list(x) ? len(x) : 0;                                          //! Returns the length of a list or 0 if ```x``` is not a list
 function r2sides(r) = $fn ? $fn : ceil(max(min(360/ $fa, r * 2 * PI / $fs), 5));    //! Replicates the OpenSCAD logic to calculate the number of sides from the radius
 function r2sides4n(r) = floor((r2sides(r) + 3) / 4) * 4;                            //! Round up the number of sides to a multiple of 4 to ensure points land on all axes
+function limit(x, min, max) = max(min(x, max), min);                                //! Force x in range min <= x <= max
 
 module translate_z(z) translate([0, 0, z]) children();                              //! Shortcut for Z only translations
 module vflip() rotate([180, 0, 0]) children();                                      //! Invert children by doing a 180&deg; flip around the X axis
 module hflip() rotate([0, 180, 0]) children();                                      //! Invert children by doing a 180&deg; flip around the Y axis
 module ellipse(xr, yr) scale([1, yr / xr]) circle4n(xr);                            //! Draw an ellipse
+
+function slice_str(str, start, end, s ="") = start >= end ? s : slice_str(str, start + 1, end, str(s, str[start])); // Helper for slice()
+
+function slice(list, start = 0, end = undef) = let( //! Slice a list or string with Python type semantics
+        len = len(list),
+        start = limit(start < 0 ? len + start : start, 0, len),
+        end   = is_undef(end) ? len : limit(end   < 0 ? len + end : end, 0, len)
+    ) is_string(list) ? slice_str(list, start, end) : [for(i = [start : 1 : end - 1]) list[i]];
+
 
 module extrude_if(h, center = true)                 //! Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D
     if(h)
