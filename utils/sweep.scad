@@ -34,14 +34,22 @@ function transpose3(m) = [ [m[0].x, m[1].x, m[2].x],
                            [m[0].y, m[1].y, m[2].y],
                            [m[0].z, m[1].z, m[2].z] ];
 //
+// Find the first non-colinear point
+//
+tiny = 0.00001;
+function find_curve(tangents, i = 1) =
+    i >= len(tangents) - 1 || norm(cross(tangents[0], tangents[i] - tangents[0])) > tiny ? i
+                                                                                         : find_curve(tangents, i + 1);
+//
 // Frenet-Serret frame
 //
 function fs_frame(tangents) =
     let(tangent = tangents[0],
-        normal = tangents[1] - tangents[0],
+        i = find_curve(tangents),
+        normal = tangents[i] - tangents[0],
         binormal = cross(tangent, normal),
         z = unit(tangent),
-        x = assert(norm(binormal) > 0.00001, "first three points are colinear") unit(binormal),
+        x = assert(norm(binormal) > tiny, "all points are colinear") unit(binormal),
         y = unit(cross(z, x))
        ) [[x.x, y.x, z.x],
           [x.y, y.y, z.y],
@@ -70,7 +78,6 @@ function orientate(p, r) =
          [x.y, y.y, z.y],
          [x.z, y.z, z.z],
          [p.x, p.y, p.z]];
-
 //
 // Rotate around z
 //
