@@ -18,7 +18,7 @@
 //
 
 //
-// Include this file to use the miniumum library
+// Include this file to use the minimum library
 //
 include <../../global_defs.scad>
 //

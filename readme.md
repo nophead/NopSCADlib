@@ -403,7 +403,7 @@ PCB mounted buttons. Can optionally have a coloured cap
 ## Cable_strips
 A strip of polypropylene used with ribbon cable to make a cable flexible in one direction only.
 
-Modelled with a Bezier spline, which is not quite the same as a miniumum energy curve but very close, epecially
+Modelled with a Bezier spline, which is not quite the same as a minimum energy curve but very close, epecially
 near the extreme positions, where the model needs to be accurate.
 
 When the sides are constrained then a circular model is more accurate.
