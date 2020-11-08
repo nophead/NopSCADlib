@@ -23,6 +23,7 @@
 include <../core.scad>
 include <ring_terminals.scad>
 
+include <../vitamins/pin_headers.scad>
 use <../utils/tube.scad>
 use <../utils/thread.scad>
 use <washer.scad>
@@ -39,7 +40,6 @@ function NEMA_shaft_length(type)= type[8]; //! Shaft length above the face, if a
 function NEMA_hole_pitch(type)  = type[9]; //! Screw hole pitch
 function NEMA_holes(type)       = [-NEMA_hole_pitch(type) / 2, NEMA_hole_pitch(type) / 2]; //! Screw positions for for loop
 function NEMA_big_hole(type)    = NEMA_boss_radius(type) + 0.2; //! Clearance hole for the big boss
-
 stepper_body_colour = "black";
 stepper_cap_colour  = grey(50);
 stepper_machined_colour = grey(90);
@@ -52,7 +52,7 @@ module NEMA_outline(type) //! 2D outline
         circle(NEMA_radius(type));
     }
 
-module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
+module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified NEMA stepper motor
     side = NEMA_width(type);
     length = NEMA_length(type);
     body_rad = NEMA_body_radius(type);
@@ -92,11 +92,22 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
             cap_shape(1);
     }
 
-    color(stepper_cap_colour)                                       // aluminium end caps
+    tabSize = [16, 4, 2.5];
+    color(stepper_cap_colour) {                                     // aluminium end caps
         for(end = [-1, 1])
             translate_z(-length / 2 + end * (length - cap) / 2)
                 linear_extrude(cap, center = true)
                     cap_shape(end);
+
+        if(jst_connector)
+            translate([-tabSize.x / 2, side / 2, -length])
+                cube(tabSize);
+    }
+
+    if(jst_connector)
+        translate([0, side / 2 - 2, -length + tabSize.z + 5.75 / 2])
+            rotate([-90, 0, 0])
+                jst_xh_header(jst_xh_header, 6);
 
     if(show_threads)
         for(x = NEMA_holes(type), y = NEMA_holes(type))
@@ -111,15 +122,16 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
                     cylinder(r = shaft_rad, h = shaft + 5);  // shaft
             else
                 not_on_bom()
-                    leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false)
+                    leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false);
 
-    translate([0, side / 2, -length + cap / 2])
-        rotate([90, 0, 0])
-            for(i = [0 : 3])
-                rotate(225 + i * 90)
-                    color(["red", "blue","green","black"][i])
-                        translate([1, 0, 0])
-                            cylinder(r = 1.5 / 2, h = 12, center = true);
+    if(!jst_connector)
+        translate([0, side / 2, -length + cap / 2])
+            rotate([90, 0, 0])
+                for(i = [0 : 3])
+                    rotate(225 + i * 90)
+                        color(["red", "blue","green","black"][i])
+                            translate([1, 0, 0])
+                                cylinder(r = 1.5 / 2, h = 12, center = true);
 }
 
 module NEMA_screw_positions(type, n = 4) { //! Positions children at the screw holes

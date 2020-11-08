@@ -24,7 +24,7 @@ use <../utils/layout.scad>
 module stepper_motors()
     layout([for(s = stepper_motors) NEMA_width(s)], 5) {
         rotate(180)
-            NEMA(stepper_motors[$i]);
+            NEMA(stepper_motors[$i], 0, $i > 1 && $i < 5);
 
         translate_z(4)
             NEMA_screws(stepper_motors[$i], M3_pan_screw, n = $i, earth = $i > 4 ? undef : $i - 1);
