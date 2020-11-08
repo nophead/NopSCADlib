@@ -90,6 +90,8 @@ def usage():
     sys.exit(1)
 
 def tests(tests):
+    doc_base_name = "readme"
+    doc_name = doc_base_name + ".md"
     scad_dir = "tests"
     deps_dir = scad_dir + "/deps"
     png_dir  = scad_dir + "/png"
@@ -97,7 +99,6 @@ def tests(tests):
     for dir in [deps_dir, png_dir, bom_dir]:
         if not os.path.isdir(dir):
             os.makedirs(dir)
-    doc_name = "readme.md"
     index = {}
     bodies = {}
     done = []
@@ -120,7 +121,7 @@ def tests(tests):
         base_name = scad[:-5]
         if not tests or base_name in tests:
             done.append(base_name)
-            print(base_name)
+            print('\n'+base_name)
             cap_name = base_name[0].capitalize() + base_name[1:]
             base_name = base_name.lower()
             scad_name = scad_dir + '/' + scad
@@ -135,6 +136,7 @@ def tests(tests):
             locations = [
                 ('vitamins/' + depluralise(base_name) + '.scad', 'Vitamins'),
                 ('printed/' + base_name + '.scad',               'Printed'),
+                ('tests/' + base_name + '.scad',                 'Tests'),
                 ('utils/' + base_name + '.scad',                 'Utilities'),
                 ('utils/core/' + base_name + '.scad',            'Core Utilities'),
             ]
@@ -288,10 +290,10 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
         for type in types:
             for line in bodies[type]:
                 print(line, file = doc_file)
-    with open("readme.html", "wt") as html_file:
-        do_cmd("python -m markdown -x tables readme.md".split(), html_file)
+    with open(doc_base_name + ".html", "wt") as html_file:
+        do_cmd(("python -m markdown -x tables " + doc_name).split(), html_file)
     times.print_times()
-    do_cmd('codespell -L od readme.md'.split())
+    do_cmd(('codespell -L od ' + doc_name).split())
 
 if __name__ == '__main__':
     for arg in sys.argv[1:]:
