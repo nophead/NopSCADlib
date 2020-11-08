@@ -105,9 +105,9 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
     }
 
     if(jst_connector)
-        translate([0, side / 2 - 2, -length + tabSize.z + 0.75])
-            rotate(180)
-                jst_xh_header(jst_xh_header, 6, true);
+        translate([0, side / 2 - 2, -length + tabSize.z + 5.75 / 2])
+            rotate([-90, 0, 0])
+                jst_xh_header(jst_xh_header, 6);
 
     if(show_threads)
         for(x = NEMA_holes(type), y = NEMA_holes(type))
@@ -122,15 +122,16 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
                     cylinder(r = shaft_rad, h = shaft + 5);  // shaft
             else
                 not_on_bom()
-                    leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false)
+                    leadscrew(shaft_rad * 2, shaft.x + 5, shaft.y, shaft.z, center = false);
 
-    translate([0, side / 2, -length + cap / 2])
-        rotate([90, 0, 0])
-            for(i = [0 : 3])
-                rotate(225 + i * 90)
-                    color(["red", "blue","green","black"][i])
-                        translate([1, 0, 0])
-                            cylinder(r = 1.5 / 2, h = 12, center = true);
+    if(!jst_connector)
+        translate([0, side / 2, -length + cap / 2])
+            rotate([90, 0, 0])
+                for(i = [0 : 3])
+                    rotate(225 + i * 90)
+                        color(["red", "blue","green","black"][i])
+                            translate([1, 0, 0])
+                                cylinder(r = 1.5 / 2, h = 12, center = true);
 }
 
 module NEMA_screw_positions(type, n = 4) { //! Positions children at the screw holes

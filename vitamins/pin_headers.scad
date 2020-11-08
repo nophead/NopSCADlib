@@ -25,7 +25,7 @@
 //                                                              c
 //
 2p54header    = ["2p54header",   2.54, 11.6, 3.2, 0.66, "gold", grey(20), 8.5];
-jst_xh_header = ["JST XH header",2.5,  10,   3.2, 0.64, "gold", grey(90), 7];
+jst_xh_header = ["JST XH header",2.5,  10,   3.4, 0.64, "gold", grey(90), 7];
 
 pin_headers = [ 2p54header ];
 
