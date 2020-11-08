@@ -40,7 +40,6 @@ function NEMA_shaft_length(type)= type[8]; //! Shaft length above the face, if a
 function NEMA_hole_pitch(type)  = type[9]; //! Screw hole pitch
 function NEMA_holes(type)       = [-NEMA_hole_pitch(type) / 2, NEMA_hole_pitch(type) / 2]; //! Screw positions for for loop
 function NEMA_big_hole(type)    = NEMA_boss_radius(type) + 0.2; //! Clearance hole for the big boss
-function NEMA_jst_connector(type)= type[10]; //! True if motor has JST connector
 stepper_body_colour = "black";
 stepper_cap_colour  = grey(50);
 stepper_machined_colour = grey(90);
@@ -53,7 +52,7 @@ module NEMA_outline(type) //! 2D outline
         circle(NEMA_radius(type));
     }
 
-module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
+module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified NEMA stepper motor
     side = NEMA_width(type);
     length = NEMA_length(type);
     body_rad = NEMA_body_radius(type);
@@ -100,12 +99,12 @@ module NEMA(type, shaft_angle = 0) { //! Draw specified NEMA stepper motor
                 linear_extrude(cap, center = true)
                     cap_shape(end);
 
-        if(NEMA_jst_connector(type))
+        if(jst_connector)
             translate([-tabSize.x / 2, side / 2, -length])
                 cube(tabSize);
     }
 
-    if(NEMA_jst_connector(type))
+    if(jst_connector)
         translate([0, side / 2 - 2, -length + tabSize.z + 0.75])
             rotate(180)
                 jst_xh_header(jst_xh_header, 6, true);
