@@ -97,7 +97,6 @@ def tests(tests):
     for dir in [deps_dir, png_dir, bom_dir]:
         if not os.path.isdir(dir):
             os.makedirs(dir)
-    doc_name = "readme.md"
     index = {}
     bodies = {}
     done = []
@@ -108,19 +107,33 @@ def tests(tests):
     #
     png_name = "libtest.png"
     scad_name = "libtest.scad"
-    if not os.path.isfile(png_name):
-        openscad.run(colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall", "-o", png_name, scad_name);
-        do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", background, "-border", "10", png_name])
+    if os.path.isfile(scad_name):
+        libtest = True
+        lib_blurb = scrape_blurb(scad_name)
+        if not os.path.isfile(png_name):
+            openscad.run(colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall", "-o", png_name, scad_name);
+            do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", background, "-border", "10", png_name])
+    else:
+        #
+        # Project tests so just a title
+        #
+        libtest = False
+        project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
+        lib_blurb = '#' + project + ' Tests\n'
+
+    doc_base_name = "readme" if libtest else "tests"
+    doc_name = doc_base_name + ".md"
     #
     # List of individual part files
     #
-    scads = [i for i in sorted(os.listdir(scad_dir), key = lambda s: s.lower()) if i[-5:] == ".scad"]
 
+    scads = [i for i in sorted(os.listdir(scad_dir), key = lambda s: s.lower()) if i[-5:] == ".scad"]
+    types = []
     for scad in scads:
         base_name = scad[:-5]
         if not tests or base_name in tests:
             done.append(base_name)
-            print(base_name)
+            print('\n'+base_name)
             cap_name = base_name[0].capitalize() + base_name[1:]
             base_name = base_name.lower()
             scad_name = scad_dir + '/' + scad
@@ -132,12 +145,15 @@ def tests(tests):
             if is_plural(base_name) and os.path.isfile(vits_name):
                 objects_name = vits_name
 
-            locations = [
-                ('vitamins/' + depluralise(base_name) + '.scad', 'Vitamins'),
-                ('printed/' + base_name + '.scad',               'Printed'),
-                ('utils/' + base_name + '.scad',                 'Utilities'),
-                ('utils/core/' + base_name + '.scad',            'Core Utilities'),
-            ]
+            locations = []
+            if os.path.isdir('vitamins'):
+                locations.append(('vitamins/' + depluralise(base_name) + '.scad', 'Vitamins'))
+            if os.path.isdir('printed'):
+                locations.append(('printed/' + base_name + '.scad',               'Printed'))
+            if os.path.isdir('utils'):
+                locations.append(('utils/' + base_name + '.scad',                 'Utilities'))
+            if libtest and os.path.isdir('utils/core'):
+                locations.append(('utils/core/' + base_name + '.scad',            'Core Utilities'))
 
             for name, type in locations:
                 if os.path.isfile(name):
@@ -147,14 +163,17 @@ def tests(tests):
                 print("Can't find implementation!")
                 continue
 
-            vsplit = "AJR" + chr(ord('Z') + 1)
-            vtype = locations[0][1]
-            types = [vtype + ' ' + vsplit[i] + '-'  + chr(ord(vsplit[i + 1]) - 1) for i in range(len(vsplit) - 1)] + [loc[1] for loc in locations[1 :]]
-            if type == vtype:
-                for i in range(1, len(vsplit)):
-                    if cap_name[0] < vsplit[i]:
-                         type = types[i - 1]
-                         break
+            if libtest:
+                vsplit = "AJR" + chr(ord('Z') + 1)
+                vtype = locations[0][1]
+                types = [vtype + ' ' + vsplit[i] + '-' + chr(ord(vsplit[i + 1]) - 1) for i in range(len(vsplit) - 1)] + [loc[1] for loc in locations[1 :]]
+                if type == vtype:
+                    for i in range(1, len(vsplit)):
+                        if cap_name[0] < vsplit[i]:
+                             type = types[i - 1]
+                             break
+            else:
+                types = [loc[1] for loc in locations]
 
             for t in types:
                 if not t in bodies:
@@ -250,24 +269,7 @@ def tests(tests):
         usage()
 
     with open(doc_name, "wt") as doc_file:
-        print('# NopSCADlib', file = doc_file)
-        print('''\
-An ever expanding library of parts modelled in OpenSCAD useful for 3D printers and enclosures for electronics, etc.
-
-It contains lots of vitamins (the RepRap term for non-printed parts), some general purpose printed parts and
-some utilities. There are also Python scripts to generate Bills of Materials (BOMs),
- STL files for all the printed parts, DXF files for CNC routed parts in a project and a manual containing assembly
-instructions and exploded views by scraping markdown embedded in OpenSCAD comments, [see scripts](scripts/readme.md). A simple example project can be found [here](examples/MainsBreakOutBox/readme.md).
-
-For more examples of what it can make see the [gallery](gallery/readme.md).
-
-The license is GNU General Public License v3.0, see [COPYING](COPYING).
-
-See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
-
-<img src="libtest.png" width="100%"/>\n
-''', file = doc_file)
-
+        print(lib_blurb, file = doc_file)
         print('## Table of Contents<a name="top"/>', file = doc_file)
         print('<table><tr>', file = doc_file)
         n = 0
@@ -288,10 +290,10 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
         for type in types:
             for line in bodies[type]:
                 print(line, file = doc_file)
-    with open("readme.html", "wt") as html_file:
-        do_cmd("python -m markdown -x tables readme.md".split(), html_file)
+    with open(doc_base_name + ".html", "wt") as html_file:
+        do_cmd(("python -m markdown -x tables " + doc_name).split(), html_file)
     times.print_times()
-    do_cmd('codespell -L od readme.md'.split())
+    do_cmd(('codespell -L od ' + doc_name).split())
 
 if __name__ == '__main__':
     for arg in sys.argv[1:]:
