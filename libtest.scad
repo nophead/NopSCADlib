@@ -17,6 +17,23 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
+//!# NopSCADlib
+//! An ever expanding library of parts modelled in OpenSCAD useful for 3D printers and enclosures for electronics, etc.
+//!
+//! It contains lots of vitamins (the RepRap term for non-printed parts), some general purpose printed parts and some utilities.
+//! There are also Python scripts to generate Bills of Materials (BOMs),
+//! STL files for all the printed parts, DXF files for CNC routed parts in a project and a manual containing assembly
+//! instructions and exploded views by scraping markdown embedded in OpenSCAD comments, [see scripts](scripts/readme.md).
+//!
+//! A simple example project can be found [here](examples/MainsBreakOutBox/readme.md).
+//!
+//! For more examples of what it can make see the [gallery](gallery/readme.md).
+//!
+//! The license is GNU General Public License v3.0, see [COPYING](COPYING).
+//!
+//! See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
+//!
+//! <img src="libtest.png" width="100%"/>
 //
 // This file shows all the parts in the library.
 //
