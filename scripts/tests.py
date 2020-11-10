@@ -160,8 +160,12 @@ def tests(tests):
                     impl_name = name
                     break
             else:
-                print("Can't find implementation!")
-                continue
+                if libtest:
+                    print("Can't find implementation!")
+                    continue
+                else:
+                    type = 'Tests'                         # OK when testing part of a project
+                    impl_name = None
 
             if libtest:
                 vsplit = "AJR" + chr(ord('Z') + 1)
@@ -173,7 +177,10 @@ def tests(tests):
                              type = types[i - 1]
                              break
             else:
-                types = [loc[1] for loc in locations]
+                if not types:
+                    types = [loc[1] for loc in locations]   # No need to split up the vitamin list
+                    if not type in types:                   # Will happen when implementation is not found and type is set to Tests
+                        types.append(type)
 
             for t in types:
                 if not t in bodies:
