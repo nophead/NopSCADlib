@@ -35,27 +35,39 @@ module shaft_coupling(type, colour = "silver") { //! Draw the shaft coupling
     d1 = sc_diameter1(type);
     d2 = sc_diameter2(type);
 
-    color(colour) {
-        translate_z(-length / 2)
-            linear_extrude(length / 2)
-                difference() {
-                    circle(d = diameter);
-                    circle(d = d1);
-                }
-        linear_extrude(length / 2)
-            difference() {
-                circle(d = diameter);
-                circle(d = d2);
-            }
+    grub_length = 3;
+    module grub_screw_positions() {
+        grub_offset_z = 5;
+        for(z = [-length / 2 + grub_offset_z, length / 2 - grub_offset_z])
+            translate_z(z)
+                for(a = [0, 90])
+                    rotate([-90, 0, a])
+                        translate_z(diameter / 2 + 1)
+                            children();
     }
 
-    grub_offset_z = 5;
-    grub_length = 3;
-    for(z = [-length / 2 + grub_offset_z, length / 2 - grub_offset_z])
-        translate_z(z)
-            for(a = [0, 90])
-                rotate([-90, 0, a])
-                    translate_z(diameter / 2 + 1)
-                        not_on_bom() screw(M3_grub_screw, grub_length);
+    color(colour) {
+        render(convexity=2) difference() {
+            union() {
+                translate_z(-length / 2)
+                    linear_extrude(length / 2)
+                        difference() {
+                            circle(d = diameter);
+                            circle(d = d1);
+                        }
+                linear_extrude(length / 2)
+                    difference() {
+                        circle(d = diameter);
+                        circle(d = d2);
+                    }
+            }
+            grub_screw_positions()
+                rotate([180, 0, 0])
+                    cylinder(r = screw_radius(M3_grub_screw), h = 5);
+        }
+    }
+
+    grub_screw_positions()
+        not_on_bom() screw(M3_grub_screw, grub_length);
 }
 
