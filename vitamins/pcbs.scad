@@ -348,7 +348,7 @@ PI_IO = ["PI_IO", "PI_IO V2",       35.56, 25.4, 1.6, 0,    0,   0, "green", tru
     ], []];
 
 ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "green", false, [[2.25, 3.25], [-2.25, 3.25], [2.25, -3.25], [-2.25, -3.25] ],
-    [ [ 12.25,  8.3,  -90, "jst_xh", 5],
+    [ [ 11.725, 8.3,  -90, "jst_xh", 5],
       [ -6.5,  10,      0, "2p54header", 1, 4],
       [ 20.4,  -4.5,    0, "2p54header", 4, 1],
       [ 20.4,  11,  180, "pdip", 16, "ULN2803AN", true],
@@ -408,7 +408,7 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
         [2, 2, false], [2, 13.5, false], [17, 13.5], [36, 13.5]
     ],
     [
-        [ 12,    8,   -90, "jst_xh", 3, true, "white", "silver"],
+        [ 11.6,  8,   -90, "jst_xh", 3, true, "white", "silver"],
         [ 26.5, 12.75,  0, "microswitch", small_microswitch],
         [ 27.5, 17.5,  15, "chip", 15, 0.5, 4.5, "silver"],
     ],

@@ -2465,12 +2465,17 @@ Pin headers and sockets, etc.
 | Function | Description |
 |:--- |:--- |
 | ```hdr_base_colour(type)``` | Header insulator colour |
+| ```hdr_box_size(type)``` | Box header outside dimensions |
+| ```hdr_box_wall(type)``` | Box header wall thickness |
 | ```hdr_pin_below(type)``` | Header pin length underneath |
 | ```hdr_pin_colour(type)``` | Header pin colour |
 | ```hdr_pin_length(type)``` | Header pin length |
 | ```hdr_pin_width(type)``` | Header pin size |
 | ```hdr_pitch(type)``` | Header pitch |
+| ```hdr_ra_box_offset(type)``` | Offset between back of the box and the pins |
+| ```hdr_ra_height(type)``` | Height of right angle connector |
 | ```hdr_socket_depth(type)``` | Socket depth for female housing |
+| ```hdr_y_offset(type)``` | Y offset of pins from center of the box |
 
 ### Modules
 | Module | Description |
