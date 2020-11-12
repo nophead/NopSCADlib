@@ -3413,6 +3413,7 @@ NEMA stepper motor model.
 | ```NEMA_body_radius(type)``` | Body radius |
 | ```NEMA_boss_height(type)``` | Boss height |
 | ```NEMA_boss_radius(type)``` | Boss around the spindle radius |
+| ```NEMA_cap_heights(type)``` | Height of the end cap at the corner and the side |
 | ```NEMA_hole_pitch(type)``` | Screw hole pitch |
 | ```NEMA_length(type)``` | Body length |
 | ```NEMA_radius(type)``` | End cap radius |

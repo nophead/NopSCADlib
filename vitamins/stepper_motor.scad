@@ -26,6 +26,7 @@ include <ring_terminals.scad>
 include <../vitamins/pin_headers.scad>
 use <../utils/tube.scad>
 use <../utils/thread.scad>
+use <../utils/round.scad>
 use <washer.scad>
 use <rod.scad>
 
@@ -38,6 +39,8 @@ function NEMA_boss_height(type) = type[6]; //! Boss height
 function NEMA_shaft_dia(type)   = type[7]; //! Shaft diameter
 function NEMA_shaft_length(type)= type[8]; //! Shaft length above the face, if a list then a leadscrew: length, lead, starts
 function NEMA_hole_pitch(type)  = type[9]; //! Screw hole pitch
+function NEMA_cap_heights(type) = type[10]; //! Height of the end cap at the corner and the side
+
 function NEMA_holes(type)       = [-NEMA_hole_pitch(type) / 2, NEMA_hole_pitch(type) / 2]; //! Screw positions for for loop
 function NEMA_big_hole(type)    = NEMA_boss_radius(type) + 0.2; //! Clearance hole for the big boss
 stepper_body_colour = "black";
@@ -59,12 +62,13 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
     boss_rad = NEMA_boss_radius(type);
     boss_height =NEMA_boss_height(type);
     shaft_rad = NEMA_shaft_dia(type) / 2;
-    cap = 8;
+    cap = NEMA_cap_heights(type)[1];
+    cap2 = NEMA_cap_heights(type)[0];
     vitamin(str("NEMA(", type[0], "): Stepper motor NEMA", round(NEMA_width(type) / 2.54), " x ", length, "mm"));
-    thread_d = 3;                                                           // Is this always the case?
+    thread_d = 3;                                                       // Is this always the case?
 
     module cap_shape(end)
-        difference() {
+        round(0.5, $fn = 32) difference() {
             intersection() {
                 square([side, side], center = true);
 
@@ -92,12 +96,24 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
             cap_shape(1);
     }
 
-    tabSize = [16, 4, 2.5];
+    pcb_thickness = 1.6;
+    header = jst_ph_header;
+    socket_size = hdr_box_size(header);
+    tabSize = [16, 4, cap - hdr_ra_height(header) - pcb_thickness];
     color(stepper_cap_colour) {                                     // aluminium end caps
-        for(end = [-1, 1])
+        for(end = [-1, 1]) {
             translate_z(-length / 2 + end * (length - cap) / 2)
                 linear_extrude(cap, center = true)
                     cap_shape(end);
+
+            translate_z(-length / 2 + end * (length - cap2) / 2)
+                linear_extrude(cap2, center = true)
+                    difference() {
+                        cap_shape(end);
+
+                        circle(body_rad);
+                    }
+        }
 
         if(jst_connector)
             translate([-tabSize.x / 2, side / 2, -length])
@@ -105,9 +121,15 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
     }
 
     if(jst_connector)
-        translate([0, side / 2 - 2, -length + tabSize.z + 5.75 / 2])
-            rotate([-90, 0, 0])
-                jst_xh_header(jst_xh_header, 6);
+        translate([0, side / 2, -length + cap - hdr_ra_height(header)]) {
+            rotate(180)
+                not_on_bom()
+                    jst_xh_header(header, 6, true);
+
+            translate_z(-pcb_thickness / 2)
+                color("green")
+                    cube([socket_size.x + 5 * 2, tabSize.y * 2, pcb_thickness], true);
+        }
 
     if(show_threads)
         for(x = NEMA_holes(type), y = NEMA_holes(type))
