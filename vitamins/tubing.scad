@@ -41,7 +41,7 @@ module tubing(type, length = 15, forced_id = 0, center = true) { //! Draw specif
         vitamin(str("tubing(", type[0], arg(length, 15), "): ", tubing_material(type), " OD ", original_od, "mm ID ", original_id,"mm x ",length, "mm"));
 
     if(tubing_material(type) == "Carbon fiber")
-        woven_tube(od / 2, id /2, length, colour = tubing_colour(type));
+        woven_tube(od / 2, id /2, center = center, length, colour = tubing_colour(type));
     else
         color(tubing_colour(type))
             linear_extrude(length, center = center, convexity = 4)
