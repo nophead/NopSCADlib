@@ -85,6 +85,7 @@ use <tests/rod.scad>
 use <tests/screws.scad>
 use <tests/SCS_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
+use <tests/shaft_couplings.scad>
 use <tests/sheets.scad>
 use <tests/SK_brackets.scad>
 use <tests/spades.scad>
@@ -428,6 +429,9 @@ translate([x4, sk_brackets_y])
 
 translate([x4, extrusion_brackets_y])
     extrusion_brackets();
+
+translate([x4 + 120, extrusion_brackets_y])
+    shaft_couplings();
 
 translate([x4, scs_bearing_blocks_y])
     scs_bearing_blocks();

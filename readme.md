@@ -30,20 +30,21 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
 <tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
 <tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -3052,6 +3053,41 @@ Sealing strip from B&Q used to seal around the door of 3D printers.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```sealing_strip(100)``` |  Sealing strip 10mm x 4mm x 100mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Shaft_couplings"></a>
+## Shaft_couplings
+Shaft couplings
+
+
+[vitamins/shaft_couplings.scad](vitamins/shaft_couplings.scad) Object definitions.
+
+[vitamins/shaft_coupling.scad](vitamins/shaft_coupling.scad) Implementation.
+
+[tests/shaft_couplings.scad](tests/shaft_couplings.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```sc_diameter(type)``` | Coupling outer diameter |
+| ```sc_diameter1(type)``` | Diameter of smaller shaft |
+| ```sc_diameter2(type)``` | Diameter of larger shaft |
+| ```sc_length(type)``` | Coupling length |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```shaft_coupling(type, colour = "silver")``` | Draw the shaft coupling |
+
+![shaft_couplings](tests/png/shaft_couplings.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | ```shaft_coupling(SC_5x8_rigid)``` |  Shaft coupling SC_5x8_rigid |
 
 
 <a href="#top">Top</a>
