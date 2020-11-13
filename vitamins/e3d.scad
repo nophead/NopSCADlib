@@ -98,7 +98,7 @@ module heater_block(type, naked = false, resistor_wire_rotate = [0,0,0]) {
 
 module bowden_connector(cap_colour = grey(20)) {
     ir = 4.25 / 2;
-    body_colour = "silver";
+    body_colour = silver;
 
     color(body_colour) {
         translate_z(-4.5) {
