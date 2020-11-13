@@ -21,6 +21,7 @@
 //! Tubing and sleeving. The internal diameter can be forced to stretch it over something.
 //
 include <../utils/core/core.scad>
+include <../utils/tube.scad>
 
 function tubing_material(type) = type[1]; //! Material description
 function tubing_od(type)       = type[2]; //! Outside diameter
@@ -38,10 +39,15 @@ module tubing(type, length = 15, forced_id = 0, center = true) { //! Draw specif
         vitamin(str("tubing(", type[0], arg(length, 15), "): ", tubing_material(type), " ID ", original_id, "mm x ",length, "mm"));
     else
         vitamin(str("tubing(", type[0], arg(length, 15), "): ", tubing_material(type), " OD ", original_od, "mm ID ", original_id,"mm x ",length, "mm"));
-    color(tubing_colour(type))
-        linear_extrude(length, center = center, convexity = 4)
-            difference() {
-                circle(d = od);
-                circle(d = id);
-            }
+
+    if(tubing_material(type) == "Carbon fiber")
+        woven_tube(od / 2, id /2, length, colour = tubing_colour(type));
+    else
+        color(tubing_colour(type))
+            linear_extrude(length, center = center, convexity = 4)
+                difference() {
+                    circle(d = od);
+                    circle(d = id);
+                }
 }
+

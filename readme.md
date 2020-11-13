@@ -3652,6 +3652,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```tubing(CBNFIB10)``` |  Carbon fiber OD 10mm ID 8mm x 15mm |
 |   1 | ```tubing(HSHRNK16)``` |  Heatshrink sleeving ID 1.6mm x 15mm |
 |   1 | ```tubing(HSHRNK100)``` |  Heatshrink sleeving ID 10mm x 15mm |
 |   1 | ```tubing(HSHRNK24)``` |  Heatshrink sleeving ID 2.4mm x 15mm |
@@ -5740,6 +5741,7 @@ Simple tube or ring
 |:--- |:--- |
 | ```ring(or, ir)``` | Create a ring with specified external and internal radii |
 | ```tube(or, ir, h, center = true)``` | Create a tube with specified external and internal radii and height ```h``` |
+| ```woven_tube(or, ir, h, center= true, colour = grey(30)``` | Create a woven tube with specified external and internal radii, height ```h```, colours, warp and weft |
 
 ![tube](tests/png/tube.png)
 
