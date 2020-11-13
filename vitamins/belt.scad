@@ -54,7 +54,7 @@ module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), toot
 
     tangents = rounded_polygon_tangents(points);
 
-    length = ceil((rounded_polygon_length(points, tangents) - gap) / pitch) * pitch;
+    length = ceil((rounded_polygon_length(points, tangents) - (is_list(gap) ? gap.x + gap.y : gap)) / pitch) * pitch;
 
     module shape() rounded_polygon(points, tangents);
 
@@ -65,7 +65,7 @@ module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), toot
             translate([gap_pos.x, gap_pos.y])
                 rotate(is_undef(gap_pos.z) ? 0 : gap_pos.z)
                     translate([0, ph - thickness / 2])
-                        square([gap, thickness + eps], center = true);
+                        square(is_list(gap) ? [gap.x, gap.y + thickness + eps] : [gap, thickness + eps], center = true);
 
     color(belt_colour)
         linear_extrude(width, center = true)
