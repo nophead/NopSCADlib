@@ -1104,7 +1104,7 @@ Needs updating as mostly obsolete versions.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0])``` | Draw specified hot end |
+| ```hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0], bowden = false)``` | Draw specified hot end |
 
 ![hot_ends](tests/png/hot_ends.png)
 
