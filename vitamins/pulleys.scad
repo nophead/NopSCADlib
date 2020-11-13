@@ -35,7 +35,8 @@ GT2x12_pulley        = ["GT2x12_pulley",        "GT2RD", 12,  7.15, GT2x6,  6.5,
 GT2x20_toothed_idler = ["GT2x20_toothed_idler", "GT2",   20, 12.22, GT2x6,  6.5,  18, 0,   4, 18.0, 1.0, 0, 0,    false,         0];
 GT2x20_plain_idler   = ["GT2x20_plain_idler",   "GT2",    0, 12.0,  GT2x6,  6.5,  18, 0,   4, 18.0, 1.0, 0, 0,    false,         0];
 GT2x16_toothed_idler = ["GT2x16_toothed_idler", "GT2",   16,  9.75, GT2x6,  6.5,  14, 0,   3, 14.0, 1.0, 0, 0,    false,         0];
-GT2x16_plain_idler   = ["GT2x16_plain_idler",   "GT2",    0,  9.63, GT2x6,  7.0,  13, 0,   3, 13.0, 1.0, 0, 0,    false,         0];
+GT2x16_plain_idler   = ["GT2x16_plain_idler",   "GT2",    0,  9.63, GT2x6,  6.5,  13, 0,   3, 13.0, 1.0, 0, 0,    false,         0];
+GT2x16x7_plain_idler = ["GT2x16x7_plain_idler", "GT2",    0,  9.63, GT2x6,  7.0,  13, 0,   3, 13.0, 1.0, 0, 0,    false,         0];
 
 pulleys = [T5x10_pulley,
            T2p5x16_pulley,
@@ -45,6 +46,7 @@ pulleys = [T5x10_pulley,
            GT2x20_toothed_idler,
            GT2x20_plain_idler,
            GT2x16_toothed_idler,
-           GT2x16_plain_idler];
+           GT2x16_plain_idler,
+           GT2x16x7_plain_idler];
 
 use <pulley.scad>

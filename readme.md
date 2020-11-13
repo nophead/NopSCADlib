@@ -2642,6 +2642,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 |   1 | ```pulley(GT2x20_toothed_idler)``` |  Pulley GT2 idler 20 teeth |
 |   1 | ```pulley(GT2x20_plain_idler)``` |  Pulley GT2 idler smooth 12mm |
 |   1 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth 9.63mm |
+|   1 | ```pulley(GT2x16x7_plain_idler)``` |  Pulley GT2 idler smooth 9.63mm |
 |   1 | ```pulley(GT2x20ob_pulley)``` |  Pulley GT2OB 20 teeth |
 |   1 | ```pulley(GT2x12_pulley)``` |  Pulley GT2RD 12 teeth |
 |   1 | ```pulley(GT2x20um_pulley)``` |  Pulley GT2UM 20 teeth |
