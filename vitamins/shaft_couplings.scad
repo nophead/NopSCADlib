@@ -21,10 +21,9 @@
 //! Shaft couplings
 //
 
-//                                 L     D    d1   d2
-SC_5x8_rigid  = [ "5x8 rigid",    25, 12.5,    5,   8 ];
+//                                   L   D        d1   d2
+SC_5x8_rigid  = [ "SC_5x8_rigid",    25, 12.5,    5,   8 ];
 
 shaft_couplings = [SC_5x8_rigid];
 
 use <shaft_coupling.scad>
-
