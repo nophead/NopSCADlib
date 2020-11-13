@@ -19,13 +19,15 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
+use <../printed/camera_housing.scad>
+
 include <../vitamins/cameras.scad>
 
 use <../vitamins/pcb.scad>
 
-module cameras()
+module camera_housings()
     layout([for(c = cameras) pcb_length(camera_pcb(c))], 15, false) let(c = cameras[$i])
-        camera(c);
+        camera_fastened_assembly(c, 3);
 
 if($preview)
-    cameras();
+    camera_housings();

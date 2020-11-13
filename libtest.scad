@@ -47,6 +47,7 @@ use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
 use <tests/cameras.scad>
+use <tests/camera_housing.scad>
 use <tests/circlips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
@@ -363,6 +364,9 @@ translate([x3 + 170, veroboard_y + 16])
 
 translate([x3, d_connectors_y])
     d_connectors();
+
+translate([x3 + 170, d_connectors_y - 10])
+    camera_housings();
 
 translate([x3, iecs_y])
     iecs();
