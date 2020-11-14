@@ -19,7 +19,7 @@
 
 //
 //! Models timing belt running over toothed or smooth pulleys and calculates an accurate length.
-//! Only models 2D paths, so not core XY!
+//! Only models 2D paths, so not crossed belt core XY!
 //!
 //! To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 //!

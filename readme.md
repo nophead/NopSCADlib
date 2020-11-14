@@ -208,7 +208,7 @@ exposing enough information to make a battery box.
 <a name="Belts"></a>
 ## Belts
 Models timing belt running over toothed or smooth pulleys and calculates an accurate length.
-Only models 2D paths, so not core XY!
+Only models 2D paths, so not crossed belt core XY!
 
 To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 
@@ -250,15 +250,16 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | ```belt(GT2x6, [ ... ])``` |  Belt GT2 x 6mm x 128mm |
-|   1 | ```belt(GT2x6, [ ... ], 80, [0, 0])``` |  Belt GT2 x 6mm x 696mm |
+|   2 | ```belt(GT2x6, [ ... ], 80, [0, 0])``` |  Belt GT2 x 6mm x 572mm |
 |   1 | ```belt(T2p5x6, [ ... ])``` |  Belt T2.5 x 6mm x 130mm |
 |   1 | ```belt(T5x10, [ ... ])``` |  Belt T5 x 10mm x 130mm |
 |   1 | ```belt(T5x6, [ ... ])``` |  Belt T5 x 6mm x 130mm |
-|   1 | ```insert(F1BM3)``` |  Heatfit insert M3 |
-|   2 | ```pulley(GT2x20_toothed_idler)``` |  Pulley GT2 idler 20 teeth |
+|   2 | ```insert(F1BM3)``` |  Heatfit insert M3 |
+|   2 | ```pulley(GT2x16_toothed_idler)``` |  Pulley GT2 idler 16 teeth |
+|   4 | ```pulley(GT2x20_toothed_idler)``` |  Pulley GT2 idler 20 teeth |
 |   2 | ```pulley(GT2x16_plain_idler)``` |  Pulley GT2 idler smooth 9.63mm |
 |   2 | ```pulley(GT2x20ob_pulley)``` |  Pulley GT2OB 20 teeth |
-|   1 | ```screw(M3_cs_cap_screw, 20)``` |  Screw M3 cs cap x 20mm |
+|   2 | ```screw(M3_cs_cap_screw, 20)``` |  Screw M3 cs cap x 20mm |
 |   4 | ```screw(M3_grub_screw, 6)``` |  Screw M3 grub x  6mm |
 
 
@@ -757,6 +758,7 @@ LCD dispays.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```display(BigTreeTech_TFT35v3_0)``` |  BigTreeTech TFT35 v3.0 |
 |   1 | ```display(HDMI5)``` |  HDMI display 5" |
 |   1 | ```display(LCD1602A)``` |  LCD display 1602A |
 |   1 | ```display(LCDS7282B)``` |  LCD display S-7282B |
