@@ -62,13 +62,13 @@ module belt_test() {
     belt = GT2x6;
     belt(belt, path, 80, [0,  0]);
     pulleys();
-    *translate_z(20)
+    translate_z(20)
         hflip() {
             belt(belt, path, 80, [0,  0], belt_colour = grey(90), tooth_colour = grey(50));
             pulleys(flip=true);
         }
 
-    translate([-25, 0])
+    translate([-25, 0, 10])
         layout([for(b = belts) belt_width(b)], 10)
             rotate([0, 90, 0])
                 belt(belts[$i], [[0, 0, 20], [0, 1, 20]], belt_colour = $i%2==0 ? grey(90) : grey(20), tooth_colour = $i%2==0 ? grey(70) : grey(50));
