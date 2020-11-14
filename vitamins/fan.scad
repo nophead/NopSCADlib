@@ -41,6 +41,9 @@ function fan_outer_diameter(type) = type[7];    //! Outside diameter of the fram
 function fan_blades(type)         = type[8];    //! The number of blades
 function fan_boss_d(type)         = type[9];    //! Diameter of the screw bosses
 function fan_aperture(type)       = type[10] ? type[10] : fan_bore(type); //! Optional diameter for the aperture, which can be bigger than the bore it has flared corners.
+function fan_offset(type)         = type[11];   //! Offset of fan from centre
+function fan_corner_inset(type)   = type[12];   //! Corner inset for screws
+function fan_base_height(type)    = type[13];   //! Height of base containing screws
 
 module fan(type) { //! Draw specified fan, origin in the centre
     width = fan_width(type);
@@ -49,8 +52,9 @@ module fan(type) { //! Draw specified fan, origin in the centre
     hole_pitch = fan_hole_pitch(type);
     corner_radius = width / 2 - hole_pitch;
     screw = fan_screw(type);
+    offset = fan_offset(type);
 
-    vitamin(str("fan(fan", width, "x", depth, "): Fan ", width, "mm x ", depth, "mm"));
+    vitamin(str("fan(fan", width, "x", depth, "): ", is_undef(fan_offset(type)) ? "Fan " : "Radial fan ", width, "mm x ", depth, "mm"));
 
     module squarish(s, n) {
         polygon([
@@ -75,42 +79,86 @@ module fan(type) { //! Draw specified fan, origin in the centre
                 circle(screw_clearance_radius(screw));
        }
 
-    color(fan_colour) {
-        middle = depth - 2 * thickness;
-        if(middle > 0) {
-            for(z = [-1, 1])
-                translate_z(z * (depth - thickness) / 2)
-                    linear_extrude(thickness, center = true)
-                        shape();
+    module shape_radial()
+        difference() {
+            //overall outside
+            rounded_square([width, width], corner_radius);
 
-            linear_extrude(middle, center = true)
+            //main inside bore, less hub
+            translate(fan_offset(type))
                 difference() {
-                    shape();
-                    difference() {
-                        circle(sqrt(2) * width / 2);
-                        circle(d =  fan_outer_diameter(type));
-
-                        if(fan_boss_d(type))
-                            for(i = [-1, 1])
-                                hull()
-                                    for(side = [-1, 1])
-                                        translate([hole_pitch * side * i, hole_pitch * side])
-                                            circle(d = fan_boss_d(type));
-                    }
+                    circle(fan_bore(type) / 2);
+                    circle(fan_hub(type) / 2);
                 }
+            // corner inset
+            for (x = [0, width], y = [0, width])
+                translate([x - width /2 , y - width / 2])
+                    circle(r = fan_corner_inset(type));
+       }
+
+
+    color(fan_colour) {
+        if(is_undef(offset)) {
+            // the fan is not offset, so it's an axial fan
+            middle = depth - 2 * thickness;
+            if(middle > 0) {
+                for(z = [-1, 1])
+                    translate_z(z * (depth - thickness) / 2)
+                        linear_extrude(thickness, center = true)
+                            shape();
+
+                linear_extrude(middle, center = true)
+                    difference() {
+                        shape();
+                        difference() {
+                            circle(sqrt(2) * width / 2);
+                            circle(d =  fan_outer_diameter(type));
+
+                            if(fan_boss_d(type))
+                                for(i = [-1, 1])
+                                    hull()
+                                        for(side = [-1, 1])
+                                            translate([hole_pitch * side * i, hole_pitch * side])
+                                                circle(d = fan_boss_d(type));
+                        }
+                    }
+            }
+            else
+                linear_extrude(depth, center = true)
+                    shape();
+        } else {
+            // the fan is offset, so it's a radial fan
+            baseHeight = fan_base_height(type);
+            translate_z(-depth / 2)
+                linear_extrude(baseHeight)
+                    difference () {
+                        rounded_square([width, width], corner_radius);
+                        fan_hole_positions(type)
+                            circle(screw_clearance_radius(screw));
+                    }
+            translate_z(baseHeight - depth / 2)
+                linear_extrude(depth - baseHeight)
+                    difference() {
+                        shape_radial();
+                        square_size = [width - 2 * fan_corner_inset(type) - 2, (width - fan_hub(type)) / 2];
+                        translate([0, (square_size.y - width) / 2])
+                            square(square_size, center=true);
+                    }
+            translate_z(depth / 2 - baseHeight)
+                linear_extrude(baseHeight)
+                    shape_radial();
         }
-        else
-            linear_extrude(depth, center = true)
-                shape();
 
         // Blades
         blade_ir = fan_hub(type) / 2 - 1;
         blade_len = fan_bore(type) / 2 - 0.75 - blade_ir;
-        linear_extrude(depth - 1, center = true, convexity = 4, twist = -30, slices = round(depth / 2))
-            for(i = [0 : fan_blades(type) - 1])
-                rotate((360 * i) / fan_blades(type))
-                    translate([blade_ir, -1.5 / 2])
-                        squarish([blade_len, 1.5], round(blade_len / 2));
+        blade_thickness = fan_blades(type) > 10 ? 1 : 1.5;
+        translate(is_undef(offset) ? [0, 0] : offset)
+            linear_extrude(depth - 1, center = true, convexity = 4, twist = -30, slices = round(depth / 2))
+                for(i = [0 : fan_blades(type) - 1])
+                    rotate((360 * i) / fan_blades(type))
+                        translate([blade_ir, -blade_thickness / 2])
+                            squarish([blade_len, blade_thickness], round(blade_len / 2));
     }
 }
 
@@ -118,7 +166,7 @@ module fan_hole_positions(type, z = undef) { //! Position children at the screw 
     hole_pitch = fan_hole_pitch(type);
     for(x = [-hole_pitch, hole_pitch])
         for(y = [-hole_pitch, hole_pitch])
-            translate([x, y, is_undef(z) ? fan_depth(type) / 2 : z])
+            translate([x, y, is_undef(z) ? is_undef(fan_base_height(type)) ? fan_depth(type) / 2 : fan_base_height(type) - fan_depth(type) / 2: z])
                 children();
 }
 
@@ -147,7 +195,7 @@ module fan_holes(type, poly = false, screws = true, h = 100) { //! Make all the 
     }
 }
 
-function fan_screw_depth(type, full_depth = false) = fan_boss_d(type) || full_depth ? fan_depth(type) : fan_thickness(type);
+function fan_screw_depth(type, full_depth = false) = fan_boss_d(type) || full_depth ? fan_depth(type)  : is_undef(fan_base_height(type)) ? fan_thickness(type) : fan_base_height(type);
 
 function fan_screw_length(type, thickness, full_depth = false) =
     let(depth = fan_screw_depth(type, full_depth),
