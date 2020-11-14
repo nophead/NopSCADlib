@@ -757,6 +757,7 @@ LCD dispays.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | ```display(BigTreeTech_TFT35v3_0)``` |  BigTreeTech TFT35 v3.0 |
 |   1 | ```display(HDMI5)``` |  HDMI display 5" |
 |   1 | ```display(LCD1602A)``` |  LCD display 1602A |
 |   1 | ```display(LCDS7282B)``` |  LCD display S-7282B |
