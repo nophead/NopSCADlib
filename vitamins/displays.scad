@@ -109,6 +109,6 @@ BigTreeTech_TFT35v3_0 = ["BigTreeTech_TFT35v3_0", "BigTreeTech TFT35 v3.0",
 ];
 
 
-displays = [HDMI5, SSD1963_4p3, LCD1602A, LCDS7282B,BigTreeTech_TFT35v3_0];
+displays = [HDMI5, SSD1963_4p3, BigTreeTech_TFT35v3_0, LCD1602A, LCDS7282B];
 
 use <display.scad>
