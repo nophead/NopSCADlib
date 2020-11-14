@@ -23,44 +23,50 @@ use <../vitamins/insert.scad>
 use <../utils/layout.scad>
 
 module belt_test() {
-    p1 = [75,  -50];
     p2 = [-75, -50];
     p3 = [-75, 100];
     p4 = [75,  100];
 
-    p5 = [75  - pulley_pr(GT2x20ob_pulley) - pulley_pr(GT2x16_plain_idler),  -pulley_pr(GT2x16_plain_idler)];
-    p6 = [-75 + pulley_pr(GT2x20ob_pulley) + pulley_pr(GT2x16_plain_idler),  -pulley_pr(GT2x16_plain_idler)];
+    p5 = [75  + pulley_pr(GT2x20ob_pulley) - pulley_pr(GT2x16_plain_idler), +pulley_pr(GT2x16_plain_idler)];
+    p6 = [-75 + pulley_pr(GT2x20ob_pulley) + pulley_pr(GT2x16_plain_idler), -pulley_pr(GT2x16_plain_idler)];
 
-    translate(p1) pulley_assembly(GT2x20ob_pulley);
-    translate(p2) pulley_assembly(GT2x20ob_pulley);
-    translate(p3) pulley_assembly(GT2x20_toothed_idler);
-    translate(p4) pulley_assembly(GT2x20_toothed_idler);
+    module pulleys(flip = false) {
+        translate(p2) rotate([0, flip ? 180 : 0, 0]) pulley_assembly(GT2x20ob_pulley);
+        translate(p3) pulley_assembly(GT2x20_toothed_idler);
+        translate(p4) pulley_assembly(GT2x20_toothed_idler);
+        translate(p5) {
+            pulley = GT2x16_toothed_idler;
+            screw = find_screw(hs_cs_cap, pulley_bore(pulley));
+            insert = screw_insert(screw);
 
-    translate(p5) {
-        pulley = GT2x16_plain_idler;
-        screw = find_screw(hs_cs_cap, pulley_bore(pulley));
-        insert = screw_insert(screw);
+            rotate([0, flip ? 180 : 0, 0]) {
+                pulley_assembly(pulley);
+                translate_z(pulley_height(pulley) + pulley_offset(pulley) + screw_head_depth(screw, pulley_bore(pulley)))
+                    screw(screw, 20);
 
-        pulley_assembly(pulley);
-        translate_z(pulley_height(pulley) + pulley_offset(pulley) + screw_head_depth(screw, pulley_bore(pulley)))
-            screw(screw, 20);
-
-        translate_z(pulley_offset(pulley) - insert_length(insert))
-            vflip()
-                insert(insert);
-
+                translate_z(pulley_offset(pulley) - insert_length(insert))
+                    vflip()
+                        insert(insert);
+            }
+        }
+        translate(p6) pulley_assembly(GT2x16_plain_idler);
     }
-    translate(p6) pulley_assembly(GT2x16_plain_idler);
 
-    path = [ [p1.x, p1.y, pulley_pr(GT2x20ob_pulley)],
-             [p5.x, p5.y, -pulley_pr(GT2x16_plain_idler)],
+    path = [ [p5.x, p5.y, pulley_pr(GT2x16_plain_idler)],
              [p6.x, p6.y, -pulley_pr(GT2x16_plain_idler)],
              [p2.x, p2.y, pulley_pr(GT2x20ob_pulley)],
              [p3.x, p3.y, pulley_pr(GT2x20ob_pulley)],
              [p4.x, p4.y, pulley_pr(GT2x20ob_pulley)]
            ];
+
     belt = GT2x6;
     belt(belt, path, 80, [0,  0]);
+    pulleys();
+    *translate_z(20)
+        hflip() {
+            belt(belt, path, 80, [0,  0], belt_colour = grey(90), tooth_colour = grey(50));
+            pulleys(flip=true);
+        }
 
     translate([-25, 0])
         layout([for(b = belts) belt_width(b)], 10)
