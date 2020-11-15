@@ -28,20 +28,20 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
 <tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
 <tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td></td><td></td><td></td></tr>
 <tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
 <tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
@@ -4537,6 +4537,60 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 | Qty | Filename |
 | ---:|:--- |
 |   1 | door_latch.stl |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Drag_chain"></a>
+## Drag_chain
+Parametric cable drag chain to limit the bend radius of a cable run.
+
+Each link has a maximum bend angle, so the mininium radius is proportional to the link length.
+
+The travel prpoery is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
+
+
+[printed/drag_chain.scad](printed/drag_chain.scad) Implementation.
+
+[tests/drag_chain.scad](tests/drag_chain.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| ```drag_chain_bwall(type)``` | Bottom wall |
+| ```drag_chain_name(type)``` | The name to allow more than one in a project |
+| ```drag_chain_size(type)``` | The internal size and link length |
+| ```drag_chain_travel(type)``` | X travel |
+| ```drag_chain_twall(type)``` | Top wall |
+| ```drag_chain_wall(type)``` | Side wall thickness |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5)``` | Constructor |
+| ```drag_chain_outer_size(type)``` | Link outer dimensions |
+| ```drag_chain_radius(type)``` | The bend radius at the pivot centres |
+| ```drag_chain_z(type)``` | Outside dimension of a 180 bend |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| ```drag_chain_assembly(type, pos = 0)``` | Drag chain assembly |
+
+![drag_chain](tests/png/drag_chain.png)
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|  14 | x_drag_chain_link.stl |
+|   1 | x_drag_chain_link_end.stl |
+|   1 | x_drag_chain_link_start.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | x_drag_chain_assembly |
 
 
 <a href="#top">Top</a>

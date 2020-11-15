@@ -48,5 +48,12 @@ module drag_chains()
 
 if($preview)
     drag_chains();
-else
+else {
     drag_chain_link(drag_chain);
+
+    translate([-x * 2, 0])
+        drag_chain_link(drag_chain, start = true);
+
+    translate([x * 2, 0])
+        drag_chain_link(drag_chain, end = true);
+}
