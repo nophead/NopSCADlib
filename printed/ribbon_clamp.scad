@@ -117,9 +117,13 @@ module ribbon_clamp_fastened_assembly(ways, thickness, screw = screw) { //! Clam
 
 module ribbon_clamp_20_stl() ribbon_clamp(20);
 module ribbon_clamp_8_2_stl() ribbon_clamp(8, M2_dome_screw);
+module ribbon_clamp_7_2_stl() ribbon_clamp(8, M2_dome_screw);
 
 //! * Place inserts into the holes and press home with a soldering iron with a conical bit heated to 200&deg;C.
 module ribbon_clamp_20_assembly() ribbon_clamp_assembly(20);
 
 //! * Place inserts into the holes and press home with a soldering iron with a conical bit heated to 200&deg;C.
 module ribbon_clamp_8_2_assembly() ribbon_clamp_assembly(8, M2_dome_screw);
+
+//! * Place inserts into the holes and press home with a soldering iron with a conical bit heated to 200&deg;C.
+module ribbon_clamp_7_2_assembly() ribbon_clamp_assembly(8, M2_dome_screw);
