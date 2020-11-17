@@ -4546,7 +4546,7 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 ## Drag_chain
 Parametric cable drag chain to limit the bend radius of a cable run.
 
-Each link has a maximum bend angle, so the mininium radius is proportional to the link length.
+Each link has a maximum bend angle of 45&deg;, so the mininium radius is proportional to the link length.
 
 The travel prpoery is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
 
@@ -4560,6 +4560,8 @@ The travel prpoery is how far it can move in each direction, i.e. half the maxim
 |:--- |:--- |
 | ```drag_chain_bwall(type)``` | Bottom wall |
 | ```drag_chain_name(type)``` | The name to allow more than one in a project |
+| ```drag_chain_screw(type)``` | Mounting screw for the ends |
+| ```drag_chain_screw_lists(type)``` | Two lists of four bools to say which screws positions are used |
 | ```drag_chain_size(type)``` | The internal size and link length |
 | ```drag_chain_travel(type)``` | X travel |
 | ```drag_chain_twall(type)``` | Top wall |
@@ -4568,15 +4570,19 @@ The travel prpoery is how far it can move in each direction, i.e. half the maxim
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| ```drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5)``` | Constructor |
+| ```drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]])``` | Constructor |
 | ```drag_chain_outer_size(type)``` | Link outer dimensions |
 | ```drag_chain_radius(type)``` | The bend radius at the pivot centres |
 | ```drag_chain_z(type)``` | Outside dimension of a 180 bend |
+| ```screw_lug_radius(screw)``` | Radius if a screw lug |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | ```drag_chain_assembly(type, pos = 0)``` | Drag chain assembly |
+| ```drag_chain_link(type, start = false, end = false)``` | One link of the chain, special case for start and end |
+| ```drag_chain_screw_positions(type, end)``` | Place children at the screw positions, end = 0 for the start, 1 for the end |
+| ```screw_lug(screw, h = 0)``` | Create a D shaped lug for a screw |
 
 ![drag_chain](tests/png/drag_chain.png)
 
