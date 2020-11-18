@@ -52,6 +52,7 @@ use <tests/circlips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
 use <tests/displays.scad>
+use <tests/drag_chain.scad>
 use <tests/extrusions.scad>
 use <tests/extrusion_brackets.scad>
 use <tests/fans.scad>
@@ -417,7 +418,11 @@ translate([x4 + 200, belts_y + 58]) {
 
     translate([0, 60])
         opengrab_test();
+
 }
+
+translate([x4 + 175, belts_y, -20])
+    drag_chains();
 
 translate([x4, rails_y + 130])
     rails();
