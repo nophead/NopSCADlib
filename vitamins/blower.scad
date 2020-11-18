@@ -22,6 +22,7 @@
 //
 include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/quadrant.scad>
 use <screw.scad>
 
 function blower_length(type)      = type[2]; //! Length of enclosing rectangle
@@ -39,6 +40,9 @@ function blower_base(type)        = type[13]; //! Thickness of the base
 function blower_top(type)         = type[14]; //! Thickness of the top
 function blower_wall(type)        = type[15]; //! Side wall thickness
 function blower_lug(type)         = type[16]; //! Height of the lugs
+
+function blower_casing_is_square(type) = len(blower_screw_holes(type)) > 3; //! True for square radial fans, false for spiral shape radial blowers
+function blower_exit_offset(type) = blower_casing_is_square(type) ? blower_length(type) / 2 : blower_exit(type) / 2; //! Offset of exit's centre from the edge
 
 fan_colour = grey(20);
 
@@ -73,17 +77,18 @@ module blower_square(type) { //! Draw a square blower
     wall = blower_wall(type);
     hole_pitch = (blower_screw_holes(type)[1].x - blower_screw_holes(type)[0].x) / 2;
     corner_radius = width / 2 - hole_pitch;
-    corner_inset = (width - blower_exit(type) - blower_wall(type)) / 2;
+    corner_inset = (width - blower_exit(type)) / 2;
 
     module square_inset_corners(remove_center = false)
         difference() {
             //overall outside
-            translate([0, eps, 0]) // eps y value required or difference fails, bug in OpenSCAD?
                 square([width, width], center = false);
+
             if (remove_center) {
                 // cut out the inside, leaving the corners
-                translate([corner_inset + wall, 0])
-                    square([width - 2 * (wall + corner_inset), width - wall], center = false);
+                translate([corner_inset + wall, -eps])
+                    square([width - 2 * (wall + corner_inset), width - wall + eps], center = false);
+
                 translate([wall, corner_inset + wall])
                     square([width - 2 * wall, width - 2 * (wall + corner_inset)], center = false);
             } else {
@@ -92,21 +97,26 @@ module blower_square(type) { //! Draw a square blower
                     circle(d = blower_bore(type));
             }
             // corner inset
-            for (x = [0, width], y = [0, width])
-                translate([x , y])
-                    circle(r = corner_inset);
-       }
+            translate([width / 2, width / 2])
+            for(i = [0 : 3])
+                rotate(i * 90)
+                    translate([-width / 2 - eps, -width/ 2 - eps])
+                        quadrant(corner_inset, corner_inset - corner_radius);
+        }
 
     base_height = blower_base(type);
     linear_extrude(base_height)
         difference () {
             rounded_square([width, width], corner_radius, center = false);
+
             blower_hole_positions(type)
                 circle(d = blower_screw_hole(type));
         }
+
     translate_z(base_height)
         linear_extrude(depth - base_height)
             square_inset_corners(remove_center = true);
+
     translate_z(depth - base_height)
         linear_extrude(blower_top(type))
             square_inset_corners();
@@ -141,7 +151,7 @@ module blower(type) { //! Draw specified blower
 
     vitamin(str("blower(", type[0], "): ", type[1]));
 
-    is_square = blower_lug(type) == 0; // it's a square blower if there are no lugs
+    is_square = blower_casing_is_square(type); // Description starts with square!
     color(fan_colour) {
         if (is_square) {
             blower_square(type);
@@ -173,6 +183,7 @@ module blower(type) { //! Draw specified blower
                     translate(concat(blower_axis(type), [blower_base(type)]))
                         circle(d = 2);
             }
+
             // sides
             linear_extrude(depth)
                 difference() {
@@ -195,6 +206,7 @@ module blower(type) { //! Draw specified blower
         // rotor
         translate(concat(blower_axis(type), [blower_base(type) + 1]))
             rounded_cylinder(r = blower_hub(type) / 2, h = blower_hub_height(type) - blower_base(type) - 1, r2 = 1);
+
         blower_fan(type, is_square);
     }
 }
