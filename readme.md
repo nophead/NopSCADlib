@@ -4558,7 +4558,7 @@ Parametric cable drag chain to limit the bend radius of a cable run.
 
 Each link has a maximum bend angle of 45&deg;, so the mininium radius is proportional to the link length.
 
-The travel prpoery is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
+The travel property is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
 
 
 [printed/drag_chain.scad](printed/drag_chain.scad) Implementation.
