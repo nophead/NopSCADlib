@@ -6057,11 +6057,11 @@ Global constants, functions and modules. This file is used directly or indirectl
 | ```circle4n(r, d = undef)``` | Circle with multiple of 4 vertices |
 | ```ellipse(xr, yr)``` | Draw an ellipse |
 | ```extrude_if(h, center = true)``` | Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D |
-| ```hflip()``` | Invert children by doing a 180&deg; flip around the Y axis |
+| ```hflip(flip=true)``` | Invert children by doing a 180&deg; flip around the Y axis |
 | ```right_triangle(width, height, h, center = true)``` | A right angled triangle with the 90&deg; corner at the origin. 3D when ```h``` is nonzero, otherwise 2D |
 | ```semi_circle(r, d = undef)``` | A semi circle in the positive Y domain |
 | ```translate_z(z)``` | Shortcut for Z only translations |
-| ```vflip()``` | Invert children by doing a 180&deg; flip around the X axis |
+| ```vflip(flip=true)``` | Invert children by doing a 180&deg; flip around the X axis |
 
 ![global](tests/png/global.png)
 

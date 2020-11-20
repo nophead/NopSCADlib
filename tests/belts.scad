@@ -39,7 +39,7 @@ module belt_test() {
             screw = find_screw(hs_cs_cap, pulley_bore(pulley));
             insert = screw_insert(screw);
 
-            rotate([0, flip ? 180 : 0, 0]) {
+            hflip(flip) {
                 pulley_assembly(pulley);
                 translate_z(pulley_height(pulley) + pulley_offset(pulley) + screw_head_depth(screw, pulley_bore(pulley)))
                     screw(screw, 20);
