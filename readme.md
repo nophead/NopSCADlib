@@ -474,8 +474,8 @@ PCB cameras.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```camera(type)``` | Draw specified PCB camera |
-| ```camera_lens(type, offset = 0)``` | Draw the lens stack, with optional offset for making a clearance hole |
+| ```camera(type, show_lens = true)``` | Draw specified PCB camera |
+| ```camera_lens(type, offset = 0, show_lens = true)``` | Draw the lens stack, with optional offset for making a clearance hole |
 
 ![cameras](tests/png/cameras.png)
 
