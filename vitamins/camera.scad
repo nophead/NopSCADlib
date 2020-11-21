@@ -29,7 +29,7 @@ function camera_lens(type)          = type[4]; //! Stack of lens parts, can be r
 function camera_connector_pos(type) = type[5]; //! The flex connector block for the camera itself's position
 function camera_connector_size(type)= type[6]; //! The flex connector block for the camera itself's size
 
-module camera_lens(type, offset = 0) //! Draw the lens stack, with optional offset for making a clearance hole
+module camera_lens(type, offset = 0, show_lens = true) //! Draw the lens stack, with optional offset for making a clearance hole
     color(grey(20))
         translate(camera_lens_offset(type))
             for(p = camera_lens(type)) {
@@ -39,24 +39,25 @@ module camera_lens(type, offset = 0) //! Draw the lens stack, with optional offs
                 if(size.x)
                     rounded_rectangle(size + [2 * offset, 2 * offset, round_to_layer(offset)], r, center = false);
                 else
-                    translate_z(size.y)
-                        rotate_extrude()
-                            difference() {
-                                square([r, size.z + round_to_layer(offset)]);
+                    if (show_lens)
+                        translate_z(size.y)
+                            rotate_extrude()
+                                difference() {
+                                    square([r, size.z + round_to_layer(offset)]);
 
-                                if(app)
-                                    translate([0, size.z])
-                                        hull() {
-                                            translate([0, -eps])
-                                                square([app.y, eps * 2]);
+                                    if(app)
+                                        translate([0, size.z])
+                                            hull() {
+                                                translate([0, -eps])
+                                                    square([app.y, eps * 2]);
 
-                                            translate([0, -app.z])
-                                                square([app.x, app.z]);
-                                        }
-                            }
+                                                translate([0, -app.z])
+                                                    square([app.x, app.z]);
+                                            }
+                                }
             }
 
-module camera(type) {           //! Draw specified PCB camera
+module camera(type, show_lens = true) {           //! Draw specified PCB camera
     vitamin(str("camera(", type[0], "): ", type[1]));
     pcb = camera_pcb(type);
 
@@ -64,7 +65,7 @@ module camera(type) {           //! Draw specified PCB camera
         pcb(pcb);
 
     translate_z(pcb_thickness(pcb)) {
-        camera_lens(type);
+        camera_lens(type, show_lens = show_lens);
 
         conn = camera_connector_size(type);
         if(conn) {
