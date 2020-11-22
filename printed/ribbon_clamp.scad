@@ -81,7 +81,7 @@ module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of 
     }
 }
 
-module ribbon_clamp_assembly(ways, screw) pose([55, 180, 25])  //! Printed part with inserts in place
+module ribbon_clamp_assembly(ways, screw = screw) pose([55, 180, 25])  //! Printed part with inserts in place
     assembly(let(screw_d = screw_radius(screw) * 2)str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : "")) {
     h = ribbon_clamp_height(screw);
     insert = screw_insert(screw);

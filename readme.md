@@ -5137,7 +5137,7 @@ Clamp for ribbon cable and polypropylene strip.
 | Module | Description |
 |:--- |:--- |
 | ```ribbon_clamp(ways, screw = screw)``` | Generate STL for given number of ways |
-| ```ribbon_clamp_assembly(ways, screw)``` | Printed part with inserts in place |
+| ```ribbon_clamp_assembly(ways, screw = screw)``` | Printed part with inserts in place |
 | ```ribbon_clamp_fastened_assembly(ways, thickness, screw = screw)``` | Clamp with fasteners in place |
 | ```ribbon_clamp_hole_positions(ways, screw = screw, side = undef)``` | Place children at hole positions |
 | ```ribbon_clamp_holes(ways, h = 20, screw = screw)``` | Drill screw holes |
