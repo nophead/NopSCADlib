@@ -243,7 +243,8 @@ module drag_chain_link(type, start = false, end = false) { //! One link of the c
 //! 1. Clip the links together with the special ones at the ends.
 module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
     s = drag_chain_size(type);
-    r = drag_chain_radius(type);
+    x = (1 + exploded()) * s.x;
+    r = drag_chain_radius(type) * x / s.x;
     travel = drag_chain_travel(type);
     links = ceil(travel / s.x);
     actual_travel = links * s.x;
@@ -255,10 +256,10 @@ module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
     points = [                                      // Calculate list of hinge points
         for(i = 0, p = [0, 0, z / 2 + 2 * r]; i < links + 5;
             i = i + 1,
-            dx = p.z > c.z ? s.x : -s.x,
+            dx = p.z > c.z ? x : -x,
             p = max(p.x + dx, p.x) <= c.x ? p + [dx, 0, 0]      // Straight sections
-                  : let(q = circle_intersect(p, s.x, c, r))
-                        q.x <= c.x ? [p.x - sqrt(sqr(s.x) - sqr(p.z - zb)), 0, zb] // Transition back to straight
+                  : let(q = circle_intersect(p, x, c, r))
+                        q.x <= c.x ? [p.x - sqrt(sqr(x) - sqr(p.z - zb)), 0, zb] // Transition back to straight
                                    : q) // Circular section
         p
     ];
@@ -266,7 +267,7 @@ module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
 
     module link(n)                                  // Position and colour link with origin at the hinge hole
         translate([-z / 2, 0, -z / 2])
-            stl_colour(n % 2 ? pp1_colour : pp2_colour)
+            stl_colour(n < 0 || n == npoints - 1 ? pp3_colour : n % 2 ? pp1_colour : pp2_colour)
                 drag_chain_link(type, start = n == -1, end = n == npoints - 1);
 
     assembly(str(drag_chain_name(type), "_drag_chain")) {
@@ -275,7 +276,7 @@ module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
                 rotate([0, -atan2(v.z, v.x), 0])
                     link(i);
 
-        translate(points[0] - [s.x, 0, 0])
+        translate(points[0] - [x, 0, 0])
             link(-1);
 
         translate(points[npoints - 1])
