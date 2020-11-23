@@ -23,11 +23,19 @@
 //! Each link has a maximum bend angle of 45&deg;, so the mininium radius is proportional to the link length.
 //!
 //! The travel property is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
+//!
+//! The ends can have screw lugs with four screw positions to choose from, specified by a list of two arrays of four bools.
+//! If none are enabled then a child object is expected to customise the end and this gets unioned with the blank end.
+//! If both ends are customised then two children are expected.
+//! Each child is called twice, once with ```$fasteners``` set to 0 to augment the STL and again with ```$fasteners``` set to 1 to add
+//! to the assembly, for example to add inserts.
 //
 
 include <../core.scad>
 use <../utils/horiholes.scad>
 use <../utils/maths.scad>
+
+clearance = 0.1;
 
 function drag_chain_name(type)        = type[0]; //! The name to allow more than one in a project
 function drag_chain_size(type)        = type[1]; //! The internal size and link length
@@ -37,6 +45,8 @@ function drag_chain_bwall(type)       = type[4]; //! Bottom wall
 function drag_chain_twall(type)       = type[5]; //! Top wall
 function drag_chain_screw(type)       = type[6]; //! Mounting screw for the ends
 function drag_chain_screw_lists(type) = type[7]; //! Two lists of four bools to say which screws positions are used
+
+function drag_chain_clearance() = clearance; //! Clearance around joints.
 
 function drag_chain_radius(type) = //! The bend radius at the pivot centres
     let(s = drag_chain_size(type))
@@ -48,8 +58,6 @@ function drag_chain_z(type) = //! Outside dimension of a 180 bend
 
 function drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]]) = //! Constructor
     [name, size, travel, wall, bwall, twall, screw, screw_lists];
-
-clearance = 0.1;
 
 function drag_chain_outer_size(type) =     //! Link outer dimensions
     let(s = drag_chain_size(type), z = s.z + drag_chain_bwall(type) + drag_chain_twall(type))
@@ -210,9 +218,12 @@ module drag_chain_link(type, start = false, end = false) { //! One link of the c
             translate([floor_x, -os.y / 2 + 0.5,  os.z - bwall])
                 cube([s.x - floor_x - clearance, os.y -1, bwall]);
 
-            if(start || end)
+            if(start || end) {
                 drag_chain_screw_positions(type, end)
                     screw_lug(drag_chain_screw(type), os.z);
+
+                children();
+            }
         }
         if(start || end)
             translate_z(-eps)
@@ -266,10 +277,17 @@ module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
     npoints = len(points);
 
     module link(n)                                  // Position and colour link with origin at the hinge hole
-        translate([-z / 2, 0, -z / 2])
+        translate([-z / 2, 0, -z / 2]) {
             stl_colour(n < 0 || n == npoints - 1 ? pp3_colour : n % 2 ? pp1_colour : pp2_colour)
-                drag_chain_link(type, start = n == -1, end = n == npoints - 1);
+                drag_chain_link(type, start = n == -1, end = n == npoints - 1)
+                    let($fasteners = 0) children();
+            let($fasteners = 1) children();
+        }
 
+    screws = drag_chain_screw_lists(type);
+    custom_start = screws[0] == [0, 0, 0, 0];
+    custom_end   = screws[1] == [0, 0, 0, 0];
+    assert($children == bool2int(custom_start) + bool2int(custom_end), "wrong number of children for end customisation");
     assembly(str(drag_chain_name(type), "_drag_chain")) {
         for(i = [0 : npoints - 2]) let(v = points[i+1] - points[i])
             translate(points[i])
@@ -277,10 +295,14 @@ module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
                     link(i);
 
         translate(points[0] - [x, 0, 0])
-            link(-1);
+            link(-1)
+                if(custom_start)
+                    children(0);
 
         translate(points[npoints - 1])
             hflip()
-                link(npoints - 1);
+                link(npoints - 1)
+                    if(custom_end)
+                        children(custom_start ? 1 : 0);
     }
 }

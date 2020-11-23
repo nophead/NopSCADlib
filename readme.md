@@ -4560,6 +4560,12 @@ Each link has a maximum bend angle of 45&deg;, so the mininium radius is proport
 
 The travel property is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
 
+The ends can have screw lugs with four screw positions to choose from, specified by a list of two arrays of four bools.
+If none are enabled then a child object is expected to customise the end and this gets unioned with the blank end.
+If both ends are customised then two children are expected.
+Each child is called twice, once with ```$fasteners``` set to 0 to augment the STL and again with ```$fasteners``` set to 1 to add
+to the assembly, for example to add inserts.
+
 
 [printed/drag_chain.scad](printed/drag_chain.scad) Implementation.
 
@@ -4581,6 +4587,7 @@ The travel property is how far it can move in each direction, i.e. half the maxi
 | Function | Description |
 |:--- |:--- |
 | ```drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]])``` | Constructor |
+| ```drag_chain_clearance()``` | Clearance around joints. |
 | ```drag_chain_outer_size(type)``` | Link outer dimensions |
 | ```drag_chain_radius(type)``` | The bend radius at the pivot centres |
 | ```drag_chain_z(type)``` | Outside dimension of a 180 bend |
