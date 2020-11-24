@@ -2707,6 +2707,7 @@ Linear rails with carriages.
 | Function | Description |
 |:--- |:--- |
 | ```carriage_screw_depth(type)``` | Carriage thread depth |
+| ```rail_holes(type, length)``` | Number of holes in a rail given its ```length``` |
 | ```rail_screw_height(type, screw)``` | Position screw taking into account countersink into counterbored hole |
 | ```rail_travel(type, length)``` | How far the carriage can travel |
 

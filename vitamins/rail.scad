@@ -46,12 +46,15 @@ function carriage_pitch_y(type)      = type[6]; //! Screw hole y pitch
 function carriage_screw(type)        = type[7]; //! Carriage screw type
 function carriage_screw_depth(type)  = 2 * screw_radius(carriage_screw(type)); //! Carriage thread depth
 
+function rail_holes(type, length) = //! Number of holes in a rail given its ```length```
+    floor((length - 2 * rail_end(type)) / rail_pitch(type)) + 1;
+
 module rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true) { //! Position children over screw holes
     pitch = rail_pitch(type);
-    holes = floor((length - 2 * rail_end(type)) / pitch) + 1;
+    holes = rail_holes(type, length);
     for(i = [first : holes - 1 - first])
         if(i < screws || (holes - i <= screws && both_ends))
-            translate([i * pitch - length / 2 + (length - (holes -1) * pitch) / 2, 0, 0])
+            translate([i * pitch - length / 2 + (length - (holes - 1) * pitch) / 2, 0])
                 children();
 }
 
@@ -104,24 +107,27 @@ module carriage(type, rail, end_colour = grey(20), wiper_colour = grey(20)) { //
 
     module carriage_end(type, end_w, end_h, end_l) {
         wiper_length = 0.5;
-        color(wiper_colour) translate_z(-end_l/2) linear_extrude(wiper_length)
+        color(wiper_colour) translate_z(-end_l / 2) linear_extrude(wiper_length)
             difference() {
-                translate([-end_w/2, carriage_clearance(type)])
+                translate([-end_w / 2, carriage_clearance(type)])
                     square([end_w, end_h]);
+
                 cutout();
             }
-        color(end_colour) translate_z(wiper_length-end_l/2) linear_extrude(end_l-wiper_length)
+        color(end_colour) translate_z(wiper_length-end_l / 2) linear_extrude(end_l - wiper_length)
             difference() {
-                translate([-end_w/2, carriage_clearance(type)])
+                translate([-end_w / 2, carriage_clearance(type)])
                     square([end_w, end_h]);
+
                 cutout();
             }
     }
 
-    translate([-(block_l+end_l)/2,0,0])
+    translate([-(block_l + end_l) / 2, 0])
         rotate([90, 0, 90])
             carriage_end(type, end_w, end_h, end_l);
-    translate([(block_l+end_l)/2,0,0])
+
+    translate([(block_l + end_l) / 2, 0])
         rotate([90, 0, -90])
             carriage_end(type, end_w, end_h, end_l);
 }
