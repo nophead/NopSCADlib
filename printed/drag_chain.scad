@@ -250,9 +250,8 @@ module drag_chain_link(type, start = false, end = false) { //! One link of the c
     }
 }
 
-//! 1. Remove the support material from the links with side cutters.
-//! 1. Clip the links together with the special ones at the ends.
-module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
+// Need to use a wrapper because can't define nested modules in an assembly
+module _drag_chain_assembly(type, pos = 0) {
     s = drag_chain_size(type);
     x = (1 + exploded()) * s.x;
     r = drag_chain_radius(type) * x / s.x;
@@ -287,22 +286,36 @@ module drag_chain_assembly(type, pos = 0) { //! Drag chain assembly
     screws = drag_chain_screw_lists(type);
     custom_start = screws[0] == [0, 0, 0, 0];
     custom_end   = screws[1] == [0, 0, 0, 0];
-    assert($children == bool2int(custom_start) + bool2int(custom_end), "wrong number of children for end customisation");
-    assembly(str(drag_chain_name(type), "_drag_chain")) {
-        for(i = [0 : npoints - 2]) let(v = points[i+1] - points[i])
-            translate(points[i])
-                rotate([0, -atan2(v.z, v.x), 0])
-                    link(i);
+    assert($children == bool2int(custom_start) + bool2int(custom_end), str("wrong number of children for end customisation: ", $children));
 
-        translate(points[0] - [x, 0, 0])
-            link(-1)
-                if(custom_start)
-                    children(0);
+    for(i = [0 : npoints - 2]) let(v = points[i+1] - points[i])
+        translate(points[i])
+            rotate([0, -atan2(v.z, v.x), 0])
+                link(i);
 
-        translate(points[npoints - 1])
-            hflip()
-                link(npoints - 1)
-                    if(custom_end)
-                        children(custom_start ? 1 : 0);
-    }
+    translate(points[0] - [x, 0, 0])
+        link(-1)
+            if(custom_start)
+                children(0);
+
+    translate(points[npoints - 1])
+        hflip()
+            link(npoints - 1)
+                if(custom_end)
+                    children(custom_start ? 1 : 0);
 }
+
+//! 1. Remove the support material from the links with side cutters.
+//! 1. Clip the links together with the special ones at the ends.
+module drag_chain_assembly(type, pos = 0)  //! Drag chain assembly
+    assembly(str(drag_chain_name(type), "_drag_chain"))
+        if($children == 2)
+            _drag_chain_assembly(type, pos) {
+                children(0);
+                children(1);
+            }
+        else if($children == 1)
+            _drag_chain_assembly(type, pos)
+                children(0);
+        else
+            _drag_chain_assembly(type, pos);
