@@ -308,7 +308,7 @@ module _drag_chain_assembly(type, pos = 0) {
 //! 1. Remove the support material from the links with side cutters.
 //! 1. Clip the links together with the special ones at the ends.
 module drag_chain_assembly(type, pos = 0)  //! Drag chain assembly
-    assembly(str(drag_chain_name(type), "_drag_chain"))
+    assembly(str(drag_chain_name(type), "_drag_chain"), big = true)
         if($children == 2)
             _drag_chain_assembly(type, pos) {
                 children(0);
