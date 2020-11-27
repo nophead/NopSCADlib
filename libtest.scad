@@ -78,6 +78,7 @@ use <tests/opengrab.scad>
 use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
+use <tests/press_fit.scad>
 use <tests/PSUs.scad>
 use <tests/pulleys.scad>
 use <tests/rails.scad>
@@ -137,8 +138,11 @@ cable_grommets_y = 0;
 translate([x5, cable_grommets_y])
     cable_grommets();
 
-translate([x5 + 80, cable_grommets_y])
+translate([x5 + 50, cable_grommets_y])
     ribbon_clamps();
+
+translate([x5 + 95, cable_grommets_y])
+    press_fits();
 
 translate([x5, cable_grommets_y + 60])
     fixing_blocks();
@@ -427,7 +431,7 @@ translate([x4 + 175, belts_y, -20])
 translate([x4, rails_y + 130])
     rails();
 
-translate([800, fans_y + 50])
+translate([770, fans_y + 50])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])
