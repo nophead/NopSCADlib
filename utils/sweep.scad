@@ -21,7 +21,7 @@
 //! Utility to generate a polhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
 //!
 //! The initial orientation is the Y axis of the profile points towards the initial center of curvature, Frenet-Serret style.
-//! This means the first three points must not be colinear. Subsequent rotations use the minimum rotation method.
+//! Subsequent rotations use the minimum rotation method.
 //!
 //! The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 //! An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
