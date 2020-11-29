@@ -308,8 +308,7 @@ def views(target, do_assemblies = None):
                 if printed:
                     print('### 3D Printed parts', file = doc_file)
                     keys = sorted(list(printed.keys()))
-                    for i in range(len(keys)):
-                        p = keys[i]
+                    for i, p in enumerate(keys):
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(printed) - 1:
                             n = (i % 3) + 1
@@ -324,8 +323,7 @@ def views(target, do_assemblies = None):
                 if routed:
                     print("### CNC Routed parts", file = doc_file)
                     keys = sorted(list(routed.keys()))
-                    for i in range(len(keys)):
-                        r = keys[i]
+                    for i, r in enumerate(keys):
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(routed) - 1:
                             n = (i % 3) + 1
@@ -340,8 +338,7 @@ def views(target, do_assemblies = None):
                 if sub_assemblies:
                     print("### Sub-assemblies", file = doc_file)
                     keys = sorted(list(sub_assemblies.keys()))
-                    for i in range(len(keys)):
-                        a = keys[i]
+                    for i, a in enumerate(keys):
                         print('%s %d x %s |' % ('\n|' if not (i % 3) else '', sub_assemblies[a], a), file = doc_file, end = '')
                         if (i % 3) == 2 or i == len(keys) - 1:
                             n = (i % 3) + 1
