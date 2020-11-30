@@ -60,7 +60,7 @@ function rounded_polygon_length(points, tangents) = //! Calculate the length giv
                                    v1 = p1 - c,
                                    v2 = p2 - c,
                                    r = abs(corner.z),
-                                   a = acos((v1 * v2) / sqr(r))) PI * (cross(v1,v2) <= 0 ? a : 360 - a) * r / 180]
+                                   a = acos((v1 * v2) / sqr(r))) r ? PI * (cross(v1, v2) <= 0 ? a : 360 - a) * r / 180 : 0]
      )
     sumv(concat(straights, arcs));
 
