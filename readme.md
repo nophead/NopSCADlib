@@ -4598,7 +4598,7 @@ to the assembly, for example to add inserts.
 | Module | Description |
 |:--- |:--- |
 | ```drag_chain_assembly(type, pos = 0)``` | Drag chain assembly |
-| ```drag_chain_link(type, start = false, end = false)``` | One link of the chain, special case for start and end |
+| ```drag_chain_link(type, start = false, end = false, check_kids = true)``` | One link of the chain, special case for start and end |
 | ```drag_chain_screw_positions(type, end)``` | Place children at the screw positions, end = 0 for the start, 1 for the end |
 | ```screw_lug(screw, h = 0)``` | Create a D shaped lug for a screw |
 

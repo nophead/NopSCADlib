@@ -109,7 +109,7 @@ function drag_chain_cam_x(type) = // how far the cam sticks out
     )   min(sqrt(max(sqr(cam_r) - sqr(r - twall), 0)), r);
 
 
-module drag_chain_link(type, start = false, end = false) { //! One link of the chain, special case for start and end
+module drag_chain_link(type, start = false, end = false, check_kids = true) { //! One link of the chain, special case for start and end
     stl(str(drag_chain_name(type), "_drag_chain_link", start ? "_start" : end ? "_end" : ""));
 
     s = drag_chain_size(type);
@@ -222,6 +222,10 @@ module drag_chain_link(type, start = false, end = false) { //! One link of the c
                 drag_chain_screw_positions(type, end)
                     screw_lug(drag_chain_screw(type), os.z);
 
+                if(check_kids) {
+                    custom = drag_chain_screw_lists(type)[bool2int(end)] == [0, 0, 0, 0];
+                    assert($children == bool2int(custom), str("wrong number of children for ",  end ? "end" : "start", " STL customisation: ", $children));
+                }
                 children();
             }
         }
@@ -278,7 +282,7 @@ module _drag_chain_assembly(type, pos = 0) {
     module link(n)                                  // Position and colour link with origin at the hinge hole
         translate([-z / 2, 0, -z / 2]) {
             stl_colour(n < 0 || n == npoints - 1 ? pp3_colour : n % 2 ? pp1_colour : pp2_colour)
-                drag_chain_link(type, start = n == -1, end = n == npoints - 1)
+                drag_chain_link(type, start = n == -1, end = n == npoints - 1, check_kids = false)
                     let($fasteners = 0) children();
             let($fasteners = 1) children();
         }
@@ -288,7 +292,7 @@ module _drag_chain_assembly(type, pos = 0) {
     custom_end   = screws[1] == [0, 0, 0, 0];
     assert($children == bool2int(custom_start) + bool2int(custom_end), str("wrong number of children for end customisation: ", $children));
 
-    for(i = [0 : npoints - 2]) let(v = points[i+1] - points[i])
+    for(i = [0 : npoints - 2]) let(v = points[i + 1] - points[i])
         translate(points[i])
             rotate([0, -atan2(v.z, v.x), 0])
                 link(i);
