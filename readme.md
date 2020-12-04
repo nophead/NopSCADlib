@@ -4592,7 +4592,7 @@ to the assembly, for example to add inserts.
 | ```drag_chain_outer_size(type)``` | Link outer dimensions |
 | ```drag_chain_radius(type)``` | The bend radius at the pivot centres |
 | ```drag_chain_z(type)``` | Outside dimension of a 180 bend |
-| ```screw_lug_radius(screw)``` | Radius if a screw lug |
+| ```screw_lug_radius(screw)``` | Radius of a screw lug |
 
 ### Modules
 | Module | Description |

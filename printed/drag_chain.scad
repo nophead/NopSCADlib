@@ -59,11 +59,11 @@ function drag_chain_z(type) = //! Outside dimension of a 180 bend
 function drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]]) = //! Constructor
     [name, size, travel, wall, bwall, twall, screw, screw_lists];
 
-function drag_chain_outer_size(type) =     //! Link outer dimensions
+function drag_chain_outer_size(type) = //! Link outer dimensions
     let(s = drag_chain_size(type), z = s.z + drag_chain_bwall(type) + drag_chain_twall(type))
         [s.x + z, s.y + 4 * drag_chain_wall(type) + 2 * clearance, z];
 
-function screw_lug_radius(screw) = //! Radius if a screw lug
+function screw_lug_radius(screw) = //! Radius of a screw lug
     corrected_radius(screw_clearance_radius(screw)) + 3.1 * extrusion_width;
 
 module screw_lug(screw, h = 0) //! Create a D shaped lug for a screw
@@ -81,7 +81,7 @@ module screw_lug(screw, h = 0) //! Create a D shaped lug for a screw
 
 function bool2int(b) = b ? 1 : 0;
 
-module drag_chain_screw_positions(type, end) {//! Place children at the screw positions, end = 0 for the start, 1 for the end
+module drag_chain_screw_positions(type, end) { //! Place children at the screw positions, end = 0 for the start, 1 for the end
     r = screw_lug_radius(drag_chain_screw(type));
     s = drag_chain_size(type);
     os = drag_chain_outer_size(type);
