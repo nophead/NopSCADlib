@@ -88,16 +88,11 @@ module drag_chain_screw_positions(type, end) { //! Place children at the screw p
     R = os.z / 2;
     x0 = end ? R + norm([drag_chain_cam_x(type), R - drag_chain_twall(type)]) + clearance + r : r;
     x1 = end ? os.x - r : os.x - 2 * R - clearance - r;
-    for(i = [0 : 3]) {
-        x = i % 2;
-        y = bool2int(i > 1);
+    for(i = [0 : 3], x = [x0, x1, x0, x1][i], y = [-1, -1, 1, 1][i])
         if(drag_chain_screw_lists(type)[bool2int(end)][i])
-            translate([(x0 + x1) / 2, 0])
-                mirror([x, 0])
-                    mirror([0, y])
-                        translate([(x1 - x0) / 2,  s.y / 2 + r])
-                            children();
-    }
+            translate([x, y * (s.y / 2 + r)])
+                let($a = [180, 0, 180, 0][i])
+                    children();
 }
 
 function drag_chain_cam_x(type) = // how far the cam sticks out
@@ -107,7 +102,6 @@ function drag_chain_cam_x(type) = // how far the cam sticks out
         cam_r = s.x - 2 * clearance - wall - r,  // inner_x_normal - clearance - r
         twall = drag_chain_twall(type)
     )   min(sqrt(max(sqr(cam_r) - sqr(r - twall), 0)), r);
-
 
 module drag_chain_link(type, start = false, end = false, check_kids = true) { //! One link of the chain, special case for start and end
     stl(str(drag_chain_name(type), "_drag_chain_link", start ? "_start" : end ? "_end" : ""));
@@ -220,7 +214,8 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
 
             if(start || end) {
                 drag_chain_screw_positions(type, end)
-                    screw_lug(drag_chain_screw(type), os.z);
+                    rotate($a)
+                        screw_lug(drag_chain_screw(type), os.z);
 
                 if(check_kids) {
                     custom = drag_chain_screw_lists(type)[bool2int(end)] == [0, 0, 0, 0];
@@ -232,7 +227,8 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
         if(start || end)
             translate_z(-eps)
                 drag_chain_screw_positions(type, end)
-                    poly_cylinder(r = screw_clearance_radius(drag_chain_screw(type)), h = os.z + 2 * eps, center = false);
+                    rotate($a)
+                        poly_cylinder(r = screw_clearance_radius(drag_chain_screw(type)), h = os.z + 2 * eps, center = false);
 
     }
 
