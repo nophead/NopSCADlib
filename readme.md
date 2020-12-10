@@ -2930,7 +2930,7 @@ Machine screws and wood screws with various head styles.
 | Function | Description |
 |:--- |:--- |
 | ```screw_boss_diameter(type)``` | Boss big enough for nut trap and washer |
-| ```screw_head_depth(type, d)``` | How far a counter sink head will go into a straight hole diameter d |
+| ```screw_head_depth(type, d = 0)``` | How far a counter sink head will go into a straight hole diameter d |
 | ```screw_longer_than(x)``` | Returns shortest screw length longer or equal to x |
 | ```screw_nut_radius(type)``` | Radius of matching nut |
 | ```screw_shorter_than(x)``` | Returns longest screw length shorter than or equal to x |
