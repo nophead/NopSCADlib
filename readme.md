@@ -2940,7 +2940,7 @@ Machine screws and wood screws with various head styles.
 |:--- |:--- |
 | ```screw(type, length, hob_point = 0, nylon = false)``` | Draw specified screw, optionally hobbed or nylon |
 | ```screw_and_washer(type, length, star = false, penny = false)``` | Screw with a washer which can be standard or penny and an optional star washer on top |
-| ```screw_countersink(type)``` | Countersink shape |
+| ```screw_countersink(type, drilled = true)``` | Countersink shape |
 
 ![screws](tests/png/screws.png)
 

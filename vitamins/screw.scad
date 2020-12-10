@@ -247,14 +247,23 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     }
 }
 
-module screw_countersink(type) { //! Countersink shape
+module screw_countersink(type, drilled = true) { //! Countersink shape
     head_type   = screw_head_type(type);
     head_rad    = screw_head_radius(type);
-    head_height = head_rad;
+    rad = screw_radius(type);
+    head_t = rad / 5;
+    head_height = head_rad + head_t;
 
     if(head_type == hs_cs || head_type == hs_cs_cap)
         translate_z(-head_height)
-             cylinder(h = head_height, r1 = 0, r2 = head_rad);
+            if(drilled)
+                cylinder(h = head_height, r1 = 0, r2 = head_rad + head_t);
+            else
+                intersection() {
+                    cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
+
+                    cylinder(h = head_height + eps, r = head_rad + eps);
+                }
 }
 
 module screw_and_washer(type, length, star = false, penny = false) { //! Screw with a washer which can be standard or penny and an optional star washer on top
