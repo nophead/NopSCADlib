@@ -41,7 +41,7 @@ function screw_pilot_hole(type)       = type[11];    //! Pilot hole radius for w
 function screw_clearance_radius(type) = type[12];    //! Clearance hole radius
 function screw_nut_radius(type) = screw_nut(type) ? nut_radius(screw_nut(type)) : 0; //! Radius of matching nut
 function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width)); //! Boss big enough for nut trap and washer
-function screw_head_depth(type, d) = screw_head_height(type) ? 0 : screw_head_radius(type) - d / 2; //! How far a counter sink head will go into a straight hole diameter d
+function screw_head_depth(type, d) = screw_head_height(type) ? 0 : screw_head_radius(type) - d / 2 + screw_radius(type) / 5; //! How far a counter sink head will go into a straight hole diameter d
 
 function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length longer or equal to x
                                 x <=  8 ?  8 :
@@ -107,6 +107,27 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
             color(colour)
                 translate_z(-shank - socket)
                     cylinder(r = rad + eps, h = shank);
+    }
+
+    module cs_head(socket_rad, socket_depth) {
+        head_t = rad / 5;
+        head_height = head_rad + head_t;
+
+        rotate_extrude()
+            difference() {
+                polygon([[0, 0], [head_rad, 0], [head_rad, -head_t], [0, -head_height]]);
+
+                translate([0, -socket_depth + eps])
+                    square([socket_rad, 10]);
+            }
+
+        translate_z(-socket_depth)
+            linear_extrude(socket_depth)
+                difference() {
+                    circle(socket_rad + 0.1);
+
+                    children();
+                }
     }
 
     explode(length + 10) {
@@ -201,50 +222,23 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
 
         if(head_type == hs_cs) {
-            head_height = head_rad;
             socket_rad = 0.6 * head_rad;
             socket_depth = 0.3 * head_rad;
             socket_width = 1;
-            color(colour) {
-                rotate_extrude()
-                    difference() {
-                        polygon([[0, 0], [head_rad, 0], [0, -head_height]]);
+            color(colour)
+                cs_head(socket_rad, socket_depth) {
+                    square([2 * socket_rad, socket_width], center = true);
+                    square([socket_width, 2 * socket_rad], center = true);
+                }
 
-                        translate([0, -socket_depth + eps])
-                            square([socket_rad + 0.1, 10]);
-                    }
-
-                translate_z(-socket_depth)
-                    linear_extrude(socket_depth)
-                        difference() {
-                            circle(socket_rad + 0.1);
-
-                            square([2 * socket_rad, socket_width], center = true);
-                            square([socket_width, 2 * socket_rad], center = true);
-                        }
-            }
             shaft(socket_depth);
         }
 
         if(head_type == hs_cs_cap) {
-            head_height = head_rad;
-            color(colour) {
-                rotate_extrude()
-                    difference() {
-                        polygon([[0, 0], [head_rad, 0], [0, -head_height]]);
+            color(colour)
+                cs_head(socket_rad, socket_depth)
+                    circle(socket_rad, $fn = 6);
 
-                        translate([0, -socket_depth + eps])
-                            square([socket_rad, 10]);
-                    }
-
-                translate_z(-socket_depth)
-                    linear_extrude(socket_depth)
-                        difference() {
-                            circle(socket_rad + 0.1);
-
-                            circle(socket_rad, $fn = 6);
-                        }
-            }
             shaft(socket_depth);
         }
     }
