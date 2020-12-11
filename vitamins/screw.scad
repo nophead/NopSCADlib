@@ -47,6 +47,7 @@ function screw_head_depth(type, d = 0) =             //! How far a counter sink 
         : let(r = screw_radius(type)) screw_head_radius(type) - max(r, d / 2) + r / 5;
 
 function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length longer or equal to x
+                                x <=  6 ?  6 :
                                 x <=  8 ?  8 :
                                 x <= 10 ? 10 :
                                 x <= 12 ? 12 :
