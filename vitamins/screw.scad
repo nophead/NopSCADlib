@@ -258,13 +258,31 @@ module screw_countersink(type, drilled = true) { //! Countersink shape
     if(head_type == hs_cs || head_type == hs_cs_cap)
         translate_z(-head_height)
             if(drilled)
-                cylinder(h = head_height, r1 = 0, r2 = head_rad + head_t);
+                cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
             else
                 intersection() {
                     cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
 
                     cylinder(h = head_height + eps, r = head_rad + eps);
                 }
+}
+
+function screw_polysink_r(type, z) = //! Countersink hole profile corrected for rounded staircase extrusions.
+    let(rad = screw_radius(type),
+        head_t = rad / 5,
+        head_rad = screw_head_radius(type)
+    )
+    limit(head_rad + head_t - z + (sqrt(2) - 1) * layer_height / 2, screw_clearance_radius(type), head_rad);
+
+module screw_polysink(type) { //! A countersink hole made from stacked polyholes for printed parts
+    head_depth = screw_head_depth(type);
+    assert(head_depth, "Not a countersunk screw");
+    layers = ceil(head_depth / layer_height);
+    for(i = [0 : layers - 1], side = [-1, 1])
+        translate_z(side * (i + 0.5) * layer_height)
+            poly_cylinder(r = screw_polysink_r(type, i * layer_height + layer_height / 2), h = layer_height + 2 * eps, center = true);
+
+    poly_cylinder(r = screw_clearance_radius(type), h = 100, center = true);
 }
 
 module screw_and_washer(type, length, star = false, penny = false) { //! Screw with a washer which can be standard or penny and an optional star washer on top

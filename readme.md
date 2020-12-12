@@ -2933,6 +2933,7 @@ Machine screws and wood screws with various head styles.
 | ```screw_head_depth(type, d = 0)``` | How far a counter sink head will go into a straight hole diameter d |
 | ```screw_longer_than(x)``` | Returns shortest screw length longer or equal to x |
 | ```screw_nut_radius(type)``` | Radius of matching nut |
+| ```screw_polysink_r(type, z)``` | Countersink hole profile corrected for rounded staircase extrusions. |
 | ```screw_shorter_than(x)``` | Returns longest screw length shorter than or equal to x |
 
 ### Modules
@@ -2941,6 +2942,7 @@ Machine screws and wood screws with various head styles.
 | ```screw(type, length, hob_point = 0, nylon = false)``` | Draw specified screw, optionally hobbed or nylon |
 | ```screw_and_washer(type, length, star = false, penny = false)``` | Screw with a washer which can be standard or penny and an optional star washer on top |
 | ```screw_countersink(type, drilled = true)``` | Countersink shape |
+| ```screw_polysink(type)``` | A countersink hole made from stacked polyholes for printed parts |
 
 ![screws](tests/png/screws.png)
 
