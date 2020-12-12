@@ -2904,6 +2904,8 @@ These items are sysmtrical, so by default the origin is in the centre but it can
 ## Screws
 Machine screws and wood screws with various head styles.
 
+For an explanation of ```screw_polysink()``` see <https://hydraraptor.blogspot.com/2020/12/sinkholes.html>.
+
 
 [vitamins/screws.scad](vitamins/screws.scad) Object definitions.
 
