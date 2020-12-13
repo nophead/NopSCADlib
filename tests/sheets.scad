@@ -25,7 +25,10 @@ width = 30;
 
 module sheets()
     layout([for(s = sheets) width], 5)
-        render_sheet(sheets[$i]) sheet(sheets[$i], width, width, 2);
+        if (sheet_is_woven(sheets[$i]))
+            sheet(sheets[$i], width, width, 2, texture = true);
+        else
+            render_sheet(sheets[$i]) sheet(sheets[$i], width, width, 2);
 
 if($preview)
     sheets();
