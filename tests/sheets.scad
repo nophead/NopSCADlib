@@ -27,5 +27,25 @@ module sheets()
     layout([for(s = sheets) width], 5)
         render_sheet(sheets[$i]) sheet(sheets[$i], width, width, 2);
 
+module test2() {
+    render_sheet(CF3) sheet(CF3, width, width, 2);
+    translate([40,0,0])
+        render_2D_sheet(CF3) sheet_2D(CF3, width, width, 2);
+    translate([80,0,0])
+        sheet(CF3, width, width, 2);
+    translate([120,0,0])
+        sheet_2D(CF3, width, width, 2);
+
+    translate([160,0,0])
+        render_sheet(MDF6) sheet(MDF6, width, width, 2);
+    translate([200,0,0])
+        render_2D_sheet(MDF6) sheet_2D(MDF6, width, width, 2);
+    translate([240,0,0])
+        sheet(MDF6, width, width, 2);
+    translate([280,0,0])
+        sheet_2D(MDF6, width, width, 2);
+}
+
 if($preview)
     sheets();
+    //test2();
