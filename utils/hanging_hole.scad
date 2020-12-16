@@ -35,7 +35,7 @@ module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius ```ir``` hanging
                         poly_cylinder(r - eps, h - layer_height);
             }
     }
-    assert(z % layer_height == 0, str(z));
+    assert(z - layer_height * floor(z / layer_height) < eps, str(z));
     infill_angle = z % (2 * layer_height) ? -45 : 45;
     below = min(z + eps, h2);
     big = 1000;
