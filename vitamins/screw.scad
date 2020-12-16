@@ -276,7 +276,7 @@ function screw_polysink_r(type, z) = //! Countersink hole profile corrected for 
     )
     limit(head_rad + head_t - z + (sqrt(2) - 1) * layer_height / 2, screw_clearance_radius(type), head_rad);
 
-module screw_polysink(type) { //! A countersink hole made from stacked polyholes for printed parts
+module screw_polysink(type, length=50) { //! A countersink hole made from stacked polyholes for printed parts
     head_depth = screw_head_depth(type);
     assert(head_depth, "Not a countersunk screw");
     layers = ceil(head_depth / layer_height);
@@ -284,7 +284,7 @@ module screw_polysink(type) { //! A countersink hole made from stacked polyholes
         translate_z(side * (i + 0.5) * layer_height)
             poly_cylinder(r = screw_polysink_r(type, i * layer_height + layer_height / 2), h = layer_height + 2 * eps, center = true);
 
-    poly_cylinder(r = screw_clearance_radius(type), h = 100, center = true);
+    poly_cylinder(r = screw_clearance_radius(type), h = (length + eps) * 2, center = true);
 }
 
 module screw_and_washer(type, length, star = false, penny = false) { //! Screw with a washer which can be standard or penny and an optional star washer on top
