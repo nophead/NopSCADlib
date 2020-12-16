@@ -2944,7 +2944,7 @@ For an explanation of ```screw_polysink()``` see <https://hydraraptor.blogspot.c
 | ```screw(type, length, hob_point = 0, nylon = false)``` | Draw specified screw, optionally hobbed or nylon |
 | ```screw_and_washer(type, length, star = false, penny = false)``` | Screw with a washer which can be standard or penny and an optional star washer on top |
 | ```screw_countersink(type, drilled = true)``` | Countersink shape |
-| ```screw_polysink(type)``` | A countersink hole made from stacked polyholes for printed parts |
+| ```screw_polysink(type, h = 100, alt = false)``` | A countersink hole made from stacked polyholes for printed parts |
 
 ![screws](tests/png/screws.png)
 
@@ -2982,6 +2982,11 @@ For an explanation of ```screw_polysink()``` see <https://hydraraptor.blogspot.c
 |   1 | ```screw(No4_screw, 10)``` |  Screw No4 pan wood x 10mm |
 |   1 | ```screw(No6_cs_screw, 30)``` |  Screw No6 cs wood x 30mm |
 |   1 | ```screw(No6_screw, 30)``` |  Screw No6 pan wood x 30mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | polysink.stl |
 
 
 <a href="#top">Top</a>
