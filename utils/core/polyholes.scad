@@ -32,9 +32,19 @@ module poly_circle(r, sides = 0) { //! Make a circle adjusted to print the corre
     circle(r = corrected_radius(r,n), $fn = n);
 }
 
-module poly_cylinder(r, h, center = false, sides = 0, chamfer = false) {//! Make a cylinder adjusted to print the correct size
-    extrude_if(h, center)
-        poly_circle(r, sides);
+module poly_cylinder(r, h, center = false, sides = 0, chamfer = false, rotating = false) {//! Make a cylinder adjusted to print the correct size
+    if (rotating) {
+        sides = sides ? sides : sides(r);
+        layers = floor(h / layer_height);
+        lh = layer_height + eps;
+        for(i = [0 : layers - 1])
+            translate_z(i * layer_height + (center ? -h / 2 : 0))
+                rotate(i * 180 / layers)
+                    poly_cylinder(r = r, h = lh, center = false, sides = sides, rotating = false);
+    } else {
+        extrude_if(h, center)
+            poly_circle(r, sides);
+    }
 
     if(h && chamfer)
         poly_cylinder(r + layer_height, center ? layer_height * 2 : layer_height, center, sides = sides ? sides : sides(r));
