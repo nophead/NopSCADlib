@@ -25,16 +25,16 @@ module polysink_stl() {
     n = len(cs_screws);
     size = [n * 20, 20, 10];
     difference() {
-        translate([-size.x / n / 2, $preview ? 0 : -size.y / 2, -size.z])
+        translate([-size.x / n / 2, $preview ? 0 : -size.y / 2])
             cube($preview ? [size.x, size.y / 2, size.z] : size);
 
         for(i = [0 : n - 1])
             let(s = cs_screws[i])
                 translate([i * 20, 0]) {
-                    screw_polysink(s, 2 * size.z + 1);
+                    translate_z(size.z)
+                        screw_polysink(s, 2 * size.z + 1);
 
-                    translate_z(-size.z)
-                        screw_polysink(s, 2 * size.z + 1, alt = true);
+                    screw_polysink(s, 2 * size.z + 1, alt = true);
                 }
     }
 }
@@ -52,7 +52,7 @@ module screws() {
                     screw(screw, length);
             }
         }
-        translate([80, 140])
+        translate([80, 20])
             polysink_stl();
 }
 
