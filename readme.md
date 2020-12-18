@@ -6116,6 +6116,16 @@ it gets the linear dimensions right. See <https://hydraraptor.blogspot.com/2011/
 
 The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is useful for making printed washers and pillars.
 
+`poly_cylinder()` has a `twist` parameter which can be set to make the polygon rotate each layer.
+This can be used to mitigate the number of sides being small and make small holes stronger and more round, but is quite slow due to the
+large increase in the number of facets.
+When set to 1 the polygons alternate each layer, when set higher the rotation takes `twist + 1` layers to repeat.
+A small additional rotation is added to make the polygon rotate one more side over the length of the hole to make it appear round when
+veiwed end on.
+
+When `twist` is set the resulting cylinder is extended by `eps` at each end so that the exact length of the hole can be used without
+leaving a scar on either surface.
+
 
 [utils/core/polyholes.scad](utils/core/polyholes.scad) Implementation.
 
@@ -6133,7 +6143,7 @@ The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is
 |:--- |:--- |
 | ```drill(r, h = 100, center = true)``` | Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle |
 | ```poly_circle(r, sides = 0)``` | Make a circle adjusted to print the correct size |
-| ```poly_cylinder(r, h, center = false, sides = 0, chamfer = false)``` | Make a cylinder adjusted to print the correct size |
+| ```poly_cylinder(r, h, center = false, sides = 0, chamfer = false, twist = 0)``` | Make a cylinder adjusted to print the correct size |
 | ```poly_drill(r, h = 100, center = true)``` | Make a cylinder for drilling holes suitable for CNC routing if cnc_bit_r is non zero, otherwise a poly_cylinder. |
 | ```poly_ring(or, ir, sides = 0)``` | Make a 2D ring adjusted to have the correct internal radius |
 | ```poly_tube(or, ir, h, center = false)``` | Make a tube adjusted to have the correct internal radius |
@@ -6166,6 +6176,11 @@ The module provides `poly_circle()`, `poly_cylinder()` and `poly_ring()` that is
 |   1 | ```rod(8, 37)``` |  Smooth rod 8mm x 37mm |
 |   1 | ```rod(9.5, 43)``` |  Smooth rod 9.5mm x 43mm |
 |   1 | ```rod(9, 41)``` |  Smooth rod 9mm x 41mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | polyhole.stl |
 
 
 <a href="#top">Top</a>

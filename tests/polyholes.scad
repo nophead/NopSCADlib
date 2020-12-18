@@ -21,29 +21,59 @@ include <../utils/core/core.scad>
 use <../vitamins/rod.scad>
 include <../vitamins/sheets.scad>
 
-module polyholes() {
-    module positions()
-        for(i = [1 : 10]) {
-            translate([(i * i + i) / 2 + 3 * i , 8])
-                let($r = i / 2)
+module positions()
+    for(i = [1 : 10]) {
+        translate([(i * i + i) / 2 + 3 * i , 8])
+            let($r = i / 2)
+                children();
+
+        let(d = i + 0.5)
+            translate([(d * d + d) / 2 + 3 * d, 19])
+                let($r = d / 2)
                     children();
+    }
 
-            let(d = i + 0.5)
-                translate([(d * d + d) / 2 + 3 * d, 19])
-                    let($r = d / 2)
-                        children();
-        }
+module polyhole_stl() {
+    stl("polyhole");
 
-    stl_colour(pp1_colour) linear_extrude(3, center = true)
+    linear_extrude(3, center = true)
         difference() {
             square([100, 27]);
 
             positions()
                 poly_circle(r = $r);
         }
+}
 
-     positions()
+module alt_polyhole_stl() {
+    holes = [2.5, 2, 1.5];
+    n = len(holes);
+    size = [n * 10, 10, 10];
+    difference() {
+        translate([-size.x / n / 2, $preview ? 0 : -size.y / 2])
+            cube($preview ? [size.x, size.y / 2, size.z] : size);
+
+        for(i = [0 : n - 1])
+            translate([i * 10, 0])
+                if(i % 2)
+                    translate_z(size.z)
+                        poly_cylinder(r = holes[i] / 2, h = 2 * size.z, center = true, twist = i + 1);
+                else
+                    poly_cylinder(r = holes[i] / 2, h = size.z, center = false, twist = i + 1);
+    }
+}
+
+module polyholes() {
+    stl_colour(pp1_colour)
+        polyhole_stl();
+
+    positions()
         rod(d = 2 * $r, l = 8 * $r + 5);
+    //
+    // Alternating polyholes
+    //
+    translate([30, -40])
+        alt_polyhole_stl();
     //
     // Poly rings
     //
@@ -74,4 +104,11 @@ module polyholes() {
             }
 }
 
-polyholes();
+if($preview)
+    polyholes();
+else {
+    polyhole_stl();
+
+    translate([50, -20])
+        alt_polyhole_stl();
+}
