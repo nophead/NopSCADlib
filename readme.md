@@ -6098,6 +6098,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 | ```ellipse(xr, yr)``` | Draw an ellipse |
 | ```extrude_if(h, center = true)``` | Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D |
 | ```hflip(flip=true)``` | Invert children by doing a 180&deg; flip around the Y axis |
+| ```render_if(render = true, convexity = 2)``` | Renders an object if ```render``` is true, otherwise leaves it unrendered |
 | ```right_triangle(width, height, h, center = true)``` | A right angled triangle with the 90&deg; corner at the origin. 3D when ```h``` is nonzero, otherwise 2D |
 | ```semi_circle(r, d = undef)``` | A semi circle in the positive Y domain |
 | ```translate_z(z)``` | Shortcut for Z only translations |
