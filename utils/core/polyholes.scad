@@ -45,9 +45,9 @@ module poly_circle(r, sides = 0) { //! Make a circle adjusted to print the corre
 module poly_cylinder(r, h, center = false, sides = 0, chamfer = false, twist = 0) {//! Make a cylinder adjusted to print the correct size
     if(twist) {
         slices = ceil(h / layer_height);
-        twist = min(twist, slices - 1);
+        twists = min(twist + 1, slices);
         sides = sides ? sides : sides(r);
-        rot = 360 / sides / (twist + 1) * (1 + 1 / slices);
+        rot = 360 / sides / twists * (twists < slices ? (1 + 1 / slices) : 1);
         if(center)
             for(side = [0, 1])
                 mirror([0, 0, side])
