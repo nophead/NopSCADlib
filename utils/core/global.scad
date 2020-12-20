@@ -52,6 +52,13 @@ function slice(list, start = 0, end = undef) = let( //! Slice a list or string w
     ) is_string(list) ? slice_str(list, start, end) : [for(i = [start : 1 : end - 1]) list[i]];
 
 
+module render_if(render = true, convexity = 2)      //! Renders an object if ```render``` is true, otherwise leaves it unrendered
+    if (render)
+        render(convexity = convexity)
+            children();
+    else
+        children();
+
 module extrude_if(h, center = true)                 //! Extrudes 2D object to 3D when ```h``` is nonzero, otherwise leaves it 2D
     if(h)
         linear_extrude(h, center = center, convexity = 2) // 3D
