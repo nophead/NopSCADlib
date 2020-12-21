@@ -26,6 +26,12 @@ module dogbones() {
     #translate([15, 0])
         dogbone_rectangle([10, 20, 5], center = false);
 
+    #translate([30, 0])
+        dogbone_rectangle_x([10, 20, 5], center = false);
+
+    #translate([45, 0])
+        dogbone_rectangle_y([10, 20, 5], center = false);
+
     sq = 3;
     translate([-5 + sq / 2 + eps, -10 + sq / 2 + eps])
         %cube([sq, sq, 1], center = true);
