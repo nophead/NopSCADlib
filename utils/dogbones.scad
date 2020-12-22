@@ -23,8 +23,11 @@
 //
 include <../utils/core/core.scad>
 
-module dogbone(size, r, center, offset_x, offset_y) //! Dogbone utility module
+module dogbone_square(size, r = cnc_bit_r, center = true, x_offset, y_offset) //! Square with circles at the corners, with optional offsets
 {
+    x_offset = is_undef(x_offset) ? r / sqrt(2) : x_offset;
+    y_offset = is_undef(y_offset) ? r / sqrt(2) : y_offset;
+
     union() {
         square(size, center = center);
 
@@ -32,25 +35,10 @@ module dogbone(size, r, center, offset_x, offset_y) //! Dogbone utility module
             origin = center ? [0, 0] : size / 2;
 
             for(x = [-1, 1], y = [-1, 1])
-                translate(origin + [x * (size.x / 2 - offset_x), y * (size.y / 2 - offset_y)])
+                translate(origin + [x * (size.x / 2 - x_offset), y * (size.y / 2 - y_offset)])
                     drill(r, 0);
         }
     }
-}
-
-module dogbone_square(size, r = cnc_bit_r, center = true) //! Square with circles at the corners
-{
-    dogbone([size.x, size.y], r, center, r / sqrt(2), r / sqrt(2));
-}
-
-module dogbone_square_x(size, r = cnc_bit_r, center = true) //! Square with circles at the corners, offset in the x direction
-{
-    dogbone([size.x, size.y], r, center, 0, r);
-}
-
-module dogbone_square_y(size, r = cnc_bit_r, center = true) //! Square with circles at the corners, offset in the y direction
-{
-    dogbone([size.x, size.y], r, center, r, 0);
 }
 
 module dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true) //! Rectangle with cylinders at the corners
@@ -62,11 +50,11 @@ module dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true) /
 module dogbone_rectangle_x(size, r = cnc_bit_r, center = true, xy_center = true) //! Rectangle with cylinders at the corners, offset in the x direction
 {
     extrude_if(h = size.z, center = center)
-        dogbone_square_x([size.x, size.y], r, xy_center);
+        dogbone_square([size.x, size.y], r, xy_center, x_offset = 0, y_offset = r);
 }
 
 module dogbone_rectangle_y(size, r = cnc_bit_r, center = true, xy_center = true) //! Rectangle with cylinders at the corners, offset in the y direction
 {
     extrude_if(h = size.z, center = center)
-        dogbone_square_y([size.x, size.y], r, xy_center);
+        dogbone_square([size.x, size.y], r, xy_center, x_offset = r, y_offset = 0);
 }
