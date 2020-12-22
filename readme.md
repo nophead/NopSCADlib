@@ -5511,8 +5511,10 @@ a square cornered part fits in the hole then circles are placed in the corners m
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true)``` | Rectangle with cylinders at the corners |
-| ```dogbone_square(size, r = cnc_bit_r, center = true)``` | Square with circles at the corners |
+| ```dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true, x_offset, y_offset)``` | Rectangle with cylinders at the corners |
+| ```dogbone_rectangle_x(size, r = cnc_bit_r, center = true, xy_center = true)``` | Rectangle with cylinders at the corners, offset in the x direction |
+| ```dogbone_rectangle_y(size, r = cnc_bit_r, center = true, xy_center = true)``` | Rectangle with cylinders at the corners, offset in the y direction |
+| ```dogbone_square(size, r = cnc_bit_r, center = true, x_offset, y_offset)``` | Square with circles at the corners, with optional offsets |
 
 ![dogbones](tests/png/dogbones.png)
 
