@@ -41,20 +41,18 @@ module dogbone_square(size, r = cnc_bit_r, center = true, x_offset, y_offset) //
     }
 }
 
-module dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true) //! Rectangle with cylinders at the corners
+module dogbone_rectangle(size, r = cnc_bit_r, center = true, xy_center = true, x_offset, y_offset) //! Rectangle with cylinders at the corners
 {
     extrude_if(h = size.z, center = center)
-        dogbone_square([size.x, size.y], r, xy_center);
+        dogbone_square([size.x, size.y], r, xy_center, x_offset, y_offset);
 }
 
 module dogbone_rectangle_x(size, r = cnc_bit_r, center = true, xy_center = true) //! Rectangle with cylinders at the corners, offset in the x direction
 {
-    extrude_if(h = size.z, center = center)
-        dogbone_square([size.x, size.y], r, xy_center, x_offset = 0, y_offset = r);
+    dogbone_rectangle(size = size, r = r, center = center, x_offset = 0, y_offset = r);
 }
 
 module dogbone_rectangle_y(size, r = cnc_bit_r, center = true, xy_center = true) //! Rectangle with cylinders at the corners, offset in the y direction
 {
-    extrude_if(h = size.z, center = center)
-        dogbone_square([size.x, size.y], r, xy_center, x_offset = r, y_offset = 0);
+    dogbone_rectangle(size = size, r = r, center = center, x_offset = r, y_offset = 0);
 }
