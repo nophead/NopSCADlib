@@ -35,6 +35,8 @@ include <../utils/core/core.scad>
 function sheet_thickness(type) = type[2]; //! Thickness
 function sheet_colour(type)    = type[3]; //! Colour
 function sheet_is_soft(type)   = type[4]; //! Is soft enough for wood screws
+function sheet_is_woven(type)  = !is_undef(type[5]); //! Is a woven sheet, eg carbon fiber
+function sheet_colour2(type)   = is_undef(type[7]) ? sheet_colour(type) * 0.8 : type[7]; //! Second colour for a woven sheet
 
 module corner(r) {
     if(r > 0)
@@ -50,10 +52,7 @@ module corner(r) {
                 square(1, center = true);
 }
 
-module sheet_2D(type, w, d, corners = [0, 0, 0, 0]) { //! 2D sheet template with specified size and optionally rounded corners
-    t = sheet_thickness(type);
-    vitamin(str("sheet(", type[0], ", ", w, ", ", d, arg(corners, [0, 0, 0, 0]), "): ", type[1], " ",  round(w), "mm x ", round(d), "mm x ", t, "mm"));
-
+module corner_hull(w, d, corners) {
     c = is_list(corners) ? corners : corners * [1, 1, 1, 1];
 
     hull() {
@@ -74,16 +73,108 @@ module sheet_2D(type, w, d, corners = [0, 0, 0, 0]) { //! 2D sheet template with
     }
 }
 
+module sheet_2D(type, w, d, corners = [0, 0, 0, 0]) { //! 2D sheet template with specified size and optionally rounded corners
+    t = sheet_thickness(type);
+    vitamin(str("sheet(", type[0], ", ", w, ", ", d, arg(corners, [0, 0, 0, 0]), "): ", type[1], " ",  round(w), "mm x ", round(d), "mm x ", t, "mm"));
+
+    if (sheet_is_woven(type)) {
+        if (is_undef($sheet_woven_positive)) {
+            // not being called from within render_2D_sheet, so do both colours
+            color(sheet_colour(type))
+                let($sheet_woven_positive = true)
+                    woven_sheet_2D(type, w, d, corners);
+            color(sheet_colour2(type))
+                let($sheet_woven_positive = false)
+                    woven_sheet_2D(type, w, d, corners);
+        } else {
+            // being called from within render_2D_sheet
+            woven_sheet_2D(type, w, d, corners);
+        }
+    } else {
+        color(sheet_colour(type))
+            corner_hull(w, d, corners);
+    }
+}
+
 module sheet(type, w, d, corners = [0, 0, 0, 0]) //! Draw specified sheet
-    linear_extrude(sheet_thickness(type), center = true)
-        sheet_2D(type, w, d, corners);
+    if (sheet_is_woven(type) && is_undef($sheet_woven_positive)) {
+        // not being called from within render_3D_sheet, so do both colours
+        color(sheet_colour(type))
+            linear_extrude(sheet_thickness(type), center = true)
+                let($sheet_woven_positive = true)
+                    woven_sheet_2D(type, w, d, corners);
+        color(sheet_colour2(type))
+            linear_extrude(sheet_thickness(type), center = true)
+                let($sheet_woven_positive = false)
+                    woven_sheet_2D(type, w, d, corners);
+    } else {
+        color(sheet_colour(type))
+            linear_extrude(sheet_thickness(type), center = true)
+                sheet_2D(type, w, d, corners);
+    }
 
-module render_sheet(type, colour = false) //! Render a sheet in the correct colour after holes have been subtracted
+
+module render_sheet(type, colour = false, colour2 = false) { //! Render a sheet in the correct colour after holes have been subtracted
     color(colour ? colour : sheet_colour(type))
-        render() children();
+        render()
+            let($sheet_woven_positive = true)
+                children();
 
-module render_2D_sheet(type, colour = false) //! Extrude a 2D sheet template and give it the correct colour
+    if (sheet_is_woven(type))
+        color(colour2 ? colour2 : sheet_colour2(type))
+            render()
+                let($sheet_woven_positive = false)
+                    children();
+}
+
+module render_2D_sheet(type, colour = false, colour2 = false) { //! Extrude a 2D sheet template and give it the correct colour
     let($dxf_colour = colour ? colour : sheet_colour(type))
         color($dxf_colour)
-            linear_extrude(sheet_thickness(type), center = true)
-                children();
+            let($sheet_woven_positive = true)
+                linear_extrude(sheet_thickness(type), center = true)
+                    children();
+
+    if (sheet_is_woven(type))
+        color(colour2 ? colour2 : sheet_colour2(type))
+            let($sheet_woven_positive = false)
+                linear_extrude(sheet_thickness(type), center = true)
+                    children();
+}
+
+module woven_sheet_2D(type, w, d, corners = [0, 0, 0, 0], warp = 2, weft) {//! Create a woven 2D sheet with specified size, colours, warp and weft
+    size = [w, d];
+
+    weft = weft ? weft : warp;
+    warp_doublet_count = floor(size.x / (2 * warp)) + 1;
+
+    module layer(weft) {
+        for (x = [0 : warp_doublet_count - 1])
+            translate([2 * x * warp, 0, 0])
+                square([warp, weft]);
+    }
+
+    module positive() {
+        intersection() {
+            translate([-size.x / 2, -size.y / 2]) {
+                weft_count = floor(size.y / weft) + 1;
+                for (y = [0 : weft_count - 1])
+                    translate([warp * (y % 2), weft * y, 0])
+                        layer(weft);
+            }
+            corner_hull(w, d, corners);
+        }
+    }
+
+    module negative() {
+        difference() {
+            corner_hull(size.x, size.y, corners);
+            positive();
+        }
+    }
+
+    if (is_undef($sheet_woven_positive) || $sheet_woven_positive==true)
+        positive();
+    else
+        negative();
+}
+
