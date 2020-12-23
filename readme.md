@@ -3127,8 +3127,12 @@ The "Soft" parameter can be used to determinesif the sheet material needs machin
 
 The "Colour" parameter is a quad-array: [R, G, B, Alpha], or can be a named colour, see [OpenSCAD_User_Manual](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#color).
 
-For speed sheets should be modelled in 2D by subtracting holes from 2D templates made by ```sheet_2D()``` and then extruded to 3D with ```render_2D_sheet()```.
-Note that modules that drill holes will return a 2D object if ```h``` is set to 0 to facilitate this.
+For speed sheets should be modelled in 2D by subtracting holes from 2D templates made by `sheet_2D()` and then extruded to 3D with `render_2D_sheet()`.
+Note that modules that drill holes will return a 2D object if `h` is set to 0 to facilitate this.
+
+If 3D features are needed, for example countersinks, then sheets can be modelled in 3D using `sheet()` and then coloured with `render_sheet()`.
+
+When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify the dimensions again to `render_sheet()` or `render_2D_sheet()`.
 
 
 [vitamins/sheets.scad](vitamins/sheets.scad) Object definitions.
@@ -3141,16 +3145,25 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 | Function | Description |
 |:--- |:--- |
 | ```sheet_colour(type)``` | Colour |
+| ```sheet_colour2(type)``` | Second colour for a woven sheet |
 | ```sheet_is_soft(type)``` | Is soft enough for wood screws |
 | ```sheet_thickness(type)``` | Thickness |
+| ```sheet_warp(type)``` | Wovern sheet warp |
+| ```sheet_weft(type)``` | Wovern sheet weft |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| ```sheet_is_woven(type)``` | Is a woven sheet, eg carbon fiber |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| ```render_2D_sheet(type, colour = false)``` | Extrude a 2D sheet template and give it the correct colour |
-| ```render_sheet(type, colour = false)``` | Render a sheet in the correct colour after holes have been subtracted |
+| ```render_2D_sheet(type, colour = false, colour2 = false, w = undef, d = undef)``` | Extrude a 2D sheet template and give it the correct colour |
+| ```render_sheet(type, colour = false, colour2 = false, w = undef, d = undef)``` | Render a sheet in the correct colour after holes have been subtracted |
 | ```sheet(type, w, d, corners = [0, 0, 0, 0])``` | Draw specified sheet |
 | ```sheet_2D(type, w, d, corners = [0, 0, 0, 0])``` | 2D sheet template with specified size and optionally rounded corners |
+| ```woven_sheet(type, thickness, colour, colour2, w, d)``` | Create a woven 2D sheet with specified thickness and colours |
 
 ![sheets](tests/png/sheets.png)
 
@@ -3173,6 +3186,9 @@ Note that modules that drill holes will return a 2D object if ```h``` is set to 
 |   1 | ```sheet(PMMA3, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 3mm |
 |   1 | ```sheet(PMMA6, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 6mm |
 |   1 | ```sheet(PMMA8, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 8mm |
+|   2 | ```sheet(CF1, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 1mm |
+|   2 | ```sheet(CF2, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 2mm |
+|   2 | ```sheet(CF3, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 3mm |
 |   1 | ```sheet(glass2, 30, 30, 2)``` |  Sheet glass 30mm x 30mm x 2mm |
 |   1 | ```sheet(Steel06, 30, 30, 2)``` |  Sheet mild steel 30mm x 30mm x 0.6mm |
 
