@@ -194,7 +194,7 @@ affect its orientation in the parent assembly. The pose parameters are the rotat
 ### Exploded diagrams
 
 A lot of vitamins explode themselves when `$explode=1`. This is done with module `explode()` that can be passed a Z offset, or a 3D vector that gives the displacement
-and it draws a line from the origial position to the exploded position. The line can be offset from the origin of the component by specifying an offset vector.
+and it draws a line from the original position to the exploded position. The line can be offset from the origin of the component by specifying an offset vector.
 
 Often user assemblies need to add `explode()` in various places to explode printed parts, for example.
 
