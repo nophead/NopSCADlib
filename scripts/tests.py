@@ -219,7 +219,7 @@ def tests(tests):
                     if things:
                         body += ['### %s\n| %s | Description |\n|:--- |:--- |' % (thing.title(), heading)]
                         for item in sorted(things):
-                            body += ['| ```%s``` | %s |' % (item, things[item])]
+                            body += ['| `%s` | %s |' % (item, things[item])]
                         body += ['']
 
             body += ["![%s](%s)\n" %(base_name, png_name)]
@@ -252,7 +252,7 @@ def tests(tests):
                             desc = ''
                             if thing == "vitamins":
                                 vit = item.split(':')
-                                name = '```' + vit[0] + '```' if vit[0] else ''
+                                name = '`' + vit[0] + '`' if vit[0] else ''
                                 while '[[' in name and ']]' in name:
                                     i = name.find('[[')
                                     j = name.find(']]') + 2

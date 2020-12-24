@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 
 //
-//! Pintable fan finger guard to match the specified fan. To be ```include```d, not ```use```d.
+//! Pintable fan finger guard to match the specified fan. To be `include`d, not `use`d.
 //!
 //! The ring spacing as well as the number of spokes can be specified, if zero a gasket is generated instead of a guard.
 //

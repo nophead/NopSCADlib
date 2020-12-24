@@ -27,7 +27,7 @@
 //! The ends can have screw lugs with four screw positions to choose from, specified by a list of two arrays of four bools.
 //! If none are enabled then a child object is expected to customise the end and this gets unioned with the blank end.
 //! If both ends are customised then two children are expected.
-//! Each child is called twice, once with ```$fasteners``` set to 0 to augment the STL and again with ```$fasteners``` set to 1 to add
+//! Each child is called twice, once with `$fasteners` set to 0 to augment the STL and again with `$fasteners` set to 1 to add
 //! to the assembly, for example to add inserts.
 //
 

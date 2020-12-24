@@ -24,7 +24,7 @@
 //! To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 //!
 //! By default the path is a closed loop but a gap length and position can be specified to make open loops.
-//! To draw the gap its XY position is specified by ```gap_pos```. ```gap_pos.z``` can be used to specify a rotation if the gap is not at the bottom of the loop.
+//! To draw the gap its XY position is specified by `gap_pos`. `gap_pos.z` can be used to specify a rotation if the gap is not at the bottom of the loop.
 //!
 //! Individual teeth are not drawn, instead they are represented by a lighter colour.
 //

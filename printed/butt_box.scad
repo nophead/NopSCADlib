@@ -21,7 +21,7 @@
 //! A box made from CNC cut panels butted together using printed fixing blocks. Useful for making large
 //! boxes with minimal 3D printing.  More blocks are added as the box gets bigger.
 //!
-//! Needs to be ```include```d rather than ```use```d to allow the panel definitions to be overridden to add holes
+//! Needs to be `include`d rather than `use`d to allow the panel definitions to be overridden to add holes
 //! and mounted components.
 //!
 //! A list specifies the internal dimensions, screw type, top, bottom and side sheet types and the block

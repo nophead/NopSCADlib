@@ -122,7 +122,7 @@ module fan_hole_positions(type, z = undef) { //! Position children at the screw 
                 children();
 }
 
-module fan_holes(type, poly = false, screws = true, h = 100) { //! Make all the holes for the fan, or just the aperture if ```screws``` is false. Set ```poly``` true for poly_holes.
+module fan_holes(type, poly = false, screws = true, h = 100) { //! Make all the holes for the fan, or just the aperture if `screws` is false. Set `poly` true for poly_holes.
     hole_pitch = fan_hole_pitch(type);
     screw = fan_screw(type);
 

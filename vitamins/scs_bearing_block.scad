@@ -63,7 +63,7 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     bearing = scs_bearing(type);
     clip = scs_circlip(type);
 
-    module right_trapezoid(base, top, height, h = 0, center = true) {//! A right angled trapezoid with the 90&deg; corner at the origin. 3D when ```h``` is nonzero, otherwise 2D
+    module right_trapezoid(base, top, height, h = 0, center = true) {//! A right angled trapezoid with the 90&deg; corner at the origin. 3D when `h` is nonzero, otherwise 2D
         extrude_if(h, center = center)
             polygon(points = [ [0,0], [base, 0], [top, height], [0, height] ]);
     }

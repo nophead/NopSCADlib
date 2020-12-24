@@ -47,7 +47,7 @@ function carriage_pitch_y(type)      = type[6]; //! Screw hole y pitch
 function carriage_screw(type)        = type[7]; //! Carriage screw type
 function carriage_screw_depth(type)  = 2 * screw_radius(carriage_screw(type)); //! Carriage thread depth
 
-function rail_holes(type, length) = //! Number of holes in a rail given its ```length```
+function rail_holes(type, length) = //! Number of holes in a rail given its `length`
     floor((length - 2 * rail_end(type)) / rail_pitch(type)) + 1;
 
 module rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true) { //! Position children over screw holes

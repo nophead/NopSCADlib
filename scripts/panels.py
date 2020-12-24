@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License along with NopSCADlib.
 # If not, see <https://www.gnu.org/licenses/>.
 #
-#! Panelises DXF files so they can be routed together by running scad files found in the ```panels``` directory.
+#! Panelises DXF files so they can be routed together by running scad files found in the `panels` directory.
 
 from __future__ import print_function
 import sys

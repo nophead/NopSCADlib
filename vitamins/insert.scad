@@ -89,7 +89,7 @@ module insert(type) { //! Draw specified insert
     }
 }
 
-module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole to take an insert, ```counterbore``` is the extra length for the screw
+module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole to take an insert, `counterbore` is the extra length for the screw
     h = insert_hole_length(type);
 
     render(convexity = 2)

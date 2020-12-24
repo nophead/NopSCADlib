@@ -172,10 +172,10 @@ function arc_points(r, a = [90, 0, 180], al = 90) = //! Generate the points of a
    let(sides = ceil(r2sides(r) * al / 360), tf = rotate(a))
     [for(i = [0 : sides]) let(t = i * al / sides) transform([r * sin(t), r * cos(t), 0], tf)];
 
-function before(path1, path2) =  //! Translate ```path1``` so its end meets the start of ```path2``` and then concatenate
+function before(path1, path2) =  //! Translate `path1` so its end meets the start of `path2` and then concatenate
     let(end = len(path1) - 1, offset = path2[0] - path1[end])
         concat([for(i = [0 : end - 1]) path1[i] + offset], path2);
 
-function after(path1, path2) =  //! Translate ```path2``` so its start meets the end of ```path1``` and then concatenate
+function after(path1, path2) =  //! Translate `path2` so its start meets the end of `path1` and then concatenate
     let(end1 = len(path1) - 1, end2 = len(path2) - 1, offset = path1[end1] - path2[0])
         concat(path1, [for(i = [1 : end2]) path2[i] + offset]);

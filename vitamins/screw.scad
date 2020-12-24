@@ -20,7 +20,7 @@
 //
 //! Machine screws and wood screws with various head styles.
 //!
-//! For an explanation of ```screw_polysink()``` see <https://hydraraptor.blogspot.com/2020/12/sinkholes.html>.
+//! For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2020/12/sinkholes.html>.
 //
 include <../utils/core/core.scad>
 

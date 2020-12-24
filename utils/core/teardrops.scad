@@ -24,7 +24,7 @@
 //! Using teardrop_plus() or setting the plus option on other modules will elongate the teardrop vertically by the layer height, so when sliced the staircase tips
 //! do not intrude into the circle. See <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
 //
-module teardrop(h, r, center = true, truncate = true, chamfer = 0, plus = false) { //! For making horizontal holes that don't need support material, set ```truncate = false``` to make traditional RepRap teardrops that don't even need bridging
+module teardrop(h, r, center = true, truncate = true, chamfer = 0, plus = false) { //! For making horizontal holes that don't need support material, set `truncate = false` to make traditional RepRap teardrops that don't even need bridging
     module teardrop_2d(r, truncate) {
         er = layer_height / 2 - eps;    // Extrustion edge radius
         R = plus ? r + er : r;          // Corrected radius

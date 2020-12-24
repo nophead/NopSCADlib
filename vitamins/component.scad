@@ -209,7 +209,7 @@ module al_clad_resistor_assembly(type, value, sleeved = true) { //* Draw alumini
 
 function TO220_thickness() = 1.5; //! Thickness of the tab of a TO220
 
-module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 package, use ```description``` to describe what it is
+module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 package, use `description` to describe what it is
     width = 10.2;
     inset = 1.5;
     hole = 3.3;

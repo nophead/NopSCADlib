@@ -18,7 +18,7 @@
 //
 
 //
-// The assembly is ```include```d so the panel definitions can be overridden to add holes and components.
+// The assembly is `include`d so the panel definitions can be overridden to add holes and components.
 // The _box_module also needs to be wrapped in the file that uses it so it can be called without
 // parameters to make the assembly views. E.g. module box_assembly() _box_assembly(box);
 //

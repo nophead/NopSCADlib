@@ -48,7 +48,7 @@ function rounded_polygon_tangents(points) = //! Compute the straight sections ne
 function sumv(v, i = 0, sum = 0) = i == len(v) ? sum : sumv(v, i + 1, sum + v[i]);
 
 // the cross product of 2D vectors is the area of the parallelogram between them. We use the sign of this to decide if the angle is bigger than 180.
-function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by ``` rounded_polygon_tangents```
+function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents`
     let(
       len = len(points),
       indices = [0 : len - 1],

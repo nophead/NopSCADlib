@@ -68,7 +68,7 @@ module cable_tie_holes(cable_r, h = 100) { //! Holes to thread a ziptie through 
                             drill(r, 0);
 }
 
-module cable_tie(cable_r, thickness) { //! A ziptie threaded around cable radius ```cable_r``` and through a panel with specified ```thickness```.
+module cable_tie(cable_r, thickness) { //! A ziptie threaded around cable radius `cable_r` and through a panel with specified `thickness`.
     translate_z(cable_r)
         rotate([-90, 0, 90])
             ziptie(small_ziptie, cable_r, thickness);
