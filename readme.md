@@ -3163,7 +3163,6 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 | ```render_sheet(type, colour = false, colour2 = false, w = undef, d = undef)``` | Render a sheet in the correct colour after holes have been subtracted |
 | ```sheet(type, w, d, corners = [0, 0, 0, 0])``` | Draw specified sheet |
 | ```sheet_2D(type, w, d, corners = [0, 0, 0, 0])``` | 2D sheet template with specified size and optionally rounded corners |
-| ```woven_sheet(type, thickness, colour, colour2, w, d)``` | Create a woven 2D sheet with specified thickness and colours |
 
 ![sheets](tests/png/sheets.png)
 

@@ -120,8 +120,7 @@ module render_2D_sheet(type, colour = false, colour2 = false, w = undef, d = und
                     children();
 }
 
-module woven_sheet(type, thickness, colour, colour2, w, d) {//! Create a woven 2D sheet with specified thickness and colours
-    ;
+module woven_sheet(type, thickness, colour, colour2, w, d) { // Create a woven 2D sheet with specified thickness and colours
     warp = sheet_warp(type);
     weft = sheet_weft(type);
     warp_doublet_count = assert(!is_undef(w) && !is_undef(d), "Must specify the dimensions to render woven sheets") ceil(w / (2 * warp));
@@ -132,12 +131,6 @@ module woven_sheet(type, thickness, colour, colour2, w, d) {//! Create a woven 2
             for (y = [0 : weft_count - 1], x = [0 : warp_doublet_count - 1])
                 translate([warp * (2 * x + ((y + odd) % 2)), weft * y])
                     square([warp, weft]);
-
-    module negative()
-        difference() {
-            square(size, center = true);
-            positive();
-        }
 
     color(colour)
         linear_extrude(thickness)
