@@ -91,10 +91,11 @@ module render_sheet(type, colour = false, colour2 = false, w = undef, d = undef)
     t = sheet_thickness(type);
     colour = colour ? colour : sheet_colour(type);
     colour2 = colour2 ? colour2 : sheet_colour2(type);
-    color(woven ? colour2 : colour)
-        render()
-            scale([1, 1, woven ? (t - 2 * eps) / t : 1])
-                children();
+    let($dxf_colour = colour)
+        color(woven ? colour2 : colour)
+            render()
+                scale([1, 1, woven ? (t - 2 * eps) / t : 1])
+                    children();
 
     if(woven)
         for(side = [-1, 1], z = side * (t - eps) / 2)
@@ -102,7 +103,8 @@ module render_sheet(type, colour = false, colour2 = false, w = undef, d = undef)
                 woven_sheet(type, eps, colour, colour2, w, d)
                     projection(cut = true)
                         translate_z(-z)
-                            children();
+                            not_on_bom()
+                                children();
 }
 
 module render_2D_sheet(type, colour = false, colour2 = false, w = undef, d = undef) { //! Extrude a 2D sheet template and give it the correct colour
@@ -149,6 +151,8 @@ module woven_sheet(type, thickness, colour, colour2, w, d) {//! Create a woven 2
             linear_extrude(thickness)
                 intersection() {
                     chequerboard(1);
-                    children();
+
+                    not_on_bom()
+                        children();
                 }
 }

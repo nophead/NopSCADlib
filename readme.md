@@ -3186,9 +3186,9 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | ```sheet(PMMA3, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 3mm |
 |   1 | ```sheet(PMMA6, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 6mm |
 |   1 | ```sheet(PMMA8, 30, 30, 2)``` |  Sheet acrylic 30mm x 30mm x 8mm |
-|   2 | ```sheet(CF1, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 1mm |
-|   2 | ```sheet(CF2, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 2mm |
-|   2 | ```sheet(CF3, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 3mm |
+|   1 | ```sheet(CF1, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 1mm |
+|   1 | ```sheet(CF2, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 2mm |
+|   1 | ```sheet(CF3, 30, 30, 2)``` |  Sheet carbon fiber 30mm x 30mm x 3mm |
 |   1 | ```sheet(glass2, 30, 30, 2)``` |  Sheet glass 30mm x 30mm x 2mm |
 |   1 | ```sheet(Steel06, 30, 30, 2)``` |  Sheet mild steel 30mm x 30mm x 0.6mm |
 
