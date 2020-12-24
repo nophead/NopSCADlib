@@ -23,7 +23,7 @@
 //! together. The box panels can be customised to have holes and parts mounted on them by overriding the
 //! definitions of `box_base()`, `box_front()`, etc.
 //!
-//! `box.scad` should be ```use```d and `box_assembly.scad` ```include```d.
+//! `box.scad` should be `use`d and `box_assembly.scad` `include`d.
 //!
 //! A box is defined with a list that specifies the inside dimensions, top, bottom and side sheet materials, the
 //! screw type and printed part wall thickness. This diagram shows how the various dimensions are labelled:
@@ -109,7 +109,7 @@ module grill_hole_positions(width, height, r = 1000) {
     }
 }
 
-module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling.
+module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set `poly` `true` for printing, `false` for milling.
     extrude_if(h)
         if(poly)
             grill_hole_positions(width, height, r)
@@ -564,25 +564,25 @@ module box_shelf_bracket_section(type, rows, cols, x, y) { //! Generates section
             children();
 }
 
-module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, ```sheet``` can be set to override the type
+module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, `sheet` can be set to override the type
     dxf("box_left");
 
     sheet_2D(subst_sheet(type, sheet), box_depth(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
 }
 
-module box_right_blank(type, sheet = false) { //! Generates a 2D template for the right sheet, ```sheet``` can be set to override the type
+module box_right_blank(type, sheet = false) { //! Generates a 2D template for the right sheet, `sheet` can be set to override the type
     dxf("box_right");
 
     sheet_2D(subst_sheet(type, sheet), box_depth(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
 }
 
-module box_front_blank(type, sheet = false) { //! Generates a 2D template for the front sheet, ```sheet``` can be set to override the type
+module box_front_blank(type, sheet = false) { //! Generates a 2D template for the front sheet, `sheet` can be set to override the type
     dxf("box_front");
 
     sheet_2D(subst_sheet(type, sheet), box_width(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
 }
 
-module box_back_blank(type, sheet = false) { //! Generates a 2D template for the back sheet, ```sheet``` can be set to override the type
+module box_back_blank(type, sheet = false) { //! Generates a 2D template for the back sheet, `sheet` can be set to override the type
     dxf("box_back");
 
     sheet_2D(subst_sheet(type, sheet), box_width(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);

@@ -4055,7 +4055,7 @@ compared to the 3D printed parts because they can be cut into interlocking secti
 together. The box panels can be customised to have holes and parts mounted on them by overriding the
 definitions of `box_base()`, `box_front()`, etc.
 
-`box.scad` should be ```use```d and `box_assembly.scad` ```include```d.
+`box.scad` should be `use`d and `box_assembly.scad` `include`d.
 
 A box is defined with a list that specifies the inside dimensions, top, bottom and side sheet materials, the
 screw type and printed part wall thickness. This diagram shows how the various dimensions are labelled:
@@ -4097,7 +4097,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | Module | Description |
 |:--- |:--- |
 | ```box_back(type)``` | Default back, can be overridden to customise |
-| ```box_back_blank(type, sheet = false)``` | Generates a 2D template for the back sheet, ```sheet``` can be set to override the type |
+| ```box_back_blank(type, sheet = false)``` | Generates a 2D template for the back sheet, `sheet` can be set to override the type |
 | ```box_base(type)``` | Default base, can be overridden to customise |
 | ```box_base_blank(type)``` | Generates a 2D template for the base sheet |
 | ```box_bezel(type, bottom)``` | Generates top and bottom bezel STLs |
@@ -4107,18 +4107,18 @@ Normally the side sheets are the same type but they can be overridden individual
 | ```box_corner_profile_section(type, section, sections)``` | Generates interlocking sections of the corner profile to allow it to be taller than the printer |
 | ```box_corner_profile_sections(type, section, sections)``` | Generate four copies of a corner profile section |
 | ```box_front(type)``` | Default front, can be overridden to customise |
-| ```box_front_blank(type, sheet = false)``` | Generates a 2D template for the front sheet, ```sheet``` can be set to override the type |
+| ```box_front_blank(type, sheet = false)``` | Generates a 2D template for the front sheet, `sheet` can be set to override the type |
 | ```box_left(type)``` | Default left side, can be overridden to customise |
-| ```box_left_blank(type, sheet = false)``` | Generates a 2D template for the left sheet, ```sheet``` can be set to override the type |
+| ```box_left_blank(type, sheet = false)``` | Generates a 2D template for the left sheet, `sheet` can be set to override the type |
 | ```box_right(type)``` | Default right side, can be overridden to customise |
-| ```box_right_blank(type, sheet = false)``` | Generates a 2D template for the right sheet, ```sheet``` can be set to override the type |
+| ```box_right_blank(type, sheet = false)``` | Generates a 2D template for the right sheet, `sheet` can be set to override the type |
 | ```box_shelf_blank(type, sheet = false)``` | Generates a 2D template for a shelf sheet |
 | ```box_shelf_bracket(type, screw_positions, wall = undef)``` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts |
 | ```box_shelf_bracket_section(type, rows, cols, x, y)``` | Generates sections of the shelf bracket to allow it to be bigger than the printer |
 | ```box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef)``` | Place children at the shelf screw positions |
 | ```box_top(type)``` | Default top, can be overridden to customise |
 | ```box_top_blank(type)``` | Generates a 2D template for the top sheet |
-| ```grill(width, height, r = 1000, poly = false, h = 0)``` | A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling. |
+| ```grill(width, height, r = 1000, poly = false, h = 0)``` | A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set `poly` `true` for printing, `false` for milling. |
 
 ![box](tests/png/box.png)
 
