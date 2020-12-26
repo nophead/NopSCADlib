@@ -24,8 +24,8 @@ from __future__ import print_function
 
 import subprocess, sys
 
-def run_list(args, silent = False):
-    cmd = ["openscad"] + args
+def run_list(args, silent = False, verbose = False):
+    cmd = ["openscad.exe"] + args
     if not silent:
         for arg in cmd:
             print(arg, end=" ")
@@ -33,7 +33,7 @@ def run_list(args, silent = False):
     with open("openscad.log", "w") as log:
         rc = subprocess.call(cmd, stdout = log, stderr = log)
     for line in open("openscad.log", "rt"):
-        if 'ERROR:' in line or 'WARNING:' in line:
+        if verbose or 'ERROR:' in line or 'WARNING:' in line:
             print(line[:-1])
     if rc:
         sys.exit(rc)
@@ -43,3 +43,6 @@ def run(*args):
 
 def run_silent(*args):
     run_list(list(args), True);
+
+if __name__ == '__main__':
+    run_list(sys.argv[1:], True, True)
