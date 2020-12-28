@@ -16,7 +16,6 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 
 <img src="libtest.png" width="100%"/>
 
-
 ## Table of Contents<a name="top"/>
 <table><tr>
 <th align="left"> Vitamins A-I </th><th align="left"> Vitamins J-Q </th><th align="left"> Vitamins R-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
@@ -51,7 +50,6 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <a name="Axials"></a>
 ## Axials
 Axial components for PCBs.
-
 
 [vitamins/axials.scad](vitamins/axials.scad) Object definitions.
 
@@ -103,7 +101,6 @@ If a ball bearing has a child it is placed on its top surface, the same as nuts 
 
 Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 
-
 [vitamins/ball_bearings.scad](vitamins/ball_bearings.scad) Object definitions.
 
 [vitamins/ball_bearing.scad](vitamins/ball_bearing.scad) Implementation.
@@ -152,7 +149,6 @@ Note that the [Lumintop LM34](http://www.lumintop.com/lm34c-usb-rechargeable-186
 
 The battery length includes its contacts and the origin is the centre of that length. As well as drawing the battery and contacts there are functions
 exposing enough information to make a battery box.
-
 
 [vitamins/batteries.scad](vitamins/batteries.scad) Object definitions.
 
@@ -217,7 +213,6 @@ To draw the gap its XY position is specified by `gap_pos`. `gap_pos.z` can be us
 
 Individual teeth are not drawn, instead they are represented by a lighter colour.
 
-
 [vitamins/belts.scad](vitamins/belts.scad) Object definitions.
 
 [vitamins/belt.scad](vitamins/belt.scad) Implementation.
@@ -269,7 +264,6 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 <a name="Blowers"></a>
 ## Blowers
 Models of radial blowers.
-
 
 [vitamins/blowers.scad](vitamins/blowers.scad) Object definitions.
 
@@ -334,7 +328,6 @@ Crude representation of a bulldog clip. The handle is not currently drawn but it
 accessed to allow clearance. Used for holding glass on 3D printer beds but Swiss picture clips can be
 better.
 
-
 [vitamins/bulldogs.scad](vitamins/bulldogs.scad) Object definitions.
 
 [vitamins/bulldog.scad](vitamins/bulldog.scad) Implementation.
@@ -372,7 +365,6 @@ better.
 <a name="Buttons"></a>
 ## Buttons
 PCB mounted buttons. Can optionally have a coloured cap
-
 
 [vitamins/buttons.scad](vitamins/buttons.scad) Object definitions.
 
@@ -422,7 +414,6 @@ near the extreme positions, where the model needs to be accurate.
 
 When the sides are constrained then a circular model is more accurate.
 
-
 [vitamins/cable_strip.scad](vitamins/cable_strip.scad) Implementation.
 
 [tests/cable_strips.scad](tests/cable_strips.scad) Code for this example.
@@ -454,7 +445,6 @@ When the sides are constrained then a circular model is more accurate.
 <a name="Cameras"></a>
 ## Cameras
 PCB cameras.
-
 
 [vitamins/cameras.scad](vitamins/cameras.scad) Object definitions.
 
@@ -493,7 +483,6 @@ PCB cameras.
 <a name="Circlips"></a>
 ## Circlips
 Circlips aka tapered retaining rings.
-
 
 [vitamins/circlips.scad](vitamins/circlips.scad) Object definitions.
 
@@ -535,7 +524,6 @@ Circlips aka tapered retaining rings.
 <a name="Components"></a>
 ## Components
 Various electronic components used in hot ends and heated beds.
-
 
 [vitamins/components.scad](vitamins/components.scad) Object definitions.
 
@@ -631,7 +619,6 @@ Various electronic components used in hot ends and heated beds.
 ## D_connectors
 D-connectors. Can be any number of ways, male or female, solder buckets, PCB mount or IDC, with or without pillars.
 
-
 [vitamins/d_connectors.scad](vitamins/d_connectors.scad) Object definitions.
 
 [vitamins/d_connector.scad](vitamins/d_connector.scad) Implementation.
@@ -687,7 +674,6 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 ## DIP
 Dual inline IC packages and sockets
 
-
 [vitamins/dip.scad](vitamins/dip.scad) Implementation.
 
 [tests/DIP.scad](tests/DIP.scad) Code for this example.
@@ -730,7 +716,6 @@ Dual inline IC packages and sockets
 <a name="Displays"></a>
 ## Displays
 LCD dispays.
-
 
 [vitamins/displays.scad](vitamins/displays.scad) Object definitions.
 
@@ -782,7 +767,6 @@ LCD dispays.
 ## Extrusion_brackets
 Brackets for joining extrusions at a corner.
 
-
 [vitamins/extrusion_brackets.scad](vitamins/extrusion_brackets.scad) Object definitions.
 
 [vitamins/extrusion_bracket.scad](vitamins/extrusion_bracket.scad) Implementation.
@@ -829,7 +813,6 @@ Brackets for joining extrusions at a corner.
 <a name="Extrusions"></a>
 ## Extrusions
 Aluminium  extrusion.
-
 
 [vitamins/extrusions.scad](vitamins/extrusions.scad) Object definitions.
 
@@ -880,7 +863,6 @@ Aluminium  extrusion.
 Axial fans.
 
 Can draw three styles: solid, open frame and open frame with screw bosses.
-
 
 [vitamins/fans.scad](vitamins/fans.scad) Object definitions.
 
@@ -950,7 +932,6 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 ## Fuseholder
 20mm panel mount fuse holder.
 
-
 [vitamins/fuseholder.scad](vitamins/fuseholder.scad) Implementation.
 
 [tests/fuseholder.scad](tests/fuseholder.scad) Code for this example.
@@ -980,7 +961,6 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 <a name="Geared_steppers"></a>
 ## Geared_steppers
 Geared tin can steppers
-
 
 [vitamins/geared_steppers.scad](vitamins/geared_steppers.scad) Object definitions.
 
@@ -1032,7 +1012,6 @@ Geared tin can steppers
 ## Green_terminals
 Parametric green terminal blocks
 
-
 [vitamins/green_terminals.scad](vitamins/green_terminals.scad) Object definitions.
 
 [vitamins/green_terminal.scad](vitamins/green_terminal.scad) Implementation.
@@ -1083,7 +1062,6 @@ Parametric green terminal blocks
 Hot end models. The E3D models were originally contributed to Mendel90 by Philippe LUC @philfifi
 
 Needs updating as mostly obsolete versions.
-
 
 [vitamins/hot_ends.scad](vitamins/hot_ends.scad) Object definitions.
 
@@ -1146,7 +1124,6 @@ Needs updating as mostly obsolete versions.
 ## Hygrometer
 Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge on eBay
 
-
 [vitamins/hygrometer.scad](vitamins/hygrometer.scad) Implementation.
 
 [tests/hygrometer.scad](tests/hygrometer.scad) Code for this example.
@@ -1176,7 +1153,6 @@ Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge
 <a name="IECs"></a>
 ## IECs
 IEC mains inlets and outlet.
-
 
 [vitamins/iecs.scad](vitamins/iecs.scad) Object definitions.
 
@@ -1245,7 +1221,6 @@ IEC mains inlets and outlet.
 ## Inserts
 Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering iron with a conical bit set to 200&deg;C.
 
-
 [vitamins/inserts.scad](vitamins/inserts.scad) Object definitions.
 
 [vitamins/insert.scad](vitamins/insert.scad) Implementation.
@@ -1297,7 +1272,6 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 4mm jack sockets and binding posts. Each has a colour for the BOM entry and an optional alternative colour for display.
 E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look realistic.
 
-
 [vitamins/jack.scad](vitamins/jack.scad) Implementation.
 
 [tests/jack.scad](tests/jack.scad) Code for this example.
@@ -1333,7 +1307,6 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 <a name="KP_pillow_blocks"></a>
 ## KP_pillow_blocks
 KP pillow block bearings
-
 
 [vitamins/kp_pillow_blocks.scad](vitamins/kp_pillow_blocks.scad) Object definitions.
 
@@ -1389,7 +1362,6 @@ Light dependent resistors.
 
 Larger ones seem to have both a higher dark resistance and a lower bright light resistance.
 
-
 [vitamins/ldrs.scad](vitamins/ldrs.scad) Object definitions.
 
 [vitamins/ldr.scad](vitamins/ldr.scad) Implementation.
@@ -1427,7 +1399,6 @@ Larger ones seem to have both a higher dark resistance and a lower bright light 
 <a name="Leadnuts"></a>
 ## Leadnuts
 Nuts for leadscrews.
-
 
 [vitamins/leadnuts.scad](vitamins/leadnuts.scad) Object definitions.
 
@@ -1481,7 +1452,6 @@ CNC cut panel. The meter is held in the bezel by melting the stakes with a solde
 bezel is fixed in the panel with hot glue.
 
 The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to get realistic digits.
-
 
 [vitamins/led_meters.scad](vitamins/led_meters.scad) Object definitions.
 
@@ -1541,7 +1511,6 @@ The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to 
 ## LEDs
 Standard domed through hole LEDs. Can specify colour and lead length.
 
-
 [vitamins/leds.scad](vitamins/leds.scad) Object definitions.
 
 [vitamins/led.scad](vitamins/led.scad) Implementation.
@@ -1589,7 +1558,6 @@ The definitions are for the full length but they can be cut to size by specifyin
 which can by calcuated using `light_strip_segments(type, max_length)`.
 
 The `light_strip_clip()` module makes a clip to go around the light that can be incorporated into a printed bracket to hold it.
-
 
 [vitamins/light_strips.scad](vitamins/light_strips.scad) Object definitions.
 
@@ -1641,7 +1609,6 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 <a name="Linear_bearings"></a>
 ## Linear_bearings
 LMnUU linear bearings.
-
 
 [vitamins/linear_bearings.scad](vitamins/linear_bearings.scad) Object definitions.
 
@@ -1699,7 +1666,6 @@ LMnUU linear bearings.
 ## Magnets
 Cylindrical and ring magnets.
 
-
 [vitamins/magnets.scad](vitamins/magnets.scad) Object definitions.
 
 [vitamins/magnet.scad](vitamins/magnet.scad) Implementation.
@@ -1728,7 +1694,6 @@ Cylindrical and ring magnets.
 <a name="Mains_sockets"></a>
 ## Mains_sockets
 UK 13A sockets at the moment.
-
 
 [vitamins/mains_sockets.scad](vitamins/mains_sockets.scad) Object definitions.
 
@@ -1777,7 +1742,6 @@ UK 13A sockets at the moment.
 <a name="Microswitches"></a>
 ## Microswitches
 Used for limit switches.
-
 
 [vitamins/microswitches.scad](vitamins/microswitches.scad) Object definitions.
 
@@ -1836,7 +1800,6 @@ Microview OLED display with on board AVR by geekammo / Sparkfun.
 
 Uses STL files copyright geekammo and licenced with MIT license, see [microview/LICENSE.txt](vitamins/microview/LICENSE.txt).
 
-
 [vitamins/microview.scad](vitamins/microview.scad) Implementation.
 
 [tests/microview.scad](tests/microview.scad) Code for this example.
@@ -1860,7 +1823,6 @@ Uses STL files copyright geekammo and licenced with MIT license, see [microview/
 <a name="Modules"></a>
 ## Modules
 Random screw down modules. Currently just DROK buck converters.
-
 
 [vitamins/modules.scad](vitamins/modules.scad) Object definitions.
 
@@ -1906,7 +1868,6 @@ Random screw down modules. Currently just DROK buck converters.
 Default is steel but can be drawn as brass or nylon. A utility for making nut traps included.
 
 If a nut is given a child then it gets placed on its top surface.
-
 
 [vitamins/nuts.scad](vitamins/nuts.scad) Object definitions.
 
@@ -1989,7 +1950,6 @@ Nitrile rubber O-rings.
 Just a black torus specified by internal diameter, `id` and `minor_d` plus a BOM entry.
 Can be shown stretched by specifying the `actual_id`.
 
-
 [vitamins/o_ring.scad](vitamins/o_ring.scad) Implementation.
 
 [tests/o_ring.scad](tests/o_ring.scad) Code for this example.
@@ -2015,7 +1975,6 @@ Can be shown stretched by specifying the `actual_id`.
 Nicodrone OpenGrab V3 electro-permananet magnet, see <https://nicadrone.com/products/epm-v3>.
 
 A permanent magnet that can be magnatized and de-magnatized electronically.
-
 
 [vitamins/opengrab.scad](vitamins/opengrab.scad) Implementation.
 
@@ -2058,7 +2017,6 @@ Notes on the DSN_VC288:
 
 * The tabs aren't modelled because they can be fully retracted if the PCB is removed.
 * The current connector isn't moddelled as it is awkwardly tall. I remove it and solder wires instead.
-
 
 [vitamins/panel_meters.scad](vitamins/panel_meters.scad) Object definitions.
 
@@ -2117,7 +2075,6 @@ Notes on the DSN_VC288:
 <a name="PCB"></a>
 ## PCB
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
-
 
 [vitamins/pcb.scad](vitamins/pcb.scad) Implementation.
 
@@ -2252,7 +2209,6 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 <a name="PCBs"></a>
 ## PCBs
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
-
 
 [vitamins/pcbs.scad](vitamins/pcbs.scad) Object definitions.
 
@@ -2419,7 +2375,6 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ## Pillars
 Threaded pillars. Each end can be male or female.
 
-
 [vitamins/pillars.scad](vitamins/pillars.scad) Object definitions.
 
 [vitamins/pillar.scad](vitamins/pillar.scad) Implementation.
@@ -2466,7 +2421,6 @@ Threaded pillars. Each end can be male or female.
 <a name="Pin_headers"></a>
 ## Pin_headers
 Pin headers and sockets, etc.
-
 
 [vitamins/pin_headers.scad](vitamins/pin_headers.scad) Object definitions.
 
@@ -2528,7 +2482,6 @@ Pin headers and sockets, etc.
 Powersupplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
 
 Face order is bottom, top, left, right, front, back.
-
 
 [vitamins/psus.scad](vitamins/psus.scad) Object definitions.
 
@@ -2606,7 +2559,6 @@ Face order is bottom, top, left, right, front, back.
 ## Pulleys
 Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 
-
 [vitamins/pulleys.scad](vitamins/pulleys.scad) Object definitions.
 
 [vitamins/pulley.scad](vitamins/pulley.scad) Implementation.
@@ -2673,7 +2625,6 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 <a name="Rails"></a>
 ## Rails
 Linear rails with carriages.
-
 
 [vitamins/rails.scad](vitamins/rails.scad) Object definitions.
 
@@ -2758,7 +2709,6 @@ Linear rails with carriages.
 ## Ring_terminals
 Ring terminals and earth assemblies for DiBond panels.
 
-
 [vitamins/ring_terminals.scad](vitamins/ring_terminals.scad) Object definitions.
 
 [vitamins/ring_terminal.scad](vitamins/ring_terminal.scad) Implementation.
@@ -2810,7 +2760,6 @@ Ring terminals and earth assemblies for DiBond panels.
 ## Rockers
 Rocker switch. Also used for neon indicator in the same form factor.
 
-
 [vitamins/rockers.scad](vitamins/rockers.scad) Object definitions.
 
 [vitamins/rocker.scad](vitamins/rocker.scad) Implementation.
@@ -2857,7 +2806,6 @@ Rocker switch. Also used for neon indicator in the same form factor.
 Steel rods and studding with chamfered ends.
 
 These items are sysmtrical, so by default the origin is in the centre but it can be changed to the bottom.
-
 
 [vitamins/rod.scad](vitamins/rod.scad) Implementation.
 
@@ -2906,7 +2854,6 @@ These items are sysmtrical, so by default the origin is in the centre but it can
 Machine screws and wood screws with various head styles.
 
 For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2020/12/sinkholes.html>.
-
 
 [vitamins/screws.scad](vitamins/screws.scad) Object definitions.
 
@@ -2997,7 +2944,6 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 ## SCS_bearing_blocks
 SCSnUU and SCSnLUU bearing blocks
 
-
 [vitamins/scs_bearing_blocks.scad](vitamins/scs_bearing_blocks.scad) Object definitions.
 
 [vitamins/scs_bearing_block.scad](vitamins/scs_bearing_block.scad) Implementation.
@@ -3060,7 +3006,6 @@ SCSnUU and SCSnLUU bearing blocks
 ## Sealing_strip
 Sealing strip from B&Q used to seal around the door of 3D printers.
 
-
 [vitamins/sealing_strip.scad](vitamins/sealing_strip.scad) Implementation.
 
 [tests/sealing_strip.scad](tests/sealing_strip.scad) Code for this example.
@@ -3084,7 +3029,6 @@ Sealing strip from B&Q used to seal around the door of 3D printers.
 <a name="Shaft_couplings"></a>
 ## Shaft_couplings
 Shaft couplings
-
 
 [vitamins/shaft_couplings.scad](vitamins/shaft_couplings.scad) Object definitions.
 
@@ -3133,7 +3077,6 @@ Note that modules that drill holes will return a 2D object if `h` is set to 0 to
 If 3D features are needed, for example countersinks, then sheets can be modelled in 3D using `sheet()` and then coloured with `render_sheet()`.
 
 When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify the dimensions again to `render_sheet()` or `render_2D_sheet()`.
-
 
 [vitamins/sheets.scad](vitamins/sheets.scad) Object definitions.
 
@@ -3199,7 +3142,6 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 ## SK_brackets
 SK shaft support brackets
 
-
 [vitamins/sk_brackets.scad](vitamins/sk_brackets.scad) Object definitions.
 
 [vitamins/sk_bracket.scad](vitamins/sk_bracket.scad) Implementation.
@@ -3255,7 +3197,6 @@ SK shaft support brackets
 ## SMDs
 Surface mount components for PCBs.
 
-
 [vitamins/smds.scad](vitamins/smds.scad) Object definitions.
 
 [vitamins/smd.scad](vitamins/smd.scad) Implementation.
@@ -3303,7 +3244,6 @@ Surface mount components for PCBs.
 ## Spades
 Spade terminals used as parts of electrical components.
 
-
 [vitamins/spades.scad](vitamins/spades.scad) Object definitions.
 
 [vitamins/spade.scad](vitamins/spade.scad) Implementation.
@@ -3333,7 +3273,6 @@ Spade terminals used as parts of electrical components.
 <a name="Spools"></a>
 ## Spools
 Filament spool models
-
 
 [vitamins/spools.scad](vitamins/spools.scad) Object definitions.
 
@@ -3384,7 +3323,6 @@ Compression springs. Can be tapered, have open, closed or ground ends. Ground en
 
 By default springs have their origin at the bottom but can be centered.
 
-
 [vitamins/springs.scad](vitamins/springs.scad) Object definitions.
 
 [vitamins/spring.scad](vitamins/spring.scad) Implementation.
@@ -3430,7 +3368,6 @@ By default springs have their origin at the bottom but can be centered.
 ## SSRs
 Solid state relays.
 
-
 [vitamins/ssrs.scad](vitamins/ssrs.scad) Object definitions.
 
 [vitamins/ssr.scad](vitamins/ssr.scad) Implementation.
@@ -3474,7 +3411,6 @@ Solid state relays.
 <a name="Stepper_motors"></a>
 ## Stepper_motors
 NEMA stepper motor model.
-
 
 [vitamins/stepper_motors.scad](vitamins/stepper_motors.scad) Object definitions.
 
@@ -3538,7 +3474,6 @@ Used for holding glass on 3D printer beds.
 The bending model is an approximation because in real life the arms bend.
 Should be reasonably accurate if not close to fully open.
 
-
 [vitamins/swiss_clips.scad](vitamins/swiss_clips.scad) Object definitions.
 
 [vitamins/swiss_clip.scad](vitamins/swiss_clip.scad) Implementation.
@@ -3582,7 +3517,6 @@ Should be reasonably accurate if not close to fully open.
 <a name="Toggles"></a>
 ## Toggles
 Toggle switches
-
 
 [vitamins/toggles.scad](vitamins/toggles.scad) Object definitions.
 
@@ -3648,7 +3582,6 @@ Toggle switches
 ## Transformers
 Iron core transformers. The grey shaded area is the keep out region where the terminals are.
 
-
 [vitamins/transformers.scad](vitamins/transformers.scad) Object definitions.
 
 [vitamins/transformer.scad](vitamins/transformer.scad) Implementation.
@@ -3696,7 +3629,6 @@ Iron core transformers. The grey shaded area is the keep out region where the te
 <a name="Tubings"></a>
 ## Tubings
 Tubing and sleeving. The internal diameter can be forced to stretch it over something.
-
 
 [vitamins/tubings.scad](vitamins/tubings.scad) Object definitions.
 
@@ -3750,7 +3682,6 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 ## Variacs
 Variable auto transformers.
 
-
 [vitamins/variacs.scad](vitamins/variacs.scad) Object definitions.
 
 [vitamins/variac.scad](vitamins/variac.scad) Implementation.
@@ -3803,7 +3734,6 @@ Variable auto transformers.
 <a name="Veroboard"></a>
 ## Veroboard
 Veroboard with mounting holes, track breaks, removed tracks, solder points and components.
-
 
 [vitamins/veroboard.scad](vitamins/veroboard.scad) Implementation.
 
@@ -3874,7 +3804,6 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 Washers, star washers, penny washers and printed washers.
 
 If a washer is given a child, usually a screw or a nut, then it is placed on its top surface.
-
 
 [vitamins/washers.scad](vitamins/washers.scad) Object definitions.
 
@@ -3967,7 +3896,6 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 ## Wire
 Just a BOM entry at the moment and cable bundle size functions for holes, plus cable ties.
 
-
 [vitamins/wire.scad](vitamins/wire.scad) Implementation.
 
 [tests/wire.scad](tests/wire.scad) Code for this example.
@@ -4013,7 +3941,6 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 <a name="Zipties"></a>
 ## Zipties
 Cable zipties.
-
 
 [vitamins/zipties.scad](vitamins/zipties.scad) Object definitions.
 
@@ -4062,7 +3989,6 @@ screw type and printed part wall thickness. This diagram shows how the various d
 ![](docs/box.png)
 
 Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
-
 
 [printed/box.scad](printed/box.scad) Implementation.
 
@@ -4178,7 +4104,6 @@ maximum spacing.
 
 Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 
-
 [printed/butt_box.scad](printed/butt_box.scad) Implementation.
 
 [tests/butt_box.scad](tests/butt_box.scad) Code for this example.
@@ -4272,7 +4197,6 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 Printed cable grommets for passing cables through panels avoiding sharp edges and in the case
 of conductive panels, an extra layer of insulation.
 
-
 [printed/cable_grommets.scad](printed/cable_grommets.scad) Implementation.
 
 [tests/cable_grommets.scad](tests/cable_grommets.scad) Code for this example.
@@ -4305,7 +4229,6 @@ of conductive panels, an extra layer of insulation.
 <a name="Camera_housing"></a>
 ## Camera_housing
 Housings for PCB cameras.
-
 
 [printed/camera_housing.scad](printed/camera_housing.scad) Implementation.
 
@@ -4372,7 +4295,6 @@ Housings for PCB cameras.
 ## Carriers
 Adapts ESP12 modules and various small PCBs to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/esp-12-module-breakout-adaptor.html>.
 
-
 [printed/carriers.scad](printed/carriers.scad) Implementation.
 
 [tests/carriers.scad](tests/carriers.scad) Code for this example.
@@ -4415,7 +4337,6 @@ Specific fasteners can be omitted by setting a side's thickness to 0 and the blo
 This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
 
 Star washers can be omitted by setting `star_washers` to false.
-
 
 [printed/corner_block.scad](printed/corner_block.scad) Implementation.
 
@@ -4490,7 +4411,6 @@ Door hinges to hang an acrylic sheet door on a 3D printer, default 6mm thick.
 The screws are tapped into the acrylic.
 Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [door_latch](#door_latch) holds it closed.
 
-
 [printed/door_hinge.scad](printed/door_hinge.scad) Implementation.
 
 [tests/door_hinge.scad](tests/door_hinge.scad) Code for this example.
@@ -4543,7 +4463,6 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 ## Door_latch
 Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 
-
 [printed/door_latch.scad](printed/door_latch.scad) Implementation.
 
 [tests/door_latch.scad](tests/door_latch.scad) Code for this example.
@@ -4591,7 +4510,6 @@ If none are enabled then a child object is expected to customise the end and thi
 If both ends are customised then two children are expected.
 Each child is called twice, once with `$fasteners` set to 0 to augment the STL and again with `$fasteners` set to 1 to add
 to the assembly, for example to add inserts.
-
 
 [printed/drag_chain.scad](printed/drag_chain.scad) Implementation.
 
@@ -4651,7 +4569,6 @@ Pintable fan finger guard to match the specified fan. To be `include`d, not `use
 
 The ring spacing as well as the number of spokes can be specified, if zero a gasket is generated instead of a guard.
 
-
 [printed/fan_guard.scad](printed/fan_guard.scad) Implementation.
 
 [tests/fan_guard.scad](tests/fan_guard.scad) Code for this example.
@@ -4700,7 +4617,6 @@ Specific fasteners can be omitted by setting a side's thickness to 0 and the blo
 This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
 
 Star washers can be omitted by setting `star_washers` to false.
-
 
 [printed/fixing_block.scad](printed/fixing_block.scad) Implementation.
 
@@ -4783,7 +4699,6 @@ Note setting `thickness1` or `thickness2` to zero in the `hinge_fastened_assembl
 setting `show_hinge` to false removes the hinge.
 This allows the hinges and one set of screws to belong to one assembly and the other set of screws to another assembly.
 
-
 [printed/flat_hinge.scad](printed/flat_hinge.scad) Implementation.
 
 [tests/flat_hinge.scad](tests/flat_hinge.scad) Code for this example.
@@ -4850,7 +4765,6 @@ This allows the hinges and one set of screws to belong to one assembly and the o
 Customisable printed rubber feet for equipment cases. The insert variant is better for solid feet because
 inserts don't grip well in rubber.
 
-
 [printed/foot.scad](printed/foot.scad) Implementation.
 
 [tests/foot.scad](tests/foot.scad) Code for this example.
@@ -4912,7 +4826,6 @@ inserts don't grip well in rubber.
 ## Handle
 Printed handle that can be printed without needing support material due to its truncated teardrop profile.
 
-
 [printed/handle.scad](printed/handle.scad) Implementation.
 
 [tests/handle.scad](tests/handle.scad) Code for this example.
@@ -4963,7 +4876,6 @@ Printed handle that can be printed without needing support material due to its t
 A frame to mount a PCB by its corners when it has no mounting holes.
 The stl must be given a parameterless wrapper in the project that uses it.
 
-
 [printed/pcb_mount.scad](printed/pcb_mount.scad) Implementation.
 
 [tests/PCB_mount.scad](tests/PCB_mount.scad) Code for this example.
@@ -5012,7 +4924,6 @@ Utility for making printed press fit connectors to join printed parts.
 
 Add solvent or glue to make a permanent fixture.
 
-
 [printed/press_fit.scad](printed/press_fit.scad) Implementation.
 
 [tests/press_fit.scad](tests/press_fit.scad) Code for this example.
@@ -5038,7 +4949,6 @@ in the sides you can't print a wavy bridge. Any holes need to be surrounded by a
 See the mounting points for the feet in the first example.
 
 It can also have printed feet on the base with the screws doubling up to hold the base on.
-
 
 [printed/printed_box.scad](printed/printed_box.scad) Implementation.
 
@@ -5118,7 +5028,6 @@ It can also have printed feet on the base with the screws doubling up to hold th
 A cover to go over the mains end of a PSU terminal strip to make it safe.
 The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
 
-
 [printed/psu_shroud.scad](printed/psu_shroud.scad) Implementation.
 
 [tests/PSU_shroud.scad](tests/PSU_shroud.scad) Code for this example.
@@ -5176,7 +5085,6 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 <a name="Ribbon_clamp"></a>
 ## Ribbon_clamp
 Clamp for ribbon cable and polypropylene strip.
-
 
 [printed/ribbon_clamp.scad](printed/ribbon_clamp.scad) Implementation.
 
@@ -5236,7 +5144,6 @@ Clamp for ribbon cable and polypropylene strip.
 ## Screw_knob
 Knob with embedded hex head screw.
 
-
 [printed/screw_knob.scad](printed/screw_knob.scad) Implementation.
 
 [tests/screw_knob.scad](tests/screw_knob.scad) Code for this example.
@@ -5274,7 +5181,6 @@ Knob with embedded hex head screw.
 <a name="Socket_box"></a>
 ## Socket_box
 UK 13A socket and printed backbox with earth terminal for the panel it is mounted on.
-
 
 [printed/socket_box.scad](printed/socket_box.scad) Implementation.
 
@@ -5326,7 +5232,6 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 ## SSR_shroud
 A cover to go over the mains end of an SSR to make it safe to be touched.
 The STL and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
-
 
 [printed/ssr_shroud.scad](printed/ssr_shroud.scad) Implementation.
 
@@ -5381,7 +5286,6 @@ The STL and assembly must be given a name and parameterless wrappers for the stl
 ## Strap_handle
 Retracting strap handle. Print the strap with flexible filament. Shown with default dimensions but can
 be fully customised by passing a list of properties.
-
 
 [printed/strap_handle.scad](printed/strap_handle.scad) Implementation.
 
@@ -5442,7 +5346,6 @@ be fully customised by passing a list of properties.
 ## Annotation
 Annotation used in this documentation
 
-
 [utils/annotation.scad](utils/annotation.scad) Implementation.
 
 [tests/annotation.scad](tests/annotation.scad) Code for this example.
@@ -5462,7 +5365,6 @@ Annotation used in this documentation
 <a name="Bezier"></a>
 ## Bezier
 Bezier curves and function to get and adjust the length or minimum z point.
-
 
 [utils/bezier.scad](utils/bezier.scad) Implementation.
 
@@ -5494,7 +5396,6 @@ length of the cable and the end point coordinates. See <https://en.wikipedia.org
 
 The coordinates of the lowest point on the curve can be retrieved by calling `catenary_points()` with `steps` equal to zero.
 
-
 [utils/catenary.scad](utils/catenary.scad) Implementation.
 
 [tests/catenary.scad](tests/catenary.scad) Code for this example.
@@ -5519,7 +5420,6 @@ The coordinates of the lowest point on the curve can be retrieved by calling `ca
 When square holes are cut with a CNC bit they get rounded corners. If it is important that
 a square cornered part fits in the hole then circles are placed in the corners making a bone shape.
 
-
 [utils/dogbones.scad](utils/dogbones.scad) Implementation.
 
 [tests/dogbones.scad](tests/dogbones.scad) Code for this example.
@@ -5541,7 +5441,6 @@ a square cornered part fits in the hole then circles are placed in the corners m
 <a name="Fillet"></a>
 ## Fillet
 Rounded fillet for adding to corners.
-
 
 [utils/fillet.scad](utils/fillet.scad) Implementation.
 
@@ -5578,7 +5477,6 @@ The origin of the rack is the left end of the pitch line and its width is below 
 
 `involute_worm_profile()` returns a tooth profile that can be passed to `thread()` to make worms.
 
-
 [utils/gears.scad](utils/gears.scad) Implementation.
 
 [tests/gears.scad](tests/gears.scad) Code for this example.
@@ -5609,7 +5507,6 @@ The origin of the rack is the left end of the pitch line and its width is below 
 ## Hanging_hole
 Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/buried-nuts-and-hanging-holes.html>
 
-
 [utils/hanging_hole.scad](utils/hanging_hole.scad) Implementation.
 
 [tests/hanging_hole.scad](tests/hanging_hole.scad) Code for this example.
@@ -5630,7 +5527,6 @@ Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/
 Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
 
 `horicylinder()` makes cylinders that fit inside a round hole. Layers that are less than 2 filaments wide and layers that need more than a 45 degree overhang are omitted.
-
 
 [utils/horiholes.scad](utils/horiholes.scad) Implementation.
 
@@ -5658,7 +5554,6 @@ Utilities for depicting the staircase slicing of horizontal holes made with [`te
 ## Layout
 Layout objects in a line with equal gaps given a vector of their widths.
 
-
 [utils/layout.scad](utils/layout.scad) Implementation.
 
 [tests/layout.scad](tests/layout.scad) Code for this example.
@@ -5682,7 +5577,6 @@ Layout objects in a line with equal gaps given a vector of their widths.
 <a name="Maths"></a>
 ## Maths
 Maths utilities for manipulating vectors and matrices.
-
 
 [utils/maths.scad](utils/maths.scad) Implementation.
 
@@ -5744,7 +5638,6 @@ Can be used to round corners. Positive offsets will round convex corners, negati
 
 If `chamfer_base` is true then the bottom edge is made suitable for 3D printing by chamfering when the angle gets shallower than 45 degrees.
 
-
 [utils/offset.scad](utils/offset.scad) Implementation.
 
 [tests/offset.scad](tests/offset.scad) Code for this example.
@@ -5763,7 +5656,6 @@ If `chamfer_base` is true then the bottom edge is made suitable for 3D printing 
 <a name="Quadrant"></a>
 ## Quadrant
 Square with one rounded corner.
-
 
 [utils/quadrant.scad](utils/quadrant.scad) Implementation.
 
@@ -5788,7 +5680,6 @@ A single radius can be specified or separate internal and external radii.
 If `chamfer_base` is `true` for `round_3D()` then the bottom edge is made suitable for 3D printing by chamfering once the
 the angle gets shallower than 45 degrees.
 
-
 [utils/round.scad](utils/round.scad) Implementation.
 
 [tests/round.scad](tests/round.scad) Code for this example.
@@ -5808,7 +5699,6 @@ the angle gets shallower than 45 degrees.
 <a name="Rounded_cylinder"></a>
 ## Rounded_cylinder
 Cylinder with a rounded end.
-
 
 [utils/rounded_cylinder.scad](utils/rounded_cylinder.scad) Implementation.
 
@@ -5831,7 +5721,6 @@ Cylinder with a rounded end.
 Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius. Radius can be negative for a concave corner.
 
 Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
-
 
 [utils/rounded_polygon.scad](utils/rounded_polygon.scad) Implementation.
 
@@ -5858,7 +5747,6 @@ Because the tangents need to be calculated to find the length these can be calcu
 ## Rounded_right_triangle
 Draw a 3D right triangle with rounded edges. Intended to be embedded in other parts. Can be optionally offset by the filleted amount.
 
-
 [utils/rounded_right_triangle.scad](utils/rounded_right_triangle.scad) Implementation.
 
 [tests/rounded_right_triangle.scad](tests/rounded_right_triangle.scad) Code for this example.
@@ -5877,7 +5765,6 @@ Draw a 3D right triangle with rounded edges. Intended to be embedded in other pa
 <a name="Sector"></a>
 ## Sector
 A sector of a circle between two angles.
-
 
 [utils/sector.scad](utils/sector.scad) Implementation.
 
@@ -5903,7 +5790,6 @@ Subsequent rotations use the minimum rotation method.
 
 The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
-
 
 [utils/sweep.scad](utils/sweep.scad) Implementation.
 
@@ -5956,7 +5842,6 @@ The same variable also affects the generation of assembly diagrams.
 
 Threads obey the $fn, $fa, $fs variables.
 
-
 [utils/thread.scad](utils/thread.scad) Implementation.
 
 [tests/thread.scad](tests/thread.scad) Code for this example.
@@ -5983,7 +5868,6 @@ Threads obey the $fn, $fa, $fs variables.
 <a name="Tube"></a>
 ## Tube
 Simple tube or ring
-
 
 [utils/tube.scad](utils/tube.scad) Implementation.
 
@@ -6013,7 +5897,6 @@ This heuristic isn't always correct, so the default can be overridden by setting
 
 The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view.
 The resulting flat BOM is shown but heirachical BOMs are also generated for real projects.
-
 
 [utils/core/bom.scad](utils/core/bom.scad) Implementation.
 
@@ -6084,7 +5967,6 @@ Construct arbirarily large box to partition 3D space and clip objects, useful fo
 
 Original version by Doug Moen on the OpenSCAD forum
 
-
 [utils/core/clip.scad](utils/core/clip.scad) Implementation.
 
 [tests/clip.scad](tests/clip.scad) Code for this example.
@@ -6104,7 +5986,6 @@ Original version by Doug Moen on the OpenSCAD forum
 <a name="Global"></a>
 ## Global
 Global constants, functions and modules. This file is used directly or indirectly in every scad file.
-
 
 [utils/core/global.scad](utils/core/global.scad) Implementation.
 
@@ -6164,7 +6045,6 @@ veiwed end on.
 
 When `twist` is set the resulting cylinder is extended by `eps` at each end so that the exact length of the hole can be used without
 leaving a scar on either surface.
-
 
 [utils/core/polyholes.scad](utils/core/polyholes.scad) Implementation.
 
@@ -6229,7 +6109,6 @@ leaving a scar on either surface.
 ## Rounded_rectangle
 Rectangle with rounded corners.
 
-
 [utils/core/rounded_rectangle.scad](utils/core/rounded_rectangle.scad) Implementation.
 
 [tests/rounded_rectangle.scad](tests/rounded_rectangle.scad) Code for this example.
@@ -6253,7 +6132,6 @@ Rectangle with rounded corners.
 Redefines `sphere()` to always have a vertex on all six half axes I.e. vertices at the poles and the equator and `$fn` a multiple of four.
 This ensures `hull` and `minkowski` results have the correct dimensions when spheres are placed at the corners.
 
-
 [utils/core/sphere.scad](utils/core/sphere.scad) Implementation.
 
 [tests/sphere.scad](tests/sphere.scad) Code for this example.
@@ -6276,7 +6154,6 @@ Small holes can get away without it, but they print better with truncated teardr
 
 Using teardrop_plus() or setting the plus option on other modules will elongate the teardrop vertically by the layer height, so when sliced the staircase tips
 do not intrude into the circle. See <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
-
 
 [utils/core/teardrops.scad](utils/core/teardrops.scad) Implementation.
 
