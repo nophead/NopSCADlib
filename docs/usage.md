@@ -122,7 +122,7 @@ Any other vitamins used need to be included explicitly. One can copy the include
 ### Project Description
 
 A description of the project can be placed in comments in Markdown format before the first include file.
-By default this is followed by the a picture of the main assembly unless the description contains any pictures.
+By default this is followed by a picture of the main assembly unless the description contains any pictures.
 
 The description can be divided into two or three sections using //! ***, which is a Markdown horizontal rule in a comment.
 If there is a second section it is placed after the table of contents and a third section will be placed after the parts list.
