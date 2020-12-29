@@ -119,6 +119,16 @@ A more optimised approach for large projects is to include [NopSCADlib/core.scad
 That only has the a small set of utilities and the global settings in [global_defs.scad](../global_defs.scad) plus screws, nuts and washers that are required by a lot of other vitamins.
 Any other vitamins used need to be included explicitly. One can copy the includes or use a line from [NopSCADlib/lib.scad](../lib.scad).
 
+### Project Description
+
+A description of the project can be placed in comments in Markdown format before the first include file.
+By default this is followed by the a picture of the main assembly unless the description contains any pictures.
+
+The description can be divided into two or three sections using //! ***, which is a Markdown horizontal rule in a comment.
+If there is a second section it is placed after the table of contents and a third section will be placed after the parts list.
+
+If an actual horizontal rule is desired the alternative Markdown markup //! --- can be used.
+
 ### Parametric parts.
 
 Modules that generate parts and assemblies need to take no parameters so that they can be called from the framework to make the STL files and assembly views, etc.

@@ -18,7 +18,7 @@
 #
 
 #
-# Run openscad
+#! Run `openscad.exe` and capture `stdout` and `stderr` in `openscad.log` as well as printing to the console.
 #
 from __future__ import print_function
 

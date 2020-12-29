@@ -60,7 +60,8 @@ They should work with both Python 2 and Python 3.
                         break
                 if not blurb:
                     print("Missing description for", file)
-                print("| `%s` | %s |" % (file, blurb), file = doc_file)
+                else:
+                    print("| `%s` | %s |" % (file, blurb), file = doc_file)
 
     with open(dir + "/readme.html", "wt") as html_file:
         do_cmd(("python -m markdown -x tables " + doc_name).split(), html_file)
