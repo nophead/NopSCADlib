@@ -2603,6 +2603,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `pulley(GT2x16_pulley)` |  Pulley GT2 16 teeth |
 |   1 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
 |   1 | `pulley(GT2x20_toothed_idler)` |  Pulley GT2 idler 20 teeth |
 |   1 | `pulley(GT2x20_plain_idler)` |  Pulley GT2 idler smooth 12mm |
@@ -2614,6 +2615,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 |   1 | `pulley(T2p5x16_pulley)` |  Pulley T2.5 16 teeth |
 |   1 | `pulley(T5x10_pulley)` |  Pulley T5 10 teeth |
 |   1 | `screw(M3_grub_screw, 3)` |  Screw M3 grub x  3mm |
+|   2 | `screw(M3_grub_screw, 4.5)` |  Screw M3 grub x  4.5mm |
 |   2 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
 |   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
 |   1 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
