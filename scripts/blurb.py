@@ -51,7 +51,7 @@ def split_blurb(lines):
     """ Split blurb on horizontal rules."""
     blurbs = [""]
     for line in lines.split('\n')[:-1]:
-        if re.match(r'\*\*\*\**',line):
+        if re.match(r'\*{3,}',line):
             blurbs.append("")
         else:
             blurbs[-1] += line + '\n'

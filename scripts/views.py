@@ -227,11 +227,7 @@ def views(target, do_assemblies = None):
             #
             # Only add the image if the first blurb section doesn't contain one.
             #
-            got_image = False
-            for line in blurbs[0].split('\n'):
-                if re.match(r'.*\!\[.*\]\(.*\).*', line):
-                    got_image = True
-            if not got_image:
+            if not re.search(r'\!\[.*\]\(.*\)', blurbs[0], re.MULTILINE):
                 print('![Main Assembly](assemblies/%s.png)\n' % flat_bom[-1]["name"].replace('_assembly', '_assembled'), file = doc_file)
             eop(print_mode, doc_file, first = True)
             #

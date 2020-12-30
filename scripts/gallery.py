@@ -52,7 +52,7 @@ def gallery(force):
             if os.path.isfile(document):
                 with open(document, 'rt') as readme:
                     for line in readme.readlines():
-                        match = re.match(r"^.*!(\[.*\]\(.*\)).*$", line)
+                        match = re.search(r"!(\[.*\]\(.*\))", line)
                         if match:
                             image = match.group(0)
                             if image.startswith('![Main Assembly](assemblies/'):
