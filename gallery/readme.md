@@ -43,9 +43,9 @@ Bench power supply built around an ATX PSU.
 * The green LED shows the power good signal.
 * Dummy loads keep the outputs in range.
 
-
-
 ![](Lab_ATX_PSU.png)
+
+
 
 
 <a name="TOP"></a>
@@ -77,9 +77,9 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 ## Mains Box
 Mains isolated and variable supply with metering.
 
-
-
 ![](Mains_Box.png)
+
+
 
 
 <a name="TOP"></a>
@@ -102,8 +102,8 @@ Was actually made from DiBond but shown made with carbon fibre here.
 ## Variac
 Motorised variac with WiFi control, see [hydraraptor.blogspot.com/2018/04/esp8266-spi-spy](https://hydraraptor.blogspot.com/2018/04/esp8266-spi-spy.html)
 
-
-
 ![](Variac.png)
+
+
 
 
