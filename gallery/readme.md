@@ -95,6 +95,8 @@ WiFi enabled remote control turntable for photography
 
 ![](Turntable.png)
 
+Was actually made from DiBond but shown made with carbon fibre here.
+
 
 <a name="TOP"></a>
 ## Variac
