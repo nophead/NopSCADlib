@@ -22,9 +22,9 @@ include <../vitamins/stepper_motors.scad>
 use <../utils/layout.scad>
 
 module stepper_motors()
-    layout([for(s = stepper_motors) NEMA_width(s)], 5) let(m = stepper_motors[$i]) {
+    layout([for(s = stepper_motors) NEMA_width(s)], 5, no_offset = true) let(m = stepper_motors[$i]) {
         rotate(180)
-            NEMA(m, 0, m == NEMA17M || m == NEMA17M8);
+            NEMA(m, 0, m == NEMA17P || m == NEMA17M || m == NEMA17M8);
 
         translate_z(4)
             NEMA_screws(m, M3_pan_screw, n = $i, earth = $i > 4 ? undef : $i - 1);
