@@ -2785,11 +2785,17 @@ Rocker switch. Also used for neon indicator in the same form factor.
 | `rocker_spades(type)` | Spade types and positions |
 | `rocker_width(type)` | Body width |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `rocker_size(type)` | Width, height, and depth in a vector |
+| `rocker_slot(type)` | Rocker slot in a vector |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | `rocker(type, colour)` | Draw the specified rocker switch |
-| `rocker_hole(type, h = 0)` | Make a hole to accept a rocker switch, by default 2D, set h for 3D |
+| `rocker_hole(type, h = 0, rounded = true)` | Make a hole to accept a rocker switch, by default 2D, set h for 3D |
 
 ![rockers](tests/png/rockers.png)
 
