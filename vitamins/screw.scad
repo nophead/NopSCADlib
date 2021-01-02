@@ -295,8 +295,10 @@ module screw_polysink(type, h = 100, alt = false) { //! A countersink hole made 
                         poly_cylinder(r = r, h = lh, center = false);
                 }
 
-            translate_z(layers * layer_height)
-                poly_cylinder(r = rmin, h = h / 2 - layers * layer_height, center = false);
+            remainder = h / 2 - layers * layer_height;
+            if(remainder > 0)
+                translate_z(layers * layer_height)
+                    poly_cylinder(r = rmin, h = remainder, center = false);
         }
 }
 
