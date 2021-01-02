@@ -351,7 +351,7 @@ modules_y = iecs_y + 60;
 ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
 batteries_y = blowers_y + 100;
-steppers_y = batteries_y + 70;
+steppers_y = batteries_y + 55;
 panel_meters_y = steppers_y + 70;
 extrusions_y = panel_meters_y + 80;
 
