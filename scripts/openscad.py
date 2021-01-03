@@ -25,7 +25,7 @@ from __future__ import print_function
 import subprocess, sys
 
 def run_list(args, silent = False, verbose = False):
-    cmd = ["openscad.exe"] + args
+    cmd = ["openscad"] + args
     if not silent:
         for arg in cmd:
             print(arg, end=" ")
