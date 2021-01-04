@@ -53,7 +53,7 @@ function rail_holes(type, length) = //! Number of holes in a rail given its `len
 module rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true) { //! Position children over screw holes
     pitch = rail_pitch(type);
     holes = rail_holes(type, length);
-    last = first + screws;
+    last = first + min(screws, both_ends ? ceil(holes / 2) : holes);
     for(i = [first : holes - 1], j = holes - 1 - i)
         if(i < last || both_ends && (j >= first && j < last))
             translate([i * pitch - length / 2 + (length - (holes - 1) * pitch) / 2, 0])
@@ -194,6 +194,6 @@ module rail_screws(type, length, thickness, screws = 100) { //! Place screws in 
             screw(end_screw, end_screw_len);
 
     translate_z(rail_screw_height(type, screw))
-        rail_hole_positions(type, length, index_screws, min(screws, rail_holes(type, length)) - 2 * index_screws)
+        rail_hole_positions(type, length, index_screws)
             screw(screw, screw_len);
 }
