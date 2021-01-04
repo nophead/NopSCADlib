@@ -181,19 +181,19 @@ module rail_assembly(type, length, pos, carriage_end_colour = grey(20), carriage
         carriage(rail_carriage(type), type,  carriage_end_colour, carriage_wiper_colour);
 }
 
-module rail_screws(type, length, thickness, screws = 100) { //! Place screws in the rail
+module rail_screws(type, length, thickness, screws = 100, index_screws = undef) { //! Place screws in the rail
     screw = rail_screw(type);
     end_screw = rail_end_screw(type);
     screw_len = screw_longer_than(rail_screw_height(type, screw) + thickness);
     end_screw_len = screw_longer_than(rail_screw_height(type, end_screw) + thickness);
 
-    index_screws = screws > 2 ? 1 : 2;
+    index_screws = is_undef(index_screws) ? screws > 2 ? 1 : 2 : index_screws;
 
     translate_z(rail_screw_height(type, end_screw))
         rail_hole_positions(type, length, 0, index_screws)
             screw(end_screw, end_screw_len);
 
     translate_z(rail_screw_height(type, screw))
-        rail_hole_positions(type, length, index_screws)
+        rail_hole_positions(type, length, index_screws, screws - index_screws)
             screw(screw, screw_len);
 }

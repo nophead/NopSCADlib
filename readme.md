@@ -2680,7 +2680,7 @@ Linear rails with carriages.
 | `rail(type, length)` | Draw the specified rail |
 | `rail_assembly(type, length, pos, carriage_end_colour = grey(20)` | Rail and carriage assembly |
 | `rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true)` | Position children over screw holes |
-| `rail_screws(type, length, thickness, screws = 100)` | Place screws in the rail |
+| `rail_screws(type, length, thickness, screws = 100, index_screws = undef)` | Place screws in the rail |
 
 ![rails](tests/png/rails.png)
 
