@@ -1687,6 +1687,13 @@ Cylindrical and ring magnets.
 
 ![magnets](tests/png/magnets.png)
 
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `magnet(MAG484)` |  Magnet 6.35mm diameter, 6.35mm high, 3.175mm bore |
+|   1 | `magnet(MAG8x4x4p2)` |  Magnet 8mm diameter, 4mm high, 4.2mm bore |
+|   1 | `magnet(MAG5x8)` |  Magnet 8mm diameter, 5mm high |
+
 
 <a href="#top">Top</a>
 
