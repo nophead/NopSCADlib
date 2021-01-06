@@ -1778,6 +1778,7 @@ Used for limit switches.
 |:--- |:--- |
 | `microswitch_lower_extent(type)` | How far legs extend downwards |
 | `microswitch_right_extent(type)` | How far legs extend right |
+| `microswitch_size(type)` | Body size |
 
 ### Modules
 | Module | Description |
