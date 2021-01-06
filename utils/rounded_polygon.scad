@@ -18,13 +18,14 @@
 //
 
 //
-//! Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius. Radius can be negative for a concave corner.
+//! Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius in clockwise order.
+//! Radius can be negative for a concave corner.
 //!
 //! Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
 //
 include <../utils/core/core.scad>
 
-function circle_tangent(p1, p2) =
+function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two circles represented as [x,y,r]
     let(
         r1 = p1[2],
         r2 = p2[2],
@@ -32,11 +33,8 @@ function circle_tangent(p1, p2) =
         dy = p2.y - p1.y,
         d = sqrt(dx * dx + dy * dy),
         theta = atan2(dy, dx) + acos((r1 - r2) / d),
-        xa = p1.x +(cos(theta) * r1),
-        ya = p1.y +(sin(theta) * r1),
-        xb = p2.x +(cos(theta) * r2),
-        yb = p2.y +(sin(theta) * r2)
-    )[ [xa, ya], [xb, yb] ];
+        v = [cos(theta), sin(theta)]
+    )[ p1 + r1 * v, p2 + r2 * v ];
 
 function rounded_polygon_tangents(points) = //! Compute the straight sections needed to draw and to compute the lengths
     let(len = len(points))

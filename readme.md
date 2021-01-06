@@ -5736,7 +5736,8 @@ Cylinder with a rounded end.
 ---
 <a name="Rounded_polygon"></a>
 ## Rounded_polygon
-Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius. Radius can be negative for a concave corner.
+Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius in clockwise order.
+Radius can be negative for a concave corner.
 
 Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
 
@@ -5747,6 +5748,7 @@ Because the tangents need to be calculated to find the length these can be calcu
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `circle_tangent(p1, p2)` | Compute the clockwise tangent between two circles represented as [x,y,r] |
 | `rounded_polygon_length(points, tangents)` | Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents` |
 | `rounded_polygon_tangents(points)` | Compute the straight sections needed to draw and to compute the lengths |
 
