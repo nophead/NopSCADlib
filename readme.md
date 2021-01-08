@@ -3776,6 +3776,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | Function | Description |
 |:--- |:--- |
 | `vero_length(type)` | Length of the board |
+| `vero_size(type)` | Board size |
 | `vero_thickness(type)` | Thickness of the substrate |
 | `vero_track_thickness(type)` | Thickness of the tracks |
 | `vero_track_width(type)` | The width of the tracks |
