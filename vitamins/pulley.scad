@@ -108,24 +108,26 @@ module pulley(type) { //! Draw a pulley
                         cylinder(r = screw_radius(pulley_screw(type)), h = 100);
     }
 
-    color("silver") {
-        render() difference() {
-            rotate_extrude() translate([r1, 0]) {
-                if(hl)
-                    square([pulley_hub_dia(type) / 2 - r1,  hl]);
+    color(silver) {
+        render_if(pulley_screw_z(type) < hl)
+            difference() {
+                rotate_extrude() translate([r1, 0]) {
+                    if(hl)
+                        square([pulley_hub_dia(type) / 2 - r1,  hl]);
 
-                for(z = [pulley_hub_length(type), hl + ft + w])
-                    translate([0, z])
-                        square([pulley_flange_dia(type) / 2 - r1, ft]);
+                    for(z = [pulley_hub_length(type), hl + ft + w])
+                        translate([0, z])
+                            square([pulley_flange_dia(type) / 2 - r1, ft]);
+                }
+                if(pulley_screw_z(type) < hl)
+                    screw_holes();
             }
-            if(pulley_screw_z(type) < hl)
-                screw_holes();
-        }
-        render() difference() { // T5 pulleys have screw through the teeth
-            core();
+        render_if(pulley_type(type)[0] == "T") // T5 pulleys have screw through the teeth
+            difference() {
+                core();
 
-            if(pulley_screw_z(type) > hl)
-                screw_holes();
+                if(pulley_screw_z(type) > hl)
+                    screw_holes();
         }
     }
 }
