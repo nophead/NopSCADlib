@@ -6183,12 +6183,12 @@ do not intrude into the circle. See <https://hydraraptor.blogspot.com/2020/07/ho
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `semi_teardrop(h, r, d = undef, center = true, chamfer = 0, plus = false)` | A semi teardrop in the positive Y domain |
-| `teardrop(h, r, center = true, truncate = true, chamfer = 0, plus = false)` | For making horizontal holes that don't need support material, set `truncate = false` to make traditional RepRap teardrops that don't even need bridging |
-| `teardrop_chamfer(h, center, chamfer)` | Helper module for adding chamfer to a teardrop |
-| `teardrop_plus(h, r, center = true, truncate = true, chamfer = 0)` | Slightly elongated teardrop to allow for the 3D printing staircase effect |
-| `tearslot(h, r, w, center = true, chamfer = 0, plus = false)` | A horizontal slot that doesn't need support material |
-| `vertical_tearslot(h, r, l, center = true, chamfer = 0, plus = false)` | A vertical slot that doesn't need support material |
+| `semi_teardrop(h, r, d = undef, center = true, chamfer = 0, chamfer_both_ends = true, plus = false)` | A semi teardrop in the positive Y domain |
+| `teardrop(h, r, center = true, truncate = true, chamfer = 0, chamfer_both_ends = true, plus = false)` | For making horizontal holes that don't need support material, set `truncate = false` to make traditional RepRap teardrops that don't even need bridging |
+| `teardrop_chamfer(h, center, chamfer, chamfer_both_ends)` | Helper module for adding chamfer to a teardrop |
+| `teardrop_plus(h, r, center = true, truncate = true, chamfer = 0, chamfer_both_ends = true)` | Slightly elongated teardrop to allow for the 3D printing staircase effect |
+| `tearslot(h, r, w, center = true, chamfer = 0, chamfer_both_ends = true, plus = false)` | A horizontal slot that doesn't need support material |
+| `vertical_tearslot(h, r, l, center = true, chamfer = 0, chamfer_both_ends = true, plus = false)` | A vertical slot that doesn't need support material |
 
 ![teardrops](tests/png/teardrops.png)
 
