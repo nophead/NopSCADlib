@@ -64,6 +64,7 @@ module pulley(type) { //! Draw a pulley
     hl = pulley_hub_length(type);
     w = pulley_width(type);
     r1 = pulley_bore(type) / 2;
+    screw_z = pulley_screw_z(type);
 
     or =  od / 2;
     ir =  pulley_ir(type);
@@ -100,35 +101,42 @@ module pulley(type) { //! Draw a pulley
                 }
     }
 
-    module screw_holes() {
-        if(pulley_screws(type))
-            translate_z(pulley_screw_z(type))
-                for(i = [0 : pulley_screws(type) - 1])
-                    rotate([-90, 0, i * -90])
-                        cylinder(r = screw_radius(pulley_screw(type)), h = 100);
-    }
+    module hub()
+        rotate_extrude() translate([r1, 0]) {
+            if(hl)
+                square([pulley_hub_dia(type) / 2 - r1,  hl]);
+
+            for(z = [pulley_hub_length(type), hl + ft + w])
+                translate([0, z])
+                    square([pulley_flange_dia(type) / 2 - r1, ft]);
+        }
+
+    module screw_holes()
+        translate_z(screw_z)
+            for(i = [0 : pulley_screws(type) - 1])
+                rotate([-90, 0, i * -90])
+                    cylinder(r = screw_radius(pulley_screw(type)), h = 100);
 
     color(silver) {
-        render_if(pulley_screw_z(type) < hl)
-            difference() {
-                rotate_extrude() translate([r1, 0]) {
-                    if(hl)
-                        square([pulley_hub_dia(type) / 2 - r1,  hl]);
+        if(screw_z && screw_z < hl)
+            render()
+                difference() {
+                    hub();
 
-                    for(z = [pulley_hub_length(type), hl + ft + w])
-                        translate([0, z])
-                            square([pulley_flange_dia(type) / 2 - r1, ft]);
+                    screw_holes();
                 }
-                if(pulley_screw_z(type) < hl)
-                    screw_holes();
-            }
-        render_if(pulley_type(type)[0] == "T") // T5 pulleys have screw through the teeth
-            difference() {
-                core();
+        else
+            hub();
 
-                if(pulley_screw_z(type) > hl)
+        if(screw_z && screw_z > hl) // T5 pulleys have screw through the teeth
+            render()
+                difference() {
+                    core();
+
                     screw_holes();
-        }
+                }
+        else
+            core();
     }
 }
 
