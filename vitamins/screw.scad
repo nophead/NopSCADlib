@@ -262,7 +262,7 @@ module screw_countersink(type, drilled = true) { //! Countersink shape
             if(drilled)
                 cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
             else
-                intersection() {
+                render() intersection() {
                     cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
 
                     cylinder(h = head_height + eps, r = head_rad + eps);
