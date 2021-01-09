@@ -91,6 +91,7 @@ module printed_pulley(type) { //! Draw a printable pulley
     w = pulley_width(type);
     r1 = pulley_bore(type) / 2;
     or = pulley_od(type) / 2;
+    screw_z = pulley_screw_z(type);
 
     module core() {
         translate_z(pulley_hub_length(type) + ft)
@@ -110,7 +111,7 @@ module printed_pulley(type) { //! Draw a printable pulley
 
     module screw_holes() {
         if (pulley_screws(type))
-            translate_z(pulley_screw_z(type))
+            translate_z(screw_z)
                 for(i = [0 : pulley_screws(type) - 1])
                     rotate([-90, 180, i * -90])
                         teardrop(r = screw_pilot_hole(pulley_screw(type)), h = pulley_flange_dia(type)/2 + 1, center=false);
@@ -119,14 +120,14 @@ module printed_pulley(type) { //! Draw a printable pulley
     // hub
     if (hl)
         translate_z(pulley_hub_dia(type) >= pulley_flange_dia(type) ? 0 : hl + w + 2 * ft)
-            render_if(pulley_screw_z(type) < hl)
+            render_if(screw_z && screw_z < hl)
                 difference() {
                     linear_extrude(hl)
                         difference() {
                             circle(r = pulley_hub_dia(type) / 2);
                             circle(r = pulley_bore(type) / 2);
                         }
-                    if (pulley_screw_z(type) < hl)
+                    if (screw_z < hl)
                         screw_holes();
                 }
     // bottom flange
@@ -153,7 +154,7 @@ module printed_pulley(type) { //! Draw a printable pulley
     }
 
     difference() { // T5 pulleys have screws through the teeth
-        render_if(pulley_type(type)[0]=="T")
+        render_if(screw_z && screw_z > hl)
             core();
         if (pulley_screw_z(type) > hl)
             translate_z(pulley_hub_dia(type) >= pulley_flange_dia(type) ? 0 : hl)
