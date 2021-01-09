@@ -144,28 +144,32 @@ module rail(type, length, colour = grey(90), use_polycircles = false) { //! Draw
     vitamin(str("rail(", type[0], ", ", length, "): Linear rail ", type[0], " x ", length, "mm"));
 
     color(colour) {
+        rbr = rail_bore(type) / 2;
+        w = corrected_radius(rbr) * 2 + 2 * eps; // width of core big enough for the holes
         linear_extrude(height - rail_bore_depth(type)) difference() {
-            square([length, width], center = true);
+            square([length, w], center = true);
+
             rail_hole_positions(type, length)
                 if (use_polycircles)
-                    poly_circle(r = rail_hole(type) / 2);
+                    poly_circle(rail_hole(type) / 2);
                 else
-                    circle(r = rail_hole(type) / 2);
+                    circle(d = rail_hole(type));
         }
         translate_z(rail_height(type) - rail_bore_depth(type))
             linear_extrude(rail_bore_depth(type)) difference() {
-                square([length, rail_bore(type) + 2 * eps], center = true);
+                square([length, w], center = true);
+
                 rail_hole_positions(type, length)
                     if (use_polycircles)
-                        poly_circle(r = rail_bore(type) / 2);
+                        poly_circle(rbr);
                     else
-                        circle(r = rail_bore(type) / 2);
+                        circle(rbr);
             }
 
         go = height - rail_groove_offset(type);
         gw = rail_groove_width(type);
         gd = gw / 2;
-        sw = (width - rail_bore(type)) / 2;
+        sw = (width - w) / 2;
         for (m = [0, 1])
             mirror([0, m, 0])
                 translate([0, -width / 2])

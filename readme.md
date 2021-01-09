@@ -2658,6 +2658,8 @@ Linear rails with carriages.
 | `rail_carriage(type)` | Carriage type |
 | `rail_end(type)` | Minimum distance screw can be from the end |
 | `rail_end_screw(type)` | Screw used for ends only (Countersink used for better location) |
+| `rail_groove_offset(type)` | Offset of centre of groove from top of rail |
+| `rail_groove_width(type)` | Groove width |
 | `rail_height(type)` | Height of rail section |
 | `rail_hole(type)` | Screw hole diameter |
 | `rail_pitch(type)` | Distance between screws |
@@ -2678,7 +2680,7 @@ Linear rails with carriages.
 |:--- |:--- |
 | `carriage(type, rail, end_colour = grey(20)` | Draw the specified carriage |
 | `carriage_hole_positions(type)` | Position children over screw holes |
-| `rail(type, length)` | Draw the specified rail |
+| `rail(type, length, colour = grey(90)` | Draw the specified rail |
 | `rail_assembly(type, length, pos, carriage_end_colour = grey(20)` | Rail and carriage assembly |
 | `rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true)` | Position children over screw holes |
 | `rail_screws(type, length, thickness, screws = 100, index_screws = undef)` | Place screws in the rail |
