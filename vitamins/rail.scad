@@ -33,6 +33,9 @@ function rail_bore_depth(type) = type[7];   //! Counter bore depth
 function rail_screw(type)      = type[8];   //! Screw type
 function rail_carriage(type)   = type[9];   //! Carriage type
 function rail_end_screw(type)  = type[10];  //! Screw used for ends only (Countersink used for better location)
+function rail_groove_offset(type)=type[11]; //! Offset of centre of groove from top of rail
+function rail_groove_width(type)=type[12];  //! Groove width
+
 function rail_screw_height(type, screw) = rail_height(type) - rail_bore_depth(type) + screw_head_depth(screw, rail_hole(type)); //! Position screw taking into account countersink into counterbored hole
 function rail_travel(type, length) = length - carriage_length(rail_carriage(type)); //! How far the carriage can travel
 
@@ -134,43 +137,41 @@ module carriage(type, rail, end_colour = grey(20), wiper_colour = grey(20)) { //
             carriage_end(type, end_w, end_h, end_l);
 }
 
-module rail(type, length) { //! Draw the specified rail
+module rail(type, length, colour = grey(90), use_polycircles = false) { //! Draw the specified rail
     width = rail_width(type);
     height = rail_height(type);
 
     vitamin(str("rail(", type[0], ", ", length, "): Linear rail ", type[0], " x ", length, "mm"));
 
-    color(grey(90)) {
+    color(colour) {
         linear_extrude(height - rail_bore_depth(type)) difference() {
             square([length, width], center = true);
             rail_hole_positions(type, length)
-                 circle(d = rail_hole(type));
+                if (use_polycircles)
+                    poly_circle(r = rail_hole(type) / 2);
+                else
+                    circle(r = rail_hole(type) / 2);
         }
-
-        translate_z(rail_height(type) - rail_bore_depth(type)) {
-            h1 = rail_bore_depth(type) > 2 ? rail_bore_depth(type) / 3 : rail_bore_depth(type) / 2;
-            h0 = rail_bore_depth(type) > 2 ? (rail_bore_depth(type) - h1) / 2 : 0;
-            h2 = rail_bore_depth(type) - h1 - h0;
-
-            linear_extrude(h0) difference() {
-                square([length, width], center = true);
+        translate_z(rail_height(type) - rail_bore_depth(type))
+            linear_extrude(rail_bore_depth(type)) difference() {
+                square([length, rail_bore(type) + 2 * eps], center = true);
                 rail_hole_positions(type, length)
-                     circle(d = rail_bore(type));
+                    if (use_polycircles)
+                        poly_circle(r = rail_bore(type) / 2);
+                    else
+                        circle(r = rail_bore(type) / 2);
             }
-            translate_z(h0)
-                linear_extrude(h1) difference() {
-                    w1 = max(width - 2, rail_bore(type));
-                    square([length, w1], center = true);
-                    rail_hole_positions(type, length)
-                        circle(d = rail_bore(type));
-                }
-            translate_z(h0 + h1)
-                linear_extrude(h2) difference() {
-                    square([length, width], center = true);
-                    rail_hole_positions(type, length)
-                        circle(d = rail_bore(type));
-                }
-        }
+
+        go = height - rail_groove_offset(type);
+        gw = rail_groove_width(type);
+        gd = gw / 2;
+        sw = (width - rail_bore(type)) / 2;
+        for (m = [0, 1])
+            mirror([0, m, 0])
+                translate([0, -width / 2])
+                    rotate([0, -90, 0])
+                        linear_extrude(length, center = true)
+                            polygon([ [0, 0], [0, sw], [height, sw], [height, 0], [go + gw/2, 0], [go, gd], [go - gw/2, 0] ]);
     }
 }
 
