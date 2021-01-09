@@ -92,25 +92,19 @@ module printed_pulley(type) { //! Draw a printable pulley
     r1 = pulley_bore(type) / 2;
     or = pulley_od(type) / 2;
 
-    function bore_clearance_radius(bore) =
-        bore == 3 ? M3_clearance_radius :
-        bore == 4 ? M4_clearance_radius :
-        bore == 5 ? M5_clearance_radius :
-        (bore + 0.3) / 2;
-
     module core() {
         translate_z(pulley_hub_length(type) + ft)
             linear_extrude(w + 1) let($fa  = 1, $fs = 0.1)
                 if ("GT2" == str(pulley_type(type)[0], pulley_type(type)[1], pulley_type(type)[2]))
                     difference() {
                         printed_pulley_GT2_teeth(type);
-                        poly_circle(bore_clearance_radius(pulley_bore(type)));
+                        circle(r = pulley_bore(type) / 2);
                     }
                 else
                     difference() {
                         circle(or);
                         printed_pulley_teeth(type);
-                        poly_circle(bore_clearance_radius(pulley_bore(type)));
+                        circle(r = pulley_bore(type) / 2);
                     }
     }
 
@@ -130,7 +124,7 @@ module printed_pulley(type) { //! Draw a printable pulley
                     linear_extrude(hl)
                         difference() {
                             circle(r = pulley_hub_dia(type) / 2);
-                            poly_circle(bore_clearance_radius(pulley_bore(type)));
+                            circle(r = pulley_bore(type) / 2);
                         }
                     if (pulley_screw_z(type) < hl)
                         screw_holes();
@@ -140,7 +134,7 @@ module printed_pulley(type) { //! Draw a printable pulley
         linear_extrude(ft)
             difference() {
                 circle(d = pulley_flange_dia(type));
-                poly_circle(bore_clearance_radius(pulley_bore(type)));
+                circle(r = pulley_bore(type) / 2);
             }
 
     // top flange
@@ -149,7 +143,7 @@ module printed_pulley(type) { //! Draw a printable pulley
         linear_extrude(ft)
             difference() {
                 circle(r = or);
-                poly_circle(bore_clearance_radius(pulley_bore(type)));
+                circle(r = pulley_bore(type) / 2);
             }
         // outer part at 45 degrees for printing
         rotate_extrude()
