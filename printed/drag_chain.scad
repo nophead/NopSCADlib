@@ -251,7 +251,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
 }
 
 // Need to use a wrapper because can't define nested modules in an assembly
-module _drag_chain_assembly(type, pos = 0) {
+module _drag_chain_assembly(type, pos = 0, render = false) {
     s = drag_chain_size(type);
     x = (1 + exploded()) * s.x;
     r = drag_chain_radius(type) * x / s.x;
@@ -278,8 +278,11 @@ module _drag_chain_assembly(type, pos = 0) {
     module link(n)                                  // Position and colour link with origin at the hinge hole
         translate([-z / 2, 0, -z / 2]) {
             stl_colour(n < 0 || n == npoints - 1 ? pp3_colour : n % 2 ? pp1_colour : pp2_colour)
-                drag_chain_link(type, start = n == -1, end = n == npoints - 1, check_kids = false)
-                    let($fasteners = 0) children();
+                render_if(render)
+                    drag_chain_link(type, start = n == -1, end = n == npoints - 1, check_kids = false)
+                        let($fasteners = 0)
+                            children();
+
             let($fasteners = 1) children();
         }
 
@@ -307,15 +310,15 @@ module _drag_chain_assembly(type, pos = 0) {
 
 //! 1. Remove the support material from the links with side cutters.
 //! 1. Clip the links together with the special ones at the ends.
-module drag_chain_assembly(type, pos = 0)  //! Drag chain assembly
+module drag_chain_assembly(type, pos = 0, render = false)  //! Drag chain assembly
     assembly(str(drag_chain_name(type), "_drag_chain"), big = true)
         if($children == 2)
-            _drag_chain_assembly(type, pos) {
+            _drag_chain_assembly(type, pos, render) {
                 children(0);
                 children(1);
             }
         else if($children == 1)
-            _drag_chain_assembly(type, pos)
+            _drag_chain_assembly(type, pos, render)
                 children(0);
         else
-            _drag_chain_assembly(type, pos);
+            _drag_chain_assembly(type, pos, render);
