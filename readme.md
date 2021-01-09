@@ -1102,17 +1102,17 @@ Needs updating as mostly obsolete versions.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `tubing(HSHRNK16)` |  Heatshrink sleeving ID 1.6mm x 15mm |
+|   2 | `tubing(HSHRNK16)` |  Heatshrink sleeving ID 1.6mm x 15mm - not shown |
 |   4 | `tubing(HSHRNK64, 60)` |  Heatshrink sleeving ID 6.4mm x 60mm |
 |   1 | `e3d_hot_end(E3Dv5, 3)` |  Hot end E3D V5 direct 3mm |
 |   1 | `e3d_hot_end(E3Dv6, 3)` |  Hot end E3D V6 direct 3mm |
 |   1 | `e3d_hot_end(E3D_clone, 3)` |  Hot end E3D clone aliexpress 3mm |
 |   1 | `jhead_hot_end(JHeadMk5, 3)` |  Hot end JHead MK5 3mm |
-|   2 | `tubing(PTFE07, 62)` |  PTFE sleeving OD 1.2mm ID 0.71mm x 62mm |
-|   2 | `tubing(PTFE20, 45)` |  PTFE sleeving OD 2.6mm ID 2mm x 45mm |
-|   1 | `resistor(RIE1212UB5C5R6)` |  Resistor UB5C 5R6F 5R6 3W vitreous enamel |
+|   2 | `tubing(PTFE07, 62)` |  PTFE sleeving OD 1.2mm ID 0.71mm x 62mm - not shown |
+|   2 | `tubing(PTFE20, 45)` |  PTFE sleeving OD 2.6mm ID 2mm x 45mm - not shown |
+|   1 | `resistor(RIE1212UB5C5R6)` |  Resistor UB5C 5R6F 5R6 3W vitreous enamel - not shown |
 |   1 |  |  Tape self amalgamating silicone 110mm x 25mm |
-|   1 | `resistor(Epcos)` |  Thermistor Epcos B57560G104F 100K 1% |
+|   1 | `resistor(Epcos)` |  Thermistor Epcos B57560G104F 100K 1% - not shown |
 |   2 |  |  Wire Red PTFE 16/0.2mm strands, length 170mm |
 |   4 | `ziptie(small_ziptie, 8)` |  Ziptie 2.5mm x 100mm min length |
 
