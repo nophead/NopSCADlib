@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,15 +16,30 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+
 include <../core.scad>
+include <../vitamins/pulleys.scad>
+include <../printed/printed_pulleys.scad>
 use <../utils/layout.scad>
 
-include <../vitamins/pulleys.scad>
 
-module pulleys()
-    layout([for(p = pulleys) pulley_flange_dia(p)])
+module printed_pulley_test(show_metal = false) {
+    layout([for (p = pulleys) pulley_flange_dia(p)]) let(p = pulleys[$i]) {
         rotate(-145)
-            pulley_assembly(pulleys[$i]);
+            if($preview)
+                printed_pulley_assembly(p);
+            else
+                printed_pulley(p);
+
+        if(show_metal)
+            not_on_bom()
+                translate([0, 20])
+                    rotate(-145)
+                        pulley_assembly(p);
+    }
+}
 
 if($preview)
-    pulleys();
+    printed_pulley_test(true);
+else
+    printed_pulley_test();
