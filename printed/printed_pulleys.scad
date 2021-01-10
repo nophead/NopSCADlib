@@ -116,7 +116,10 @@ module printed_pulley(type) { //! Draw a printable pulley
             translate_z(screw_z)
                 for(i = [0 : pulley_screws(type) - 1])
                     rotate([-90, 180, i * -90])
-                        teardrop(r = screw_pilot_hole(pulley_screw(type)), h = pulley_flange_dia(type) / 2 + 1, center = false);
+                        if(show_supports())
+                            teardrop(r = screw_pilot_hole(pulley_screw(type)), h = pulley_flange_dia(type) / 2 + 1, center = false);
+                        else
+                            cylinder(r = screw_radius(pulley_screw(type)), h = pulley_flange_dia(type) / 2 + 1);
     }
 
     module hub()
@@ -131,11 +134,12 @@ module printed_pulley(type) { //! Draw a printable pulley
         if(hl)
             translate_z(printed_pulley_inverted(type) ? hl + w + 2 * ft : 0)
                 if(screw_z && screw_z < hl)
-                    render() difference() {
-                        hub();
+                    render()
+                        difference() {
+                            hub();
 
-                        screw_holes();
-                    }
+                            screw_holes();
+                        }
                 else
                     hub();
 
@@ -157,7 +161,7 @@ module printed_pulley(type) { //! Draw a printable pulley
                 }
             // outer part at 45 degrees for printing
             rotate_extrude()
-                translate([or -eps , ft])
+                translate([or - eps, ft])
                     vflip()
                         right_triangle(ft, ft);
         }
@@ -167,9 +171,9 @@ module printed_pulley(type) { //! Draw a printable pulley
                 difference() { // T5 pulleys have screws through the teeth
                     core();
 
-                    translate_z(printed_pulley_inverted(type) ? hl : 0)
+                    translate_z(printed_pulley_inverted(type) ? pulley_height(type) + hl - 2 * screw_z : 0)
                         screw_holes();
-            }
+                }
             else
                 core();
     }
@@ -186,7 +190,7 @@ assembly(str("printed_pulley_", type[0])) {
             else
                 printed_pulley(type);
 
-        if (pulley_screws(type))
+        if(pulley_screws(type))
             translate_z(pulley_screw_z(type))
                 for(i = [0 : pulley_screws(type) - 1])
                     rotate([-90, 0, i * -90])
