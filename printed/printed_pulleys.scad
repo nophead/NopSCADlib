@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,17 +16,17 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-//
-// Printed pulleys are a remix of droftarts's (see <https://www.thingiverse.com/droftarts/designs>) Parametric Pulleys
-// on Thingiverse (see <https://www.thingiverse.com/thing:16627>) and are licensed under the
-// Creative Commons - Attribution - Share Alike license (see <https://creativecommons.org/licenses/by-sa/3.0/>)
-//
+//! Printed pulleys are a remix of droftarts's (see <https://www.thingiverse.com/droftarts/designs>) Parametric Pulleys
+//! on Thingiverse (see <https://www.thingiverse.com/thing:16627>) and are licensed under the
+//! Creative Commons - Attribution - Share Alike license (see <https://creativecommons.org/licenses/by-sa/3.0/>)
 //
 
 include <NopSCADlib/core.scad>
 include <NopSCADlib/vitamins/pulleys.scad>
 
 printed_pulley_GT2_profile = [[0.747183,-0.5],[0.747183,0],[0.647876,0.037218],[0.598311,0.130528],[0.578556,0.238423],[0.547158,0.343077],[0.504649,0.443762],[0.451556,0.53975],[0.358229,0.636924],[0.2484,0.707276],[0.127259,0.750044],[0,0.76447],[-0.127259,0.750044],[-0.2484,0.707276],[-0.358229,0.636924],[-0.451556,0.53975],[-0.504797,0.443762],[-0.547291,0.343077],[-0.578605,0.238423],[-0.598311,0.130528],[-0.648009,0.037218],[-0.747183,0],[-0.747183,-0.5]];
+
+function printed_pulley_inverted(type) = pulley_hub_dia(type) < pulley_flange_dia(type); //! Need to print upside down to prevent overhang
 
 function printed_pulley_od(tooth_count, tooth_pitch, pitch_line_offset)
     = tooth_count * tooth_pitch / PI - 2 * pitch_line_offset;
@@ -93,79 +93,98 @@ module printed_pulley(type) { //! Draw a printable pulley
     or = pulley_od(type) / 2;
     screw_z = pulley_screw_z(type);
 
+    stl(str("printed_pulley_", type[0]));
+
     module core() {
         translate_z(pulley_hub_length(type) + ft)
             linear_extrude(w + 1) let($fa  = 1, $fs = 0.1)
                 if ("GT2" == str(pulley_type(type)[0], pulley_type(type)[1], pulley_type(type)[2]))
                     difference() {
                         printed_pulley_GT2_teeth(type);
-                        circle(r = pulley_bore(type) / 2);
+                        circle(d = pulley_bore(type));
                     }
                 else
                     difference() {
                         circle(or);
                         printed_pulley_teeth(type);
-                        circle(r = pulley_bore(type) / 2);
+                        circle(d = pulley_bore(type));
                     }
     }
 
     module screw_holes() {
-        if (pulley_screws(type))
+        if(pulley_screws(type))
             translate_z(screw_z)
                 for(i = [0 : pulley_screws(type) - 1])
                     rotate([-90, 180, i * -90])
-                        teardrop(r = screw_pilot_hole(pulley_screw(type)), h = pulley_flange_dia(type)/2 + 1, center=false);
+                        teardrop(r = screw_pilot_hole(pulley_screw(type)), h = pulley_flange_dia(type) / 2 + 1, center = false);
     }
 
-    // hub
-    if (hl)
-        translate_z(pulley_hub_dia(type) >= pulley_flange_dia(type) ? 0 : hl + w + 2 * ft)
-            render_if(screw_z && screw_z < hl)
-                difference() {
-                    linear_extrude(hl)
-                        difference() {
-                            circle(r = pulley_hub_dia(type) / 2);
-                            circle(r = pulley_bore(type) / 2);
-                        }
-                    if (screw_z < hl)
+    module hub()
+        linear_extrude(hl)
+            difference() {
+                circle(d= pulley_hub_dia(type));
+                circle(d = pulley_bore(type));
+            }
+
+    translate_z(printed_pulley_inverted(type) ? - hl : 0) {
+        // hub
+        if(hl)
+            translate_z(printed_pulley_inverted(type) ? hl + w + 2 * ft : 0)
+                if(screw_z && screw_z < hl)
+                    render() difference() {
+                        hub();
+
                         screw_holes();
+                    }
+                else
+                    hub();
+
+        // bottom flange
+        translate_z(hl)
+            linear_extrude(ft)
+                difference() {
+                    circle(d = pulley_flange_dia(type));
+                    circle(d = pulley_bore(type));
                 }
-    // bottom flange
-    translate_z(hl)
-        linear_extrude(ft)
-            difference() {
-                circle(d = pulley_flange_dia(type));
-                circle(r = pulley_bore(type) / 2);
-            }
 
-    // top flange
-    translate_z(hl + ft + w) {
-        // inner part, supported by core
-        linear_extrude(ft)
-            difference() {
-                circle(r = or);
-                circle(r = pulley_bore(type) / 2);
-            }
-        // outer part at 45 degrees for printing
-        rotate_extrude()
-            translate([or -eps , ft])
-                vflip()
-                    right_triangle(ft, ft);
-    }
+        // top flange
+        translate_z(hl + ft + w) {
+            // inner part, supported by core
+            linear_extrude(ft)
+                difference() {
+                    circle(r = or);
+                    circle(d = pulley_bore(type));
+                }
+            // outer part at 45 degrees for printing
+            rotate_extrude()
+                translate([or -eps , ft])
+                    vflip()
+                        right_triangle(ft, ft);
+        }
 
-    difference() { // T5 pulleys have screws through the teeth
-        render_if(screw_z && screw_z > hl)
-            core();
-        if (pulley_screw_z(type) > hl)
-            translate_z(pulley_hub_dia(type) >= pulley_flange_dia(type) ? 0 : hl)
-                screw_holes();
+        if(screw_z && screw_z > hl)
+            render()
+                difference() { // T5 pulleys have screws through the teeth
+                    core();
+
+                    translate_z(printed_pulley_inverted(type) ? hl : 0)
+                        screw_holes();
+            }
+            else
+                core();
     }
 }
 
-module printed_pulley_assembly(type, colour) { //! Draw a printed pulley with its grub screws in place
+module printed_pulley_assembly(type, colour = pp1_colour) //! Draw a printed pulley with its grub screws in place
+assembly(str("printed_pulley_", type[0])) {
     translate_z(pulley_offset(type)) {
-        color(colour)
-            printed_pulley(type);
+        stl_colour(colour)
+            if(printed_pulley_inverted(type))
+                translate_z(pulley_height(type))
+                    hflip()
+                        printed_pulley(type);
+            else
+                printed_pulley(type);
 
         if (pulley_screws(type))
             translate_z(pulley_screw_z(type))

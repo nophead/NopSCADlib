@@ -37,12 +37,12 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_right_triangle">Rounded_right_triangle</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 <tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
@@ -5039,6 +5039,73 @@ It can also have printed feet on the base with the screws doubling up to hold th
 | ---:|:--- |
 |   1 | box1_assembly |
 |   1 | box2_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Printed_pulleys"></a>
+## Printed_pulleys
+Printed pulleys are a remix of droftarts's (see <https://www.thingiverse.com/droftarts/designs>) Parametric Pulleys
+on Thingiverse (see <https://www.thingiverse.com/thing:16627>) and are licensed under the
+Creative Commons - Attribution - Share Alike license (see <https://creativecommons.org/licenses/by-sa/3.0/>)
+
+[printed/printed_pulleys.scad](printed/printed_pulleys.scad) Implementation.
+
+[tests/printed_pulleys.scad](tests/printed_pulleys.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `printed_pulley_inverted(type)` | Need to print upside down to prevent overhang |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `printed_pulley(type)` | Draw a printable pulley |
+| `printed_pulley_assembly(type, colour = pp1_colour)` | Draw a printed pulley with its grub screws in place |
+| `printed_pulley_teeth(type)` | Draw the pulley's teeth |
+
+![printed_pulleys](tests/png/printed_pulleys.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `screw(M3_grub_screw, 3)` |  Screw M3 grub x  3mm |
+|   2 | `screw(M3_grub_screw, 4.5)` |  Screw M3 grub x  4.5mm |
+|   2 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
+|   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+|   1 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | printed_pulley_GT2x12_pulley.stl |
+|   1 | printed_pulley_GT2x16_plain_idler.stl |
+|   1 | printed_pulley_GT2x16_pulley.stl |
+|   1 | printed_pulley_GT2x16_toothed_idler.stl |
+|   1 | printed_pulley_GT2x16x7_plain_idler.stl |
+|   1 | printed_pulley_GT2x20_plain_idler.stl |
+|   1 | printed_pulley_GT2x20_toothed_idler.stl |
+|   1 | printed_pulley_GT2x20ob_pulley.stl |
+|   1 | printed_pulley_GT2x20um_pulley.stl |
+|   1 | printed_pulley_T2p5x16_pulley.stl |
+|   1 | printed_pulley_T5x10_pulley.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | printed_pulley_GT2x12_pulley_assembly |
+|   1 | printed_pulley_GT2x16_plain_idler_assembly |
+|   1 | printed_pulley_GT2x16_pulley_assembly |
+|   1 | printed_pulley_GT2x16_toothed_idler_assembly |
+|   1 | printed_pulley_GT2x16x7_plain_idler_assembly |
+|   1 | printed_pulley_GT2x20_plain_idler_assembly |
+|   1 | printed_pulley_GT2x20_toothed_idler_assembly |
+|   1 | printed_pulley_GT2x20ob_pulley_assembly |
+|   1 | printed_pulley_GT2x20um_pulley_assembly |
+|   1 | printed_pulley_T2p5x16_pulley_assembly |
+|   1 | printed_pulley_T5x10_pulley_assembly |
 
 
 <a href="#top">Top</a>

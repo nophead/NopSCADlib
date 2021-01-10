@@ -23,15 +23,23 @@ include <../printed/printed_pulleys.scad>
 use <../utils/layout.scad>
 
 
-module PrintedPulley_test() {
-    layout([for (p = pulleys) pulley_flange_dia(p)]) {
-        rotate(-135)
-            printed_pulley_assembly(pulleys[$i]);
-        translate([0, 20, 0])
-            rotate(45)
-                pulley_assembly(pulleys[$i]);
+module printed_pulley_test(show_metal = false) {
+    layout([for (p = pulleys) pulley_flange_dia(p)]) let(p = pulleys[$i]) {
+        rotate(-145)
+            if($preview)
+                printed_pulley_assembly(p);
+            else
+                printed_pulley(p);
+
+        if(show_metal)
+            not_on_bom()
+                translate([0, 20])
+                    rotate(-145)
+                        pulley_assembly(p);
     }
 }
 
-if ($preview)
-    PrintedPulley_test();
+if($preview)
+    printed_pulley_test(true);
+else
+    printed_pulley_test();
