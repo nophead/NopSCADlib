@@ -440,7 +440,7 @@ ESP_01 = [
     [] // accessories
 ];
 
-pcbs = [MP1584EN, TP4056, MT3608, RAMPSEndstop, ESP_01, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
+pcbs = [MP1584EN, TP4056, ESP_01, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
 
 perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
