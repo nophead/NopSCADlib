@@ -73,39 +73,54 @@ SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD
         [[0, -34.5], [12, -31.5]],
         ];
 
+
+/* Dimensions taken from:
+https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0/blob/master/Hardware/TFT35%20V3.0-SIZE-TOP.pdf
+and
+https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0/blob/master/Hardware/TFT35%20V3.0-SIZE-BOT.pdf
+*/
+
 BigTreeTech_TFT35v3_0_PCB = ["", "",
-    110, 55.77, 1.6, 0, 3, 0, "green",  false,
-    [ [-3.12, 3.17], [-3.12, -3.17], [3.12, -3.17], [3.12, 3.17] ],
-    [
-        [  10, 7.5,    0, "-button_6mm" ],
-        [   9,  43,    0, "-buzzer", 5, 9 ],
-        [   9,  27,    0, "-potentiometer" ],
-        [ 102,28.82,   0, "uSD", [26.5, 16, 3] ],
-        [16.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
-        [36.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
-        [56.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
-        [82.5,   4,    0, "jst_xh", 5 ],
-        [26.5, 52.8, 180, "jst_xh", 2 ],
-        [39.5, 52.8, 180, "jst_xh", 3 ],
-        [52.5, 52.8, 180, "jst_xh", 3 ],
-        [65.5, 52.8, 180, "jst_xh", 3 ],
-        [78.5, 52.8, 180, "jst_xh", 3 ],
-        [94.5, 52.8, 180, "jst_xh", 5 ],
-        [   8,  43,  180, "usb_A" ],
-        [  97,   4,    0, "chip", 9, 3.5, 1, grey(20) ],
-        // ESP-8266
-        [  23,  28,   90, "2p54socket", 4, 2 ],
+    110, 55.77, 1.6, // size
+     0, // corner radius
+     3, // mounting hole diameter
+     0, // pad around mounting hole
+    "green", // color
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+         [-3.12, 3.17], [-3.12, -3.17], [3.12, -3.17], [3.12, 3.17]
     ],
-    []
+    [ // components
+        [                 9, -( 8.46 + 17.45)/2,    0, "-buzzer", 5, 9 ],
+        [                 9, -(23.76 + 34.94)/2,    0, "-potentiometer" ],
+        [  (6.84 + 12.85)/2, -(45.73 + 51.73)/2,    0, "-button_6mm" ],
+        [               102,  (15.57 + 42.07)/2,    0, "uSD", [26.5, 16, 3] ],
+        [                 8, -( 6.76 + 18.76)/2,  180, "usb_A" ],
+        [                23,  (23.32 + 33.64)/2,   90, "2p54socket", 4, 2 ], // ESP-8266
+
+        [ 16.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
+        [ 36.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
+        [ 56.5, 5.9,    0, "2p54boxhdr", 5, 2 ],
+        [ 82.5,   4,    0, "jst_xh", 5 ],
+        [ 26.5, 52.8, 180, "jst_xh", 2 ],
+        [ 39.5, 52.8, 180, "jst_xh", 3 ],
+        [ 52.5, 52.8, 180, "jst_xh", 3 ],
+        [ 65.5, 52.8, 180, "jst_xh", 3 ],
+        [ 78.5, 52.8, 180, "jst_xh", 3 ],
+        [ 94.5, 52.8, 180, "jst_xh", 5 ],
+        [ 97,    4,     0, "chip", 9, 3.5, 1, grey(20) ],
+    ],
+    [] // accessories
 ];
 
 BigTreeTech_TFT35v3_0 = ["BigTreeTech_TFT35v3_0", "BigTreeTech TFT35 v3.0",
-    84.5, 54.5, 4, BigTreeTech_TFT35v3_0_PCB,
-    [-6, 0, 0],                         // pcb offset
+    84.5, 54.5, 4,                      // size
+    BigTreeTech_TFT35v3_0_PCB,          // pcb
+    [7 - (110 - 84.5)/2, 0, 0],         // pcb offset from center
     [[-40, -26.5], [41.5, 26.5, 0.5]],  // aperture
-    [],                                 // touch screen
-    0,                                  // thread length
-    [],                                 // clearance need for the ts ribbon
+    [],                                 // touch screen position and size
+    0,                                  // length that studs protrude from the PCB holes
+    [],                                 // keep out region for ribbon cable
 ];
 
 
