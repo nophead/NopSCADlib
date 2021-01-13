@@ -1048,10 +1048,12 @@ Parametric green terminal blocks
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `green_terminal(gt_6p35, 2)` |  Terminal block 2 way 0.25" |
-|   1 | `green_terminal(gt_5p08, 3)` |  Terminal block 3 way 0.2" |
-|   1 | `green_terminal(gt_3p5, 4)` |  Terminal block 4 way 3.5mm |
-|   1 | `green_terminal(gt_2p54, 5)` |  Terminal block 5 way 0.1" |
+|   1 | `green_terminal(gt_5x17, 2)` |  Terminal block 2 way 5mm |
+|   1 | `green_terminal(gt_5x11, 3)` |  Terminal block 3 way 5mm |
+|   1 | `green_terminal(gt_6p35, 4)` |  Terminal block 4 way 0.25" |
+|   1 | `green_terminal(gt_5p08, 5)` |  Terminal block 5 way 0.2" |
+|   1 | `green_terminal(gt_3p5, 6)` |  Terminal block 6 way 3.5mm |
+|   1 | `green_terminal(gt_2p54, 7)` |  Terminal block 7 way 0.1" |
 
 
 <a href="#top">Top</a>
