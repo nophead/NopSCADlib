@@ -414,8 +414,32 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     ],
     []];
 
+ESP8266 = [
+    "ESP8266", "ESP2866",
+    14.6, 24.8, 1, // size
+    0, // corner radius
+    0, // mounting hole diameter
+    0, // pad around mounting hole
+    grey(25), // color
+    false, // true if parts should be separate BOM items
+    [], // hole positions
+    [ // components
+        [  7.25,  -2.8,  0, "-2p54header", 4, 2 ],
+        [  3.3,  14.55, 0, "chip",  5.25, 5.25, 2.25, grey(15) ],
+        [  9.4,  14,    0, "chip",  4.75, 4.5,  1.1,  grey(15) ],
+        // antenna
+        for (x = [ 7.15 : 2.3 : 11.9 ]) [ x,  0.7,   0, "block", 1.75,  0.7,  0.1,  gold ],
+        for (x = [ 5.95 : 2.3 : 10.6 ]) [ x,  4.3,   0, "block", 1.75,  0.7,  0.1,  gold ],
+        for (x = [ 5.4  : 2.3 : 10.1 ]) [ x,  2.5,   0, "block", 0.7,   4.3,  0.1,  gold ],
+        for (x = [ 6.5  : 2.3 : 11.2 ]) [ x,  2.5,   0, "block", 0.7,   4.3,  0.1,  gold ],
+        [  3.75, 0.7,   0, "block", 3.75, 0.7,  0.1,  gold ],
+        [  8.8,  6.6,   0, "block", 7.5,  0.7,  0.1,  gold ],
+        [ 12.3,  4.8,   0, "block", 0.7,  8.8,  0.1,  gold ],
+    ],
+    [] // accessories
+];
 
-pcbs = [MP1584EN, TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
+pcbs = [MP1584EN, TP4056, MT3608, RAMPSEndstop, ESP8266, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
 
 perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
