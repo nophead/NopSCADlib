@@ -77,14 +77,7 @@ SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD
 /* Dimensions taken from:
 https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0/blob/master/Hardware/TFT35%20V3.0-SIZE-TOP.pdf
 and
-https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0/blob/master/Hardware/TFT35%20V3.0-SIZE-BOT.pdf    110, 55.77, 1.6, 0, 3, 0, "green",  false,
-BigTreeTech_TFT35v3_0_PCB = ["", "",
-    [ [-3.12, 3.17], [-3.12, -3.17], [3.12, -3.17], [3.12, 3.17] ],
-    [
-        [   9, ( 8.46 + 17.45)/2,    0, "-buzzer", 5, 9 ],
-        [   9,  27,    0, "-potentiometer" ],
-        [ 7.5, ( 8.46 + 17.45)/2,    0, "-button_6mm" ],
-        [ 102,28.82,   0, "uSD", [26.5, 16, 3] ],
+https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0/blob/master/Hardware/TFT35%20V3.0-SIZE-BOT.pdf
 */
 
 BigTreeTech_TFT35v3_0_PCB = ["", "",
