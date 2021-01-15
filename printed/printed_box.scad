@@ -65,10 +65,8 @@ function pbox_insert(type) = screw_insert(pbox_screw(type)); //! The insert for 
 function pbox_washer(type) = screw_washer(pbox_screw(type)); //! The washer for the base screws
 
 function pbox_screw_length(type, panel_thickness = 0) =  //! Length of the base screw
-    let(foot = pbox_foot(type))
-        screw_shorter_than(pbox_base(type) + washer_thickness(pbox_washer(type))
-                            + insert_length(pbox_insert(type))
-                            + (foot ? foot_thickness(foot) : panel_thickness));
+    let(foot = pbox_foot(type), screw = pbox_screw(type))
+        screw_length(screw, pbox_base(type) + (foot ? foot_thickness(foot) : panel_thickness), 1, true);
 
 function pbox_mid_offset(type) = pbox_ridges(type).y + pbox_wall(type) / 2; // Offset to wall midpoint
 

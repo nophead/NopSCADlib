@@ -151,10 +151,8 @@ function fan_screw_depth(type, full_depth = false) = fan_boss_d(type) || full_de
 
 function fan_screw_length(type, thickness, full_depth = false) =
     let(depth = fan_screw_depth(type, full_depth),
-        washers = depth == fan_depth(type) ? 2 : 1,
-        washer = screw_washer(fan_screw(type)),
-        nut = screw_nut(fan_screw(type)))
-            screw_longer_than(thickness + depth + washer_thickness(washer) * washers + nut_thickness(nut, true)); //! Screw length required
+        washers = depth == fan_depth(type) ? 2 : 1)
+            screw_length(fan_screw(type), thickness + depth, washers, nyloc = true); //! Screw length required
 
 module fan_assembly(type, thickness, include_fan = true, screw = false, full_depth = false) { //! Fan with its fasteners
     translate_z(-fan_depth(type) / 2) {

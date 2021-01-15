@@ -30,7 +30,6 @@ sheet = PMMA3;
 height = 10;
 
 insert = screw_insert(screw);
-washer = screw_washer(screw);
 
 module widget(thickness) {
     vitamin(str("widget(", thickness, "): Rivit like thing for ", thickness, "mm sheets"));
@@ -92,7 +91,7 @@ assembly("wigdit") {
 
     translate_z(height) {
         translate_z(sheet_thickness(sheet))
-            screw_and_washer(screw, screw_longer_than(sheet_thickness(sheet) + 2 * washer_thickness(washer) + 3), true);
+            screw_and_washer(screw, screw_length(screw, sheet_thickness(sheet) + 3, 2, longer = true), true);
 
         explode(5)
             translate_z(sheet_thickness(sheet) / 2 + eps)

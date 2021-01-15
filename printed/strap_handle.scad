@@ -172,11 +172,9 @@ assembly("strap_end") {
 
 module strap_assembly(length, type = strap) { //! Assembly with screws in place
     screw = strap_screw(type);
-    washer = screw_washer(screw);
-    penny = penny_washer(washer);
-    insert = strap_insert(type);
+    penny = penny_washer(screw_washer(screw));
 
-    screw_length = screw_shorter_than(washer_thickness(washer) + washer_thickness(penny) + insert_length(insert) + panel_clearance + counterbore);
+    screw_length = screw_length(screw, washer_thickness(penny) + panel_clearance + counterbore, 1, true);
 
     stl_colour(pp4_colour) strap(length, type);
 

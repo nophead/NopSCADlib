@@ -122,9 +122,7 @@ assembly(str("fixing_block_M", 20 * screw_radius(screw))) {
 
 module fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef, show_block = true, star_washers = true) { //! Assembly with fasteners in place
     module fb_screw(screw, thickness) {
-        washer = screw_washer(screw);
-        insert = screw_insert(screw);
-        screw_length = screw_longer_than((star_washers ? 2 : 1) * washer_thickness(washer) + thickness + insert_length(insert));
+        screw_length = screw_length(screw, thickness, star_washers ? 2 : 1, true, longer = true);
 
         if(thickness)
             translate_z(thickness)

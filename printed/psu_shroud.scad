@@ -156,8 +156,7 @@ assembly(str("PSU_shroud_", name)) {
 
 module psu_shroud_fastened_assembly(type, cable_d, thickness, name, cables = 1) //! Assembly with screws in place
 {
-    washer = screw_washer(screw);
-    screw_length = screw_shorter_than(2 * washer_thickness(washer) + thickness + insert_length(insert) + counter_bore);
+    screw_length = screw_length(screw,thickness + counter_bore, 2, true);
 
     psu_shroud_assembly(type, cable_d, name, cables);
 

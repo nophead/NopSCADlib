@@ -101,8 +101,7 @@ module ribbon_clamp_fastened_assembly(ways, thickness, screw = screw) { //! Clam
 
     vitamin(str(": Tape self amalgamating silicone ",tape_l," x 25mm"));
 
-    washer = screw_washer(screw);
-    screw_length = screw_shorter_than(2 * washer_thickness(washer) + thickness + ribbon_clamp_screw_depth(screw));
+    screw_length = screw_length(screw, thickness + ribbon_clamp_screw_depth(screw), 2);
 
     ribbon_clamp_assembly(ways, screw);
 

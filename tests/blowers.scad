@@ -24,16 +24,13 @@ include <../vitamins/blowers.scad>
 module blowers()
     layout([for(b = blowers) blower_width(b)], 10, true) let(b = blowers[$i]){
         screw = blower_screw(b);
-        washer = screw_washer(screw);
         h = blower_lug(b);
 
         blower(b);
 
         blower_hole_positions(b)
             translate_z(h)
-                screw_and_washer(screw, screw_longer_than(h + washer_thickness(washer) + 5));
-
-
+                screw_and_washer(screw, screw_length(screw, h + 5, 1, longer = true));
     }
 
 if($preview)

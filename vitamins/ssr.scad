@@ -71,15 +71,13 @@ use <nut.scad>
 use <washer.scad>
 
 module ssr_assembly(type, screw, thickness) { //! Assembly with fasteners in place
-    nut = screw_nut(screw);
-    washer = screw_washer(screw);
-    screw_length = screw_longer_than(2 * washer_thickness(washer) + thickness + ssr_base_t(type) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, thickness + ssr_base_t(type), 2, nyloc = true);
 
     ssr(type);
 
     ssr_hole_positions(type) {
         translate_z(ssr_base_t(type))
-            nut_and_washer(nut, true);
+            nut_and_washer(screw_nut(screw), true);
 
         translate_z(-thickness)
             vflip()

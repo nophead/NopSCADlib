@@ -103,10 +103,9 @@ module pcb_mount_assembly(pcb, thickness, height = 5) { //! A PCB mount assembly
 
     stl_colour(pp1_colour) pcb_mount(pcb, washers = false);
 
-    washer = screw_washer(screw);
     nut = screw_nut(screw);
     t = pcb_thickness(pcb);
-    screw_length = screw_longer_than(height + t + washer_thickness + thickness + washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height + t + washer_thickness + thickness, 1, nyloc = true);
 
     pcb_mount_screw_positions(pcb) {
         translate_z(height + t) {

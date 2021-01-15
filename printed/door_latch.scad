@@ -61,7 +61,7 @@ module door_latch_assembly(sheet_thickness = 3) { //! The assembly for a specifi
     washer = screw_washer(screw);
     nut = screw_nut(screw);
 
-    screw_length = screw_longer_than(height - nut_trap_depth + sheet_thickness + 2 * washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height - nut_trap_depth + sheet_thickness, 2, nyloc = true);
 
     translate([0, -height - washer_thickness(washer)])
         rotate([-90, 0, 0]) {

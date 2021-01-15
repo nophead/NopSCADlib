@@ -48,7 +48,7 @@ function screw_head_depth(type, d = 0) =             //! How far a counter sink 
         ? 0
         : let(r = screw_radius(type)) screw_head_radius(type) - max(r, d / 2) + r / 5;
 
-function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length longer or equal to x
+function screw_longer_than(x) = x <=  5 ?  5 : //! Returns the length of the shortest screw length longer or equal to x
                                 x <=  6 ?  6 :
                                 x <=  8 ?  8 :
                                 x <= 10 ? 10 :
@@ -56,13 +56,21 @@ function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length
                                 x <= 16 ? 16 :
                                 ceil(x / 5) * 5;
 
-function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns longest screw length shorter than or equal to x
+function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns the length of the longest screw shorter than or equal to x
                                  x >= 16 ? 16 :
                                  x >= 12 ? 12 :
                                  x >= 10 ? 10 :
                                  x >=  8 ?  8 :
                                  x >=  6 ?  6 :
                                  5;
+
+function screw_length(screw, thickness, washers, insert = false, nyloc = false, nut = false, longer = false) = //! Returns the length of the longest or shortest screw that will got through `thickness` and `washers` and possibly an `insert`, `nut` or `nyloc`
+    let(washer = washers ? washers * washer_thickness(screw_washer(screw)) : 0,
+        insert = insert ? insert_length(screw_insert(screw)) : 0,
+        nut = nut || nyloc ? nut_thickness(screw_nut(screw), nyloc)  : 0,
+        total = thickness + washer + insert + nut
+       )
+        longer || nut || nyloc ? screw_longer_than(total) : screw_shorter_than(total);
 
 function screw_smaller_than(d) = d >= 2.5 && d < 3 ? 2.5 : floor(d); // Largest diameter screw less than or equal to specified diameter
 

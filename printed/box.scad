@@ -75,9 +75,9 @@ function box_corner_overlap(type) = box_wall(type);
 function box_corner_rad(type) = box_sheet_slot(type) - sheet_slot_clearance / 2 + box_corner_gap(type) + box_corner_overlap(type);
 function box_sheet_r(type) = box_corner_rad(type) - box_sheet_slot(type) - box_corner_overlap(type);
 
-function box_screw_length(type, top) = screw_longer_than(2 * washer_thickness(box_washer(type))
-                                                    + sheet_thickness(top ? box_top_sheet(type) : box_base_sheet(type))
-                                                    + box_corner_gap(type) + box_profile_overlap(type) + box_insert_l(type) - 1);
+function box_screw_length(type, top) =
+    let(s = top ? box_top_sheet(type) : box_base_sheet(type))
+        screw_length(box_screw(type), sheet_thickness(s) + box_corner_gap(type) + box_profile_overlap(type) - 1, washers = 2, insert = true, longer = true);
 
 function box_wall_clearance(type) = box_sheet_slot(type) / 2 - sheet_thickness(box_sheets(type)) / 2;
 function box_margin(type) = box_profile_overlap(type) + box_corner_gap(type); //! How much the bezel intrudes on the specified height

@@ -105,8 +105,7 @@ module socket_box_MKLOGIC_assembly() socket_box_assembly(MKLOGIC);
 
 module socket_box_fastened_assembly(type, thickness) { //! The socket and backbox on each side of the specified panel thickness
     screw = mains_socket_screw(type);
-    insert = screw_insert(screw);
-    screw_length = screw_longer_than(mains_socket_height(type) + thickness + insert_length(insert));
+    screw_length = screw_length(screw, mains_socket_height(type) + thickness, 0, true, longer = true);
 
     explode(-50)
         translate_z(-height - thickness)

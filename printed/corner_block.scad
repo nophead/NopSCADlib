@@ -133,12 +133,10 @@ assembly(str("corner_block_M", 20 * screw_radius(screw))) {
 module fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true) { //! Printed block with all fasteners
     thickness2 = !is_undef(thickness_below) ? thickness_below : thickness;
     thickness3 = !is_undef(thickness_side2) ? thickness_side2 : thickness;
-    washer = screw_washer(screw);
-    insert = screw_insert(screw);
-    function screw_length(t) = screw_shorter_than((star_washers ? 2 : 1) * washer_thickness(washer) + t + insert_length(insert) + overshoot);
-    screw_length = screw_length(thickness);
-    screw_length2 = screw_length(thickness2);
-    screw_length3 = screw_length(thickness3);
+    function screw_len(t) = screw_length(screw, t + overshoot, star_washers ? 2 : 1, true);
+    screw_length = screw_len(thickness);
+    screw_length2 = screw_len(thickness2);
+    screw_length3 = screw_len(thickness3);
 
     if(show_block)
         corner_block_assembly(screw, name) children();

@@ -68,7 +68,7 @@ function cam_screw_length(cam) = let(
     front = cam_front_size(cam),
     screw = pcb_screw(camera_pcb(cam)),
     nut = screw_nut(screw)
-    ) screw_longer_than(front.z + washer_thickness(screw_washer(screw)) - nut_trap_depth(nut) + nut_thickness(nut, true));
+    ) screw_length(screw, front.z - nut_trap_depth(nut), 1, nyloc = true, longer = true);
 
 function hinge_z(cam) = cam_screw_length(cam) - hinge_r;
 
@@ -344,9 +344,8 @@ module camera_fastened_assembly(cam, thickness, angle = 0) {
     camera_bracket_position(cam)
         camera_bracket_screw_positions(cam) {
             nut = screw_nut(bracket_screw);
-            washer = screw_washer(bracket_screw);
             t = bracket_thickness(cam);
-            screw_length = screw_longer_than(thickness + t + nut_thickness(nut, true) + 2 * washer_thickness(washer));
+            screw_length = screw_length(bracket_screw, thickness + t, 2, nyloc = true);
             vflip()
                 translate_z(thickness)
                     screw_and_washer(bracket_screw, screw_length);

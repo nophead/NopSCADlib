@@ -155,9 +155,7 @@ module hinge_fastened_assembly(type, thickness1, thickness2, angle, show_hinge =
         hinge_assembly(type, angle);
 
     screw = hinge_screw(type);
-    washer_t = 2 * washer_thickness(screw_washer(screw));
     nut = screw_nut(screw);
-    nut_t = nut_thickness(nut, true);
     t = hinge_thickness(type);
     kr = hinge_knuckle_dia(type) / 2;
 
@@ -165,7 +163,7 @@ module hinge_fastened_assembly(type, thickness1, thickness2, angle, show_hinge =
         if(thickness)
             hinge_screw_positions(type) {
                 translate_z(t)
-                    screw_and_washer(screw, screw_longer_than(t + thickness + washer_t + nut_t));
+                    screw_and_washer(screw, screw_length(screw, t + thickness, 2, nyloc = true));
 
                 translate_z(-thickness)
                     vflip()

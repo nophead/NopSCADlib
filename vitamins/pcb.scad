@@ -1121,9 +1121,7 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
 
     screw = pcb_screw(type);
     if(!is_undef(screw)) {
-        washer = screw_washer(screw);
-        nut = screw_nut(screw);
-        screw_length = screw_longer_than(height + thickness + pcb_thickness(type) + washer_thickness(washer) + nut_thickness(nut, true));
+        screw_length = screw_length(screw, height + thickness + pcb_thickness(type), 1, nyloc = true);
 
         taper = screw_smaller_than(pcb_hole_d(type)) > 2 * screw_radius(screw); // Arduino?
         pcb_screw_positions(type) {
@@ -1138,7 +1136,7 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
 
             translate_z(-thickness)
                 vflip()
-                    nut_and_washer(nut, true);
+                    nut_and_washer(screw_nut(screw), true);
         }
     }
 }

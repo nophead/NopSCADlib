@@ -146,9 +146,8 @@ module vero_cutouts(type, angle = undef) vero_components(type, true, angle); //!
 module veroboard_assembly(type, height, thickness, flip = false) //! Draw the assembly with components and fasteners in place
 assembly(vero_assembly(type)) {
     screw = vero_screw(type);
-    washer = screw_washer(screw);
     nut = screw_nut(screw);
-    screw_length = screw_longer_than(height + thickness + vero_thickness(type) + 2 * washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height + thickness + vero_thickness(type), 2, nyloc = true);
 
     translate_z(height) {
         veroboard(type);

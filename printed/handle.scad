@@ -91,7 +91,7 @@ assembly("handle") {
 }
 
 module handle_fastened_assembly(thickness) { //! Assembly with fasteners in place
-    screw_length = screw_longer_than(thickness + insert_length(insert) + 2 * washer_thickness(screw_washer(screw)));
+    screw_length = screw_length(screw, thickness, 2, true, longer = true);
 
     handle_assembly();
 
