@@ -25,6 +25,12 @@ module rounded_rectangles() {
 
     translate([40, 0])
         rounded_rectangle([30, 20, 10], 3);
+
+    translate([80, 0])
+        rounded_rectangle_xz([30, 20, 10], 3);
+
+    translate([120, 0])
+        rounded_rectangle_yz([30, 20, 10], 3);
 }
 
 rounded_rectangles();

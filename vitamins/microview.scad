@@ -20,7 +20,7 @@
 //
 //! Microview OLED display with on board AVR by geekammo / Sparkfun.
 //!
-//! ```microview()``` generates the model. ```microview(true)``` makes an object to cut out a panel aperture for it.
+//! `microview()` generates the model. `microview(true)` makes an object to cut out a panel aperture for it.
 //!
 //! Uses STL files copyright geekammo and licenced with MIT license, see [microview/LICENSE.txt](vitamins/microview/LICENSE.txt).
 //

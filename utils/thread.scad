@@ -20,7 +20,7 @@
 //
 //! Utilities for making threads with sweep. They can be used to model screws, nuts, studding, leadscrews, etc, and also to make printed threads.
 //!
-//! The ends can be tapered, flat or chamfered by setting the ```top``` and ```bot``` parameters to -1 for tapered, 0 for a flat cut and positive to
+//! The ends can be tapered, flat or chamfered by setting the `top` and `bot` parameters to -1 for tapered, 0 for a flat cut and positive to
 //! specify a chamfer angle.
 //!
 //! Threads are by default solid, so the male version is wrapped around a cylinder and the female inside a tube. This can be suppressed to just get the helix, for
@@ -32,8 +32,8 @@
 //! a cylinder. To get around this a colour can be passed to thread that is used to colour the cylinder and then toned down to colour the helix.
 //!
 //! Making the ends requires a CGAL intersection, which make threads relatively slow. For this reason they are generally disabled when using the GUI but can
-//! be enabled by setting ```$show_threads``` to ```true```. When the tests are run, by default, threads are enabled only for things that feature them like screws.
-//! This behaviour can be changed by setting a ```NOPSCADLIB_SHOW_THREADS``` environment variable to ```false``` to disable all threads and ```true``` to enable all threads.
+//! be enabled by setting `$show_threads` to `true`. When the tests are run, by default, threads are enabled only for things that feature them like screws.
+//! This behaviour can be changed by setting a `NOPSCADLIB_SHOW_THREADS` environment variable to `false` to disable all threads and `true` to enable all threads.
 //! The same variable also affects the generation of assembly diagrams.
 //!
 //! Threads obey the $fn, $fa, $fs variables.

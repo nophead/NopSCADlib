@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License along with NopSCADlib.
 # If not, see <https://www.gnu.org/licenses/>.
 #
-#! Generates all the files for a project by running ```bom.py```, ```stls.py```, ```dxfs.py```, ```render.py``` and ```views.py```.
+#! Generates all the files for a project by running `bom.py`, `stls.py`, `dxfs.py`, `render.py` and `views.py`.
 
 import sys
 

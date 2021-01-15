@@ -74,7 +74,7 @@ module orientate_axial(length, height, pitch, wire_d) { // Orient horizontal or 
    }
 }
 
-module ax_res(type, value, tol = 5, pitch = 0) { //! Through hole axial resistor. If ```pitch``` is zero the minimum is used. If below the minimum the resistor is placed vertical.
+module ax_res(type, value, tol = 5, pitch = 0) { //! Through hole axial resistor. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical.
     vitamin(str("ax_res(", type[0], ", ", value, arg(tol, 5, "tol"), "): Resistor ", value, " Ohms ", tol, "% ",ax_res_wattage(type), "W"));
 
     wire_d =  ax_res_wire(type);

@@ -39,8 +39,6 @@ def _scrape_blurb(lines):
         if b:
             break
         text += t
-    if len(text):
-        text += '\n'
     return text
 
 def scrape_blurb(scad_file):
@@ -48,6 +46,16 @@ def scrape_blurb(scad_file):
     with open(scad_file, "rt") as file:
         lines = file.readlines()
     return _scrape_blurb(lines)
+
+def split_blurb(lines):
+    """ Split blurb on horizontal rules."""
+    blurbs = [""]
+    for line in lines.split('\n')[:-1]:
+        if re.match(r'\*{3,}',line):
+            blurbs.append("")
+        else:
+            blurbs[-1] += line + '\n'
+    return blurbs
 
 def scrape_module_blurb(lines):
     """ Find the Markup lines before the last function or module. """

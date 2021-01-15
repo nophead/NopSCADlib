@@ -194,12 +194,14 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
             if(exploded())
                 heater_components();
             else
-                intersection() {
-                    heater_components();
+                if(naked)                       // hide the wires when not exploded
+                    intersection() {
+                        heater_components();
 
-                    if(naked)
-                        color("grey") cylinder(r = 12, h = 100, center = true);
-                    else
-                        cube(1, true);             // hide the wires when not exploded
-                }
+                        color("grey")
+                            cylinder(r = 12, h = 100, center = true);
+                    }
+                else
+                    hidden()                    // hidden by the tape
+                        heater_components();
 }

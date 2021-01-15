@@ -22,7 +22,7 @@
 //
 include <../utils/core/core.scad>
 
-module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius ```ir``` hanging at the specified ```z``` value above a void who's shape is given by a 2D child
+module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius `ir` hanging at the specified `z` value above a void who's shape is given by a 2D child
     module polyhole(r, h, n = 8) {
         if(h > 0)
             rotate(180 / n) {
@@ -35,7 +35,7 @@ module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius ```ir``` hanging
                         poly_cylinder(r - eps, h - layer_height);
             }
     }
-    assert(z % layer_height == 0, str(z));
+    assert(z - layer_height * floor(z / layer_height) < eps, str(z));
     infill_angle = z % (2 * layer_height) ? -45 : 45;
     below = min(z + eps, h2);
     big = 1000;

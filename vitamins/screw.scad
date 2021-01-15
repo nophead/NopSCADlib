@@ -19,6 +19,8 @@
 
 //
 //! Machine screws and wood screws with various head styles.
+//!
+//! For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2020/12/sinkholes.html>.
 //
 include <../utils/core/core.scad>
 
@@ -41,9 +43,13 @@ function screw_pilot_hole(type)       = type[11];    //! Pilot hole radius for w
 function screw_clearance_radius(type) = type[12];    //! Clearance hole radius
 function screw_nut_radius(type) = screw_nut(type) ? nut_radius(screw_nut(type)) : 0; //! Radius of matching nut
 function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width)); //! Boss big enough for nut trap and washer
-function screw_head_depth(type, d) = screw_head_height(type) ? 0 : screw_head_radius(type) - d / 2; //! How far a counter sink head will go into a straight hole diameter d
+function screw_head_depth(type, d = 0) =             //! How far a counter sink head will go into a straight hole diameter d
+    screw_head_height(type)
+        ? 0
+        : let(r = screw_radius(type)) screw_head_radius(type) - max(r, d / 2) + r / 5;
 
 function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length longer or equal to x
+                                x <=  6 ?  6 :
                                 x <=  8 ?  8 :
                                 x <= 10 ? 10 :
                                 x <= 12 ? 12 :
@@ -107,6 +113,27 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
             color(colour)
                 translate_z(-shank - socket)
                     cylinder(r = rad + eps, h = shank);
+    }
+
+    module cs_head(socket_rad, socket_depth) {
+        head_t = rad / 5;
+        head_height = head_rad + head_t;
+
+        rotate_extrude()
+            difference() {
+                polygon([[0, 0], [head_rad, 0], [head_rad, -head_t], [0, -head_height]]);
+
+                translate([0, -socket_depth + eps])
+                    square([socket_rad, 10]);
+            }
+
+        translate_z(-socket_depth)
+            linear_extrude(socket_depth)
+                difference() {
+                    circle(socket_rad + 0.1);
+
+                    children();
+                }
     }
 
     explode(length + 10) {
@@ -201,63 +228,78 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
 
         if(head_type == hs_cs) {
-            head_height = head_rad;
             socket_rad = 0.6 * head_rad;
             socket_depth = 0.3 * head_rad;
             socket_width = 1;
-            color(colour) {
-                rotate_extrude()
-                    difference() {
-                        polygon([[0, 0], [head_rad, 0], [0, -head_height]]);
+            color(colour)
+                cs_head(socket_rad, socket_depth) {
+                    square([2 * socket_rad, socket_width], center = true);
+                    square([socket_width, 2 * socket_rad], center = true);
+                }
 
-                        translate([0, -socket_depth + eps])
-                            square([socket_rad + 0.1, 10]);
-                    }
-
-                translate_z(-socket_depth)
-                    linear_extrude(socket_depth)
-                        difference() {
-                            circle(socket_rad + 0.1);
-
-                            square([2 * socket_rad, socket_width], center = true);
-                            square([socket_width, 2 * socket_rad], center = true);
-                        }
-            }
             shaft(socket_depth);
         }
 
         if(head_type == hs_cs_cap) {
-            head_height = head_rad;
-            color(colour) {
-                rotate_extrude()
-                    difference() {
-                        polygon([[0, 0], [head_rad, 0], [0, -head_height]]);
+            color(colour)
+                cs_head(socket_rad, socket_depth)
+                    circle(socket_rad, $fn = 6);
 
-                        translate([0, -socket_depth + eps])
-                            square([socket_rad, 10]);
-                    }
-
-                translate_z(-socket_depth)
-                    linear_extrude(socket_depth)
-                        difference() {
-                            circle(socket_rad + 0.1);
-
-                            circle(socket_rad, $fn = 6);
-                        }
-            }
             shaft(socket_depth);
         }
     }
 }
 
-module screw_countersink(type) { //! Countersink shape
+module screw_countersink(type, drilled = true) { //! Countersink shape
     head_type   = screw_head_type(type);
     head_rad    = screw_head_radius(type);
-    head_height = head_rad;
+    rad = screw_radius(type);
+    head_t = rad / 5;
+    head_height = head_rad + head_t;
 
     if(head_type == hs_cs || head_type == hs_cs_cap)
         translate_z(-head_height)
-             cylinder(h = head_height, r1 = 0, r2 = head_rad);
+            if(drilled)
+                cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
+            else
+                render() intersection() {
+                    cylinder(h = head_height + eps, r1 = 0, r2 = head_rad + head_t);
+
+                    cylinder(h = head_height + eps, r = head_rad + eps);
+                }
+}
+
+function screw_polysink_r(type, z) = //! Countersink hole profile corrected for rounded staircase extrusions.
+    let(rad = screw_radius(type),
+        head_t = rad / 5,
+        head_rad = screw_head_radius(type)
+    )
+    limit(head_rad + head_t - z + (sqrt(2) - 1) * layer_height / 2, screw_clearance_radius(type), head_rad);
+
+module screw_polysink(type, h = 100, alt = false) { //! A countersink hole made from stacked polyholes for printed parts
+    head_depth = screw_head_depth(type);
+    assert(head_depth, "Not a countersunk screw");
+    layers = ceil(head_depth / layer_height);
+    rmin = screw_clearance_radius(type);
+    sides = sides(rmin);
+    lh = layer_height + eps;
+    render(convexity = 5)
+        for(side = [0, 1]) mirror([0, 0, side]) {
+            for(i = [0 : layers - 1])
+                translate_z(i * layer_height) {
+                    r = screw_polysink_r(type, i * layer_height + layer_height / 2);
+                    if(alt)
+                        rotate(i % 2 == layers % 2 ? 180 / sides : 0)
+                            poly_cylinder(r = r, h = lh, center = false, sides = sides);
+                    else
+                        poly_cylinder(r = r, h = lh, center = false);
+                }
+
+            remainder = h / 2 - layers * layer_height;
+            if(remainder > 0)
+                translate_z(layers * layer_height)
+                    poly_cylinder(r = rmin, h = remainder, center = false);
+        }
 }
 
 module screw_and_washer(type, length, star = false, penny = false) { //! Screw with a washer which can be standard or penny and an optional star washer on top

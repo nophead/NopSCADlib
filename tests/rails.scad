@@ -23,6 +23,7 @@ use <../utils/layout.scad>
 use <../vitamins/nut.scad>
 
 sheet = 3;
+pos = 1; //[-1 : 0.1 : 1]
 
 module rails()
     layout([for(l = rails) carriage_width(rail_carriage(l))], 20)
@@ -33,7 +34,7 @@ module rails()
             nut = screw_nut(screw);
             washer = screw_washer(screw);
 
-            rail_assembly(rail, length, rail_travel(rail, length) / 2, $i<2 ? grey(20) : "green", $i<2 ? grey(20) : "red");
+            rail_assembly(rail, length, pos * rail_travel(rail, length) / 2, $i<2 ? grey(20) : "green", $i<2 ? grey(20) : "red");
 
             rail_screws(rail, length, sheet + nut_thickness(nut, true) + washer_thickness(washer));
 

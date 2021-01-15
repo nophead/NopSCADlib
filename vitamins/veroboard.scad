@@ -41,6 +41,8 @@ function vero_track_width(type)    = vero_pitch(type) * 0.8; //! The width of th
 function vero_length(type) = vero_holes(type) * vero_pitch(type); //! Length of the board
 function vero_width(type) = vero_strips(type) * vero_pitch(type); //! Width of the board
 
+function vero_size(type) = [vero_length(type), vero_width(type), vero_thickness(type)]; //! Board size
+
 module solder_meniscus(type) {
     h = 1;
     r = vero_track_width(type) / 2;

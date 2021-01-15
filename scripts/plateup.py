@@ -87,24 +87,25 @@ def plateup(target, part_type, usage = None):
                     match = re.match(r'^ECHO: "~(.*?\.' + part_type + r').*"$', line)
                     if match:
                         used.append(match.group(1))
-    #
-    # Copy file that are not included
-    #
     copied = []
-    for file in os.listdir(parts_dir):
-        if file.endswith('.' + part_type) and not file in used:
-            src = parts_dir + '/' + file
-            dst = target_dir + '/' + file
-            if mtime(src) > mtime(dst):
-                print("Copying %s to %s" % (src, dst))
-                copyfile(src, dst)
-            copied.append(file)
-    #
-    # Remove any cruft
-    #
-    targets = [file[:-4] + part_type for file in all_sources]
-    for file in os.listdir(target_dir):
-        if file.endswith('.' + part_type):
-            if not file in targets and not file in copied:
-                print("Removing %s" % file)
-                os.remove(target_dir + '/' + file)
+    if all_sources:
+        #
+        # Copy files that are not included
+        #
+        for file in os.listdir(parts_dir):
+            if file.endswith('.' + part_type) and not file in used:
+                src = parts_dir + '/' + file
+                dst = target_dir + '/' + file
+                if mtime(src) > mtime(dst):
+                    print("Copying %s to %s" % (src, dst))
+                    copyfile(src, dst)
+                copied.append(file)
+        #
+        # Remove any cruft
+        #
+        targets = [file[:-4] + part_type for file in all_sources]
+        for file in os.listdir(target_dir):
+            if file.endswith('.' + part_type):
+                if not file in targets and not file in copied:
+                    print("Removing %s" % file)
+                    os.remove(target_dir + '/' + file)

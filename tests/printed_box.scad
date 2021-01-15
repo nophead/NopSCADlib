@@ -107,7 +107,7 @@ assembly("box1") {
                 screw_and_washer(foot_screw(foot), 6);
     }
 
-    translate_z(height + top_thickness + base_thickness + eps) vflip()
+    translate_z(height + top_thickness + base_thickness + 2 * eps) vflip()
          %render() box1_base_stl();
 }
 

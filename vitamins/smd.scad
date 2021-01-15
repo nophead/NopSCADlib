@@ -36,7 +36,7 @@ function smd_100th(x) = //! Convert dimension to 1/100" notation
 function smd_size(size) = //! Convert size to 1/100" notation
     str(smd_100th(size.x), smd_100th(size.y));
 
-module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified ```colour```
+module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified `colour`
     size = smd_led_size(type);
     vitamin(str("smd_led(", type[0], ", ", colour, "): SMD LED ", smd_size(size), " ", colour));
 

@@ -22,7 +22,7 @@
 //
 include <../utils/core/core.scad>
 
-module quadrant(w, r, center = false) { //! Draw a square with one rounded corner, can be centered on the arc centre, when ```center``` is ```true```.
+module quadrant(w, r, center = false) { //! Draw a square with one rounded corner, can be centered on the arc centre, when `center` is `true`.
     h = is_list(w) ? w.y : w;
     w = is_list(w) ? w.x : w;
     offset_w = center ? r - w : 0;

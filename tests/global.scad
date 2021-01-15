@@ -29,6 +29,23 @@ module globals() {
         translate([50, 0])
             right_triangle(10, 20, 0);
     }
+    assert(slice("ABCD")    == "ABCD");
+    assert(slice("ABCD", 1) == "BCD");
+    assert(slice("ABCD", 2) == "CD");
+    assert(slice("ABCD", 3) == "D");
+    assert(slice("ABCD", 4) == "");
+    assert(slice("ABCD", 1, -1) == "BC");
+    assert(slice("ABCD", 2, -1) == "C");
+    assert(slice("ABCD", 3, -1) == "");
+    assert(slice("ABCD", 4, -1) == "");
+    assert(slice("ABCD", 0, -1) == "ABC");
+    assert(slice("ABCD", 0, -2) == "AB");
+    assert(slice("ABCD", 0, -3) == "A");
+    assert(slice("ABCD", 0, -4) == "");
+    assert(slice("ABCD", 0,  0) == "");
+    assert(slice("ABCD", 0,  1) == "A");
+    assert(slice("ABCD", 0,  2) == "AB");
+    assert(slice("ABCD", 0,  3) == "ABC");
 }
 
 rotate([70, 0, 315]) globals();

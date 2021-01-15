@@ -40,7 +40,7 @@ module rounded_corner(r, h, r2, ir = 0) { //! 2D version
         }
 }
 
-module rounded_cylinder(r, h, r2, ir = 0, angle = 360) //! Rounded cylinder given radius ```r```, height ```h```, optional internal radius ```ir``` and optional ```angle```
+module rounded_cylinder(r, h, r2, ir = 0, angle = 360) //! Rounded cylinder given radius `r`, height `h`, optional internal radius `ir` and optional `angle`
 {
     rotate_extrude(angle = angle)
         rounded_corner(r, h, r2, ir);

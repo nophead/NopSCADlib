@@ -23,7 +23,7 @@
 //! together. The box panels can be customised to have holes and parts mounted on them by overriding the
 //! definitions of `box_base()`, `box_front()`, etc.
 //!
-//! `box.scad` should be ```use```d and `box_assembly.scad` ```include```d.
+//! `box.scad` should be `use`d and `box_assembly.scad` `include`d.
 //!
 //! A box is defined with a list that specifies the inside dimensions, top, bottom and side sheet materials, the
 //! screw type and printed part wall thickness. This diagram shows how the various dimensions are labelled:
@@ -109,7 +109,7 @@ module grill_hole_positions(width, height, r = 1000) {
     }
 }
 
-module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set ```poly``` ```true``` for printing, ```false``` for milling.
+module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set `poly` `true` for printing, `false` for milling.
     extrude_if(h)
         if(poly)
             grill_hole_positions(width, height, r)
@@ -121,11 +121,12 @@ module grill(width, height, r = 1000, poly = false, h = 0) { //! A staggered arr
 
 module box_corner_profile_2D(type) { //! The 2D shape of the corner profile.
     t = box_sheet_slot(type);
+    inset = box_corner_gap(type) + box_profile_overlap(type);
     difference() {
         union() {
             quadrant(box_hole_inset(type) + box_boss_r(type), box_boss_r(type));     // inside corner
 
-            translate([box_corner_gap(type) + box_profile_overlap(type), box_corner_gap(type) + box_profile_overlap(type)])
+            translate([inset, inset])
                 rotate(180)
                     quadrant(box_profile_overlap(type) + box_corner_rad(type), box_corner_rad(type)); // outside corner
         }
@@ -212,33 +213,39 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
     feet = bottom && box_feet(type);
     t = box_sheet_slot(type);
     outset =  box_outset(type);
+    inset = box_inset(type);
     inner_r = box_sheet_r(type);
-    foot_height = box_corner_gap(type) + sheet_thickness(box_base_sheet(type)) + washer_thickness(box_washer(type)) + screw_head_height(box_screw(type)) + box_profile_overlap(type) + 2;
+    cgap = box_corner_gap(type);
+    foot_height = cgap + sheet_thickness(box_base_sheet(type)) + washer_thickness(box_washer(type)) + screw_head_height(box_screw(type)) + box_profile_overlap(type) + 2;
     foot_length = box_corner_rad(type) * 2;
     height = box_bezel_height(type, bottom);
     foot_extension = foot_height - height;
 
     difference() {
+        w = box_width(type);
+        d = box_depth(type);
         translate_z(-box_profile_overlap(type)) difference() {
-            rounded_rectangle([box_width(type) + 2 * outset, box_depth(type) + 2 * outset, feet ? foot_height : height], box_corner_rad(type), false);
+            tw = w + 2 * outset;
+            td = d + 2 * outset;
+            rounded_rectangle([tw, td, feet ? foot_height : height], box_corner_rad(type), false);
             //
             // Remove edges between the feet
             //
             if(feet)
                 hull() {
                     translate_z(height + 0.5)
-                        cube([box_width(type) - 2 * foot_length, box_depth(type) + 2 * outset + 1, 1], center = true);
+                        cube([w - 2 * foot_length, td + 1, 1], center = true);
 
                     translate_z(foot_height + 1)
-                        cube([box_width(type) - 2 * (foot_length - foot_extension), box_depth(type) + 2 * outset + 1, 1], center = true);
+                        cube([w - 2 * (foot_length - foot_extension), td + 1, 1], center = true);
                 }
             if(feet)
                 hull() {
                     translate_z(height + 0.5)
-                        cube([box_width(type) + 2 * outset + 1, box_depth(type) - 2 * foot_length, 1], center = true);
+                        cube([tw + 1, d - 2 * foot_length, 1], center = true);
 
                     translate_z(foot_height + 1)
-                        cube([box_width(type) + 2 * outset + 1, box_depth(type) - 2 * (foot_length - foot_extension), 1], center = true);
+                        cube([tw + 1, d - 2 * (foot_length - foot_extension), 1], center = true);
                 }
         }
         //
@@ -247,28 +254,28 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
         translate_z(-box_profile_overlap(type))
             linear_extrude(2 * box_profile_overlap(type), center = true)
                 for(i = [-1, 1]) {
-                    translate([i * (box_width(type) / 2 + t / 2 - sheet_slot_clearance / 2), 0])
-                         square([t, box_depth(type) - 2 * box_corner_gap(type)], center = true);
+                    translate([i * (w + t - sheet_slot_clearance) / 2, 0])
+                         square([t, d - 2 * cgap], center = true);
 
-                    translate([0, i * (box_depth(type) / 2 + t / 2 - sheet_slot_clearance / 2)])
-                         square([box_width(type) - 2 * box_corner_gap(type), t], center = true);
+                    translate([0, i * (d + t - sheet_slot_clearance) / 2])
+                         square([w - 2 * cgap, t], center = true);
                 }
         //
         // recess for top / bottom panel
         //
-        translate_z(box_corner_gap(type))
-            rounded_rectangle([box_width(type) + bezel_clearance, box_depth(type) + bezel_clearance, height], inner_r + bezel_clearance / 2, false);
+        translate_z(cgap)
+            rounded_rectangle([w + bezel_clearance, d + bezel_clearance, height], inner_r + bezel_clearance / 2, false);
         //
         // leave plastic over the corner profiles
         //
         translate_z(-box_profile_overlap(type) - 1)
-            linear_extrude(box_profile_overlap(type) + box_corner_gap(type) + 2)
+            linear_extrude(box_profile_overlap(type) + cgap + 2)
                 union() {
                     difference() {
-                        square([box_width(type) - 2 * box_inset(type),
-                                box_depth(type) - 2 * box_inset(type)], center = true);
+                        square([w - 2 * inset,
+                                d - 2 * inset], center = true);
 
-                        box_corner_quadrants(type, box_width(type), box_depth(type));
+                        box_corner_quadrants(type, w, d);
                     }
                     box_screw_hole_positions(type)
                         poly_circle(screw_clearance_radius(box_screw(type)));
@@ -291,7 +298,9 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
     dw = bw - 2 * dowel_wall;
     dh = box_bezel_height(type, bottom) - dowel_h_wall;
 
-    dh2 = box_profile_overlap(type) + box_corner_gap(type) - dowel_h_wall;
+    profile_overlap = box_profile_overlap(type);
+
+    dh2 = profile_overlap + box_corner_gap(type) - dowel_h_wall;
 
     end_clearance = 0.5;
     module male() {
@@ -299,14 +308,14 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
             linear_extrude(dowel_length - 2 * end_clearance, center = true)
                 difference() {
                     union() {
-                        h = dh - layer_height;
+                        h1 = dh - layer_height;
                         h2 = dh2 - layer_height;
                         hull() {
-                            translate([bw / 2, h / 2])
-                                square([dw - 1, h], center = true);
+                            translate([bw / 2, h1 / 2])
+                                square([dw - 1, h1], center = true);
 
-                            translate([bw / 2, (h - 1) / 2])
-                                square([dw, h - 1], center = true);
+                            translate([bw / 2, (h1 - 1) / 2])
+                                square([dw, h1 - 1], center = true);
                         }
 
                         hull() {
@@ -318,7 +327,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
                         }
                     }
                     translate([bw2 / 2, 0])
-                        square([box_sheet_slot(type), 2 * box_profile_overlap(type)], center = true);
+                        square([box_sheet_slot(type), 2 * profile_overlap], center = true);
                 }
     }
 
@@ -359,7 +368,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
         render() difference() {
             union() {
                 clip(xmin = 0, xmax = w, ymin = 0, ymax = h)
-                    translate([tw / 2 - x * w, th / 2 - y * h, box_profile_overlap(type)])
+                    translate([tw / 2 - x * w, th / 2 - y * h, profile_overlap])
                         box_bezel(type, bottom);
 
                 if(x < cols - 1 && y == 0)
@@ -419,10 +428,14 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
     }
 }
 
-module box_screw_hole_positions(type)
+module box_screw_hole_positions(type) {
+    inset = box_hole_inset(type);
+    w = box_width(type) / 2 - inset;
+    d = box_depth(type) / 2 - inset;
     for(x = [-1, 1], y = [-1, 1])
-        translate([x * (box_width(type) / 2 - box_hole_inset(type)), y * (box_depth(type) / 2 - box_hole_inset(type))])
+        translate([x * w, y * d])
             children();
+}
 
 module box_base_blank(type) { //! Generates a 2D template for the base sheet
     dxf("box_base");
@@ -551,25 +564,25 @@ module box_shelf_bracket_section(type, rows, cols, x, y) { //! Generates section
             children();
 }
 
-module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, ```sheet``` can be set to override the type
+module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, `sheet` can be set to override the type
     dxf("box_left");
 
     sheet_2D(subst_sheet(type, sheet), box_depth(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
 }
 
-module box_right_blank(type, sheet = false) { //! Generates a 2D template for the right sheet, ```sheet``` can be set to override the type
+module box_right_blank(type, sheet = false) { //! Generates a 2D template for the right sheet, `sheet` can be set to override the type
     dxf("box_right");
 
     sheet_2D(subst_sheet(type, sheet), box_depth(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
 }
 
-module box_front_blank(type, sheet = false) { //! Generates a 2D template for the front sheet, ```sheet``` can be set to override the type
+module box_front_blank(type, sheet = false) { //! Generates a 2D template for the front sheet, `sheet` can be set to override the type
     dxf("box_front");
 
     sheet_2D(subst_sheet(type, sheet), box_width(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
 }
 
-module box_back_blank(type, sheet = false) { //! Generates a 2D template for the back sheet, ```sheet``` can be set to override the type
+module box_back_blank(type, sheet = false) { //! Generates a 2D template for the back sheet, `sheet` can be set to override the type
     dxf("box_back");
 
     sheet_2D(subst_sheet(type, sheet), box_width(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);

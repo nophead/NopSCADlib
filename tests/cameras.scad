@@ -24,7 +24,7 @@ include <../vitamins/cameras.scad>
 use <../vitamins/pcb.scad>
 
 module cameras()
-    layout([for(c = cameras) pcb_length(camera_pcb(c))], 10, false) let(c = cameras[$i])
+    layout([for(c = cameras) pcb_length(camera_pcb(c))], 15, false) let(c = cameras[$i])
         camera(c);
 
 if($preview)

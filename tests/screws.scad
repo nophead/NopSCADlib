@@ -18,20 +18,46 @@
 //
 include <../core.scad>
 
-module screws()
-for(y = [0 : len(screw_lists) -1])
-    for(x = [0 : len(screw_lists[y]) -1]) {
-        screw = screw_lists[y][x];
-        if(screw) {
-             length = screw_head_type(screw) == hs_grub ? 6
-                    : screw_radius(screw) <= 1.5 ? 10
-                    : screw_max_thread(screw) ? screw_longer_than(screw_max_thread(screw) + 5)
-                    : 30;
-            translate([x * 20, y * 20])
-                screw(screw, length);
-        }
+module polysink_stl() {
+    stl("polysink");
+
+    cs_screws = [for(list = screw_lists, screw = list) if(screw_head_type(screw) == hs_cs_cap) screw];
+    n = len(cs_screws);
+    size = [n * 20, 20, 10];
+    difference() {
+        translate([-size.x / n / 2, $preview ? 0 : -size.y / 2])
+            cube($preview ? [size.x, size.y / 2, size.z] : size);
+
+        for(i = [0 : n - 1])
+            let(s = cs_screws[i])
+                translate([i * 20, 0]) {
+                    translate_z(size.z)
+                        screw_polysink(s, 2 * size.z + 1);
+
+                    screw_polysink(s, 2 * size.z + 1, alt = true);
+                }
     }
+}
+
+module screws() {
+    for(y = [0 : len(screw_lists) -1])
+        for(x = [0 : len(screw_lists[y]) -1]) {
+            screw = screw_lists[y][x];
+            if(screw) {
+                 length = screw_head_type(screw) == hs_grub ? 6
+                        : screw_radius(screw) <= 1.5 ? 10
+                        : screw_max_thread(screw) ? screw_longer_than(screw_max_thread(screw) + 5)
+                        : 30;
+                translate([x * 20, y * 20])
+                    screw(screw, length);
+            }
+        }
+        translate([20, 40, -15])
+            polysink_stl();
+}
 
 if($preview)
     let($show_threads = true)
         screws();
+else
+    polysink_stl();

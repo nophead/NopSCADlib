@@ -44,10 +44,10 @@ function hot_end_length(type) = hot_end_total_length(type) - hot_end_inset(type)
 use <jhead.scad>
 use <e3d.scad>
 
-module hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]) { //! Draw specified hot end
+module hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0], bowden = false) { //! Draw specified hot end
     if(hot_end_style(type) == jhead)
         jhead_hot_end_assembly(type, filament, naked);
 
     if(hot_end_style(type) == e3d)
-        e3d_hot_end_assembly(type, filament, naked, resistor_wire_rotate);
+        e3d_hot_end_assembly(type, filament, naked, resistor_wire_rotate, bowden);
 }

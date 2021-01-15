@@ -19,12 +19,12 @@
 
 //
 //! Models timing belt running over toothed or smooth pulleys and calculates an accurate length.
-//! Only models 2D paths, so not core XY!
+//! Only models 2D paths, so not crossed belt core XY!
 //!
 //! To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
 //!
 //! By default the path is a closed loop but a gap length and position can be specified to make open loops.
-//! To draw the gap its XY position is specified by ```gap_pos```. ```gap_pos.z``` can be used to specify a rotation if the gap is not at the bottom of the loop.
+//! To draw the gap its XY position is specified by `gap_pos`. `gap_pos.z` can be used to specify a rotation if the gap is not at the bottom of the loop.
 //!
 //! Individual teeth are not drawn, instead they are represented by a lighter colour.
 //
@@ -54,7 +54,7 @@ module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), toot
 
     tangents = rounded_polygon_tangents(points);
 
-    length = ceil((rounded_polygon_length(points, tangents) - gap) / pitch) * pitch;
+    length = ceil((rounded_polygon_length(points, tangents) - (is_list(gap) ? gap.x + gap.y : gap)) / pitch) * pitch;
 
     module shape() rounded_polygon(points, tangents);
 
@@ -65,7 +65,7 @@ module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), toot
             translate([gap_pos.x, gap_pos.y])
                 rotate(is_undef(gap_pos.z) ? 0 : gap_pos.z)
                     translate([0, ph - thickness / 2])
-                        square([gap, thickness + eps], center = true);
+                        square(is_list(gap) ? [gap.x, gap.y + thickness + eps] : [gap, thickness + eps], center = true);
 
     color(belt_colour)
         linear_extrude(width, center = true)

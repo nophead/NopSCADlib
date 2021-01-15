@@ -36,6 +36,8 @@ function rocker_bezel(type)    = type[10];  //! Bezel width
 function rocker_pivot(type)    = type[11];  //! Pivot distance from the back of the flange
 function rocker_button(type)   = type[12];  //! How far the button extends from the bezel
 function rocker_spades(type)   = type[13];  //! Spade types and positions
+function rocker_size(type)     = [rocker_width(type), rocker_height(type), rocker_depth(type)]; //! Width, height, and depth in a vector
+function rocker_slot(type)     = [rocker_slot_w(type), rocker_slot_h(type)]; //! Rocker slot in a vector
 
 module rocker(type, colour) { //! Draw the specified rocker switch
     vitamin(str("rocker(", type[0], "): ", rocker_part(type)));
@@ -87,6 +89,6 @@ module rocker(type, colour) { //! Draw the specified rocker switch
     }
 }
 
-module rocker_hole(type, h = 0) //! Make a hole to accept a rocker switch, by default 2D, set h for 3D
+module rocker_hole(type, h = 0, rounded = true) //! Make a hole to accept a rocker switch, by default 2D, set h for 3D
     extrude_if(h)
-        rounded_square([rocker_slot_w(type), rocker_slot_h(type)], 1, center = true);
+        rounded_square([rocker_slot_w(type), rocker_slot_h(type)], rounded ? 1 : 0, center = true);

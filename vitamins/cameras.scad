@@ -68,6 +68,6 @@ rpi_camera = ["rpi_camera", "Raspberry Pi focusable camera", rpi_camera_pcb, [0,
     [0, 18 - 1.5 - 2.5], [8, 5, 1.6]
 ];
 
-cameras = [rpi_camera_v1, rpi_camera, rpi_camera_v2];
+cameras = [rpi_camera_v1, rpi_camera_v2, rpi_camera];
 
 use <camera.scad>

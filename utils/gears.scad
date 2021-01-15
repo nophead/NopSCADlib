@@ -24,17 +24,17 @@
 //! <https://khkgears.net/new/gear_knowledge/gear_technical_reference/calculation_gear_dimensions.html>
 //! and <https://www.tec-science.com/mechanical-power-transmission/involute-gear/calculation-of-involute-gears/>
 //!
-//! ```involute_gear_profile()``` returns a polygon that can have the bore and spokes, etc, subtracted from it before linear extruding it to 3D.
-//! Helical gears can be made using ```twist``` and bevel gears using ```scale``` parameters of ```linear_extrude()```.
+//! `involute_gear_profile()` returns a polygon that can have the bore and spokes, etc, subtracted from it before linear extruding it to 3D.
+//! Helical gears can be made using `twist` and bevel gears using `scale` parameters of `linear_extrude()`.
 //!
 //! Gears with less than 19 teeth (when pressure angle is 20) are profile shifted to avoid undercutting the tooth root. 7 teeth is considered
 //! the practical minimum.
 //!
-//! The clearance between tip and root defaults to module / 6, but can be overridden by setting the ```clearance``` parameter.
+//! The clearance between tip and root defaults to module / 6, but can be overridden by setting the `clearance` parameter.
 //!
 //! The origin of the rack is the left end of the pitch line and its width is below the pitch line. I.e. it does not include the addendum.
 //!
-//! ```involute_worm_profile()``` returns a tooth profile that can be passed to ```thread()``` to make worms.
+//! `involute_worm_profile()` returns a tooth profile that can be passed to `thread()` to make worms.
 //
 include <core/core.scad>
 use <maths.scad>

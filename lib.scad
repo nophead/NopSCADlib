@@ -55,6 +55,7 @@ include <vitamins/rails.scad>
 include <vitamins/rod.scad>
 include <vitamins/scs_bearing_blocks.scad>
 include <vitamins/servos.scad>
+include <vitamins/shaft_couplings.scad>
 include <vitamins/sheets.scad>
 include <vitamins/sk_brackets.scad>
 include <vitamins/spools.scad>
@@ -90,6 +91,7 @@ use <utils/gears.scad>
 use <utils/hanging_hole.scad>
 use <utils/fillet.scad>
 use <utils/rounded_polygon.scad>
+use <utils/rounded_right_triangle.scad>
 use <utils/layout.scad>
 use <utils/round.scad>
 use <utils/offset.scad>

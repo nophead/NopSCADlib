@@ -33,7 +33,7 @@ module magnet(type) { //! Draw specified magnet
     h = magnet_h(type);
     r = magnet_r(type);
 
-    //vitamin(str("magnet(", type[0], "): Magnet ", od, "mm diameter, ", h, "mm high", id ? str(", ", id, "mm bore") : "" ));
+    vitamin(str("magnet(", type[0], "): Magnet ", od, "mm diameter, ", h, "mm high", id ? str(", ", id, "mm bore") : "" ));
 
     or = od / 2;
     ir = id / 2;

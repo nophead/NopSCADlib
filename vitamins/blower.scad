@@ -22,6 +22,8 @@
 //
 include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/quadrant.scad>
+use <screw.scad>
 
 function blower_length(type)      = type[2]; //! Length of enclosing rectangle
 function blower_width(type)       = type[3]; //! Width of enclosing rectangle
@@ -39,7 +41,86 @@ function blower_top(type)         = type[14]; //! Thickness of the top
 function blower_wall(type)        = type[15]; //! Side wall thickness
 function blower_lug(type)         = type[16]; //! Height of the lugs
 
+function blower_casing_is_square(type) = len(blower_screw_holes(type)) > 3; //! True for square radial fans, false for spiral shape radial blowers
+function blower_exit_offset(type) = blower_casing_is_square(type) ? blower_length(type) / 2 : blower_exit(type) / 2; //! Offset of exit's centre from the edge
+
 fan_colour = grey(20);
+
+module blower_fan(type, casing_is_square) {
+    module squarish(s, n) {
+        polygon([
+            for(i = [0 : n]) [i * s.x / n,  s.y + (i % 2) * eps],
+            for(i = [0 : n]) [s.x - i * s.x / n, (i % 2) * eps],
+        ]);
+    }
+
+    depth = blower_depth(type);
+    blade_ir = blower_hub(type) / 2 + 0.5; // slight gap between main part of blades and hub
+    blade_len = casing_is_square
+        ? (blower_bore(type) - 1) / 2 - blade_ir // fan constrained by bore hole
+        : blower_width(type) - blower_axis(type).x- blower_wall(type) - blade_ir; // fan extends to casing
+    blade_thickness = 0.75;
+    blade_count = 25;
+
+    base_offset = 1;
+    translate([blower_axis(type).x, blower_axis(type).y, blower_base(type) + base_offset])
+        linear_extrude(blower_hub_height(type) - 0.5 - blower_base(type) - base_offset, center = false, convexity = 4, twist = -30, slices = round(depth / 2))
+            for(i = [0 : blade_count - 1])
+                rotate((360 * i) / blade_count)
+                    translate([blade_ir, -blade_thickness / 2])
+                        squarish([blade_len, blade_thickness], round(blade_len / 2));
+}
+
+module blower_square(type) { //! Draw a square blower
+    width = blower_width(type);
+    depth = blower_depth(type);
+    wall = blower_wall(type);
+    hole_pitch = (blower_screw_holes(type)[1].x - blower_screw_holes(type)[0].x) / 2;
+    corner_radius = width / 2 - hole_pitch;
+    corner_inset = (width - blower_exit(type)) / 2;
+
+    module square_inset_corners(remove_center = false)
+        difference() {
+            //overall outside
+                square([width, width], center = false);
+
+            if (remove_center) {
+                // cut out the inside, leaving the corners
+                translate([corner_inset + wall, -eps])
+                    square([width - 2 * (wall + corner_inset), width - wall + eps], center = false);
+
+                translate([wall, corner_inset + wall])
+                    square([width - 2 * wall, width - 2 * (wall + corner_inset)], center = false);
+            } else {
+                // cut out the bore for the fan
+                translate(blower_axis(type))
+                    circle(d = blower_bore(type));
+            }
+            // corner inset
+            translate([width / 2, width / 2])
+            for(i = [0 : 3])
+                rotate(i * 90)
+                    translate([-width / 2 - eps, -width/ 2 - eps])
+                        quadrant(corner_inset, corner_inset - corner_radius);
+        }
+
+    base_height = blower_base(type);
+    linear_extrude(base_height)
+        difference () {
+            rounded_square([width, width], corner_radius, center = false);
+
+            blower_hole_positions(type)
+                circle(d = blower_screw_hole(type));
+        }
+
+    translate_z(base_height)
+        linear_extrude(depth - base_height)
+            square_inset_corners(remove_center = true);
+
+    translate_z(depth - base_height)
+        linear_extrude(blower_top(type))
+            square_inset_corners();
+}
 
 module blower(type) { //! Draw specified blower
     length = blower_length(type);
@@ -70,55 +151,63 @@ module blower(type) { //! Draw specified blower
 
     vitamin(str("blower(", type[0], "): ", type[1]));
 
+    is_square = blower_casing_is_square(type); // Description starts with square!
     color(fan_colour) {
-        // screw lugs
-        linear_extrude(blower_lug(type), center = false)
-            for(hole = blower_screw_holes(type))
-                difference() {
-                    hull() {
+        if (is_square) {
+            blower_square(type);
+        } else {
+            // screw lugs
+            linear_extrude(blower_lug(type), center = false)
+                for(hole = blower_screw_holes(type))
+                    difference() {
+                        hull() {
+                            translate(hole)
+                                circle(d = blower_screw_hole(type) + 2 * blower_wall(type));
+
+                            translate(blower_axis(type))
+                                circle(d = blower_screw_hole(type) + 2 * blower_wall(type) + 7);
+                        }
                         translate(hole)
-                            circle(d = blower_screw_hole(type) + 2 * blower_wall(type));
+                            circle(d = blower_screw_hole(type));
 
-                        translate(blower_axis(type))
-                            circle(d = blower_screw_hole(type) + 2 * blower_wall(type) + 7);
-                    }
-                    translate(hole)
-                        circle(d = blower_screw_hole(type));
+                        shape(true);
+                }
 
-                    shape(true);
-               }
-        // rotor
-        translate(concat(blower_axis(type), [blower_base(type) + 1]))
-            rounded_cylinder(r = blower_hub(type) / 2, h = blower_hub_height(type) - blower_base(type) - 1, r2 = 1);
+            *%square([length, width]);
 
-        *%square([length, width]);
-
-        // base
-        linear_extrude(blower_base(type))
-            difference() {
-                shape();
-
-                translate(concat(blower_axis(type), [blower_base(type)]))
-                    circle(d = 2);
-           }
-        // sides
-        linear_extrude(depth)
-            difference() {
-                shape();
-
-                offset(-blower_wall(type))
-                    shape(true);
-           }
-
-        // top
-        translate_z(depth -blower_top(type))
-            linear_extrude(blower_top(type))
+            // base
+            linear_extrude(blower_base(type))
                 difference() {
                     shape();
 
                     translate(concat(blower_axis(type), [blower_base(type)]))
-                        circle(d = blower_bore(type));
-               }
+                        circle(d = 2);
+            }
+
+            // sides
+            linear_extrude(depth)
+                difference() {
+                    shape();
+
+                    offset(-blower_wall(type))
+                        shape(true);
+            }
+
+            // top
+            translate_z(depth -blower_top(type))
+                linear_extrude(blower_top(type))
+                    difference() {
+                        shape();
+
+                        translate(concat(blower_axis(type), [blower_base(type)]))
+                            circle(d = blower_bore(type));
+                }
+        }
+        // rotor
+        translate(concat(blower_axis(type), [blower_base(type) + 1]))
+            rounded_cylinder(r = blower_hub(type) / 2, h = blower_hub_height(type) - blower_base(type) - 1, r2 = 1);
+
+        blower_fan(type, is_square);
     }
 }
 

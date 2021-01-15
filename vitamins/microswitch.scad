@@ -41,6 +41,8 @@ function microswitch_button_clr(type)= type[14];    //! Button colour
 function microswitch_lower_extent(type) = let(leg = microswitch_leg(type)) min([for(pos = microswitch_legs(type)) pos.y - leg.y / 2]); //! How far legs extend downwards
 function microswitch_right_extent(type) = let(leg = microswitch_leg(type)) max([microswitch_length(type) / 2, for(pos = microswitch_legs(type)) pos.x + leg.x / 2]); //! How far legs extend right
 
+function microswitch_size(type) = [microswitch_length(type), microswitch_width(type), microswitch_thickness(type)]; //! Body size
+
 module microswitch_hole_positions(type) //! Place children at the hole positions
 {
     for(hole = microswitch_holes(type))

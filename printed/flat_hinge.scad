@@ -25,8 +25,8 @@
 //!
 //! Opening the test in OpenSCAD with its customiser enabled allows these parameters to be played with.
 //!
-//! Note setting ```thickness1``` or ```thickness2``` to zero in the ```hinge_fastened_assembly()``` removes the screws from one side or the other and
-//! setting ```show_hinge``` to false removes the hinge.
+//! Note setting `thickness1` or `thickness2` to zero in the `hinge_fastened_assembly()` removes the screws from one side or the other and
+//! setting `show_hinge` to false removes the hinge.
 //! This allows the hinges and one set of screws to belong to one assembly and the other set of screws to another assembly.
 //
 include <../core.scad>

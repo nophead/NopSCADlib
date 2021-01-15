@@ -26,6 +26,8 @@ include <tubings.scad>
 include <zipties.scad>
 include <fans.scad>
 
+use <../utils/rounded_cylinder.scad>
+use <../utils/thread.scad>
 use <../utils/tube.scad>
 
 rad_dia = 22; // Diam of the part with ailettes
@@ -94,7 +96,34 @@ module heater_block(type, naked = false, resistor_wire_rotate = [0,0,0]) {
     }
 }
 
+module bowden_connector(cap_colour = grey(20)) {
+    ir = 4.25 / 2;
+    body_colour = silver;
 
+    color(body_colour) {
+        translate_z(-4.5) {
+            tube(or = 2.5, ir = ir, h = 4.5, center = false);
+            male_metric_thread(6, metric_coarse_pitch(5), length = 4.5, center = false, solid = false, colour = body_colour);
+        }
+        tube(or = 7.7 / 2, ir = ir, h = 2, center = false);
+        translate_z(2)
+            linear_extrude(6.5)
+                difference() {
+                    circle(d = 11.55, $fn = 6);
+                    circle(r = ir);
+                }
+        translate_z(8.5)
+            rounded_cylinder(r = 9.8 / 2, h = 2, r2 = 1.5, ir = ir);
+        translate_z(10.5)
+            tube(or = 3.5, ir = ir, h = 0.5, center = false);
+    }
+    color(cap_colour) {
+        translate_z(11)
+            tube(or = 3, ir = ir, h = 1, center = false);
+        translate_z(12)
+            tube(or = 5.5, ir = ir, h = 1.75, center = false);
+    }
+}
 
 module e3d_fan_duct(type) {
     color("DeepSkyBlue")
@@ -123,7 +152,7 @@ module e3d_fan(type) {
                 fan(fan30x10);
 }
 
-module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]) {
+module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0], bowden = false) {
     insulator_length = hot_end_insulator_length(type);
     inset = hot_end_inset(type);
     h_ailettes = rad_len / (2 * rad_nb_ailettes - 1);
@@ -150,6 +179,10 @@ module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]
                         square([100, hot_end_groove(type)]);
             }
 
+    if(bowden)
+        translate_z(inset)
+            bowden_connector();
+
     rotate(90)
         heater_block(type, naked, resistor_wire_rotate);
 
@@ -158,10 +191,10 @@ module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]
             e3d_fan();
 }
 
-module e3d_hot_end_assembly(type, filament, naked = false, resistor_wire_rotate = [0,0,0]) {
+module e3d_hot_end_assembly(type, filament, naked = false, resistor_wire_rotate = [0,0,0], bowden = false) {
     bundle = 3.2;
 
-    e3d_hot_end(type, filament, naked, resistor_wire_rotate);
+    e3d_hot_end(type, filament, naked, resistor_wire_rotate, bowden);
 
     // Wire and ziptie
     if(!naked)

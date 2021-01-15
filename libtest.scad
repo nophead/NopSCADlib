@@ -17,6 +17,23 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
+//!# NopSCADlib
+//! An ever expanding library of parts modelled in OpenSCAD useful for 3D printers and enclosures for electronics, etc.
+//!
+//! It contains lots of vitamins (the RepRap term for non-printed parts), some general purpose printed parts and some utilities.
+//! There are also Python scripts to generate Bills of Materials (BOMs),
+//! STL files for all the printed parts, DXF files for CNC routed parts in a project and a manual containing assembly
+//! instructions and exploded views by scraping markdown embedded in OpenSCAD comments, [see scripts](scripts/readme.md).
+//!
+//! A simple example project can be found [here](examples/MainsBreakOutBox/readme.md).
+//!
+//! For more examples of what it can make see the [gallery](gallery/readme.md).
+//!
+//! The license is GNU General Public License v3.0, see [COPYING](COPYING).
+//!
+//! See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
+//!
+//! <img src="libtest.png" width="100%"/>
 //
 // This file shows all the parts in the library.
 //
@@ -30,10 +47,12 @@ use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
 use <tests/cameras.scad>
+use <tests/camera_housing.scad>
 use <tests/circlips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
 use <tests/displays.scad>
+use <tests/drag_chain.scad>
 use <tests/extrusions.scad>
 use <tests/extrusion_brackets.scad>
 use <tests/fans.scad>
@@ -59,6 +78,7 @@ use <tests/opengrab.scad>
 use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
+use <tests/press_fit.scad>
 use <tests/PSUs.scad>
 use <tests/pulleys.scad>
 use <tests/rails.scad>
@@ -68,6 +88,7 @@ use <tests/rod.scad>
 use <tests/screws.scad>
 use <tests/SCS_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
+use <tests/shaft_couplings.scad>
 use <tests/sheets.scad>
 use <tests/SK_brackets.scad>
 use <tests/spades.scad>
@@ -97,6 +118,7 @@ use <tests/foot.scad>
 use <tests/handle.scad>
 use <tests/PCB_mount.scad>
 use <tests/printed_box.scad>
+use <tests/printed_pulleys.scad>
 use <tests/ribbon_clamp.scad>
 use <tests/screw_knob.scad>
 use <tests/socket_box.scad>
@@ -117,8 +139,11 @@ cable_grommets_y = 0;
 translate([x5, cable_grommets_y])
     cable_grommets();
 
-translate([x5 + 80, cable_grommets_y])
+translate([x5 + 50, cable_grommets_y])
     ribbon_clamps();
+
+translate([x5 + 95, cable_grommets_y])
+    press_fits();
 
 translate([x5, cable_grommets_y + 60])
     fixing_blocks();
@@ -145,6 +170,9 @@ translate([x5, cable_grommets_y + 370])
 
 translate([x5 + 60, cable_grommets_y + 200])
     strap_handles();
+
+translate([640, cable_grommets_y + 200])
+    printed_pulley_test();
 
 translate([x5, cable_grommets_y + 250])
     handle();
@@ -327,7 +355,7 @@ modules_y = iecs_y + 60;
 ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
 batteries_y = blowers_y + 100;
-steppers_y = batteries_y + 70;
+steppers_y = batteries_y + 55;
 panel_meters_y = steppers_y + 70;
 extrusions_y = panel_meters_y + 80;
 
@@ -345,6 +373,9 @@ translate([x3 + 170, veroboard_y + 16])
 
 translate([x3, d_connectors_y])
     d_connectors();
+
+translate([x3 + 170, d_connectors_y - 10])
+    camera_housings();
 
 translate([x3, iecs_y])
     iecs();
@@ -395,12 +426,16 @@ translate([x4 + 200, belts_y + 58]) {
 
     translate([0, 60])
         opengrab_test();
+
 }
+
+translate([x4 + 175, belts_y, -20])
+    drag_chains();
 
 translate([x4, rails_y + 130])
     rails();
 
-translate([800, fans_y + 50])
+translate([770, fans_y + 50])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])
@@ -411,6 +446,9 @@ translate([x4, sk_brackets_y])
 
 translate([x4, extrusion_brackets_y])
     extrusion_brackets();
+
+translate([x4 + 120, extrusion_brackets_y])
+    shaft_couplings();
 
 translate([x4, scs_bearing_blocks_y])
     scs_bearing_blocks();

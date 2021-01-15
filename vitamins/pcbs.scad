@@ -348,7 +348,7 @@ PI_IO = ["PI_IO", "PI_IO V2",       35.56, 25.4, 1.6, 0,    0,   0, "green", tru
     ], []];
 
 ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "green", false, [[2.25, 3.25], [-2.25, 3.25], [2.25, -3.25], [-2.25, -3.25] ],
-    [ [ 12.25,  8.3,  -90, "jst_xh", 5],
+    [ [ 11.725, 8.3,  -90, "jst_xh", 5],
       [ -6.5,  10,      0, "2p54header", 1, 4],
       [ 20.4,  -4.5,    0, "2p54header", 4, 1],
       [ 20.4,  11,  180, "pdip", 16, "ULN2803AN", true],
@@ -408,14 +408,39 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
         [2, 2, false], [2, 13.5, false], [17, 13.5], [36, 13.5]
     ],
     [
-        [ 12,    8,   -90, "jst_xh", 3, true, "white", "silver"],
+        [ 11.6,  8,   -90, "jst_xh", 3, true, "white", "silver"],
         [ 26.5, 12.75,  0, "microswitch", small_microswitch],
         [ 27.5, 17.5,  15, "chip", 15, 0.5, 4.5, "silver"],
     ],
     []];
 
+ESP_01 = [
+    "ESP-01", "ESP-01",
+    24.8, 14.6, 1, // size
+    0, // corner radius
+    0, // mounting hole diameter
+    0, // pad around mounting hole
+    grey(25), // color
+    false, // true if parts should be separate BOM items
+    [], // hole positions
+    [ // components
+        [   2.8,   -7.25, 0, "-2p54header", 2, 4 ],
+        [ -14.55, -11.3,  0, "chip", 5.25, 5.25, 2.25, grey(15) ],
+        [ -14,     -5.2,  0, "chip", 4.5,  4.75, 1.1,  grey(15) ],
+        // antenna
+        for (y = [ 2.8  : 2.3 : 7.4  ]) [ -0.7, -y,  0, "block", 0.7, 1.75, 0.1,  gold ],
+        for (y = [ 4    : 2.3 : 10.6 ]) [ -4.3, -y,  0, "block", 0.7, 1.75, 0.1,  gold ],
+        for (y = [ 3.4  : 2.3 : 10.1 ]) [ -2.5, -y,  0, "block", 4.3, 0.7,  0.1,  gold ],
+        for (y = [ 4.55 : 2.3 : 11.2 ]) [ -2.5, -y,  0, "block", 4.3, 0.7,  0.1,  gold ],
 
-pcbs = [MP1584EN, TP4056, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
+        [ -0.7, -10.85,  0, "block", 0.7,3.75,  0.1,  gold ],
+        [ -6.6,  -5.8,   0, "block", 0.7, 7.5,  0.1,  gold ],
+        [ -4.8,  -2.3,   0, "block", 8.8, 0.7,  0.1,  gold ],
+    ],
+    [] // accessories
+];
+
+pcbs = [MP1584EN, TP4056, ESP_01, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
 
 perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 

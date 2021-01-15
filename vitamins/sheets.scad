@@ -22,7 +22,7 @@
 //
 
 //
-//         [ Code, Description, Thickness, Color, Soft]
+//         [ Code, Description, Thickness, Color, Soft, Warp, Weft, Color2]
 //
 mdf_colour = "#BEA587"; // sampled from a photo
 
@@ -38,7 +38,7 @@ PMMA8     = [ "PMMA8",     "Sheet acrylic",           8, [1,   1,   1,   0.5  ],
 PMMA10    = [ "PMMA10",    "Sheet acrylic",          10, [1,   1,   1,   0.5  ], false];   // ~3/8"
 glass2    = [ "glass2",    "Sheet glass",             2, [1,   1,   1,   0.25 ], false];
 DiBond    = [ "DiBond",    "Sheet DiBond",            3, [0.2, 0.2, 0.2, 1    ], false];
-DiBond6   = [ "DiBond6",   "Sheet DiBond",            6, "RoyalBlue",            false];
+DiBond6   = [ "DiBond6",   "Sheet DiBond",            6, [0.2, 0.2, 0.2, 1    ], false];
 Cardboard = [ "Cardboard", "Corrugated cardboard",    5, [0.8, 0.6, 0.3, 1    ], false];
 FoilTape  = [ "FoilTape",  "Aluminium foil tape",   0.05,[0.9, 0.9, 0.9, 1    ], false];
 Foam20    = [ "Foam20",    "Foam sponge",             20,[0.3, 0.3, 0.3, 1    ], true];
@@ -48,7 +48,11 @@ AL3       = [ "AL3",       "Aluminium tooling plate", 3, [0.9, 0.9, 0.9, 1    ],
 AL6       = [ "AL6",       "Aluminium tooling plate", 6, [0.9, 0.9, 0.9, 1    ], false];
 AL8       = [ "AL8",       "Aluminium tooling plate", 8, [0.9, 0.9, 0.9, 1    ], false];
 Steel06   = [ "Steel06",   "Sheet mild steel",       0.6,"silver"              , false];
+CF1 =       [ "CF1",       "Sheet carbon fiber",      1, grey(30),               false,  2,  2,  grey(25)];
+CF2 =       [ "CF2",       "Sheet carbon fiber",      2, grey(30),               false,  2,  2,  grey(25)];
+CF3 =       [ "CF3",       "Sheet carbon fiber",      3, grey(30),               false,  2,  2,  grey(25)];
 
-sheets = [MDF6, MDF10, MDF12, MDF19, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10, glass2, DiBond, DiBond6, Cardboard, FoilTape, Foam20, AL1_6, AL2, AL6, AL8, Steel06];
+
+sheets = [CF1, CF2, CF3, MDF6, MDF10, MDF12, MDF19, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10, glass2, DiBond, DiBond6, Cardboard, FoilTape, Foam20, AL1_6, AL2, AL6, AL8, Steel06];
 
 use <sheet.scad>

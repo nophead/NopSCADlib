@@ -1021,8 +1021,6 @@ module pcb(type) { //! Draw specified PCB
     for(part = pcb_accessories(type))
         vitamin(part);
 
-    pcb_components(type);
-
     color(pcb_colour(type)) linear_extrude(t) difference() {
         if(Len(pcb_polygon(type)))
             polygon(pcb_polygon(type));
@@ -1076,6 +1074,8 @@ module pcb(type) { //! Draw specified PCB
                                             circle(d = 2);
                     }
                 }
+
+    pcb_components(type);
 }
 
 module pcb_spacer(screw, height, wall = 1.8, taper = 0) { //! Generate STL for PCB spacer

@@ -41,7 +41,7 @@ DSP5005   = ["DSP5005", "Ruideng DSP5005 Power supply module",                [7
                 [[-25,  9, 0], [ 6.5, 4.5, 1], 0.5,  "yellow"],
                ]];
 
-DSN_VC288PCB = ["", "", 41, 21, 1, 0, 0, 0, "green", false, [], [[ 5,  -3,   0, "jst_xh", 3], ], []];
+DSN_VC288PCB = ["", "", 41, 21, 1, 0, 0, 0, "green", false, [], [[ 5,  -3.525,   0, "jst_xh", 3], ], []];
 
 DSN_VC288 = ["DSN_VC288","DSN-VC288 DC 100V 10A Voltmeter ammeter",            [45.3, 26,   17.4], [47.8, 28.8, 2.5], 0,   [1, 1.8], [36, 18, 2.5], [],            0, 2,
               [], 0, DSN_VC288PCB, 5, 0];

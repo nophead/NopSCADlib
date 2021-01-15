@@ -64,11 +64,14 @@ module pin_headers() {
             pin_socket(pin_headers[$i], 3, 3, right_angle = true);
     }
 
-    translate([-20, 0])
-        jst_xh_header(jst_xh_header, 5);
+    for(i = [0, 1], p = [5, 2][i], j = [0 , 1]) {
+        h = [jst_ph_header, jst_xh_header][j];
+        translate([-20 * (i + 1), 0 + j * 40])
+            jst_xh_header(h, p);
 
-    translate([-20, 20])
-        jst_xh_header(jst_xh_header, 5, true);
+        translate([-20 * (i + 1), 20 + j * 40])
+            jst_xh_header(h, p, true);
+    }
 }
 
 if($preview)
