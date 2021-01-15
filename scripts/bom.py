@@ -249,7 +249,7 @@ def boms(target = None, assembly = None):
         #
         # Run openscad
         #
-        openscad.run("-D", "$bom=2", "-D", "$preview=true", "--hardwarnings", "-o", "openscad.echo", "-d", bom_dir + "/bom.deps", bom_maker_name)
+        openscad.run("-D", "$bom=2", "-D", "$preview=true", "-o", "openscad.echo", "-d", bom_dir + "/bom.deps", bom_maker_name)
         os.remove(bom_maker_name)
         print("Generating bom ...", end=" ")
 
