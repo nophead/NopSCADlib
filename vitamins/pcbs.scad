@@ -21,6 +21,7 @@ include <d_connectors.scad>
 include <leds.scad>
 include <axials.scad>
 include <smds.scad>
+include <green_terminals.scad>
 
 //
 //                                   l      w      t    r     h     l  c        b     h
@@ -195,6 +196,123 @@ Duex5 = ["Duex5", "Duex5 expansion board",
                                                                     ]),
                                                                     []];
 
+TMC2130 = [
+    "TMC2130", "TMC2130",
+    20, 14, 1.6, // size
+    0, 0, 0, // corner radius, mounting hole diameter, pad around mounting hole
+    grey(95), // colour
+    false, // true if parts should be separate BOM items
+    [], // hole positions
+    [
+        [  10,  1,  0, "-2p54header", 8, 1 ],
+        [  10, 13,  0, "-2p54header", 8, 1 ],
+        [  12,  7,  0, "-chip", 6, 4, 1, grey(20) ],
+        // mock up a heat sink
+        [  10,  7,  0, "block", 9, 8.5, 2, "DeepSkyBlue" ],
+        for (y = [-4,-2,0,2,4]) [ 10, 7 + y,  0, "block", 9, 0.75, 11, "DeepSkyBlue" ],
+    ],
+    []
+];
+
+BTT_SKR_V1_4_TURBO = [
+    "BTT_SKR_V1_4_TURBO", "BigTreeTech SKR v1.4 Turbo",
+    110, 85, 1.6, // size
+    1, // corner radius
+    3, // mounting hole diameter
+    4, // pad around mounting hole
+    grey(30), // colour
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        [-4, 4], [-4, -4], [4, -4], [4, 4]
+    ],
+    [ // components
+        [  (29.15+31.5)/2,  8, -90, "usb_B" ],
+        [  (46.9+51.55)/2,  7, -90, "uSD", [14, 14, 2] ],
+        [ 105,   13,     0, "button_6mm" ],
+        [  58,   43,     0, "chip", 15, 15, 1, grey(20) ],
+        // ESP-01 socket
+        [  69.8,  4,     0, "2p54socket", 4, 2 ],
+        // terminals
+        [   5.3, 13.2, 180, "gterm", gt_5x17, 2, undef, grey(20)],
+        [   5.3, 25.8, 180, "gterm", gt_5x17, 2, undef, grey(20)],
+        [   5.3, 37.2, 180, "gterm", gt_5x11, 2, undef, grey(20)],
+        [   5.3, 47.2, 180, "gterm", gt_5x11, 2, undef, grey(20)],
+
+        [   2.8, 56.7, -90, "jst_xh", 2, false, grey(20) ],
+        [  10.9, 56.7,  90, "jst_xh", 2, false, grey(20) ],
+        [  82,    4,     0, "jst_xh", 2, false, grey(20) ],
+        [  90,    4,     0, "jst_xh", 2, false, grey(20) ],
+        [  98,    4,     0, "jst_xh", 2, false, grey(20) ],
+
+        [  87.7, 29.0, -90, "jst_xh", 3, false, grey(20) ],
+        [  87.7, 39.5, -90, "jst_xh", 3, false, grey(20) ],
+        [  87.7, 50.1, -90, "jst_xh", 3, false, grey(20) ],
+        [  95.3, 29.0, -90, "jst_xh", 3, false, grey(20) ],
+        [  95.3, 39.5, -90, "jst_xh", 3, false, grey(20) ],
+        [  95.3, 50.1, -90, "jst_xh", 3, false, grey(20) ],
+
+        [  85.7, 18.2, 180, "jst_xh", 3, false, grey(20) ],
+        [  94.9, 18.2, 180, "jst_xh", 2, false, grey(20) ],
+        [  77.2, 19.6, -90, "jst_xh", 3, false, grey(20) ],
+        [  69.8, 11.0,   0, "jst_xh", 5, false, grey(20) ],
+
+        [  69.0, 19.2,   0,  "2p54header", 4, 1 ],
+        [  57.8, 18.0,   0,  "2p54header", 3, 2 ],
+        [  28.0, 19.7,   0,  "2p54header", 2, 2 ],
+
+        [  37.6, 28.8,   0,  "2p54header", 1, 3, undef, "red" ],
+        [  77.8, 27.5,   0,  "2p54header", 2, 2 ],
+        [  81.8, 26.4,   0,  "2p54header", 1, 3, undef, "red" ],
+        [  43.8, 42.8,   0,  "2p54header", 1, 5 ],
+
+        // EXP1 & EXP2
+        [  -6.6, 29.4,  90, "2p54boxhdr", 5, 2 ],
+        [  -6.6, 50.4,  90, "2p54boxhdr", 5, 2 ],
+
+        // motor axes connections
+        [  11.2, -3.75, 180, "jst_xh", 2, false, grey(20) ],
+        [  21.8, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  35.0, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  48.2, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  61.4, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  74.7, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  87.9, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  98.5, -3.75, 180, "jst_xh", 2, false, grey(20) ],
+
+        // stepper drivers
+        [  11.5, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  11.5, 75.2,  0, "2p54socket", 8, 1 ],
+        [   2.6, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  11.5, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  33.1, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  33.1, 75.2,  0, "2p54socket", 8, 1 ],
+        [  24.2, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  33.1, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  54.8, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  54.8, 75.2,  0, "2p54socket", 8, 1 ],
+        [  45.9, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  54.8, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  76.4, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  76.4, 75.2,  0, "2p54socket", 8, 1 ],
+        [  67.5, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  76.4, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  98.1, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  98.1, 75.2,  0, "2p54socket", 8, 1 ],
+        [  89.2, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+
+        // closed loop pins
+        [  24.4, 57.5,  0, "2p54header", 6, 1 ],
+        [  40.6, 57.5,  0, "2p54header", 6, 1 ],
+        [  56.7, 57.5,  0, "2p54header", 6, 1 ],
+        [  72.9, 57.5,  0, "2p54header", 6, 1 ],
+        [  89.1, 57.5,  0, "2p54header", 6, 1 ],
+    ],
+    [] // accessories
+];
 
 Melzi = ["Melzi", "Melzi electronics", 203.2, 49.53, 1.6, 3.81, 3.1,  6, "green", false, [[3.81,  3.81], [-3.81, 3.81], [-3.81, -3.81], [3.81, -3.81]],
                                                                     [],
@@ -440,7 +558,7 @@ ESP_01 = [
     [] // accessories
 ];
 
-pcbs = [MP1584EN, TP4056, ESP_01, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
+pcbs = [MP1584EN, TP4056, ESP_01, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, BTT_SKR_V1_4_TURBO, DuetE, Duex2, Duex5];
 
 perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
