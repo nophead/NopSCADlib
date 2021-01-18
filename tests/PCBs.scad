@@ -21,8 +21,10 @@ include <../vitamins/pcbs.scad>
 
 use <../utils/layout.scad>
 
+function spacing(p) = let(w = pcb_width(p)) w < 22 ? w + 3 : w + 10;
+
 module pcbs() {
-    layout([for(p = pcbs) pcb_width(p)], 10)
+    layout([for(p = pcbs) spacing(p)], 0)
         translate([0, pcb_length(pcbs[$i]) / 2])
             rotate(90)
                 pcb_assembly(pcbs[$i], 5 + $i, 3);
@@ -31,6 +33,10 @@ module pcbs() {
         layout([for(p = perfboards) pcb_length(p)], 10)
             translate([0, -pcb_width(perfboards[$i]) / 2])
                 pcb_assembly(perfboards[$i], 5 + $i, 3);
+
+    for(p = pcbs_not_shown)
+        hidden()
+            pcb(p);
 }
 if($preview)
     pcbs();
