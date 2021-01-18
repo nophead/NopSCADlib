@@ -68,3 +68,11 @@ module woven_tube(or, ir, h, center= true, colour = grey(30), colour2, warp = 2,
         }
     }
 }
+
+module rectangular_tube(size, center = true, thickness = 1, fillet = 0.5) {
+    extrude_if(size.z, center = center)
+        difference() {
+            rounded_square([size.x, size.y], fillet);
+            rounded_square([size.x - 2 * thickness, size.y - 2 * thickness], fillet);
+        }
+}
