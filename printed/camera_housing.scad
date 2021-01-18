@@ -68,7 +68,7 @@ function cam_screw_length(cam) = let(
     front = cam_front_size(cam),
     screw = pcb_screw(camera_pcb(cam)),
     nut = screw_nut(screw)
-    ) screw_length(screw, front.z - nut_trap_depth(nut), 1, nyloc = true, longer = true);
+    ) screw_length(screw, front.z - nut_trap_depth(nut), 1, nyloc = true);
 
 function hinge_z(cam) = cam_screw_length(cam) - hinge_r;
 
