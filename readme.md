@@ -5970,6 +5970,7 @@ Simple tube or ring
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `rectangular_tube(size, center = true, thickness = 1, fillet = 0.5)` | Create a retangular tube with filleted corners |
 | `ring(or, ir)` | Create a ring with specified external and internal radii |
 | `tube(or, ir, h, center = true)` | Create a tube with specified external and internal radii and height `h` |
 | `woven_tube(or, ir, h, center= true, colour = grey(30)` | Create a woven tube with specified external and internal radii, height `h`, colours, warp and weft |
