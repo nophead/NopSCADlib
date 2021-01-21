@@ -50,6 +50,9 @@ def do_cmd(cmd, output = sys.stdout):
     return subprocess.call(cmd, stdout = output, stderr = output)
 
 def compare_images(a, b, c):
+    if not os.path.isfile(b):
+        print(Fore.MAGENTA + "Failed to generate %s while making %s" % (b, a), Fore.WHITE)
+        sys.exit(1)
     if not os.path.isfile(a):
         return -1
     log_name = 'magick.log'
@@ -126,14 +129,13 @@ def tests(tests):
     #
     # List of individual part files
     #
-
     scads = [i for i in sorted(os.listdir(scad_dir), key = lambda s: s.lower()) if i[-5:] == ".scad"]
     types = []
     for scad in scads:
         base_name = scad[:-5]
         if not tests or base_name in tests:
             done.append(base_name)
-            print('\n'+base_name)
+            print(base_name)
             cap_name = base_name[0].capitalize() + base_name[1:]
             base_name = base_name.lower()
             scad_name = scad_dir + '/' + scad
@@ -240,6 +242,7 @@ def tests(tests):
                 BOM = bom.parse_bom()
                 with open(bom_name, 'wt') as outfile:
                     json.dump(BOM.flat_data(), outfile, indent = 4)
+                print()
 
             with open(bom_name, "rt") as bom_file:
                 BOM = json.load(bom_file)
