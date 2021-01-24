@@ -2305,6 +2305,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ---:|:--- |:---|
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
+|   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
 |   1 | `pcb(BTT_SKR_V1_4_TURBO)` |  BigTreeTech SKR v1.4 Turbo |
 |   1 |  |  Cat 5 patch cable 300mm |
 |   1 | `d_plug(DCONN15, pcb = true)` |  D-type 15 way PCB mount plug |
@@ -2324,10 +2325,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(3)` |  Molex KK header 3 way |
 |  16 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  34 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  16 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  17 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 |
-|   1 | `pcb(PSU12V1A)` |  PSU 12V 1A |
+|   1 | `pcb(PSU12V1A)` |  PSU 12V 1A - not shown |
 |   1 | `pcb(PERF60x40)` |  Perfboard 60 x 40mm |
 |   1 | `pcb(PERF70x30)` |  Perfboard 70 x 30mm |
 |   1 | `pcb(PERF70x50)` |  Perfboard 70 x 50mm |
@@ -2346,8 +2347,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |  12 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
 |   4 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
 |   4 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
-|   8 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
-|   4 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
+|   4 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   9 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 35)` |  Screw M4 cap x 35mm |
 |   1 | `pcb(TP4056)` |  TP4056 Li-lon Battery charger module |
 |   3 | `terminal_35(2)` |  Terminal block 2 way 3.5mm |
@@ -2356,7 +2357,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  16 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  34 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  16 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  17 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
@@ -2373,11 +2374,11 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer25150_2.stl |
 |   4 | pcb_spacer25160_2.stl |
 |   4 | pcb_spacer25170_2.stl |
+|   4 | pcb_spacer25190.stl |
 |   4 | pcb_spacer25200.stl |
-|   4 | pcb_spacer25210.stl |
 |   2 | pcb_spacer2580.stl |
 |   4 | pcb_spacer30180.stl |
-|   4 | pcb_spacer30190.stl |
+|   5 | pcb_spacer30210.stl |
 |   4 | pcb_spacer30220.stl |
 |   4 | pcb_spacer3050.stl |
 |   4 | pcb_spacer40230.stl |
