@@ -1750,7 +1750,11 @@ UK 13A sockets at the moment.
 ---
 <a name="Microswitches"></a>
 ## Microswitches
-Used for limit switches.
+Used for limit switches. Currently only the button type is supported as the lever and roller types are less accurate.
+
+The switch is drawn with the button at the nominal operation point. This can be plus or minus `microswitch_op_tol(type)`.
+
+When the button is released it comes out by a maximum of `microswitch_fp_max(type)` from the nominal operating point.
 
 [vitamins/microswitches.scad](vitamins/microswitches.scad) Object definitions.
 
@@ -1763,14 +1767,16 @@ Used for limit switches.
 |:--- |:--- |
 | `microswitch_body_clr(type)` | Body colour |
 | `microswitch_button_clr(type)` | Button colour |
-| `microswitch_button_pos(type)` | Button position |
+| `microswitch_button_pos(type)` | Button position at operating point |
 | `microswitch_button_t(type)` | Button thickness |
 | `microswitch_button_w(type)` | Button width |
+| `microswitch_fp_max(type)` | Free position maximum |
 | `microswitch_hole_d(type)` | Screw hole diameter |
 | `microswitch_holes(type)` | Hole positions |
 | `microswitch_leg(type)` | Leg types |
 | `microswitch_legs(type)` | Leg positions |
 | `microswitch_length(type)` | Body length |
+| `microswitch_op_tol(type)` | Operating position +/- tolerance |
 | `microswitch_radius(type)` | Body corner radius |
 | `microswitch_thickness(type)` | Body thickness |
 | `microswitch_width(type)` | Body width |
