@@ -53,7 +53,7 @@ function pulley_extent(type) = max(pulley_flange_dia(type), pulley_hub_dia(type)
 T_angle = 40;
 GT_r = 0.555;
 
-module pulley(type) { //! Draw a pulley
+module pulley(type, colour = silver) { //! Draw a pulley
     teeth = pulley_teeth(type);
     od = pulley_od(type);
 
@@ -117,7 +117,7 @@ module pulley(type) { //! Draw a pulley
                 rotate([-90, 0, i * -90])
                     cylinder(r = screw_radius(pulley_screw(type)), h = 100);
 
-    color(silver) {
+    color(colour) {
         if(screw_z && screw_z < hl)
             render()
                 difference() {
@@ -140,9 +140,9 @@ module pulley(type) { //! Draw a pulley
     }
 }
 
-module pulley_assembly(type) { //! Draw a pulley with its grub screws in place
+module pulley_assembly(type, colour = silver) { //! Draw a pulley with its grub screws in place
     translate_z(pulley_offset(type)) {
-        pulley(type);
+        pulley(type, colour);
 
         if(pulley_screws(type))
             translate_z(pulley_screw_z(type))
