@@ -203,7 +203,6 @@ def views(target, do_assemblies = None):
                                     if module == 'main_assembly':
                                         main_blurb = blurb.scrape_module_blurb(lines[:line_no])
                         line_no += 1
-    times.print_times()
     #
     # Build the document
     #
@@ -214,7 +213,8 @@ def views(target, do_assemblies = None):
             # Title, description and picture
             #
             project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
-            print('<a name="TOP"></a>\n# %s' % project, file = doc_file)
+            print('<a name="TOP"></a>', file = doc_file)
+            print('# %s' % project, file = doc_file)
             main_file = bom.find_scad_file('main_assembly')
             if not main_file:
                 raise Exception("can't find source for main_assembly")
@@ -264,7 +264,6 @@ def views(target, do_assemblies = None):
                 name = titalise(ass["name"][:-9]).replace(' ','&nbsp;')
                 print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
             print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
-
             print(('|---:' * len(flat_bom) + '|---:|:---|'), file = doc_file)
 
             for t in types:
@@ -290,7 +289,6 @@ def views(target, do_assemblies = None):
                         print('| %s ' % pad(total if total else '.', 2, 1), file = doc_file, end = '')
                         grand_total += total
                     print("| %s | %s |" % (pad(grand_total, 2, 1), pad('Total %s count' % headings[t], 2)), file = doc_file)
-
             print(file = doc_file)
             if len(blurbs) > 2:
                 print(blurbs[2], file = doc_file)
@@ -302,10 +300,11 @@ def views(target, do_assemblies = None):
                 name = ass["name"]
                 cap_name = titalise(name)
 
+                print('<a name="%s"></a>' % name, file = doc_file)
                 if ass["count"] > 1:
-                    print('<a name="%s"></a>\n## %d x %s' % (name, ass["count"], cap_name), file = doc_file)
+                    print('## %d x %s' % (ass["count"], cap_name), file = doc_file)
                 else:
-                    print('<a name="%s"></a>\n## %s' % (name, cap_name), file = doc_file)
+                    print('## %s' % cap_name, file = doc_file)
                 vitamins = ass["vitamins"]
                 if vitamins:
                     print("### Vitamins",         file = doc_file)
@@ -384,8 +383,11 @@ def views(target, do_assemblies = None):
         # Convert to HTML
         #
         html_name = "printme.html" if print_mode else "readme.html"
+        t = time.time()
         with open(top_dir + html_name, "wt") as html_file:
             do_cmd(("python -m markdown -x tables -x sane_lists " + doc_name).split(), html_file)
+        times.add_time(top_dir + html_name, t)
+    times.print_times()
     #
     # Spell check
     #
