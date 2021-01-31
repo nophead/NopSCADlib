@@ -74,7 +74,7 @@ def bom_to_assemblies(bom_dir, bounds_map):
     # Remove the main assembly if it is a shell
     #
     if flat_bom:
-        ass =  flat_bom[-1]
+        ass = flat_bom[-1]
         if len(ass["assemblies"]) < 2 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
             flat_bom = flat_bom[:-1]
     return [assembly["name"] for  assembly in flat_bom]
@@ -388,7 +388,7 @@ def views(target, do_assemblies = None):
     #
     # Spell check
     #
-    do_cmd('codespell -L od readme.md'.split())
+    do_cmd(('codespell -L od ' + top_dir + 'readme.md').split())
     #
     # List the ones we didn't find
     #
