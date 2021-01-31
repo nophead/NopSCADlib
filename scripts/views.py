@@ -81,7 +81,8 @@ def bom_to_assemblies(bom_dir, bounds_map):
 
 def eop(print_mode, doc_file, last = False, first = False):
     if print_mode:
-         print('\n<div style="page-break-after: always;"></div>', file = doc_file)
+        if not last:
+            print('\n<div style="page-break-after: always;"></div>', file = doc_file)
     else:
         if not first:
             print('[Top](#TOP)',   file = doc_file)
