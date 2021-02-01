@@ -79,15 +79,12 @@ def bom_to_assemblies(bom_dir, bounds_map):
             flat_bom = flat_bom[:-1]
     return [assembly["name"] for  assembly in flat_bom]
 
-def eop(print_mode, doc_file, last = False, first = False):
-    if print_mode:
-        if not last:
-            print('\n<div style="page-break-after: always;"></div>', file = doc_file)
-    else:
-        if not first:
-            print('[Top](#TOP)',   file = doc_file)
-        if not last:
-            print("\n---", file = doc_file)
+def eop(doc_file, last = False, first = False):
+    print('<span></span>', file = doc_file)     # An invisable marker for page breaks because markdown takes much longer if the document contains a div
+    if not first:
+        print('[Top](#TOP)', file = doc_file)
+    if not last:
+        print("\n---", file = doc_file)
 
 def pad(s, before, after = 0):
     return '&nbsp;' * before + str(s) + '&nbsp;' * after
@@ -206,188 +203,205 @@ def views(target, do_assemblies = None):
     #
     # Build the document
     #
-    for print_mode in [True, False]:
-        doc_name = top_dir + "readme.md"
-        with open(doc_name, "wt") as doc_file:
-            #
-            # Title, description and picture
-            #
-            project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
-            print('<a name="TOP"></a>', file = doc_file)
-            print('# %s' % project, file = doc_file)
-            main_file = bom.find_scad_file('main_assembly')
-            if not main_file:
-                raise Exception("can't find source for main_assembly")
-            text = blurb.scrape_blurb(source_dir + '/' + main_file)
-            blurbs = blurb.split_blurb(text)
-            if len(text):
-                print(blurbs[0], file = doc_file)
-            else:
-                if print_mode:
-                    print(Fore.MAGENTA + "Missing project description" + Fore.WHITE)
-            #
-            # Only add the image if the first blurb section doesn't contain one.
-            #
-            if not re.search(r'\!\[.*\]\(.*\)', blurbs[0], re.MULTILINE):
-                print('![Main Assembly](assemblies/%s.png)\n' % flat_bom[-1]["name"].replace('_assembly', '_assembled'), file = doc_file)
-            eop(print_mode, doc_file, first = True)
-            #
-            # Build TOC
-            #
-            print('## Table of Contents', file = doc_file)
-            print('1. [Parts list](#Parts_list)', file = doc_file)
-            for ass in flat_bom:
-                name =  ass["name"]
-                cap_name = titalise(name)
-                print('1. [%s](#%s)' % (cap_name, name), file = doc_file)
-            print(file = doc_file)
-            if len(blurbs) > 1:
-                print(blurbs[1], file = doc_file)
-            eop(print_mode, doc_file)
-            #
-            # Global BOM
-            #
-            print('<a name="Parts_list"></a>\n## Parts list', file = doc_file)
-            types = ["vitamins", "printed", "routed"]
-            headings = {"vitamins" : "vitamins", "printed" : "3D printed parts", "routed" : "CNC routed parts"}
-            things = {}
+    doc_name = top_dir + "readme.md"
+    with open(doc_name, "wt") as doc_file:
+        #
+        # Title, description and picture
+        #
+        project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
+        print('<a name="TOP"></a>', file = doc_file)
+        print('# %s' % project, file = doc_file)
+        main_file = bom.find_scad_file('main_assembly')
+        if not main_file:
+            raise Exception("can't find source for main_assembly")
+        text = blurb.scrape_blurb(source_dir + '/' + main_file)
+        blurbs = blurb.split_blurb(text)
+        if len(text):
+            print(blurbs[0], file = doc_file)
+        else:
+            print(Fore.MAGENTA + "Missing project description" + Fore.WHITE)
+        #
+        # Only add the image if the first blurb section doesn't contain one.
+        #
+        if not re.search(r'\!\[.*\]\(.*\)', blurbs[0], re.MULTILINE):
+            print('![Main Assembly](assemblies/%s.png)\n' % flat_bom[-1]["name"].replace('_assembly', '_assembled'), file = doc_file)
+        eop(doc_file, first = True)
+        #
+        # Build TOC
+        #
+        print('## Table of Contents', file = doc_file)
+        print('1. [Parts list](#Parts_list)', file = doc_file)
+        for ass in flat_bom:
+            name =  ass["name"]
+            cap_name = titalise(name)
+            print('1. [%s](#%s)' % (cap_name, name), file = doc_file)
+        print(file = doc_file)
+        if len(blurbs) > 1:
+            print(blurbs[1], file = doc_file)
+        eop(doc_file)
+        #
+        # Global BOM
+        #
+        print('<a name="Parts_list"></a>\n## Parts list', file = doc_file)
+        types = ["vitamins", "printed", "routed"]
+        headings = {"vitamins" : "vitamins", "printed" : "3D printed parts", "routed" : "CNC routed parts"}
+        things = {}
+        for t in types:
+            things[t] = {}
+        for ass in flat_bom:
             for t in types:
-                things[t] = {}
-            for ass in flat_bom:
-                for t in types:
-                    for thing in ass[t]:
-                        if thing in things[t]:
-                            things[t][thing] += ass[t][thing]["count"]
-                        else:
-                            things[t][thing] = ass[t][thing]["count"]
-            for ass in flat_bom:
-                name = titalise(ass["name"][:-9]).replace(' ','&nbsp;')
-                print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
-            print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
-            print(('|---:' * len(flat_bom) + '|---:|:---|'), file = doc_file)
+                for thing in ass[t]:
+                    if thing in things[t]:
+                        things[t][thing] += ass[t][thing]["count"]
+                    else:
+                        things[t][thing] = ass[t][thing]["count"]
+        for ass in flat_bom:
+            name = titalise(ass["name"][:-9]).replace(' ','&nbsp;')
+            print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
+        print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
+        print(('|---:' * len(flat_bom) + '|---:|:---|'), file = doc_file)
 
-            for t in types:
-                if things[t]:
-                    totals = {}
-                    heading = headings[t][0:1].upper() + headings[t][1:]
-                    print(('|  ' * len(flat_bom) + '| | **%s** |') % heading, file = doc_file)
-                    for thing in sorted(things[t], key = lambda s: s.split(":")[-1]):
-                        for ass in flat_bom:
-                            count = ass[t][thing]["count"] if thing in ass[t] else 0
-                            print('| %s ' % pad(count if count else '.', 2, 1), file = doc_file, end = '')
-                            name = ass["name"]
-                            if name in totals:
-                                totals[name] += count
-                            else:
-                                totals[name] = count
-                        print('|  %s | %s |' % (pad(things[t][thing], 2, 1), pad(thing.split(":")[-1], 2)), file = doc_file)
-
-                    grand_total = 0
+        for t in types:
+            if things[t]:
+                totals = {}
+                heading = headings[t][0:1].upper() + headings[t][1:]
+                print(('|  ' * len(flat_bom) + '| | **%s** |') % heading, file = doc_file)
+                for thing in sorted(things[t], key = lambda s: s.split(":")[-1]):
                     for ass in flat_bom:
+                        count = ass[t][thing]["count"] if thing in ass[t] else 0
+                        print('| %s ' % pad(count if count else '.', 2, 1), file = doc_file, end = '')
                         name = ass["name"]
-                        total = totals[name] if name in totals else 0
-                        print('| %s ' % pad(total if total else '.', 2, 1), file = doc_file, end = '')
-                        grand_total += total
-                    print("| %s | %s |" % (pad(grand_total, 2, 1), pad('Total %s count' % headings[t], 2)), file = doc_file)
-            print(file = doc_file)
-            if len(blurbs) > 2:
-                print(blurbs[2], file = doc_file)
-            eop(print_mode, doc_file)
-            #
-            # Assembly instructions
-            #
-            for ass in flat_bom:
-                name = ass["name"]
-                cap_name = titalise(name)
+                        if name in totals:
+                            totals[name] += count
+                        else:
+                            totals[name] = count
+                    print('|  %s | %s |' % (pad(things[t][thing], 2, 1), pad(thing.split(":")[-1], 2)), file = doc_file)
 
-                print('<a name="%s"></a>' % name, file = doc_file)
-                if ass["count"] > 1:
-                    print('## %d x %s' % (ass["count"], cap_name), file = doc_file)
-                else:
-                    print('## %s' % cap_name, file = doc_file)
-                vitamins = ass["vitamins"]
-                if vitamins:
-                    print("### Vitamins",         file = doc_file)
-                    print("|Qty|Description|",    file = doc_file)
-                    print("|---:|:----------|",    file = doc_file)
-                    for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
-                        print("|%d|%s|" % (vitamins[v]["count"], v.split(":")[1]),     file = doc_file)
-                    print("\n", file = doc_file)
-
-                printed = ass["printed"]
-                if printed:
-                    print('### 3D Printed parts', file = doc_file)
-                    keys = sorted(list(printed.keys()))
-                    for i, p in enumerate(keys):
-                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p), file = doc_file, end = '')
-                        if (i % 3) == 2 or i == len(printed) - 1:
-                            n = (i % 3) + 1
-                            print('\n|%s' % ('---|' * n), file =  doc_file)
-                            for j in range(n):
-                                part = keys[i - n + j + 1]
-                                print('| ![%s](stls/%s) %s' % (part, part.replace('.stl','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
-                            print('\n', file = doc_file)
-                    print('\n', file  = doc_file)
-
-                routed = ass["routed"]
-                if routed:
-                    print("### CNC Routed parts", file = doc_file)
-                    keys = sorted(list(routed.keys()))
-                    for i, r in enumerate(keys):
-                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r), file = doc_file, end = '')
-                        if (i % 3) == 2 or i == len(routed) - 1:
-                            n = (i % 3) + 1
-                            print('\n|%s' % ('---|' * n), file =  doc_file)
-                            for j in range(n):
-                                part = keys[i - n + j + 1]
-                                print('| ![%s](dxfs/%s) %s' % (part, part.replace('.dxf','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
-                            print('\n', file = doc_file)
-                    print('\n', file  = doc_file)
-
-                sub_assemblies = ass["assemblies"]
-                if sub_assemblies:
-                    print("### Sub-assemblies", file = doc_file)
-                    keys = sorted(list(sub_assemblies.keys()))
-                    for i, a in enumerate(keys):
-                        print('%s %d x %s |' % ('\n|' if not (i % 3) else '', sub_assemblies[a], a), file = doc_file, end = '')
-                        if (i % 3) == 2 or i == len(keys) - 1:
-                            n = (i % 3) + 1
-                            print('\n|%s' % ('---|' * n), file =  doc_file)
-                            for j in range(n):
-                                a = keys[i - n + j + 1].replace('_assembly', '_assembled')
-                                print('| ![%s](assemblies/%s) %s' % (a, a + '_tn.png', '|\n' if j == j - 1 else ''), end = '', file = doc_file)
-                            print('\n', file = doc_file)
-                    print('\n', file  = doc_file)
-
-                small = not ass["big"]
-                suffix = '_tn.png' if small else '.png'
-                print('### Assembly instructions', file = doc_file)
-                print('![%s](assemblies/%s)\n' % (name, name + suffix), file = doc_file)
-
-                if "blurb" in ass and ass["blurb"]:
-                    print(ass["blurb"], file = doc_file)
-                else:
-                    if print_mode:
-                        print(Fore.MAGENTA + "Missing instructions for %s" % name, Fore.WHITE)
-
-                name = name.replace('_assembly', '_assembled')
-                print('![%s](assemblies/%s)\n' % (name, name + suffix), file = doc_file)
-                eop(print_mode, doc_file, last = ass == flat_bom[-1] and not main_blurb)
-            #
-            # If main module is suppressed print any blurb here
-            #
-            if main_blurb:
-                print(main_blurb, file = doc_file)
-                eop(print_mode, doc_file, last = True)
+                grand_total = 0
+                for ass in flat_bom:
+                    name = ass["name"]
+                    total = totals[name] if name in totals else 0
+                    print('| %s ' % pad(total if total else '.', 2, 1), file = doc_file, end = '')
+                    grand_total += total
+                print("| %s | %s |" % (pad(grand_total, 2, 1), pad('Total %s count' % headings[t], 2)), file = doc_file)
+        print(file = doc_file)
+        if len(blurbs) > 2:
+            print(blurbs[2], file = doc_file)
+        eop(doc_file)
         #
-        # Convert to HTML
+        # Assembly instructions
         #
-        html_name = "printme.html" if print_mode else "readme.html"
-        t = time.time()
-        with open(top_dir + html_name, "wt") as html_file:
-            do_cmd(("python -m markdown -x tables -x sane_lists " + doc_name).split(), html_file)
-        times.add_time(top_dir + html_name, t)
+        for ass in flat_bom:
+            name = ass["name"]
+            cap_name = titalise(name)
+
+            print('<a name="%s"></a>' % name, file = doc_file)
+            if ass["count"] > 1:
+                print('## %d x %s' % (ass["count"], cap_name), file = doc_file)
+            else:
+                print('## %s' % cap_name, file = doc_file)
+            vitamins = ass["vitamins"]
+            if vitamins:
+                print("### Vitamins",         file = doc_file)
+                print("|Qty|Description|",    file = doc_file)
+                print("|---:|:----------|",    file = doc_file)
+                for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
+                    print("|%d|%s|" % (vitamins[v]["count"], v.split(":")[1]),     file = doc_file)
+                print("\n", file = doc_file)
+
+            printed = ass["printed"]
+            if printed:
+                print('### 3D Printed parts', file = doc_file)
+                keys = sorted(list(printed.keys()))
+                for i, p in enumerate(keys):
+                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p), file = doc_file, end = '')
+                    if (i % 3) == 2 or i == len(printed) - 1:
+                        n = (i % 3) + 1
+                        print('\n|%s' % ('---|' * n), file =  doc_file)
+                        for j in range(n):
+                            part = keys[i - n + j + 1]
+                            print('| ![%s](stls/%s) %s' % (part, part.replace('.stl','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
+                        print('\n', file = doc_file)
+                print('\n', file  = doc_file)
+
+            routed = ass["routed"]
+            if routed:
+                print("### CNC Routed parts", file = doc_file)
+                keys = sorted(list(routed.keys()))
+                for i, r in enumerate(keys):
+                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r), file = doc_file, end = '')
+                    if (i % 3) == 2 or i == len(routed) - 1:
+                        n = (i % 3) + 1
+                        print('\n|%s' % ('---|' * n), file =  doc_file)
+                        for j in range(n):
+                            part = keys[i - n + j + 1]
+                            print('| ![%s](dxfs/%s) %s' % (part, part.replace('.dxf','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
+                        print('\n', file = doc_file)
+                print('\n', file  = doc_file)
+
+            sub_assemblies = ass["assemblies"]
+            if sub_assemblies:
+                print("### Sub-assemblies", file = doc_file)
+                keys = sorted(list(sub_assemblies.keys()))
+                for i, a in enumerate(keys):
+                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', sub_assemblies[a], a), file = doc_file, end = '')
+                    if (i % 3) == 2 or i == len(keys) - 1:
+                        n = (i % 3) + 1
+                        print('\n|%s' % ('---|' * n), file =  doc_file)
+                        for j in range(n):
+                            a = keys[i - n + j + 1].replace('_assembly', '_assembled')
+                            print('| ![%s](assemblies/%s) %s' % (a, a + '_tn.png', '|\n' if j == j - 1 else ''), end = '', file = doc_file)
+                        print('\n', file = doc_file)
+                print('\n', file  = doc_file)
+
+            small = not ass["big"]
+            suffix = '_tn.png' if small else '.png'
+            print('### Assembly instructions', file = doc_file)
+            print('![%s](assemblies/%s)\n' % (name, name + suffix), file = doc_file)
+
+            if "blurb" in ass and ass["blurb"]:
+                print(ass["blurb"], file = doc_file)
+            else:
+                print(Fore.MAGENTA + "Missing instructions for %s" % name, Fore.WHITE)
+
+            name = name.replace('_assembly', '_assembled')
+            print('![%s](assemblies/%s)\n' % (name, name + suffix), file = doc_file)
+            eop(doc_file, last = ass == flat_bom[-1] and not main_blurb)
+        #
+        # If main module is suppressed print any blurb here
+        #
+        if main_blurb:
+            print(main_blurb, file = doc_file)
+            eop(doc_file, last = True)
+    #
+    # Convert to HTML
+    #
+    html_name = 'readme.html'
+    t = time.time()
+    with open(top_dir + html_name, "wt") as html_file:
+        do_cmd(("python -m markdown -x tables -x sane_lists " + doc_name).split(), html_file)
+    times.add_time(top_dir + html_name, t)
     times.print_times()
+    #
+    # Make the printme.html by replacing empty spans that invisbly mark the page breaks by page break divs.
+    #
+    with open(top_dir + 'readme.html', 'rt') as src:
+        lines = src.readlines()
+
+    i = 0
+    with open(top_dir + 'printme.html', 'wt') as dst:
+        while i < len(lines):
+            line = lines[i]
+            if line.startswith('<p><span></span>'):                # Empty span used to mark page breaks
+                i += 1
+                if lines[i].startswith('<a href="#TOP">Top</a>'):  # The first page break won't have one
+                    i += 1
+                if i < len(lines) and lines[i] == '<hr />\n':      # The last page break doesn't have one
+                    dst.write('<div style="page-break-after: always;"></div>\n')
+                    i += 1
+            else:
+                dst.write(line)
+                i += 1
     #
     # Spell check
     #
