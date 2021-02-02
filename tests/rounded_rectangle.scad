@@ -27,10 +27,13 @@ module rounded_rectangles() {
         rounded_rectangle([30, 20, 10], 3);
 
     translate([80, 0])
-        rounded_rectangle_xz([30, 20, 10], 3);
+        rounded_cube_xy([30, 20, 10], 3);
 
     translate([120, 0])
-        rounded_rectangle_yz([30, 20, 10], 3);
+        rounded_cube_xz([30, 20, 10], 3);
+
+    translate([160, 0])
+        rounded_cube_yz([30, 20, 10], 3);
 }
 
 rounded_rectangles();
