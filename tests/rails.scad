@@ -26,15 +26,16 @@ sheet = 3;
 pos = 1; //[-1 : 0.1 : 1]
 
 module rails()
-    layout([for(l = rails) carriage_width(rail_carriage(l))], 20)
+    layout([for(l = carriages) carriage_width(l)], 20)
         rotate(-90) {
-            rail = rails[$i];
+            carriage = carriages[$i];
+            rail = carriage_rail(carriage);
             length = 200;
             screw = rail_screw(rail);
             nut = screw_nut(screw);
             washer = screw_washer(screw);
 
-            rail_assembly(rail, length, pos * rail_travel(rail, length) / 2, $i<2 ? grey(20) : "green", $i<2 ? grey(20) : "red");
+            rail_assembly(carriage, length, pos * carriage_travel(carriage, length) / 2, $i<2 ? grey(20) : "green", $i<2 ? grey(20) : "red");
 
             rail_screws(rail, length, sheet + nut_thickness(nut, true) + washer_thickness(washer));
 
