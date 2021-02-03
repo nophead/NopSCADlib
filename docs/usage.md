@@ -172,7 +172,7 @@ This is achieved by having a pair of modules: -
     //! Place inserts in the bottom of the posts and push them home with a soldering iron with a conical bit heated to 200&deg;C.
     //
     module handle_assembly() pose([225, 0, 150], [0, 0, 14]) //! Printed part with inserts in place
-    assembly("handle") {
+    assembly("handle", ngb = true) {
         translate_z(handle_height())
             stl_colour(pp1_colour) vflip() handle_stl();
 
@@ -200,6 +200,9 @@ When the parent assembly is shown exploded the handle's screws will be exploded 
 
 Note also the `pose([225, 0, 150], [0, 0, 14])` call before the `assembly()` call. This allows the sub-assembly to be posed differently in its build step but doesn't
 affect its orientation in the parent assembly. The pose parameters are the rotation and the translation taken from the GUI.
+
+Setting `ngb = true` in the `assembly()` prevents the handle assembly appearing as a columun in the top level BOM in the build instructions.
+Instead its parts are merged into the parent BOM so the correct quantites are listed.
 
 ### Exploded diagrams
 

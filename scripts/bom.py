@@ -60,6 +60,7 @@ class BOM:
     def __init__(self, name):
         self.name = name
         self.big = None
+        self.ngb = False
         self.count = 1
         self.vitamins = {}
         self.printed = {}
@@ -73,6 +74,7 @@ class BOM:
         return {
              "name"       : self.name,
              "big"        : self.big,
+             "ngb"        : self.ngb,
              "count"      : self.count,
              "assemblies" : assemblies,
              "vitamins"   : {v : self.vitamins[v].data() for v in self.vitamins},

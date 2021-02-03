@@ -3809,7 +3809,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | `vero_mounting_hole_positions(type)` | Positions children at the mounting holes |
 | `vero_mounting_holes(type, h = 100)` | Drill mounting holes in a panel |
 | `veroboard(type)` | Draw specified veroboard with missing tracks and track breaks |
-| `veroboard_assembly(type, height, thickness, flip = false)` | Draw the assembly with components and fasteners in place |
+| `veroboard_assembly(type, height, thickness, flip = false, ngb = false)` | Draw the assembly with components and fasteners in place |
 
 ![veroboard](tests/png/veroboard.png)
 
@@ -6003,6 +6003,9 @@ Assembly views shown in the instructions can be large or small and this is deduc
 parts are used.
 This heuristic isn't always correct, so the default can be overridden by setting the `big` parameter of `assembly` to `true` or `false`.
 
+Setting the `ngb` parameter of `assembly` to `true` removes its column from the global BOM and merges it parts into its parent assembly column of the global BOM.
+This is to prevent the global BOM page becoming too wide in large projects by having it include just the major assemblies.
+
 The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view.
 The resulting flat BOM is shown but heirachical BOMs are also generated for real projects.
 
@@ -6022,7 +6025,7 @@ The resulting flat BOM is shown but heirachical BOMs are also generated for real
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `assembly(name, big = undef)` | Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams. |
+| `assembly(name, big = undef, ngb = false)` | Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams. |
 | `dxf(name)` | Name a dxf that will appear on the BOM, there needs to a module named `<name>_dxf` to make it |
 | `explode(d, explode_children = false, offset = [0,0,0])` | Explode children by specified Z distance or vector `d`, option to explode grand children |
 | `hidden()` | Make item invisible, except on the BOM |

@@ -36,6 +36,7 @@ import blurb
 import bom
 import shutil
 import re
+import copy
 from colorama import Fore
 
 def is_assembly(s):
@@ -100,6 +101,27 @@ def titalise(name):
 def usage():
     print("\nusage:\n\t views [target_config] [<name1>_assembly] ... [<nameN>_assembly] - Create assembly images and readme.")
     sys.exit(1)
+
+types = ["vitamins", "printed", "routed"]
+
+def merged(bom):
+    bom = copy.deepcopy(bom)
+    for aname in bom["assemblies"]:
+        count = bom["assemblies"][aname]
+        for ass in flat_bom:
+            if ass['name'] == aname and ass['ngb']:
+                merged_assembly = merged(ass)
+                total = ass['count']
+                for t in types:
+                    for thing in merged_assembly[t]:
+                        items = merged_assembly[t][thing]['count'] * count // total
+                        if thing in bom[t]:
+                            bom[t][thing]['count'] += items
+                        else:
+                            bom[t][thing] = merged_assembly[t][thing]
+                            bom[t][thing]['count'] = items
+                break
+    return bom
 
 def views(target, do_assemblies = None):
     done_assemblies = []
@@ -242,8 +264,8 @@ def views(target, do_assemblies = None):
         #
         # Global BOM
         #
+        global_bom = [merged(ass) for ass in flat_bom if not ass['ngb']]
         print('<a name="Parts_list"></a>\n## Parts list', file = doc_file)
-        types = ["vitamins", "printed", "routed"]
         headings = {"vitamins" : "vitamins", "printed" : "3D printed parts", "routed" : "CNC routed parts"}
         things = {}
         for t in types:
@@ -255,19 +277,22 @@ def views(target, do_assemblies = None):
                         things[t][thing] += ass[t][thing]["count"]
                     else:
                         things[t][thing] = ass[t][thing]["count"]
-        for ass in flat_bom:
+        for ass in global_bom:
             name = titalise(ass["name"][:-9]).replace(' ','&nbsp;')
+            if ass["count"] > 1:
+                name = "%d x %s" % (ass["count"], name)
             print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">%s</span> ' % name, file = doc_file, end = '')
         print('| <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |', file = doc_file)
-        print(('|---:' * len(flat_bom) + '|---:|:---|'), file = doc_file)
+        print(('|---:' * len(global_bom) + '|---:|:---|'), file = doc_file)
 
         for t in types:
             if things[t]:
                 totals = {}
-                heading = headings[t][0:1].upper() + headings[t][1:]
-                print(('|  ' * len(flat_bom) + '| | **%s** |') % heading, file = doc_file)
+                grand_total2 = 0
+                heading = headings[t][0].upper() + headings[t][1:]
+                print(('|  ' * len(global_bom) + '| | **%s** |') % heading, file = doc_file)
                 for thing in sorted(things[t], key = lambda s: s.split(":")[-1]):
-                    for ass in flat_bom:
+                    for ass in global_bom:
                         count = ass[t][thing]["count"] if thing in ass[t] else 0
                         print('| %s ' % pad(count if count else '.', 2, 1), file = doc_file, end = '')
                         name = ass["name"]
@@ -275,15 +300,17 @@ def views(target, do_assemblies = None):
                             totals[name] += count
                         else:
                             totals[name] = count
+                        grand_total2 += count
                     print('|  %s | %s |' % (pad(things[t][thing], 2, 1), pad(thing.split(":")[-1], 2)), file = doc_file)
 
                 grand_total = 0
-                for ass in flat_bom:
+                for ass in global_bom:
                     name = ass["name"]
                     total = totals[name] if name in totals else 0
                     print('| %s ' % pad(total if total else '.', 2, 1), file = doc_file, end = '')
                     grand_total += total
                 print("| %s | %s |" % (pad(grand_total, 2, 1), pad('Total %s count' % headings[t], 2)), file = doc_file)
+                assert grand_total == grand_total2
         print(file = doc_file)
         if len(blurbs) > 2:
             print(blurbs[2], file = doc_file)

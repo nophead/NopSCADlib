@@ -25,6 +25,9 @@
 //! parts are used.
 //! This heuristic isn't always correct, so the default can be overridden by setting the `big` parameter of `assembly` to `true` or `false`.
 //!
+//! Setting the `ngb` parameter of `assembly` to `true` removes its column from the global BOM and merges it parts into its parent assembly column of the global BOM.
+//! This is to prevent the global BOM page becoming too wide in large projects by having it include just the major assemblies.
+//!
 //! The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view.
 //! The resulting flat BOM is shown but heirachical BOMs are also generated for real projects.
 //
@@ -84,9 +87,9 @@ module pose_vflip(exploded = undef)       //! Pose an STL or assembly for render
                 children();
 
 
-module assembly(name, big = undef) {    //! Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams.
+module assembly(name, big = undef, ngb = false) {    //! Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams.
     if(bom_mode()) {
-        args = is_undef(big) ? "" : str("(big=", big, ")");
+        args = is_undef(big) && !ngb ? "" : str("(big=", big, ", ngb=", ngb, ")");
         echo(str("~", name, "_assembly", args, "{"));
     }
     no_pose()

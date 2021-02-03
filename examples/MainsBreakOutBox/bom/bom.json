@@ -2,6 +2,7 @@
     {
         "name": "base_assembly",
         "big": null,
+        "ngb": false,
         "count": 1,
         "assemblies": {},
         "vitamins": {
@@ -20,6 +21,7 @@
     {
         "name": "feet_assembly",
         "big": null,
+        "ngb": false,
         "count": 1,
         "assemblies": {
             "base_assembly": 1
@@ -46,6 +48,7 @@
     {
         "name": "mains_in_assembly",
         "big": null,
+        "ngb": false,
         "count": 1,
         "assemblies": {
             "feet_assembly": 1
@@ -82,6 +85,7 @@
     {
         "name": "main_assembly",
         "big": null,
+        "ngb": false,
         "count": 1,
         "assemblies": {
             "mains_in_assembly": 1
