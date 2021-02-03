@@ -59,7 +59,7 @@ module screw_knob(screw) { //! Generate the STL for a knob to fit the specified 
 
 //! Place the screw through the printed part
 module screw_knob_assembly(screw, length) //! Assembly with the screw in place
-assembly(str("screw_knob_M", 20 * screw_radius(screw), "_", length)) {
+assembly(str("screw_knob_M", 20 * screw_radius(screw), "_", length), ngb = true) {
     translate_z(knob_height)
         vflip()
             stl_colour(pp1_colour) screw_knob(screw);

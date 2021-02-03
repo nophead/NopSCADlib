@@ -143,8 +143,8 @@ module vero_components(type, cutouts = false, angle = undef)
 
 module vero_cutouts(type, angle = undef) vero_components(type, true, angle); //! Make cutouts to clear components
 
-module veroboard_assembly(type, height, thickness, flip = false) //! Draw the assembly with components and fasteners in place
-assembly(vero_assembly(type)) {
+module veroboard_assembly(type, height, thickness, flip = false, ngb = false) //! Draw the assembly with components and fasteners in place
+assembly(vero_assembly(type), ngb = ngb) {
     screw = vero_screw(type);
     nut = screw_nut(screw);
     screw_length = screw_length(screw, height + thickness + vero_thickness(type), 2, nyloc = true);

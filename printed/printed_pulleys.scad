@@ -180,7 +180,7 @@ module printed_pulley(type) { //! Draw a printable pulley
 }
 
 module printed_pulley_assembly(type, colour = pp1_colour) //! Draw a printed pulley with its grub screws in place
-assembly(str("printed_pulley_", type[0])) {
+assembly(str("printed_pulley_", type[0]), ngb = true) {
     translate_z(pulley_offset(type)) {
         stl_colour(colour)
             if(printed_pulley_inverted(type))

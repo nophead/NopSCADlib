@@ -129,7 +129,7 @@ module hinge_both(type) { //! Both parts together for printing
 }
 
 module hinge_assembly(type, angle = 0)
-assembly(str("hinge_", type[0])) { //! Assembled hinge
+assembly(str("hinge_", type[0]), ngb = true) { //! Assembled hinge
     kr = hinge_knuckle_dia(type) / 2;
     hr = hinge_pin_dia(type) / 2;
     w = hinge_width(type);

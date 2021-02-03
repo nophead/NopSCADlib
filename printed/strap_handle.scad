@@ -162,7 +162,7 @@ module strap_end(type = strap) { //! Generate the STL for end piece
 //! * Place the insert into the hole and push home with a soldering iron with a tapered bit heated to 200&deg;C.
 //
 module strap_end_assembly(type = strap)
-assembly("strap_end") {
+assembly("strap_end", ngb = true) {
     stl_colour(pp1_colour)
         strap_end(type);
 

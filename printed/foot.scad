@@ -132,7 +132,7 @@ module insert_foot(type = insert_foot) { //! Generate STL for foot with insert
 //! Place the insert in the bottom of the foot and push home with a soldering iron with a conical bit heated to 200&deg;C.
 //
 module insert_foot_assembly(type = insert_foot) //! Printed part with insert in place
-assembly("insert_foot") {
+assembly("insert_foot", ngb = true) {
     screw = foot_screw(type);
     insert = screw_insert(screw);
 

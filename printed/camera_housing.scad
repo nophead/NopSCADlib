@@ -284,7 +284,7 @@ module camera_bracket(cam) { //! Make the STL for the camera bracket
 }
 
 module camera_assembly(cam, angle = 0) //! Camera case assembly
-assembly(str("camera_", cam[0])) {
+assembly(str("camera_", cam[0]), ngb = true) {
     front = cam_front_size(cam);
     screw = pcb_screw(camera_pcb(cam));
     nut = screw_nut(screw);
