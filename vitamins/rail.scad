@@ -31,13 +31,11 @@ function rail_bore(type)       = type[5];   //! Counter bore diameter for screw 
 function rail_hole(type)       = type[6];   //! Screw hole diameter
 function rail_bore_depth(type) = type[7];   //! Counter bore depth
 function rail_screw(type)      = type[8];   //! Screw type
-function rail_carriage(type)   = type[9];   //! Carriage type
-function rail_end_screw(type)  = type[10];  //! Screw used for ends only (Countersink used for better location)
-function rail_groove_offset(type)=type[11]; //! Offset of centre of groove from top of rail
-function rail_groove_width(type)=type[12];  //! Groove width
+function rail_end_screw(type)  = type[9];   //! Screw used for ends only (Countersink used for better location)
+function rail_groove_offset(type)=type[10]; //! Offset of centre of groove from top of rail
+function rail_groove_width(type)=type[11];  //! Groove width
 
 function rail_screw_height(type, screw) = rail_height(type) - rail_bore_depth(type) + screw_head_depth(screw, rail_hole(type)); //! Position screw taking into account countersink into counterbored hole
-function rail_travel(type, length) = length - carriage_length(rail_carriage(type)); //! How far the carriage can travel
 
 function carriage_length(type)       = type[0]; //! Overall length
 function carriage_block_length(type) = type[1]; //! Length of the metal part
@@ -48,7 +46,9 @@ function carriage_clearance(type)    = type[4]; //! Gap under the carriage
 function carriage_pitch_x(type)      = type[5]; //! Screw hole x pitch
 function carriage_pitch_y(type)      = type[6]; //! Screw hole y pitch
 function carriage_screw(type)        = type[7]; //! Carriage screw type
+function carriage_rail(type)         = type[8]; //! Rail type
 function carriage_screw_depth(type)  = 2 * screw_radius(carriage_screw(type)); //! Carriage thread depth
+function carriage_travel(type, rail_length) = rail_length - carriage_length(type); //! How far the carriage can travel on a given length rail
 
 function rail_holes(type, length) = //! Number of holes in a rail given its `length`
     floor((length - 2 * rail_end(type)) / rail_pitch(type)) + 1;
@@ -73,7 +73,7 @@ module carriage_hole_positions(type) { //! Position children over screw holes
                 children();
 }
 
-module carriage(type, rail, end_colour = grey(20), wiper_colour = grey(20)) { //! Draw the specified carriage
+module carriage(type, end_colour = grey(20), wiper_colour = grey(20)) { //! Draw the specified carriage
     total_l = carriage_length(type);
     block_l = carriage_block_length(type);
     block_w = carriage_width(type);
@@ -85,9 +85,9 @@ module carriage(type, rail, end_colour = grey(20), wiper_colour = grey(20)) { //
     screw_depth = carriage_screw_depth(type);
 
     module cutout() {
-        w = rail_width(rail) + 0.4;
+        w = rail_width(carriage_rail(type)) + 0.4;
         translate([-w / 2, 0])
-            square([w , rail_height(rail) + 0.2]);
+            square([w , rail_height(carriage_rail(type)) + 0.2]);
     }
 
     color(grey(90)) {
@@ -179,11 +179,11 @@ module rail(type, length, colour = grey(90), use_polycircles = false) { //! Draw
     }
 }
 
-module rail_assembly(type, length, pos, carriage_end_colour = grey(20), carriage_wiper_colour = grey(20)) { //! Rail and carriage assembly
-    rail(type, length);
+module rail_assembly(carriage, length, pos, carriage_end_colour = grey(20), carriage_wiper_colour = grey(20)) { //! Rail and carriage assembly
+    rail(carriage_rail(carriage), length);
 
     translate([pos, 0])
-        carriage(rail_carriage(type), type,  carriage_end_colour, carriage_wiper_colour);
+        carriage(carriage, carriage_end_colour, carriage_wiper_colour);
 }
 
 module rail_screws(type, length, thickness, screws = 100, index_screws = undef) { //! Place screws in the rail
