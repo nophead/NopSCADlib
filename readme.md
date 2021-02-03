@@ -2666,11 +2666,11 @@ Linear rails with carriages.
 | `carriage_length(type)` | Overall length |
 | `carriage_pitch_x(type)` | Screw hole x pitch |
 | `carriage_pitch_y(type)` | Screw hole y pitch |
+| `carriage_rail(type)` | Rail type |
 | `carriage_screw(type)` | Carriage screw type |
 | `carriage_width(type)` | Width of carriage |
 | `rail_bore(type)` | Counter bore diameter for screw head |
 | `rail_bore_depth(type)` | Counter bore depth |
-| `rail_carriage(type)` | Carriage type |
 | `rail_end(type)` | Minimum distance screw can be from the end |
 | `rail_end_screw(type)` | Screw used for ends only (Countersink used for better location) |
 | `rail_groove_offset(type)` | Offset of centre of groove from top of rail |
@@ -2686,17 +2686,17 @@ Linear rails with carriages.
 |:--- |:--- |
 | `carriage_screw_depth(type)` | Carriage thread depth |
 | `carriage_size(type)` | Size of carriage |
+| `carriage_travel(type, rail_length)` | How far the carriage can travel on a given length rail |
 | `rail_holes(type, length)` | Number of holes in a rail given its `length` |
 | `rail_screw_height(type, screw)` | Position screw taking into account countersink into counterbored hole |
-| `rail_travel(type, length)` | How far the carriage can travel |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `carriage(type, rail, end_colour = grey(20)` | Draw the specified carriage |
+| `carriage(type, end_colour = grey(20)` | Draw the specified carriage |
 | `carriage_hole_positions(type)` | Position children over screw holes |
 | `rail(type, length, colour = grey(90)` | Draw the specified rail |
-| `rail_assembly(type, length, pos, carriage_end_colour = grey(20)` | Rail and carriage assembly |
+| `rail_assembly(carriage, length, pos, carriage_end_colour = grey(20)` | Rail and carriage assembly |
 | `rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true)` | Position children over screw holes |
 | `rail_screws(type, length, thickness, screws = 100, index_screws = undef)` | Place screws in the rail |
 
@@ -2705,8 +2705,7 @@ Linear rails with carriages.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `rail(MGN12, 200)` |  Linear rail MGN12 x 200mm |
-|   1 | `rail(MGN12H, 200)` |  Linear rail MGN12H x 200mm |
+|   2 | `rail(MGN12, 200)` |  Linear rail MGN12 x 200mm |
 |   1 | `rail(MGN15, 200)` |  Linear rail MGN15 x 200mm |
 |   1 | `rail(MGN5, 200)` |  Linear rail MGN5 x 200mm |
 |   1 | `rail(MGN7, 200)` |  Linear rail MGN7 x 200mm |
