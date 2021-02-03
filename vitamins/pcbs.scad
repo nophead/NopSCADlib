@@ -205,37 +205,34 @@ BTT_SKR_MINI_E3_V2_0 = [
     grey(30), // color
     false, // true if parts should be separate BOM items
     [ // hole positions
-        [ 19.3,              -2.89 ],
-        [ 19.3   + 62.15,    -2.89 ],
-        [  2.535,            -2.89 - 34.98 ],
-        [  2.535 + 31.80,    -2.89 - 37.63 ],
-        [  2.535 + 95.68,    -2.89 - 64.47 ]
+        for (i = [ [0, 0], [62.15, 0] ])
+            (i + [20.3, -2.89]),
+        for (i = [ [0, -34.98], [31.80, -37.63], [95.68, -64.47] ])
+            (i + [2.535, -2.89])
     ],
     [ // components
         // cpu
         [ 55,   33,     0, "chip", 10, 10,   1,   grey(15) ],
-        // hotend and heated bed
-        [ 26,   16,     0, "chip", 9.5, 8.5, 4,   grey(15) ],
-        [ 37,   14,     0, "chip", 6,   6,   2.5, grey(15) ],
         // driver chips
-        [ 10.5,-17.5,   0, "chip",  5,  5, 1, grey(15) ],
-        [ 30.5,-17.5,   0, "chip",  5,  5, 1, grey(15) ],
-        [ 50.5,-17.5,   0, "chip",  5,  5, 1, grey(15) ],
-        [ 70.5,-17.5,   0, "chip",  5,  5, 1, grey(15) ],
-        // heat dissipation under board
-        [ 43,  -17.5,   0, "-block", 85, 8, 0.1, gold ],
-        [ 40,   16,     0, "-block", 10, 8, 0.1, gold ],
-        [ 27,   19,     0, "-block", 13,14, 0.1, gold ],
-        [ 12,   28.5,   0, "-block", 11, 7, 0.1, gold ],
+        for (x = [10.5, 30.5, 50.5, 70.5])
+            [ x, -17.5,  0, "chip",  5,  5, 1, grey(15) ],
         // mock up heat sinks over the chips
-        [  10.5,  -17.5,  0, "chip",  9, 8.5,  2, "DeepSkyBlue" ],
-        for(x = [10.5], y = [-4,-2,0,2,4]) [ x, -17.5 + y,  0, "chip",  9, 0.75, 11, "DeepSkyBlue" ],
-        [  30.5,  -17.5,  0, "chip",  9, 8.5,  2, "DeepSkyBlue" ],
-        for(x = [30.5], y = [-4,-2,0,2,4]) [ x, -17.5 + y,  0, "chip",  9, 0.75, 11, "DeepSkyBlue" ],
-        [  50.5,  -17.5,  0, "chip",  9, 8.5,  2, "DeepSkyBlue" ],
-        for(x = [50.5], y = [-4,-2,0,2,4]) [ x, -17.5 + y,  0, "chip",  9, 0.75, 11, "DeepSkyBlue" ],
-        [  70.5,  -17.5,  0, "chip",  9, 8.5,  2, "DeepSkyBlue" ],
-        for(x = [70.5], y = [-4,-2,0,2,4]) [ x, -17.5 + y,  0, "chip",  9, 0.75, 11, "DeepSkyBlue" ],
+        for (x = [10.5, 30.5, 50.5, 70.5])
+            [ x, -17.5,  0, "block",  9, 8.5,  2, "DeepSkyBlue" ],
+        for(x = [10.5, 30.5, 50.5, 70.5], y = [-4,-2,0,2,4])
+            [ x, -17.5 + y,  0, "block",  9, 0.75, 11, "DeepSkyBlue" ],
+        // heat dissipation for drivers under board
+        [ 43,  -17.5,   0, "-block", 85, 8, 0.1, gold ],
+
+        // heated bed
+        [ 26,   16,     0, "chip",    9.5, 8.5, 4,   grey(15) ],
+        [ 27,   19,     0, "-block", 13,  14,   0.1, gold ],
+        // hotend
+        [ 37,   14,     0, "chip",    6,   6,   2.5, grey(15) ],
+        [ 40,   16,     0, "-block", 10,   8,   0.1, gold ],
+
+        // voltage regulator heat dissipation
+        [ 12,   28.5,   0, "-block", 11,   7,   0.1, gold ],
 
         // terminals
         [  5.25, 5.3, 180, "gterm", gt_5x17, 2, undef, grey(20) ],
