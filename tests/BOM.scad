@@ -43,31 +43,29 @@ module widget(thickness) {
     }
 }
 
-module widgit_stl() {
-    stl("widget");
+module widget_stl() {
+    stl("widget")
+        union() {
+            rounded_rectangle([30, 30, 3], 2);
 
-    union() {
-        rounded_rectangle([30, 30, 3], 2);
-
-        render() insert_boss(insert, height, 2.2);
-    }
+            render() insert_boss(insert, height, 2.2);
+        }
 }
 
-module widgit_dxf() {
-    dxf("widget");
+module widget_dxf() {
+    dxf("widget")
+        difference() {
+            sheet_2D(sheet, 20, 20, 1);
 
-    difference() {
-        sheet_2D(sheet, 20, 20, 1);
-
-        drill(screw_clearance_radius(screw), 0);
-    }
+            drill(screw_clearance_radius(screw), 0);
+        }
 }
 
 //! * Push the insert into the base with a soldering iron heated to 200&deg;C
-module widgit_base_assembly()
-assembly("widgit_base") {
+module widget_base_assembly()
+assembly("widget_base") {
     stl_colour(pp1_colour)
-        widgit_stl();
+        widget_stl();
 
     translate_z(height)
         insert(insert);
@@ -80,14 +78,14 @@ assembly("widget_top") {
         widget(sheet_thickness(sheet));
 
     render_2D_sheet(sheet)      // Must be last because it is transparent
-        widgit_dxf();
+        widget_dxf();
 }
 
 //! * Screw the two assemblies together
-module widgit_assembly()
-assembly("wigdit") {
+module widget_assembly()
+assembly("widget") {
 
-    widgit_base_assembly();                 // Note this is not exloded because it is sub-assembly
+    widget_base_assembly();                 // Note this is not exloded because it is sub-assembly
 
     translate_z(height) {
         translate_z(sheet_thickness(sheet))
@@ -100,7 +98,7 @@ assembly("wigdit") {
 }
 
 module boms() {
-    widgit_assembly();
+    widget_assembly();
 }
 
 boms();
