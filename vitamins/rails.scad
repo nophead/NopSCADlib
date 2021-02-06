@@ -23,7 +23,7 @@
 //                Wr  Hr    E     P   D    d    h                                       go    gw
 MGN5 = [ "MGN5",   5,  3.6,  5,   15, 3.6, 2.4, 0.8, M2_cs_cap_screw, M2_cs_cap_screw,  1,    1 ]; // Screw holes too small for M2 heads
 MGN7 = [ "MGN7",   7,  5,    5,   15, 4.3, 2.4, 2.6, M2_cap_screw,    M2_cs_cap_screw,  1.5,  1.5 ];
-MGN9 = [ "MGN9",   9,  6,    7.5, 20, 6.0, 3.5, 3.5, M3_cap_screw,    M3_cs_cap_screw,  1.5,  1.5 ];
+MGN9 = [ "MGN9",   9,  6,    5,   20, 6.0, 3.5, 3.5, M3_cap_screw,    M3_cs_cap_screw,  1.5,  1.5 ];
 MGN12 =[ "MGN12", 12,  8,   10,   25, 6.0, 3.5, 4.5, M3_cap_screw,    M3_cs_cap_screw,  2.25, 2.75];
 MGN15 =[ "MGN15", 15, 10,   10,   40, 6.0, 3.5, 5.0, M3_cap_screw,    M3_cs_cap_screw,  2.5,  2.75 ];
 SSR15= [ "SSR15", 15, 12.5, 10,   60, 7.5, 4.5, 5.3, M4_cap_screw,    M4_cs_cap_screw,  2.5,  2.75 ];
