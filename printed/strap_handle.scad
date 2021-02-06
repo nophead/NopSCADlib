@@ -75,32 +75,29 @@ module strap_holes(length, type = strap, h = 100) //! The panel cut outs
                     strap_boss_shape(type);
 
 module strap(length, type = strap) { //! Generate the STL for the rubber strap
-    stl("strap");
-
     len = length - 2 * (wall + clearance);
     w = strap_width(type);
 
-    linear_extrude(strap_thickness(type), convexity = 3)
-        difference() {
-            rounded_square([len, w], w / 2 - eps);
+    stl("strap")
+        linear_extrude(strap_thickness(type), convexity = 3)
+            difference() {
+                rounded_square([len, w], w / 2 - eps);
 
-            for(end = [-1, 1])
-                translate([end * (len / 2 - strap_min_width(type) - strap_boss_r(type) - clearance), 0])
-                    rotate(end * 90 + 90)
-                        hull() {
-                            offset(clearance)
-                                strap_boss_shape(type);
-
-                            translate([strap_extension(type) / 2, 0])
+                for(end = [-1, 1])
+                    translate([end * (len / 2 - strap_min_width(type) - strap_boss_r(type) - clearance), 0])
+                        rotate(end * 90 + 90)
+                            hull() {
                                 offset(clearance)
                                     strap_boss_shape(type);
-                        }
-        }
+
+                                translate([strap_extension(type) / 2, 0])
+                                    offset(clearance)
+                                        strap_boss_shape(type);
+                            }
+            }
 }
 
 module strap_end(type = strap) { //! Generate the STL for end piece
-    stl("strap_end");
-
     z1 = strap_height(type) - strap_thickness(type) - clearance;
     z2 = strap_height(type) + strap_key(type);
     r1 = strap_boss_r(type) - 1;
@@ -121,42 +118,43 @@ module strap_end(type = strap) { //! Generate the STL for end piece
             circle(r1);
         }
 
-    union() {
-        linear_extrude(z1)
-            with_hole()
-                outer();
-
-        translate_z(z1)
-            linear_extrude(strap_height(type) - z1)
-                difference() {
+    stl("strap_end")
+        union() {
+            linear_extrude(z1)
+                with_hole()
                     outer();
 
-                    hull() {
-                        translate([0, -strap_width(type) / 2 - clearance])
-                            square([strap_boss_r(type) + overlap, strap_width(type) + 2 * clearance]);
+            translate_z(z1)
+                linear_extrude(strap_height(type) - z1)
+                    difference() {
+                        outer();
 
-                        translate([-strap_extension(type) / 2, 0])
-                            circle(d = strap_width(type) + 2 * clearance);
+                        hull() {
+                            translate([0, -strap_width(type) / 2 - clearance])
+                                square([strap_boss_r(type) + overlap, strap_width(type) + 2 * clearance]);
+
+                            translate([-strap_extension(type) / 2, 0])
+                                circle(d = strap_width(type) + 2 * clearance);
+                        }
                     }
-                }
 
-        linear_extrude(strap_height(type) - layer_height)
-            with_hole()
-                strap_boss_shape(type);
+            linear_extrude(strap_height(type) - layer_height)
+                with_hole()
+                    strap_boss_shape(type);
 
-        linear_extrude(z2)
-            with_hole()
-                 offset(cnc_bit_r)
-                    offset(-step - cnc_bit_r)
-                        strap_boss_shape(type);
+            linear_extrude(z2)
+                with_hole()
+                     offset(cnc_bit_r)
+                        offset(-step - cnc_bit_r)
+                            strap_boss_shape(type);
 
-        render() difference() {
-            cylinder(r = r1 + eps, h = z2);
+            render() difference() {
+                cylinder(r = r1 + eps, h = z2);
 
-            translate_z(z2)
-                insert_hole(strap_insert(type), counterbore);
+                translate_z(z2)
+                    insert_hole(strap_insert(type), counterbore);
+            }
         }
-    }
 }
 //
 //! * Place the insert into the hole and push home with a soldering iron with a tapered bit heated to 200&deg;C.

@@ -41,7 +41,6 @@ height = base_thickness + box_height;
 function socket_box_depth() = height; //! Outside depth of the backbox
 
 module socket_box(type) { //! Generate STL of the backbox for the specified socket
-    stl(str("socket_box_",type[0]));
 
     screw = mains_socket_screw(type);
     screw_clearance_radius = screw_clearance_radius(screw);
@@ -51,37 +50,38 @@ module socket_box(type) { //! Generate STL of the backbox for the specified sock
     insert_boss = mains_socket_insert_boss(type);
     insert_hole_radius = insert_hole_radius(insert);
 
-    difference() {
-        linear_extrude(height, convexity = 5)
-            face_plate(type);
-
+    stl(str("socket_box_",type[0]))
         difference() {
-            translate_z(base_thickness)
-                linear_extrude(height, convexity = 5)
-                     offset(-wall) offset(1) face_plate(type);
+            linear_extrude(height, convexity = 5)
+                face_plate(type);
 
-            for(side = [-1, 1])
-                hull()
-                    for(x = [1, 2])
-                        translate([side * mains_socket_pitch(type) / x, 0])
-                            cylinder(d = insert_boss, h = 100);
-        }
-        //
-        // Socket holes
-        //
-        translate_z(height)
-            mains_socket_hole_positions(type) {
-                poly_cylinder(r = screw_clearance_radius, h = 2 * box_height, center = true);
+            difference() {
+                translate_z(base_thickness)
+                    linear_extrude(height, convexity = 5)
+                         offset(-wall) offset(1) face_plate(type);
 
-                poly_cylinder(r = insert_hole_radius, h = 2 * insert_length, center = true);
+                for(side = [-1, 1])
+                    hull()
+                        for(x = [1, 2])
+                            translate([side * mains_socket_pitch(type) / x, 0])
+                                cylinder(d = insert_boss, h = 100);
             }
-        //
-        // Cable hole
-        //
-        translate([cable_x, cable_y(type), cable_z])
-            rotate([90, 0, 0])
-                teardrop_plus(r = cable_d / 2, h = 30);
-    }
+            //
+            // Socket holes
+            //
+            translate_z(height)
+                mains_socket_hole_positions(type) {
+                    poly_cylinder(r = screw_clearance_radius, h = 2 * box_height, center = true);
+
+                    poly_cylinder(r = insert_hole_radius, h = 2 * insert_length, center = true);
+                }
+            //
+            // Cable hole
+            //
+            translate([cable_x, cable_y(type), cable_z])
+                rotate([90, 0, 0])
+                    teardrop_plus(r = cable_d / 2, h = 30);
+        }
 }
 
 module socket_box_MKLOGIC_stl() socket_box(MKLOGIC);

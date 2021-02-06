@@ -65,8 +65,6 @@ module hinge_screw_positions(type) { //! Place children at the screw positions
 }
 
 module hinge_male(type, female = false) {       //! The half with the stationary pin
-    stl(str("hinge_", female ? "fe": "", "male_", type[0]));
-
     r = hinge_radius(type);
     w = hinge_width(type);
     t = hinge_thickness(type);
@@ -85,37 +83,40 @@ module hinge_male(type, female = false) {       //! The half with the stationary
     teardrop_r = kr / cos(22.5);                // The corner on the teardrop
     inset = sqrt(sqr(teardrop_r + gap) - sqr(kr - t)) - kr;
 
-    linear_extrude(t)
-        difference() {
-            hull() {
-                for(side = [-1, 1])
-                    translate([side * (w / 2 - r), hinge_depth(type) - r])
-                        circle4n(r);
+    stl(str("hinge_", female ? "fe": "", "male_", type[0]))
+        union() {
+            linear_extrude(t)
+                difference() {
+                    hull() {
+                        for(side = [-1, 1])
+                            translate([side * (w / 2 - r), hinge_depth(type) - r])
+                                circle4n(r);
 
-                translate([-w / 2, inset])
-                    square([w, eps]);
-            }
-            hinge_screw_positions(type)
-                poly_circle(screw_clearance_radius(hinge_screw(type)));
+                        translate([-w / 2, inset])
+                            square([w, eps]);
+                    }
+                    hinge_screw_positions(type)
+                        poly_circle(screw_clearance_radius(hinge_screw(type)));
+                }
+
+            pitch = mw + gap + fw + gap;
+            dir = female ? -1 : 1;
+            translate([0, -kr, kr])
+                rotate([90, 0, -90])
+                    for(z = [0 : (female ? fn : mn) - 1])
+                        translate_z(-dir * w / 2 + z * dir * pitch + (female ? -fw - mw - gap : 0))
+                            linear_extrude(female ? fw : mw)
+                                difference() {
+                                    hull() {
+                                        rotate(180)
+                                            teardrop(r = kr, h = 0);
+
+                                        translate([-kr - 1, -kr])
+                                            square(1);
+                                    }
+                                    teardrop_plus(r = pr + (female ? gap : 0), h = 0);
+                                }
         }
-
-    pitch = mw + gap + fw + gap;
-    dir = female ? -1 : 1;
-    translate([0, -kr, kr])
-        rotate([90, 0, -90])
-            for(z = [0 : (female ? fn : mn) - 1])
-                translate_z(-dir * w / 2 + z * dir * pitch + (female ? -fw - mw - gap : 0))
-                    linear_extrude(female ? fw : mw)
-                        difference() {
-                            hull() {
-                                rotate(180)
-                                    teardrop(r = kr, h = 0);
-
-                                translate([-kr - 1, -kr])
-                                    square(1);
-                            }
-                            teardrop_plus(r = pr + (female ? gap : 0), h = 0);
-                        }
 }
 
 module hinge_female(type) hinge_male(type, true);

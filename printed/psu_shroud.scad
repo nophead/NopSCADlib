@@ -79,8 +79,6 @@ module psu_shroud_holes(type, cable_d, cables = 1) {                            
 }
 
 module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file for a specified ssr and cable
-    stl(str("psu_shroud_", name));
-
     extent = psu_shroud_extent(type);
     depth = psu_shroud_depth(type);
     width = psu_shroud_width(type);
@@ -109,38 +107,40 @@ module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file f
         }
     }
 
-    // base and sides
-    translate([centre_x, -centre_y]) {
-        rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
+    stl(str("psu_shroud_", name)) {
+        // base and sides
+        translate([centre_x, -centre_y]) {
+            rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
 
-        linear_extrude(height)
-            difference() {
+            linear_extrude(height)
+                difference() {
+                    shape();
+
+                    translate([depth / 2, width / 2 - 5])
+                        square([2 * (depth - extent + terminal_clearance), 10], center = true);
+            }
+            linear_extrude(height - terminal_block_height(tb) - psu_terminal_block_z(type) - terminal_clearance)
                 shape();
-
-                translate([depth / 2, width / 2 - 5])
-                    square([2 * (depth - extent + terminal_clearance), 10], center = true);
         }
-        linear_extrude(height - terminal_block_height(tb) - psu_terminal_block_z(type) - terminal_clearance)
-            shape();
-    }
-    // cable slots
-    for(i = [0 : 1 : cables - 1])
-        translate([centre_x - depth / 2 + wall / 2, -centre_y + (i - cables / 2 + 0.5) *  psu_shroud_cable_pitch(cable_d), height / 2])
-            rotate([90, 0, 90])
-                linear_extrude(wall, center = true)
-                    difference() {
-                        square([cable_d + eps, height], center = true);
+        // cable slots
+        for(i = [0 : 1 : cables - 1])
+            translate([centre_x - depth / 2 + wall / 2, -centre_y + (i - cables / 2 + 0.5) *  psu_shroud_cable_pitch(cable_d), height / 2])
+                rotate([90, 0, 90])
+                    linear_extrude(wall, center = true)
+                        difference() {
+                            square([cable_d + eps, height], center = true);
 
-                        translate([0, height / 2])
-                                vertical_tearslot(h = 0, r = cable_d / 2, l = cable_d);
-                }
-    // insert lugs
-    mirror([0, 1, 0])
-        psu_shroud_hole_positions(type)
-            translate_z(height)
-                rotate($side * 90)
-                    insert_lug(insert, wall, counter_bore);
- }
+                            translate([0, height / 2])
+                                    vertical_tearslot(h = 0, r = cable_d / 2, l = cable_d);
+                    }
+        // insert lugs
+        mirror([0, 1, 0])
+            psu_shroud_hole_positions(type)
+                translate_z(height)
+                    rotate($side * 90)
+                        insert_lug(insert, wall, counter_bore);
+     }
+}
 
 module psu_shroud_assembly(type, cable_d, name, cables = 1) //! The printed parts with inserts fitted
 assembly(str("PSU_shroud_", name), ngb = true) {

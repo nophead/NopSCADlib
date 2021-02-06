@@ -47,7 +47,6 @@ module ribbon_clamp_holes(ways, h = 20, screw = screw) //! Drill screw holes
 
 module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of ways
     screw_d = screw_radius(screw) * 2;
-    stl(str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : ""));
 
     pitch = ribbon_clamp_hole_pitch(ways, screw);
     d = ribbon_clamp_width(screw);
@@ -55,30 +54,31 @@ module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of 
     t = round_to_layer(ribbon_clamp_slot_depth() + wall);
     insert = screw_insert(screw);
 
-    difference() {
-        union() {
-            hull() {
-                translate_z(h - t / 2)
-                    cube([ribbon_clamp_hole_pitch(ways, screw), d, t], center = true);
+    stl(str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : ""))
+        difference() {
+            union() {
+                hull() {
+                    translate_z(h - t / 2)
+                        cube([ribbon_clamp_hole_pitch(ways, screw), d, t], center = true);
 
-                translate_z(1)
-                    cube([pitch, max(wall, d - 2 * (h - t)), 2], center = true);
+                    translate_z(1)
+                        cube([pitch, max(wall, d - 2 * (h - t)), 2], center = true);
+                }
+                ribbon_clamp_hole_positions(ways, screw, -1)
+                    cylinder(d = d, h = h);
+
+                ribbon_clamp_hole_positions(ways, screw, 1)
+                    cylinder(d = d, h = h);
             }
-            ribbon_clamp_hole_positions(ways, screw, -1)
-                cylinder(d = d, h = h);
 
-            ribbon_clamp_hole_positions(ways, screw, 1)
-                cylinder(d = d, h = h);
-        }
-
-        translate_z(h)
-            cube([ribbon_clamp_slot(ways), d + 1, ribbon_clamp_slot_depth() * 2], center = true);
-
-        ribbon_clamp_hole_positions(ways, screw)
             translate_z(h)
-                rotate(22.5)
-                    insert_hole(insert, ribbon_clamp_screw_depth(screw) - insert_length(insert));
-    }
+                cube([ribbon_clamp_slot(ways), d + 1, ribbon_clamp_slot_depth() * 2], center = true);
+
+            ribbon_clamp_hole_positions(ways, screw)
+                translate_z(h)
+                    rotate(22.5)
+                        insert_hole(insert, ribbon_clamp_screw_depth(screw) - insert_length(insert));
+        }
 }
 
 module ribbon_clamp_assembly(ways, screw = screw) pose([55, 180, 25])  //! Printed part with inserts in place

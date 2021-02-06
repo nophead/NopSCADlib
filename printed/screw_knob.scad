@@ -34,27 +34,26 @@ knob_height = knob_stem_h + knob_thickness;
 function knob_height() = knob_height;
 
 module screw_knob(screw) { //! Generate the STL for a knob to fit the specified hex screw
-    stl(str("screw_knob_M", screw_radius(screw) * 20));
-
     knob_stem_r = nut_trap_radius(screw_nut(screw)) + knob_wall;
 
     function wave(a) = knob_r + sin(a * knob_waves) * knob_wave;
 
-    union() {
-        render() difference() {
-            cylinder(r = knob_stem_r, h = knob_thickness + knob_stem_h);
+    stl(str("screw_knob_M", screw_radius(screw) * 20))
+        union() {
+            render() difference() {
+                cylinder(r = knob_stem_r, h = knob_thickness + knob_stem_h);
 
-            hanging_hole(knob_nut_trap_depth(screw), screw_clearance_radius(screw))
-                rotate(45)
-                    circle(r = nut_trap_radius(screw_nut(screw)), $fn = 6);
-        }
-        linear_extrude(knob_thickness, convexity = 3)
-            difference() {
-                polygon(points = [for(a = [0 : 359]) [wave(a) * sin(a), wave(a) * cos(a)]]);
-
-                circle(knob_stem_r - eps);
+                hanging_hole(knob_nut_trap_depth(screw), screw_clearance_radius(screw))
+                    rotate(45)
+                        circle(r = nut_trap_radius(screw_nut(screw)), $fn = 6);
             }
-    }
+            linear_extrude(knob_thickness, convexity = 3)
+                difference() {
+                    polygon(points = [for(a = [0 : 359]) [wave(a) * sin(a), wave(a) * cos(a)]]);
+
+                    circle(knob_stem_r - eps);
+                }
+        }
 }
 
 //! Place the screw through the printed part

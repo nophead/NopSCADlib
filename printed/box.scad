@@ -139,17 +139,17 @@ module box_corner_profile_2D(type) { //! The 2D shape of the corner profile.
 }
 
 module box_corner_profile(type) { //! Generates the corner profile STL for 3D printing.
-    stl("box_corner_profile");
-
     length = box_height(type) - 2 * box_margin(type);
-    difference() {
-        linear_extrude(length, center = true, convexity = 5)
-            box_corner_profile_2D(type);
 
-        for(z = [-1, 1])
-            translate([box_hole_inset(type), box_hole_inset(type), z * length / 2])
-                insert_hole(box_insert(type), 5);
-    }
+    stl("box_corner_profile")
+        difference() {
+            linear_extrude(length, center = true, convexity = 5)
+                box_corner_profile_2D(type);
+
+            for(z = [-1, 1])
+                translate([box_hole_inset(type), box_hole_inset(type), z * length / 2])
+                    insert_hole(box_insert(type), 5);
+        }
 }
 
 module box_corner_profile_section(type, section, sections) { //! Generates interlocking sections of the corner profile to allow it to be taller than the printer
@@ -209,7 +209,6 @@ module box_corner_quadrants(type, width, depth)
     }
 
 module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
-    stl(bottom ? "bottom_bezel" : "top_bezel");
     feet = bottom && box_feet(type);
     t = box_sheet_slot(type);
     outset =  box_outset(type);
@@ -221,66 +220,67 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
     height = box_bezel_height(type, bottom);
     foot_extension = foot_height - height;
 
-    difference() {
-        w = box_width(type);
-        d = box_depth(type);
-        translate_z(-box_profile_overlap(type)) difference() {
-            tw = w + 2 * outset;
-            td = d + 2 * outset;
-            rounded_rectangle([tw, td, feet ? foot_height : height], box_corner_rad(type), false);
-            //
-            // Remove edges between the feet
-            //
-            if(feet)
-                hull() {
-                    translate_z(height + 0.5)
-                        cube([w - 2 * foot_length, td + 1, 1], center = true);
+    stl(bottom ? "bottom_bezel" : "top_bezel")
+        difference() {
+            w = box_width(type);
+            d = box_depth(type);
+            translate_z(-box_profile_overlap(type)) difference() {
+                tw = w + 2 * outset;
+                td = d + 2 * outset;
+                rounded_rectangle([tw, td, feet ? foot_height : height], box_corner_rad(type), false);
+                //
+                // Remove edges between the feet
+                //
+                if(feet)
+                    hull() {
+                        translate_z(height + 0.5)
+                            cube([w - 2 * foot_length, td + 1, 1], center = true);
 
-                    translate_z(foot_height + 1)
-                        cube([w - 2 * (foot_length - foot_extension), td + 1, 1], center = true);
-                }
-            if(feet)
-                hull() {
-                    translate_z(height + 0.5)
-                        cube([tw + 1, d - 2 * foot_length, 1], center = true);
-
-                    translate_z(foot_height + 1)
-                        cube([tw + 1, d - 2 * (foot_length - foot_extension), 1], center = true);
-                }
-        }
-        //
-        // slots for side panels
-        //
-        translate_z(-box_profile_overlap(type))
-            linear_extrude(2 * box_profile_overlap(type), center = true)
-                for(i = [-1, 1]) {
-                    translate([i * (w + t - sheet_slot_clearance) / 2, 0])
-                         square([t, d - 2 * cgap], center = true);
-
-                    translate([0, i * (d + t - sheet_slot_clearance) / 2])
-                         square([w - 2 * cgap, t], center = true);
-                }
-        //
-        // recess for top / bottom panel
-        //
-        translate_z(cgap)
-            rounded_rectangle([w + bezel_clearance, d + bezel_clearance, height], inner_r + bezel_clearance / 2, false);
-        //
-        // leave plastic over the corner profiles
-        //
-        translate_z(-box_profile_overlap(type) - 1)
-            linear_extrude(box_profile_overlap(type) + cgap + 2)
-                union() {
-                    difference() {
-                        square([w - 2 * inset,
-                                d - 2 * inset], center = true);
-
-                        box_corner_quadrants(type, w, d);
+                        translate_z(foot_height + 1)
+                            cube([w - 2 * (foot_length - foot_extension), td + 1, 1], center = true);
                     }
-                    box_screw_hole_positions(type)
-                        poly_circle(screw_clearance_radius(box_screw(type)));
-                }
-     }
+                if(feet)
+                    hull() {
+                        translate_z(height + 0.5)
+                            cube([tw + 1, d - 2 * foot_length, 1], center = true);
+
+                        translate_z(foot_height + 1)
+                            cube([tw + 1, d - 2 * (foot_length - foot_extension), 1], center = true);
+                    }
+            }
+            //
+            // slots for side panels
+            //
+            translate_z(-box_profile_overlap(type))
+                linear_extrude(2 * box_profile_overlap(type), center = true)
+                    for(i = [-1, 1]) {
+                        translate([i * (w + t - sheet_slot_clearance) / 2, 0])
+                             square([t, d - 2 * cgap], center = true);
+
+                        translate([0, i * (d + t - sheet_slot_clearance) / 2])
+                             square([w - 2 * cgap, t], center = true);
+                    }
+            //
+            // recess for top / bottom panel
+            //
+            translate_z(cgap)
+                rounded_rectangle([w + bezel_clearance, d + bezel_clearance, height], inner_r + bezel_clearance / 2, false);
+            //
+            // leave plastic over the corner profiles
+            //
+            translate_z(-box_profile_overlap(type) - 1)
+                linear_extrude(box_profile_overlap(type) + cgap + 2)
+                    union() {
+                        difference() {
+                            square([w - 2 * inset,
+                                    d - 2 * inset], center = true);
+
+                            box_corner_quadrants(type, w, d);
+                        }
+                        box_screw_hole_positions(type)
+                            poly_circle(screw_clearance_radius(box_screw(type)));
+                    }
+         }
 }
 
 dowel_length = 20;
@@ -485,7 +485,6 @@ module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = un
 }
 
 module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts
-    stl("shelf_bracket");
     w = is_undef(wall) ? box_wall(type) : wall;
     insert = box_shelf_insert(type);
     lip = 2 * insert_boss_radius(insert, w);
@@ -513,44 +512,45 @@ module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a 
                         square([lip, eps]);
                 }
 
-    difference() {
-        union() {
-            linear_extrude(w)
-                difference() {
-                    shape()
-                        if($children)
-                            children(0);
-
-                    round(2) offset(-width)
+    stl("shelf_bracket")
+        difference() {
+            union() {
+                linear_extrude(w)
+                    difference() {
                         shape()
                             if($children)
                                 children(0);
-                }
 
-            linear_extrude(lip)
-                difference() {
-                    shape()
-                        if($children)
-                            children(0);
+                        round(2) offset(-width)
+                            shape()
+                                if($children)
+                                    children(0);
+                    }
 
-                    offset(-w)
+                linear_extrude(lip)
+                    difference() {
                         shape()
                             if($children)
                                 children(0);
-                }
+
+                        offset(-w)
+                            shape()
+                                if($children)
+                                    children(0);
+                    }
+
+                hflip()
+                    box_shelf_screw_positions(type, screw_positions, 0, w)
+                        boss();
+            }
+            if($children > 1)
+                hflip()
+                    children(1);
 
             hflip()
                 box_shelf_screw_positions(type, screw_positions, 0, w)
-                    boss();
+                    insert_hole(insert, counterbore = 1, horizontal = true);
         }
-        if($children > 1)
-            hflip()
-                children(1);
-
-        hflip()
-            box_shelf_screw_positions(type, screw_positions, 0, w)
-                insert_hole(insert, counterbore = 1, horizontal = true);
-    }
 }
 
 module box_shelf_bracket_section(type, rows, cols, x, y) { //! Generates sections of the shelf bracket to allow it to be bigger than the printer

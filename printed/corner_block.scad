@@ -72,8 +72,6 @@ module corner_block_holes(screw = def_screw) //! Place children at all the holes
             children();
 
 module corner_block(screw = def_screw, name = false) { //! Generate the STL for a printed corner block
-    stl(name ? name : str("corner_block", "_M", screw_radius(screw) * 20));
-
     r = 1;
     cb_width = corner_block_width(screw);
     cb_height = cb_width;
@@ -81,39 +79,41 @@ module corner_block(screw = def_screw, name = false) { //! Generate the STL for 
     insert = screw_insert(screw);
     corner_rad = insert_outer_d(insert) / 2 + wall;
     offset = corner_block_hole_offset(screw);
-    difference() {
-        hull()  {
-            translate([r, r])
-                rounded_cylinder(r = r, h = cb_height, r2 = r);
 
-            translate([r, cb_depth - r])
-                cylinder(r = r, h = cb_height - corner_rad);
+    stl(name ? name : str("corner_block", "_M", screw_radius(screw) * 20))
+        difference() {
+            hull()  {
+                translate([r, r])
+                    rounded_cylinder(r = r, h = cb_height, r2 = r);
 
-            translate([cb_width - r, r])
-                cylinder(r = r, h = cb_height - corner_rad);
+                translate([r, cb_depth - r])
+                    cylinder(r = r, h = cb_height - corner_rad);
 
-            translate([offset, offset, offset])
-                sphere(corner_rad);
+                translate([cb_width - r, r])
+                    cylinder(r = r, h = cb_height - corner_rad);
 
-            translate([offset, offset])
-                cylinder(r = corner_rad, h = offset);
+                translate([offset, offset, offset])
+                    sphere(corner_rad);
 
-            translate([offset, r, offset])
-                rotate([-90, 0, 180])
-                    rounded_cylinder(r = corner_rad, h = r, r2 = r);
+                translate([offset, offset])
+                    cylinder(r = corner_rad, h = offset);
 
-            translate([r, offset, offset])
-                rotate([0, 90, 180])
-                    rounded_cylinder(r = corner_rad, h = r, r2 = r);
+                translate([offset, r, offset])
+                    rotate([-90, 0, 180])
+                        rounded_cylinder(r = corner_rad, h = r, r2 = r);
+
+                translate([r, offset, offset])
+                    rotate([0, 90, 180])
+                        rounded_cylinder(r = corner_rad, h = r, r2 = r);
+            }
+            corner_block_v_hole(screw)
+                insert_hole(insert, overshoot);
+
+            corner_block_h_holes(screw)
+                insert_hole(insert, overshoot, true);
+
+            children();
         }
-        corner_block_v_hole(screw)
-            insert_hole(insert, overshoot);
-
-        corner_block_h_holes(screw)
-            insert_hole(insert, overshoot, true);
-
-        children();
-    }
 }
 
 module corner_block_assembly(screw = def_screw, name = false) //! The printed block with inserts

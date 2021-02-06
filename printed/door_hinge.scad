@@ -54,44 +54,44 @@ module door_hinge_hole_positions(dir = 0) {                 //! Position chidren
 }
 
 module door_hinge(door_thickness) {                         //! Generates STL for the moving part of the hinge
-    stl(str("door_hinge_", door_thickness));
 
     hole_pitch = width - 10;
 
-    union() {
-        rotate([90, 0, 0])
-            linear_extrude(width, center = true)
+    stl(str("door_hinge_", door_thickness))
+        union() {
+            rotate([90, 0, 0])
+                linear_extrude(width, center = true)
+                    difference() {
+                        hull() {
+                            translate([dia / 2, thickness + door_thickness / 2])
+                                intersection() {
+                                    rotate(180)
+                                        teardrop(r = dia / 2, h = 0, truncate = false);
+
+                                    square([dia + 1, 2 * thickness + door_thickness], center = true);
+                                }
+
+                                square([1, thickness + door_thickness]);
+                        }
+                        translate([dia / 2, thickness + door_thickness / 2])
+                            teardrop_plus(r = screw_clearance_radius(pin_screw), h = 0);
+                    }
+            linear_extrude(thickness)
                 difference() {
                     hull() {
-                        translate([dia / 2, thickness + door_thickness / 2])
-                            intersection() {
-                                rotate(180)
-                                    teardrop(r = dia / 2, h = 0, truncate = false);
+                        translate([0, -width / 2])
+                            square([1, width]);
 
-                                square([dia + 1, 2 * thickness + door_thickness], center = true);
-                            }
-
-                            square([1, thickness + door_thickness]);
+                        for(side = [-1, 1])
+                            translate([-width + rad, side * (width / 2 - rad)])
+                                circle4n(rad);
                     }
-                    translate([dia / 2, thickness + door_thickness / 2])
-                        teardrop_plus(r = screw_clearance_radius(pin_screw), h = 0);
+                    rotate(180)
+                        vflip()
+                            door_hinge_hole_positions()
+                                poly_circle(screw_clearance_radius(screw));
                 }
-        linear_extrude(thickness)
-            difference() {
-                hull() {
-                    translate([0, -width / 2])
-                        square([1, width]);
-
-                    for(side = [-1, 1])
-                        translate([-width + rad, side * (width / 2 - rad)])
-                            circle4n(rad);
-                }
-                rotate(180)
-                    vflip()
-                        door_hinge_hole_positions()
-                            poly_circle(screw_clearance_radius(screw));
-            }
-    }
+        }
 }
 
 module door_hinge_6_stl() door_hinge(6);
