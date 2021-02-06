@@ -159,6 +159,7 @@ def views(target, do_assemblies = None):
     # Find all the scad files
     #
     main_blurb = None
+    pngs = []
     for dir in source_dirs(bom_dir):
         if os.path.isdir(dir):
             for filename in os.listdir(dir):
@@ -185,15 +186,21 @@ def views(target, do_assemblies = None):
                                             if not "blurb" in ass:
                                                 ass["blurb"] = blurb.scrape_module_blurb(lines[:line_no])
                                             break
-                                    if not do_assemblies or real_name in do_assemblies:
+
+                                    #
+                                    # Run openscad on the created file
+                                    #
+                                    dname = deps_name(deps_dir, filename)
+                                    for explode in [0, 1]:
                                         #
-                                        # Run openscad on the created file
+                                        # Generate png name
                                         #
-                                        dname = deps_name(deps_dir, filename)
-                                        for explode in [0, 1]:
-                                            png_name = target_dir + '/' + real_name + '.png'
-                                            if not explode:
-                                                png_name = png_name.replace('_assembly', '_assembled')
+                                        png_name = target_dir + '/' + real_name + '.png'
+                                        if not explode:
+                                            png_name = png_name.replace('_assembly', '_assembled')
+                                        pngs.append(png_name)
+
+                                        if not do_assemblies or real_name in do_assemblies:
                                             changed = check_deps(png_name, dname)
                                             changed = times.check_have_time(changed, png_name)
                                             changed = options.have_changed(changed, png_name)
@@ -403,16 +410,16 @@ def views(target, do_assemblies = None):
     #
     # Convert to HTML
     #
-    html_name = 'readme.html'
+    html_name = top_dir + 'readme.html'
     t = time.time()
-    with open(top_dir + html_name, "wt") as html_file:
+    with open(html_name, "wt") as html_file:
         do_cmd(("python -m markdown -x tables -x sane_lists " + doc_name).split(), html_file)
-    times.add_time(top_dir + html_name, t)
-    times.print_times()
+    times.add_time(html_name, t)
+    times.print_times(pngs + [html_name])
     #
     # Make the printme.html by replacing empty spans that invisbly mark the page breaks by page break divs.
     #
-    with open(top_dir + 'readme.html', 'rt') as src:
+    with open(html_name, 'rt') as src:
         lines = src.readlines()
 
     i = 0

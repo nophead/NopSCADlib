@@ -52,23 +52,34 @@ def add_time(name, start):
         del times[name.lower()]
     times[name] = round(time.time() - start, 3)
 
-def print_times():
-    write_times()
+def print_times(files = None):
     sorted_times = sorted(times.items(), key=lambda kv: kv[1])
     total = 0
+    old_total = 0
     for entry in sorted_times:
-        colour = Fore.WHITE
         key = entry[0]
-        new = entry[1]
-        delta = 0
-        if key in last_times:
-            old = last_times[key]
-            delta = new - old
-            if delta > 0.3:
-                colour = Fore.RED
-            if delta < -0.3:
-                colour = Fore.GREEN
-        print(colour + "%5.1f %5.1f %s" % (new, delta, key))
-        total += new
+        if files and not key in files:
+            del times[key]
+        else:
+            new = entry[1]
+            delta = 0
+            colour = Fore.WHITE
+            if key in last_times:
+                old = last_times[key]
+                old_total += old
+                delta = new - old
+                if delta > 0.3:
+                    colour = Fore.RED
+                if delta < -0.3:
+                    colour = Fore.GREEN
+            print(colour + "%6.1f %5.1f %s" % (new, delta, key))
+            total += new
+    write_times()
     if sorted_times:
-        print(Fore.WHITE + "%5.1f" % total)
+        colour = Fore.WHITE
+        delta = total - old_total
+        if delta > 1:
+            colour = Fore.RED
+        if delta < -1:
+            colour = Fore.GREEN
+        print(colour + "%6.1f %5.1f TOTAL%s" % (total, delta, Fore.WHITE))

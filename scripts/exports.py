@@ -72,10 +72,11 @@ def make_parts(target, part_type, parts = None):
     #
     # Decide which files to make
     #
+    all_parts = bom_to_parts(bom_dir, part_type)
     if parts:
         targets = list(parts)           #copy the list so we dont modify the list passed in
     else:
-        targets = bom_to_parts(bom_dir, part_type)
+        targets = list(all_parts)
         for file in os.listdir(target_dir):
             if file.endswith('.' + part_type):
                 if not file in targets:
@@ -150,4 +151,4 @@ def make_parts(target, part_type, parts = None):
         for part in targets:
             print("Could not find a module called", part[:-4] + module_suffix, "to make", part)
         usage(part_type)
-    times.print_times()
+    times.print_times(all_parts)
