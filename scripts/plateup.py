@@ -72,7 +72,9 @@ def plateup(target, part_type, usage = None):
             changed = check_deps(part_file, dname)
             if changed:
                 print(changed)
-                openscad.run("-D$bom=1", "-d", dname, "-o", part_file, src_file)
+                target_def = ['-D$target="%s"' % target] if target else []
+                cwd_def = ['-D$cwd="%s"' % os.getcwd().replace('\\', '/')]
+                openscad.run_list(["-D$bom=1"] + target_def + cwd_def + ["-d", dname, "-o", part_file, src_file])
                 if part_type == 'stl':
                     c14n_stl.canonicalise(part_file)
                 log_name = 'openscad.log'
