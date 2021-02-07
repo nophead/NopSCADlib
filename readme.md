@@ -288,6 +288,8 @@ Models of radial blowers.
 | `blower_screw_holes(type)` | List of XY coordinates of the screw holes |
 | `blower_top(type)` | Thickness of the top |
 | `blower_wall(type)` | Side wall thickness |
+| `blower_wall_left(type)` | Left side wall thickness |
+| `blower_wall_right(type)` | Right wall thickness (for square fans) |
 | `blower_width(type)` | Width of enclosing rectangle |
 
 ### Functions
@@ -311,10 +313,12 @@ Models of radial blowers.
 |   1 | `blower(PE4020)` |  Blower Pengda Technology 4020 |
 |   1 | `blower(RB5015)` |  Blower Runda RB5015 |
 |   4 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
+|   2 | `screw(M2_cap_screw, 10)` |  Screw M2 cap x 10mm |
 |   3 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   2 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
+|   1 | `blower(BL30x10)` |  Square radial fan 3010 |
 |   1 | `blower(BL40x10)` |  Square radial fan 4010 |
-|   4 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
+|   6 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |   3 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   2 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 
