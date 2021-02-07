@@ -2315,6 +2315,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ---:|:--- |:---|
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
+|   1 | `pcb(BTT_SKR_E3_TURBO)` |  BigTreeTech SKR E3 Turbo |
 |   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
 |   1 | `pcb(BTT_SKR_V1_4_TURBO)` |  BigTreeTech SKR v1.4 Turbo |
 |   1 |  |  Cat 5 patch cable 300mm |
@@ -2325,7 +2326,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(ESP-01)` |  ESP-01 |
 |   1 | `pcb(EnviroPlus)` |  Enviro+ |
 |   1 | `pcb(ExtruderPCB)` |  Extruder connection PCB |
-|   1 | `pcb(Keyes5p1)` |  Keyes5.1 Arduino Uno expansion board |
+|   1 | `pcb(Keyes5p1)` |  Keyes5.1 Arduino Uno expansion board - not shown |
 |   1 | `pcb(MP1584EN)` |  MP1584EN 3A buck converter |
 |   1 | `pcb(MT3608)` |  MT3608 boost converter module |
 |   1 | `pcb(Melzi)` |  Melzi electronics - not shown |
@@ -2334,8 +2335,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(2)` |  Molex KK header 2 way |
 |   1 | `molex_254(3)` |  Molex KK header 3 way |
 |  16 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
-|  34 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  17 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  30 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
+|  22 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 |
 |   1 | `pcb(PSU12V1A)` |  PSU 12V 1A - not shown |
@@ -2355,9 +2356,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
 |   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |  12 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
-|   4 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
 |   4 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
-|   4 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   9 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
 |   9 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 35)` |  Screw M4 cap x 35mm |
 |   1 | `pcb(TP4056)` |  TP4056 Li-lon Battery charger module |
@@ -2366,8 +2366,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 |  |  USB A to Mini B lead - not shown |
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  16 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
-|  34 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  17 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  30 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  22 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
@@ -2383,11 +2383,11 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer25140.stl |
 |   4 | pcb_spacer25150_2.stl |
 |   4 | pcb_spacer25160_2.stl |
-|   4 | pcb_spacer25170_2.stl |
+|   4 | pcb_spacer25180.stl |
 |   4 | pcb_spacer25190.stl |
-|   4 | pcb_spacer25200.stl |
 |   2 | pcb_spacer2580.stl |
-|   4 | pcb_spacer30180.stl |
+|   4 | pcb_spacer30170.stl |
+|   5 | pcb_spacer30200.stl |
 |   5 | pcb_spacer30210.stl |
 |   4 | pcb_spacer30220.stl |
 |   4 | pcb_spacer3050.stl |
