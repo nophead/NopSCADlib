@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 include <../vitamins/blowers.scad>
 
 module blowers()
-    layout([for(b = blowers) blower_width(b)], 10, true) let(b = blowers[$i]){
+    layout([for(b = blowers) blower_width(b)], 5, true) let(b = blowers[$i]){
         screw = blower_screw(b);
         h = blower_lug(b);
 
