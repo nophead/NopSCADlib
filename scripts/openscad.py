@@ -33,11 +33,16 @@ def run_list(args, silent = False, verbose = False):
     with open("openscad.log", "w") as log:
         rc = subprocess.call(cmd, stdout = log, stderr = log)
     log_file = "openscad.echo" if "openscad.echo" in cmd else "openscad.log"
+    bad = False
     for line in open(log_file, "rt"):
         if verbose or 'ERROR:' in line or 'WARNING:' in line:
+            bad = True
             print(line[:-1])
     if rc:
         sys.exit(rc)
+
+    if bad:
+        sys.exit(1)
 
 def run(*args):
     run_list(list(args), False)
