@@ -73,7 +73,7 @@ def set_config(target, usage = None):
     lines = [""]
     try:
         with open(fname,"rt") as f:
-            line = f.readlines()
+            lines = f.readlines()
     except:
         pass
 
