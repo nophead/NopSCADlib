@@ -69,17 +69,18 @@ def set_config(target, usage = None):
         sys.exit(1)
 
     fname = source_dir + "/target.scad"
-    text = "include <config_%s.scad>\n" % target;
-    line = ""
+    text = ['include <config_%s.scad>\n' % target, '$target = "%s";\n' % target];
+    lines = [""]
     try:
         with open(fname,"rt") as f:
-            line = f.read()
+            line = f.readlines()
     except:
         pass
 
-    if line != text:
+    if lines != text:
         with open(fname,"wt") as f:
-            f. write(text);
+            for t in text:
+                f. write(t);
     return target + "/"
 
 def usage():
