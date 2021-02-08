@@ -65,6 +65,8 @@ def plateup(target, part_type, usage = None):
         #
         # Run OpenSCAD on the source files to make the targets
         #
+        target_def = ['-D$target="%s"' % target] if target else []
+        cwd_def = ['-D$cwd="%s"' % os.getcwd().replace('\\', '/')]
         for src in sources:
             src_file = dir + '/' + src
             part_file = target_dir + '/' + src[:-4] + part_type
@@ -72,15 +74,13 @@ def plateup(target, part_type, usage = None):
             changed = check_deps(part_file, dname)
             if changed:
                 print(changed)
-                target_def = ['-D$target="%s"' % target] if target else []
-                cwd_def = ['-D$cwd="%s"' % os.getcwd().replace('\\', '/')]
                 openscad.run_list(["-D$bom=1"] + target_def + cwd_def + ["-d", dname, "-o", part_file, src_file])
                 if part_type == 'stl':
                     c14n_stl.canonicalise(part_file)
                 log_name = 'openscad.log'
             else:
                 log_name = 'openscad.echo'
-                openscad.run_silent("-D$bom=1", "-o", log_name, src_file)
+                openscad.run_list(["-D$bom=1"] + target_def + cwd_def + ["-o", log_name, src_file], silent = True)
             #
             # Add the files on the BOM to the used list
             #
