@@ -126,7 +126,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
         if(cutout)
             rotate([90, 0, 90])
                 rounded_rectangle([w + 2 * v_flange_h + 2 * panel_clearance,
-                                   h + 2 * h_flange_h + 2 * panel_clearance, 100], r = cnc_bit_r, center = false);
+                                   h + 2 * h_flange_h + 2 * panel_clearance, 100], r = cnc_bit_r);
         else {
             color("silver") rotate([0, 90, 0]) {
                 linear_extrude(l, center = true)

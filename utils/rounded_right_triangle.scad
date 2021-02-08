@@ -31,15 +31,15 @@ module rounded_right_triangle(x, y, z, fillet, center = true, offset = false) { 
         hull() {
             translate([0, fillet, size.z / 2])
                 rotate([90, 90, 0])
-                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, center = false, xy_center = false);
+                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, xy_center = false);
             translate([0, size.y, size.z / 2])
                 rotate([90, 90, 0])
-                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, center = false, xy_center = false);
+                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, xy_center = false);
             translate([fillet, 0, size.z / 2])
                 rotate([0, 90, 0])
-                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, center = false, xy_center = false);
+                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, xy_center = false);
             translate([size.x, 0, size.z / 2])
                 rotate([0, 90, 0])
-                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, center = false, xy_center = false);
+                    rounded_rectangle([size.z, 2 * fillet, eps], fillet - eps, xy_center = false);
         }
 }

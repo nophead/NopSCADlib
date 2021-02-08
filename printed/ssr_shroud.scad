@@ -71,7 +71,7 @@ module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a spec
     stl(str("ssr_shroud_", name)) {
         // base and sides
         translate([center_x, 0]) {
-            rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
+            rounded_rectangle([depth - eps, width - eps, top], rad);
 
             linear_extrude(height) difference() {
                 round(or = wall / 2 - eps, ir = 0) difference() {

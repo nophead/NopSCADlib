@@ -110,7 +110,7 @@ module psu_shroud(type, cable_d, name, cables = 1) { //! Generate the STL file f
     stl(str("psu_shroud_", name)) {
         // base and sides
         translate([centre_x, -centre_y]) {
-            rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
+            rounded_rectangle([depth - eps, width - eps, top], rad);
 
             linear_extrude(height)
                 difference() {

@@ -182,7 +182,7 @@ module pbox(type) { //! Generate the STL for the main case
                 if(ledge_h)
                     translate_z(top_thickness + height - ledge_h)
                         difference() {
-                            rounded_rectangle([pbox_width(type) + 2 * outset, pbox_depth(type) + 2 * outset, ledge_h], 1, center = false);
+                            rounded_rectangle([pbox_width(type) + 2 * outset, pbox_depth(type) + 2 * outset, ledge_h], 1);
 
                             hull() {
                                 linear_extrude(ledge_h + eps)

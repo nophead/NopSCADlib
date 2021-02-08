@@ -59,7 +59,7 @@ module panel_meter_button(type) { //! Draw panel meter button
     color(pmeter_button_colour(type))
         translate(pmeter_button_pos(type))
             if(size.x)
-                rounded_rectangle(pmeter_button_size(type), r, center = false);
+                rounded_rectangle(pmeter_button_size(type), r);
             else
                 cylinder(r = r, h = size.z);
 }
@@ -93,8 +93,8 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
         difference() {
             if(is_list(bevel))
                 hull() {
-                    rounded_rectangle([bezel.x - 2 * bevel.x, bezel.y - 2 * bevel.x, bezel.z], r - bevel.x, center = false);
-                    rounded_rectangle([bezel.x, bezel.y, bevel[1]], r, center = false);
+                    rounded_rectangle([bezel.x - 2 * bevel.x, bezel.y - 2 * bevel.x, bezel.z], r - bevel.x);
+                    rounded_rectangle([bezel.x, bezel.y, bevel[1]], r);
                 }
             else
                 hull() {
@@ -111,7 +111,7 @@ module panel_meter(type) { //! Draw panel mounted LCD meter module
                         cube([ap.x + ap.z, ap.y + ap.z, eps], center = true);
 
                 translate_z(bezel.z + eps)
-                    rounded_rectangle([ap.x, ap.y, bezel.z * 2], r, center = true);
+                    rounded_rectangle([ap.x, ap.y, bezel.z * 2], r, true);
             }
         }
         //

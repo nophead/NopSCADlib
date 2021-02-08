@@ -62,7 +62,7 @@ module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius `r
         translate([lx, -r])
              rotate([90, 0, 0])
                 union() {
-                    rounded_rectangle(latch, 0.5, center = false);
+                    rounded_rectangle(latch, 0.5);
 
                     translate_z((latch.z + 1) / 2)
                         cube([ziptie_thickness(type), ziptie_width(type), latch.z + 1], center = true);

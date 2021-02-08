@@ -44,7 +44,7 @@ module door_latch_stl() { //! Generates the STL for the printed part
         difference() {
             union() {
                 hull() {
-                    rounded_rectangle([length, width, thickness - tan(30) * (width -  ridge) / 2], rad, center = false);
+                    rounded_rectangle([length, width, thickness - tan(30) * (width -  ridge) / 2], rad);
 
                     translate_z(thickness / 2)
                         cube([length, ridge, thickness], center = true);

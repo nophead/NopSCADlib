@@ -227,7 +227,7 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
             translate_z(-box_profile_overlap(type)) difference() {
                 tw = w + 2 * outset;
                 td = d + 2 * outset;
-                rounded_rectangle([tw, td, feet ? foot_height : height], box_corner_rad(type), false);
+                rounded_rectangle([tw, td, feet ? foot_height : height], box_corner_rad(type));
                 //
                 // Remove edges between the feet
                 //
@@ -264,7 +264,7 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
             // recess for top / bottom panel
             //
             translate_z(cgap)
-                rounded_rectangle([w + bezel_clearance, d + bezel_clearance, height], inner_r + bezel_clearance / 2, false);
+                rounded_rectangle([w + bezel_clearance, d + bezel_clearance, height], inner_r + bezel_clearance / 2);
             //
             // leave plastic over the corner profiles
             //
