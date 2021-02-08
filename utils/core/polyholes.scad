@@ -33,6 +33,8 @@
 //! When `twist` is set the resulting cylinder is extended by `eps` at each end so that the exact length of the hole can be used without
 //! leaving a scar on either surface.
 //
+include <../core/core.scad>
+
 function sides(r) = max(round(4 * r), 3);                                       //! Optimium number of sides for specified radius
 function corrected_radius(r, n = 0)   = r / cos(180 / (n ? n : sides(r)));      //! Adjusted radius to make flats lie on the circle
 function corrected_diameter(d, n = 0) = d / cos(180 / (n ? n : sides(d / 2)));  //! Adjusted diameter to make flats lie on the circle
