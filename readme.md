@@ -6239,7 +6239,7 @@ Rectangle with rounded corners.
 | `rounded_cube_xy(size, r = 0, xy_center = false, z_center = false)` | Like `cube()` but corners rounded in XY plane and separate centre options for xy and z. |
 | `rounded_cube_xz(size, r = 0, xy_center = false, z_center = false)` | Like `cube()` but corners rounded in XZ plane and separate centre options for xy and z. |
 | `rounded_cube_yz(size, r = 0, xy_center = false, z_center = false)` | Like `cube()` but corners rounded in YX plane and separate centre options for xy and z. |
-| `rounded_rectangle(size, r, center = true, xy_center = true)` | Like `cube()` but corners rounded in XY plane and separate centre options for xy and z. |
+| `rounded_rectangle(size, r, center = false, xy_center = true)` | Like `cube()` but corners rounded in XY plane and separate centre options for xy and z. |
 | `rounded_square(size, r, center = true)` | Like `square()` but with with rounded corners |
 
 ![rounded_rectangle](tests/png/rounded_rectangle.png)

@@ -27,7 +27,7 @@ module rounded_square(size, r, center = true) //! Like `square()` but with with 
     offset(r) offset(-r) square(size, center = center);
 }
 
-module rounded_rectangle(size, r, center = true, xy_center = true) //! Like `cube()` but corners rounded in XY plane and separate centre options for xy and z.
+module rounded_rectangle(size, r, center = false, xy_center = true) //! Like `cube()` but corners rounded in XY plane and separate centre options for xy and z.
 {
     extrude_if(size.z, center = center)
         rounded_square([size.x, size.y], r, xy_center);

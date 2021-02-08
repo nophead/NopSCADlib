@@ -116,10 +116,10 @@ module MT3608_carrier_stl() { //! Generate the STL for an MT3608 carrier, two re
         difference() {
             hull() {
                 translate([offset, 0, height - eps / 2])
-                    rounded_rectangle([width, pcb_width - 2, eps], 1);
+                    rounded_rectangle([width, pcb_width - 2, eps], 1, true);
 
                 translate_z(eps / 2)
-                    rounded_rectangle([width, pcb_width - 2, eps], 1);
+                    rounded_rectangle([width, pcb_width - 2, eps], 1, true);
             }
             for(side = [-1, 1])
                 hull() {

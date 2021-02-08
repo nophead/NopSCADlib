@@ -46,7 +46,7 @@ module widget(thickness) {
 module widget_stl() {
     stl("widget")
         union() {
-            rounded_rectangle([30, 30, 3], 2);
+            rounded_rectangle([30, 30, 3], 2, true);
 
             render() insert_boss(insert, height, 2.2);
         }
