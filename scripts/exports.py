@@ -45,7 +45,7 @@ def bom_to_parts(bom_dir, part_type, assembly = None):
             if words:
                 last_word = words[-1]
                 if last_word.endswith(suffix):
-                   part_files.append(last_word[:-4] + '.' + part_type)
+                    part_files.append(last_word[:-4] + '.' + part_type)
     return part_files
 
 def usage(t):
@@ -74,8 +74,9 @@ def make_parts(target, part_type, parts = None):
     if not os.path.isdir(deps_dir):
         os.makedirs(deps_dir)
 
-    if os.path.isdir(top_dir + '/deps'):  #old location
-        shutil.rmtree(top_dir + '/deps')
+    old_deps = top_dir + 'deps'  #old location
+    if os.path.isdir(old_deps):
+         shutil.rmtree(old_deps)
 
     times.read_times(target_dir)
     #
