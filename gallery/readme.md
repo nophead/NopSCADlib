@@ -1,40 +1,30 @@
 # A gallery of projects made with NopSCADlib
-<a name="TOP"></a>
 ## ArduinoThermostat
 Arduino thermostat to control a beer fridge to use it as an environmental chamber.
 
 ![](ArduinoThermostat.png)
 
-
-<a name="TOP"></a>
 ## EnviroPlus
 Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
 
 ![](EnviroPlus.png)
 
-
-<a name="TOP"></a>
 ## FilamentDryBox
 A small fan oven with a spool holder to keep the filament warm and dry.
 
 ![](FilamentDryBox.png)
 
-
-<a name="TOP"></a>
 ## HydraBot
 Current state of HydraRaptor after being modified for laser engraving.
 
 ![](HydraBot.png)
 
 
-<a name="TOP"></a>
 ## IOT 50V PSU
 WiFi controllable PSU
 
 ![](IOT_50V_PSU.png)
 
-
-<a name="TOP"></a>
 ## Lab ATX PSU
 Bench power supply built around an ATX PSU.
 
@@ -47,15 +37,11 @@ Bench power supply built around an ATX PSU.
 
 
 
-
-<a name="TOP"></a>
 ## Laser Load
 15kV dummy load for testing CO2 laser PSUs
 
 ![](Laser_load.png)
 
-
-<a name="TOP"></a>
 ## MainsBreakOutBox
 13A socket break out box with 4mm jacks to measure voltage and / or load current and earth leakage current.
 
@@ -72,8 +58,6 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ![](MainsBreakOutBox.png)
 
-
-<a name="TOP"></a>
 ## Mains Box
 Mains isolated and variable supply with metering.
 
@@ -81,15 +65,11 @@ Mains isolated and variable supply with metering.
 
 
 
-
-<a name="TOP"></a>
 ## SunBot
 A solar tracker to keep a solar panel pointing at the sun.
 
 ![](SunBot.png)
 
-
-<a name="TOP"></a>
 ## Turntable
 WiFi enabled remote control turntable for photography
 
@@ -97,13 +77,10 @@ WiFi enabled remote control turntable for photography
 
 Was actually made from DiBond but shown made with carbon fibre here.
 
-
-<a name="TOP"></a>
 ## Variac
 Motorised variac with WiFi control, see [hydraraptor.blogspot.com/2018/04/esp8266-spi-spy](https://hydraraptor.blogspot.com/2018/04/esp8266-spi-spy.html)
 
 ![](Variac.png)
-
 
 
 
