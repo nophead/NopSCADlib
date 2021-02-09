@@ -130,7 +130,7 @@ def views(target, do_assemblies = None):
     #
     top_dir = set_config(target, usage)
     target_dir = top_dir + 'assemblies'
-    deps_dir = top_dir + "deps"
+    deps_dir = target_dir + "/deps"
     bom_dir = top_dir + "bom"
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)

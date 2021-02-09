@@ -26,7 +26,7 @@ import sys
 import c14n_stl
 from set_config import *
 from deps import *
-from shutil import copyfile
+import shutil
 import re
 
 source_dirs = { "stl" : "platters", "dxf" : "panels" }
@@ -54,9 +54,12 @@ def plateup(target, part_type, usage = None):
         #
         # Make the deps dir
         #
-        deps_dir = dir + "/deps"
+        deps_dir = parts_dir + "/deps"
         if not os.path.isdir(deps_dir):
             os.makedirs(deps_dir)
+
+        if os.path.isdir(dir + '/deps'): #old deps
+            shutil.rmtree(dir + '/deps')
         #
         # Decide which files to make
         #
@@ -100,7 +103,7 @@ def plateup(target, part_type, usage = None):
                 dst = target_dir + '/' + file
                 if mtime(src) > mtime(dst):
                     print("Copying %s to %s" % (src, dst))
-                    copyfile(src, dst)
+                    shutil.copyfile(src, dst)
                 copied.append(file)
         #
         # Remove any cruft

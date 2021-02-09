@@ -29,6 +29,7 @@ import time
 import times
 from deps import *
 import json
+import shutil
 
 def bom_to_parts(bom_dir, part_type, assembly = None):
     #
@@ -62,12 +63,16 @@ def make_parts(target, part_type, parts = None):
     #
     top_dir = set_config(target, lambda: usage(part_type))
     target_dir = top_dir + part_type + 's'
-    deps_dir = top_dir + "deps"
+    deps_dir = target_dir + "/deps"
     bom_dir = top_dir + "bom"
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
     if not os.path.isdir(deps_dir):
         os.makedirs(deps_dir)
+
+    if os.path.isdir(top_dir + '/deps'):  #old location
+        shutil.rmtree(top_dir + '/deps')
+
     times.read_times(target_dir)
     #
     # Decide which files to make

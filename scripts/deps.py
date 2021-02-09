@@ -34,7 +34,7 @@ def read_deps(dname):
     for line in lines:
         if line.startswith('\t'):
             dep = line[1 : -1].rstrip(' \\').replace('\\ ', ' ')
-            if not os.path.basename(dep) in ['stl.scad', 'dxf.scad', 'svf.scad', 'png.scad', 'target.scad'] and not '/stls/' in dep and not '/dxfs/' in dep:
+            if not os.path.basename(dep) in ['stl.scad', 'dxf.scad', 'svf.scad', 'png.scad', 'target.scad']:
                 deps.append(dep)
     return deps
 
