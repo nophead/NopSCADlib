@@ -20,6 +20,7 @@
 # Set command line options from enviroment variables and check if they have changed
 
 import json, os, deps
+from colorama import Fore, init
 
 def check_options(dir = '.'):
     global options, options_mtime
@@ -37,7 +38,7 @@ def check_options(dir = '.'):
 
 def have_changed(changed, target):
     if not changed and deps.mtime(target) < options_mtime:
-        return "command line options changed"
+        return Fore.CYAN + "command line options changed" + Fore.WHITE
     return changed
 
 def list():

@@ -18,6 +18,7 @@
 #
 import os
 from set_config import source_dir
+from colorama import Fore
 
 def mtime(file):
     if os.path.isfile(file):
@@ -41,13 +42,13 @@ def read_deps(dname):
 def check_deps(target, dname):
     target_mtime = mtime(target)
     if not target_mtime:
-        return target + " missing"
+        return Fore.CYAN + target + " missing" + Fore.WHITE
     if not os.path.isfile(dname):
-        return "no deps"
+        return Fore.CYAN + "no deps" + Fore.WHITE
     deps = read_deps(dname)
     for dep in deps:
         if mtime(dep) > target_mtime:
-            return dep + ' changed'
+            return Fore.CYAN + dep + ' changed' + Fore.WHITE
     return None
 
 def source_dirs(bom_dir):

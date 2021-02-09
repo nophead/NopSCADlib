@@ -44,7 +44,7 @@ def got_time(name):
 
 def check_have_time(changed, name):
     if not changed and not got_time(name):
-        changed = "no previous time"
+        changed = Fore.CYAN + "no previous time" + Fore.WHITE
     return changed
 
 def add_time(name, start):

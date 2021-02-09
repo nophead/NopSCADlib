@@ -31,6 +31,7 @@ from deps import *
 from tmpdir import *
 import json
 import shutil
+from colorama import Fore, init
 
 def bom_to_parts(bom_dir, part_type, assembly = None):
     #
@@ -130,7 +131,7 @@ def make_parts(target, part_type, parts = None):
                                         changed = check_deps(part_file, dname)
                                         changed = times.check_have_time(changed, part)
                                         if part_type == 'stl' and not changed and not part in bounds_map:
-                                            changed = "No bounds"
+                                            changed = Fore.CYAN + "No bounds" + Fore.WHITE
                                         if changed:
                                             print(changed)
                                             #
