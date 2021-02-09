@@ -38,6 +38,7 @@ import shutil
 import re
 import copy
 from colorama import Fore
+from tmpdir import *
 
 def is_assembly(s):
     return s[-9:] == '_assembly' or s[-11:] == '_assemblies'
@@ -129,6 +130,7 @@ def views(target, do_assemblies = None):
     # Make the target directory
     #
     top_dir = set_config(target, usage)
+    tmp_dir = mktmpdir(top_dir)
     target_dir = top_dir + 'assemblies'
     deps_dir = target_dir + "/deps"
     bom_dir = top_dir + "bom"
@@ -204,15 +206,15 @@ def views(target, do_assemblies = None):
                                             changed = check_deps(png_name, dname)
                                             changed = times.check_have_time(changed, png_name)
                                             changed = options.have_changed(changed, png_name)
-                                            tmp_name = 'tmp.png'
+                                            tmp_name = tmp_dir + '/' + real_name + '.png'
                                             if changed:
                                                 print(changed)
                                                 #
                                                 # make a file to use the module
                                                 #
-                                                png_maker_name = 'png.scad'
+                                                png_maker_name = tmp_dir + '/png.scad'
                                                 with open(png_maker_name, "w") as f:
-                                                    f.write("use <%s/%s>\n" % (dir, filename))
+                                                    f.write("use <%s/%s>\n" % (reltmp(dir, target), filename))
                                                     f.write("%s();\n" % module);
                                                 t = time.time()
                                                 target_def = ['-D$target="%s"' % target] if target else []
@@ -438,6 +440,10 @@ def views(target, do_assemblies = None):
             else:
                 dst.write(line)
                 i += 1
+    #
+    # Remove tmp dir
+    #
+    rmtmpdir(tmp_dir)
     #
     # Spell check
     #

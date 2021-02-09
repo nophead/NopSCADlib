@@ -28,6 +28,7 @@ from set_config import *
 import time
 import times
 from deps import *
+from tmpdir import *
 import json
 import shutil
 
@@ -65,8 +66,11 @@ def make_parts(target, part_type, parts = None):
     target_dir = top_dir + part_type + 's'
     deps_dir = target_dir + "/deps"
     bom_dir = top_dir + "bom"
+    tmp_dir = mktmpdir(top_dir)
+
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
+
     if not os.path.isdir(deps_dir):
         os.makedirs(deps_dir)
 
@@ -131,9 +135,9 @@ def make_parts(target, part_type, parts = None):
                                             #
                                             # make a file to use the module
                                             #
-                                            part_maker_name = part_type + ".scad"
+                                            part_maker_name = tmp_dir + '/' + part_type + ".scad"
                                             with open(part_maker_name, "w") as f:
-                                                f.write("use <%s/%s>\n" % (dir, filename))
+                                                f.write("use <%s/%s>\n" % (reltmp(dir, target), filename))
                                                 f.write("%s();\n" % module);
                                             t = time.time()
                                             openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
@@ -149,6 +153,10 @@ def make_parts(target, part_type, parts = None):
     if part_type == 'stl':
         with open(bounds_fname, 'w') as outfile:
             json.dump(bounds_map, outfile, indent = 4)
+    #
+    # Remove tmp dir
+    #
+    rmtmpdir(tmp_dir)
     #
     # List the ones we didn't find
     #

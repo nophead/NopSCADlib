@@ -34,6 +34,7 @@ import shutil
 from deps import *
 from blurb import *
 from colorama import Fore
+from tmpdir import *
 
 w = 4096
 h = w
@@ -94,6 +95,7 @@ def usage():
 
 def tests(tests):
     scad_dir = "tests"
+    tmp_dir = mktmpdir(scad_dir + '/')
     deps_dir = scad_dir + "/deps"
     png_dir  = scad_dir + "/png"
     bom_dir  = scad_dir + "/bom"
@@ -234,7 +236,7 @@ def tests(tests):
             if changed:
                 print(changed)
                 t = time.time()
-                tmp_name = 'tmp.png'
+                tmp_name = tmp_dir + '/tmp.png'
                 openscad.run_list(options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name]);
                 times.add_time(scad_name, t)
                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", background, "-border", "10", tmp_name])
@@ -303,6 +305,11 @@ def tests(tests):
     with open(doc_base_name + ".html", "wt") as html_file:
         do_cmd(("python -m markdown -x tables " + doc_name).split(), html_file)
     times.print_times()
+    #
+    # Remove tmp dir
+    #
+    rmtmpdir(tmp_dir)
+
     do_cmd(('codespell -L od ' + doc_name).split())
 
 if __name__ == '__main__':
