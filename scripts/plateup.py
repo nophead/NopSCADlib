@@ -28,11 +28,13 @@ from set_config import *
 from deps import *
 import shutil
 import re
+from colorama import init
 
 source_dirs = { "stl" : "platters", "dxf" : "panels" }
 target_dirs = { "stl" : "printed",  "dxf" : "routed" }
 
 def plateup(target, part_type, usage = None):
+    init()
     #
     # Make the target directory
     #
