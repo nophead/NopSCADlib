@@ -69,7 +69,11 @@ def set_config(target, usage = None):
         sys.exit(1)
 
     fname = source_dir + "/target.scad"
-    text = ['include <config_%s.scad>\n' % target, '$target = "%s";\n' % target];
+    text = ['include <config_%s.scad>\n' % target,
+            '$target = "%s";\n' % target,
+            '$cwd="%s";\n' % os.getcwd().replace('\\', '/')
+    ]
+
     lines = [""]
     try:
         with open(fname,"rt") as f:

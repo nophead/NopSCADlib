@@ -146,17 +146,11 @@ module dxf(name) {                      //! Name a dxf that will appear on the B
         }
 }
 
-module use_stl(name) {               //! Import an STL to make a build platter
-    stl(name);
-    path = is_undef($target) ? "/stls/" : str("/", $target, "/stls/");
-    import(str($cwd, path, name, ".stl"));
-}
+module use_stl(name)                //! Import an STL to make a build platter
+    assert(false);                  // Here for documentation only, real version in core.scad
 
-module use_dxf(name) {               //! Import a DXF to make a build panel
-    dxf(name);
-    path = is_undef($target) ? "/dxfs/" : str("/", $target, "/dxfs/");
-    import(str($cwd, path, name, ".dxf"));
-}
+module use_dxf(name)                //! Import a DXF to make a build panel
+    assert(false);                  // Here for documentation only, real version in core.scad
 
 function value_string(value) = is_string(value) ? str("\"", value, "\"") : str(value); //! Convert `value` to a string or quote it if it is already a string
 
