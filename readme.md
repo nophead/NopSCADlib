@@ -6173,18 +6173,18 @@ leaving a scar on either surface.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `corrected_diameter(d, n = 0)` | Adjusted diameter to make flats lie on the circle |
-| `corrected_radius(r, n = 0)` | Adjusted radius to make flats lie on the circle |
-| `sides(r)` | Optimium number of sides for specified radius |
+| `corrected_diameter(d, n = undef)` | Adjusted diameter to make flats lie on the circle |
+| `corrected_radius(r, n = undef)` | Adjusted radius to make flats lie on the circle |
+| `sides(r, n = undef)` | Optimium number of sides for specified radius |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | `drill(r, h = 100, center = true)` | Make a cylinder for drilling holes suitable for CNC routing, set h = 0 for circle |
-| `poly_circle(r, sides = 0)` | Make a circle adjusted to print the correct size |
-| `poly_cylinder(r, h, center = false, sides = 0, chamfer = false, twist = 0)` | Make a cylinder adjusted to print the correct size |
+| `poly_circle(r, sides = undef)` | Make a circle adjusted to print the correct size |
+| `poly_cylinder(r, h, center = false, sides = undef, chamfer = false, twist = 0)` | Make a cylinder adjusted to print the correct size |
 | `poly_drill(r, h = 100, center = true)` | Make a cylinder for drilling holes suitable for CNC routing if cnc_bit_r is non zero, otherwise a poly_cylinder. |
-| `poly_ring(or, ir, sides = 0)` | Make a 2D ring adjusted to have the correct internal radius |
+| `poly_ring(or, ir, sides = undef)` | Make a 2D ring adjusted to have the correct internal radius |
 | `poly_tube(or, ir, h, center = false)` | Make a tube adjusted to have the correct internal radius |
 | `slot(r, l, h = 100)` | Make a horizontal slot suitable for CNC routing, set h = 0 for 2D version |
 
