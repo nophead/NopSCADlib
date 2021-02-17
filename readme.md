@@ -35,15 +35,15 @@ See [usage](docs/usage.md) for requirements, installation instructions and a usa
 <tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_right_triangle">Rounded_right_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
 ---
@@ -4954,6 +4954,56 @@ The stl must be given a parameterless wrapper in the project that uses it.
 | Qty | Filename |
 | ---:|:--- |
 |   1 | pcb_mount_PI_IO_5.stl |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Pocket_handle"></a>
+## Pocket_handle
+Customisable pocket handle
+
+[printed/pocket_handle.scad](printed/pocket_handle.scad) Implementation.
+
+[tests/pocket_handle.scad](tests/pocket_handle.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `pocket_handle_hand_size(type)` | Size of the hole for the fingers |
+| `pocket_handle_panel_t(type)` | Thickness of the panel it is mounted in |
+| `pocket_handle_rad(type)` | Min corner rad |
+| `pocket_handle_screw(type)` | Screw type, can be countersunk or not |
+| `pocket_handle_slant(type)` | Upward slant of the hand hole |
+| `pocket_handle_wall(type)` | Wall thickness |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `pocket_handle(hand_size = [90, 40, 40], slant = 35, screw = M3_cs_cap_screw, panel_t = 3, wall = 4, rad = 4)` | Construct a pocket_handle property list |
+| `pocket_handle_flange(type)` | Size of the flange |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `pocket_handle(type)` | Generate STL for pocket_handle |
+| `pocket_handle_assembly(type)` | Assembly with fasteners in place |
+| `pocket_handle_hole_positions(type)` | Place children at screw hole positions |
+| `pocket_handle_holes(type, h = 0)` | Panel cutout and screw holes |
+
+![pocket_handle](tests/png/pocket_handle.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|   4 | `screw(M3_cs_cap_screw, 12)` |  Screw M3 cs cap x 12mm |
+|   4 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | pocket_handle.stl |
 
 
 <a href="#top">Top</a>

@@ -117,6 +117,7 @@ use <tests/flat_hinge.scad>
 use <tests/foot.scad>
 use <tests/handle.scad>
 use <tests/PCB_mount.scad>
+use <tests/pocket_handle.scad>
 use <tests/printed_box.scad>
 use <tests/printed_pulleys.scad>
 use <tests/ribbon_clamp.scad>
@@ -180,7 +181,10 @@ translate([x5, cable_grommets_y + 250])
 translate([950, 600])
     box_test();
 
-translate([890, 750])
+translate([830, 770])
+    pocket_handles();
+
+translate([950, 750])
     printed_boxes();
 
 translate([850, 1330])
