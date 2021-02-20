@@ -6069,7 +6069,7 @@ This can speed up the generation of the build instructions greatly but isn't com
 The `pose()` module allows assembly views in the readme to be posed differently to the default view in the GUI:
 
 * Setting the `exploded` parameter to `true` allows just the exploded version to be posed and setting to `false` allows just the assembled view to be posed, the default is both.
-* If the `d` parameter is set to specify the camera distance then the normal `viewall` and `autocenter` options are supressed allowing a small section to be zoomed in to fill the view.
+* If the `d` parameter is set to specify the camera distance then the normal `viewall` and `autocenter` options are suppressed allowing a small section to be zoomed in to fill the view.
 * To get the parameter values make the GUI window square, pose the view with the mouse and then copy the viewport parameters from the Edit menu and paste them into the pose invocation.
 * Two `pose()` modules can be chained to allow different poses for exploded and assembled views.
 
