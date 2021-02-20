@@ -6066,6 +6066,13 @@ If the code to make an STL or DXF is made a child of the `stl()` or `dxf()` modu
 it with code.
 This can speed up the generation of the build instructions greatly but isn't compatible with STLs that include support structures.
 
+The `pose()` module allows assembly views in the readme to be posed differently to the default view in the GUI:
+
+* Setting the `exploded` parameter to `true` allows just the exploded version to be posed and setting to `false` allows just the assembled view to be posed, the default is both.
+* If the `d` parameter is set to specify the camera distance then the normal `viewall` and `autocenter` options are supressed allowing a small section to be zoomed in to fill the view.
+* To get the parameter values make the GUI window square, pose the view with the mouse and then copy the viewport parameters from the Edit menu and paste them into the pose invocation.
+* Two `pose()` modules can be chained to allow different poses for exploded and assembled views.
+
 [utils/core/bom.scad](utils/core/bom.scad) Implementation.
 
 [tests/BOM.scad](tests/BOM.scad) Code for this example.
@@ -6089,7 +6096,7 @@ This can speed up the generation of the build instructions greatly but isn't com
 | `no_explode()` | Prevent children being exploded |
 | `no_pose()` | Force children not to be posed even if parent is |
 | `not_on_bom(on = false)` | Specify the following child parts are not on the BOM, for example when they are on a PCB that comes assembled |
-| `pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef)` | Pose an STL or assembly for rendering to png by specifying rotation `a` and translation `t`, `exploded = true for` just the exploded view or `false` for unexploded only. |
+| `pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef)` | Pose an STL or assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only. |
 | `pose_hflip(exploded = undef)` | Pose an STL or assembly for rendering to png by flipping around the Y axis, `exploded = true for` just the exploded view or `false` for unexploded only. |
 | `pose_vflip(exploded = undef)` | Pose an STL or assembly for rendering to png by flipping around the X axis, `exploded = true for` just the exploded view or `false` for unexploded only. |
 | `stl(name)` | Name an stl that will appear on the BOM, there needs to a module named `<name>_stl` to make it |

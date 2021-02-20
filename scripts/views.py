@@ -185,6 +185,7 @@ def views(target, do_assemblies = None):
                                     #
                                     for ass in flat_bom:
                                         if ass["name"] == real_name:
+                                            zoomed = ass['zoomed']
                                             if not "blurb" in ass:
                                                 ass["blurb"] = blurb.scrape_module_blurb(lines[:line_no])
                                             break
@@ -219,7 +220,8 @@ def views(target, do_assemblies = None):
                                                 t = time.time()
                                                 target_def = ['-D$target="%s"' % target] if target else []
                                                 cwd_def = ['-D$cwd="%s"' % os.getcwd().replace('\\', '/')]
-                                                openscad.run_list(options.list() + target_def + cwd_def + ["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, png_maker_name]);
+                                                view_def = ['--viewall', '--autocenter'] if not (zoomed & (1 << explode)) else ['--camera=0,0,0,55,0,25,140']
+                                                openscad.run_list(options.list() + target_def + cwd_def + view_def +["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "-d", dname, "-o", tmp_name, png_maker_name]);
                                                 times.add_time(png_name, t)
                                                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
                                                 update_image(tmp_name, png_name)

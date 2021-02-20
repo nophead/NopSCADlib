@@ -61,6 +61,7 @@ class BOM:
         self.name = name
         self.big = None
         self.ngb = False
+        self.zoomed = 0
         self.count = 1
         self.vitamins = {}
         self.printed = {}
@@ -75,6 +76,7 @@ class BOM:
              "name"       : self.name,
              "big"        : self.big,
              "ngb"        : self.ngb,
+             "zoomed"     : self.zoomed,
              "count"      : self.count,
              "assemblies" : assemblies,
              "vitamins"   : {v : self.vitamins[v].data() for v in self.vitamins},
