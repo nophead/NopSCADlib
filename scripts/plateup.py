@@ -44,18 +44,22 @@ def plateup(target, part_type, usage = None):
     source_dir1 = source_dirs[part_type]
     source_dir2 = top_dir + source_dirs[part_type]
 
-    times.read_times(target_dir)
     #
     # Loop through source directories
     #
     all_used = []
     all_sources = []
     all_parts = []
+    read_times = False
     for dir in [source_dir1, source_dir2]:
         if not os.path.isdir(dir):
             continue
         if not os.path.isdir(target_dir):
             os.makedirs(target_dir)
+
+        if not read_times:
+            times.read_times(target_dir)
+            read_times = True
         #
         # Make the deps dir
         #
@@ -140,4 +144,4 @@ def plateup(target, part_type, usage = None):
                     print("Removing %s" % file)
                     os.remove(deps_dir + '/' + file)
 
-    times.print_times(all_parts)
+        times.print_times(all_parts)
