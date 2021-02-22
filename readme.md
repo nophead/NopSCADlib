@@ -3154,6 +3154,7 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(FoilTape, 30, 30, 2)` |  Aluminium foil tape 30mm x 30mm x 0.05mm |
 |   1 | `sheet(AL6, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 6mm |
 |   1 | `sheet(AL8, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 8mm |
+|   1 | `sheet(Spring05, 30, 30, 2)` |  Bi-metal saw blade 30mm x 30mm x 0.5mm |
 |   1 | `sheet(Cardboard, 30, 30, 2)` |  Corrugated cardboard 30mm x 30mm x 5mm |
 |   1 | `sheet(Foam20, 30, 30, 2)` |  Foam sponge 30mm x 30mm x 20mm |
 |   1 | `sheet(DiBond, 30, 30, 2)` |  Sheet DiBond 30mm x 30mm x 3mm |
@@ -3172,6 +3173,7 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(CF3, 30, 30, 2)` |  Sheet carbon fiber 30mm x 30mm x 3mm |
 |   1 | `sheet(glass2, 30, 30, 2)` |  Sheet glass 30mm x 30mm x 2mm |
 |   1 | `sheet(Steel06, 30, 30, 2)` |  Sheet mild steel 30mm x 30mm x 0.6mm |
+|   1 | `sheet(Silicone3, 30, 30, 2)` |  Sheet silicone 30mm x 30mm x 3mm |
 
 
 <a href="#top">Top</a>

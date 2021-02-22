@@ -29,7 +29,7 @@ module pcbs() {
             rotate(90)
                 pcb_assembly(pcbs[$i], 5 + $i, 3);
 
-    translate([0, 120])
+    translate([0, 110])
         layout([for(p = perfboards) pcb_length(p)], 10)
             translate([0, -pcb_width(perfboards[$i]) / 2])
                 pcb_assembly(perfboards[$i], 5 + $i, 3);
