@@ -47,9 +47,9 @@ AL8       = [ "AL8",       "Aluminium tooling plate", 8, [0.9, 0.9, 0.9, 1    ],
 Steel06   = [ "Steel06",   "Sheet mild steel",       0.6,"silver"              , false];
 Spring05  = [ "Spring05",  "Bi-metal saw blade",     0.5,"#FBC300",              false];
 Silicone3 = [ "Silicone3", "Sheet silicone",          3, [0.9, 0.9, 0.9, 0.95 ], false];
-CF1 =       [ "CF1",       "Sheet carbon fiber",      1, grey(30),               false,  2,  2,  grey(25)];
-CF2 =       [ "CF2",       "Sheet carbon fiber",      2, grey(30),               false,  2,  2,  grey(25)];
-CF3 =       [ "CF3",       "Sheet carbon fiber",      3, grey(30),               false,  2,  2,  grey(25)];
+CF1 =       [ "CF1",       "Sheet carbon fiber",      1, grey(35),               false,  2,  2,  grey(20)];
+CF2 =       [ "CF2",       "Sheet carbon fiber",      2, grey(35),               false,  2,  2,  grey(20)];
+CF3 =       [ "CF3",       "Sheet carbon fiber",      3, grey(35),               false,  2,  2,  grey(20)];
 
 
 sheets = [CF1, CF2, CF3, MDF6, MDF10, MDF12, MDF19, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10,
