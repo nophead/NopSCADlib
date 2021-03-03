@@ -14,6 +14,8 @@ The license is GNU General Public License v3.0, see [COPYING](COPYING).
 
 See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
 
+A list of changes classified as breaking, additions or fixes is maintained in [CHANGELOG.md](CHANGELOG.md).
+
 <img src="libtest.png" width="100%"/>
 
 ## Table of Contents<a name="top"/>

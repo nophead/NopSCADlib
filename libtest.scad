@@ -33,6 +33,8 @@
 //!
 //! See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
 //!
+//! A list of changes classified as breaking, additions or fixes is maintained in [CHANGELOG.md](CHANGELOG.md).
+//!
 //! <img src="libtest.png" width="100%"/>
 //
 // This file shows all the parts in the library.
