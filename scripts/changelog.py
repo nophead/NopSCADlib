@@ -157,4 +157,4 @@ if __name__ == '__main__':
 
             # Print commits excluding merges
             if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull'):
-                print('* %s [%s](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment)), file = file)
+                print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment)), file = file)
