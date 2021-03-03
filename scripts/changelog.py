@@ -131,8 +131,7 @@ if __name__ == '__main__':
             # Convert version tag to tuple
             if commit.tag:
                 match = re.match(r'.*tag: v([0-9]+)\.([0-9]+)\.([0-9]+).*', commit.tag)
-                assert(match)
-                commit.tag = (int(match.group(1)), int(match.group(2)), int(match.group(3)))
+                commit.tag = (int(match.group(1)), int(match.group(2)), int(match.group(3))) if match else ''
             commits.append(commit)
 
     # Format the results from the Commit objects
