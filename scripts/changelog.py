@@ -70,14 +70,17 @@ def iscode(word):
 
     return False
 
-def codify(word):
+def codify(word, url):
     """ if a word is deemed code enclose it backticks """
-    if word and iscode(word):
-        return  '`' + word + '`'
+    if word:
+        if re.match(r'#[0-9]+', word):
+            return '[%s](%s "show issue")' % (word, url + '/issues/' + word[1:])
+        if iscode(word):
+            return  '`' + word + '`'
     return word
 
 
-def fixup_comment(comment):
+def fixup_comment(comment, url):
     """ markup code words and fix new paragraphs """
     result = ''
     word = ''
@@ -88,11 +91,11 @@ def fixup_comment(comment):
             if c == '`': code = not code    # Keep track of state
         else:
             if c in ' \n' or (c == '.' and (i + 1 == len(comment) or comment[i + 1] in ' \n')): # if a word terminator
-                result += codify(word) + c  # Add codified word before terminator
+                result += codify(word, url) + c  # Add codified word before terminator
                 word = ''
             else:
                 word += c                   # Accumulate next word
-    result += codify(word)                  # In case comment ends without a terminator
+    result += codify(word, url)             # In case comment ends without a terminator
     return result.replace('\n\n','\n\n * ') # Give new paragraphs a bullet point
 
 class Commit(): # members dynamically added from commit_fields
@@ -157,4 +160,4 @@ if __name__ == '__main__':
 
             # Print commits excluding merges
             if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull'):
-                print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment)), file = file)
+                print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment, url)), file = file)
