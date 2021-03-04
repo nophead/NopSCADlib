@@ -46,7 +46,7 @@ def get_remote_url():
     return url
 
 def iscode(word):
-    """ try to guess if the wod is code """
+    """ try to guess if the word is code """
     endings = ['()', '*']
     starts = ['$', '--']
     anywhere = ['.', '_', '=', '[', '/']
