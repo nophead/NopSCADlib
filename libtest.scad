@@ -43,6 +43,7 @@ include <lib.scad>
 
 use <tests/ball_bearings.scad>
 use <tests/batteries.scad>
+use <tests/bearing_blocks.scad>
 use <tests/belts.scad>
 use <tests/blowers.scad>
 use <tests/bulldogs.scad>
@@ -88,7 +89,6 @@ use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
 use <tests/screws.scad>
-use <tests/SCS_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
 use <tests/shaft_couplings.scad>
 use <tests/sheets.scad>
