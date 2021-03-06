@@ -89,7 +89,7 @@ use <utils/gears.scad>
 use <utils/hanging_hole.scad>
 use <utils/fillet.scad>
 use <utils/rounded_polygon.scad>
-use <utils/rounded_right_triangle.scad>
+use <utils/rounded_triangle.scad>
 use <utils/layout.scad>
 use <utils/round.scad>
 use <utils/offset.scad>
