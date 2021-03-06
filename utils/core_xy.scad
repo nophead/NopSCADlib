@@ -97,7 +97,6 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
 
     // plain idler for offset stepper motor drive pulley
     p3p_type = p4_type;
-    //p3p = [ p4.x, size.y / 2 - pulley_od(p3p_type) / 2 - pulley_od(p3d_type) / 2 + drive_pulley_offset.y ];
     p3p = [ drive_pulley_offset.x > 0 ? p4.x : -p0.x - pulley_od(p0_type),
             size.y / 2 - pulley_od(p3p_type) / 2 - pulley_od(p3d_type) / 2 + drive_pulley_offset.y
     ];
