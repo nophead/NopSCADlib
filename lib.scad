@@ -26,6 +26,7 @@ include <vitamins/psus.scad>
 include <vitamins/pcbs.scad>
 
 include <vitamins/batteries.scad>
+include <vitamins/bearing_blocks.scad>
 include <vitamins/blowers.scad>
 include <vitamins/bulldogs.scad>
 include <vitamins/buttons.scad>
@@ -52,7 +53,6 @@ include <vitamins/pulleys.scad>
 include <vitamins/ring_terminals.scad>
 include <vitamins/rails.scad>
 include <vitamins/rod.scad>
-include <vitamins/scs_bearing_blocks.scad>
 include <vitamins/shaft_couplings.scad>
 include <vitamins/sheets.scad>
 include <vitamins/sk_brackets.scad>

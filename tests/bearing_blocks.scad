@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-include <../vitamins/scs_bearing_blocks.scad>
+include <../vitamins/bearing_blocks.scad>
 
 use <../utils/layout.scad>
 
