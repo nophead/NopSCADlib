@@ -94,7 +94,7 @@ def render(target, type):
             cam = "--camera=0,0,0,70,0,315,500" if type == 'stl' else "--camera=0,0,0,0,0,0,500"
             render = "--preview" if type == 'stl' or colour != pp1 else "--render"
             tmp_name = tmp_dir + '/' + part[:-4] + '.png'
-            openscad.run(colour_scheme, "--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall", "-o", tmp_name, png_maker_name);
+            openscad.run("-o", tmp_name, png_maker_name, colour_scheme, "--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall");
             do_cmd(("magick "+ tmp_name + " -trim -resize 280x280 -background %s -gravity Center -extent 280x280 -bordercolor %s -border 10 %s"
                     % (background, background, tmp_name)).split())
             update_image(tmp_name, png_name)

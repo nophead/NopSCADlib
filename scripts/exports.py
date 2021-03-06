@@ -142,7 +142,7 @@ def make_parts(target, part_type, parts = None):
                                                 f.write("use <%s/%s>\n" % (reltmp(dir, target), filename))
                                                 f.write("%s();\n" % module);
                                             t = time.time()
-                                            openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
+                                            openscad.run("-o", part_file, part_maker_name, "-D$bom=1", "-d", dname)
                                             times.add_time(part, t)
                                             if part_type == 'stl':
                                                 bounds = c14n_stl.canonicalise(part_file)
