@@ -21,7 +21,6 @@
 //! Draw a 3D right triangle with rounded edges. Intended to be embedded in other parts. Can be optionally offset by the filleted amount.
 //
 include <../utils/core/core.scad>
-include <..//utils/core/rounded_rectangle.scad>
 
 module rounded_right_triangle(x, y, z, fillet, center = true, offset = false) { //! Draw a 3D right triangle with rounded edges.
     fillet = max(fillet, eps);

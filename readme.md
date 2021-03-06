@@ -37,7 +37,7 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_right_triangle">Rounded_right_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
 <tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
 <tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
@@ -5970,20 +5970,20 @@ Because the tangents need to be calculated to find the length these can be calcu
 <a href="#top">Top</a>
 
 ---
-<a name="Rounded_right_triangle"></a>
-## Rounded_right_triangle
+<a name="Rounded_triangle"></a>
+## Rounded_triangle
 Draw a 3D right triangle with rounded edges. Intended to be embedded in other parts. Can be optionally offset by the filleted amount.
 
-[utils/rounded_right_triangle.scad](utils/rounded_right_triangle.scad) Implementation.
+[utils/rounded_triangle.scad](utils/rounded_triangle.scad) Implementation.
 
-[tests/rounded_right_triangle.scad](tests/rounded_right_triangle.scad) Code for this example.
+[tests/rounded_triangle.scad](tests/rounded_triangle.scad) Code for this example.
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | `rounded_right_triangle(x, y, z, fillet, center = true, offset = false)` | Draw a 3D right triangle with rounded edges. |
 
-![rounded_right_triangle](tests/png/rounded_right_triangle.png)
+![rounded_triangle](tests/png/rounded_triangle.png)
 
 
 <a href="#top">Top</a>
