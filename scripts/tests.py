@@ -60,7 +60,8 @@ def compare_images(a, b, c):
     with open(log_name, 'w') as output:
         do_cmd(("magick compare -metric AE -fuzz %d%% %s %s %s" % (fuzz, a, b, c)).split(), output = output)
     with open(log_name, 'r') as f:
-        pixels = int(float(f.read().strip()))
+        pixels = f.read().strip()
+        pixels = int(float(pixels if pixels.isnumeric() else -1))
     os.remove(log_name)
     return pixels
 
