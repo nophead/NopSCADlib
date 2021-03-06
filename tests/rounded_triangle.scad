@@ -18,7 +18,7 @@
 //
 
 include <../global_defs.scad>
-use <../utils/rounded_right_triangle.scad>
+use <../utils/rounded_triangle.scad>
 
 
 module rounded_right_triangles() {
