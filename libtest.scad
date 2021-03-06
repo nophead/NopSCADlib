@@ -64,7 +64,6 @@ use <tests/hot_ends.scad>
 use <tests/IECs.scad>
 use <tests/inserts.scad>
 use <tests/jack.scad>
-use <tests/KP_pillow_blocks.scad>
 use <tests/leadnuts.scad>
 use <tests/LDRs.scad>
 use <tests/LEDs.scad>
@@ -80,6 +79,7 @@ use <tests/opengrab.scad>
 use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
+use <tests/pillow_blocks.scad>
 use <tests/press_fit.scad>
 use <tests/PSUs.scad>
 use <tests/pulleys.scad>
