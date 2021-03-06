@@ -97,7 +97,6 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
 
     // plain idler for offset stepper motor drive pulley
     p3p_type = p4_type;
-    //p3p = [ p4.x, size.y / 2 - pulley_od(p3p_type) / 2 - pulley_od(p3d_type) / 2 + drive_pulley_offset.y ];
     p3p = [ drive_pulley_offset.x > 0 ? p4.x : -p0.x - pulley_od(p0_type),
             size.y / 2 - pulley_od(p3p_type) / 2 - pulley_od(p3d_type) / 2 + drive_pulley_offset.y
     ];
@@ -109,12 +108,11 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
     p6 = [ pos.x - size.x / 2, -size.y / 2 + pos.y - separation_y / 2 ];
 
     module show_pulleys(show_pulleys) {// Allows the pulley colour to be set for debugging
-        not_on_bom()
-            if (is_list(show_pulleys))
-                color(show_pulleys)
-                    children();
-            else if (show_pulleys)
+        if (is_list(show_pulleys))
+            color(show_pulleys)
                 children();
+        else if (show_pulleys)
+            children();
     }
 
     show_pulleys(show_pulleys) {
