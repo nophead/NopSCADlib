@@ -5629,7 +5629,11 @@ allows flexible positioning of the motors.
 | ---:|:--- |:---|
 |   1 | `belt(GT2x6, [ ... ], [10.0078, 11.69], [0, -24.686])` |  Belt GT2 x 6mm x 742mm |
 |   1 | `belt(GT2x6, [ ... ], [10.0078, 11.69], [0, -24.686])` |  Belt GT2 x 6mm x 852mm |
+|   7 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
+|   3 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
+|   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
 |   8 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
+|   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
 |   2 | `NEMA(NEMA17M)` |  Stepper motor NEMA17 x 40mm |
 
 
