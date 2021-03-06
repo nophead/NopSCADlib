@@ -116,7 +116,7 @@ def tests(tests):
         libtest = True
         lib_blurb = scrape_blurb(scad_name)
         if not os.path.isfile(png_name):
-            openscad.run(colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall", "-o", png_name, scad_name);
+            openscad.run(scad_name, "-o", png_name, colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall");
             do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", background, "-border", "10", png_name])
     else:
         #
@@ -237,7 +237,7 @@ def tests(tests):
                 print(changed)
                 t = time.time()
                 tmp_name = tmp_dir + '/tmp.png'
-                openscad.run_list(options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name]);
+                openscad.run_list([scad_name, "-o", tmp_name] + options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname]);
                 times.add_time(scad_name, t)
                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", background, "-border", "10", tmp_name])
                 update_image(tmp_name, png_name)
