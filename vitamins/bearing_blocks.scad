@@ -40,4 +40,4 @@ SCS16LUU  = ["SCS16LUU",  9, 19, 25, 50, 85, 38.5, 32.5, 36, 60, 7,    M5_cap_sc
 scs_bearing_blocks = [SCS6UU, SCS8UU,  SCS10UU, SCS12UU, SCS16UU];
 scs_bearing_blocks_long = [SCS8LUU,  SCS10LUU, SCS12LUU, SCS16LUU];
 
-use <scs_bearing_block.scad>
+use <bearing_block.scad>
