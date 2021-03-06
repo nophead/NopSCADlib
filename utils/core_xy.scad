@@ -109,12 +109,11 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
     p6 = [ pos.x - size.x / 2, -size.y / 2 + pos.y - separation_y / 2 ];
 
     module show_pulleys(show_pulleys) {// Allows the pulley colour to be set for debugging
-        not_on_bom()
-            if (is_list(show_pulleys))
-                color(show_pulleys)
-                    children();
-            else if (show_pulleys)
+        if (is_list(show_pulleys))
+            color(show_pulleys)
                 children();
+        else if (show_pulleys)
+            children();
     }
 
     show_pulleys(show_pulleys) {

@@ -23,7 +23,7 @@ include <../vitamins/screws.scad>
 include <../vitamins/stepper_motors.scad>
 include <../vitamins/washers.scad>
 
-include <../utils/core_xy_belts.scad>
+include <../utils/core_xy.scad>
 
 
 module coreXY_belts_test() {
