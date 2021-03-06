@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2020
+// NopSCADlib Copyright Chris Palmer 2018
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,19 +16,18 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+include <../core.scad>
+include <../vitamins/pillow_blocks.scad>
 
-//
-//! KP pillow block bearings
-//
+use <../utils/layout.scad>
 
-include <ball_bearings.scad>
+module kp_pillow_blocks() {
+    screws = [M4_cap_screw, M4_cap_screw, M5_cap_screw, M5_cap_screw];
+    nuts = [M4_sliding_t_nut, M4_hammer_nut, M5_sliding_t_nut, M5_nut];
+    assert(len(screws) == len(kp_pillow_blocks) && len(nuts) == len(kp_pillow_blocks));
+    layout([for(k = kp_pillow_blocks) 2 * kp_size(k)[1]])
+        kp_pillow_block_assembly(kp_pillow_blocks[$i], screw_type = screws[$i], nut_type = nuts[$i]);
+}
 
-//                      d   H   L   J   A    N  H1  H0     K  S  b   bolthole             bearing
-KP08_15 = ["KP08_15",   8, 15, 55, 42, 13, 4.5,  5, 29,  0.0, 0, 22, M4_clearance_radius, BB608];
-KP08_18 = ["KP08_18",   8, 18, 55, 42, 13, 4.5,  5, 29,  0.0, 0, 22, M4_clearance_radius, BB608];
-KP000 =   ["KP000",    10, 18, 67, 53, 16, 7.0,  6, 35, 14.0, 4, 30, M6_clearance_radius, BB6200];
-KP001 =   ["KP001",    12, 19, 71, 56, 16, 7.0,  6, 38, 14.5, 4, 32, M6_clearance_radius, BB6201];
-
-kp_pillow_blocks = [KP08_15, KP08_18, KP000, KP001];
-
-use <kp_pillow_block.scad>
+if($preview)
+    kp_pillow_blocks();

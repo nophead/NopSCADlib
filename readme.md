@@ -22,26 +22,26 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <table><tr>
 <th align="left"> Vitamins A-I </th><th align="left"> Vitamins J-Q </th><th align="left"> Vitamins R-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
 <tr><td> <a href = "#Axials">Axials</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#KP_pillow_blocks">KP_pillow_blocks</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SCS_bearing_blocks">SCS_bearing_blocks</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
-<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_right_triangle">Rounded_right_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SCS_bearing_blocks">SCS_bearing_blocks</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
+<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
+<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_right_triangle">Rounded_right_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#Inserts">Inserts</a> </td><td></td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
@@ -1312,58 +1312,6 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 <a href="#top">Top</a>
 
 ---
-<a name="KP_pillow_blocks"></a>
-## KP_pillow_blocks
-KP pillow block bearings
-
-[vitamins/kp_pillow_blocks.scad](vitamins/kp_pillow_blocks.scad) Object definitions.
-
-[vitamins/kp_pillow_block.scad](vitamins/kp_pillow_block.scad) Implementation.
-
-[tests/KP_pillow_blocks.scad](tests/KP_pillow_blocks.scad) Code for this example.
-
-### Properties
-| Function | Description |
-|:--- |:--- |
-| `kp_base_height(type)` | Height of base containing the bolts |
-| `kp_diameter(type)` | Rod hole diameter |
-| `kp_hole_offset(type)` | Rod hole offset |
-| `kp_screw_separation(type)` | Separation of bolts in the base |
-
-### Functions
-| Function | Description |
-|:--- |:--- |
-| `kp_size(type)` | Size of bracket |
-
-### Modules
-| Module | Description |
-|:--- |:--- |
-| `kp_pillow_block(type)` | Draw the KP pillow block |
-| `kp_pillow_block_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = undef)` | Assembly with fasteners in place |
-| `kp_pillow_block_hole_positions(type)` | Place children at hole positions |
-
-![kp_pillow_blocks](tests/png/kp_pillow_blocks.png)
-
-### Vitamins
-| Qty | Module call | BOM entry |
-| ---:|:--- |:---|
-|   1 | `kp_pillow_block(KP000)` |  KP000 pillow block |
-|   1 | `kp_pillow_block(KP001)` |  KP001 pillow block |
-|   1 | `kp_pillow_block(KP08_15)` |  KP08_15 pillow block |
-|   1 | `kp_pillow_block(KP08_18)` |  KP08_18 pillow block |
-|   2 | `sliding_t_nut(M4_hammer_nut)` |  Nut M4 hammer |
-|   2 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
-|   2 | `sliding_t_nut(M5_sliding_t_nut)` |  Nut M5 sliding T |
-|   2 | `nut(M5_nut, nyloc = undef)` |  Nut M5 x 4mm  |
-|   4 | `screw(M4_cap_screw, 10)` |  Screw M4 cap x 10mm |
-|   4 | `screw(M5_cap_screw, 12)` |  Screw M5 cap x 12mm |
-|   4 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
-|   6 | `washer(M5_washer)` |  Washer  M5 x 10mm x 1mm |
-
-
-<a href="#top">Top</a>
-
----
 <a name="LDRs"></a>
 ## LDRs
 Light dependent resistors.
@@ -2442,6 +2390,58 @@ Threaded pillars. Each end can be male or female.
 |   1 | `pillar(M2x16_brass_pillar)` |  Pillar nurled F/M M2x16 |
 |   1 | `pillar(M3x20_nylon_pillar)` |  Pillar nylon M/F M3x20 |
 |   1 | `pillar(M4x17_nylon_pillar)` |  Pillar nylon M/F M4x20 |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Pillow_blocks"></a>
+## Pillow_blocks
+KP pillow block bearings
+
+[vitamins/pillow_blocks.scad](vitamins/pillow_blocks.scad) Object definitions.
+
+[vitamins/pillow_block.scad](vitamins/pillow_block.scad) Implementation.
+
+[tests/pillow_blocks.scad](tests/pillow_blocks.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `kp_base_height(type)` | Height of base containing the bolts |
+| `kp_diameter(type)` | Rod hole diameter |
+| `kp_hole_offset(type)` | Rod hole offset |
+| `kp_screw_separation(type)` | Separation of bolts in the base |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `kp_size(type)` | Size of bracket |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `kp_pillow_block(type)` | Draw the KP pillow block |
+| `kp_pillow_block_assembly(type, part_thickness = 2, screw_type = M5_cap_screw, nut_type = undef)` | Assembly with fasteners in place |
+| `kp_pillow_block_hole_positions(type)` | Place children at hole positions |
+
+![pillow_blocks](tests/png/pillow_blocks.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `kp_pillow_block(KP000)` |  KP000 pillow block |
+|   1 | `kp_pillow_block(KP001)` |  KP001 pillow block |
+|   1 | `kp_pillow_block(KP08_15)` |  KP08_15 pillow block |
+|   1 | `kp_pillow_block(KP08_18)` |  KP08_18 pillow block |
+|   2 | `sliding_t_nut(M4_hammer_nut)` |  Nut M4 hammer |
+|   2 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
+|   2 | `sliding_t_nut(M5_sliding_t_nut)` |  Nut M5 sliding T |
+|   2 | `nut(M5_nut, nyloc = undef)` |  Nut M5 x 4mm  |
+|   4 | `screw(M4_cap_screw, 10)` |  Screw M4 cap x 10mm |
+|   4 | `screw(M5_cap_screw, 12)` |  Screw M5 cap x 12mm |
+|   4 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   6 | `washer(M5_washer)` |  Washer  M5 x 10mm x 1mm |
 
 
 <a href="#top">Top</a>

@@ -37,7 +37,6 @@ include <vitamins/extrusion_brackets.scad>
 include <vitamins/geared_steppers.scad>
 include <vitamins/hot_ends.scad>
 include <vitamins/inserts.scad>
-include <vitamins/kp_pillow_blocks.scad>
 include <vitamins/ldrs.scad>
 include <vitamins/leadnuts.scad>
 include <vitamins/led_meter.scad>
@@ -47,6 +46,7 @@ include <vitamins/mains_sockets.scad>
 include <vitamins/modules.scad>
 include <vitamins/panel_meters.scad>
 include <vitamins/pillars.scad>
+include <vitamins/pillow_blocks.scad>
 include <vitamins/pin_headers.scad>
 include <vitamins/pulleys.scad>
 include <vitamins/ring_terminals.scad>
