@@ -22,6 +22,7 @@
 //!
 //! The belts are positioned according the bottom left "anchor" pulley and the top right drive pulley.
 //! Implementation has the following features:
+//!
 //! 1. The drive and idler pulleys may be different sizes.
 //! 2. The belt separation is parameterised.
 //! 3. The separation of the plain and toothed pulleys on the Y carriages is parameterised, in both the X and the Y direction.
