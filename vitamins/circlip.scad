@@ -33,7 +33,7 @@ function circlip_a(type)         = type[5];     //! Size of the lugs
 function circlip_b(type)         = type[6];     //! Widest part of the taper
 function circlip_d5(type)        = type[7];     //! Plier hole diameter
 
-circlip_colour = grey20;
+circlip_colour = grey(20);
 closed_angle = 25;
 
 module internal_circlip(type, open = 0) { //! Draw specified internal circlip, open = 0, for nominal size installed, 1 for relaxed uninstalled, -1 for squeezed to install

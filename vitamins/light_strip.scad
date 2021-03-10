@@ -21,7 +21,7 @@
 //! LED strip lights that can be cut to size.
 //!
 //! The definitions are for the full length but they can be cut to size by specifying how many segments,
-//! which can by calcuated using ```light_strip_segments(type, max_length)```.
+//! which can by calcuated using `light_strip_segments(type, max_length)`.
 //!
 //! The `light_strip_clip()` module makes a clip to go around the light that can be incorporated into a printed bracket to hold it.
 //
@@ -137,7 +137,6 @@ module light_strip(type, segs = undef) { //! Draw specified light strip, segs ca
             linear_extrude(0.55 + eps)
                 resistor_positions()
                     square([2.1, 1.5 + 2 * eps], center = true);
-
     }
 
     if(show_rays)
@@ -148,8 +147,9 @@ wall = 1.8;
 clearance = 0.2;
 function light_strip_clip_slot(light) = light_strip_width(light) + clearance;       //! Clip slot size
 function light_strip_clip_depth(light) = 10;                                        //! Depth of the clip
-function light_strip_clip_length(light) = light_strip_clip_slot(light) + 2 * wall;  //! Outside length
-function light_strip_clip_width(light) = light_strip_depth(light) + 2 * wall;       //! Outside width
+function light_strip_clip_length(light) = light_strip_clip_slot(light) + 2 * wall;  //! Outside length of clip
+function light_strip_clip_width(light) = light_strip_depth(light) + 2 * wall;       //! Outside width of clip
+function light_strip_clip_wall() = wall;                                            //! Clip wall thickness
 
 module light_strip_clip(light) { //! Make a clip to go over the strip to be incorporated into a bracket
     linear_extrude(light_strip_clip_depth(light), convexity = 2)

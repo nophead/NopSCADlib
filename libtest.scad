@@ -17,6 +17,25 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
+//!# NopSCADlib
+//! An ever expanding library of parts modelled in OpenSCAD useful for 3D printers and enclosures for electronics, etc.
+//!
+//! It contains lots of vitamins (the RepRap term for non-printed parts), some general purpose printed parts and some utilities.
+//! There are also Python scripts to generate Bills of Materials (BOMs),
+//! STL files for all the printed parts, DXF files for CNC routed parts in a project and a manual containing assembly
+//! instructions and exploded views by scraping markdown embedded in OpenSCAD comments, [see scripts](scripts/readme.md).
+//!
+//! A simple example project can be found [here](examples/MainsBreakOutBox/readme.md).
+//!
+//! For more examples of what it can make see the [gallery](gallery/readme.md).
+//!
+//! The license is GNU General Public License v3.0, see [COPYING](COPYING).
+//!
+//! See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
+//!
+//! A list of changes classified as breaking, additions or fixes is maintained in [CHANGELOG.md](CHANGELOG.md).
+//!
+//! <img src="libtest.png" width="100%"/>
 //
 // This file shows all the parts in the library.
 //
@@ -24,15 +43,19 @@ include <lib.scad>
 
 use <tests/ball_bearings.scad>
 use <tests/batteries.scad>
+use <tests/bearing_blocks.scad>
 use <tests/belts.scad>
 use <tests/blowers.scad>
 use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
+use <tests/cameras.scad>
+use <tests/camera_housing.scad>
 use <tests/circlips.scad>
 use <tests/components.scad>
 use <tests/d_connectors.scad>
 use <tests/displays.scad>
+use <tests/drag_chain.scad>
 use <tests/extrusions.scad>
 use <tests/extrusion_brackets.scad>
 use <tests/fans.scad>
@@ -42,20 +65,23 @@ use <tests/hot_ends.scad>
 use <tests/IECs.scad>
 use <tests/inserts.scad>
 use <tests/jack.scad>
-use <tests/KP_pillow_blocks.scad>
 use <tests/leadnuts.scad>
 use <tests/LDRs.scad>
 use <tests/LEDs.scad>
 use <tests/light_strips.scad>
 use <tests/linear_bearings.scad>
-use <tests/meter.scad>
+use <tests/LED_meters.scad>
+use <tests/magnets.scad>
 use <tests/microswitches.scad>
 use <tests/modules.scad>
 use <tests/nuts.scad>
 use <tests/o_ring.scad>
 use <tests/opengrab.scad>
+use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
+use <tests/pillow_blocks.scad>
+use <tests/press_fit.scad>
 use <tests/PSUs.scad>
 use <tests/pulleys.scad>
 use <tests/rails.scad>
@@ -63,14 +89,15 @@ use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
 use <tests/screws.scad>
-use <tests/SCS_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
+use <tests/shaft_couplings.scad>
 use <tests/sheets.scad>
 use <tests/SK_brackets.scad>
 use <tests/spades.scad>
 use <tests/springs.scad>
 use <tests/SSRs.scad>
 use <tests/stepper_motors.scad>
+use <tests/Swiss_clips.scad>
 use <tests/toggles.scad>
 use <tests/transformers.scad>
 use <tests/tubings.scad>
@@ -92,7 +119,9 @@ use <tests/flat_hinge.scad>
 use <tests/foot.scad>
 use <tests/handle.scad>
 use <tests/PCB_mount.scad>
+use <tests/pocket_handle.scad>
 use <tests/printed_box.scad>
+use <tests/printed_pulleys.scad>
 use <tests/ribbon_clamp.scad>
 use <tests/screw_knob.scad>
 use <tests/socket_box.scad>
@@ -101,7 +130,7 @@ use <tests/SSR_shroud.scad>
 use <tests/PSU_shroud.scad>
 
 x0 = 0;
-x1 = x0 + 100;
+x1 = x0 + 110;
 x2 = x1 + 90;
 x3 = x2 + 130;
 x4 = x3 + 200;
@@ -113,17 +142,20 @@ cable_grommets_y = 0;
 translate([x5, cable_grommets_y])
     cable_grommets();
 
-translate([x5, cable_grommets_y + 50])
-    feet();
+translate([x5 + 50, cable_grommets_y])
+    ribbon_clamps();
 
-translate([x5, cable_grommets_y + 75])
+translate([x5 + 95, cable_grommets_y])
+    press_fits();
+
+translate([x5, cable_grommets_y + 60])
     fixing_blocks();
 
-translate([x5, cable_grommets_y + 100])
+translate([x5, cable_grommets_y + 90])
     corner_blocks();
 
 translate([x5, cable_grommets_y + 150])
-    ribbon_clamps();
+    feet();
 
 translate([x5 + 70, cable_grommets_y + 150])
     screw_knobs();
@@ -142,13 +174,19 @@ translate([x5, cable_grommets_y + 370])
 translate([x5 + 60, cable_grommets_y + 200])
     strap_handles();
 
+translate([640, cable_grommets_y + 200])
+    printed_pulley_test();
+
 translate([x5, cable_grommets_y + 250])
     handle();
 
 translate([950, 600])
     box_test();
 
-translate([890, 750])
+translate([830, 770])
+    pocket_handles();
+
+translate([950, 750])
     printed_boxes();
 
 translate([850, 1330])
@@ -169,14 +207,14 @@ ball_bearings_y = pillars_y + 40;
 pulleys_y = ball_bearings_y +40;
 hot_ends_y = pulleys_y + 60;
 linear_bearings_y = hot_ends_y + 50;
-sheets_y = linear_bearings_y + 100;
-pcbs_y = sheets_y + 40;
+sheets_y = linear_bearings_y + 90;
+pcbs_y = sheets_y + 60;
 displays_y = pcbs_y + 170;
 fans_y = displays_y + 80;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;
 
-translate([x0 + 30, inserts_y])
+translate([x0 + 35, inserts_y])
     inserts();
 
 translate([x0, inserts_y])
@@ -250,7 +288,8 @@ translate([x0, psus_y]) {
 
 zipties_y = 0;
 bulldogs_y = zipties_y + 30;
-leadnuts_y = bulldogs_y + 50;
+swiss_clips_y = bulldogs_y + 35;
+leadnuts_y = swiss_clips_y + 50;
 
 translate([x1, zipties_y])
     zipties();
@@ -258,14 +297,18 @@ translate([x1, zipties_y])
 translate([x1, bulldogs_y])
     bulldogs();
 
+translate([x1, swiss_clips_y])
+    swiss_clips();
+
 translate([x1, leadnuts_y])
     leadnuts();
 
 
 leds_y = 0;
 carriers_y = leds_y + 40;
-spades_y = carriers_y + 40;
-buttons_y = spades_y + 40;
+magnets_y = carriers_y + 40;
+spades_y = magnets_y + 20;
+buttons_y = spades_y + 20;
 jacks_y = buttons_y + 40;
 microswitches_y = jacks_y + 40;
 rockers_y = microswitches_y + 40;
@@ -275,16 +318,19 @@ components_y = toggles_y + 40;
 translate([x2, leds_y])
     leds();
 
-translate([x2 + 40, leds_y])
+translate([x2 + 35, leds_y])
     ldrs();
 
 translate([x2 + 8, carriers_y])
     carriers();
 
-translate([x2+ 38, carriers_y])
-    meters();
+translate([x2, magnets_y])
+    magnets();
 
-translate([x2 + 68, carriers_y])
+translate([x2 + 20, carriers_y])
+    led_meters();
+
+translate([x2 + 70, leds_y])
     fuseholders();
 
 translate([x2, spades_y])
@@ -315,8 +361,9 @@ modules_y = iecs_y + 60;
 ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
 batteries_y = blowers_y + 100;
-steppers_y = batteries_y + 70;
-extrusions_y = steppers_y + 100;
+steppers_y = batteries_y + 55;
+panel_meters_y = steppers_y + 70;
+extrusions_y = panel_meters_y + 80;
 
 translate([x3, veroboard_y])
     veroboard_test();
@@ -327,8 +374,14 @@ translate([x3 + 70, veroboard_y + 30])
 translate([x3 + 140, veroboard_y + 20])
     pcb_mounts();
 
+translate([x3 + 170, veroboard_y + 16])
+    cameras();
+
 translate([x3, d_connectors_y])
     d_connectors();
+
+translate([x3 + 170, d_connectors_y - 10])
+    camera_housings();
 
 translate([x3, iecs_y])
     iecs();
@@ -357,9 +410,11 @@ translate([x3, batteries_y])
 translate([x2, steppers_y])  // interloper
     stepper_motors();
 
-translate([x2, extrusions_y]) {
+translate([x2, panel_meters_y])
+    panel_meters();
+
+translate([x2, extrusions_y])
     extrusions();
-}
 
 translate([x3, transformers_y])
     transformers();
@@ -372,17 +427,21 @@ sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 50;
 scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
 
-translate([x4 + 150, belts_y + 58]) {
+translate([x4 + 200, belts_y + 58]) {
     belt_test();
 
     translate([0, 60])
         opengrab_test();
+
 }
+
+translate([x4 + 175, belts_y, -20])
+    drag_chains();
 
 translate([x4, rails_y + 130])
     rails();
 
-translate([800, fans_y + 50])
+translate([770, fans_y + 50])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])
@@ -393,6 +452,9 @@ translate([x4, sk_brackets_y])
 
 translate([x4, extrusion_brackets_y])
     extrusion_brackets();
+
+translate([x4 + 120, extrusion_brackets_y])
+    shaft_couplings();
 
 translate([x4, scs_bearing_blocks_y])
     scs_bearing_blocks();

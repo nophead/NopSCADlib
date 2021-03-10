@@ -23,7 +23,7 @@ use <../vitamins/insert.scad>
 
 use <../printed/box.scad>
 
-box = [M3_dome_screw, 3, DiBond, PMMA3, DiBond6, true, 150, 100, 70];
+box = box(screw = M3_dome_screw, wall = 3, sheets = DiBond, top_sheet = PMMA3, base_sheet = DiBond6, feet = true, size = [150, 100, 70]);
 
 include <../printed/box_assembly.scad>
 

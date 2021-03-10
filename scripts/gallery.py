@@ -52,7 +52,7 @@ def gallery(force):
             if os.path.isfile(document):
                 with open(document, 'rt') as readme:
                     for line in readme.readlines():
-                        match = re.match(r"^.*!(\[.*\]\(.*\)).*$", line)
+                        match = re.search(r"!(\[.*\]\(.*\))", line)
                         if match:
                             image = match.group(0)
                             if image.startswith('![Main Assembly](assemblies/'):
@@ -68,9 +68,10 @@ def gallery(force):
                             match = re.match(r"^(#+).*$", line)
                             if match:
                                 line = '#' + line
-                        if line == '---\n':
-                            break;
-                        print(line[:-1], file = output_file)
+                        if line == '---\n' or line == '<span></span>\n':
+                            break
+                        if line != '<a name="TOP"></a>\n':
+                            print(line[:-1], file = output_file)
             else:
                 print(Fore.MAGENTA + "Can't find", document, Fore.WHITE);
     with open(target_dir + "/readme.html", "wt") as html_file:

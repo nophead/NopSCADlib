@@ -24,27 +24,44 @@
 //
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
+use <pcb.scad>
+include <smds.scad>
 
-pitch = 33.8;
+pitch = 33.8 / 2;
 width = 40;
 depth = 18;
 magnet = 4.3;
-pcb = 0.8;
 pillar = 6;
 target = 1;
 pole_w = 2;
 pole_l = 36;
 poles = 15;
 
+pcb = ["", "",        width, width, 0.8, 0, 3.5, 0, "darkgreen", false, [],
+    [     [ 3.45,   19,   0, "button_4p5mm"],
+          [ 2.75,   24.5, 0, "smd_led", LED0805, "green"],
+          [ 2.75,   28.0, 0, "smd_led", LED0805, "red"],
+          [ 28.5,   13,   0, "2p54header", 3, 1, false, undef, true],
+     ]];
+
+
 module opengrab_hole_positions()    //! Position children at the screw positions
-    for(x = [-1, 1], y = [-1, 1])
-        translate([x * pitch / 2, y * pitch / 2, 0])
-            children();
+    let($d = 3.2)
+        for($x = [-pitch, pitch], $y = [-pitch, pitch])
+            translate([$x, $y])
+                children();
 
+module opengrab_side_hole_positions() //! Position children at the two 4mm hole
+    let($d = 4, pitch = width / 2 - 3.5)
+        for($x = [-pitch, pitch])
+            translate([$x, 0])
+                children();
 
-function opengrab_width() = width;              //! Module width
-function opengrab_depth() = depth;              //! Module height
-function opengrab_target_thickness() = target;  //! Target sheet thickness
+function opengrab_width() = width;                               //! Module width
+function opengrab_depth() = depth;                               //! Module height
+function opengrab_target_thickness() = target;                   //! Target sheet thickness
+function opengrab_pcb() = pcb;                                   //! The PCB
+function opengrab_pcb_z() = depth - pillar - pcb_thickness(pcb); //! PCB offset from the front
 
 module opengrab() { //! Draw OpenGrab module
     vitamin("opengrab(): OpenGrab V3 electro permanent magnet");
@@ -53,7 +70,7 @@ module opengrab() { //! Draw OpenGrab module
         translate_z(magnet / 2 + eps)
             cube([width, width, magnet - eps], center = true);
 
-    color(grey80) {
+    color(grey(80)) {
         gap = (width - poles * pole_w + 3 * eps) / (poles - 1);
         pitch = pole_w + gap;
         for(i = [0 : poles - 1])
@@ -61,10 +78,9 @@ module opengrab() { //! Draw OpenGrab module
                 cube([pole_w, pole_l, 1], center = true);
     }
 
-    color("darkgreen")
-        translate_z(depth - pillar - pcb / 2)
-            cube([width, width, pcb], center = true);
-
+    not_on_bom()
+        translate_z(opengrab_pcb_z())
+            pcb(pcb);
 
     translate_z(1)
         opengrab_hole_positions() {
@@ -82,18 +98,17 @@ module opengrab() { //! Draw OpenGrab module
 }
 
 module opengrab_target() { //! Draw OpenGrab target
-    vitamin("opengrab_target(): OpenGrab  silicon steel target plate");
+    vitamin("opengrab_target(): OpenGrab silicon steel target plate");
 
-     color(grey80)
+     color(grey(80))
         linear_extrude(target)
             difference() {
                 square([width, width], center = true);
 
                 opengrab_hole_positions()
-                    circle(d = 3.2);
+                    circle(d = $d);
 
-                for(side = [-1, 1])
-                    translate([side * (width / 2 - 3.5), 0])
-                        circle(d = 4);
+                opengrab_side_hole_positions()
+                    circle(d = $d);
         }
 }

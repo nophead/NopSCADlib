@@ -52,7 +52,7 @@ iec = IEC_inlet_atx;
 socket = Contactum;
 
 
-foot = [20, 8, 3, 1, M3_dome_screw, 10];
+foot = Foot(d = 20, h = 8, t = 3, r = 1, screw = M3_dome_screw);
 
 module foot_stl() foot(foot);
 

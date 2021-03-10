@@ -28,7 +28,7 @@ use <nut.scad>
 use <washer.scad>
 use <../utils/tube.scad>
 
-fan_colour = grey20;
+fan_colour = grey(20);
 
 function fan_width(type)          = type[0];    //! Width of square
 function fan_depth(type)          = type[1];    //! Depth of fan
@@ -122,7 +122,7 @@ module fan_hole_positions(type, z = undef) { //! Position children at the screw 
                 children();
 }
 
-module fan_holes(type, poly = false, screws = true, h = 100) { //! Make all the holes for the fan, or just the aperture if ```screws``` is false. Set ```poly``` true for poly_holes.
+module fan_holes(type, poly = false, screws = true, h = 100) { //! Make all the holes for the fan, or just the aperture if `screws` is false. Set `poly` true for poly_holes.
     hole_pitch = fan_hole_pitch(type);
     screw = fan_screw(type);
 
@@ -151,10 +151,8 @@ function fan_screw_depth(type, full_depth = false) = fan_boss_d(type) || full_de
 
 function fan_screw_length(type, thickness, full_depth = false) =
     let(depth = fan_screw_depth(type, full_depth),
-        washers = depth == fan_depth(type) ? 2 : 1,
-        washer = screw_washer(fan_screw(type)),
-        nut = screw_nut(fan_screw(type)))
-            screw_longer_than(thickness + depth + washer_thickness(washer) * washers + nut_thickness(nut, true)); //! Screw length required
+        washers = depth == fan_depth(type) ? 2 : 1)
+            screw_length(fan_screw(type), thickness + depth, washers, nyloc = true); //! Screw length required
 
 module fan_assembly(type, thickness, include_fan = true, screw = false, full_depth = false) { //! Fan with its fasteners
     translate_z(-fan_depth(type) / 2) {

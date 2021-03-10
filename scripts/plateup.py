@@ -26,7 +26,10 @@ import sys
 import c14n_stl
 from set_config import *
 from deps import *
-from shutil import copyfile
+import shutil
+import re
+import time
+import times
 
 source_dirs = { "stl" : "platters", "dxf" : "panels" }
 target_dirs = { "stl" : "printed",  "dxf" : "routed" }
@@ -38,61 +41,107 @@ def plateup(target, part_type, usage = None):
     top_dir = set_config(target, usage)
     parts_dir = top_dir + part_type + 's'
     target_dir = parts_dir + '/' + target_dirs[part_type]
-    source_dir = top_dir + source_dirs[part_type]
-    deps_dir = source_dir + "/deps"
-    if not os.path.isdir(source_dir):
-        return
-    if not os.path.isdir(target_dir):
-        os.makedirs(target_dir)
-    if not os.path.isdir(deps_dir):
-        os.makedirs(deps_dir)
+    source_dir1 = source_dirs[part_type]
+    source_dir2 = top_dir + source_dirs[part_type]
+
     #
-    # Decide which files to make
+    # Loop through source directories
     #
-    sources = [file for file in os.listdir(source_dir) if file.endswith('.scad')]
-    #
-    # Run OpenSCAD on the source files to make the targets
-    #
-    used = []
-    for src in sources:
-        src_file = source_dir + '/' + src
-        part_file = target_dir + '/' + src[:-4] + part_type
-        dname = deps_name(deps_dir, src)
-        changed = check_deps(part_file, dname)
-        if changed:
-            print(changed)
-            openscad.run("-D$bom=1", "-d", dname, "-o", part_file, src_file)
-            if part_type == 'stl':
-                c14n_stl.canonicalise(part_file)
-            log_name = 'openscad.log'
-        else:
-            log_name = 'openscad.echo'
-            openscad.run_silent("-D$bom=1", "-o", log_name, src_file)
+    all_used = []
+    all_sources = []
+    all_parts = []
+    read_times = False
+    for dir in [source_dir1, source_dir2]:
+        if not os.path.isdir(dir):
+            continue
+        if not os.path.isdir(target_dir):
+            os.makedirs(target_dir)
+
+        if not read_times:
+            times.read_times(target_dir)
+            read_times = True
         #
-        # Add the files on the BOM to the used list
+        # Make the deps dir
         #
-        with open(log_name) as file:
-            for line in file.readlines():
-                if line.startswith('ECHO: "~') and line.endswith('.' + part_type + '"\n'):
-                    used.append(line[8:-2])
-    #
-    # Copy file that are not included
-    #
+        deps_dir = parts_dir + "/deps"
+        if not os.path.isdir(deps_dir):
+            os.makedirs(deps_dir)
+
+        if os.path.isdir(dir + '/deps'): #old deps
+            shutil.rmtree(dir + '/deps')
+        #
+        # Decide which files to make
+        #
+        sources = [file for file in os.listdir(dir) if file.endswith('.scad')]
+        all_sources += sources
+        #
+        # Run OpenSCAD on the source files to make the targets
+        #
+        target_def = ['-D$target="%s"' % target] if target else []
+        cwd_def = ['-D$cwd="%s"' % os.getcwd().replace('\\', '/')]
+        for src in sources:
+            src_file = dir + '/' + src
+            part =  src[:-4] + part_type
+            all_parts.append(part)
+            part_file = target_dir + '/' + part
+            uses_file = deps_dir + '/' + src[:-4] + 'txt'
+            dname = deps_name(deps_dir, src)
+            oldest = part_file if mtime(part_file) < mtime(uses_file) else uses_file
+            changed = check_deps(oldest, dname)
+            used = []
+            if changed:
+                print(changed)
+                t = time.time()
+                openscad.run_list(["-D$bom=1"] + target_def + cwd_def + ["-d", dname, "-o", part_file, src_file])
+                if part_type == 'stl':
+                    c14n_stl.canonicalise(part_file)
+                times.add_time(part, t)
+                log_name = 'openscad.log'
+                #
+                # Add the files on the BOM to the used list
+                #
+                with open(log_name) as file:
+                    for line in file.readlines():
+                        match = re.match(r'^ECHO: "~(.*?\.' + part_type + r').*"$', line)
+                        if match:
+                            used.append(match.group(1))
+                with open(uses_file, "wt") as file:
+                    for part in used:
+                        print(part, file = file)
+            else:
+                with open(uses_file, "rt") as file:
+                    for line in file:
+                        used.append(line[:-1])
+            all_used += used
+
     copied = []
-    for file in os.listdir(parts_dir):
-        if file.endswith('.' + part_type) and not file in used:
-            src = parts_dir + '/' + file
-            dst = target_dir + '/' + file
-            if mtime(src) > mtime(dst):
-                print("Copying %s to %s" % (src, dst))
-                copyfile(src, dst)
-            copied.append(file)
-    #
-    # Remove any cruft
-    #
-    targets = [file[:-4] + part_type for file in sources]
-    for file in os.listdir(target_dir):
-        if file.endswith('.' + part_type):
-            if not file in targets and not file in copied:
-                print("Removing %s" % file)
-                os.remove(target_dir + '/' + file)
+    if all_sources:
+        #
+        # Copy files that are not included
+        #
+        for file in os.listdir(parts_dir):
+            if file.endswith('.' + part_type) and not file in all_used:
+                src = parts_dir + '/' + file
+                dst = target_dir + '/' + file
+                if mtime(src) > mtime(dst):
+                    print("Copying %s to %s" % (src, dst))
+                    shutil.copyfile(src, dst)
+                copied.append(file)
+        #
+        # Remove any cruft
+        #
+        targets = [file[:-4] + part_type for file in all_sources]
+        for file in os.listdir(target_dir):
+            if file.endswith('.' + part_type):
+                if not file in targets and not file in copied:
+                    print("Removing %s" % file)
+                    os.remove(target_dir + '/' + file)
+
+        targets = [file[:-4] + 'txt' for file in all_sources]
+        for file in os.listdir(deps_dir):
+            if file.endswith('.' + 'txt'):
+                if not file in targets:
+                    print("Removing %s" % file)
+                    os.remove(deps_dir + '/' + file)
+
+        times.print_times(all_parts)

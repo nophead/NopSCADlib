@@ -29,7 +29,6 @@ include <zipties.scad>
 use <wire.scad>
 use <../utils/tube.scad>
 
-MK4_heater = [ 12.76, 15.88, 8.22, (15.88 / 2 - 4.5), (12.76 / 2 - 0.5 - 2.5 / 2),  (-15.88 / 2 + 5), 9.5, 3];
 MK5_heater = [ 12.76, 12.76, 8.22, (12.76 / 2 - 3.75), (12.76 / 2 - 0.5 - 2.5 / 2), (-12.76 / 2 + 4), 8,   2];
 
 function heater_width(type)  = type[0];
@@ -71,7 +70,7 @@ module heater_block(type, resistor, thermistor) {
         cone_start_r = nozzle_cone(type) / 2;
         straight = 1;
         nozzle_r = 0.4 / 2;
-        translate_z(-h / 2) vflip()
+        translate([nozzle_x(type), 0, -h / 2]) vflip()
             rotate_extrude()
                 polygon([
                     [nozzle_r,     0],
@@ -86,7 +85,7 @@ module heater_block(type, resistor, thermistor) {
 module jhead_hot_end(type, filament) {
     resistor = RIE1212UB5C5R6;
     thermistor = Epcos;
-    heater = type == JHeadMk4 ? MK4_heater : MK5_heater;
+    heater = MK5_heater;
 
     insulator_length = hot_end_insulator_length(type);
     inset = hot_end_inset(type);
@@ -106,7 +105,7 @@ module jhead_hot_end(type, filament) {
 
                     square([hot_end_insulator_diameter(type) / 2 - chamfer, insulator_length]);
                 }
-                square([3.2 / 2, insulator_length]);
+                square([(filament + 0.2) / 2, insulator_length]);
 
                 translate([hot_end_groove_dia(type) / 2, insulator_length - hot_end_inset(type) - hot_end_groove(type)])
                     square([100, hot_end_groove(type)]);
@@ -122,7 +121,7 @@ module jhead_hot_end(type, filament) {
 module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with resistor, thermistor, tape, sleaving and ziptie
     resistor = RIE1212UB5C5R6;
     thermistor = Epcos;
-    heater = type == JHeadMk4 ? MK4_heater : MK5_heater;
+    heater = MK5_heater;
 
     insulator_length = hot_end_insulator_length(type);
     inset = hot_end_inset(type);
@@ -139,7 +138,7 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     //
     // silcone tape
     //
-    if(!naked)
+    if(is_undef(naked) || !naked)
         color("red")
             if(exploded())
                 translate([0, max(hot_end_insulator_diameter(type) / 2, heater_length(heater) / 2 - nozzle_x(heater)),
@@ -157,7 +156,7 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     //
     // Zip tie and heatshrink
     //
-    if(!naked)
+    if(!naked  && !is_undef(naked))
         rotate(10) {
             dia =  hot_end_insulator_diameter(type);
             scale([1, (bundle + dia) / dia])
@@ -180,23 +179,29 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     //
     // heater block
     //
-    rotate(90)
-        translate([-nozzle_x(heater), 0, inset - insulator_length - heater_height(heater) / 2]) {
-            intersection() {
-                group() {
-                    translate([resistor_x(heater), -exploded() * 15, 0])
-                        rotate([90, 0, 0])
-                             sleeved_resistor(resistor, PTFE20, bare = -10);
+    module heater_components() {
+        translate([resistor_x(heater), -exploded() * 15, 0])
+            rotate([90, 0, 0])
+                 sleeved_resistor(resistor, PTFE20, bare = -10);
 
-                    translate([-heater_length(heater) / 2 + resistor_length(thermistor) / 2 - exploded() * 10, thermistor_y(heater), 0])
-                        rotate([90, 0, -90])
-                             sleeved_resistor(thermistor, PTFE07, heatshrink = HSHRNK16);
-                }
-                if(!exploded())
-                    if(naked)
-                        color("grey") cylinder(r = 12, h = 100, center = true);
-                    else
-                        cube(1, true);             // hide the wires when not exploded
-            }
+        translate([-heater_length(heater) / 2 + resistor_length(thermistor) / 2 - exploded() * 10, thermistor_y(heater), 0])
+            rotate([90, 0, -90])
+                 sleeved_resistor(thermistor, PTFE07, heatshrink = HSHRNK16);
     }
+
+    rotate(90)
+        translate([-nozzle_x(heater), 0, inset - insulator_length - heater_height(heater) / 2])
+            if(exploded())
+                heater_components();
+            else
+                if(naked)                       // hide the wires when not exploded
+                    intersection() {
+                        heater_components();
+
+                        color("grey")
+                            cylinder(r = 12, h = 100, center = true);
+                    }
+                else
+                    hidden()                    // hidden by the tape
+                        heater_components();
 }

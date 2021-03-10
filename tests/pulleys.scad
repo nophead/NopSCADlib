@@ -23,7 +23,7 @@ include <../vitamins/pulleys.scad>
 
 module pulleys()
     layout([for(p = pulleys) pulley_flange_dia(p)])
-        rotate(-45)
+        rotate(-145)
             pulley_assembly(pulleys[$i]);
 
 if($preview)

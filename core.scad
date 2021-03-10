@@ -18,7 +18,7 @@
 //
 
 //
-// Include this file to use the miniumum library plus screws, nuts and washers
+// Include this file to use the minimum library plus screws, nuts and washers
 //
 include <utils/core/core.scad>
 //

@@ -41,6 +41,8 @@ function vero_track_width(type)    = vero_pitch(type) * 0.8; //! The width of th
 function vero_length(type) = vero_holes(type) * vero_pitch(type); //! Length of the board
 function vero_width(type) = vero_strips(type) * vero_pitch(type); //! Width of the board
 
+function vero_size(type) = [vero_length(type), vero_width(type), vero_thickness(type)]; //! Board size
+
 module solder_meniscus(type) {
     h = 1;
     r = vero_track_width(type) / 2;
@@ -132,17 +134,20 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
 module vero_components(type, cutouts = false, angle = undef)
     for(comp = vero_components(type))
         vero_grid_pos(type, comp.x, comp.y)
-            translate_z(vero_thickness(type))
-                pcb_component(comp, cutouts, angle);
+            if(comp[3][0] == "-")
+                vflip()
+                    pcb_component(comp, cutouts, angle);
+            else
+                translate_z(vero_thickness(type))
+                    pcb_component(comp, cutouts, angle);
 
 module vero_cutouts(type, angle = undef) vero_components(type, true, angle); //! Make cutouts to clear components
 
-module veroboard_assembly(type, height, thickness, flip = false) //! Draw the assembly with components and fasteners in place
-assembly(vero_assembly(type)) {
+module veroboard_assembly(type, height, thickness, flip = false, ngb = false) //! Draw the assembly with components and fasteners in place
+assembly(vero_assembly(type), ngb = ngb) {
     screw = vero_screw(type);
-    washer = screw_washer(screw);
     nut = screw_nut(screw);
-    screw_length = screw_longer_than(height + thickness + vero_thickness(type) + 2 * washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height + thickness + vero_thickness(type), 2, nyloc = true);
 
     translate_z(height) {
         veroboard(type);

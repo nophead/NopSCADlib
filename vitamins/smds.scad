@@ -16,20 +16,20 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
-include <../vitamins/scs_bearing_blocks.scad>
 
-use <../utils/layout.scad>
+//
+//! SMD components
+//
 
-module scs_bearing_blocks()
-    layout([for(s = scs_bearing_blocks) scs_size(s).x], 10) {
-        part_thickness = 5;
-        scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
+LED0603 = ["LED0603", [1.6, 0.8,  0.18], [1.0, 0.8,  0.42]];
+LED0805 = ["LED0805", [2.0, 1.25, 0.46], [1.4, 1.25, 0.54]];
 
-        if($i > 0) // skip $i==0, since no SCS6LUU long variant to match SCS6UU
-            translate([0, 60])
-                scs_bearing_block_assembly(scs_bearing_blocks_long[$i - 1], part_thickness);
-    }
+smd_leds = [LED0603, LED0805];
 
-if($preview)
-    scs_bearing_blocks();
+RES0603 = ["RES0603", [1.6, 0.8, 0.45], 0.3, 1/10];
+RES0805 = ["RES0805", [2.0, 1.2, 0.45], 0.4, 1/8];
+RES1206 = ["RES1206", [3.1, 1.6, 0.6],  0.5, 1/4];
+
+smd_resistors = [RES0603, RES0805, RES1206];
+
+use <smd.scad>

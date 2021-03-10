@@ -91,7 +91,7 @@ module dil_socket(rows, w, pitch = inch(0.1)) {
     hole = [0.8, 0.5];
     pin_l = 3;
 
-    color(grey20) {
+    color(grey(20)) {
         linear_extrude(h)
             difference() {
                 square([width, length], center = true);
@@ -129,7 +129,7 @@ module dip(n, part, size, w, pitch, pin) { //! Draw DIP package
     D = [3, 0.6];
 
     translate_z(pdip_pin_s(pin)) {
-        color(grey20) {
+        color(grey(20)) {
             rotate([90, 0, 0])
                 linear_extrude(size.x, center = true)
                     difference() {

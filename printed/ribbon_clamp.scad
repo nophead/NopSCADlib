@@ -24,69 +24,72 @@ include <../core.scad>
 use <../vitamins/insert.scad>
 use <../vitamins/cable_strip.scad>
 
-wall = 2;
+wall = 1.6;
 min_wall = 2 * extrusion_width;
 screw = M3_cap_screw;
-insert = screw_insert(screw);
-screw_depth = insert_length(insert) + 1;
 
-function ribbon_clamp_hole_pitch(ways) = ribbon_clamp_slot(ways) + 2 * min_wall + 2 * corrected_radius(insert_hole_radius(insert)); //! Hole pitch
-function ribbon_clamp_width() = 2 * (insert_hole_radius(insert) + 2); //! Width
-function ribbon_clamp_length(ways) = ribbon_clamp_hole_pitch(ways) + ribbon_clamp_width(); //! Length given ways
-function ribbon_clamp_height() = screw_depth + 1; //! Height
+function ribbon_clamp_screw_depth(screw = screw) = insert_length(screw_insert(screw)) + 1;
+function ribbon_clamp_hole_pitch(ways, screw = screw) =
+    ribbon_clamp_slot(ways) + 2 * min_wall + 2 * corrected_radius(insert_hole_radius(screw_insert(screw))); //! Hole pitch
 
-module ribbon_clamp_hole_positions(ways, side = undef) //! Place children at hole positions
+function ribbon_clamp_width(screw = screw) = 2 * (insert_hole_radius(screw_insert(screw)) + wall); //! Width
+function ribbon_clamp_length(ways, screw = screw) = ribbon_clamp_hole_pitch(ways, screw) + ribbon_clamp_width(screw); //! Length given ways
+function ribbon_clamp_height(screw = screw) = ribbon_clamp_screw_depth(screw) + 1; //! Height
+
+module ribbon_clamp_hole_positions(ways, screw = screw, side = undef) //! Place children at hole positions
     for(x = is_undef(side) ? [-1, 1] : side)
-        translate([x * ribbon_clamp_hole_pitch(ways) / 2, 0])
+        translate([x * ribbon_clamp_hole_pitch(ways, screw) / 2, 0])
             children();
 
-module ribbon_clamp_holes(ways, h = 20) //! Drill screw holes
-    ribbon_clamp_hole_positions(ways)
+module ribbon_clamp_holes(ways, h = 20, screw = screw) //! Drill screw holes
+    ribbon_clamp_hole_positions(ways, screw)
         drill(screw_clearance_radius(screw), h);
 
-module ribbon_clamp(ways) { //! Generate STL for given number of ways
-    stl(str("ribbon_clamp_", ways));
+module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of ways
+    screw_d = screw_radius(screw) * 2;
 
-    pitch = ribbon_clamp_hole_pitch(ways);
-    d = ribbon_clamp_width();
-    h = ribbon_clamp_height();
-    t = h - ribbon_clamp_slot_depth() - wall;
+    pitch = ribbon_clamp_hole_pitch(ways, screw);
+    d = ribbon_clamp_width(screw);
+    h = ribbon_clamp_height(screw);
+    t = round_to_layer(ribbon_clamp_slot_depth() + wall);
+    insert = screw_insert(screw);
 
-    difference() {
-        union() {
-            hull() {
-                translate_z(h - t / 2)
-                    cube([ribbon_clamp_hole_pitch(ways), d, t], center = true);
+    stl(str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : ""))
+        difference() {
+            union() {
+                hull() {
+                    translate_z(h - t / 2)
+                        cube([ribbon_clamp_hole_pitch(ways, screw), d, t], center = true);
 
-                translate_z(1)
-                    cube([pitch, max(wall, d - 2 * (h - t)), 2], center = true);
+                    translate_z(1)
+                        cube([pitch, max(wall, d - 2 * (h - t)), 2], center = true);
+                }
+                ribbon_clamp_hole_positions(ways, screw, -1)
+                    cylinder(d = d, h = h);
+
+                ribbon_clamp_hole_positions(ways, screw, 1)
+                    cylinder(d = d, h = h);
             }
-            ribbon_clamp_hole_positions(ways, -1)
-                cylinder(d = d, h = h);
 
-            ribbon_clamp_hole_positions(ways,  1)
-                cylinder(d = d, h = h);
-
-        }
-
-        translate_z(h)
-            cube([ribbon_clamp_slot(ways), d + 1, ribbon_clamp_slot_depth() * 2], center = true);
-
-        ribbon_clamp_hole_positions(ways)
             translate_z(h)
-                rotate(22.5)
-                    insert_hole(insert, screw_depth - insert_length(insert));
-    }
+                cube([ribbon_clamp_slot(ways), d + 1, ribbon_clamp_slot_depth() * 2], center = true);
+
+            ribbon_clamp_hole_positions(ways, screw)
+                translate_z(h)
+                    rotate(22.5)
+                        insert_hole(insert, ribbon_clamp_screw_depth(screw) - insert_length(insert));
+        }
 }
 
-module ribbon_clamp_assembly(ways) pose([55, 180, 25])  //! Printed part with inserts in place
-    assembly(str("ribbon_clamp_", ways)) {
-    h = ribbon_clamp_height();
+module ribbon_clamp_assembly(ways, screw = screw) pose([55, 180, 25])  //! Printed part with inserts in place
+    assembly(let(screw_d = screw_radius(screw) * 2)str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : ""), ngb = true) {
+    h = ribbon_clamp_height(screw);
+    insert = screw_insert(screw);
 
     stl_colour(pp1_colour) render()
-        translate_z(h) vflip() ribbon_clamp(ways);
+        translate_z(h) vflip() ribbon_clamp(ways, screw);
 
-    ribbon_clamp_hole_positions(ways)
+    ribbon_clamp_hole_positions(ways, screw)
         vflip()
             insert(insert);
 }
@@ -98,21 +101,28 @@ module ribbon_clamp_fastened_assembly(ways, thickness, screw = screw) { //! Clam
 
     vitamin(str(": Tape self amalgamating silicone ",tape_l," x 25mm"));
 
-    washer = screw_washer(screw);
-    screw_length = screw_shorter_than(2 * washer_thickness(washer) + thickness + screw_depth);
+    screw_length = screw_length(screw, thickness + ribbon_clamp_screw_depth(screw), 2);
 
-    ribbon_clamp_assembly(ways);
+    ribbon_clamp_assembly(ways, screw);
 
     color("red") translate_z(tape_thickness / 2)
         cube([tape_l, tape_width, tape_thickness], center = true);
 
-    ribbon_clamp_hole_positions(ways)
+    ribbon_clamp_hole_positions(ways, screw)
         vflip()
            translate_z(thickness)
                 screw_and_washer(screw, screw_length, true);
 }
 
 module ribbon_clamp_20_stl() ribbon_clamp(20);
+module ribbon_clamp_8_2_stl() ribbon_clamp(8, M2_dome_screw);
+module ribbon_clamp_7_2_stl() ribbon_clamp(8, M2_dome_screw);
 
 //! * Place inserts into the holes and press home with a soldering iron with a conical bit heated to 200&deg;C.
 module ribbon_clamp_20_assembly() ribbon_clamp_assembly(20);
+
+//! * Place inserts into the holes and press home with a soldering iron with a conical bit heated to 200&deg;C.
+module ribbon_clamp_8_2_assembly() ribbon_clamp_assembly(8, M2_dome_screw);
+
+//! * Place inserts into the holes and press home with a soldering iron with a conical bit heated to 200&deg;C.
+module ribbon_clamp_7_2_assembly() ribbon_clamp_assembly(8, M2_dome_screw);

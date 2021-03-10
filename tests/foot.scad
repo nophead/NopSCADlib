@@ -21,14 +21,14 @@ use <../printed/foot.scad>
 
 module feet()
     if($preview) {
-        translate([50, 0])
+        translate([40, 0])
             foot_assembly(3);
 
         translate([foot_diameter(insert_foot()) / 2, 0])
             fastened_insert_foot_assembly(3);
     }
     else {
-        translate([50, 0])
+        translate([40, 0])
             foot();
 
         insert_foot();

@@ -24,7 +24,7 @@
 //! If `chamfer_base` is true then the bottom edge is made suitable for 3D printing by chamfering when the angle gets shallower than 45 degrees.
 include <../utils/core/core.scad>
 
-module offset_3D(r, chamfer_base = false) { //! Offset 3D shape by specified radius ```r```, positive or negative.
+module offset_3D(r, chamfer_base = false) { //! Offset 3D shape by specified radius `r`, positive or negative.
     module ball(r)
         if(chamfer_base)
             rotate_extrude()

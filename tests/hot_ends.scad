@@ -25,7 +25,7 @@ module hot_ends()
     layout([for(h = hot_ends) 40])
         translate([-20, 0])
             rotate(90)
-                hot_end(hot_ends[$i], 3);
+                hot_end(hot_ends[$i], 3, bowden = $i == 3);
 
 if($preview)
     hot_ends();

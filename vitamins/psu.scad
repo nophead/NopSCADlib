@@ -76,7 +76,7 @@ module terminal_block(type, ways) { //! Draw a power supply terminal block
     contact_h = 0.4;
     washer_t = 1.2;
     translate([0, -tl]) {
-        color(grey20) {
+        color(grey(20)) {
             cube([depth, tl, h2]);
 
             translate([depth2, 0])

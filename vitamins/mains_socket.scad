@@ -116,7 +116,7 @@ module mains_socket(type) { //! Draw specified 13A socket
             cylinder(r = screw_clearance_radius(screw), h = 100, center = true);
 
             translate_z(height)
-                screw_countersink(screw);
+                screw_countersink(screw, drilled = false);
         }
     }
 }

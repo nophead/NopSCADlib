@@ -24,7 +24,7 @@ include <../utils/fillet.scad>
 
 use <washer.scad>
 
-sk_bracket_colour = grey70;
+sk_bracket_colour = grey(70);
 
 function sk_diameter(type)        = type[1]; //! Rod hole diameter
 function sk_hole_offset(type)     = type[2]; //! Rod hole offset
@@ -62,7 +62,7 @@ module sk_bracket(type) { //! SK shaft support bracket
                     }
             for(x = [W / 2 - 2 * fillet, -W / 2 + 2 * fillet])
                 translate([x, G / 2, 0])
-                    rounded_rectangle([4 * fillet, G, L], fillet);
+                    rounded_rectangle([4 * fillet, G, L], fillet, true);
         }
 
         translate([0, -h, -L /2])
@@ -85,7 +85,7 @@ module sk_bracket(type) { //! SK shaft support bracket
             }
     }
     // Add the retaining bolt. No hole was cut, since it is only for display.
-    color(grey20)
+    color(grey(20))
         translate([P / 2 - screw_head_height(M3_cap_screw) / 2, (F - h + d / 2) / 2, 0])
             rotate([0,90,0])
                 not_on_bom() no_explode()

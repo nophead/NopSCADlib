@@ -20,12 +20,35 @@ include <../utils/core/core.scad>
 use <../utils/layout.scad>
 
 include <../vitamins/sheets.scad>
+include <../vitamins/screws.scad>
 
 width = 30;
+2d = true;
 
-module sheets()
-    layout([for(s = sheets) width], 5)
-        render_sheet(sheets[$i]) sheet(sheets[$i], width, width, 2);
+module sheets() {
+    rows = 2;
+    n = ceil(len(sheets) / rows);
+    w = width + 5;
+    for(y = [0 : rows - 1], x = [0 : n - 1], s = y * n + x)
+        if(s < len(sheets))
+            translate([width / 2 + x * w, y * w])
+                let(sheet = sheets[s], w = sheet_is_woven(sheet) ? width : undef)
+                if(2d)
+                    render_2D_sheet(sheet, w = w, d = w)
+                        difference() {
+                            sheet_2D(sheet, width, width, 2);
+
+                            circle(3);
+                        }
+                else
+                    render_sheet(sheet, w = w, d = w)
+                        difference() {
+                            sheet(sheet, width, width, 2);
+
+                            translate_z(sheet_thickness(sheet) / 2)
+                                screw_countersink(M3_cs_cap_screw);
+                        }
+}
 
 if($preview)
     sheets();

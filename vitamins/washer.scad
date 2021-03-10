@@ -25,8 +25,8 @@
 include <../utils/core/core.scad>
 include <../utils/sweep.scad>
 
-soft_washer_colour = grey20;
-hard_washer_colour = grey80;
+soft_washer_colour = grey(20);
+hard_washer_colour = grey(80);
 star_washer_colour = brass;
 
 function washer_size(type)            = type[1]; //! Noiminal size

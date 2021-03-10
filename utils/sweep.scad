@@ -21,7 +21,7 @@
 //! Utility to generate a polhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
 //!
 //! The initial orientation is the Y axis of the profile points towards the initial center of curvature, Frenet-Serret style.
-//! This means the first three points must not be colinear. Subsequent rotations use the minimum rotation method.
+//! Subsequent rotations use the minimum rotation method.
 //!
 //! The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 //! An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
@@ -34,14 +34,22 @@ function transpose3(m) = [ [m[0].x, m[1].x, m[2].x],
                            [m[0].y, m[1].y, m[2].y],
                            [m[0].z, m[1].z, m[2].z] ];
 //
+// Find the first non-colinear point
+//
+tiny = 0.00001;
+function find_curve(tangents, i = 1) =
+    i >= len(tangents) - 1 || norm(cross(tangents[0], tangents[i] - tangents[0])) > tiny ? i
+                                                                                         : find_curve(tangents, i + 1);
+//
 // Frenet-Serret frame
 //
 function fs_frame(tangents) =
     let(tangent = tangents[0],
-        normal = tangents[1] - tangents[0],
+        i = find_curve(tangents),
+        normal = tangents[i] - tangents[0],
         binormal = cross(tangent, normal),
         z = unit(tangent),
-        x = assert(norm(binormal) > 0.00001, "first three points are colinear") unit(binormal),
+        x = assert(norm(binormal) > tiny, "all points are colinear") unit(binormal),
         y = unit(cross(z, x))
        ) [[x.x, y.x, z.x],
           [x.y, y.y, z.y],
@@ -70,7 +78,6 @@ function orientate(p, r) =
          [x.y, y.y, z.y],
          [x.z, y.z, z.z],
          [p.x, p.y, p.z]];
-
 //
 // Rotate around z
 //
@@ -145,10 +152,10 @@ function sweep(path, profile, loop = false, twist = 0) = //! Generate the point 
         faces = loop ? skin_faces : concat([cap(facets)], skin_faces, [cap(facets, npoints - 1)])
         ) [points, faces];
 
-module sweep(path, profile, loop = false, twist = 0) { //! Draw a polyhedron that is the swept volume
+module sweep(path, profile, loop = false, twist = 0, convexity = 1) { //! Draw a polyhedron that is the swept volume
     mesh = sweep(path, profile, loop, twist);
 
-    polyhedron(points = mesh[0], faces = mesh[1]);
+    polyhedron(points = mesh[0], faces = mesh[1], convexity = convexity);
 }
 
 function path_length(path, i = 0, length = 0) = //! Calculated the length along a path
@@ -165,10 +172,10 @@ function arc_points(r, a = [90, 0, 180], al = 90) = //! Generate the points of a
    let(sides = ceil(r2sides(r) * al / 360), tf = rotate(a))
     [for(i = [0 : sides]) let(t = i * al / sides) transform([r * sin(t), r * cos(t), 0], tf)];
 
-function before(path1, path2) =  //! Translate ```path1``` so its end meets the start of ```path2``` and then concatenate
+function before(path1, path2) =  //! Translate `path1` so its end meets the start of `path2` and then concatenate
     let(end = len(path1) - 1, offset = path2[0] - path1[end])
         concat([for(i = [0 : end - 1]) path1[i] + offset], path2);
 
-function after(path1, path2) =  //! Translate ```path2``` so its start meets the end of ```path1``` and then concatenate
+function after(path1, path2) =  //! Translate `path2` so its start meets the end of `path1` and then concatenate
     let(end1 = len(path1) - 1, end2 = len(path2) - 1, offset = path1[end1] - path2[0])
         concat(path1, [for(i = [1 : end2]) path2[i] + offset]);

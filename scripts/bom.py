@@ -60,6 +60,8 @@ class BOM:
     def __init__(self, name):
         self.name = name
         self.big = None
+        self.ngb = False
+        self.zoomed = 0
         self.count = 1
         self.vitamins = {}
         self.printed = {}
@@ -73,6 +75,8 @@ class BOM:
         return {
              "name"       : self.name,
              "big"        : self.big,
+             "ngb"        : self.ngb,
+             "zoomed"     : self.zoomed,
              "count"      : self.count,
              "assemblies" : assemblies,
              "vitamins"   : {v : self.vitamins[v].data() for v in self.vitamins},
@@ -213,7 +217,7 @@ def parse_bom(file = "openscad.log", name = None):
                         main.assemblies[stack[-1]].add_part(s)
         else:
             if 'ERROR:' in line or 'WARNING:' in line:
-                print(line[:-1])
+                raise Exception(line[:-1])
     return main
 
 def usage():
@@ -221,53 +225,57 @@ def usage():
     sys.exit(1)
 
 def boms(target = None, assembly = None):
-    bom_dir = set_config(target, usage) + "bom"
-    if assembly:
-        bom_dir += "/accessories"
-        if not os.path.isdir(bom_dir):
+    try:
+        bom_dir = set_config(target, usage) + "bom"
+        if assembly:
+            bom_dir += "/accessories"
+            if not os.path.isdir(bom_dir):
+                os.makedirs(bom_dir)
+        else:
+            assembly = "main_assembly"
+            if os.path.isdir(bom_dir):
+                shutil.rmtree(bom_dir)
+                sleep(0.1)
             os.makedirs(bom_dir)
-    else:
-        assembly = "main_assembly"
-        if os.path.isdir(bom_dir):
-            shutil.rmtree(bom_dir)
-            sleep(0.1)
-        os.makedirs(bom_dir)
-    #
-    # Find the scad file that makes the module
-    #
-    scad_file = find_scad_file(assembly)
-    if not scad_file:
-        raise Exception("can't find source for " + assembly)
-    #
-    # make a file to use the module
-    #
-    bom_maker_name = source_dir + "/bom.scad"
-    with open(bom_maker_name, "w") as f:
-        f.write("use <%s>\n" % scad_file)
-        f.write("%s();\n" % assembly);
-    #
-    # Run openscad
-    #
-    openscad.run("-D", "$bom=2", "-D", "$preview=true", "--hardwarnings", "-o", "openscad.echo", "-d", bom_dir + "/bom.deps", bom_maker_name)
-    os.remove(bom_maker_name)
-    print("Generating bom ...", end=" ")
+        #
+        # Find the scad file that makes the module
+        #
+        scad_file = find_scad_file(assembly)
+        if not scad_file:
+            raise Exception("can't find source for " + assembly)
+        #
+        # make a file to use the module
+        #
+        bom_maker_name = source_dir + "/bom.scad"
+        with open(bom_maker_name, "w") as f:
+            f.write("use <%s>\n" % scad_file)
+            f.write("%s();\n" % assembly);
+        #
+        # Run openscad
+        #
+        openscad.run("-D", "$bom=2", "-D", "$preview=true", "-o", "openscad.echo", "-d", bom_dir + "/bom.deps", bom_maker_name)
+        os.remove(bom_maker_name)
+        print("Generating bom ...", end=" ")
 
-    main = parse_bom("openscad.echo", assembly)
+        main = parse_bom("openscad.echo", assembly)
 
-    if assembly == "main_assembly":
-        main.print_bom(True, open(bom_dir + "/bom.txt","wt"))
+        if assembly == "main_assembly":
+            main.print_bom(True, open(bom_dir + "/bom.txt","wt"))
 
-    for ass in main.assemblies:
-        with open(bom_dir + "/" + ass + ".txt", "wt") as f:
-            bom = main.assemblies[ass]
-            print(bom.make_name(ass) + ":", file=f)
-            bom.print_bom(False, f)
+        for ass in main.assemblies:
+            with open(bom_dir + "/" + ass + ".txt", "wt") as f:
+                bom = main.assemblies[ass]
+                print(bom.make_name(ass) + ":", file=f)
+                bom.print_bom(False, f)
 
-    data = [main.assemblies[ass].flat_data() for ass in main.ordered_assemblies]
-    with open(bom_dir + "/bom.json", 'w') as outfile:
-        json.dump(data, outfile, indent = 4)
+        data = [main.assemblies[ass].flat_data() for ass in main.ordered_assemblies]
+        with open(bom_dir + "/bom.json", 'w') as outfile:
+            json.dump(data, outfile, indent = 4)
 
-    print("done")
+        print("done")
+    except Exception as e:
+        print(str(e))
+        sys.exit(1)
 
 if __name__ == '__main__':
     if len(sys.argv) > 3: usage()
@@ -286,8 +294,4 @@ if __name__ == '__main__':
     if assembly:
         if assembly[-9:] != "_assembly": usage()
 
-    try:
-        boms(target, assembly)
-    except Exception as e:
-        print(str(e))
-        sys.exit(1)
+    boms(target, assembly)

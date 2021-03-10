@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License along with NopSCADlib.
 # If not, see <https://www.gnu.org/licenses/>.
 #
-#! Generates build plates of STL files for efficient printing by running scad files found in the ```platters``` directory.
+#! Generates build plates of STL files for efficient printing by running scad files found in the `platters` directory.
 
 from __future__ import print_function
 import sys
@@ -30,7 +30,7 @@ def usage():
     sys.exit(1)
 
 if __name__ == '__main__':
-   if len(sys.argv) > 2: usage()
+    if len(sys.argv) > 2: usage()
 
     if len(sys.argv) > 1:
         target = sys.argv[1]

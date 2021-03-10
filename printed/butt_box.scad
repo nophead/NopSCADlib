@@ -21,7 +21,7 @@
 //! A box made from CNC cut panels butted together using printed fixing blocks. Useful for making large
 //! boxes with minimal 3D printing.  More blocks are added as the box gets bigger.
 //!
-//! Needs to be ```include```d rather than ```use```d to allow the panel definitions to be overridden to add holes
+//! Needs to be `include`d rather than `use`d to allow the panel definitions to be overridden to add holes
 //! and mounted components.
 //!
 //! A list specifies the internal dimensions, screw type, top, bottom and side sheet types and the block
@@ -49,6 +49,9 @@ function bbox_height(type)     = type[7]; //! Internal height
 function bbox_name(type)       = type[8] ? type[8] : "bbox"; //! Optional name if there is more than one box in a project
 function bbox_skip_blocks(type)= type[9] ? type[9] : [];  //! List of fixing blocks to skip, used to allow a hinged panel for example
 function star_washers(type)    = type[10] ? type[10] : is_undef(type[10]); //! Set to false to remove star washers.
+
+function bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true) = //! Construct the property list for a butt_box
+ [ screw, sheets, base_sheet, top_sheet, span, size.x, size.y, size.z, name, skip_blocks, star_washers ];
 
 function bbox_volume(type) = bbox_width(type) * bbox_depth(type) * bbox_height(type) / 1000000; //! Internal volume in litres
 function bbox_area(type) = let(w =  bbox_width(type), d = bbox_depth(type), h = bbox_height(type)) //! Internal surdface area in m^2
@@ -107,12 +110,9 @@ function fixing_block_positions(type) = let(
 
 function side_holes(type) = [for(p = fixing_block_positions(type), q = fixing_block_holes(bbox_screw(type))) p * q];
 
-module drill_holes(type, t)
-    for(list = [corner_holes(type), side_holes(type)], p = list)
-        let(q = t * p)
-            if(abs(transform([0, 0, 0], q).z) < eps)
-                multmatrix(q)
-                    drill(screw_clearance_radius(bbox_screw(type)), 0);
+module bbox_drill_holes(type, t)
+    position_children(concat(corner_holes(type), side_holes(type)), t)
+        drill(screw_clearance_radius(bbox_screw(type)), 0);
 
 module bbox_base_blank(type) { //! 2D template for the base
     dxf(str(bbox_name(type), "_base"));
@@ -120,7 +120,7 @@ module bbox_base_blank(type) { //! 2D template for the base
     difference() {
         sheet_2D(bbox_base_sheet(type), bbox_width(type), bbox_depth(type), 1);
 
-        drill_holes(type, translate(bbox_height(type) / 2));
+        bbox_drill_holes(type, translate(bbox_height(type) / 2));
     }
 }
 
@@ -133,7 +133,7 @@ module bbox_top_blank(type) { //! 2D template for the top
         translate([0, t / 2])
             sheet_2D(bbox_top_sheet(type), bbox_width(type) + 2 * t, bbox_depth(type) + t);
 
-        drill_holes(type, translate(-bbox_height(type) / 2));
+        bbox_drill_holes(type, translate(-bbox_height(type) / 2));
     }
 }
 
@@ -151,7 +151,7 @@ module bbox_left_blank(type, sheet = false) { //! 2D template for the left side
         translate([-t / 2, -bb / 2])
             sheet_2D(subst_sheet(type, sheet), bbox_depth(type) + t, bbox_height(type) + bb);
 
-        drill_holes(type, rotate([0, 90, 90]) * translate([bbox_width(type) / 2, 0]));
+        bbox_drill_holes(type, rotate([0, 90, 90]) * translate([bbox_width(type) / 2, 0]));
     }
 }
 
@@ -165,7 +165,7 @@ module bbox_right_blank(type, sheet = false) { //! 2D template for the right sid
         translate([t / 2, -bb / 2])
             sheet_2D(subst_sheet(type, sheet), bbox_depth(type) + t, bbox_height(type) + bb);
 
-        drill_holes(type, rotate([0, 90, 90]) * translate([-bbox_width(type) / 2, 0]));
+        bbox_drill_holes(type, rotate([0, 90, 90]) * translate([-bbox_width(type) / 2, 0]));
     }
 }
 
@@ -180,7 +180,7 @@ module bbox_front_blank(type, sheet = false, width = 0) { //! 2D template for th
         translate([0, (bt - bb) / 2])
             sheet_2D(subst_sheet(type, sheet), max(bbox_width(type) + 2 * t, width), bbox_height(type) + bb + bt);
 
-        drill_holes(type, rotate([-90, 0, 0]) * translate([0, bbox_depth(type) / 2]));
+        bbox_drill_holes(type, rotate([-90, 0, 0]) * translate([0, bbox_depth(type) / 2]));
     }
 }
 
@@ -194,7 +194,7 @@ module bbox_back_blank(type, sheet = false) { //! 2D template for the back
         translate([0, -bb / 2])
             sheet_2D(subst_sheet(type, sheet), bbox_width(type), bbox_height(type) + bb);
 
-        drill_holes(type, rotate([-90, 0, 0]) * translate([0, -bbox_depth(type) / 2]));
+        bbox_drill_holes(type, rotate([-90, 0, 0]) * translate([0, -bbox_depth(type) / 2]));
     }
 }
 

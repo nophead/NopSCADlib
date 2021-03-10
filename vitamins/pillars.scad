@@ -34,8 +34,8 @@ M3x13_hex_pillar       = ["M3x13_hex_pillar",       "hex",       3, 13, 5/cos(30
 M3x20_hex_pillar       = ["M3x20_hex_pillar",       "hex",       3, 20, 5/cos(30), 5/cos(30),  6, 6, "silver",  silver,  -8, 8];
 M3x20_nylon_pillar     = ["M3x20_nylon_pillar",     "nylon",     3, 20, 8,         5/cos(30),  0, 6, "white",   brass,   -6, 6];
 M4x17_nylon_pillar     = ["M4x17_nylon_pillar",     "nylon",     4, 20, 8,         5/cos(30),  0, 6, "white",   brass,   -6, 6];
-M3x20_nylon_hex_pillar = ["M3x20_nylon_hex_pillar", "hex nylon", 3, 20, 8/cos(30), 8/cos(30),  6, 6,  grey20,   grey20,  -6, 6];
-M3x10_nylon_hex_pillar = ["M3x10_nylon_hex_pillar", "hex nylon", 3, 10,5.5/cos(30),5.5/cos(30),6, 6,  grey20,   grey20,  -6, 6];
+M3x20_nylon_hex_pillar = ["M3x20_nylon_hex_pillar", "hex nylon", 3, 20, 8/cos(30), 8/cos(30),  6, 6,  grey(20),   grey(20),  -6, 6];
+M3x10_nylon_hex_pillar = ["M3x10_nylon_hex_pillar", "hex nylon", 3, 10,5.5/cos(30),5.5/cos(30),6, 6,  grey(20),   grey(20),  -6, 6];
 
 
 pillars = [M2x16_brass_pillar, M3x13_hex_pillar, M3x20_hex_pillar, M3x20_nylon_pillar, M4x17_nylon_pillar, M3x10_nylon_hex_pillar, M3x20_nylon_hex_pillar];

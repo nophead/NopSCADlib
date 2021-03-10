@@ -18,7 +18,7 @@
 //
 
 //
-// Include this file to use the miniumum library
+// Include this file to use the minimum library
 //
 include <../../global_defs.scad>
 //
@@ -28,12 +28,12 @@ use <global.scad>
 
 module use_stl(name) {               //! Import an STL to make a build platter
     stl(name);
-
-    import(str("../stls/", name, ".stl"));
+    path = is_undef($target) ? "../stls/" : str($cwd, "/", $target, "/stls/");
+    import(str(path, name, ".stl"));
 }
 
 module use_dxf(name) {               //! Import a DXF to make a build panel
     dxf(name);
-
-    import(str("../dxfs/", name, ".dxf"));
+    path = is_undef($target) ? "../dxfs/" : str($cwd, "/", $target, "/dxfs/");
+    import(str(path, name, ".dxf"));
 }

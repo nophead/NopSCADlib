@@ -18,7 +18,11 @@
 //
 
 //
-//! Used for limit switches.
+//! Used for limit switches. Currently only the button type is supported as the lever and roller types are less accurate.
+//!
+//! The switch is drawn with the button at the nominal operation point. This can be plus or minus `microswitch_op_tol(type)`.
+//!
+//! When the button is released it comes out by a maximum of `microswitch_fp_max(type)` from the nominal operating point.
 //
 include <../utils/core/core.scad>
 
@@ -32,14 +36,18 @@ function microswitch_hole_d(type)    = type[6];     //! Screw hole diameter
 function microswitch_holes(type)     = type[7];     //! Hole positions
 function microswitch_button_w(type)  = type[8];     //! Button width
 function microswitch_button_t(type)  = type[9];     //! Button thickness
-function microswitch_button_pos(type)= type[10];    //! Button position
-function microswitch_legs(type)      = type[11];    //! Leg positions
-function microswitch_leg(type)       = type[12];    //! Leg types
-function microswitch_body_clr(type)  = type[13];    //! Body colour
-function microswitch_button_clr(type)= type[14];    //! Button colour
+function microswitch_button_pos(type)= type[10];    //! Button position at operating point
+function microswitch_op_tol(type)    = type[11];    //! Operating position +/- tolerance
+function microswitch_fp_max(type)    = type[12];    //! Free position maximum
+function microswitch_legs(type)      = type[13];    //! Leg positions
+function microswitch_leg(type)       = type[14];    //! Leg types
+function microswitch_body_clr(type)  = type[15];    //! Body colour
+function microswitch_button_clr(type)= type[16];    //! Button colour
 
 function microswitch_lower_extent(type) = let(leg = microswitch_leg(type)) min([for(pos = microswitch_legs(type)) pos.y - leg.y / 2]); //! How far legs extend downwards
 function microswitch_right_extent(type) = let(leg = microswitch_leg(type)) max([microswitch_length(type) / 2, for(pos = microswitch_legs(type)) pos.x + leg.x / 2]); //! How far legs extend right
+
+function microswitch_size(type) = [microswitch_length(type), microswitch_width(type), microswitch_thickness(type)]; //! Body size
 
 module microswitch_hole_positions(type) //! Place children at the hole positions
 {

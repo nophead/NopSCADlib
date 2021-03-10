@@ -25,10 +25,10 @@
 //!
 //! Note that the block with its inserts is defined as a sub assembly, but its fasteners get added to the parent assembly.
 //!
-//! Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting ```show_block``` to false.
+//! Specific fasteners can be omitted by setting a side's thickness to 0 and the block omitted by setting `show_block` to false.
 //! This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
 //!
-//! Star washers can be omitted by setting ```star_washers``` to false.
+//! Star washers can be omitted by setting `star_washers` to false.
 //
 include <../core.scad>
 use <../vitamins/insert.scad>
@@ -72,8 +72,6 @@ module corner_block_holes(screw = def_screw) //! Place children at all the holes
             children();
 
 module corner_block(screw = def_screw, name = false) { //! Generate the STL for a printed corner block
-    stl(name ? name : str("corner_block", "_M", screw_radius(screw) * 20));
-
     r = 1;
     cb_width = corner_block_width(screw);
     cb_height = cb_width;
@@ -81,43 +79,45 @@ module corner_block(screw = def_screw, name = false) { //! Generate the STL for 
     insert = screw_insert(screw);
     corner_rad = insert_outer_d(insert) / 2 + wall;
     offset = corner_block_hole_offset(screw);
-    difference() {
-        hull()  {
-            translate([r, r])
-                rounded_cylinder(r = r, h = cb_height, r2 = r);
 
-            translate([r, cb_depth - r])
-                cylinder(r = r, h = cb_height - corner_rad);
+    stl(name ? name : str("corner_block", "_M", screw_radius(screw) * 20))
+        difference() {
+            hull()  {
+                translate([r, r])
+                    rounded_cylinder(r = r, h = cb_height, r2 = r);
 
-            translate([cb_width - r, r])
-                cylinder(r = r, h = cb_height - corner_rad);
+                translate([r, cb_depth - r])
+                    cylinder(r = r, h = cb_height - corner_rad);
 
-            translate([offset, offset, offset])
-                sphere(corner_rad);
+                translate([cb_width - r, r])
+                    cylinder(r = r, h = cb_height - corner_rad);
 
-            translate([offset, offset])
-                cylinder(r = corner_rad, h = offset);
+                translate([offset, offset, offset])
+                    sphere(corner_rad);
 
-            translate([offset, r, offset])
-                rotate([-90, 0, 180])
-                    rounded_cylinder(r = corner_rad, h = r, r2 = r);
+                translate([offset, offset])
+                    cylinder(r = corner_rad, h = offset);
 
-            translate([r, offset, offset])
-                rotate([0, 90, 180])
-                    rounded_cylinder(r = corner_rad, h = r, r2 = r);
+                translate([offset, r, offset])
+                    rotate([-90, 0, 180])
+                        rounded_cylinder(r = corner_rad, h = r, r2 = r);
+
+                translate([r, offset, offset])
+                    rotate([0, 90, 180])
+                        rounded_cylinder(r = corner_rad, h = r, r2 = r);
+            }
+            corner_block_v_hole(screw)
+                insert_hole(insert, overshoot);
+
+            corner_block_h_holes(screw)
+                insert_hole(insert, overshoot, true);
+
+            children();
         }
-        corner_block_v_hole(screw)
-            insert_hole(insert, overshoot);
-
-        corner_block_h_holes(screw)
-            insert_hole(insert, overshoot, true);
-
-        children();
-    }
 }
 
 module corner_block_assembly(screw = def_screw, name = false) //! The printed block with inserts
-assembly(str("corner_block_M", 20 * screw_radius(screw))) {
+assembly(str("corner_block_M", 20 * screw_radius(screw)), ngb = true) {
     insert = screw_insert(screw);
 
     stl_colour(name ? pp2_colour : pp1_colour)
@@ -133,12 +133,10 @@ assembly(str("corner_block_M", 20 * screw_radius(screw))) {
 module fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true) { //! Printed block with all fasteners
     thickness2 = !is_undef(thickness_below) ? thickness_below : thickness;
     thickness3 = !is_undef(thickness_side2) ? thickness_side2 : thickness;
-    washer = screw_washer(screw);
-    insert = screw_insert(screw);
-    function screw_length(t) = screw_shorter_than((star_washers ? 2 : 1) * washer_thickness(washer) + t + insert_length(insert) + overshoot);
-    screw_length = screw_length(thickness);
-    screw_length2 = screw_length(thickness2);
-    screw_length3 = screw_length(thickness3);
+    function screw_len(t) = screw_length(screw, t + overshoot, star_washers ? 2 : 1, true);
+    screw_length = screw_len(thickness);
+    screw_length2 = screw_len(thickness2);
+    screw_length3 = screw_len(thickness3);
 
     if(show_block)
         corner_block_assembly(screw, name) children();

@@ -16,19 +16,18 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+include <../core.scad>
+use <../utils/layout.scad>
 
-//
-//! KP pillow block bearings
-//
+use <../printed/camera_housing.scad>
 
-include <ball_bearings.scad>
+include <../vitamins/cameras.scad>
 
-//                      d   H   L   J   A    N  H1  H0     K  S  b   bolthole             bearing
-KP08_15 = ["KP08_15",   8, 15, 55, 42, 13, 4.5,  5, 29,  0.0, 0, 22, M4_clearance_radius, BB608];
-KP08_18 = ["KP08_18",   8, 18, 55, 42, 13, 4.5,  5, 29,  0.0, 0, 22, M4_clearance_radius, BB608];
-KP000 =   ["KP000",    10, 18, 67, 53, 16, 7.0,  6, 35, 14.0, 4, 30, M6_clearance_radius, BB6200];
-KP001 =   ["KP001",    12, 19, 71, 56, 16, 7.0,  6, 38, 14.5, 4, 32, M6_clearance_radius, BB6201];
+use <../vitamins/pcb.scad>
 
-kp_pillow_blocks = [KP08_15, KP08_18, KP000, KP001];
+module camera_housings()
+    layout([for(c = cameras) pcb_length(camera_pcb(c))], 15, false) let(c = cameras[$i])
+        camera_fastened_assembly(c, 3);
 
-use <kp_pillow_block.scad>
+if($preview)
+    camera_housings();

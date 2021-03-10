@@ -16,18 +16,16 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
-include <../vitamins/kp_pillow_blocks.scad>
 
-use <../utils/layout.scad>
+include <../global_defs.scad>
+use <../utils/rounded_triangle.scad>
 
-module kp_pillow_blocks() {
-    screws = [M4_cap_screw, M4_cap_screw, M5_cap_screw, M5_cap_screw];
-    nuts = [M4_sliding_t_nut, M4_hammer_nut, M5_sliding_t_nut, M5_nut];
-    assert(len(screws) == len(kp_pillow_blocks) && len(nuts) == len(kp_pillow_blocks));
-    layout([for(k = kp_pillow_blocks) 2 * kp_size(k)[1]])
-        kp_pillow_block_assembly(kp_pillow_blocks[$i], screw_type = screws[$i], nut_type = nuts[$i]);
+
+module rounded_right_triangles() {
+    rounded_right_triangle(10, 20, 5, 0.5);
+
+    translate([20, 0])
+        rounded_right_triangle(10, 20, 5, 0.5, offset = true);
 }
 
-if($preview)
-    kp_pillow_blocks();
+rounded_right_triangles();

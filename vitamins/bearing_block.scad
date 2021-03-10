@@ -41,7 +41,7 @@ function scs_circlip(type)              = type[15]; //! Circlip used
 function scs_spacer(type)               = type[16]; //! Spacer used in long bearings
 
 
-sks_bearing_block_colour = grey90;
+sks_bearing_block_colour = grey(90);
 
 module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     vitamin(str("scs_bearing_block(", type[0], "): ", type[0], " bearing block"));
@@ -63,7 +63,7 @@ module scs_bearing_block(type) { //! Draw the specified SCS bearing block
     bearing = scs_bearing(type);
     clip = scs_circlip(type);
 
-    module right_trapezoid(base, top, height, h = 0, center = true) {//! A right angled trapezoid with the 90&deg; corner at the origin. 3D when ```h``` is nonzero, otherwise 2D
+    module right_trapezoid(base, top, height, h = 0, center = true) {//! A right angled trapezoid with the 90&deg; corner at the origin. 3D when `h` is nonzero, otherwise 2D
         extrude_if(h, center = center)
             polygon(points = [ [0,0], [base, 0], [top, height], [0, height] ]);
     }

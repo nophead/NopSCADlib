@@ -20,18 +20,20 @@
 //
 //! Utilities for making threads with sweep. They can be used to model screws, nuts, studding, leadscrews, etc, and also to make printed threads.
 //!
-//! The ends can be tapered, flat or chamfered by setting the ```top``` and ```bot``` parameters to -1 for tapered, 0 for a flat cut and positive to
+//! The ends can be tapered, flat or chamfered by setting the `top` and `bot` parameters to -1 for tapered, 0 for a flat cut and positive to
 //! specify a chamfer angle.
 //!
 //! Threads are by default solid, so the male version is wrapped around a cylinder and the female inside a tube. This can be suppressed to just get the helix, for
 //! example to make a printed pot with a screw top lid.
 //!
+//! A left hand thread can be made by using mirror([0,1]).
+//!
 //! Threads with a typical 60 degree angle appear too bright with OpenSCAD's primitive lighting model as they face towards the lights more than the top and sides of
 //! a cylinder. To get around this a colour can be passed to thread that is used to colour the cylinder and then toned down to colour the helix.
 //!
 //! Making the ends requires a CGAL intersection, which make threads relatively slow. For this reason they are generally disabled when using the GUI but can
-//! be enabled by setting ```$show_threads``` to ```true```. When the tests are run, by default, threads are enabled only for things that feature them like screws.
-//! This behaviour can be changed by setting a ```NOPSCADLIB_SHOW_THREADS``` environment variable to ```false``` to disable all threads and ```true``` to enable all threads.
+//! be enabled by setting `$show_threads` to `true`. When the tests are run, by default, threads are enabled only for things that feature them like screws.
+//! This behaviour can be changed by setting a `NOPSCADLIB_SHOW_THREADS` environment variable to `false` to disable all threads and `true` to enable all threads.
 //! The same variable also affects the generation of assembly diagrams.
 //!
 //! Threads obey the $fn, $fa, $fs variables.
@@ -47,7 +49,7 @@ function thread_profile(h, crest, angle, overlap = 0.1) = //! Create thread prof
     let(base = crest + 2 * (h + overlap) * tan(angle / 2))
         [[-base / 2, -overlap, 0], [-crest / 2, h, 0], [crest / 2, h, 0], [base / 2, -overlap, 0]];
 
-module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or femail thread, ends can be tapered, chamfered or square
+module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or female thread, ends can be tapered, chamfered or square
     //
     // Apply colour if defined
     //
@@ -61,10 +63,12 @@ module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, st
     // Extract some properties from the profile, perhaps they should be stored in it.
     //
     h = max([for(p = sprofile) p.y]);
-    maxx = max([for(p = sprofile) p.x]);
-    minx = min([for(p = sprofile) p.x]);
-    crest_xmax = max([for(p = sprofile) if(p.x != maxx) p.x]);
-    crest_xmin = min([for(p = sprofile) if(p.x != minx) p.x]);
+    xs = [for(p = sprofile) p.x];
+    maxx = max(xs);
+    minx = min(xs);
+    crest_xs = [for(p = sprofile) if(p.y == h) p.x];
+    crest_xmax = max(crest_xs);
+    crest_xmin = min(crest_xs);
     //
     // If the ends don't taper we need an extra half turn past the ends to be cropped horizontally.
     //
@@ -129,11 +133,13 @@ module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, st
                     render() intersection() {
                         polyhedron(points, ends_faces);
 
-                        len = length - 2 * eps;
+                        shorten = !is_undef(colour);
+                        len = shorten ? length - 2 * eps : length;
+                        offset = shorten ? eps : 0;
                         rotate_extrude()
                             if(female) {
                                 difference() {
-                                    translate([0, eps])
+                                    translate([0, offset])
                                         square([r + h + overlap, len]);
 
                                     if(top_chamfer_h)
@@ -146,7 +152,7 @@ module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, st
                             else
                                 difference() {
                                     hull() {
-                                        translate([0, eps])
+                                        translate([0, offset])
                                             square([r, len]);
 
                                         translate([0, bot_chamfer_h])

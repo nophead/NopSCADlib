@@ -18,28 +18,37 @@
 #
 
 #
-# Run openscad
+#! Run `openscad.exe` and capture `stdout` and `stderr` in `openscad.log` as well as printing to the console.
 #
 from __future__ import print_function
 
 import subprocess, sys
 
-def run_list(args, silent = False):
-    cmd = ["openscad"] + args
+def run_list(args, silent = False, verbose = False):
+    cmd = ["openscad"] + args + ["--hardwarnings"]
     if not silent:
         for arg in cmd:
             print(arg, end=" ")
         print()
     with open("openscad.log", "w") as log:
         rc = subprocess.call(cmd, stdout = log, stderr = log)
-    for line in open("openscad.log", "rt"):
-        if 'ERROR:' in line or 'WARNING:' in line:
+    log_file = "openscad.echo" if "openscad.echo" in cmd else "openscad.log"
+    bad = False
+    for line in open(log_file, "rt"):
+        if verbose or 'ERROR:' in line or 'WARNING:' in line:
+            bad = True
             print(line[:-1])
     if rc:
         sys.exit(rc)
+
+    if bad:
+        sys.exit(1)
 
 def run(*args):
     run_list(list(args), False)
 
 def run_silent(*args):
     run_list(list(args), True);
+
+if __name__ == '__main__':
+    run_list(sys.argv[1:], True, True)

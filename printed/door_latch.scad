@@ -38,30 +38,30 @@ function door_latch_offset() = width / 2 + 1; //! Offset of the axle from the do
 nut_trap_depth = round_to_layer(screw_head_height(screw)) + 4 * layer_height;
 
 module door_latch_stl() { //! Generates the STL for the printed part
-    stl("door_latch");
-
     ridge = 4;
-    difference() {
-        union() {
-            hull() {
-                rounded_rectangle([length, width, thickness - tan(30) * (width -  ridge) / 2], rad, center = false);
 
-                translate_z(thickness / 2)
-                    cube([length, ridge, thickness], center = true);
+    stl("door_latch")
+        difference() {
+            union() {
+                hull() {
+                    rounded_rectangle([length, width, thickness - tan(30) * (width -  ridge) / 2], rad);
+
+                    translate_z(thickness / 2)
+                        cube([length, ridge, thickness], center = true);
+                }
+
+                cylinder(d = width, h = height);
             }
-
-            cylinder(d = width, h = height);
+            hanging_hole(nut_trap_depth, screw_clearance_radius(screw))
+                circle(r = nut_trap_radius(screw_nut(screw)), $fn = 6);
         }
-        hanging_hole(nut_trap_depth, screw_clearance_radius(screw))
-            circle(r = nut_trap_radius(screw_nut(screw)), $fn = 6);
-    }
 }
 
 module door_latch_assembly(sheet_thickness = 3) { //! The assembly for a specified sheet thickess
     washer = screw_washer(screw);
     nut = screw_nut(screw);
 
-    screw_length = screw_longer_than(height - nut_trap_depth + sheet_thickness + 2 * washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height - nut_trap_depth + sheet_thickness, 2, nyloc = true);
 
     translate([0, -height - washer_thickness(washer)])
         rotate([-90, 0, 0]) {

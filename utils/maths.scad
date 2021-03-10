@@ -20,9 +20,20 @@
 //
 //! Maths utilities for manipulating vectors and matrices.
 //
-function sqr(x) = x * x;
+function sqr(x) = x * x;                        //! Square x
+function radians(degrees) = degrees * PI / 180; //! Convert radians to degrees
+function degrees(radians) = radians * 180 / PI; //! Convert degrees to radians
 
-function translate(v) = let(u = is_list(v) ? len(v) == 2 ? [v.x, v.y, 0] //! Generate a 4x4 translation matrix, ```v``` can be ```[x, y]```, ```[x, y, z]``` or ```z```
+function sinh(x) = (exp(x) - exp(-x)) / 2;      //! hyperbolic sine
+function cosh(x) = (exp(x) + exp(-x)) / 2;      //! hyperbolic cosine
+function tanh(x) = sinh(x) / cosh(x);           //! hyperbolic tangent
+function coth(x) = cosh(x) / sinh(x);           //! hyperbolic cotangent
+function argsinh(x) = ln(x + sqrt(sqr(x) + 1)); //! inverse hyperbolic sine
+function argcosh(x) = ln(x + sqrt(sqr(x) - 1)); //! inverse hyperbolic cosine
+function argtanh(x) = ln((1 + x) / (1 - x)) / 2;//! inverse hyperbolic tangent
+function argcoth(x) = ln((x + 1) / (x - 1)) / 2;//! inverse hyperbolic cotangent
+
+function translate(v) = let(u = is_list(v) ? len(v) == 2 ? [v.x, v.y, 0] //! Generate a 4x4 translation matrix, `v` can be `[x, y]`, `[x, y, z]` or `z`
                                                          : v
                                            : [0, 0, v])
                           [ [1, 0, 0, u.x],
@@ -30,7 +41,7 @@ function translate(v) = let(u = is_list(v) ? len(v) == 2 ? [v.x, v.y, 0] //! Gen
                             [0, 0, 1, u.z],
                             [0, 0, 0,   1] ];
 
-function rotate(a, v) = //! Generate a 4x4 rotation matrix, ```a``` can be a vector of three angles or a single angle around ```z```, or around axis ```v```
+function rotate(a, v) = //! Generate a 4x4 rotation matrix, `a` can be a vector of three angles or a single angle around `z`, or around axis `v`
     is_undef(v) ? let(av = is_list(a) ? a : [0, 0, a],
                       cx = cos(av[0]),
                       cy = cos(av[1]),
@@ -63,7 +74,13 @@ function rot3_z(a) = //! Generate a 3x3 matrix to rotate around z
           [ s,  c,  0],
           [ 0,  0,  1] ];
 
-function scale(v) = let(s = is_list(v) ? v : [v, v, v]) //!  Generate a 4x4 matrix that scales by ```v```, which can be a vector of xyz factors or a scalar to scale all axes equally
+function rot2_z(a) = //! Generate a 2x2 matrix to rotate around z
+    let(c = cos(a),
+        s = sin(a))
+        [ [ c, -s],
+          [ s,  c] ];
+
+function scale(v) = let(s = is_list(v) ? v : [v, v, v]) //!  Generate a 4x4 matrix that scales by `v`, which can be a vector of xyz factors or a scalar to scale all axes equally
                         [
                           [s.x, 0,   0,   0],
                           [0,   s.y, 0,   0],
@@ -71,11 +88,11 @@ function scale(v) = let(s = is_list(v) ? v : [v, v, v]) //!  Generate a 4x4 matr
                           [0,   0,   0,   1]
                         ];
 
-function vec3(v) = [v.x, v.y, v.z]; //! Return a 3 vector with the first three elements of ```v```
-function vec4(v) = [v.x, v.y, v.z, 1]; //! Return a 4 vector with the first three elements of ```v```
+function vec3(v) = [v.x, v.y, v.z]; //! Return a 3 vector with the first three elements of `v`
+function vec4(v) = [v.x, v.y, v.z, 1]; //! Return a 4 vector with the first three elements of `v`
 function transform(v, m) = vec3(m * [v.x, v.y, v.z, 1]); //! Apply 4x4 transform to a 3 vector by extending it and cropping it again
 function transform_points(path, m) = [for(p = path) transform(p, m)]; //! Apply transform to a path
-function unit(v) = let(n = norm(v)) n ? v / n : v; //! Convert ```v``` to a unit vector
+function unit(v) = let(n = norm(v)) n ? v / n : v; //! Convert `v` to a unit vector
 
 function transpose(m) = [ for(j = [0 : len(m[0]) - 1]) [ for(i = [0 : len(m) - 1]) m[i][j] ] ]; //! Transpose an arbitrary size matrix
 
@@ -90,3 +107,49 @@ function euler(R) = let(ay = asin(-R[2][0]), cy = cos(ay)) //! Convert a rotatio
     cy ? [ atan2(R[2][1] / cy, R[2][2] / cy), ay, atan2(R[1][0] / cy, R[0][0] / cy) ]
        : R[2][0] < 0 ? [atan2( R[0][1],  R[0][2]),  180, 0]
                      : [atan2(-R[0][1], -R[0][2]), -180, 0];
+
+module position_children(list, t) //! Position children if they are on the Z = 0 plane when transformed by t
+    for(p = list)
+        let(q = t * p)
+            if(abs(transform([0, 0, 0], q).z) < 0.01)
+                multmatrix(q)
+                    children();
+
+// Matrix inversion: https://www.mathsisfun.com/algebra/matrix-inverse-row-operations-gauss-jordan.html
+
+function augment(m) = let(l = len(m), n = identity(l)) [ //! Augment a matrix by adding an identity matrix to the right
+    for(i = [0 : l - 1])
+        concat(m[i], n[i])
+];
+
+function rowswap(m, i, j) = [ //! Swap two rows of a matrix
+    for(k = [0 : len(m) - 1])
+        k == i ? m[j] : k == j ? m[i] : m[k]
+];
+
+function solve_row(m, i) = let(diag = m[i][i]) [ //! Make diagonal one by dividing the row by it and subtract from other rows to make column zero
+    for(j = [0 : len(m) - 1])
+        i == j ? m[j] / diag : m[j] - m[i] * m[j][i] / diag
+];
+
+function nearly_zero(x) = abs(x) < 1e-5; //! True if x is close to zero
+
+function solve(m, i = 0, j = 0) = //! Solve each row ensuring diagonal is not zero
+    i < len(m) ?
+        assert(i + j < len(m), "matrix is singular")
+         solve(!nearly_zero(m[i + j][i]) ? solve_row(j ? rowswap(m, i, i + j) : m, i) : solve(m, i, j + 1), i + 1)
+        : m;
+
+function invert(m) = let(n =len(m), m = solve(augment(m))) [ //! Invert a matrix
+    for(i = [0 : n - 1]) [
+        for(j = [n : 2 * n - 1])
+             each m[i][j]
+    ]
+];
+
+function circle_intersect(c1, r1, c2, r2) =     //! Calculate one point where two circles in the X-Z plane intersect, clockwise around c1
+    let(
+        v = c1 - c2,                            // Line between centres
+        d = norm(v),                            // Distance between centres
+        a = atan2(v.z, v.x) - acos((sqr(d) + sqr(r2) - sqr(r1)) / (2 * d * r2)) // Cosine rule to find angle from c2
+     ) c2 + r2 * [cos(a), 0, sin(a)];           // Point on second circle

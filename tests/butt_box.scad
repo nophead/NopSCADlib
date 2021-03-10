@@ -25,7 +25,7 @@ include <../printed/butt_box.scad>
 
 $explode = 0;
 
-box = [M3_dome_screw, DiBond, DiBond6, PMMA3, 250, 400, 300, 120];
+box = bbox(screw = M3_dome_screw, sheets = DiBond, base_sheet = DiBond6, top_sheet = PMMA3, span = 250, size = [400, 300, 120]);
 
 module bbox_assembly() _bbox_assembly(box);
 

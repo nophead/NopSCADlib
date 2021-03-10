@@ -20,7 +20,7 @@
 //! Redefines `sphere()` to always have a vertex on all six half axes I.e. vertices at the poles and the equator and `$fn` a multiple of four.
 //! This ensures `hull` and `minkowski` results have the correct dimensions when spheres are placed at the corners.
 
-module sphere(r = 1, d = undef) {                   //! Override ```sphere``` so that has vertices on all three axes. Has the advantage of giving correct dimensions when hulled
+module sphere(r = 1, d = undef) {                   //! Override `sphere` so that has vertices on all three axes. Has the advantage of giving correct dimensions when hulled
     R = is_undef(d) ? r : d / 2;
     rotate_extrude($fn = r2sides4n(R))
         rotate(-90)

@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2020
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,24 +16,16 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../utils/core/core.scad>
+include <../core.scad>
+use <../utils/layout.scad>
 
-use <../vitamins/meter.scad>
+include <../vitamins/cameras.scad>
 
-module meters()
-    if($preview) {
-        meter_assembly();
+use <../vitamins/pcb.scad>
 
-        translate([0, meter_bezel_width() + 5])
-            vflip()
-                meter_assembly();
+module cameras()
+    layout([for(c = cameras) pcb_length(camera_pcb(c))], 15, false) let(c = cameras[$i])
+        camera(c);
 
-        translate([0, -meter_bezel_width()])
-            rotate([0, 180, 0])
-                meter(colour = "blue", value = "123");
-    }
-    else
-        meter_bezel();
-
-
-meters();
+if($preview)
+    cameras();

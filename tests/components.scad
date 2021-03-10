@@ -41,8 +41,11 @@ module components() {
     translate([0, 50])
         TO220("Generic TO220 package");
 
-    translate([50, 50])
+    translate([40, 50])
         panel_USBA();
+
+    translate([80, 50])
+        fack2spm();
 
     translate([0,80])
         thermal_cutouts();

@@ -128,7 +128,7 @@ module ring_terminal_assembly(type, thickness, top = false) { //! Earthing assem
     screw = ringterm_screw(type);
     washer = screw_washer(screw);
     nut = screw_nut(screw);
-    screw_length = screw_longer_than(thickness + 2 * washer_thickness(washer) + nut_thickness(nut, true) + ringterm_thickness(type));
+    screw_length = screw_length(screw, thickness + ringterm_thickness(type), 2, nyloc = true);
 
     explode(10, true) star_washer(washer)
         if(top)

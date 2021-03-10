@@ -25,9 +25,9 @@
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
 
-rod_colour = grey80;
-studding_colour = grey70;
-leadscrew_colour = grey70;
+rod_colour = grey(80);
+studding_colour = grey(70);
+leadscrew_colour = grey(70);
 
 module rod(d , l, center = true) { //! Draw a smooth rod with specified diameter and length
     vitamin(str("rod(", d, ", ", l, "): Smooth rod ", d, "mm x ", l, "mm"));

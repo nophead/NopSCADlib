@@ -18,13 +18,14 @@
 //
 
 //
-//! Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius. Radius can be negative for a concave corner.
+//! Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius in clockwise order.
+//! Radius can be negative for a concave corner.
 //!
 //! Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
 //
 include <../utils/core/core.scad>
 
-function circle_tangent(p1, p2) =
+function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two circles represented as [x,y,r]
     let(
         r1 = p1[2],
         r2 = p2[2],
@@ -32,11 +33,8 @@ function circle_tangent(p1, p2) =
         dy = p2.y - p1.y,
         d = sqrt(dx * dx + dy * dy),
         theta = atan2(dy, dx) + acos((r1 - r2) / d),
-        xa = p1.x +(cos(theta) * r1),
-        ya = p1.y +(sin(theta) * r1),
-        xb = p2.x +(cos(theta) * r2),
-        yb = p2.y +(sin(theta) * r2)
-    )[ [xa, ya], [xb, yb] ];
+        v = [cos(theta), sin(theta)]
+    )[ p1 + r1 * v, p2 + r2 * v ];
 
 function rounded_polygon_tangents(points) = //! Compute the straight sections needed to draw and to compute the lengths
     let(len = len(points))
@@ -48,7 +46,7 @@ function rounded_polygon_tangents(points) = //! Compute the straight sections ne
 function sumv(v, i = 0, sum = 0) = i == len(v) ? sum : sumv(v, i + 1, sum + v[i]);
 
 // the cross product of 2D vectors is the area of the parallelogram between them. We use the sign of this to decide if the angle is bigger than 180.
-function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by ``` rounded_polygon_tangents```
+function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents`
     let(
       len = len(points),
       indices = [0 : len - 1],
@@ -60,7 +58,7 @@ function rounded_polygon_length(points, tangents) = //! Calculate the length giv
                                    v1 = p1 - c,
                                    v2 = p2 - c,
                                    r = abs(corner.z),
-                                   a = acos((v1 * v2) / sqr(r))) PI * (cross(v1,v2) <= 0 ? a : 360 - a) * r / 180]
+                                   a = acos((v1 * v2) / sqr(r))) r ? PI * (cross(v1, v2) <= 0 ? a : 360 - a) * r / 180 : 0]
      )
     sumv(concat(straights, arcs));
 

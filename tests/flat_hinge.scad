@@ -32,8 +32,8 @@ clearance = 0.2;
 
 angle = 0; // [-90 : 180]
 
-big_hinge =   ["big",   width, depth, thickness, pin_diameter,  knuckle_diameter, knuckles, M3_dome_screw, screws, clearance, margin];
-small_hinge = ["small", 20,    16,    2,         2.85,          7,                3,        M3_dome_screw, 2,      0.2,       0];
+big_hinge =   flat_hinge(name = "big",  size = [width, depth, thickness], pin_d = pin_diameter, knuckle_d = knuckle_diameter, knuckles = knuckles, screw = M3_dome_screw, screws = screws, clearance = clearance, margin = margin);
+small_hinge = flat_hinge(name = "small", size =[ 20,    16,    2],        pin_d = 2.85,         knuckle_d = 7,                knuckles = 3,        screw = M3_dome_screw, screws = 2,      clearance = 0.2,       margin = 0);
 
 hinges = [small_hinge, big_hinge];
 
