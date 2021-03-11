@@ -36,14 +36,43 @@ function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two 
         v = [cos(theta), sin(theta)]
     )[ p1 + r1 * v, p2 + r2 * v ];
 
-function rounded_polygon_tangents(points) = //! Compute the straight sections needed to draw and to compute the lengths
+function rounded_polygon_arcs(points, tangents) = //! Compute the arcs at the points, for each point [angle,rotate_angle,length]
+    let(
+        len = len(points)
+    ) [ for (i = [0: len-1])
+        let(
+            p1 = tangents[(i - 1 + len) % len].y,
+            p2 = tangents[i].x,
+            p = points[i],
+            v1 = p1 - p,
+            v2 = p2 - p,
+            r = abs(p.z),
+            a = let( aa = acos((v1 * v2) / sqr(r)) ) cross(v1, v2)*sign(p.z) <= 0 ? aa : 360 - aa,
+            l = PI * a * r / 180,
+            v0 = [r, 0],
+            v = let (
+                vv = norm(v0-v2) < 0.001 ? 0 : abs(v2.y) < 0.001 ? 180 :
+                        let( aa = acos((v0 * v2) / sqr(r)) ) cross(v0, v2)*sign(p.z) <= 0 ? aa : 360 - aa
+            ) p.z > 0 ? 360 - vv : vv - a
+        ) [a, v, l]
+    ];
+
+// we might want to remove the old rounded_polygon_tangents and to change rounded_polygon_length to use the v2 tangents
+function rounded_polygon_tangents_v2(points) = //! Compute the straight sections between a point and the next point, for each section [start_point, end_point, length]
+    let(len = len(points))
+    [ for(i = [0 : len - 1])
+        let(ends = circle_tangent(points[i], points[(i + 1) % len]))
+            [ends.x, ends.y, norm(ends.x - ends.y)]
+    ];
+
+function rounded_polygon_tangents(points) = //! Compute the straight sections between a point and the next point, needed to draw and to compute the lengths
     let(len = len(points))
         [for(i = [0 : len - 1])
             let(ends = circle_tangent(points[i], points[(i + 1) % len]))
                 for(end = [0, 1])
                     ends[end]];
 
-function sumv(v, i = 0, sum = 0) = i == len(v) ? sum : sumv(v, i + 1, sum + v[i]);
+//function sumv(v, i = 0, sum = 0) = i == len(v) ? sum : sumv(v, i + 1, sum + v[i]); // moved to maths.scad
 
 // the cross product of 2D vectors is the area of the parallelogram between them. We use the sign of this to decide if the angle is bigger than 180.
 function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents`
