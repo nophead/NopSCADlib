@@ -159,5 +159,6 @@ if __name__ == '__main__':
                 print('%s [%s](%s "show release") %s %s' % ('#' * (level + 1), ver, url + '/releases/tag/' + ver, type, diff), file = file)
 
             # Print commits excluding merges
-            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull'):
+
+            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated changelog.*', c.comment):
                 print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment, url)), file = file)
