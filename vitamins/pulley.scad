@@ -42,7 +42,7 @@ function pulley_screw(type)            = type[13]; //! Grub screw type
 function pulley_screws(type)           = type[14]; //! Number of grub screws
 
 function pulley_ir(type)     = pulley_od(type) / 2 - (pulley_teeth(type) ? belt_tooth_height(pulley_belt(type)) : 0);   //! Inside radius of the teeth
-function pulley_pr(type)     = let(belt = pulley_belt(type))                                                            //! Pitch radius
+function pulley_pr(type, belt = undef) = let(belt = is_undef(belt) ? pulley_belt(type) : belt)      //! Pitch radius, `belt` only needed for non-standard belt over smooth pulleys
                                  pulley_teeth(type) ? pulley_teeth(type) * belt_pitch(belt) / 2 / PI
                                                     : pulley_ir(type) + belt_thickness(belt) - belt_pitch_height(belt);
 

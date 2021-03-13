@@ -2681,7 +2681,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 | `pulley_height(type)` | Total height of pulley |
 | `pulley_ir(type)` | Inside radius of the teeth |
 | `pulley_offset(type)` | Offset of the belt path centre |
-| `pulley_pr(type)` | Pitch radius |
+| `pulley_pr(type, belt = undef)` | Pitch radius, `belt` only needed for non-standard belt over smooth pulleys |
 
 ### Modules
 | Module | Description |
