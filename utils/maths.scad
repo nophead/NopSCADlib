@@ -155,7 +155,6 @@ function circle_intersect(c1, r1, c2, r2) =     //! Calculate one point where tw
         a = atan2(v.z, v.x) - acos((sqr(d) + sqr(r2) - sqr(r1)) / (2 * d * r2)) // Cosine rule to find angle from c2
      ) c2 + r2 * [cos(a), 0, sin(a)];           // Point on second circle
 
-function slice(v, range) = [ for (i = range) v[i] ]; //! slice a section of a vector v, takes elements from v with index in the range
 function map(v, func) = [ for (e = v) func(e) ]; //! make a new vector where the func function argument is applied to each element of the vector v
 function mapi(v, func) = [ for (i = [0:len(v)-1]) func(i,v[i]) ]; //! make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument.
 function reduce(v, func, unity) = let ( r = function(i,val) i == len(v) ? val : r(i + 1, func(val, v[i])) ) r(0, unity); //! reduce a vector v to a single entity by applying the func function recursivly to the reduced value so far and the next element, starting with unity as the inital reduced value

@@ -65,7 +65,7 @@ module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), toot
     pointsx = info[2]; // array of [x,y,r], r is negative if left-angle (points may have pulleys as third element, but pointsx have radi)
     tangents = info[3];
     arcs = info[4];
-    length = _belt_length(type, info, open, gap);
+    length = ceil(_belt_length(type, info, open, gap) / pitch) * pitch;
 
     part = str(type[0],pitch);
     vitamin(str("xbelt(", no_point(part), "x", width, ", ", points, "): Belt ", part," x ", width, "mm x ", length, "mm"));
@@ -101,10 +101,10 @@ module belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20), toot
     for (i = [(open?1:0):len-(open?2:1)]) {
         p = pointsx[i];
         arc = arcs[i];
-        translate([p.x,p.y,0]) rotate([0,0,arc.y]) {
-            mirrored = !xor(twisted[i], p.z < 0) ? 1 : 0;
-            color(tooth_colour) rotate_extrude(angle=arc.x) translate([abs(p.z),0,0]) mirror([mirrored,0,0]) beltp();
-            color(belt_colour) rotate_extrude(angle=arc.x) translate([abs(p.z),0,0]) mirror([mirrored,0,0]) beltb();
+        translate([p.x,p.y,0]) rotate([0,0,arc[1]]) {
+            mirrored = xor(twisted[i], p[2] < 0) ? 0 : 1;
+            color(tooth_colour) rotate_extrude(angle=arc[0]) translate([abs(p[2]),0,0]) mirror([mirrored,0,0]) beltp();
+            color(belt_colour) rotate_extrude(angle=arc[0]) translate([abs(p[2]),0,0]) mirror([mirrored,0,0]) beltb();
         }
     }
 
@@ -121,7 +121,7 @@ let(
     dotwist = function(i,istwisted) let( in = (i + 1) % len )
         is_list(twist) ? twist[i] :
         !is_undef(twist) ? i == twist :
-        open && is_list(points[in].z) && auto_twist ? !pulley_teeth(points[in].z) && !xor(isleft(in),istwisted) :
+        open && is_list(points[in][2]) && auto_twist ? !pulley_teeth(points[in][2]) && !xor(isleft(in),istwisted) :
         false,
     twisted = [ for (
             i = 0,
@@ -134,13 +134,13 @@ let(
             twist = dotwist(i,istwisted),
             nexttwisted = xor(twist,istwisted)
         ) [twist,istwisted] ],
-    pointsx = mapi(points, function(i, p) !is_list(p.z) ? p : [p.x, p.y, let( // if p.z is not a list it is just r, otherwise it is taken to be a pulley and we calculate r
+    pointsx = mapi(points, function(i, p) !is_list(p[2]) ? p : [p.x, p.y, let( // if p[2] is not a list it is just r, otherwise it is taken to be a pulley and we calculate r
             isleft = isleft(i),
-            r = belt_pulley_pr(type, p.z, twisted=!xor(pulley_teeth(p.z),xor(isleft, twisted[i].y)))
+            r = belt_pulley_pr(type, p[2], twisted=!xor(pulley_teeth(p[2]),xor(isleft, twisted[i][1])))
         ) isleft ? -r : r ] ),
-    tangents = rounded_polygon_tangents_v2(pointsx),
+    tangents = rounded_polygon_tangents(pointsx),
     arcs = rounded_polygon_arcs(pointsx, tangents)
-) [ [ for (t = twisted) t.x ], [ for (t = twisted) t.y ], pointsx, tangents, arcs];
+) [ [ for (t = twisted) t[0] ], [ for (t = twisted) t[1] ], pointsx, tangents, arcs];
 
 function belt_pulley_pr(type, pulley, twisted=false) = //! Pitch radius. Default it expects the belt tooth to be against a toothed pulley an the backside to be against a smooth pulley (an idler). If `twisted` is true, the the belt is the other way around.
     let(
@@ -157,8 +157,8 @@ function _belt_length(type, info, open, gap) = let(
     len = len(info[0]),
     pitch = belt_pitch(type),
     d = open ? 1 : 0,
-    tangents = slice(info[3], [0:len - 1 - d]) ,
-    arcs = slice(info[4], [d:len - 1 - d]),
-    beltl = sumv( map( concat(tangents, arcs), function(e) e.z ) ),
+    tangents = slice(info[3], 0, len - d) ,
+    arcs = slice(info[4], d, len - d),
+    beltl = sumv( map( concat(tangents, arcs), function(e) e[2] ) ),
     gapl = is_list(gap) ? gap.x : is_undef(gap) ? 0 : gap
-) ceil((beltl - gapl) / pitch) * pitch;
+) beltl - gapl;
