@@ -157,7 +157,7 @@ function circle_intersect(c1, r1, c2, r2) =     //! Calculate one point where tw
 
 function map(v, func) = [ for (e = v) func(e) ]; //! make a new vector where the func function argument is applied to each element of the vector v
 function mapi(v, func) = [ for (i = [0:len(v)-1]) func(i,v[i]) ]; //! make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument.
-function reduce(v, func, unity) = let ( r = function(i,val) i == len(v) ? val : r(i + 1, func(val, v[i])) ) r(0, unity); //! reduce a vector v to a single entity by applying the func function recursivly to the reduced value so far and the next element, starting with unity as the inital reduced value
+function reduce(v, func, unity) = let ( r = function(i,val) i == len(v) ? val : r(i + 1, func(val, v[i])) ) r(0, unity); //! reduce a vector v to a single entity by applying the func function recursively to the reduced value so far and the next element, starting with unity as the initial reduced value
 function sumv(v) = reduce(v, function(a, b) a + b, 0); //! sum a vector of values that can be added with "+"
 
 function xor(a,b) = (a && !b) || (!a && b);

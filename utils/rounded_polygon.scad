@@ -37,7 +37,7 @@ function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two 
         v = [cos(theta), sin(theta)]
     )[ p1 + r1 * v, p2 + r2 * v ];
 
-function rounded_polygon_arcs(points, tangents) = //! Compute the arcs at the points, for each point [angle,rotate_angle,length]
+function rounded_polygon_arcs(points, tangents) = //! Compute the arcs at the points, for each point [angle, rotate_angle, length]
     let(
         len = len(points)
     ) [ for (i = [0: len-1])
@@ -49,12 +49,12 @@ function rounded_polygon_arcs(points, tangents) = //! Compute the arcs at the po
             v2 = p2 - p,
             sr = points[i][2],
             r = abs(sr),
-            a = r < 0.001 ? 0 : let( aa = acos((v1 * v2) / sqr(r)) ) cross(v1, v2)*sign(sr) <= 0 ? aa : 360 - aa,
+            a = r < 0.001 ? 0 : let( aa = acos((v1 * v2) / sqr(r)) ) cross(v1, v2) * sign(sr) <= 0 ? aa : 360 - aa,
             l = PI * a * r / 180,
             v0 = [r, 0],
             v = let (
-                vv = norm(v0-v2) < 0.001 ? 0 : abs(v2.y) < 0.001 ? 180 :
-                        let( aa = acos((v0 * v2) / sqr(r)) ) cross(v0, v2)*sign(sr) <= 0 ? aa : 360 - aa
+                vv = norm(v0 - v2) < 0.001 ? 0 : abs(v2.y) < 0.001 ? 180 :
+                        let( aa = acos((v0 * v2) / sqr(r)) ) cross(v0, v2) * sign(sr) <= 0 ? aa : 360 - aa
             ) sr > 0 ? 360 - vv : vv - a
         ) [a, v, l]
     ];
@@ -84,6 +84,7 @@ module rounded_polygon(points, _tangents = undef) { //! Draw the rounded polygon
                     hull() {
                         translate([points[i].x, points[i].y])
                             circle(points[i][2]);
+
                         polygon([tangents[(2 * i - 1 + 2 * len) % (2 * len)], tangents[2 * i], [points[i].x, points[i].y]]);
                     }
 
@@ -95,7 +96,7 @@ module rounded_polygon(points, _tangents = undef) { //! Draw the rounded polygon
                     translate([points[i].x, points[i].y])
                         circle(-points[i][2]);
 
-                    polygon([tangents[(2 * i - 1 + 2 * len) % (2 *len)], tangents[2 * i], [points[i].x, points[i].y]]);
+                    polygon([tangents[(2 * i - 1 + 2 * len) % (2 * len)], tangents[2 * i], [points[i].x, points[i].y]]);
                 }
      }
 }

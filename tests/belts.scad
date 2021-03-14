@@ -25,9 +25,9 @@ use <../utils/layout.scad>
 module belt_test() {
     p2 = [-75, -50];
     p3 = [-75, 100];
-    p4 = [75,  100];
+    p4 = [ 75, 100];
 
-    p5 = [75  + pulley_pr(GT2x20ob_pulley) - pulley_pr(GT2x16_plain_idler), +pulley_pr(GT2x16_plain_idler)];
+    p5 = [ 75 + pulley_pr(GT2x20ob_pulley) - pulley_pr(GT2x16_plain_idler), +pulley_pr(GT2x16_plain_idler)];
     p6 = [-75 + pulley_pr(GT2x20ob_pulley) + pulley_pr(GT2x16_plain_idler), -pulley_pr(GT2x16_plain_idler)];
 
     module pulleys(flip = false) {
@@ -52,19 +52,21 @@ module belt_test() {
         translate(p6) pulley_assembly(GT2x16_plain_idler);
     }
 
-    path = [ [p5.x, p5.y, pulley_pr(GT2x16_plain_idler)],
+    path = [ [-40,  0, 0],
              [p6.x, p6.y, -pulley_pr(GT2x16_plain_idler)],
              [p2.x, p2.y, pulley_pr(GT2x20ob_pulley)],
              [p3.x, p3.y, pulley_pr(GT2x20ob_pulley)],
-             [p4.x, p4.y, pulley_pr(GT2x20ob_pulley)]
+             [p4.x, p4.y, pulley_pr(GT2x20ob_pulley)],
+             [p5.x, p5.y, pulley_pr(GT2x16_plain_idler)],
+             [40,   0, 0],
            ];
 
     belt = GT2x6;
-    belt(belt, path, 80, [0,  0]);
+    belt(belt, path, open = true);
     pulleys();
     translate_z(20)
         hflip() {
-            belt(belt, path, 80, [0,  0], belt_colour = grey(90), tooth_colour = grey(50));
+            belt(belt, path, open = true, belt_colour = grey(90), tooth_colour = grey(50));
             pulleys(flip=true);
         }
 
