@@ -51,15 +51,20 @@ function coreXY_lower_tooth_colour(type)    = type[8]; //! Colour of the lower b
 // relative to the anchor pulley so that the belts align properly
 function coreXY_drive_pulley_x_alignment(type) = //! Belt alignment offset of the drive pulley relative to the anchor pulley
     (pulley_od(coreXY_drive_pulley(type)) - pulley_od(coreXY_toothed_idler(type))) / 2;
+
 function coreXY_coincident_separation(type) = //! Value of x, y separation to make y-carriage pulleys coincident
     [ -coreXY_plain_idler_offset(type).x, -(pulley_od(coreXY_plain_idler(type)) + pulley_od(coreXY_toothed_idler(type)))/2, 0 ];
+
 function coreXY_plain_idler_offset(type)    = //! Offset of y-carriage plain idler
     [ (pulley_od(coreXY_plain_idler(type)) + pulley_od(coreXY_drive_pulley(type))) / 2 + coreXY_drive_pulley_x_alignment(type), pulley_od(coreXY_plain_idler(type))/2, 0 ];
+
 function coreXY_toothed_idler_offset(type)  = //! offset of y-carriage toothed idler
     [ 0, -pulley_pr(coreXY_toothed_idler(type)), 0 ];
+
 // helper functions for positioning idlers when the stepper motor drive pulley is offset
 function coreXY_drive_toothed_idler_offset(type) = //! Offset of toothed drive idler pulley
     [ 0, coreXY_drive_pulley_x_alignment(type), 0 ];
+
 function coreXY_drive_plain_idler_offset(type) = //! Offset of plain drive idler pulley
     [ coreXY_plain_idler_offset(type).x, -(pulley_od(coreXY_plain_idler(type)) + pulley_od(coreXY_drive_pulley(type))) / 2, 0 ];
 
@@ -86,7 +91,7 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
 
     // toothed idler for offset stepper motor drive pulley
     p3t_type = coreXY_toothed_idler(type);
-    p3t = [ -size.x / 2 + (drive_pulley_offset.x > 0 ? 0 : 2*coreXY_drive_pulley_x_alignment(type)),
+    p3t = [ -size.x / 2 + (drive_pulley_offset.x > 0 ? 0 : 2 * coreXY_drive_pulley_x_alignment(type)),
             size.y / 2 + coreXY_drive_pulley_x_alignment(type) + drive_pulley_offset.y
     ];
 
@@ -102,11 +107,11 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
             size.y / 2 - pulley_od(p3p_type) / 2 - pulley_od(p3d_type) / 2 + drive_pulley_offset.y
     ];
 
-    // dummy pulleys for y separation
-    p5_type = p4_type;
-    p5 = [ pos.x - size.x / 2, -size.y / 2 + pos.y + separation_y / 2 ];
-    p6_type = p0_type;
-    p6 = [ pos.x - size.x / 2, -size.y / 2 + pos.y - separation_y / 2 ];
+    // Start and end points
+    start_p = [ pos.x - size.x / 2 + x_gap / 2, -size.y / 2 + pos.y - separation_y / 2, 0 ];
+    end_p   = [ pos.x - size.x / 2 - x_gap / 2, -size.y / 2 + pos.y + separation_y / 2, 0 ];
+
+    //p6_type = p0_type;
 
     module show_pulleys(show_pulleys) {// Allows the pulley colour to be set for debugging
         if (is_list(show_pulleys))
@@ -119,16 +124,21 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
     show_pulleys(show_pulleys) {
         translate(p0)
             pulley_assembly(p0_type); // y-carriage toothed pulley
+
         translate(p1)
             pulley_assembly(p1_type); // bottom right toothed idler pulley
+
         translate(p2)
             pulley_assembly(p2_type); // bottom left anchor toothed idler pulley
+
         translate(p3d)
             hflip(hflip)
                 pulley_assembly(p3d_type); // top left stepper motor drive pulley
+
         if (drive_pulley_offset.x) { // idler pulleys for offset stepper motor drive pulley
             translate(p3t)
                 pulley_assembly(p3t_type); // toothed idler
+
             translate(p3p)
                 pulley_assembly(p3p_type); // plain idler
         }
@@ -157,20 +167,15 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
         [ p3t.x, p3t.y, pulley_od(p3t_type) / 2 ],
         [ p4.x, p4.y, -pulley_od(p4_type) / 2 ]
     ];
-    path1 = [ // use eps for corner radius to get sharp corners so this part of the belt is deleted by the gap
-        [ p5.x, p5.y, eps ],
-        [ p6.x, p6.y, eps ]
-    ];
 
     belt = coreXY_belt(type);
 
     path0 = drive_pulley_offset.x == 0 ? concat(path0a, path0b) : drive_pulley_offset.x > 0 ? concat(path0a, path0c) : concat(path0a, path0d);
-    path = separation_y == 0 ? path0 : concat(path0, path1);
+    path = concat([start_p], path0, [end_p]);
 
     belt(type = belt,
         points = path,
-        gap = [ x_gap + eps, abs(separation_y) + 2 ],
-        gap_pos = [ pos.x - size.x / 2, pos.y - size.y / 2 + belt_pitch_height(belt) - belt_thickness(belt) / 2 ],
+        open = true,
         belt_colour  = lower_belt ? coreXY_lower_belt_colour(type) : coreXY_upper_belt_colour(type),
         tooth_colour = lower_belt ? coreXY_lower_tooth_colour(type) : coreXY_upper_tooth_colour(type));
 }
@@ -181,6 +186,7 @@ module coreXY(type, size, pos, separation, x_gap, plain_idler_offset = 0, upper_
         hflip()
             explode(25)
                 coreXY_half(type, size, [size.x - pos.x - separation.x, pos.y], separation.y, x_gap, plain_idler_offset, [-lower_drive_pulley_offset.x, lower_drive_pulley_offset.y], show_pulleys, lower_belt = true, hflip = true);
+
         // upper belt
         translate([separation.x, 0, separation.z])
             explode(25)

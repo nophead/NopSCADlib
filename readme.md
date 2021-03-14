@@ -267,13 +267,22 @@ SCSnUU and SCSnLUU bearing blocks
 ---
 <a name="Belts"></a>
 ## Belts
-Models timing belt running over toothed or smooth pulleys and calculates an accurate length.
-Only models 2D paths, so not crossed belt core XY!
+Models timing belt running in a path over toothed or smooth pulleys and calculates an accurate length.
+Only models 2D paths, belt may twist to support crossed belt core XY and other designes where the belt twists!
+
+By default the path is a closed loop. An open loop can be specified by specifying `open=true`, and in that case the start and end points are not connected, leaving the loop open.
+
+To get a 180 degree twist of the loop, you can use the `twist` argument. `Twist` can be a single number, and in that case the belt will twist after
+the position with that number. Alternatively `twist` can be a list of boolean values with a boolean for each position; the belt will then twist after
+the position that have a `true` value in the `twist` list. If the path is specified with pulley/idler types, then you can use `auto_twist=true`; in
+that case the belt will automatically twist so the back of the belt always runs against idlers and the tooth side runs against pullies. If you use
+`open=true` then you might also use `start_twist=true` to let the belt start the part with the back side out.
+
+The path must be specified as a list of positions. Each position should be either a vector with `[x, y, pulley]` or `[x, y, r]`. A pully is a type from
+`pulleys.scad`, and correct radius and angle will automatically be calculated. Alternatively a radius can be specified directly.
 
 To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
-
-By default the path is a closed loop but a gap length and position can be specified to make open loops.
-To draw the gap its XY position is specified by `gap_pos`. `gap_pos.z` can be used to specify a rotation if the gap is not at the bottom of the loop.
+Alternativley you can just specify smooth pulleys in the path, and it will then happen automatically.
 
 Individual teeth are not drawn, instead they are represented by a lighter colour.
 
@@ -295,13 +304,15 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `belt_length(points, gap = 0)` | Compute belt length given path and optional gap |
+| `_belt_points_info(type, points, open, twist, auto_twist, start_twist)` | Helper function that calculates [twist, istwisted, points, tangents, arcs] |
+| `belt_length(type, points, open = false)` | Compute belt length given path |
 | `belt_pitch_to_back(type)` | Offset of the back from the pitch radius |
+| `belt_pulley_pr(type, pulley, twisted=false)` | Pitch radius. Default it expects the belt tooth to be against a toothed pulley an the backside to be against a smooth pulley (an idler). If `twisted` is true, the the belt is the other way around. |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `belt(type, points, gap = 0, gap_pos = undef, belt_colour = grey(20)` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless a gap is specified |
+| `belt(type, points, belt_colour = grey(20)` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless open is specified |
 
 ![belts](tests/png/belts.png)
 
@@ -309,17 +320,18 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 128mm |
-|   2 | `belt(GT2x6, [ ... ], 80, [0, 0])` |  Belt GT2 x 6mm x 572mm |
+|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 552mm |
+|   2 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 556mm |
 |   1 | `belt(T2p5x6, [ ... ])` |  Belt T2.5 x 6mm x 130mm |
 |   1 | `belt(T5x10, [ ... ])` |  Belt T5 x 10mm x 130mm |
 |   1 | `belt(T5x6, [ ... ])` |  Belt T5 x 6mm x 130mm |
 |   2 | `insert(F1BM3)` |  Heatfit insert M3 |
 |   2 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
 |   4 | `pulley(GT2x20_toothed_idler)` |  Pulley GT2 idler 20 teeth |
-|   2 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
-|   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
+|   6 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
+|   3 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
 |   2 | `screw(M3_cs_cap_screw, 20)` |  Screw M3 cs cap x 20mm |
-|   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+|   6 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
 
 
 <a href="#top">Top</a>
@@ -5628,8 +5640,8 @@ allows flexible positioning of the motors.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `belt(GT2x6, [ ... ], [10.0078, 11.69], [0, -24.686])` |  Belt GT2 x 6mm x 742mm |
-|   1 | `belt(GT2x6, [ ... ], [10.0078, 11.69], [0, -24.686])` |  Belt GT2 x 6mm x 852mm |
+|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 728mm |
+|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 824mm |
 |   7 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
 |   3 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
 |   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
@@ -5824,8 +5836,11 @@ Maths utilities for manipulating vectors and matrices.
 | `euler(R)` | Convert a rotation matrix to a Euler rotation vector. |
 | `identity(n, x = 1)` | Construct an arbitrary size identity matrix |
 | `invert(m)` | Invert a matrix |
+| `map(v, func)` | make a new vector where the func function argument is applied to each element of the vector v |
+| `mapi(v, func)` | make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument. |
 | `nearly_zero(x)` | True if x is close to zero |
 | `radians(degrees)` | Convert radians to degrees |
+| `reduce(v, func, unity)` | reduce a vector v to a single entity by applying the func function recursively to the reduced value so far and the next element, starting with unity as the initial reduced value |
 | `reverse(v)` | Reverse a vector |
 | `rot2_z(a)` | Generate a 2x2 matrix to rotate around z |
 | `rot3_z(a)` | Generate a 3x3 matrix to rotate around z |
@@ -5836,12 +5851,14 @@ Maths utilities for manipulating vectors and matrices.
 | `solve(m, i = 0, j = 0)` | Solve each row ensuring diagonal is not zero |
 | `solve_row(m, i)` | Make diagonal one by dividing the row by it and subtract from other rows to make column zero |
 | `sqr(x)` | Square x |
+| `sumv(v)` | sum a vector of values that can be added with "+" |
 | `tanh(x)` | hyperbolic tangent |
 | `transform(v, m)` | Apply 4x4 transform to a 3 vector by extending it and cropping it again |
 | `transform_points(path, m)` | Apply transform to a path |
 | `translate(v)` | Generate a 4x4 translation matrix, `v` can be `[x, y]`, `[x, y, z]` or `z` |
 | `transpose(m)` | Transpose an arbitrary size matrix |
 | `unit(v)` | Convert `v` to a unit vector |
+| `vec2(v)` | Return a 2 vector with the first two elements of `v` |
 | `vec3(v)` | Return a 3 vector with the first three elements of `v` |
 | `vec4(v)` | Return a 4 vector with the first three elements of `v` |
 
@@ -5957,8 +5974,9 @@ Because the tangents need to be calculated to find the length these can be calcu
 | Function | Description |
 |:--- |:--- |
 | `circle_tangent(p1, p2)` | Compute the clockwise tangent between two circles represented as [x,y,r] |
+| `rounded_polygon_arcs(points, tangents)` | Compute the arcs at the points, for each point [angle, rotate_angle, length] |
 | `rounded_polygon_length(points, tangents)` | Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents` |
-| `rounded_polygon_tangents(points)` | Compute the straight sections needed to draw and to compute the lengths |
+| `rounded_polygon_tangents(points)` | Compute the straight sections between a point and the next point, for each section [start_point, end_point, length] |
 
 ### Modules
 | Module | Description |
