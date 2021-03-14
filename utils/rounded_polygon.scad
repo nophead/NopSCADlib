@@ -24,6 +24,7 @@
 //! Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
 //
 include <../utils/core/core.scad>
+use <../utils/maths.scad>
 
 function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two circles represented as [x,y,r]
     let(
@@ -41,19 +42,20 @@ function rounded_polygon_arcs(points, tangents) = //! Compute the arcs at the po
         len = len(points)
     ) [ for (i = [0: len-1])
         let(
-            p1 = tangents[(i - 1 + len) % len][1],
-            p2 = tangents[i][0],
-            p = points[i],
+            p1 = vec2(tangents[(i - 1 + len) % len][1]),
+            p2 = vec2(tangents[i][0]),
+            p = vec2(points[i]),
             v1 = p1 - p,
             v2 = p2 - p,
-            r = abs(p.z),
-            a = let( aa = acos((v1 * v2) / sqr(r)) ) cross(v1, v2)*sign(p.z) <= 0 ? aa : 360 - aa,
+            sr = points[i][2],
+            r = abs(sr),
+            a = r < 0.001 ? 0 : let( aa = acos((v1 * v2) / sqr(r)) ) cross(v1, v2)*sign(sr) <= 0 ? aa : 360 - aa,
             l = PI * a * r / 180,
             v0 = [r, 0],
             v = let (
                 vv = norm(v0-v2) < 0.001 ? 0 : abs(v2.y) < 0.001 ? 180 :
-                        let( aa = acos((v0 * v2) / sqr(r)) ) cross(v0, v2)*sign(p.z) <= 0 ? aa : 360 - aa
-            ) p.z > 0 ? 360 - vv : vv - a
+                        let( aa = acos((v0 * v2) / sqr(r)) ) cross(v0, v2)*sign(sr) <= 0 ? aa : 360 - aa
+            ) sr > 0 ? 360 - vv : vv - a
         ) [a, v, l]
     ];
 
