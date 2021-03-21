@@ -3037,6 +3037,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 |   1 | `screw(M5_hex_screw, 30)` |  Screw M5 hex x 30mm |
 |   1 | `screw(M5_pan_screw, 30)` |  Screw M5 pan x 30mm |
 |   1 | `screw(M6_cap_screw, 30)` |  Screw M6 cap x 30mm |
+|   1 | `screw(M6_cs_cap_screw, 30)` |  Screw M6 cs cap x 30mm |
 |   1 | `screw(M6_hex_screw, 30)` |  Screw M6 hex x 30mm |
 |   1 | `screw(M6_pan_screw, 30)` |  Screw M6 pan x 30mm |
 |   1 | `screw(M8_cap_screw, 35)` |  Screw M8 cap x 35mm |
