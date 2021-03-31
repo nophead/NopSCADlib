@@ -138,6 +138,10 @@ module pulley(type, colour = silver) { //! Draw a pulley
         else
             core();
     }
+
+    if($children)
+        translate_z(pulley_height(type))
+            children();
 }
 
 module pulley_assembly(type, colour = silver) { //! Draw a pulley with its grub screws in place
