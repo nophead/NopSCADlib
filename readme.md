@@ -5863,6 +5863,7 @@ Maths utilities for manipulating vectors and matrices.
 | `vec2(v)` | Return a 2 vector with the first two elements of `v` |
 | `vec3(v)` | Return a 3 vector with the first three elements of `v` |
 | `vec4(v)` | Return a 4 vector with the first three elements of `v` |
+| `xor(a,b)` | Logical exclusive OR |
 
 ### Modules
 | Module | Description |
