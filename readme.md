@@ -2699,7 +2699,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `pulley(type, colour = silver)` | Draw a pulley |
+| `pulley(type, colour = silver)` | Draw a pulley, any children are placed above. |
 | `pulley_assembly(type, colour = silver)` | Draw a pulley with its grub screws in place |
 
 ![pulleys](tests/png/pulleys.png)
