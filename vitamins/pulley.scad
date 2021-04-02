@@ -53,7 +53,7 @@ function pulley_extent(type) = max(pulley_flange_dia(type), pulley_hub_dia(type)
 T_angle = 40;
 GT_r = 0.555;
 
-module pulley(type, colour = silver) { //! Draw a pulley
+module pulley(type, colour = silver) { //! Draw a pulley, any children are placed above.
     teeth = pulley_teeth(type);
     od = pulley_od(type);
 
