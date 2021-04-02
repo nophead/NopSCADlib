@@ -33,7 +33,9 @@ SSR15= [ "SSR15", 15, 12.5, 10,   60, 7.5, 4.5, 5.3, M4_cap_screw,    M4_cs_cap_
 //                  L     L1    W   H   H1   C   B
 MGN5_carriage   = [ 16,    9.6, 12,  6, 1.5, 0,   8, M2_cap_screw, MGN5 ];
 MGN7C_carriage  = [ 23,   14.3, 17,  8, 1.5, 8,  12, M2_cap_screw, MGN7 ];
+MGN7H_carriage  = [ 30.8, 21.8, 17,  8, 1.5,13,  12, M2_cap_screw, MGN7 ];
 MGN9C_carriage  = [ 29.7, 20.8, 20, 10, 2,  10,  15, M3_cap_screw, MGN9 ];
+MGN9H_carriage  = [ 39.9, 29.9, 20, 10, 2,  16,  15, M3_cap_screw, MGN9 ];
 MGN12C_carriage = [ 34.7, 21.7, 27, 13, 3,  15,  20, M3_cap_screw, MGN12 ];
 MGN12H_carriage = [ 45.4, 32.4, 27, 13, 3,  20,  20, M3_cap_screw, MGN12 ];
 MGN15C_carriage = [ 43.3, 27.7, 32, 16, 4,  20,  25, M3_cap_screw, MGN15 ];
