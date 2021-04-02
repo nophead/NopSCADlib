@@ -162,3 +162,28 @@ function sumv(v) = reduce(v, function(a, b) a + b, 0); //! sum a vector of value
 
 function xor(a,b) = (a && !b) || (!a && b);     //! Logical exclusive OR
 function cuberoot(x)= sign(x)*abs(x)^(1/3);
+
+function quadratic_real_roots(a, b, c) =        //! Returns real roots of a quadratic equation, biggest first. Returns empty list if no real roots
+    let(2a = 2 * a,
+        2c = 2 * c,
+        det = b^2 - 2a * 2c
+    ) det < 0 ? [] :
+        let(r = sqrt(det),
+            x1 = b < 0 ? 2c / (-b + r) : (-b - r) / 2a,
+            x2 = b < 0 ? (-b + r) / 2a : 2c / (-b - r)
+        ) [x2, x1];
+
+function cubic_real_roots(a, b, c, d) = //! Returns real roots of cubic equation
+    let(b = b / a,
+        c = c / a,
+        d = d / a,
+        inflection = -b / 3,
+        p = c - b^2 / 3,
+        q = 2 * b^3 / 27 - b * c / 3 + d,
+        det = q^2 / 4 + p^3 / 27,
+        roots = !p && !q ? 1 : nearly_zero(det) ? 2 :  det < 0 ? 3 : 1,
+        r = sqrt(det),
+        x = cuberoot(-q / 2 - r) + cuberoot(-q / 2 + r)
+    ) roots == 1 ? [x] :
+      roots == 2 ? [3 * q /p + inflection, -3 * q / p / 2 + inflection] :
+      [for(i = [0 : roots - 1]) 2 * sqrt(-p / 3) * cos(acos(3 * q * sqrt(-3 / p) / p / 2) - i * 120) + inflection];

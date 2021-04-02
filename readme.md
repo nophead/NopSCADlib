@@ -5834,6 +5834,7 @@ Maths utilities for manipulating vectors and matrices.
 | `circle_intersect(c1, r1, c2, r2)` | Calculate one point where two circles in the X-Z plane intersect, clockwise around c1 |
 | `cosh(x)` | hyperbolic cosine |
 | `coth(x)` | hyperbolic cotangent |
+| `cubic_real_roots(a, b, c, d)` | Returns real roots of cubic equation |
 | `degrees(radians)` | Convert degrees to radians |
 | `euler(R)` | Convert a rotation matrix to a Euler rotation vector. |
 | `identity(n, x = 1)` | Construct an arbitrary size identity matrix |
@@ -5841,6 +5842,7 @@ Maths utilities for manipulating vectors and matrices.
 | `map(v, func)` | make a new vector where the func function argument is applied to each element of the vector v |
 | `mapi(v, func)` | make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument. |
 | `nearly_zero(x)` | True if x is close to zero |
+| `quadratic_real_roots(a, b, c)` | Returns real roots of a quadratic equation, biggest first. Returns empty list if no real roots |
 | `radians(degrees)` | Convert radians to degrees |
 | `reduce(v, func, unity)` | reduce a vector v to a single entity by applying the func function recursively to the reduced value so far and the next element, starting with unity as the initial reduced value |
 | `reverse(v)` | Reverse a vector |
