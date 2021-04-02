@@ -2030,6 +2030,7 @@ A permanent magnet that can be magnatized and de-magnatized electronically.
 | `opengrab_depth()` | Module height |
 | `opengrab_pcb()` | The PCB |
 | `opengrab_pcb_z()` | PCB offset from the front |
+| `opengrab_screw_depth()` | Max screw depth in pillars |
 | `opengrab_target_thickness()` | Target sheet thickness |
 | `opengrab_width()` | Module width |
 

@@ -62,6 +62,7 @@ function opengrab_depth() = depth;                               //! Module heig
 function opengrab_target_thickness() = target;                   //! Target sheet thickness
 function opengrab_pcb() = pcb;                                   //! The PCB
 function opengrab_pcb_z() = depth - pillar - pcb_thickness(pcb); //! PCB offset from the front
+function opengrab_screw_depth() = 4;                             //! Max screw depth in pillars
 
 module opengrab() { //! Draw OpenGrab module
     vitamin("opengrab(): OpenGrab V3 electro permanent magnet");
