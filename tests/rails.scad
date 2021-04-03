@@ -22,20 +22,27 @@ include <../vitamins/rails.scad>
 use <../utils/layout.scad>
 use <../vitamins/nut.scad>
 
+length = 200;
 sheet = 3;
 pos = 1; //[-1 : 0.1 : 1]
 
+function rail_carriages(rail) = [for(c = carriages) if(carriage_rail(c) == rail) c];
+
 module rails()
-    layout([for(l = carriages) carriage_width(l)], 20)
+    layout([for(r = rails) carriage_width(rail_carriages(r)[0])], 20)
         rotate(-90) {
-            carriage = carriages[$i];
-            rail = carriage_rail(carriage);
-            length = 200;
+            rail = rails[$i];
+            carriages = rail_carriages(rail);
+            carriage = carriages[0];
             screw = rail_screw(rail);
             nut = screw_nut(screw);
             washer = screw_washer(screw);
 
             rail_assembly(carriage, length, pos * carriage_travel(carriage, length) / 2, $i<2 ? grey(20) : "green", $i<2 ? grey(20) : "red");
+
+            if(len(carriages) > 1)
+                translate([-carriage_travel(carriages[1], length) / 2, 0])
+                    carriage(carriages[1]);
 
             rail_screws(rail, length, sheet + nut_thickness(nut, true) + washer_thickness(washer));
 
@@ -43,6 +50,8 @@ module rails()
                 translate_z(-sheet)
                     vflip()
                         nut_and_washer(nut, true);
+
+            echo(rail[0], (length - (rail_holes(rail, length) - 1) * rail_pitch(rail)) / 2);
          }
 
 if($preview)
