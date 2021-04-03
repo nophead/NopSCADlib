@@ -37,18 +37,19 @@ function rail_groove_width(type)=type[11];  //! Groove width
 
 function rail_screw_height(type, screw) = rail_height(type) - rail_bore_depth(type) + screw_head_depth(screw, rail_hole(type)); //! Position screw taking into account countersink into counterbored hole
 
-function carriage_length(type)       = type[0]; //! Overall length
-function carriage_block_length(type) = type[1]; //! Length of the metal part
-function carriage_width(type)        = type[2]; //! Width of carriage
-function carriage_height(type)       = type[3]; //! Height of carriage
-function carriage_size(type)         = [ type[0], type[2], type[3] ]; //! Size of carriage
-function carriage_clearance(type)    = type[4]; //! Gap under the carriage
-function carriage_pitch_x(type)      = type[5]; //! Screw hole x pitch
-function carriage_pitch_y(type)      = type[6]; //! Screw hole y pitch
-function carriage_screw(type)        = type[7]; //! Carriage screw type
-function carriage_rail(type)         = type[8]; //! Rail type
+function carriage_length(type)       = type[1]; //! Overall length
+function carriage_block_length(type) = type[2]; //! Length of the metal part
+function carriage_width(type)        = type[3]; //! Width of carriage
+function carriage_height(type)       = type[4]; //! Height of carriage
+function carriage_clearance(type)    = type[5]; //! Gap under the carriage
+function carriage_pitch_x(type)      = type[6]; //! Screw hole x pitch
+function carriage_pitch_y(type)      = type[7]; //! Screw hole y pitch
+function carriage_screw(type)        = type[8]; //! Carriage screw type
+function carriage_rail(type)         = type[9]; //! Rail type
+
 function carriage_screw_depth(type)  = 2 * screw_radius(carriage_screw(type)); //! Carriage thread depth
 function carriage_travel(type, rail_length) = rail_length - carriage_length(type); //! How far the carriage can travel on a given length rail
+function carriage_size(type)         = [ carriage_length(type), carriage_width(type), carriage_height(type) ]; //! Size of carriage
 
 function rail_holes(type, length) = //! Number of holes in a rail given its `length`
     floor((length - 2 * rail_end(type)) / rail_pitch(type)) + 1;
@@ -74,6 +75,8 @@ module carriage_hole_positions(type) { //! Position children over screw holes
 }
 
 module carriage(type, end_colour = grey(20), wiper_colour = grey(20)) { //! Draw the specified carriage
+    vitamin(str("carriage(", type[0], "_carriage): Linear rail carriage ", type[0]));
+
     total_l = carriage_length(type);
     block_l = carriage_block_length(type);
     block_w = carriage_width(type);
