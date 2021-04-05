@@ -145,6 +145,7 @@ module rail(type, length, colour = grey(90), use_polycircles = false) { //! Draw
     height = rail_height(type);
 
     vitamin(str("rail(", type[0], ", ", length, "): Linear rail ", type[0], " x ", length, "mm"));
+    assert(rail_end(type) < (rail_pitch(type) - rail_bore(type)) / 2, type[0]);
 
     color(colour) {
         rbr = rail_bore(type) / 2;
