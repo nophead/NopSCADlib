@@ -3056,6 +3056,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 |   1 | `screw(No4_screw, 10)` |  Screw No4 pan wood x 10mm |
 |   1 | `screw(No6_cs_screw, 30)` |  Screw No6 cs wood x 30mm |
 |   1 | `screw(No6_screw, 30)` |  Screw No6 pan wood x 30mm |
+|   1 | `screw(No8_screw, 30)` |  Screw No8 pan wood x 30mm |
 
 ### Printed
 | Qty | Filename |
