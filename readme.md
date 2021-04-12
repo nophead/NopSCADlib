@@ -2627,6 +2627,7 @@ Face order is bottom, top, left, right, front, back.
 | Function | Description |
 |:--- |:--- |
 | `psu_face_transform(type, face)` | Returns a transformation matrix to get to the specified face |
+| `psu_size(type)` | Size |
 | `terminal_block_length(type, ways)` | Total length of terminal block |
 
 ### Modules
