@@ -44,6 +44,7 @@ function psu_name(type)              = type[1];     //! The part name
 function psu_length(type)            = type[2];     //! Length
 function psu_width(type)             = type[3];     //! Width
 function psu_height(type)            = type[4];     //! Height
+function psu_size(type)              = [psu_length(type), psu_width(type), psu_height(type)]; //! Size
 function psu_screw(type)             = type[5];     //! Screw type
 function psu_screw_hole_radius(type) = type[6];     //! Clearance hole for screw, bigger than normal on ATX
 function atx_psu(type)               = type[7];     //! True if an ATX style PSU
