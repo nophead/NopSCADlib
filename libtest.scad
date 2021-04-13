@@ -46,6 +46,7 @@ use <tests/batteries.scad>
 use <tests/bearing_blocks.scad>
 use <tests/belts.scad>
 use <tests/blowers.scad>
+use <tests/box_sections.scad>
 use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
@@ -426,6 +427,7 @@ extrusion_brackets_y = rails_y + 250;
 sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 50;
 scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
+box_sections_y = sheets_y;
 
 translate([x4 + 200, belts_y + 58]) {
     belt_test();
@@ -459,6 +461,8 @@ translate([x4 + 120, extrusion_brackets_y])
 translate([x4, scs_bearing_blocks_y])
     scs_bearing_blocks();
 
+translate([x4, box_sections_y])
+    box_sections();
 
 translate([x6, 125])
     light_strips();
