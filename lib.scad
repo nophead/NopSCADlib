@@ -28,6 +28,7 @@ include <vitamins/pcbs.scad>
 include <vitamins/batteries.scad>
 include <vitamins/bearing_blocks.scad>
 include <vitamins/blowers.scad>
+include <vitamins/box_sections.scad>
 include <vitamins/bulldogs.scad>
 include <vitamins/buttons.scad>
 include <vitamins/cameras.scad>
