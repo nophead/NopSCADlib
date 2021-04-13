@@ -55,6 +55,9 @@ function pcb_polygon(type)      = type[14]; //! Optional outline polygon for odd
 function pcb_screw(type, cap = hs_cap) = Len(type[15]) ? type[15] : find_screw(cap, screw_smaller_than(pcb_hole_d(type))); //! Mounting screw type
 function pcb_size(type) = [pcb_length(type), pcb_width(type), pcb_thickness(type)]; //! Length, width and thickness in a vector
 
+function pcb_component(type, name, index = 0) = //! Return the component specified by name and index
+    [for(component = pcb_components(type)) if(component[3] == name) component][index];
+
 
 function pcb_grid_pos(type, x, y, z = 0) = //! Returns a pcb grid position
     [-pcb_length(type) / 2 + pcb_grid(type).x + 2.54 * x,
