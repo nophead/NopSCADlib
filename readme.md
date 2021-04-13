@@ -2195,6 +2195,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `pcb_component(type, name, index = 0)` | Return the component specified by name and index |
 | `pcb_component_position(type, name, index = 0)` | Return x y position of specified component |
 | `pcb_coord(type, p)` | Convert offsets from the edge to coordinates relative to the centre |
 | `pcb_grid_pos(type, x, y, z = 0)` | Returns a pcb grid position |
@@ -2331,6 +2332,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `pcb_component(type, name, index = 0)` | Return the component specified by name and index |
 | `pcb_component_position(type, name, index = 0)` | Return x y position of specified component |
 | `pcb_coord(type, p)` | Convert offsets from the edge to coordinates relative to the centre |
 | `pcb_grid_pos(type, x, y, z = 0)` | Returns a pcb grid position |
