@@ -1091,23 +1091,23 @@ Geared tin can steppers
 |:--- |:--- |
 | `gs_boss_d(type)` | Boss around the shaft diameter |
 | `gs_boss_h(type)` | Boss around the shaft height |
-| `gs_bulge2_d(type)` | Plastic rear bulge depth from centre |
-| `gs_bulge2_h(type)` | Plastic rear bulge height |
-| `gs_bulge2_w(type)` | Plastic rear bulge width |
-| `gs_bulge_d(type)` | Plastic bulge depth from centre |
-| `gs_bulge_h(type)` | Plastic bulge height |
-| `gs_bulge_w(type)` | Plastic bulge width |
+| `gs_bulge(type)` | Plastic bulge width, depth, height, z offset |
+| `gs_bulge2(type)` | Plastic rear bulge width, depth, height |
 | `gs_diameter(type)` | Can diameter |
 | `gs_flat_length(type)` | Shaft flat length |
 | `gs_height(type)` | Can height |
 | `gs_hole_d(type)` | Screw hole diameter |
 | `gs_lug_t(type)` | Screw lug thickness |
 | `gs_lug_w(type)` | Screw lug width |
+| `gs_motor(type)` | Motor diameter and height if separate from gearbox |
 | `gs_offset(type)` | Offset of the shaft from the centre of the can |
 | `gs_pitch(type)` | Screw pitch |
+| `gs_radius(type)` | Top - or bottom + corner radius |
 | `gs_shaft_d(type)` | Shaft diameter |
 | `gs_shaft_flat(type)` | Shaft width across the flats |
 | `gs_shaft_length(type)` | Shaft length |
+| `gs_wire_d(type)` | Wire diameter |
+| `gs_wires(type)` | Wire colours and grouping |
 
 ### Modules
 | Module | Description |
@@ -1121,6 +1121,7 @@ Geared tin can steppers
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `geared_stepper(28BYJ_48)` |  Geared stepper - 28BYJ-48 5V |
+|   1 | `geared_stepper(35BYGHJ75)` |  Geared stepper - 35BYGHJ75 0.4A |
 
 
 <a href="#top">Top</a>

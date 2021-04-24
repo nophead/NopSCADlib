@@ -369,10 +369,10 @@ extrusions_y = panel_meters_y + 80;
 translate([x3, veroboard_y])
     veroboard_test();
 
-translate([x3 + 70, veroboard_y + 30])
+translate([x3 + 60, veroboard_y + 20])
     geared_steppers();
 
-translate([x3 + 140, veroboard_y + 20])
+translate([x3 + 160, ssrs_y])
     pcb_mounts();
 
 translate([x3 + 170, veroboard_y + 16])
