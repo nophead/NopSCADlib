@@ -50,8 +50,6 @@ module rails()
                 translate_z(-sheet)
                     vflip()
                         nut_and_washer(nut, true);
-
-            echo(rail[0], (length - (rail_holes(rail, length) - 1) * rail_pitch(rail)) / 2);
          }
 
 if($preview)
