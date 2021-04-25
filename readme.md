@@ -1484,7 +1484,7 @@ Nuts for leadscrews.
 | `leadnut_flange_t(type)` | Flange thickness |
 | `leadnut_height(type)` | Total height |
 | `leadnut_hole_dia(type)` | The diameter of the screw holes |
-| `leadnut_hole_pitch(type)` | The radia pitch of the screw holes |
+| `leadnut_hole_pitch(type)` | The radial pitch of the screw holes |
 | `leadnut_holes(type)` | The number of screw holes |
 | `leadnut_lead(type)` | Screw lead |
 | `leadnut_od(type)` | Outer diameter of the shank |
