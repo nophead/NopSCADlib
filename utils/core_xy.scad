@@ -180,24 +180,25 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
         tooth_colour = lower_belt ? coreXY_lower_tooth_colour(type) : coreXY_upper_tooth_colour(type));
 }
 
-module coreXY(type, size, pos, separation, x_gap, plain_idler_offset = 0, upper_drive_pulley_offset, lower_drive_pulley_offset, show_pulleys = false) { //! Wrapper module to draw both belts of a coreXY setup
+module coreXY(type, size, pos, separation, x_gap, plain_idler_offset = 0, upper_drive_pulley_offset, lower_drive_pulley_offset, show_pulleys = false, left_lower = false) { //! Wrapper module to draw both belts of a coreXY setup
     translate([size.x / 2 - separation.x / 2, size.y / 2, -separation.z / 2]) {
         // lower belt
-        hflip()
+        hflip(!left_lower)
             explode(25)
-                coreXY_half(type, size, [size.x - pos.x - separation.x, pos.y], separation.y, x_gap, plain_idler_offset, [-lower_drive_pulley_offset.x, lower_drive_pulley_offset.y], show_pulleys, lower_belt = true, hflip = true);
+                coreXY_half(type, size, [size.x - pos.x - separation.x/2 - (left_lower ? x_gap : 0), pos.y], separation.y, x_gap, plain_idler_offset, [-lower_drive_pulley_offset.x, lower_drive_pulley_offset.y], show_pulleys, lower_belt = true, hflip = true);
 
         // upper belt
         translate([separation.x, 0, separation.z])
-            explode(25)
-                coreXY_half(type, size, [pos.x, pos.y], separation.y, x_gap, plain_idler_offset, upper_drive_pulley_offset, show_pulleys, lower_belt = false, hflip=false);
+            hflip(left_lower)
+                explode(25)
+                    coreXY_half(type, size, [pos.x + separation.x/2 + (left_lower ? x_gap : 0), pos.y], separation.y, x_gap, plain_idler_offset, upper_drive_pulley_offset, show_pulleys, lower_belt = false, hflip = false);
     }
 }
 
-module coreXY_belts(type, carriagePosition, coreXYPosBL, coreXYPosTR, separation, x_gap = 20, upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false) { //! Draw the coreXY belts
+module coreXY_belts(type, carriagePosition, coreXYPosBL, coreXYPosTR, separation, x_gap = 20, upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false, left_lower = false) { //! Draw the coreXY belts
     assert(coreXYPosBL.z == coreXYPosTR.z);
 
     coreXYSize = coreXYPosTR - coreXYPosBL;
     translate(coreXYPosBL)
-        coreXY(type, coreXYSize, [carriagePosition.x - coreXYPosBL.x + separation.x / 2, carriagePosition.y - coreXYPosBL.y], separation = separation, x_gap = x_gap, plain_idler_offset = 0, upper_drive_pulley_offset = upper_drive_pulley_offset, lower_drive_pulley_offset = lower_drive_pulley_offset, show_pulleys = show_pulleys);
+        coreXY(type, coreXYSize, [carriagePosition.x - coreXYPosBL.x, carriagePosition.y - coreXYPosBL.y], separation = separation, x_gap = x_gap, plain_idler_offset = 0, upper_drive_pulley_offset = upper_drive_pulley_offset, lower_drive_pulley_offset = lower_drive_pulley_offset, show_pulleys = show_pulleys, left_lower = left_lower);
 }
