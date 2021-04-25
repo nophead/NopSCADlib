@@ -5685,8 +5685,8 @@ allows flexible positioning of the motors.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `coreXY(type, size, pos, separation, x_gap, plain_idler_offset = 0, upper_drive_pulley_offset, lower_drive_pulley_offset, show_pulleys = false)` | Wrapper module to draw both belts of a coreXY setup |
-| `coreXY_belts(type, carriagePosition, coreXYPosBL, coreXYPosTR, separation, x_gap = 20, upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false)` | Draw the coreXY belts |
+| `coreXY(type, size, pos, separation, x_gap, plain_idler_offset = 0, upper_drive_pulley_offset, lower_drive_pulley_offset, show_pulleys = false, left_lower = false)` | Wrapper module to draw both belts of a coreXY setup |
+| `coreXY_belts(type, carriagePosition, coreXYPosBL, coreXYPosTR, separation, x_gap = 20, upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false, left_lower = false)` | Draw the coreXY belts |
 | `coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_offset = 0, drive_pulley_offset = [0, 0], show_pulleys = false, lower_belt = false, hflip = false)` | Draw one belt of a coreXY setup |
 
 ![core_xy](tests/png/core_xy.png)
