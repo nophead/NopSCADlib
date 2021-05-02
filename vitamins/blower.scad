@@ -28,6 +28,7 @@ use <screw.scad>
 function blower_length(type)      = type[2]; //! Length of enclosing rectangle
 function blower_width(type)       = type[3]; //! Width of enclosing rectangle
 function blower_depth(type)       = type[4]; //! Height
+function blower_size(type)        = [blower_length(type), blower_width(type), blower_depth(type)]; //! Size
 function blower_bore(type)        = type[5]; //! The air intake hole diameter
 function blower_screw(type)       = type[6]; //! The type of screws needed
 function blower_hub(type)         = type[7]; //! Rotor hub diameter
