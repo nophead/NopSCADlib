@@ -373,6 +373,7 @@ Models of radial blowers.
 |:--- |:--- |
 | `blower_casing_is_square(type)` | True for square radial fans, false for spiral shape radial blowers |
 | `blower_exit_offset(type)` | Offset of exit's centre from the edge |
+| `blower_size(type)` | Size |
 
 ### Modules
 | Module | Description |
