@@ -30,7 +30,7 @@ rr_green = [0, 146/255, 0];                                               // Rep
 
 $_bom           = is_undef($bom)             ? 0      : $bom;             // 0 no bom, 1 assemblies and stls, 2 vitamins as well
 $exploded       = is_undef($explode)         ? 0      : $explode;         // 1 for exploded view
-layer_height    = is_undef($layer_height)    ? 0.25   : $layer_height;    // layer heigth when printing
+layer_height    = is_undef($layer_height)    ? 0.25   : $layer_height;    // layer height when printing
 extrusion_width = is_undef($extrusion_width) ? 0.5    : $extrusion_width; // filament width when printing
 nozzle          = is_undef($nozzle)          ? 0.45   : $nozzle;          // 3D printer nozzle
 cnc_bit_r       = is_undef($cnc_bit_r)       ? 1.2    : $cnc_bit_r;       // minimum tool radius when milling 2D objects
