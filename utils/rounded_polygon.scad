@@ -77,7 +77,7 @@ module rounded_polygon(points, _tangents = undef) { //! Draw the rounded polygon
     indices = [0 : len - 1];
     tangents = [ for (t = _tangents ? _tangents : rounded_polygon_tangents(points)) each [t.x, t.y] ];
 
-    difference(convexity = points) {
+    difference() {
         union() {
             for(i = indices)
                 if(points[i][2] > 0)
