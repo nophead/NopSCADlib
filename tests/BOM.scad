@@ -20,10 +20,10 @@
 //
 //! BOM and assembly demonstration
 //
+$explode = 1; // Normally set on the command line when generating assembly views with views.py
 include <../core.scad>
 include <../vitamins/sheets.scad>
 use <../vitamins/insert.scad>
-$explode = 1; // Normally set on the command line when generating assembly views with views.py
 
 screw = M3_cap_screw;
 sheet = PMMA3;
