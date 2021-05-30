@@ -50,6 +50,7 @@ function thread_profile(h, crest, angle, overlap = 0.1) = //! Create thread prof
         [[-base / 2, -overlap, 0], [-crest / 2, h, 0], [crest / 2, h, 0], [base / 2, -overlap, 0]];
 
 module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or female thread, ends can be tapered, chamfered or square
+    assert(is_undef(colour) || is_list(colour), "Thread colour must be in [r, g, b] form");
     //
     // Apply colour if defined
     //
