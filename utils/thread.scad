@@ -191,7 +191,8 @@ module female_metric_thread(d, pitch, length, center = true, top = -1, bot = -1,
 }
 
 function metric_coarse_pitch(d) //! Convert metric diameter to pitch
-    = d == 1.6 ? 0.35  // M1.6
+    = d == 1.4 ? 0.3   // M1.4
+    : d == 1.6 ? 0.35  // M1.6
                : [0.4, // M2
                   0.45,// M2.5
                   0.5, // M3
