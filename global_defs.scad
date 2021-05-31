@@ -27,6 +27,7 @@
 //  Setting $_bom in the local file overrides it in the local file but not in the libs.
 //
 rr_green = [0, 146/255, 0];                                               // RepRap logo colour
+crimson  = [220/255, 20/255, 60/255];
 
 $_bom           = is_undef($bom)             ? 0      : $bom;             // 0 no bom, 1 assemblies and stls, 2 vitamins as well
 $exploded       = is_undef($explode)         ? 0      : $explode;         // 1 for exploded view
@@ -35,7 +36,7 @@ extrusion_width = is_undef($extrusion_width) ? 0.5    : $extrusion_width; // fil
 nozzle          = is_undef($nozzle)          ? 0.45   : $nozzle;          // 3D printer nozzle
 cnc_bit_r       = is_undef($cnc_bit_r)       ? 1.2    : $cnc_bit_r;       // minimum tool radius when milling 2D objects
 pp1_colour      = is_undef($pp1_colour)      ? rr_green : $pp1_colour;    // printed part colour 1, RepRap logo colour
-pp2_colour      = is_undef($pp2_colour)      ? "Crimson"  : $pp2_colour;  // printed part colour 2
+pp2_colour      = is_undef($pp2_colour)      ? crimson : $pp2_colour;     // printed part colour 2
 pp3_colour      = is_undef($pp3_colour)      ? "SteelBlue" : $pp3_colour; // printed part colour 3
 pp4_colour      = is_undef($pp4_colour)      ? "darkorange" : $pp4_colour;// printed part colour 4
 show_rays       = is_undef($show_rays)       ? false  : $show_rays;       // show camera sight lines and light direction
