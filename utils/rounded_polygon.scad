@@ -75,28 +75,28 @@ function rounded_polygon_length(points, tangents) = //! Calculate the length giv
 module rounded_polygon(points, _tangents = undef) { //! Draw the rounded polygon from the point list, can pass the tangent list to save it being calculated
     len = len(points);
     indices = [0 : len - 1];
-    tangents = [ for (t = _tangents ? _tangents : rounded_polygon_tangents(points)) each [t.x, t.y] ];
+    tangents = _tangents ? _tangents : rounded_polygon_tangents(points);
 
     difference() {
         union() {
-            for(i = indices)
+            for(i = indices, last = (i - 1 + len) % len)
                 if(points[i][2] > 0)
                     hull() {
-                        translate([points[i].x, points[i].y])
+                        translate(vec2(points[i]))
                             circle(points[i][2]);
 
-                        polygon([tangents[(2 * i - 1 + 2 * len) % (2 * len)], tangents[2 * i], [points[i].x, points[i].y]]);
+                        polygon([vec2(tangents[last][1]), vec2(tangents[i][0]), vec2(points[i])]);
                     }
 
-            polygon(tangents, convexity = points);
+            polygon([for(t = tangents) each(vec2(t))], convexity = points);
         }
-        for(i = indices)
+        for(i = indices, last = (i - 1 + len) % len)
             if(points[i][2] < 0)
                 hull() {
-                    translate([points[i].x, points[i].y])
+                    translate(vec2(points[i]))
                         circle(-points[i][2]);
 
-                    polygon([tangents[(2 * i - 1 + 2 * len) % (2 * len)], tangents[2 * i], [points[i].x, points[i].y]]);
+                    polygon([vec2(tangents[last][1]), vec2(tangents[i][0]), vec2(points[i])]);
                 }
      }
 }
