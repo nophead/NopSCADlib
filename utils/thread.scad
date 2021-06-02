@@ -156,7 +156,7 @@ module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, st
                                         translate([0, offset])
                                             square([r, len]);
 
-                                        translate([0, bot_chamfer_h])
+                                        translate([0, offset + bot_chamfer_h])
                                             square([r + h + overlap, len - top_chamfer_h - bot_chamfer_h]);
                                     }
                                     if(!solid)
