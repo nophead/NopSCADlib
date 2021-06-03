@@ -46,6 +46,18 @@ def find_scad_file(mname):
                             return filename
     return None
 
+def main_assembly(target):
+    file = None
+    if target:
+        assembly = target + "_assembly"
+        file = find_scad_file(assembly)
+    if not file:
+        assembly = "main_assembly"
+        file = find_scad_file(assembly)
+    if not file:
+        raise Exception("can't find source for " + assembly)
+    return assembly, file
+
 class Part:
     def __init__(self, args):
         self.count = 1
@@ -221,28 +233,20 @@ def parse_bom(file = "openscad.log", name = None):
     return main
 
 def usage():
-    print("\nusage:\n\tbom [target_config] [<accessory_name>_assembly] - Generate BOMs for a project or an accessory to a project.")
+    print("\nusage:\n\tbom [target_config] - Generate BOMs for a project.")
     sys.exit(1)
 
-def boms(target = None, assembly = None):
+def boms(target = None):
     try:
         bom_dir = set_config(target, usage) + "bom"
-        if assembly:
-            bom_dir += "/accessories"
-            if not os.path.isdir(bom_dir):
-                os.makedirs(bom_dir)
-        else:
-            assembly = "main_assembly"
-            if os.path.isdir(bom_dir):
-                shutil.rmtree(bom_dir)
-                sleep(0.1)
-            os.makedirs(bom_dir)
+        if os.path.isdir(bom_dir):
+            shutil.rmtree(bom_dir)
+            sleep(0.1)
+        os.makedirs(bom_dir)
         #
-        # Find the scad file that makes the module
+        # Find the scad file that makes the main assembly
         #
-        scad_file = find_scad_file(assembly)
-        if not scad_file:
-            raise Exception("can't find source for " + assembly)
+        assembly, scad_file = main_assembly(target)
         #
         # make a file to use the module
         #
@@ -259,8 +263,7 @@ def boms(target = None, assembly = None):
 
         main = parse_bom("openscad.echo", assembly)
 
-        if assembly == "main_assembly":
-            main.print_bom(True, open(bom_dir + "/bom.txt","wt"))
+        main.print_bom(True, open(bom_dir + "/bom.txt","wt"))
 
         for ass in main.assemblies:
             with open(bom_dir + "/" + ass + ".txt", "wt") as f:
@@ -278,20 +281,8 @@ def boms(target = None, assembly = None):
         sys.exit(1)
 
 if __name__ == '__main__':
-    if len(sys.argv) > 3: usage()
+    if len(sys.argv) > 2: usage()
 
-    if len(sys.argv) == 3:
-        target, assembly = sys.argv[1], sys.argv[2]
-    else:
-        if len(sys.argv) == 2:
-            if sys.argv[1][-9:] == "_assembly":
-                target, assembly = None, sys.argv[1]
-            else:
-                target, assembly = sys.argv[1], None
-        else:
-            target, assembly = None, None
+    target = sys.argv[1] if len(sys.argv) == 2 else None
 
-    if assembly:
-        if assembly[-9:] != "_assembly": usage()
-
-    boms(target, assembly)
+    boms(target)

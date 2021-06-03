@@ -270,6 +270,13 @@ The target config file is selected by generating `target.scad` that includes `co
 The rest of the project includes `target.scad` to use the configuration.
 Additionally all the generated file directories (assemblies, bom, stls, dxfs, etc.) are placed in a sub-directory called `<target_name>`.
 
+The build system will look for a `<target_name>_assembly` module and use it as the top level module instead of `main_assembly` if it it exists.
+That allows the project description to be target specific if the top level modules are in different scad files.
+The top level assembly instructions and assembly contents could also be different if appropriate.
+
+If the top level module is just a shell wrapper that simply includes one other assembly, with no additional parts, then it is removed from the build instructions and
+the assembly it calls becomes the top level. This allows a different project description for each target but only one set of top level instructions without repeating them.
+
 ### Other libraries
 
 The build scripts need to be able to locate the source files where the modules to generate the STL files and assemblies reside. They will search all the scad files

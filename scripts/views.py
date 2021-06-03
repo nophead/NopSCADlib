@@ -161,6 +161,7 @@ def views(target, do_assemblies = None):
     # Find all the scad files
     #
     main_blurb = None
+    main_assembly, main_file = bom.main_assembly(target)
     pngs = []
     for dir in source_dirs(bom_dir):
         if os.path.isdir(dir):
@@ -232,7 +233,7 @@ def views(target, do_assemblies = None):
                                                 update_image(tmp_name, tn_name)
                                     done_assemblies.append(real_name)
                                 else:
-                                    if module == 'main_assembly':
+                                    if module == main_assembly:
                                         main_blurb = blurb.scrape_module_blurb(lines[:line_no])
                         line_no += 1
     #
@@ -246,9 +247,6 @@ def views(target, do_assemblies = None):
         project = ' '.join(word[0].upper() + word[1:] for word in os.path.basename(os.getcwd()).split('_'))
         print('<a name="TOP"></a>', file = doc_file)
         print('# %s' % project, file = doc_file)
-        main_file = bom.find_scad_file('main_assembly')
-        if not main_file:
-            raise Exception("can't find source for main_assembly")
         text = blurb.scrape_blurb(source_dir + '/' + main_file)
         blurbs = blurb.split_blurb(text)
         if len(text):
