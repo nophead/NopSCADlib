@@ -31,6 +31,12 @@ from set_config import *
 import json
 import re
 
+try:
+    import parts
+    got_parts_py = True
+except:
+    got_parts_py = False
+
 def find_scad_file(mname):
     for filename in os.listdir(source_dir):
         if filename[-5:] == ".scad":
@@ -128,6 +134,33 @@ class BOM:
         if self.count == 1:
             return ass
         return ass.replace("assembly", "assemblies")
+
+    def print_CSV(self,  file = None):
+        i = 0
+        for part in sorted(self.vitamins):
+            i += 1
+            if ': ' in part:
+                part_no, description = part.split(': ')
+            else:
+                part_no, description = "", part
+            qty = self.vitamins[part].count
+            if got_parts_py:
+                match = re.match(r'^.*\((.*?)[,\)].*$', part_no)
+                if match and not match.group(1).startswith('"'):
+                    part_no = part_no.replace('(' + match.group(1), '_' + match.group(1) + '(').replace('(, ', '(')
+                func = 'parts.' + part_no.replace('(', '(%d, ' % qty).replace(', )', ')')
+                func = func.replace('true',  'True').replace('false', 'False').replace('undef', 'None')
+                try:
+                    price, url = eval(func)
+                    print("'%s',%3d,%.2f,'=B%d*C%d',%s" % (description, qty, price, i, i, url), file=file)
+                except:
+                    if part_no:
+                        print("%s not found in parts.py" % func)
+                    print("'%s',%3d" % (description, qty), file=file)
+            else:
+                print("'%s',%3d" % (description, qty), file=file)
+        if got_parts_py:
+            print(",'=SUM(B1:B%d)',,'=SUM(D1:D%d)'" %(i, i), file=file)
 
     def print_bom(self, breakdown, file = None):
         if self.vitamins:
@@ -264,6 +297,8 @@ def boms(target = None):
         main = parse_bom("openscad.echo", assembly)
 
         main.print_bom(True, open(bom_dir + "/bom.txt","wt"))
+
+        main.print_CSV(open(bom_dir + "/bom.csv","wt"))
 
         for ass in main.assemblies:
             with open(bom_dir + "/" + ass + ".txt", "wt") as f:

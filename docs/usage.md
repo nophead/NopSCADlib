@@ -277,6 +277,15 @@ The top level assembly instructions and assembly contents could also be differen
 If the top level module is just a shell wrapper that simply includes one other assembly, with no additional parts, then it is removed from the build instructions and
 the assembly it calls becomes the top level. This allows a different project description for each target but only one set of top level instructions without repeating them.
 
+### Costed BOMs
+
+A costed bill of materials can be made by opening the generated file `bom/bom.csv` in a spreadsheet program using a single quote as the string delimiter and comma as the field separator.
+That gets a list of part descriptions and quantities to which prices can be added to get the total cost and perhaps a URL of where to buy each part.
+
+If a Python file called `parts.py` is found then `bom.py` will attempt to call functions for each part to get a price and URL.
+Any functions not found are printed, so you can see the format expected.
+The function are passed the quantity to allow them to calculate volume discounts, etc.
+
 ### Other libraries
 
 The build scripts need to be able to locate the source files where the modules to generate the STL files and assemblies reside. They will search all the scad files
