@@ -77,7 +77,7 @@ def bom_to_assemblies(bom_dir, bounds_map):
     #
     if flat_bom:
         ass = flat_bom[-1]
-        if len(ass["assemblies"]) < 2 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
+        if len(ass["assemblies"]) == 1 and not ass["vitamins"] and not ass["printed"] and not ass["routed"]:
             flat_bom = flat_bom[:-1]
     return [assembly["name"] for  assembly in flat_bom]
 
