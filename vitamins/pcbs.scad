@@ -705,6 +705,8 @@ PERF70x30 = ["PERF70x30", "Perfboard 70 x 30mm", 70, 30, 1.6, 0, 2.3, 0, "green"
 
 PERF60x40 = ["PERF60x40", "Perfboard 60 x 40mm", 60, 40, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
 
+PERF70x51 = ["PERF70x51", "Perfboard 70 x 51mm", 70, 51, 1.0, 0, 3.0, 0, "sienna", true, [[3.0, 5.25], [-3.0, 5.25], [3.0, -5.25], [-3.0, -5.25]], [], [], [5.79, 3.91]];
+
 PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna", true, [[3.0, 3.5], [-3.0, 3.5], [3.0, -3.5], [-3.0, -3.5]], [], [], [9.5, 4.5]];
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
@@ -751,6 +753,6 @@ pcbs = [MP1584EN, TP4056, ESP_01, RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1];
 
-perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
+perfboards = [PERF74x51, PERF70x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
 use <pcb.scad>

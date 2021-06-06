@@ -2470,13 +2470,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(3)` |  Molex KK header 3 way |
 |  16 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  30 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  22 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  26 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 |
 |   1 | `pcb(PSU12V1A)` |  PSU 12V 1A - not shown |
 |   1 | `pcb(PERF60x40)` |  Perfboard 60 x 40mm |
 |   1 | `pcb(PERF70x30)` |  Perfboard 70 x 30mm |
 |   1 | `pcb(PERF70x50)` |  Perfboard 70 x 50mm |
+|   1 | `pcb(PERF70x51)` |  Perfboard 70 x 51mm |
 |   1 | `pcb(PERF74x51)` |  Perfboard 74 x 51mm |
 |   1 | `pcb(PERF80x20)` |  Perfboard 80 x 20mm |
 |   1 | `pin_socket(2p54header, 13, 2, right_angle = true)` |  Pin socket 13 x 2 right_angle |
@@ -2484,13 +2485,13 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(RPI3)` |  Raspberry Pi 3 |
 |   1 | `pcb(RPI4)` |  Raspberry Pi 4 |
 |   1 | `pcb(RPI0)` |  Raspberry Pi Zero |
-|  12 | `screw(M2_cap_screw, 16)` |  Screw M2 cap x 16mm |
-|   4 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
+|   8 | `screw(M2_cap_screw, 16)` |  Screw M2 cap x 16mm |
+|   8 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   2 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
 |   8 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
 |   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |  12 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
-|   4 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
+|   8 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |   9 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
 |   9 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 35)` |  Screw M4 cap x 35mm |
@@ -2501,14 +2502,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  16 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  30 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  22 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  26 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   4 | pcb_spacer2060.stl |
+|   4 | pcb_spacer20100.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
@@ -2525,6 +2526,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   5 | pcb_spacer30210.stl |
 |   4 | pcb_spacer30220.stl |
 |   4 | pcb_spacer3050.stl |
+|   4 | pcb_spacer3060.stl |
 |   4 | pcb_spacer40230.stl |
 |   4 | pcb_spacer40240.stl |
 
