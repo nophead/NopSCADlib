@@ -2386,7 +2386,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_accessories(type)` | List of accessories to go on the BOM, SD cards, USB cables, etc. |
 | `pcb_colour(type)` | Colour of the subtrate |
 | `pcb_components(type)` | List of components |
-| `pcb_grid(type)` | Grid if a perfboard |
+| `pcb_grid(type)` | Grid origin if a perfboard |
 | `pcb_hole_d(type)` | Mounting hole diameter |
 | `pcb_holes(type)` | List of hole positions |
 | `pcb_land_d(type)` | Pad around mounting hole |
