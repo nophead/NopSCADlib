@@ -50,7 +50,7 @@ function pcb_parts_on_bom(type) = type[9];  //! True if the parts should be sepa
 function pcb_holes(type)        = type[10]; //! List of hole positions
 function pcb_components(type)   = type[11]; //! List of components
 function pcb_accessories(type)  = type[12]; //! List of accessories to go on the BOM, SD cards, USB cables, etc.
-function pcb_grid(type)         = type[13]; //! Grid if a perfboard
+function pcb_grid(type)         = type[13]; //! Grid origin if a perfboard
 function pcb_polygon(type)      = type[14]; //! Optional outline polygon for odd shaped boards
 function pcb_screw(type, cap = hs_cap) = Len(type[15]) ? type[15] : find_screw(cap, screw_smaller_than(pcb_hole_d(type))); //! Mounting screw type
 function pcb_size(type) = [pcb_length(type), pcb_width(type), pcb_thickness(type)]; //! Length, width and thickness in a vector
