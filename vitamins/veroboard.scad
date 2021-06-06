@@ -83,7 +83,7 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
     hole_d = 1;
     tw = vero_track_width(type);
     colour = vero_fr4(type) ? "green" : "goldenrod";
-    tc = vero_fr4(type) ? "silver" : "darkorange";
+    tc = vero_fr4(type) ? "silver" : copper;
     no_track = vero_no_track(type);
 
     vitamin(str("veroboard(", type[0], "): Veroboard ", holes, " holes x ", strips, "strips"));

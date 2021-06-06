@@ -54,9 +54,10 @@ $fs = extrusion_width / 2;
 function round_to_layer(z) = ceil(z / layer_height) * layer_height;
 // Some additional named colours
 function grey(n) = [0.01, 0.01, 0.01] * n;                                          //! Generate a shade of grey to pass to color().
-gold                            = [255/255, 215/255, 0/255];
-brass                           = [255/255, 220/255, 100/255];
 silver                          = [0.75, 0.75, 0.75];
+gold                            = [255, 215,   0] / 255;
+brass                           = [255, 220, 100] / 255;
+copper                          = [230, 140,  51] / 255;
 
 /*
  * Enums
