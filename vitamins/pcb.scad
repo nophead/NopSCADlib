@@ -1018,43 +1018,62 @@ module pcb_grid_positions(type) {
 module pcb(type) { //! Draw specified PCB
     grid = pcb_grid(type);
     t = pcb_thickness(type);
+    w = pcb_width(type);
+    l = pcb_length(type);
+
+    module pcb_shape()
+        if(Len(pcb_polygon(type)))
+            polygon(pcb_polygon(type));
+        else
+            rounded_square([l, w], r = pcb_radius(type));
+
     if(pcb_name(type))
         vitamin(str("pcb(", type[0], "): ", pcb_name(type)));
 
     for(part = pcb_accessories(type))
         vitamin(part);
 
-    color(pcb_colour(type)) linear_extrude(t) difference() {
-        if(Len(pcb_polygon(type)))
-            polygon(pcb_polygon(type));
-        else
-            rounded_square([pcb_length(type), pcb_width(type)], r = pcb_radius(type));
+    color(pcb_colour(type))
+        linear_extrude(t)
+            difference() {
+                pcb_shape();
 
-        pcb_hole_positions(type)
-            circle(d = pcb_hole_d(type) + eps);
+                pcb_hole_positions(type)
+                    offset(eps)
+                        circle4n(d = pcb_hole_d(type));
 
-        if(Len(grid))
-            pcb_grid_positions(type)
-                circle(d = 1 + eps);
-    }
+                if(Len(grid))
+                    pcb_grid_positions(type)
+                        circle(d = 1 + eps);
+            }
 
     land = pcb_land_d(type);
+    land_r = Len(land) > 2 ? land[2] : 0;
     hole = pcb_hole_d(type);
-    color("silver")
+    plating = 0.1;
+    color(Len(land) > 3 ? land[3] : silver)
         translate_z(t / 2)
-            pcb_hole_positions(type)
-                if(is_list(land))
-                    linear_extrude(t + 2 * eps, center = true)
-                        difference() {
-                            square(land, center = true);
+            linear_extrude(t + 2 * plating, center = true)
+                difference() {
+                    intersection() {
+                        pcb_hole_positions(type)
+                            if(is_list(land)) {
+                                p = pcb_holes(type)[$i];  // If edge SMT pad then make it rectangular to overlap without gaps
+                                edge = abs(p.x) < eps || abs(p.x - l) < eps || abs(p.y) < eps || abs(p.y - w) < eps;
+                                rounded_square([land.x, land.y], edge ? 0 : land_r);
+                            }
+                            else
+                                circle(d = max(land, 1));
 
-                            circle(d = hole);
-                        }
-                else
-                    tube(or =  max(land, 1) / 2, ir = hole / 2, h = t + 2 * eps);
+                        offset(eps)
+                            pcb_shape();   // Handle half holes on the edge of PCBs such as ESP8266
+                    }
+
+                    pcb_hole_positions(type)
+                        circle4n(d = hole);
+                }
 
     fr4 = pcb_colour(type) != "sienna";
-    plating = 0.15;
     pcb_colour = pcb_colour(type);
     color(pcb_colour == "green" ? silver : pcb_colour == "sienna" ? copper : gold)
         translate_z(-plating)
