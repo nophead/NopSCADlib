@@ -962,6 +962,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4]);
             if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
+            if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
             if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
