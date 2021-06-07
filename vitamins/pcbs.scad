@@ -749,7 +749,27 @@ ESP_01 = [
     [] // accessories
 ];
 
-pcbs = [MP1584EN, TP4056, ESP_01, RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+XIAO = [
+    "XIAO", "Seeeduino XIAO",
+    21, 18, 1.2, // Size
+    1.5, // corner radius
+    0.8, // mounting hole diameter
+    [2, 2.6, 1- eps, gold], // pad around mounting hole
+    grey(25), // color
+    false, // true if parts should be separate BOM items
+    [for(x = [0:6], y = [-1,1]) [x * 2.54 + 2.71, y * 3 * 2.54 + 9], // Inboard hole positions
+     for(x = [0:6], y = [-1,1]) [x * 2.54 + 2.71, y * 9 + 9]],       // Hole positions on the edge, pad overlaps the inboard holes
+    [ // components
+        [7.6, 9, 0, "block", 12.3, 12, 2.41, silver], // can
+        [21 + 1.76 - 7.35 / 2, 9, 0, "usb_C"],
+    ],
+    [] // accessories
+];
+;
+
+tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01];
+
+pcbs = [RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1];
 
