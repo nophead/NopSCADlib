@@ -954,7 +954,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "gterm635"))      green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
             if(show(comp, "term35"))        terminal_35(comp[4], param(5,"blue"));
             if(show(comp, "transition"))    idc_transition(2p54header, comp[4], comp[5]);
-            if(show(comp, "led"))           led(comp[4], comp[5], 2.6);
+            if(show(comp, "led"))           translate_z(eps) led(comp[4], comp[5], 2.6);
             if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3));
