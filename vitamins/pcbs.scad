@@ -765,9 +765,38 @@ XIAO = [
     ],
     [] // accessories
 ];
-;
 
-tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01];
+LIPO_fuel_gauge = [
+    "LIPO_fuel_gauge", "LIPO fuel gauge",
+    24, 10, 1.6, // Size
+    0, // corner radius
+    1, // mounting hole diameter
+    1.8, // pad around mounting hole
+    "red", // color
+    false, // true if parts should be separate BOM items
+    [for(x = [0:2], y = [-1,1]) [x * 2.54 + 5.27, y * 1.5 * 2.54 + 5],
+     for(x = 3,     y = [-1,1]) [x * 2.54 + 5.27, y * 0.5 * 2.54 + 5]],
+    [ // components
+        [17, 5, 90, "jst_ph", 2, true],
+        [2.54 + 5.27,  1.5 * 2.54 + 5, 0, "-2p54joiner", 3, 1],
+        [2.54 + 5.27, -1.5 * 2.54 + 5, 0, "-2p54joiner", 3, 1],
+        [3 * 2.54 + 5.27, 5,           0, "-2p54joiner", 1, 2],
+        [6.4 + 1.5, 5, 0, "chip", 3, 2, 0.8],
+        [1.2,  2.5, 90, "smd_res", RES0603, "472"],
+        [2.4,  2.5, 90, "smd_res", RES0603, "472"],
+        [1.2, -2.5, 90, "smd_res", RES0603, "472"],
+        [2.4, -2.5, 90, "smd_res", RES0603, "472"],
+
+        [10.35, -4, -90, "smd_res", RES0603, "181"],
+        [10.35,  4, -90, "smd_res", RES0603, "102"],
+
+        [12.89, 1.5 * 2.54 + 5, 0, "smd_cap", CAP0603, 0.85],
+        [12.89,-1.5 * 2.54 + 5, 0, "smd_cap", CAP0603, 0.85],
+   ],
+    [] // accessories
+];
+
+tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
 pcbs = [RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
