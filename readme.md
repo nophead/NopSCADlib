@@ -3387,6 +3387,8 @@ Surface mount components for PCBs.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `smd_cap_end_cap(type)` | End cap width |
+| `smd_cap_size(type)` | Body length, width |
 | `smd_led_lens(type)` | Lens length width and height |
 | `smd_led_size(type)` | Body length, width and height |
 | `smd_res_end_cap(type)` | End cap width |
@@ -3403,6 +3405,7 @@ Surface mount components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `smd_capacitor(type, height)` | Draw an SMD capacitor with specified height |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
 
@@ -3413,6 +3416,9 @@ Surface mount components for PCBs.
 | ---:|:--- |:---|
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
 |   1 | `smd_led(LED0805, blue)` |  SMD LED 0805 blue |
+|   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
+|   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
+|   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
 |   1 | `smd_resistor(RES0603, 1R0)` |  SMD resistor 0603 1R0 0.1W |
 |   1 | `smd_resistor(RES0805, 10M)` |  SMD resistor 0805 10M 0.125W |
 |   1 | `smd_resistor(RES1206, 100K)` |  SMD resistor 1206 100K 0.25W |

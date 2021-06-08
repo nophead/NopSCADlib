@@ -966,6 +966,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
+            if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5]);
         }
     }
 }
