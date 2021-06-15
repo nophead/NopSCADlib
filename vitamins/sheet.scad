@@ -20,7 +20,7 @@
 //
 //! Sheet materials. Rectangular with optional rounded corners. Negative radii make a chamfer.
 //!
-//! The "Soft" parameter can be used to determinesif the sheet material needs machine screws or wood screws, e.g.:
+//! The "Soft" parameter can be used to determine if the sheet material needs machine screws or wood screws, e.g.:
 //!
 //! * If soft, wood screws will be used, with a pilot hole.
 //! * If not soft, either tapped holes or a clearance hole and nuts will be used to retain screws.
@@ -40,8 +40,8 @@ function sheet_thickness(type) = type[2]; //! Thickness
 function sheet_colour(type)    = type[3]; //! Colour
 function sheet_is_soft(type)   = type[4]; //! Is soft enough for wood screws
 function sheet_is_woven(type)  = !is_undef(type[5]); //! Is a woven sheet, eg carbon fiber
-function sheet_warp(type)      = type[5]; //! Wovern sheet warp
-function sheet_weft(type)      = type[6]; //! Wovern sheet weft
+function sheet_warp(type)      = type[5]; //! Woven sheet warp
+function sheet_weft(type)      = type[6]; //! Woven sheet weft
 function sheet_colour2(type)   = type[7]; //! Second colour for a woven sheet
 
 module corner(r) {

@@ -21,7 +21,7 @@
 //! LED strip lights that can be cut to size.
 //!
 //! The definitions are for the full length but they can be cut to size by specifying how many segments,
-//! which can by calcuated using `light_strip_segments(type, max_length)`.
+//! which can by calculated using `light_strip_segments(type, max_length)`.
 //!
 //! The `light_strip_clip()` module makes a clip to go around the light that can be incorporated into a printed bracket to hold it.
 //

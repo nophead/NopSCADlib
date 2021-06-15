@@ -23,7 +23,7 @@
 //! Notes on the DSN_VC288:
 //!
 //! * The tabs aren't modelled because they can be fully retracted if the PCB is removed.
-//! * The current connector isn't moddelled as it is awkwardly tall. I remove it and solder wires instead.
+//! * The current connector isn't modelled as it is awkwardly tall. I remove it and solder wires instead.
 //
 include <../utils/core/core.scad>
 

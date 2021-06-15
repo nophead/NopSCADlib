@@ -45,7 +45,7 @@ function pcb_thickness(type)    = type[4];  //! Thickness
 function pcb_radius(type)       = type[5];  //! Corner radius
 function pcb_hole_d(type)       = type[6];  //! Mounting hole diameter
 function pcb_land_d(type)       = type[7];  //! Pad around mounting hole
-function pcb_colour(type)       = type[8];  //! Colour of the subtrate
+function pcb_colour(type)       = type[8];  //! Colour of the substrate
 function pcb_parts_on_bom(type) = type[9];  //! True if the parts should be separate BOM items
 function pcb_holes(type)        = type[10]; //! List of hole positions
 function pcb_components(type)   = type[11]; //! List of components
@@ -72,7 +72,7 @@ function pcb_coord(type, p) = let(l = pcb_length(type), w = pcb_width(type)) //!
     [(p.x >= 0 ? p.x : l + p.x) - l / 2,
      (p.y >= 0 ? p.y : w + p.y) - w / 2];
 
-module pcb_hole_positions(type, all = true) { // Positition children at the hole positions, including holes not used for screws
+module pcb_hole_positions(type, all = true) { // Position children at the hole positions, including holes not used for screws
     holes = pcb_holes(type);
 
     for($i = [0 : 1 : len(holes) - 1]) {

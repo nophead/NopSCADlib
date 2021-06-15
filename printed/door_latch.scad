@@ -57,7 +57,7 @@ module door_latch_stl() { //! Generates the STL for the printed part
         }
 }
 
-module door_latch_assembly(sheet_thickness = 3) { //! The assembly for a specified sheet thickess
+module door_latch_assembly(sheet_thickness = 3) { //! The assembly for a specified sheet thickness
     washer = screw_washer(screw);
     nut = screw_nut(screw);
 

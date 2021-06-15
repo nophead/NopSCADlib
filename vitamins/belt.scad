@@ -19,21 +19,21 @@
 
 //
 //! Models timing belt running in a path over toothed or smooth pulleys and calculates an accurate length.
-//! Only models 2D paths, belt may twist to support crossed belt core XY and other designes where the belt twists!
+//! Only models 2D paths, belt may twist to support crossed belt core XY and other designs where the belt twists!
 //!
 //! By default the path is a closed loop. An open loop can be specified by specifying `open=true`, and in that case the start and end points are not connected, leaving the loop open.
 //!
 //! To get a 180 degree twist of the loop, you can use the `twist` argument. `Twist` can be a single number, and in that case the belt will twist after
 //! the position with that number. Alternatively `twist` can be a list of boolean values with a boolean for each position; the belt will then twist after
 //! the position that have a `true` value in the `twist` list. If the path is specified with pulley/idler types, then you can use `auto_twist=true`; in
-//! that case the belt will automatically twist so the back of the belt always runs against idlers and the tooth side runs against pullies. If you use
+//! that case the belt will automatically twist so the back of the belt always runs against idlers and the tooth side runs against pulleys. If you use
 //! `open=true` then you might also use `start_twist=true` to let the belt start the part with the back side out.
 //!
-//! The path must be specified as a list of positions. Each position should be either a vector with `[x, y, pulley]` or `[x, y, r]`. A pully is a type from
+//! The path must be specified as a list of positions. Each position should be either a vector with `[x, y, pulley]` or `[x, y, r]`. A pulley is a type from
 //! `pulleys.scad`, and correct radius and angle will automatically be calculated. Alternatively a radius can be specified directly.
 //!
 //! To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
-//! Alternativley you can just specify smooth pulleys in the path, and it will then happen automatically.
+//! Alternatively you can just specify smooth pulleys in the path, and it will then happen automatically.
 //!
 //! Individual teeth are not drawn, instead they are represented by a lighter colour.
 //
@@ -60,7 +60,7 @@ module belt(type, points, belt_colour = grey(20), tooth_colour = grey(50), open 
     info = _belt_points_info(type, points, open, twist, auto_twist, start_twist);
     dotwist = info[0]; // array of booleans, true if a twist happen after the position
     twisted = info[1]; // array of booleans, true if the belt is twisted at the position
-    pointsx = info[2]; // array of [x,y,r], r is negative if left-angle (points may have pulleys as third element, but pointsx have radi)
+    pointsx = info[2]; // array of [x,y,r], r is negative if left-angle (points may have pulleys as third element, but pointsx have radii)
     tangents = info[3];
     arcs = info[4];
     length = ceil(_belt_length(info, open) / pitch) * pitch;

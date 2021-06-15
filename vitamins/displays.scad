@@ -53,7 +53,7 @@ LCDS7282BPCB = ["", "", 85, 36, 1.65, 0, 2.56, 0, "green", false, [[-2.5, -2.5],
       []];
 
 LCDS7282B = ["LCDS7282B", "LCD display S-7282B", 73.6, 28.7, 9.6, LCDS7282BPCB,
-          [-2.5, 0, 0],                             // pcb offst
+          [-2.5, 0, 0],                             // pcb offset
           [[-64.5 / 2, -14.5 / 2], [64.5 / 2, 14.5 / 2, 0.6]],              // aperture
           [],                                       // touch screen
           0,                                        // thread length
