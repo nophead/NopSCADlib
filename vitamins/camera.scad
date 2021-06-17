@@ -25,7 +25,7 @@ use <pcb.scad>
 
 function camera_pcb(type)           = type[2]; //! The PCB part of the camera
 function camera_lens_offset(type)   = type[3]; //! Offset of the lens center from the PCB centre
-function camera_lens(type)          = type[4]; //! Stack of lens parts, can be round, rectanular or rounded rectangular, with optional tapered aperture
+function camera_lens(type)          = type[4]; //! Stack of lens parts, can be round, rectangular or rounded rectangular, with optional tapered aperture
 function camera_connector_pos(type) = type[5]; //! The flex connector block for the camera itself's position
 function camera_connector_size(type)= type[6]; //! The flex connector block for the camera itself's size
 

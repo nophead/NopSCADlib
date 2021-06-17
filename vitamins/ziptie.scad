@@ -35,7 +35,7 @@ module ziptie(type, r = 5, t = 0) //! Draw specified ziptie wrapped around radiu
     latch = ziptie_latch(type);
     lx = latch.x / 2;
     zt = ziptie_thickness(type);
-    cr = zt;                        // sharp corner raduus
+    cr = zt;                        // sharp corner radius
     z = r + t - cr;
     x = r - cr;
     inside_corners  = t ? [ [0, 0, r],      [-x, z, cr],      [x, z, cr]      ] : [];

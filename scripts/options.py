@@ -17,7 +17,7 @@
 # If not, see <https://www.gnu.org/licenses/>.
 #
 
-# Set command line options from enviroment variables and check if they have changed
+# Set command line options from environment variables and check if they have changed
 
 import json, os, deps
 from colorama import Fore, init

@@ -54,7 +54,7 @@ function bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", s
  [ screw, sheets, base_sheet, top_sheet, span, size.x, size.y, size.z, name, skip_blocks, star_washers ];
 
 function bbox_volume(type) = bbox_width(type) * bbox_depth(type) * bbox_height(type) / 1000000; //! Internal volume in litres
-function bbox_area(type) = let(w =  bbox_width(type), d = bbox_depth(type), h = bbox_height(type)) //! Internal surdface area in m^2
+function bbox_area(type) = let(w =  bbox_width(type), d = bbox_depth(type), h = bbox_height(type)) //! Internal surface area in m^2
     2 * (w * d + w * h + d * h) / 1000000;
 
 module bbox_shelf_blank(type) { //! 2D template for a shelf

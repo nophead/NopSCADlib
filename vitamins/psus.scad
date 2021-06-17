@@ -114,7 +114,7 @@ S_300_12 = [
         [// f_top, top
             [],// holes
             0.5,// thickness
-            [],// coutouts
+            [],// cutouts
             false,// grill
             [215/2 - 47.5, 115/2 - 37.5, fan50x15],
             [],//iec

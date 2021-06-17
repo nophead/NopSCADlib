@@ -40,7 +40,7 @@ function hinge_knuckles(type)    = type[6]; //! How many knuckles
 function hinge_screw(type)       = type[7]; //! Screw type to mount it
 function hinge_screws(type)      = type[8]; //! How many screws
 function hinge_clearance(type)   = type[9]; //! Clearance between knuckles
-function hinge_margin(type)      = type[10]; //! How far to keep the screws from the knuckes
+function hinge_margin(type)      = type[10]; //! How far to keep the screws from the knuckles
 
 function flat_hinge(name, size, pin_d, knuckle_d, knuckles, screw, screws, clearance, margin) = //! Construct the property list for a flat hinge.
  [name, size.x, size.y, size.z, pin_d, knuckle_d, knuckles, screw, screws, clearance, margin];
@@ -73,7 +73,7 @@ module hinge_male(type, female = false) {       //! The half with the stationary
     assert(kr > pr, "knuckle diameter must be bigger than the pin diameter");
 
     n = hinge_knuckles(type);
-    assert(n >= 3, "must be at least three knuckes");
+    assert(n >= 3, "must be at least three knuckles");
     mn = ceil(n / 2);                           // Male knuckles
     fn = floor(n / 2);                          // Female knuckles
     gap = hinge_clearance(type);

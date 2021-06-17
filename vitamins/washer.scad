@@ -29,7 +29,7 @@ soft_washer_colour = grey(20);
 hard_washer_colour = grey(80);
 star_washer_colour = brass;
 
-function washer_size(type)            = type[1]; //! Noiminal size
+function washer_size(type)            = type[1]; //! Nominal size
 function washer_diameter(type)        = type[2]; //! External diameter
 function washer_thickness(type)       = type[3]; //! Thickness
 function washer_soft(type)            = type[4]; //! True if rubber

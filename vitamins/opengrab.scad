@@ -18,9 +18,9 @@
 //
 
 //
-//! Nicodrone OpenGrab V3 electro-permananet magnet, see <https://nicadrone.com/products/epm-v3>.
+//! Nicodrone OpenGrab V3 electro-permanent magnet, see <https://nicadrone.com/products/epm-v3>.
 //!
-//! A permanent magnet that can be magnatized and de-magnatized electronically.
+//! A permanent magnet that can be magnetized and de-magnetized electronically.
 //
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
