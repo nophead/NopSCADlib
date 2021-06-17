@@ -18,7 +18,7 @@
 //
 
 //
-//! Construct arbirarily large box to partition 3D space and clip objects, useful for creating cross sections to see the inside when debugging.
+//! Construct arbitrarily large box to partition 3D space and clip objects, useful for creating cross sections to see the inside when debugging.
 //!
 //! Original version by Doug Moen on the OpenSCAD forum
 //
