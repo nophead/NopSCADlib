@@ -24,6 +24,7 @@ from __future__ import print_function
 import sys
 import subprocess
 import re
+from tests import do_cmd
 
 filename = 'CHANGELOG.md'
 
@@ -162,3 +163,4 @@ if __name__ == '__main__':
 
             if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated changelog.*', c.comment):
                 print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment, url)), file = file)
+    do_cmd(('codespell -w -L od ' + filename).split())

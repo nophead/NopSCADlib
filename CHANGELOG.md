@@ -195,7 +195,7 @@ Breaking change in `belt_length();` now requires a type argument
 
 ## [v14.0.0](https://github.com/nophead/NopSCADlib/releases/tag/v14.0.0 "show release") Breaking Changes [...](https://github.com/nophead/NopSCADlib/compare/v13.5.0...v14.0.0 "diff with v13.5.0")
 *   2021-03-06 [`298d1f9`](https://github.com/nophead/NopSCADlib/commit/298d1f92841f30e13b437c6770fc113954b94108 "show commit") [C.P.](# "Chris Palmer") Interface is the same but filenames to be included or used changed.
-Changlog upated.
+Changelog updated.
 
 *   2021-03-06 [`491c3b4`](https://github.com/nophead/NopSCADlib/commit/491c3b4ea8d2ef51e55fd389f0dc0b9a6b9bd9a4 "show commit") [C.P.](# "Chris Palmer") Updated readme, `lib.scad` and image.
 
@@ -231,7 +231,7 @@ Changlog upated.
 
 *   2021-03-03 [`614e5f3`](https://github.com/nophead/NopSCADlib/commit/614e5f3a72db309a3dee996d7241317556883e8d "show commit") [C.P.](# "Chris Palmer") Issues in the changelog now link to to the issue.
 
-*   2021-03-03 [`a7eae4f`](https://github.com/nophead/NopSCADlib/commit/a7eae4f549b51dbe4624a8b67012919cef6cb24a "show commit") [C.P.](# "Chris Palmer") Neater changlog format.
+*   2021-03-03 [`a7eae4f`](https://github.com/nophead/NopSCADlib/commit/a7eae4f549b51dbe4624a8b67012919cef6cb24a "show commit") [C.P.](# "Chris Palmer") Neater changelog format.
 
 *   2021-03-03 [`31ab856`](https://github.com/nophead/NopSCADlib/commit/31ab8562a783464f93812b8c7c45d403587efd0a "show commit") [C.P.](# "Chris Palmer") Updated images
 
@@ -254,7 +254,7 @@ Changlog upated.
 *   2021-02-20 [`03a0c2f`](https://github.com/nophead/NopSCADlib/commit/03a0c2fe981ce12cda51a693f69b4fb19696cb8a "show commit") [C.P.](# "Chris Palmer") Fixed typo.
 
 ### [v13.3.0](https://github.com/nophead/NopSCADlib/releases/tag/v13.3.0 "show release") Additions [...](https://github.com/nophead/NopSCADlib/compare/v13.2.0...v13.3.0 "diff with v13.2.0")
-*   2021-02-20 [`7c2df8d`](https://github.com/nophead/NopSCADlib/commit/7c2df8d36d214a8bf8ebdcd39da293209bc175ab "show commit") [C.P.](# "Chris Palmer") The pose module can now specify the camera distance supressing viewall and
+*   2021-02-20 [`7c2df8d`](https://github.com/nophead/NopSCADlib/commit/7c2df8d36d214a8bf8ebdcd39da293209bc175ab "show commit") [C.P.](# "Chris Palmer") The pose module can now specify the camera distance suppressing viewall and
 autocentre.
 
 ### [v13.2.0](https://github.com/nophead/NopSCADlib/releases/tag/v13.2.0 "show release") Additions [...](https://github.com/nophead/NopSCADlib/compare/v13.1.0...v13.2.0 "diff with v13.1.0")
@@ -549,9 +549,9 @@ Updated pics and readme.
 *   2020-12-28 [`ba586b3`](https://github.com/nophead/NopSCADlib/commit/ba586b368582db163af143ebb60afed270f77b1c "show commit") [C.P.](# "Chris Palmer") Example images update to match new contersink screws and teardrops.
 
 ### [v10.21.0](https://github.com/nophead/NopSCADlib/releases/tag/v10.21.0 "show release") Additions [...](https://github.com/nophead/NopSCADlib/compare/v10.20.1...v10.21.0 "diff with v10.20.1")
-*   2020-12-28 [`8d22940`](https://github.com/nophead/NopSCADlib/commit/8d22940506df525ac52ef6f8a00ea03661f3b682 "show commit") [C.P.](# "Chris Palmer") Project blurb can now be split with into sections with markdown horizonal rules
+*   2020-12-28 [`8d22940`](https://github.com/nophead/NopSCADlib/commit/8d22940506df525ac52ef6f8a00ea03661f3b682 "show commit") [C.P.](# "Chris Palmer") Project blurb can now be split with into sections with markdown horizontal rules
 made with asterisks.
-If an image is include in the first section the default image is supressed.
+If an image is include in the first section the default image is suppressed.
 
 #### [v10.20.1](https://github.com/nophead/NopSCADlib/releases/tag/v10.20.1 "show release") Fixes [...](https://github.com/nophead/NopSCADlib/compare/v10.20.0...v10.20.1 "diff with v10.20.0")
 *   2020-12-26 [`87c8bbb`](https://github.com/nophead/NopSCADlib/commit/87c8bbb9a549aabb84004426332dc964583472c5 "show commit") [M.B.](# "Martin Budden") Fixed error in `carriage_size` function.
@@ -566,12 +566,12 @@ If an image is include in the first section the default image is supressed.
 
 ### [v10.20.0](https://github.com/nophead/NopSCADlib/releases/tag/v10.20.0 "show release") Additions [...](https://github.com/nophead/NopSCADlib/compare/v10.19.0...v10.20.0 "diff with v10.19.0")
 *   2020-12-24 [`6f8ff60`](https://github.com/nophead/NopSCADlib/commit/6f8ff606fa5b2ef7d81fb687b77bd6236f6d277f "show commit") [C.P.](# "Chris Palmer") Removed `woven_sheet()` from the readme.
-Removed redundent code.
+Removed redundant code.
 
 *   2020-12-24 [`acd5de0`](https://github.com/nophead/NopSCADlib/commit/acd5de0fbd513b67387478b4c89a5ef4f11b440b "show commit") [C.P.](# "Chris Palmer") Fixed extra BOM entries for woven sheet.
 Added render colour to BOM for 3D sheets.
 
-*   2020-12-23 [`cc1e3ba`](https://github.com/nophead/NopSCADlib/commit/cc1e3baaf6ba7451b3545efc949015af822dc95c "show commit") [C.P.](# "Chris Palmer") Reimplemeted woven sheets with an eye to speed and interface consistancy.
+*   2020-12-23 [`cc1e3ba`](https://github.com/nophead/NopSCADlib/commit/cc1e3baaf6ba7451b3545efc949015af822dc95c "show commit") [C.P.](# "Chris Palmer") Reimplemeted woven sheets with an eye to speed and interface consistency.
 
 *   2020-12-13 [`85cb54e`](https://github.com/nophead/NopSCADlib/commit/85cb54ef318597a4922077785247ddcb08d5e00d "show commit") [M.B.](# "Martin Budden") Added sheet with checkerboard texture to simulate carbon fiber.
 
@@ -1036,7 +1036,7 @@ Done to reduced the number of global constants.
 `Panel_meters` can now have inner apertures and buttons.
 
 ### [v7.2.0](https://github.com/nophead/NopSCADlib/releases/tag/v7.2.0 "show release") Additions [...](https://github.com/nophead/NopSCADlib/compare/v7.1.1...v7.2.0 "diff with v7.1.1")
-*   2020-05-02 [`baa737c`](https://github.com/nophead/NopSCADlib/commit/baa737c4d83be0ab38685122ebe535872fe63e20 "show commit") [C.P.](# "Chris Palmer") Updated example to use Foot contructor.
+*   2020-05-02 [`baa737c`](https://github.com/nophead/NopSCADlib/commit/baa737c4d83be0ab38685122ebe535872fe63e20 "show commit") [C.P.](# "Chris Palmer") Updated example to use Foot constructor.
 
 *   2020-05-02 [`70b13d2`](https://github.com/nophead/NopSCADlib/commit/70b13d2f2723caa18a69afb7a179d88366c82c51 "show commit") [C.P.](# "Chris Palmer") Added functions to create property lists that are created by the client.
 Foot, box, bbox, pbox, `flat_hinge` and `strap_handle`.
@@ -1240,7 +1240,7 @@ The implementation files are still lower case for backwards compatibility.
 
 *   2020-03-03 [`bd60b50`](https://github.com/nophead/NopSCADlib/commit/bd60b50b099d76f6588ddfe900be276ed7d0cf98 "show commit") [C.P.](# "Chris Palmer") Removed lower case tests
 
-*   2020-03-03 [`4d51cb7`](https://github.com/nophead/NopSCADlib/commit/4d51cb73f3d2b3a92ac4c12a2002bc4918228969 "show commit") [C.P.](# "Chris Palmer") Table of contents now has three vitamin coloumns
+*   2020-03-03 [`4d51cb7`](https://github.com/nophead/NopSCADlib/commit/4d51cb73f3d2b3a92ac4c12a2002bc4918228969 "show commit") [C.P.](# "Chris Palmer") Table of contents now has three vitamin columns
 
 *   2020-03-02 [`3b77c97`](https://github.com/nophead/NopSCADlib/commit/3b77c975325851caf5e602ae6ceaa8e5d9126425 "show commit") [C.P.](# "Chris Palmer") Example now include `core.scad` instead of `lib.scad`.
 
@@ -1517,7 +1517,7 @@ This means 5mm, 6mm etc comes before 10mm in BOM.
 
 *   2020-01-11 [`d1324a6`](https://github.com/nophead/NopSCADlib/commit/d1324a670eb7ec898e6663dc9394fc1bd19ef664 "show commit") [M.B.](# "Martin Budden") Added JST-XH connector for pcbs.
 
-*   2020-02-22 [`599fbba`](https://github.com/nophead/NopSCADlib/commit/599fbba6c2b036a4a22fa04f2e06f67ef5bb9578 "show commit") [C.P.](# "Chris Palmer") Reduced dependecies in `pcb_mount` test.
+*   2020-02-22 [`599fbba`](https://github.com/nophead/NopSCADlib/commit/599fbba6c2b036a4a22fa04f2e06f67ef5bb9578 "show commit") [C.P.](# "Chris Palmer") Reduced dependencies in `pcb_mount` test.
 
 ### [v2.19.0](https://github.com/nophead/NopSCADlib/releases/tag/v2.19.0 "show release") Additions [...](https://github.com/nophead/NopSCADlib/compare/v2.16.0...v2.19.0 "diff with v2.16.0")
 *   2020-02-22 [`6097e07`](https://github.com/nophead/NopSCADlib/commit/6097e0709498166c61712094fcc11f083e25959f "show commit") [C.P.](# "Chris Palmer") Updated images and readme.
@@ -1833,7 +1833,7 @@ IEC screw length fixed at 10 if inserts used.
 *   2019-06-14 [`a51e96e`](https://github.com/nophead/NopSCADlib/commit/a51e96ec433c6d347e0d313573585cda9978e7b4 "show commit") [C.P.](# "Chris Palmer") Nuts now show their thickness on the BOM so half nuts have a different description.
 
 ## [v1.0.0](https://github.com/nophead/NopSCADlib/releases/tag/v1.0.0 "show release") Breaking Changes [...](https://github.com/nophead/NopSCADlib/compare/v0.0.1...v1.0.0 "diff with v0.0.1")
-*   2019-06-14 [`b719601`](https://github.com/nophead/NopSCADlib/commit/b719601a645d899f5477c13a34f857d178bcc3a1 "show commit") [C.P.](# "Chris Palmer") Fixed cable strip parameters and BOM desciption
+*   2019-06-14 [`b719601`](https://github.com/nophead/NopSCADlib/commit/b719601a645d899f5477c13a34f857d178bcc3a1 "show commit") [C.P.](# "Chris Palmer") Fixed cable strip parameters and BOM description
 
 #### [v0.0.1](https://github.com/nophead/NopSCADlib/releases/tag/v0.0.1 "show release") Fixes [...](https://github.com/nophead/NopSCADlib/compare/v0.0.0...v0.0.1 "diff with v0.0.0")
 *   2019-06-14 [`5ede2d0`](https://github.com/nophead/NopSCADlib/commit/5ede2d0895a8a813ef2bc47bf94462d668bc440b "show commit") [C.P.](# "Chris Palmer") Smooth pulleys now show their OD on the BOM.
