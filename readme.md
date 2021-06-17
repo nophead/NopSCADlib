@@ -2283,7 +2283,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `hdmi(type, cutout = false)` | Draw HDMI socket |
 | `jack(cutout = false)` | Draw 3.5mm jack |
 | `molex_254(ways)` | Draw molex header |
-| `molex_usb_Ax2(cutout)` | Draw Molex USB connector suitable for perf board |
+| `molex_usb_Ax1(cutout)` | Draw Molex USB A connector suitable for perf board |
+| `molex_usb_Ax2(cutout)` | Draw Molex dual USB A connector suitable for perf board |
 | `pcb(type)` | Draw specified PCB |
 | `pcb_assembly(type, height, thickness)` | Draw PCB assembly with spaces and fasteners in place |
 | `pcb_base(type, height, thickness, wall = 2)` | Generate STL for a base with PCB spacers |
@@ -2336,6 +2337,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `ax_res(res1_8, 1e+6, tol = 1)` |  Resistor 1e+6 Ohms 1% 0.125W |
 |   1 | `smd_led(LED0603, orange)` |  SMD LED 0603 orange |
 |   1 | `smd_led(LED0805, red)` |  SMD LED 0805 red |
+|   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
+|   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
+|   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
 |   1 | `smd_resistor(RES0603, 1K)` |  SMD resistor 0603 1K 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
 |   1 | `smd_resistor(RES1206, 1K)` |  SMD resistor 1206 1K 0.25W |
@@ -2420,7 +2424,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `hdmi(type, cutout = false)` | Draw HDMI socket |
 | `jack(cutout = false)` | Draw 3.5mm jack |
 | `molex_254(ways)` | Draw molex header |
-| `molex_usb_Ax2(cutout)` | Draw Molex USB connector suitable for perf board |
+| `molex_usb_Ax1(cutout)` | Draw Molex USB A connector suitable for perf board |
+| `molex_usb_Ax2(cutout)` | Draw Molex dual USB A connector suitable for perf board |
 | `pcb(type)` | Draw specified PCB |
 | `pcb_assembly(type, height, thickness)` | Draw PCB assembly with spaces and fasteners in place |
 | `pcb_base(type, height, thickness, wall = 2)` | Generate STL for a base with PCB spacers |

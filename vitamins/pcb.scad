@@ -161,7 +161,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
             }
 }
 
-module molex_usb_Ax2(cutout) { //! Draw Molex USB connector suitable for perf board
+module molex_usb_Ax2(cutout) { //! Draw Molex dual USB A connector suitable for perf board
     w = 15.9;
     h = 16.6;
     l = 17;
@@ -209,6 +209,63 @@ module molex_usb_Ax2(cutout) { //! Draw Molex USB connector suitable for perf bo
 
                 for(side = [-1, 1], end = [0, 1])
                     translate([side * w / 2, -l / 2 + tag_w / 2 + end * tag_p])
+                        rotate(-side * 90)
+                            hull() {
+                                translate([0, tag_l - tag_r])
+                                    cylinder(r = tag_r, h = tag_t);
+
+                                translate([-tag_w / 2, 0])
+                                    cube([tag_w, eps, tag_t]);
+                            }
+            }
+    }
+}
+
+module molex_usb_Ax1(cutout) { //! Draw Molex USB A connector suitable for perf board
+    w = 15.3;
+    h = 7.7;
+    l = 14.5;
+    pin_l = 2.8;
+    clearance = 0.2;
+    tag_l = 4.4;
+    tag_r = 0.5;
+    tag_w = 1.5;
+    tag_t = 0.3;
+
+    if(cutout)
+        translate([0, -w / 2 - clearance, -clearance])
+            cube([100, w + 2 * clearance, h + 2 * clearance]);
+    else {
+        color(silver)
+            translate([-l / 2, 0])
+                rotate([90, 0, 90])
+                    translate([-w / 2, 0]) {
+                        cube([w, h, l - 9]);
+
+                        linear_extrude(l)
+                            difference() {
+                                square([w, h]);
+
+                                 translate([w / 2, h / 2])
+                                    square([12.6, 5.08], center = true);
+                            }
+                    }
+
+        translate([-1.5, 0, h / 2])
+            usb_A_tongue();
+
+        color(silver)
+            rotate(-90) {
+                for(x = [-1.5 : 1 : 1.5])
+                    translate([inch(x / 10), - l / 2 + inch(0.05)])
+                        hull() {
+                            cube([0.6, 0.3, 2 * pin_l - 2], center = true);
+
+                            cube([0.4, 0.3, 2 * pin_l], center = true);
+                        }
+
+                for(side = [-1, 1])
+                    translate([side * w / 2, -l / 2 + 4.2])
                         rotate(-side * 90)
                             hull() {
                                 translate([0, tag_l - tag_r])
@@ -939,6 +996,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "uSD"))           uSD(comp[4], cutouts);
         if(show(comp, "trimpot10"))     trimpot10(param(4, false), cutouts);
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
+        if(show(comp, "molex_usb_Ax1")) molex_usb_Ax1(cutouts);
         if(show(comp, "smd_led"))       smd_led(comp[4], comp[5], cutouts);
         if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8));
         if(!cutouts) {
