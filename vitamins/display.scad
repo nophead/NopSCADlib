@@ -18,7 +18,7 @@
 //
 
 //
-//! LCD dispays.
+//! LCD displays.
 //
 include <../utils/core/core.scad>
 

@@ -36,7 +36,7 @@ function ringterm_screw(type)        = type[7];    //! Screw type
 function ringterm_crimp_length(type) = type[8];    //! If non-zero the length of the crimp tube
 function ringterm_extent(type)    = ringterm_length(type) / sqrt(2); //! Space to leave
 
-module ring_terminal(type) { //! Draw specifeid ring terminal
+module ring_terminal(type) { //! Draw specified ring terminal
     screw = ringterm_screw(type);
     d = 2 * screw_radius(screw);
     crimp = ringterm_crimp_length(type);

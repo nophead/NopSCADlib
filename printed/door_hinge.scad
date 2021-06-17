@@ -45,7 +45,7 @@ function door_hinge_stat_screw() = stat_screw;              //! Screw use to fas
 function door_hinge_stat_width() = stat_width;              //! Width of the stationary part
 function door_hinge_stat_length() = stat_length;            //! Length of the stationary part
 
-module door_hinge_hole_positions(dir = 0) {                 //! Position chidren at the door hole positions
+module door_hinge_hole_positions(dir = 0) {                 //! Position children at the door hole positions
     hole_pitch = width - 10;
 
     for(side = [-1, 1])

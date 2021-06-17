@@ -18,7 +18,7 @@
 //
 
 //
-//! Utility to generate a polhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
+//! Utility to generate a polyhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
 //!
 //! The initial orientation is the Y axis of the profile points towards the initial center of curvature, Frenet-Serret style.
 //! Subsequent rotations use the minimum rotation method.

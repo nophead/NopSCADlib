@@ -18,7 +18,7 @@
 //
 
 //
-//! Powersupplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
+//! Power supplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
 //!
 //! Face order is bottom, top, left, right, front, back.
 //
@@ -246,7 +246,7 @@ module psu(type) { //! Draw a power supply
                 }
         }
     }
-    // Special case for lighting type PSUs with teminals at the end
+    // Special case for lighting type PSUs with terminals at the end
     terminals = psu_terminals(type);
     if(terminals) {
         ft = psu_face_thickness(faces[f_front]);

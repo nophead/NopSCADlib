@@ -82,7 +82,7 @@ def bom_to_assemblies(bom_dir, bounds_map):
     return [assembly["name"] for  assembly in flat_bom]
 
 def eop(doc_file, last = False, first = False):
-    print('<span></span>', file = doc_file)     # An invisable marker for page breaks because markdown takes much longer if the document contains a div
+    print('<span></span>', file = doc_file)     # An invisible marker for page breaks because markdown takes much longer if the document contains a div
     if not first:
         print('[Top](#TOP)', file = doc_file)
     if not last:
