@@ -28,12 +28,12 @@
 //! large increase in the number of facets.
 //! When set to 1 the polygons alternate each layer, when set higher the rotation takes `twist + 1` layers to repeat.
 //! A small additional rotation is added to make the polygon rotate one more side over the length of the hole to make it appear round when
-//! veiwed end on.
+//! viewed end on.
 //!
 //! When `twist` is set the resulting cylinder is extended by `eps` at each end so that the exact length of the hole can be used without
 //! leaving a scar on either surface.
 //
-function sides(r, n = undef) = is_undef(n) ? max(round(4 * r), 3) : n ? max(n, 3) : r2sides(r); //! Optimium number of sides for specified radius
+function sides(r, n = undef) = is_undef(n) ? max(round(4 * r), 3) : n ? max(n, 3) : r2sides(r); //! Optimum number of sides for specified radius
 function corrected_radius(r, n = undef)   = r / cos(180 / sides(r, n));                         //! Adjusted radius to make flats lie on the circle
 function corrected_diameter(d, n = undef) = 2 * corrected_radius(d / 2 , n);                    //! Adjusted diameter to make flats lie on the circle
 
