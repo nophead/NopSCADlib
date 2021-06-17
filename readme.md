@@ -268,21 +268,21 @@ SCSnUU and SCSnLUU bearing blocks
 <a name="Belts"></a>
 ## Belts
 Models timing belt running in a path over toothed or smooth pulleys and calculates an accurate length.
-Only models 2D paths, belt may twist to support crossed belt core XY and other designes where the belt twists!
+Only models 2D paths, belt may twist to support crossed belt core XY and other designs where the belt twists!
 
 By default the path is a closed loop. An open loop can be specified by specifying `open=true`, and in that case the start and end points are not connected, leaving the loop open.
 
 To get a 180 degree twist of the loop, you can use the `twist` argument. `Twist` can be a single number, and in that case the belt will twist after
 the position with that number. Alternatively `twist` can be a list of boolean values with a boolean for each position; the belt will then twist after
 the position that have a `true` value in the `twist` list. If the path is specified with pulley/idler types, then you can use `auto_twist=true`; in
-that case the belt will automatically twist so the back of the belt always runs against idlers and the tooth side runs against pullies. If you use
+that case the belt will automatically twist so the back of the belt always runs against idlers and the tooth side runs against pulleys. If you use
 `open=true` then you might also use `start_twist=true` to let the belt start the part with the back side out.
 
-The path must be specified as a list of positions. Each position should be either a vector with `[x, y, pulley]` or `[x, y, r]`. A pully is a type from
+The path must be specified as a list of positions. Each position should be either a vector with `[x, y, pulley]` or `[x, y, r]`. A pulley is a type from
 `pulleys.scad`, and correct radius and angle will automatically be calculated. Alternatively a radius can be specified directly.
 
 To make the back of the belt run against a smooth pulley on the outside of the loop specify a negative pitch radius.
-Alternativley you can just specify smooth pulleys in the path, and it will then happen automatically.
+Alternatively you can just specify smooth pulleys in the path, and it will then happen automatically.
 
 Individual teeth are not drawn, instead they are represented by a lighter colour.
 
@@ -595,7 +595,7 @@ PCB mounted buttons. Can optionally have a coloured cap
 ## Cable_strips
 A strip of polypropylene used with ribbon cable to make a cable flexible in one direction only.
 
-Modelled with a Bezier spline, which is not quite the same as a minimum energy curve but very close, epecially
+Modelled with a Bezier spline, which is not quite the same as a minimum energy curve but very close, especially
 near the extreme positions, where the model needs to be accurate.
 
 When the sides are constrained then a circular model is more accurate.
@@ -643,7 +643,7 @@ PCB cameras.
 |:--- |:--- |
 | `camera_connector_pos(type)` | The flex connector block for the camera itself's position |
 | `camera_connector_size(type)` | The flex connector block for the camera itself's size |
-| `camera_lens(type)` | Stack of lens parts, can be round, rectanular or rounded rectangular, with optional tapered aperture |
+| `camera_lens(type)` | Stack of lens parts, can be round, rectangular or rounded rectangular, with optional tapered aperture |
 | `camera_lens_offset(type)` | Offset of the lens center from the PCB centre |
 | `camera_pcb(type)` | The PCB part of the camera |
 
@@ -901,7 +901,7 @@ Dual inline IC packages and sockets
 ---
 <a name="Displays"></a>
 ## Displays
-LCD dispays.
+LCD displays.
 
 [vitamins/displays.scad](vitamins/displays.scad) Object definitions.
 
@@ -1692,7 +1692,7 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 LED strip lights that can be cut to size.
 
 The definitions are for the full length but they can be cut to size by specifying how many segments,
-which can by calcuated using `light_strip_segments(type, max_length)`.
+which can by calculated using `light_strip_segments(type, max_length)`.
 
 The `light_strip_clip()` module makes a clip to go around the light that can be incorporated into a printed bracket to hold it.
 
@@ -2123,9 +2123,9 @@ Can be shown stretched by specifying the `actual_id`.
 ---
 <a name="Opengrab"></a>
 ## Opengrab
-Nicodrone OpenGrab V3 electro-permananet magnet, see <https://nicadrone.com/products/epm-v3>.
+Nicodrone OpenGrab V3 electro-permanent magnet, see <https://nicadrone.com/products/epm-v3>.
 
-A permanent magnet that can be magnatized and de-magnatized electronically.
+A permanent magnet that can be magnetized and de-magnetized electronically.
 
 [vitamins/opengrab.scad](vitamins/opengrab.scad) Implementation.
 
@@ -2168,7 +2168,7 @@ Panel mounted digital meter modules
 Notes on the DSN_VC288:
 
 * The tabs aren't modelled because they can be fully retracted if the PCB is removed.
-* The current connector isn't moddelled as it is awkwardly tall. I remove it and solder wires instead.
+* The current connector isn't modelled as it is awkwardly tall. I remove it and solder wires instead.
 
 [vitamins/panel_meters.scad](vitamins/panel_meters.scad) Object definitions.
 
@@ -2247,7 +2247,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `hdmi_width1(type)` | Inside width at the top |
 | `hdmi_width2(type)` | Inside width at the bottom |
 | `pcb_accessories(type)` | List of accessories to go on the BOM, SD cards, USB cables, etc. |
-| `pcb_colour(type)` | Colour of the subtrate |
+| `pcb_colour(type)` | Colour of the substrate |
 | `pcb_components(type)` | List of components |
 | `pcb_grid(type)` | Grid origin if a perfboard |
 | `pcb_hole_d(type)` | Mounting hole diameter |
@@ -2388,7 +2388,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `hdmi_width1(type)` | Inside width at the top |
 | `hdmi_width2(type)` | Inside width at the bottom |
 | `pcb_accessories(type)` | List of accessories to go on the BOM, SD cards, USB cables, etc. |
-| `pcb_colour(type)` | Colour of the subtrate |
+| `pcb_colour(type)` | Colour of the substrate |
 | `pcb_components(type)` | List of components |
 | `pcb_grid(type)` | Grid origin if a perfboard |
 | `pcb_hole_d(type)` | Mounting hole diameter |
@@ -2702,7 +2702,7 @@ Pin headers and sockets, etc.
 ---
 <a name="PSUs"></a>
 ## PSUs
-Powersupplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
+Power supplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
 
 Face order is bottom, top, left, right, front, back.
 
@@ -2800,7 +2800,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 | `pulley_hub_length(type)` | Hub length |
 | `pulley_od(type)` | Outer diameter |
 | `pulley_screw(type)` | Grub screw type |
-| `pulley_screw_length(type)` | Grup screw length |
+| `pulley_screw_length(type)` | Grub screw length |
 | `pulley_screw_z(type)` | Grub screw position |
 | `pulley_screws(type)` | Number of grub screws |
 | `pulley_teeth(type)` | Number of teeth |
@@ -2971,7 +2971,7 @@ Ring terminals and earth assemblies for DiBond panels.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `ring_terminal(type)` | Draw specifeid ring terminal |
+| `ring_terminal(type)` | Draw specified ring terminal |
 | `ring_terminal_assembly(type, thickness, top = false)` | Earthing assembly for DiBond twin skins |
 | `ring_terminal_hole(type, h = 0)` | Drill hole for the screw |
 
@@ -3047,7 +3047,7 @@ Rocker switch. Also used for neon indicator in the same form factor.
 ## Rod
 Steel rods and studding with chamfered ends.
 
-These items are sysmtrical, so by default the origin is in the centre but it can be changed to the bottom.
+These items are symmetrical, so by default the origin is in the centre but it can be changed to the bottom.
 
 [vitamins/rod.scad](vitamins/rod.scad) Implementation.
 
@@ -3249,7 +3249,7 @@ Shaft couplings
 ## Sheets
 Sheet materials. Rectangular with optional rounded corners. Negative radii make a chamfer.
 
-The "Soft" parameter can be used to determinesif the sheet material needs machine screws or wood screws, e.g.:
+The "Soft" parameter can be used to determine if the sheet material needs machine screws or wood screws, e.g.:
 
 * If soft, wood screws will be used, with a pilot hole.
 * If not soft, either tapped holes or a clearance hole and nuts will be used to retain screws.
@@ -3276,8 +3276,8 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 | `sheet_colour2(type)` | Second colour for a woven sheet |
 | `sheet_is_soft(type)` | Is soft enough for wood screws |
 | `sheet_thickness(type)` | Thickness |
-| `sheet_warp(type)` | Wovern sheet warp |
-| `sheet_weft(type)` | Wovern sheet weft |
+| `sheet_warp(type)` | Woven sheet warp |
+| `sheet_weft(type)` | Woven sheet weft |
 
 ### Functions
 | Function | Description |
@@ -4014,7 +4014,7 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 | `spring_washer_thickness(type)` | Spring washer thickness |
 | `star_washer_diameter(type)` | Star version size |
 | `washer_diameter(type)` | External diameter |
-| `washer_size(type)` | Noiminal size |
+| `washer_size(type)` | Nominal size |
 | `washer_soft(type)` | True if rubber |
 | `washer_thickness(type)` | Thickness |
 
@@ -4322,7 +4322,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | Function | Description |
 |:--- |:--- |
 | `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true)` | Construct the property list for a butt_box |
-| `bbox_area(type)` | Internal surdface area in m^2 |
+| `bbox_area(type)` | Internal surface area in m^2 |
 | `bbox_volume(type)` | Internal volume in litres |
 
 ### Modules
@@ -4625,7 +4625,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 |:--- |:--- |
 | `door_hinge(door_thickness)` | Generates STL for the moving part of the hinge |
 | `door_hinge_assembly(top, door_thickness = 6)` | The moving assembly that goes on the door |
-| `door_hinge_hole_positions(dir = 0)` | Position chidren at the door hole positions |
+| `door_hinge_hole_positions(dir = 0)` | Position children at the door hole positions |
 | `door_hinge_parts_stl()` | Generates the STL for both parts of the hinge |
 | `door_hinge_stat_hole_positions(dir = 0)` | Position children over the screws holes of the stationary part |
 | `door_hinge_stat_stl()` | Generates the STL for the stationary part |
@@ -4671,7 +4671,7 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `door_latch_assembly(sheet_thickness = 3)` | The assembly for a specified sheet thickess |
+| `door_latch_assembly(sheet_thickness = 3)` | The assembly for a specified sheet thickness |
 | `door_latch_stl()` | Generates the STL for the printed part |
 
 ![door_latch](tests/png/door_latch.png)
@@ -4696,7 +4696,7 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 ## Drag_chain
 Parametric cable drag chain to limit the bend radius of a cable run.
 
-Each link has a maximum bend angle of 45&deg;, so the mininium radius is proportional to the link length.
+Each link has a maximum bend angle of 45&deg;, so the minimum radius is proportional to the link length.
 
 The travel property is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
 
@@ -4760,7 +4760,7 @@ to the assembly, for example to add inserts.
 ---
 <a name="Fan_guard"></a>
 ## Fan_guard
-Pintable fan finger guard to match the specified fan. To be `include`d, not `use`d.
+Printable fan finger guard to match the specified fan. To be `include`d, not `use`d.
 
 The ring spacing as well as the number of spokes can be specified, if zero a gasket is generated instead of a guard.
 
@@ -4905,7 +4905,7 @@ This allows the hinges and one set of screws to belong to one assembly and the o
 | `hinge_depth(type)` | Depth of each leaf |
 | `hinge_knuckle_dia(type)` | The knuckle diameter |
 | `hinge_knuckles(type)` | How many knuckles |
-| `hinge_margin(type)` | How far to keep the screws from the knuckes |
+| `hinge_margin(type)` | How far to keep the screws from the knuckles |
 | `hinge_pin_dia(type)` | The pin diameter |
 | `hinge_screw(type)` | Screw type to mount it |
 | `hinge_screws(type)` | How many screws |
@@ -6170,7 +6170,7 @@ A sector of a circle between two angles.
 ---
 <a name="Sweep"></a>
 ## Sweep
-Utility to generate a polhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
+Utility to generate a polyhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
 
 The initial orientation is the Y axis of the profile points towards the initial center of curvature, Frenet-Serret style.
 Subsequent rotations use the minimum rotation method.
@@ -6263,7 +6263,7 @@ Simple tube or ring
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `rectangular_tube(size, center = true, thickness = 1, fillet = 0.5)` | Create a retangular tube with filleted corners |
+| `rectangular_tube(size, center = true, thickness = 1, fillet = 0.5)` | Create a rectangular tube with filleted corners |
 | `ring(or, ir)` | Create a ring with specified external and internal radii |
 | `tube(or, ir, h, center = true)` | Create a tube with specified external and internal radii and height `h` |
 | `woven_tube(or, ir, h, center= true, colour = grey(30)` | Create a woven tube with specified external and internal radii, height `h`, colours, warp and weft |
@@ -6287,7 +6287,7 @@ Setting the `ngb` parameter of `assembly` to `true` removes its column from the 
 This is to prevent the global BOM page becoming too wide in large projects by having it include just the major assemblies.
 
 The example below shows how to define a vitamin and incorporate it into an assembly with sub-assemblies and make an exploded view.
-The resulting flat BOM is shown but heirachical BOMs are also generated for real projects.
+The resulting flat BOM is shown but hierarchical BOMs are also generated for real projects.
 
 If the code to make an STL or DXF is made a child of the `stl()` or `dxf()` module then the STL or DXF will be used in the assembly views generated by `views.py` instead of generating
 it with code.
@@ -6367,7 +6367,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 ---
 <a name="Clip"></a>
 ## Clip
-Construct arbirarily large box to partition 3D space and clip objects, useful for creating cross sections to see the inside when debugging.
+Construct arbitrarily large box to partition 3D space and clip objects, useful for creating cross sections to see the inside when debugging.
 
 Original version by Doug Moen on the OpenSCAD forum
 
@@ -6445,7 +6445,7 @@ This can be used to mitigate the number of sides being small and make small hole
 large increase in the number of facets.
 When set to 1 the polygons alternate each layer, when set higher the rotation takes `twist + 1` layers to repeat.
 A small additional rotation is added to make the polygon rotate one more side over the length of the hole to make it appear round when
-veiwed end on.
+viewed end on.
 
 When `twist` is set the resulting cylinder is extended by `eps` at each end so that the exact length of the hole can be used without
 leaving a scar on either surface.
@@ -6459,7 +6459,7 @@ leaving a scar on either surface.
 |:--- |:--- |
 | `corrected_diameter(d, n = undef)` | Adjusted diameter to make flats lie on the circle |
 | `corrected_radius(r, n = undef)` | Adjusted radius to make flats lie on the circle |
-| `sides(r, n = undef)` | Optimium number of sides for specified radius |
+| `sides(r, n = undef)` | Optimum number of sides for specified radius |
 
 ### Modules
 | Module | Description |
