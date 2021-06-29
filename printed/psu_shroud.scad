@@ -41,6 +41,7 @@ overlap = 6;
 cable_tie_inset = wall + 4;
 
 function psu_shroud_extent(type) = 15 + wall;                                   //! How far it extends beyond the PSU to clear the connections
+function psu_shroud_wall(type) = wall;                                          //! The wall thickness
 function psu_shroud_depth(type) =                                               //! Outside depth of the shroud
     psu_left_bay(type) + overlap + psu_shroud_extent(type);
 
@@ -154,7 +155,7 @@ assembly(str("PSU_shroud_", name), ngb = true) {
             insert(insert);
 }
 
-module psu_shroud_fastened_assembly(type, cable_d, thickness, name, cables = 1) //! Assembly with screws in place
+module psu_shroud_fastened_assembly(type, cable_d, thickness, name, cables = 1, screw = screw) //! Assembly with screws in place
 {
     screw_length = screw_length(screw,thickness + counter_bore, 2, true);
 

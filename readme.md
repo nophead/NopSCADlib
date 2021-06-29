@@ -5353,6 +5353,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 | `psu_shroud_extent(type)` | How far it extends beyond the PSU to clear the connections |
 | `psu_shroud_height(type)` | Outside height |
 | `psu_shroud_screw(type)` | Screw used to fasten |
+| `psu_shroud_wall(type)` | The wall thickness |
 | `psu_shroud_width(type)` | Outside width of the shroud |
 
 ### Modules
@@ -5361,7 +5362,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 | `psu_shroud(type, cable_d, name, cables = 1)` | Generate the STL file for a specified ssr and cable |
 | `psu_shroud_assembly(type, cable_d, name, cables = 1)` | The printed parts with inserts fitted |
 | `psu_shroud_cable_positions(type, cable_d, cables = 1)` | Place children at the cable tie positions |
-| `psu_shroud_fastened_assembly(type, cable_d, thickness, name, cables = 1)` | Assembly with screws in place |
+| `psu_shroud_fastened_assembly(type, cable_d, thickness, name, cables = 1, screw = screw)` | Assembly with screws in place |
 | `psu_shroud_hole_positions(type)` | Place children at the screw hole positions |
 | `psu_shroud_holes(type, cable_d, cables = 1)` | Drill the screw and ziptie holes |
 
