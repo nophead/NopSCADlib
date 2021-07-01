@@ -1136,7 +1136,8 @@ module pcb(type) { //! Draw specified PCB
 
     fr4 = pcb_colour(type) != "sienna";
     pcb_colour = pcb_colour(type);
-    color(pcb_colour == "green" ? silver : pcb_colour == "sienna" ? copper : gold)
+    plating_colour = is_undef(grid[4]) ? ((pcb_colour == "green" || pcb_colour == "#2140BE") ? silver : pcb_colour == "sienna" ? copper : gold) : grid[4];
+    color(plating_colour)
         translate_z(-plating)
             linear_extrude(fr4 ? t + 2 * plating : plating)
                 if(Len(grid)) {
