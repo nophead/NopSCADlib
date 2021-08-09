@@ -226,19 +226,21 @@ module BLDC(type) { //! Draw specified BLDC motor
                 translate_z(height)
                     tube(or = BLDC_boss_diameter(type)/2, ir = BLDC_shaft_diameter(type)/2, h = BLDC_boss_height(type), center = false);
 
+        } // end colour
+
+        color(BLDC_prop_shaft_thread_length(type) == 0 ? bldc_shaft_colour : body_colour)
             if (BLDC_prop_shaft_diameter(type))
                 translate_z(height + BLDC_boss_height(type)) {
                     thread_diameter = BLDC_prop_shaft_thread_diameter(type);
                     unthreaded_length = BLDC_prop_shaft_length(type) - BLDC_prop_shaft_thread_length(type);
                     cylinder(d=BLDC_prop_shaft_diameter(type), h = unthreaded_length);
-                    translate_z(unthreaded_length)
-                        if (show_threads)
-                            male_metric_thread(thread_diameter, metric_coarse_pitch(thread_diameter), BLDC_prop_shaft_thread_length(type), center = false);
-                        else
-                            cylinder(d = thread_diameter, h = BLDC_prop_shaft_thread_length(type));
+                    if (BLDC_prop_shaft_thread_length(type) > 0)
+                        translate_z(unthreaded_length)
+                            if (show_threads)
+                                male_metric_thread(thread_diameter, metric_coarse_pitch(thread_diameter), BLDC_prop_shaft_thread_length(type), center = false);
+                            else
+                                cylinder(d = thread_diameter, h = BLDC_prop_shaft_thread_length(type));
                 }
-        } // end colour
-
         color(side_colour)
             translate_z(height - h2 - h1  -side_length)
                 tube(body_diameter/2, body_diameter/2 - wall_thickness, side_length, center = false);
