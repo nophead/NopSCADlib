@@ -28,6 +28,7 @@ function camera_lens_offset(type)   = type[3]; //! Offset of the lens center fro
 function camera_lens(type)          = type[4]; //! Stack of lens parts, can be round, rectangular or rounded rectangular, with optional tapered aperture
 function camera_connector_pos(type) = type[5]; //! The flex connector block for the camera itself's position
 function camera_connector_size(type)= type[6]; //! The flex connector block for the camera itself's size
+function camera_fov(type)           = type[7]; //! The field of view of the camera lens
 
 module camera_lens(type, offset = 0, show_lens = true) //! Draw the lens stack, with optional offset for making a clearance hole
     color(grey(20))
@@ -57,7 +58,7 @@ module camera_lens(type, offset = 0, show_lens = true) //! Draw the lens stack, 
                                 }
             }
 
-module camera(type, show_lens = true) {           //! Draw specified PCB camera
+module camera(type, show_lens = true, fov = undef, fov_distance = 0) {           //! Draw specified PCB camera
     vitamin(str("camera(", type[0], "): ", type[1]));
     pcb = camera_pcb(type);
 
@@ -66,6 +67,20 @@ module camera(type, show_lens = true) {           //! Draw specified PCB camera
 
     translate_z(pcb_thickness(pcb)) {
         camera_lens(type, show_lens = show_lens);
+        if (show_lens && fov_distance > 0) {
+            lens = camera_lens(type);
+            fov = is_undef(fov) ? camera_fov(type) : fov;
+            #translate_z(lens[2][0].z) // note: use of # is deliberate, to show highlighted field of view
+                translate(camera_lens_offset(type))
+                    if (is_list(fov))
+                        hull() {
+                            cube([lens[1][1]/2, lens[1][1]/2, eps], center=true);
+                            translate_z(fov_distance)
+                                cube([2 * fov_distance * (sin(fov.x) + (fov.x > 90 ? 1 : 0)), 2 * fov_distance * (sin(fov.y) + (fov.y > 90 ? 1 : 0)), eps], center=true);
+                        }
+                    else
+                        cylinder(r1 = lens[0][1] / 2, r2 = fov_distance * (sin(fov) + (fov > 90 ? 1 : 0)), h = fov_distance);
+        }
 
         conn = camera_connector_size(type);
         if(conn) {
