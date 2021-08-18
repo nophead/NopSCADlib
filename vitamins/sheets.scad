@@ -56,6 +56,6 @@ CF3 =       [ "CF3",       "Sheet carbon fiber",      3, grey(35),              
 
 
 sheets = [CF1, CF2, CF3, MDF6, MDF10, MDF12, MDF19, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10,
-         glass2, DiBond, DiBond6, Cardboard, FoilTape, AL1_6, AL6, AL8, Steel06, Spring05, Silicone3, Foam20];
+         glass2, DiBond, DiBond6, Cardboard, FoilTape, AL1_6, AL2, AL3, AL6, AL8, Steel06, Spring05, Silicone3, Foam20];
 
 use <sheet.scad>
