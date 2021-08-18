@@ -16,6 +16,10 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+
+// Extra countersink depth
+sink = 0; // [0 : 0.05: 1.0]
+
 include <../core.scad>
 
 module polysink_stl() {
@@ -32,9 +36,9 @@ module polysink_stl() {
             let(s = cs_screws[i])
                 translate([i * 20, 0]) {
                     translate_z(size.z)
-                        screw_polysink(s, 2 * size.z + 1);
+                        screw_polysink(s, 2 * size.z + 1, sink = sink);
 
-                    screw_polysink(s, 2 * size.z + 1, alt = true);
+                    screw_polysink(s, 2 * size.z + 1, alt = true, sink = sink);
                 }
     }
 }

@@ -27,6 +27,9 @@ module tubes() {
 
     translate([50, 10])
         tube(10, 8, 30);
+
+    translate([100, 10])
+        rectangular_tube([10, 20, 30]);
 }
 
 tubes();

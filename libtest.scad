@@ -33,6 +33,8 @@
 //!
 //! See [usage](docs/usage.md) for requirements, installation instructions and a usage guide.
 //!
+//! A list of changes classified as breaking, additions or fixes is maintained in [CHANGELOG.md](CHANGELOG.md).
+//!
 //! <img src="libtest.png" width="100%"/>
 //
 // This file shows all the parts in the library.
@@ -41,8 +43,11 @@ include <lib.scad>
 
 use <tests/ball_bearings.scad>
 use <tests/batteries.scad>
+use <tests/bearing_blocks.scad>
 use <tests/belts.scad>
+use <tests/BLDC_motors.scad>
 use <tests/blowers.scad>
+use <tests/box_sections.scad>
 use <tests/bulldogs.scad>
 use <tests/buttons.scad>
 use <tests/cable_strips.scad>
@@ -62,7 +67,6 @@ use <tests/hot_ends.scad>
 use <tests/IECs.scad>
 use <tests/inserts.scad>
 use <tests/jack.scad>
-use <tests/KP_pillow_blocks.scad>
 use <tests/leadnuts.scad>
 use <tests/LDRs.scad>
 use <tests/LEDs.scad>
@@ -78,6 +82,7 @@ use <tests/opengrab.scad>
 use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
+use <tests/pillow_blocks.scad>
 use <tests/press_fit.scad>
 use <tests/PSUs.scad>
 use <tests/pulleys.scad>
@@ -86,7 +91,6 @@ use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
 use <tests/screws.scad>
-use <tests/SCS_bearing_blocks.scad>
 use <tests/sealing_strip.scad>
 use <tests/shaft_couplings.scad>
 use <tests/sheets.scad>
@@ -117,6 +121,7 @@ use <tests/flat_hinge.scad>
 use <tests/foot.scad>
 use <tests/handle.scad>
 use <tests/PCB_mount.scad>
+use <tests/pocket_handle.scad>
 use <tests/printed_box.scad>
 use <tests/printed_pulleys.scad>
 use <tests/ribbon_clamp.scad>
@@ -180,7 +185,10 @@ translate([x5, cable_grommets_y + 250])
 translate([950, 600])
     box_test();
 
-translate([890, 750])
+translate([830, 770])
+    pocket_handles();
+
+translate([950, 750])
     printed_boxes();
 
 translate([850, 1330])
@@ -201,8 +209,8 @@ ball_bearings_y = pillars_y + 40;
 pulleys_y = ball_bearings_y +40;
 hot_ends_y = pulleys_y + 60;
 linear_bearings_y = hot_ends_y + 50;
-sheets_y = linear_bearings_y + 100;
-pcbs_y = sheets_y + 40;
+sheets_y = linear_bearings_y + 90;
+pcbs_y = sheets_y + 60;
 displays_y = pcbs_y + 170;
 fans_y = displays_y + 80;
 transformers_y = fans_y + 120;
@@ -362,10 +370,10 @@ extrusions_y = panel_meters_y + 80;
 translate([x3, veroboard_y])
     veroboard_test();
 
-translate([x3 + 70, veroboard_y + 30])
+translate([x3 + 60, veroboard_y + 20])
     geared_steppers();
 
-translate([x3 + 140, veroboard_y + 20])
+translate([x3 + 160, ssrs_y])
     pcb_mounts();
 
 translate([x3 + 170, veroboard_y + 16])
@@ -420,6 +428,9 @@ extrusion_brackets_y = rails_y + 250;
 sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 50;
 scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
+cable_strip_y = fans_y + 50;
+box_sections_y = cable_strip_y;
+BLDC_y = sheets_y;
 
 translate([x4 + 200, belts_y + 58]) {
     belt_test();
@@ -435,7 +446,7 @@ translate([x4 + 175, belts_y, -20])
 translate([x4, rails_y + 130])
     rails();
 
-translate([770, fans_y + 50])
+translate([770, cable_strip_y])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])
@@ -453,6 +464,11 @@ translate([x4 + 120, extrusion_brackets_y])
 translate([x4, scs_bearing_blocks_y])
     scs_bearing_blocks();
 
+translate([x4, BLDC_y])
+    bldc_motors();
+
+translate([x6, box_sections_y])
+    box_sections();
 
 translate([x6, 125])
     light_strips();

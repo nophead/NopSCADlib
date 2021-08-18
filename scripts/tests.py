@@ -34,6 +34,7 @@ import shutil
 from deps import *
 from blurb import *
 from colorama import Fore
+from tmpdir import *
 
 w = 4096
 h = w
@@ -50,13 +51,17 @@ def do_cmd(cmd, output = sys.stdout):
     return subprocess.call(cmd, stdout = output, stderr = output)
 
 def compare_images(a, b, c):
+    if not os.path.isfile(b):
+        print(Fore.MAGENTA + "Failed to generate %s while making %s" % (b, a), Fore.WHITE)
+        sys.exit(1)
     if not os.path.isfile(a):
         return -1
     log_name = 'magick.log'
     with open(log_name, 'w') as output:
         do_cmd(("magick compare -metric AE -fuzz %d%% %s %s %s" % (fuzz, a, b, c)).split(), output = output)
     with open(log_name, 'r') as f:
-        pixels = int(float(f.read().strip()))
+        pixels = f.read().strip()
+        pixels = int(float(pixels if pixels.isnumeric() else -1))
     os.remove(log_name)
     return pixels
 
@@ -91,6 +96,7 @@ def usage():
 
 def tests(tests):
     scad_dir = "tests"
+    tmp_dir = mktmpdir(scad_dir + '/')
     deps_dir = scad_dir + "/deps"
     png_dir  = scad_dir + "/png"
     bom_dir  = scad_dir + "/bom"
@@ -111,7 +117,7 @@ def tests(tests):
         libtest = True
         lib_blurb = scrape_blurb(scad_name)
         if not os.path.isfile(png_name):
-            openscad.run(colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall", "-o", png_name, scad_name);
+            openscad.run(scad_name, "-o", png_name, colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall");
             do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", background, "-border", "10", png_name])
     else:
         #
@@ -126,14 +132,13 @@ def tests(tests):
     #
     # List of individual part files
     #
-
     scads = [i for i in sorted(os.listdir(scad_dir), key = lambda s: s.lower()) if i[-5:] == ".scad"]
     types = []
     for scad in scads:
         base_name = scad[:-5]
         if not tests or base_name in tests:
             done.append(base_name)
-            print('\n'+base_name)
+            print(base_name)
             cap_name = base_name[0].capitalize() + base_name[1:]
             base_name = base_name.lower()
             scad_name = scad_dir + '/' + scad
@@ -168,7 +173,7 @@ def tests(tests):
                     impl_name = None
 
             if libtest:
-                vsplit = "AJR" + chr(ord('Z') + 1)
+                vsplit = "AIR" + chr(ord('Z') + 1)
                 vtype = locations[0][1]
                 types = [vtype + ' ' + vsplit[i] + '-' + chr(ord(vsplit[i + 1]) - 1) for i in range(len(vsplit) - 1)] + [loc[1] for loc in locations[1 :]]
                 if type == vtype:
@@ -232,14 +237,15 @@ def tests(tests):
             if changed:
                 print(changed)
                 t = time.time()
-                tmp_name = 'tmp.png'
-                openscad.run_list(options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname, "-o", tmp_name, scad_name]);
+                tmp_name = tmp_dir + '/tmp.png'
+                openscad.run_list([scad_name, "-o", tmp_name] + options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname]);
                 times.add_time(scad_name, t)
                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", background, "-border", "10", tmp_name])
                 update_image(tmp_name, png_name)
                 BOM = bom.parse_bom()
                 with open(bom_name, 'wt') as outfile:
                     json.dump(BOM.flat_data(), outfile, indent = 4)
+                print()
 
             with open(bom_name, "rt") as bom_file:
                 BOM = json.load(bom_file)
@@ -300,6 +306,11 @@ def tests(tests):
     with open(doc_base_name + ".html", "wt") as html_file:
         do_cmd(("python -m markdown -x tables " + doc_name).split(), html_file)
     times.print_times()
+    #
+    # Remove tmp dir
+    #
+    rmtmpdir(tmp_dir)
+
     do_cmd(('codespell -L od ' + doc_name).split())
 
 if __name__ == '__main__':

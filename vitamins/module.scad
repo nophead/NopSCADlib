@@ -129,15 +129,13 @@ module mod_screw_positions(type) //! Position children at the screw positions
 
 module module_assembly(type, thickness) { //! Module with its fasteners in place
     screw = mod_screw(type);
-    washer = screw_washer(screw);
-    nut = screw_nut(screw);
-    screw_length = screw_longer_than(thickness + mod_screw_z(type) + 2 * washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, thickness + mod_screw_z(type), 2, nyloc = true);
 
     mod(type);
 
     mod_screw_positions(type) {
         translate_z(mod_screw_z(type))
-            nut_and_washer(nut, true);
+            nut_and_washer(screw_nut(screw), true);
 
         translate_z(-thickness)
             vflip()

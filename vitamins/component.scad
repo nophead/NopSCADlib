@@ -326,7 +326,7 @@ module panel_USBA() { //! Draw a panel mount USBA connector
                 dx = (length2 / 2 - r2);
                 dy = (width / 2 - r1);
                 translate_z(l)
-                    rounded_rectangle([length2, width, 1], r = r1, center = false);
+                    rounded_rectangle([length2, width, 1], r = r1);
 
                 translate([-dx, -dy, height2 - r2])
                     rotate([90, 0, 0])

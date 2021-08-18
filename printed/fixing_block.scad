@@ -71,42 +71,42 @@ module fixing_block_h_hole_2D(screw = def_screw) //! Position 2D child on the ho
         children();
 
 module fixing_block(screw = def_screw) { //! Generate the STL
-    stl(str("fixing_block_M", screw_radius(screw) * 20));
-    r = 1;
+   r = 1;
     insert = screw_insert(screw);
     corner_rad = insert_outer_d(insert) / 2 + wall;
     fb_width = fixing_block_width(screw);
     fb_height = fixing_block_height(screw);
     fb_depth = fixing_block_depth(screw);
 
-    difference() {
-        union() {
-            linear_extrude(fb_height, convexity = 5)
-                difference() {
-                    hull() {
-                        for(side = [-1, 1]) {
-                            translate([side * (fb_width / 2 - corner_rad), fb_depth - corner_rad])
-                                circle4n(corner_rad);
+    stl(str("fixing_block_M", screw_radius(screw) * 20))
+        difference() {
+            union() {
+                linear_extrude(fb_height, convexity = 5)
+                    difference() {
+                        hull() {
+                            for(side = [-1, 1]) {
+                                translate([side * (fb_width / 2 - corner_rad), fb_depth - corner_rad])
+                                    circle4n(corner_rad);
 
-                            translate([side * (fb_width / 2 - r), r])
-                                circle4n(r);
+                                translate([side * (fb_width / 2 - r), r])
+                                    circle4n(r);
+                            }
                         }
+                        fixing_block_v_holes(screw)
+                            poly_circle(screw_clearance_radius(screw));
                     }
-                    fixing_block_v_holes(screw)
-                        poly_circle(screw_clearance_radius(screw));
-                }
-        }
-        translate_z(fb_height)
-            fixing_block_v_holes(screw)
-                insert_hole(insert);
+            }
+            translate_z(fb_height)
+                fixing_block_v_holes(screw)
+                    insert_hole(insert);
 
-        fixing_block_h_hole(screw)
-            insert_hole(insert, 10, true);
-    }
+            fixing_block_h_hole(screw)
+                insert_hole(insert, 10, true);
+        }
 }
 
 module fixing_block_assembly(screw = def_screw) pose([55, 180, 25], [0, 4.8, 4.8]) //! Printed part with the inserts inserted
-assembly(str("fixing_block_M", 20 * screw_radius(screw))) {
+assembly(str("fixing_block_M", 20 * screw_radius(screw)), ngb = true) {
     translate_z(fixing_block_height(screw))
         rotate([0, 180, 0])
             stl_colour(pp1_colour) render() fixing_block(screw);
@@ -122,9 +122,7 @@ assembly(str("fixing_block_M", 20 * screw_radius(screw))) {
 
 module fastened_fixing_block_assembly(thickness, screw = def_screw, screw2 = undef, thickness2 = undef, show_block = true, star_washers = true) { //! Assembly with fasteners in place
     module fb_screw(screw, thickness) {
-        washer = screw_washer(screw);
-        insert = screw_insert(screw);
-        screw_length = screw_longer_than((star_washers ? 2 : 1) * washer_thickness(washer) + thickness + insert_length(insert));
+        screw_length = screw_length(screw, thickness, star_washers ? 2 : 1, true, longer = true);
 
         if(thickness)
             translate_z(thickness)

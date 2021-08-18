@@ -109,3 +109,23 @@ module smd_resistor(type, value) { //! Draw an SMD resistor with specified value
                 resize([(size.x - 2 * cap) * 0.75, size.y / 2])
                     text(value, halign = "center", valign = "center");
 }
+
+function smd_cap_size(type)    = type[1]; //! Body length, width
+function smd_cap_end_cap(type) = type[2]; //! End cap width
+
+module smd_capacitor(type, height) { //! Draw an SMD capacitor with specified height
+    size = smd_cap_size(type);
+    vitamin(str("smd_capacitor(", type[0], "): SMD capacitor ", smd_size(size)));
+
+    cap = smd_cap_end_cap(type);
+
+    t = 0.02;
+    color("tan")
+        translate_z(height / 2)
+            cube([size.x - 2 * cap, size.y - 2 * t, height - 2 * t], center = true);
+
+    color(silver)
+        for(end = [-1, 1])
+            translate([end * (size.x / 2 - cap / 2), 0, height / 2])
+                cube([cap, size.y - 2 * eps, height], center = true);
+}

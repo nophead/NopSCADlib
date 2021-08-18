@@ -56,7 +56,7 @@ module horiholes_stl(t = thickness) {
         }
     if(t == thickness)
         translate([length / 2, 0])
-            rounded_rectangle([length + 2 * overlap_x, thickness + 2 * overlap_y, 2], 5);
+            rounded_rectangle([length + 2 * overlap_x, thickness + 2 * overlap_y, 2], 5, true);
 }
 
 module horiholes() {

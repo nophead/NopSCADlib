@@ -47,7 +47,7 @@ module square_button(type, colour = "yellow") { //! Draw square button with spec
     stem = square_button_cap_stem(type);
 
     color(grey(20)) {
-        rounded_rectangle([w, w, h - 0.5], r = wall, center = false);
+        rounded_rectangle([w, w, h - 0.5], r = wall);
 
         for(x = [-1, 1], y = [-1, 1])
             translate([x * pitch, y * pitch])

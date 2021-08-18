@@ -56,10 +56,10 @@ module transformer(type) { //! Draw specified transformer
 
     }
 
-    color("white") {
+    color("white")
         translate_z(tx_lamination_height(type) / 2 + tx_bobbin_offset(type) / 2)
-            rounded_rectangle([tx_bobbin_width(type), tx_depth(type), tx_bobbin_height(type)], r = tx_bobbin_radius(type));
-    }
+            rounded_rectangle([tx_bobbin_width(type), tx_depth(type), tx_bobbin_height(type)], tx_bobbin_radius(type), true);
+
     terminal_height = tx_height(type) - tx_lamination_height(type);
 
     if(terminal_height)

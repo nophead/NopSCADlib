@@ -30,12 +30,12 @@ function ziptie_latch(type)     = type[3]; //! Latch dimensions
 function ziptie_colour(type)    = type[4]; //! Colour
 function ziptie_tail(type)      = type[5]; //! The length without teeth
 
-module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius `r` and optionally through panel thickness `t`
+module ziptie(type, r = 5, t = 0) //! Draw specified ziptie wrapped around radius `r` and optionally through panel thickness `t`
 {
     latch = ziptie_latch(type);
     lx = latch.x / 2;
     zt = ziptie_thickness(type);
-    cr = zt;                        // sharp corner raduus
+    cr = zt;                        // sharp corner radius
     z = r + t - cr;
     x = r - cr;
     inside_corners  = t ? [ [0, 0, r],      [-x, z, cr],      [x, z, cr]      ] : [];
@@ -50,7 +50,7 @@ module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius `r
     len = length <= 100 ? 100 : length;
     width =  ziptie_width(type);
 
-    vitamin(str("ziptie(", type[0], ", ", r, "): Ziptie ", width, "mm x ", len, "mm min length"));
+    vitamin(str("ziptie(", type[0], "): Ziptie ", width, "mm x ", len, "mm min length"));
 
     color(ziptie_colour(type)){
         linear_extrude(width, center = true)
@@ -62,7 +62,7 @@ module ziptie(type, r, t = 0) //! Draw specified ziptie wrapped around radius `r
         translate([lx, -r])
              rotate([90, 0, 0])
                 union() {
-                    rounded_rectangle(latch, 0.5, center = false);
+                    rounded_rectangle(latch, 0.5);
 
                     translate_z((latch.z + 1) / 2)
                         cube([ziptie_thickness(type), ziptie_width(type), latch.z + 1], center = true);

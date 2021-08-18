@@ -20,7 +20,7 @@
 //
 //! Parametric cable drag chain to limit the bend radius of a cable run.
 //!
-//! Each link has a maximum bend angle of 45&deg;, so the mininium radius is proportional to the link length.
+//! Each link has a maximum bend angle of 45&deg;, so the minimum radius is proportional to the link length.
 //!
 //! The travel property is how far it can move in each direction, i.e. half the maximum travel if the chain is mounted in the middle of the travel.
 //!
@@ -311,7 +311,7 @@ module _drag_chain_assembly(type, pos = 0, render = false) {
 //! 1. Remove the support material from the links with side cutters.
 //! 1. Clip the links together with the special ones at the ends.
 module drag_chain_assembly(type, pos = 0, render = false)  //! Drag chain assembly
-    assembly(str(drag_chain_name(type), "_drag_chain"), big = true)
+    assembly(str(drag_chain_name(type), "_drag_chain"), big = true, ngb = true)
         if($children == 2)
             _drag_chain_assembly(type, pos, render) {
                 children(0);

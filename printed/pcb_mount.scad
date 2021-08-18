@@ -66,35 +66,35 @@ module pcb_mount_washer_stl() //! A plastic washer to clamp a PCB
         pcb_mount_ring();
 
 module pcb_mount(pcb, height = 5, washers = true) { //! Make the STL of a pcb mount for the specified PCB.
-    stl(str("pcb_mount_", pcb[0], "_", height));
-
     y_pitch = pcb_width(pcb) > 4 * pillar_r + 4 ? pillar_r + 1
                                                 : pcb_width(pcb) / 2 + frame_w + 1 + pillar_r;
 
-    if(washers)
-        for(x = [-1, 1], y = [-1, 1])
-            translate([x * (pillar_r + 1), y * y_pitch, 0])
-                pcb_mount_washer_stl();
+    stl(str("pcb_mount_", pcb[0], "_", height)) union() {
+        if(washers)
+            for(x = [-1, 1], y = [-1, 1])
+                translate([x * (pillar_r + 1), y * y_pitch, 0])
+                    pcb_mount_washer_stl();
 
-    for(x = [-1, 1])
-        translate([x * pillar_x_pitch(pcb) / 2, 0, frame_t / 2])
-            cube([frame_w, pillar_y_pitch(pcb) - 2 * wall, frame_t], center = true);
+        for(x = [-1, 1])
+            translate([x * pillar_x_pitch(pcb) / 2, 0, frame_t / 2])
+                cube([frame_w, pillar_y_pitch(pcb) - 2 * wall, frame_t], center = true);
 
-    for(y = [-1, 1])
-        translate([0, y * pillar_y_pitch(pcb) / 2, frame_t / 2])
-            cube([pillar_x_pitch(pcb) - 2 * wall, frame_w, frame_t], center = true);
+        for(y = [-1, 1])
+            translate([0, y * pillar_y_pitch(pcb) / 2, frame_t / 2])
+                cube([pillar_x_pitch(pcb) - 2 * wall, frame_w, frame_t], center = true);
 
-    pcb_mount_screw_positions(pcb)
-        linear_extrude(height)
-            pcb_mount_ring();
-
-    linear_extrude(height + pcb_thickness(pcb) - layer_height)
-        difference() {
-            pcb_mount_screw_positions(pcb)
+        pcb_mount_screw_positions(pcb)
+            linear_extrude(height)
                 pcb_mount_ring();
 
-            square([pcb_length(pcb) + 2 * clearance, pcb_width(pcb) + 2 * clearance], center = true);
-        }
+        linear_extrude(height + pcb_thickness(pcb) - layer_height)
+            difference() {
+                pcb_mount_screw_positions(pcb)
+                    pcb_mount_ring();
+
+                square([pcb_length(pcb) + 2 * clearance, pcb_width(pcb) + 2 * clearance], center = true);
+            }
+    }
 }
 
 module pcb_mount_assembly(pcb, thickness, height = 5) { //! A PCB mount assembly with fasteners
@@ -103,10 +103,9 @@ module pcb_mount_assembly(pcb, thickness, height = 5) { //! A PCB mount assembly
 
     stl_colour(pp1_colour) pcb_mount(pcb, washers = false);
 
-    washer = screw_washer(screw);
     nut = screw_nut(screw);
     t = pcb_thickness(pcb);
-    screw_length = screw_longer_than(height + t + washer_thickness + thickness + washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height + t + washer_thickness + thickness, 1, nyloc = true);
 
     pcb_mount_screw_positions(pcb) {
         translate_z(height + t) {

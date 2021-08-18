@@ -18,7 +18,7 @@
 //
 
 //
-//! Powersupplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
+//! Power supplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
 //!
 //! Face order is bottom, top, left, right, front, back.
 //
@@ -44,6 +44,7 @@ function psu_name(type)              = type[1];     //! The part name
 function psu_length(type)            = type[2];     //! Length
 function psu_width(type)             = type[3];     //! Width
 function psu_height(type)            = type[4];     //! Height
+function psu_size(type)              = [psu_length(type), psu_width(type), psu_height(type)]; //! Size
 function psu_screw(type)             = type[5];     //! Screw type
 function psu_screw_hole_radius(type) = type[6];     //! Clearance hole for screw, bigger than normal on ATX
 function atx_psu(type)               = type[7];     //! True if an ATX style PSU
@@ -245,7 +246,7 @@ module psu(type) { //! Draw a power supply
                 }
         }
     }
-    // Special case for lighting type PSUs with teminals at the end
+    // Special case for lighting type PSUs with terminals at the end
     terminals = psu_terminals(type);
     if(terminals) {
         ft = psu_face_thickness(faces[f_front]);

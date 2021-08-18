@@ -247,10 +247,7 @@ module iec_inserts(type) {              //! Place the inserts
 
 module iec_assembly(type, thickness) {  //! Assembly with fasteners given panel thickness
     screw = iec_screw(type);
-    washer = screw_washer(screw);
-    nut = screw_nut(screw);
-    insert = screw_insert(screw);
-    screw_length = thickness ? screw_longer_than(iec_flange_t(type) + thickness + washer_thickness(washer) + nut_thickness(nut, true))
+    screw_length = thickness ? screw_length(screw, iec_flange_t(type) + thickness, 1, nyloc = true)
                              : insert_screw_length;
 
     iec(type);
@@ -262,6 +259,6 @@ module iec_assembly(type, thickness) {  //! Assembly with fasteners given panel 
         if(thickness)
             translate_z(-thickness)
                 vflip()
-                    nut_and_washer(nut, true);
+                    nut_and_washer(screw_nut(screw), true);
     }
 }

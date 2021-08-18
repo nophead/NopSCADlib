@@ -36,7 +36,7 @@ function ringterm_screw(type)        = type[7];    //! Screw type
 function ringterm_crimp_length(type) = type[8];    //! If non-zero the length of the crimp tube
 function ringterm_extent(type)    = ringterm_length(type) / sqrt(2); //! Space to leave
 
-module ring_terminal(type) { //! Draw specifeid ring terminal
+module ring_terminal(type) { //! Draw specified ring terminal
     screw = ringterm_screw(type);
     d = 2 * screw_radius(screw);
     crimp = ringterm_crimp_length(type);
@@ -128,7 +128,7 @@ module ring_terminal_assembly(type, thickness, top = false) { //! Earthing assem
     screw = ringterm_screw(type);
     washer = screw_washer(screw);
     nut = screw_nut(screw);
-    screw_length = screw_longer_than(thickness + 2 * washer_thickness(washer) + nut_thickness(nut, true) + ringterm_thickness(type));
+    screw_length = screw_length(screw, thickness + ringterm_thickness(type), 2, nyloc = true);
 
     explode(10, true) star_washer(washer)
         if(top)

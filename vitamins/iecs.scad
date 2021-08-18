@@ -55,7 +55,7 @@ outlet_spades = [[spade4p8ll, 8, -7,  -2, 90],
 //                                                                                                                            w     h  r    t
 IEC_fused_inlet = ["IEC_fused_inlet", "IEC fused inlet JR-101-1F",   M3_cs_cap_screw, 36, 27, 16, 31, 3, 28,   31,   2, 2.0, 30,   33, 4, 3.0, 44, 15, fused_spades,  false ];
 IEC_fused_inlet2= ["IEC_fused_inlet2","IEC fused inlet old",         M3_cs_cap_screw, 36, 27, 14, 31, 3, 28,   31,   2, 2.5, 30,   33, 4, 2.5, 44, 18, fused_spades2, false ];
-IEC_320_C14_switched_fused_inlet = ["IEC_switched_fused_inlet", "IEC320 C14 switched fused inlet module",
+IEC_320_C14_switched_fused_inlet = ["IEC_320_C14_switched_fused_inlet", "IEC320 C14 switched fused inlet module",
                                                                      M3_cs_cap_screw, 40,  27, 16,46.8,3,28,   48, 2.4, 1.0, 33,   57, 4, 3.0, 48,16.5, iec320c14FusedSwitchedSpades,  false ];
 IEC_inlet       = ["IEC_inlet",       "IEC inlet",                   M3_cs_cap_screw, 40, 28, 18, 20, 3, 28,   20.5, 4, 2.5, 37,   23, 1, 2.5, 48, 14, inlet_spades,  false ];
 IEC_inlet_atx   = ["IEC_inlet_atx",   "IEC inlet for ATX",           M3_cs_cap_screw, 40, 27, 18, 19, 3, 30.5, 22,   2, 2.0, 30.5, 22, 2, 4.0, 50, 15, atx_spades,    false ];

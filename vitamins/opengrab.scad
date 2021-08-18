@@ -18,9 +18,9 @@
 //
 
 //
-//! Nicodrone OpenGrab V3 electro-permananet magnet, see <https://nicadrone.com/products/epm-v3>.
+//! Nicodrone OpenGrab V3 electro-permanent magnet, see <https://nicadrone.com/products/epm-v3>.
 //!
-//! A permanent magnet that can be magnatized and de-magnatized electronically.
+//! A permanent magnet that can be magnetized and de-magnetized electronically.
 //
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
@@ -62,6 +62,7 @@ function opengrab_depth() = depth;                               //! Module heig
 function opengrab_target_thickness() = target;                   //! Target sheet thickness
 function opengrab_pcb() = pcb;                                   //! The PCB
 function opengrab_pcb_z() = depth - pillar - pcb_thickness(pcb); //! PCB offset from the front
+function opengrab_screw_depth() = 4;                             //! Max screw depth in pillars
 
 module opengrab() { //! Draw OpenGrab module
     vitamin("opengrab(): OpenGrab V3 electro permanent magnet");

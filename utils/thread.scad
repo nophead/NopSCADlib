@@ -50,6 +50,7 @@ function thread_profile(h, crest, angle, overlap = 0.1) = //! Create thread prof
         [[-base / 2, -overlap, 0], [-crest / 2, h, 0], [crest / 2, h, 0], [base / 2, -overlap, 0]];
 
 module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or female thread, ends can be tapered, chamfered or square
+    assert(is_undef(colour) || is_list(colour), "Thread colour must be in [r, g, b] form");
     //
     // Apply colour if defined
     //
@@ -155,7 +156,7 @@ module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, st
                                         translate([0, offset])
                                             square([r, len]);
 
-                                        translate([0, bot_chamfer_h])
+                                        translate([0, offset + bot_chamfer_h])
                                             square([r + h + overlap, len - top_chamfer_h - bot_chamfer_h]);
                                     }
                                     if(!solid)
@@ -190,7 +191,8 @@ module female_metric_thread(d, pitch, length, center = true, top = -1, bot = -1,
 }
 
 function metric_coarse_pitch(d) //! Convert metric diameter to pitch
-    = d == 1.6 ? 0.35  // M1.6
+    = d == 1.4 ? 0.3   // M1.4
+    : d == 1.6 ? 0.35  // M1.6
                : [0.4, // M2
                   0.45,// M2.5
                   0.5, // M3

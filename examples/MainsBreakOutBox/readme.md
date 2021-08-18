@@ -15,6 +15,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ![Main Assembly](assemblies/main_assembled.png)
 
+<span></span>
 
 ---
 ## Table of Contents
@@ -24,6 +25,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 1. [Mains In Assembly](#mains_in_assembly)
 1. [Main Assembly](#main_assembly)
 
+<span></span>
 [Top](#TOP)
 
 ---
@@ -54,6 +56,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;socket_box.stl |
 | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;5&nbsp; | &nbsp;&nbsp;Total 3D printed parts count |
 
+<span></span>
 [Top](#TOP)
 
 ---
@@ -81,6 +84,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ![base_assembled](assemblies/base_assembled.png)
 
+<span></span>
 [Top](#TOP)
 
 ---
@@ -117,6 +121,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ![feet_assembled](assemblies/feet_assembled.png)
 
+<span></span>
 [Top](#TOP)
 
 ---
@@ -156,6 +161,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ![mains_in_assembled](assemblies/mains_in_assembled.png)
 
+<span></span>
 [Top](#TOP)
 
 ---
@@ -199,4 +205,5 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ![main_assembled](assemblies/main_assembled.png)
 
+<span></span>
 [Top](#TOP)

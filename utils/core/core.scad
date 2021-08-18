@@ -28,12 +28,12 @@ use <global.scad>
 
 module use_stl(name) {               //! Import an STL to make a build platter
     stl(name);
-    path = is_undef($target) ? "../stls/" : str("../", $target, "/stls/");
+    path = is_undef($target) ? "../stls/" : str($cwd, "/", $target, "/stls/");
     import(str(path, name, ".stl"));
 }
 
 module use_dxf(name) {               //! Import a DXF to make a build panel
     dxf(name);
-    path = is_undef($target) ? "../dxfs/" : str("../", $target, "/dxfs/");
+    path = is_undef($target) ? "../dxfs/" : str($cwd, "/", $target, "/dxfs/");
     import(str(path, name, ".dxf"));
 }

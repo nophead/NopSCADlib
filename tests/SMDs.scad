@@ -28,6 +28,11 @@ module smds() {
     translate([0, 3])
         layout([for(l = smd_leds) smd_led_size(l).x], 1)
             smd_led(smd_leds[$i], ["green", "blue", "red"][$i % 3]);
+
+    translate([0, 6])
+        layout([for(c = smd_capacitors) smd_cap_size(c).x], 1)
+            let(c = smd_capacitors[$i])
+                smd_capacitor(c, smd_cap_size(c).y * 0.8);
 }
 
 if($preview)

@@ -30,6 +30,7 @@ from tests import do_cmd, update_image, colour_scheme, background
 from deps import mtime
 from colorama import init
 import json
+from tmpdir import *
 
 def usage():
     print("\nusage:\n\trender [target_config] - Render images of the stl and dxf files.");
@@ -40,6 +41,7 @@ def render(target, type):
     # Make the target directory
     #
     top_dir = set_config(target, usage)
+    tmp_dir = mktmpdir(top_dir)
     target_dir = top_dir + type + 's'
     bom_dir = top_dir + 'bom'
     if not os.path.isdir(target_dir):
@@ -80,7 +82,7 @@ def render(target, type):
         # make a file to import the stl
         #
         if mtime(part_file) > mtime(png_name):
-            png_maker_name = "png.scad"
+            png_maker_name = tmp_dir + "/png.scad"
             pp1 = [0, 146/255, 0]
             colour = pp1
             if part in colours:
@@ -88,15 +90,19 @@ def render(target, type):
                 if not '[' in colour:
                     colour = '"' + colour + '"'
             with open(png_maker_name, "w") as f:
-                f.write('color(%s) import("%s");\n' % (colour, part_file))
+                f.write('color(%s) import("%s");\n' % (colour, reltmp(part_file, target)))
             cam = "--camera=0,0,0,70,0,315,500" if type == 'stl' else "--camera=0,0,0,0,0,0,500"
             render = "--preview" if type == 'stl' or colour != pp1 else "--render"
-            tmp_name = 'tmp.png'
-            openscad.run(colour_scheme, "--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall", "-o", tmp_name, png_maker_name);
+            tmp_name = tmp_dir + '/' + part[:-4] + '.png'
+            openscad.run("-o", tmp_name, png_maker_name, colour_scheme, "--projection=p", "--imgsize=4096,4096", cam, render, "--autocenter", "--viewall");
             do_cmd(("magick "+ tmp_name + " -trim -resize 280x280 -background %s -gravity Center -extent 280x280 -bordercolor %s -border 10 %s"
                     % (background, background, tmp_name)).split())
             update_image(tmp_name, png_name)
             os.remove(png_maker_name)
+    #
+    # Remove tmp dir
+    #
+    rmtmpdir(tmp_dir)
 
 if __name__ == '__main__':
     init()

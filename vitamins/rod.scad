@@ -20,7 +20,7 @@
 //
 //! Steel rods and studding with chamfered ends.
 //!
-//! These items are sysmtrical, so by default the origin is in the centre but it can be changed to the bottom.
+//! These items are symmetrical, so by default the origin is in the centre but it can be changed to the bottom.
 //
 include <../utils/core/core.scad>
 use <../utils/thread.scad>

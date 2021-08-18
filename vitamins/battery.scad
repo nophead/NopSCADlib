@@ -128,7 +128,7 @@ module battery_contact(type, pos = true) { //! Draw a positive or negative batte
     t = contact_thickness(type);
 
     color("silver") {
-        rounded_rectangle([contact_width(type), h, t], r = 1, center = false);
+        rounded_rectangle([contact_width(type), h, t], r = 1);
 
         translate([0, -h / 2, t])
             rotate([90, 0, 0])

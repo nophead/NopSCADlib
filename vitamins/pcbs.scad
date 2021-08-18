@@ -21,6 +21,7 @@ include <d_connectors.scad>
 include <leds.scad>
 include <axials.scad>
 include <smds.scad>
+include <green_terminals.scad>
 
 //
 //                                   l      w      t    r     h     l  c        b     h
@@ -195,6 +196,312 @@ Duex5 = ["Duex5", "Duex5 expansion board",
                                                                     ]),
                                                                     []];
 
+BTT_SKR_MINI_E3_V2_0 = [
+    "BTT_SKR_MINI_E3_V2_0", "BigTreeTech SKR Mini E3 v2.0",
+    100.75, 70.25, 1.6, // size
+    1, // corner radius
+    3, // mounting hole diameter
+    5, // pad around mounting hole
+    grey(30), // color
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        for (i = [ [0, 0], [62.15, 0] ])
+            (i + [20.3, -2.89]),
+        for (i = [ [0, -34.98], [31.80, -37.63], [95.68, -64.47] ])
+            (i + [2.535, -2.89])
+    ],
+    [ // components
+        // cpu
+        [ 55,   33,     0, "chip", 10, 10,   1,   grey(15) ],
+        // driver chips
+        for (x = [10.5, 30.5, 50.5, 70.5])
+            [ x, -17.5,  0, "chip",  5,  5, 1, grey(15) ],
+        // mock up heat sinks over the chips
+        for (x = [10.5, 30.5, 50.5, 70.5])
+            [ x, -17.5,  0, "block",  9, 8.5,  2, "DeepSkyBlue" ],
+        for(x = [10.5, 30.5, 50.5, 70.5], y = [-4,-2,0,2,4])
+            [ x, -17.5 + y,  0, "block",  9, 0.75, 11, "DeepSkyBlue" ],
+        // heat dissipation for drivers under board
+        [ 43,  -17.5,   0, "-block", 85, 8, 0.1, gold ],
+
+        // heated bed
+        [ 26,   16,     0, "chip",    9.5, 8.5, 4,   grey(15) ],
+        [ 27,   19,     0, "-block", 13,  14,   0.1, gold ],
+        // hotend
+        [ 37,   14,     0, "chip",    6,   6,   2.5, grey(15) ],
+        [ 40,   16,     0, "-block", 10,   8,   0.1, gold ],
+
+        // voltage regulator heat dissipation
+        [ 12,   28.5,   0, "-block", 11,   7,   0.1, gold ],
+
+        // terminals
+        [  5.25, 5.3, 180, "gterm", gt_5x17, 2, undef, grey(20) ],
+        [ 18.1,  5.1, -90, "gterm", gt_5x17, 2, undef, grey(20) ],
+        [ 29.3,  5.1, -90, "gterm", gt_5x17, 2, undef, grey(20) ],
+        [ 40.5,  5.1, -90, "gterm", gt_5x11, 2, undef, grey(20) ],
+        // SD and USB
+        [  -3, -(22.27 + 29.92)/2, 0, "usb_uA" ],
+        [  -8, -( 2.13 + 17.17)/2, 0, "uSD", [17.17 - 2.13, 16, 2] ],
+        // EXP
+        [  -4.5, 17,   -90, "2p54boxhdr", 5, 2 ],
+        // TFT
+        [  66.1,  21.7,  0, "2p54header", 5, 1 ],
+        // FAN0
+        [  50.25,  3.8,  0, "jst_xh", 2, false, grey(20) ],
+        // FAN1
+        [  49.9,  16.1,  0, "jst_xh", 2, false, grey(20) ],
+        // PS-ON
+        [  58.1,  16.1,  0, "jst_xh", 2, false, grey(20) ],
+        // PWR-DET
+        [  67.5,  16.0,  0, "jst_xh", 3, false, grey(20) ],
+        // E0-STOP
+        [  78.2,  16.0,  0, "jst_xh", 3, false, grey(20) ],
+        // Z-PROBE
+        [  87.2,  20.5, -90,"jst_xh", 5, false, grey(20) ],
+        // NEO Pixel
+        [  78.2,  27.1,  0, "jst_xh", 3, false, grey(20) ],
+        // end stops
+        [  58.60,  3.8,  0, "jst_xh", 2, false, grey(20) ],
+        [  66.70,  3.8,  0, "jst_xh", 2, false, grey(20) ],
+        [  74.90,  3.8,  0, "jst_xh", 2, false, grey(20) ],
+        // thermistors
+        [  83.00,  3.8,  0, "jst_xh", 2, false, grey(20) ],
+        [  91.10,  3.8,  0, "jst_xh", 2, false, grey(20) ],
+        // motor connections
+        [  10.15, -4.2,  0, "jst_xh", 4, false, grey(20) ],
+        [  30.35, -4.2,  0, "jst_xh", 4, false, grey(20) ],
+        [  43.90, -4.2,  0, "jst_xh", 4, false, grey(20) ],
+        [  57.25, -4.2,  0, "jst_xh", 4, false, grey(20) ],
+        [  70.75, -4.2,  0, "jst_xh", 4, false, grey(20) ],
+        // motor jumpers
+        [  20.6,  44.1,  0, "2p54header", 2, 1 ],
+        [  39.6,  44.2,  0, "2p54header", 2, 1 ],
+        [  60.1,  44.1,  0, "2p54header", 2, 1 ],
+        [  80.3,  44.1,  0, "2p54header", 2, 1 ],
+        // SWD
+        [  43.9,  39.2,  0, "2p54header", 1, 5 ],
+        // SPI
+        [  -3.1,  31.9,  0, "2p54header", 2, 3 ],
+        // PWR-1
+        [  -12.8, 30.3,  0, "2p54header", 3, 1 ],
+        // VOUT
+        [  -14.0, 34.4,  0, "2p54header", 2, 2 ],
+        // VIN
+        [  17.3,  19.6,  0, "2p54header", 2, 2 ],
+    ],
+    [] // accessories
+];
+
+BTT_SKR_E3_TURBO = [
+    "BTT_SKR_E3_TURBO", "BigTreeTech SKR E3 Turbo",
+    102, 90.25, 1.6, // size
+    1, // corner radius
+    3.5, // mounting hole diameter
+    5, // pad around mounting hole
+    grey(30), // color
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        for ( i=[ [0, 0], [62.15, 0.25] ])
+            (i + [21.6, -13.3]),
+        for( i=[ [0, -34.98 ], [31.80, -37.62 ], [95.68, -64.47] ])
+            (i + [3.75, -13.25])
+    ],
+    [ // components
+        // cpu
+        [  62.8,   42.5,   0, "chip", 14, 14,   1,   grey(15) ],
+        // driver chips
+        for (x = [8.5, 27.5, 43.2, 58.5, 74])
+            [x, -20, 0, "chip",  5,  5, 1, grey(15)],
+        // mock up heat sinks over the chips
+        for (x = [8.5, 27.5, 43.2, 58.5, 74])
+            [x, -20,  0, "chip",  9, 8.5,  2, "DeepSkyBlue" ],
+        for (x = [8.5, 27.5, 43.2, 58.5, 74], y = [-4,-2,0,2,4])
+            [x, -20 + y,  0, "chip",  9, 0.75, 11, "DeepSkyBlue" ],
+        // heat dissipation for drivers under board
+        [ 43,     -21,     0, "-block", 85,   8,   0.1, gold ],
+        // hotend and heated bed
+        [ 25.5,    20,     0, "chip",   10,   8.5, 4,   grey(15) ],
+        [ 25.5,    20,     0, "-block", 11,   11,  0.1, gold ],
+        [ 36.25,   16.75,  0, "chip",    6.5, 6,   2.5, grey(15) ],
+        [ 36.25,   17,     0, "-block",  7.5, 7.5, 0.1, gold ],
+        [ 44.25,   16.75,  0, "chip",    6.5, 6,   2.5, grey(15) ],
+        [ 44.25,   17,     0, "-block",  7.5, 7.5, 0.1, gold ],
+        // voltage regulator
+        [ 15.1,    44.2,   0, "chip",    4,   5,   2,   grey(15) ],
+        [ 12.1,    44.2,   0, "-block", 10,  10,   0.1, gold ],
+
+        // terminals
+        [   5.25,  5.3, 180, "gterm", gt_5x17, 2, undef, grey(20) ],
+        [  16.25,  5.4, -90, "gterm", gt_5x17, 2, undef, grey(20) ],
+        [  26.25,  5.4, -90, "gterm", gt_5x17, 2, undef, grey(20) ],
+        [  36.1,   6.7, -90, "gterm", gt_5x11, 2, undef, "lightgreen" ],
+        [  45.0,   6.7, -90, "gterm", gt_5x11, 2, undef, "lightgreen" ],
+        [  -3, -(32.27 + 39.92)/2, 0, "usb_uA" ],
+        [  -8, -(12.13 + 27.17)/2, 0, "uSD", [17.17 - 2.13, 16, 2] ],
+        [ -22.2,   51.6,   0, "button_6mm" ],
+        // EXP
+        [  -4.45,  27.2, -90, "2p54boxhdr", 5, 2 ],
+        // AUX-2
+        [  -3.4,   42.5, -90, "2p54header", 4, 2 ],
+        // TFT
+        [  73.7,   21,     0, "2p54header", 5, 1 ],
+        // FAN0
+        [  52.1,   15.3, 180, "jst_xh", 2, false, grey(20) ],
+        // FAN1
+        [  60.1,  15.3,  180, "jst_xh", 2, false, grey(20) ],
+        // PS-ON
+        [  67.9,  15.3,  180, "jst_xh", 2, false, grey(20) ],
+        // E0-STOP
+        [  77.1,  15.3,  180, "jst_xh", 3, false, grey(20) ],
+        // E1-STOP
+        [  87.5,  15.3,  180, "jst_xh", 3, false, grey(20) ],
+        // Z-PROBE
+        [  85.05,  34.6, 180, "jst_xh", 5, false, grey(20) ],
+        // NEO Pixel
+        [  77,     26.8, 180, "jst_xh", 3, false, grey(20) ],
+        // PWR-DET
+        [  87.7,   26.8, 180, "jst_xh", 3, false, grey(20) ],
+        // FAN2
+        [  52.1,    3.8,   0, "2p54header", 1, 2],
+        // end stops and thermistors
+        for (x = [58.5 : 7.9 : 98.1])
+            [x,  3.7,  180, "jst_xh", 2, false, grey(20)],
+        // motor connections
+        for (x = [7, 27.1, 47.3, 67.5, 87.9])
+            [x, -3.9,  0, "jst_xh", 4, false, grey(20)],
+        [47.3, -10.4,  0, "jst_xh", 4, false, grey(20)], // second Z connector
+        // motor jumpers
+        for (x = [9.4, 26.4, 42.5, 58.7, 75.3])
+            [x, -33.7,  0, "2p54header", 2, 1],
+        // SWD
+        [  45.4,   35.7,   0, "2p54header", 5, 1 ],
+        // USB power jumber
+        [ -12.6,   40.3,   0, "2p54header", 3, 1 ],
+        // VOUT
+        [ -13.9,   44.5,   0, "2p54header", 2, 2 ],
+        // VIN
+        [  18.6,   29.8,   0, "2p54header", 2, 2 ],
+    ],
+    [] // accessories
+];
+
+TMC2130 = [
+    "TMC2130", "TMC2130",
+    20, 14, 1.6, // size
+    0, 0, 0, // corner radius, mounting hole diameter, pad around mounting hole
+    grey(95), // colour
+    false, // true if parts should be separate BOM items
+    [], // hole positions
+    [
+        [  10,  1,  0, "-2p54header", 8, 1 ],
+        [  10, 13,  0, "-2p54header", 8, 1 ],
+        [  12,  7,  0, "-chip", 6, 4, 1, grey(20) ],
+        // mock up a heat sink
+        [  10,  7,  0, "block", 9, 8.5, 2, "DeepSkyBlue" ],
+        for (y = [-4,-2,0,2,4]) [ 10, 7 + y,  0, "block", 9, 0.75, 11, "DeepSkyBlue" ],
+    ],
+    []
+];
+
+BTT_SKR_V1_4_TURBO = [
+    "BTT_SKR_V1_4_TURBO", "BigTreeTech SKR v1.4 Turbo",
+    110, 85, 1.6, // size
+    1, // corner radius
+    3, // mounting hole diameter
+    4, // pad around mounting hole
+    grey(30), // colour
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        [-4, 4], [-4, -4], [4, -4], [4, 4]
+    ],
+    [ // components
+        [  (29.15+31.5)/2,  8, -90, "usb_B" ],
+        [  (46.9+51.55)/2,  7, -90, "uSD", [14, 14, 2] ],
+        [ 105,   13,     0, "button_6mm" ],
+        [  58,   43,     0, "chip", 15, 15, 1, grey(20) ],
+        // ESP-01 socket
+        [  69.8,  4,     0, "2p54socket", 4, 2 ],
+        // terminals
+        [   5.3, 13.2, 180, "gterm", gt_5x17, 2, undef, grey(20)],
+        [   5.3, 25.8, 180, "gterm", gt_5x17, 2, undef, grey(20)],
+        [   5.3, 37.2, 180, "gterm", gt_5x11, 2, undef, grey(20)],
+        [   5.3, 47.2, 180, "gterm", gt_5x11, 2, undef, grey(20)],
+
+        [   2.8, 56.7, -90, "jst_xh", 2, false, grey(20) ],
+        [  10.9, 56.7,  90, "jst_xh", 2, false, grey(20) ],
+        [  82,    4,     0, "jst_xh", 2, false, grey(20) ],
+        [  90,    4,     0, "jst_xh", 2, false, grey(20) ],
+        [  98,    4,     0, "jst_xh", 2, false, grey(20) ],
+
+        [  87.7, 29.0, -90, "jst_xh", 3, false, grey(20) ],
+        [  87.7, 39.5, -90, "jst_xh", 3, false, grey(20) ],
+        [  87.7, 50.1, -90, "jst_xh", 3, false, grey(20) ],
+        [  95.3, 29.0, -90, "jst_xh", 3, false, grey(20) ],
+        [  95.3, 39.5, -90, "jst_xh", 3, false, grey(20) ],
+        [  95.3, 50.1, -90, "jst_xh", 3, false, grey(20) ],
+
+        [  85.7, 18.2, 180, "jst_xh", 3, false, grey(20) ],
+        [  94.9, 18.2, 180, "jst_xh", 2, false, grey(20) ],
+        [  77.2, 19.6, -90, "jst_xh", 3, false, grey(20) ],
+        [  69.8, 11.0,   0, "jst_xh", 5, false, grey(20) ],
+
+        [  69.0, 19.2,   0,  "2p54header", 4, 1 ],
+        [  57.8, 18.0,   0,  "2p54header", 3, 2 ],
+        [  28.0, 19.7,   0,  "2p54header", 2, 2 ],
+
+        [  37.6, 28.8,   0,  "2p54header", 1, 3, undef, "red" ],
+        [  77.8, 27.5,   0,  "2p54header", 2, 2 ],
+        [  81.8, 26.4,   0,  "2p54header", 1, 3, undef, "red" ],
+        [  43.8, 42.8,   0,  "2p54header", 1, 5 ],
+
+        // EXP1 & EXP2
+        [  -6.6, 29.4,  90, "2p54boxhdr", 5, 2 ],
+        [  -6.6, 50.4,  90, "2p54boxhdr", 5, 2 ],
+
+        // motor axes connections
+        [  11.2, -3.75, 180, "jst_xh", 2, false, grey(20) ],
+        [  21.8, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  35.0, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  48.2, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  61.4, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  74.7, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  87.9, -3.75, 180, "jst_xh", 4, false, grey(20) ],
+        [  98.5, -3.75, 180, "jst_xh", 2, false, grey(20) ],
+
+        // stepper drivers
+        [  11.5, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  11.5, 75.2,  0, "2p54socket", 8, 1 ],
+        [   2.6, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  11.5, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  33.1, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  33.1, 75.2,  0, "2p54socket", 8, 1 ],
+        [  24.2, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  33.1, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  54.8, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  54.8, 75.2,  0, "2p54socket", 8, 1 ],
+        [  45.9, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  54.8, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  76.4, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  76.4, 75.2,  0, "2p54socket", 8, 1 ],
+        [  67.5, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  76.4, 68.85, 0, "pcb", 11, TMC2130 ],
+
+        [  98.1, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
+        [  98.1, 75.2,  0, "2p54socket", 8, 1 ],
+        [  89.2, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+
+        // closed loop pins
+        [  24.4, 57.5,  0, "2p54header", 6, 1 ],
+        [  40.6, 57.5,  0, "2p54header", 6, 1 ],
+        [  56.7, 57.5,  0, "2p54header", 6, 1 ],
+        [  72.9, 57.5,  0, "2p54header", 6, 1 ],
+        [  89.1, 57.5,  0, "2p54header", 6, 1 ],
+    ],
+    [] // accessories
+];
 
 Melzi = ["Melzi", "Melzi electronics", 203.2, 49.53, 1.6, 3.81, 3.1,  6, "green", false, [[3.81,  3.81], [-3.81, 3.81], [-3.81, -3.81], [3.81, -3.81]],
                                                                     [],
@@ -398,6 +705,8 @@ PERF70x30 = ["PERF70x30", "Perfboard 70 x 30mm", 70, 30, 1.6, 0, 2.3, 0, "green"
 
 PERF60x40 = ["PERF60x40", "Perfboard 60 x 40mm", 60, 40, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
 
+PERF70x51 = ["PERF70x51", "Perfboard 70 x 51mm", 70, 51, 1.0, 0, 3.0, 0, "sienna", true, [[3.0, 5.25], [-3.0, 5.25], [3.0, -5.25], [-3.0, -5.25]], [], [], [5.79, 3.91]];
+
 PERF74x51 = ["PERF74x51", "Perfboard 74 x 51mm", 74, 51, 1.0, 0, 3.0, 0, "sienna", true, [[3.0, 3.5], [-3.0, 3.5], [3.0, -3.5], [-3.0, -3.5]], [], [], [9.5, 4.5]];
 
 PSU12V1A = ["PSU12V1A", "PSU 12V 1A", 67, 31, 1.7, 0, 3.9, 0, "green", true, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]], [], []];
@@ -440,8 +749,59 @@ ESP_01 = [
     [] // accessories
 ];
 
-pcbs = [MP1584EN, TP4056, ESP_01, MT3608, RAMPSEndstop, ExtruderPCB, PI_IO, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, Keyes5p1, PSU12V1A, WD2002SJ, RPI3, RPI4, DuetE, Duex2, Duex5];
+XIAO = [
+    "XIAO", "Seeeduino XIAO",
+    21, 18, 1.2, // Size
+    1.5, // corner radius
+    0.8, // mounting hole diameter
+    [2, 2.6, 1- eps, gold], // pad around mounting hole
+    grey(25), // color
+    false, // true if parts should be separate BOM items
+    [for(x = [0:6], y = [-1,1]) [x * 2.54 + 2.71, y * 3 * 2.54 + 9], // Inboard hole positions
+     for(x = [0:6], y = [-1,1]) [x * 2.54 + 2.71, y * 9 + 9]],       // Hole positions on the edge, pad overlaps the inboard holes
+    [ // components
+        [7.6, 9, 0, "block", 12.3, 12, 2.41, silver], // can
+        [21 + 1.76 - 7.35 / 2, 9, 0, "usb_C"],
+    ],
+    [] // accessories
+];
 
-perfboards = [PERF74x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
+LIPO_fuel_gauge = [
+    "LIPO_fuel_gauge", "LIPO fuel gauge",
+    24, 10, 1.6, // Size
+    0, // corner radius
+    1, // mounting hole diameter
+    1.8, // pad around mounting hole
+    "red", // color
+    false, // true if parts should be separate BOM items
+    [for(x = [0:2], y = [-1,1]) [x * 2.54 + 5.27, y * 1.5 * 2.54 + 5],
+     for(x = 3,     y = [-1,1]) [x * 2.54 + 5.27, y * 0.5 * 2.54 + 5]],
+    [ // components
+        [17, 5, 90, "jst_ph", 2, true],
+        [2.54 + 5.27,  1.5 * 2.54 + 5, 0, "-2p54joiner", 3, 1],
+        [2.54 + 5.27, -1.5 * 2.54 + 5, 0, "-2p54joiner", 3, 1],
+        [3 * 2.54 + 5.27, 5,           0, "-2p54joiner", 1, 2],
+        [6.4 + 1.5, 5, 0, "chip", 3, 2, 0.8],
+        [1.2,  2.5, 90, "smd_res", RES0603, "472"],
+        [2.4,  2.5, 90, "smd_res", RES0603, "472"],
+        [1.2, -2.5, 90, "smd_res", RES0603, "472"],
+        [2.4, -2.5, 90, "smd_res", RES0603, "472"],
+
+        [10.35, -4, -90, "smd_res", RES0603, "181"],
+        [10.35,  4, -90, "smd_res", RES0603, "102"],
+
+        [12.89, 1.5 * 2.54 + 5, 0, "smd_cap", CAP0603, 0.85],
+        [12.89,-1.5 * 2.54 + 5, 0, "smd_cap", CAP0603, 0.85],
+   ],
+    [] // accessories
+];
+
+tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
+
+pcbs = [RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+
+pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1];
+
+perfboards = [PERF74x51, PERF70x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
 use <pcb.scad>

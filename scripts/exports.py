@@ -28,7 +28,10 @@ from set_config import *
 import time
 import times
 from deps import *
+from tmpdir import *
 import json
+import shutil
+from colorama import Fore, init
 
 def bom_to_parts(bom_dir, part_type, assembly = None):
     #
@@ -43,7 +46,7 @@ def bom_to_parts(bom_dir, part_type, assembly = None):
             if words:
                 last_word = words[-1]
                 if last_word.endswith(suffix):
-                   part_files.append(last_word[:-4] + '.' + part_type)
+                    part_files.append(last_word[:-4] + '.' + part_type)
     return part_files
 
 def usage(t):
@@ -62,20 +65,29 @@ def make_parts(target, part_type, parts = None):
     #
     top_dir = set_config(target, lambda: usage(part_type))
     target_dir = top_dir + part_type + 's'
-    deps_dir = top_dir + "deps"
+    deps_dir = target_dir + "/deps"
     bom_dir = top_dir + "bom"
+    tmp_dir = mktmpdir(top_dir)
+
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
+
     if not os.path.isdir(deps_dir):
         os.makedirs(deps_dir)
+
+    old_deps = top_dir + 'deps'  #old location
+    if os.path.isdir(old_deps):
+         shutil.rmtree(old_deps)
+
     times.read_times(target_dir)
     #
     # Decide which files to make
     #
+    all_parts = bom_to_parts(bom_dir, part_type)
     if parts:
         targets = list(parts)           #copy the list so we dont modify the list passed in
     else:
-        targets = bom_to_parts(bom_dir, part_type)
+        targets = list(all_parts)
         for file in os.listdir(target_dir):
             if file.endswith('.' + part_type):
                 if not file in targets:
@@ -119,18 +131,18 @@ def make_parts(target, part_type, parts = None):
                                         changed = check_deps(part_file, dname)
                                         changed = times.check_have_time(changed, part)
                                         if part_type == 'stl' and not changed and not part in bounds_map:
-                                            changed = "No bounds"
+                                            changed = Fore.CYAN + "No bounds" + Fore.WHITE
                                         if changed:
                                             print(changed)
                                             #
                                             # make a file to use the module
                                             #
-                                            part_maker_name = part_type + ".scad"
+                                            part_maker_name = tmp_dir + '/' + part_type + ".scad"
                                             with open(part_maker_name, "w") as f:
-                                                f.write("use <%s/%s>\n" % (dir, filename))
+                                                f.write("use <%s/%s>\n" % (reltmp(dir, target), filename))
                                                 f.write("%s();\n" % module);
                                             t = time.time()
-                                            openscad.run("-D$bom=1", "-d", dname, "-o", part_file, part_maker_name)
+                                            openscad.run("-o", part_file, part_maker_name, "-D$bom=1", "-d", dname)
                                             times.add_time(part, t)
                                             if part_type == 'stl':
                                                 bounds = c14n_stl.canonicalise(part_file)
@@ -144,10 +156,14 @@ def make_parts(target, part_type, parts = None):
         with open(bounds_fname, 'w') as outfile:
             json.dump(bounds_map, outfile, indent = 4)
     #
+    # Remove tmp dir
+    #
+    rmtmpdir(tmp_dir)
+    #
     # List the ones we didn't find
     #
     if targets:
         for part in targets:
             print("Could not find a module called", part[:-4] + module_suffix, "to make", part)
         usage(part_type)
-    times.print_times()
+    times.print_times(all_parts)

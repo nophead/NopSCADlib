@@ -39,7 +39,6 @@ function foot_screw(type = foot)    = type[4]; //! Screw type
 function foot_slant(type = foot)    = type[5]; //! Taper angle
 
 module foot(type = foot) { //! Generate STL
-    stl("foot");
     h = foot_height(type);
     t = foot_thickness(type);
     r1 = washer_radius(screw_washer(foot_screw(type)));
@@ -47,32 +46,32 @@ module foot(type = foot) { //! Generate STL
     r2 = r3 - h * tan(foot_slant(type));
     r =  foot_rad(type);
 
-    union() {
-        rotate_extrude(convexity = 3) {
-            hull() {
-                translate([r1, 0])
-                    square([r3 - r1, eps]);
+    stl("foot")
+        union() {
+            rotate_extrude(convexity = 3) {
+                hull() {
+                    translate([r1, 0])
+                        square([r3 - r1, eps]);
 
-                for(x = [r1 + r, r2 - r])
-                    translate([x, h - r])
-                        circle4n(r);
+                    for(x = [r1 + r, r2 - r])
+                        translate([x, h - r])
+                            circle4n(r);
+                }
+            }
+            linear_extrude(t)
+                difference() {
+                    circle(r1 + eps);
+
+                    poly_circle( screw_clearance_radius(foot_screw(type)));
             }
         }
-        linear_extrude(t)
-            difference() {
-                circle(r1 + eps);
-
-                poly_circle( screw_clearance_radius(foot_screw(type)));
-        }
-    }
 }
 
 module foot_assembly(t = 0, type = foot, flip = false) { //! Assembly with fasteners in place for specified sheet thickness
     screw = foot_screw(type);
-    washer = screw_washer(screw);
     nut = screw_nut(screw);
     squeeze = 0.5;
-    screw_length = screw_longer_than(foot_thickness(type) + t + 2 * washer_thickness(washer) + nut_thickness(nut, true) - squeeze);
+    screw_length = screw_length(screw, foot_thickness(type) + t - squeeze, 2, nyloc = true);
 
     vflip() explode(15, true) {
         stl_colour(pp4_colour) foot(type);
@@ -94,7 +93,6 @@ module foot_assembly(t = 0, type = foot, flip = false) { //! Assembly with faste
 }
 
 module insert_foot(type = insert_foot) { //! Generate STL for foot with insert
-    stl("insert_foot");
     h = foot_height(type);
     r3 = foot_diameter(type) / 2;
     r2 = r3 - h * tan(foot_slant(type));
@@ -104,36 +102,37 @@ module insert_foot(type = insert_foot) { //! Generate STL for foot with insert
     h2 = insert_hole_length(insert);
     r4 = insert_hole_radius(insert);
     r5 = r4 + 1;
-    union() {
-        rotate_extrude() {
-            union() {
-                hull() {
-                    translate([r5, 0]) {
-                        square([r3 - r5, eps]);
-                        square([eps, h]);
-                    }
+    stl("insert_foot")
+        union() {
+            rotate_extrude() {
+                union() {
+                    hull() {
+                        translate([r5, 0]) {
+                            square([r3 - r5, eps]);
+                            square([eps, h]);
+                        }
 
-                    translate([r2 - r, h - r])
-                        circle4n(r);
+                        translate([r2 - r, h - r])
+                            circle4n(r);
+                    }
                 }
             }
+            linear_extrude(h2 + eps)
+                difference() {
+                    circle(r5 + eps);
+
+                    poly_circle(r4);
+                }
+
+            translate_z(h2)
+                cylinder(r = r5 + eps, h = h - h2);
         }
-        linear_extrude(h2 + eps)
-            difference() {
-                circle(r5 + eps);
-
-                poly_circle(r4);
-            }
-
-        translate_z(h2)
-            cylinder(r = r5 + eps, h = h - h2);
-    }
 }
 //
 //! Place the insert in the bottom of the foot and push home with a soldering iron with a conical bit heated to 200&deg;C.
 //
 module insert_foot_assembly(type = insert_foot) //! Printed part with insert in place
-assembly("insert_foot") {
+assembly("insert_foot", ngb = true) {
     screw = foot_screw(type);
     insert = screw_insert(screw);
 
@@ -146,9 +145,7 @@ assembly("insert_foot") {
 
 module fastened_insert_foot_assembly(t = 3, type = insert_foot) { //! Assembly with fasteners in place for specified sheet thickness
     screw = foot_screw(type);
-    washer = screw_washer(screw);
-    insert = screw_insert(screw);
-    screw_length = screw_shorter_than(insert_length(insert) + t + 2 * washer_thickness(washer));
+    screw_length = screw_length(screw, t, 2, insert = true);
 
     explode(-10) insert_foot_assembly(type);
 

@@ -18,7 +18,7 @@
 //
 
 //
-//! LCD dispays.
+//! LCD displays.
 //
 include <../utils/core/core.scad>
 
@@ -80,7 +80,7 @@ module display(type) { //! Draw specified display
         translate_z(display_ts_thickness(type)) {
             difference() {
                 color("silver")
-                    rounded_rectangle([w, h, t], 0.5, center = false);
+                    rounded_rectangle([w, h, t], 0.5);
 
                 color("black")
                     translate([aperture[0].x, aperture[0].y, - eps])

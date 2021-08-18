@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2020
+// NopSCADlib Copyright Chris Palmer 2018
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -17,19 +17,17 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
-include <../vitamins/scs_bearing_blocks.scad>
+include <../vitamins/pillow_blocks.scad>
 
 use <../utils/layout.scad>
 
-module scs_bearing_blocks()
-    layout([for(s = scs_bearing_blocks) scs_size(s).x], 10) {
-        part_thickness = 5;
-        scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
-
-        if($i > 0) // skip $i==0, since no SCS6LUU long variant to match SCS6UU
-            translate([0, 60])
-                scs_bearing_block_assembly(scs_bearing_blocks_long[$i - 1], part_thickness);
-    }
+module kp_pillow_blocks() {
+    screws = [M4_cap_screw, M4_cap_screw, M5_cap_screw, M5_cap_screw];
+    nuts = [M4_sliding_t_nut, M4_hammer_nut, M5_sliding_t_nut, M5_nut];
+    assert(len(screws) == len(kp_pillow_blocks) && len(nuts) == len(kp_pillow_blocks));
+    layout([for(k = kp_pillow_blocks) 2 * kp_size(k)[1]])
+        kp_pillow_block_assembly(kp_pillow_blocks[$i], screw_type = screws[$i], nut_type = nuts[$i]);
+}
 
 if($preview)
-    scs_bearing_blocks();
+    kp_pillow_blocks();

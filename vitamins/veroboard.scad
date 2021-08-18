@@ -83,7 +83,7 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
     hole_d = 1;
     tw = vero_track_width(type);
     colour = vero_fr4(type) ? "green" : "goldenrod";
-    tc = vero_fr4(type) ? "silver" : "darkorange";
+    tc = vero_fr4(type) ? "silver" : copper;
     no_track = vero_no_track(type);
 
     vitamin(str("veroboard(", type[0], "): Veroboard ", holes, " holes x ", strips, "strips"));
@@ -143,12 +143,11 @@ module vero_components(type, cutouts = false, angle = undef)
 
 module vero_cutouts(type, angle = undef) vero_components(type, true, angle); //! Make cutouts to clear components
 
-module veroboard_assembly(type, height, thickness, flip = false) //! Draw the assembly with components and fasteners in place
-assembly(vero_assembly(type)) {
+module veroboard_assembly(type, height, thickness, flip = false, ngb = false) //! Draw the assembly with components and fasteners in place
+assembly(vero_assembly(type), ngb = ngb) {
     screw = vero_screw(type);
-    washer = screw_washer(screw);
     nut = screw_nut(screw);
-    screw_length = screw_longer_than(height + thickness + vero_thickness(type) + 2 * washer_thickness(washer) + nut_thickness(nut, true));
+    screw_length = screw_length(screw, height + thickness + vero_thickness(type), 2, nyloc = true);
 
     translate_z(height) {
         veroboard(type);

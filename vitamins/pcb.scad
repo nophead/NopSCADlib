@@ -45,15 +45,18 @@ function pcb_thickness(type)    = type[4];  //! Thickness
 function pcb_radius(type)       = type[5];  //! Corner radius
 function pcb_hole_d(type)       = type[6];  //! Mounting hole diameter
 function pcb_land_d(type)       = type[7];  //! Pad around mounting hole
-function pcb_colour(type)       = type[8];  //! Colour of the subtrate
+function pcb_colour(type)       = type[8];  //! Colour of the substrate
 function pcb_parts_on_bom(type) = type[9];  //! True if the parts should be separate BOM items
 function pcb_holes(type)        = type[10]; //! List of hole positions
 function pcb_components(type)   = type[11]; //! List of components
 function pcb_accessories(type)  = type[12]; //! List of accessories to go on the BOM, SD cards, USB cables, etc.
-function pcb_grid(type)         = type[13]; //! Grid if a perfboard
+function pcb_grid(type)         = type[13]; //! Grid origin if a perfboard
 function pcb_polygon(type)      = type[14]; //! Optional outline polygon for odd shaped boards
 function pcb_screw(type, cap = hs_cap) = Len(type[15]) ? type[15] : find_screw(cap, screw_smaller_than(pcb_hole_d(type))); //! Mounting screw type
 function pcb_size(type) = [pcb_length(type), pcb_width(type), pcb_thickness(type)]; //! Length, width and thickness in a vector
+
+function pcb_component(type, name, index = 0) = //! Return the component specified by name and index
+    [for(component = pcb_components(type)) if(component[3] == name) component][index];
 
 
 function pcb_grid_pos(type, x, y, z = 0) = //! Returns a pcb grid position
@@ -69,7 +72,7 @@ function pcb_coord(type, p) = let(l = pcb_length(type), w = pcb_width(type)) //!
     [(p.x >= 0 ? p.x : l + p.x) - l / 2,
      (p.y >= 0 ? p.y : w + p.y) - w / 2];
 
-module pcb_hole_positions(type, all = true) { // Positition children at the hole positions, including holes not used for screws
+module pcb_hole_positions(type, all = true) { // Position children at the hole positions, including holes not used for screws
     holes = pcb_holes(type);
 
     for($i = [0 : 1 : len(holes) - 1]) {
@@ -126,7 +129,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
         if(cutout)
             rotate([90, 0, 90])
                 rounded_rectangle([w + 2 * v_flange_h + 2 * panel_clearance,
-                                   h + 2 * h_flange_h + 2 * panel_clearance, 100], r = cnc_bit_r, center = false);
+                                   h + 2 * h_flange_h + 2 * panel_clearance, 100], r = cnc_bit_r);
         else {
             color("silver") rotate([0, 90, 0]) {
                 linear_extrude(l, center = true)
@@ -158,7 +161,7 @@ module usb_A(h, v_flange_l, bar, cutout) {
             }
 }
 
-module molex_usb_Ax2(cutout) { //! Draw Molex USB connector suitable for perf board
+module molex_usb_Ax2(cutout) { //! Draw Molex dual USB A connector suitable for perf board
     w = 15.9;
     h = 16.6;
     l = 17;
@@ -206,6 +209,63 @@ module molex_usb_Ax2(cutout) { //! Draw Molex USB connector suitable for perf bo
 
                 for(side = [-1, 1], end = [0, 1])
                     translate([side * w / 2, -l / 2 + tag_w / 2 + end * tag_p])
+                        rotate(-side * 90)
+                            hull() {
+                                translate([0, tag_l - tag_r])
+                                    cylinder(r = tag_r, h = tag_t);
+
+                                translate([-tag_w / 2, 0])
+                                    cube([tag_w, eps, tag_t]);
+                            }
+            }
+    }
+}
+
+module molex_usb_Ax1(cutout) { //! Draw Molex USB A connector suitable for perf board
+    w = 15.3;
+    h = 7.7;
+    l = 14.5;
+    pin_l = 2.8;
+    clearance = 0.2;
+    tag_l = 4.4;
+    tag_r = 0.5;
+    tag_w = 1.5;
+    tag_t = 0.3;
+
+    if(cutout)
+        translate([0, -w / 2 - clearance, -clearance])
+            cube([100, w + 2 * clearance, h + 2 * clearance]);
+    else {
+        color(silver)
+            translate([-l / 2, 0])
+                rotate([90, 0, 90])
+                    translate([-w / 2, 0]) {
+                        cube([w, h, l - 9]);
+
+                        linear_extrude(l)
+                            difference() {
+                                square([w, h]);
+
+                                 translate([w / 2, h / 2])
+                                    square([12.6, 5.08], center = true);
+                            }
+                    }
+
+        translate([-1.5, 0, h / 2])
+            usb_A_tongue();
+
+        color(silver)
+            rotate(-90) {
+                for(x = [-1.5 : 1 : 1.5])
+                    translate([inch(x / 10), - l / 2 + inch(0.05)])
+                        hull() {
+                            cube([0.6, 0.3, 2 * pin_l - 2], center = true);
+
+                            cube([0.4, 0.3, 2 * pin_l], center = true);
+                        }
+
+                for(side = [-1, 1])
+                    translate([side * w / 2, -l / 2 + 4.2])
                         rotate(-side * 90)
                             hull() {
                                 translate([0, tag_l - tag_r])
@@ -916,6 +976,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     rotate(comp.z) {
         // Components that have a cutout parameter go in this section
         if(show(comp, "2p54header"))    pin_header(2p54header, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
+        if(show(comp, "2p54joiner"))    pin_header(2p54joiner, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
         if(show(comp, "2p54boxhdr"))    box_header(2p54header, comp[4], comp[5], param(6, false), cutouts);
         if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
@@ -935,6 +996,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "uSD"))           uSD(comp[4], cutouts);
         if(show(comp, "trimpot10"))     trimpot10(param(4, false), cutouts);
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
+        if(show(comp, "molex_usb_Ax1")) molex_usb_Ax1(cutouts);
         if(show(comp, "smd_led"))       smd_led(comp[4], comp[5], cutouts);
         if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8));
         if(!cutouts) {
@@ -951,16 +1013,18 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "gterm635"))      green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
             if(show(comp, "term35"))        terminal_35(comp[4], param(5,"blue"));
             if(show(comp, "transition"))    idc_transition(2p54header, comp[4], comp[5]);
-            if(show(comp, "led"))           led(comp[4], comp[5], 2.6);
+            if(show(comp, "led"))           translate_z(eps) led(comp[4], comp[5], 2.6);
             if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4]);
             if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
+            if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
             if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
+            if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5]);
         }
     }
 }
@@ -1015,44 +1079,65 @@ module pcb_grid_positions(type) {
 module pcb(type) { //! Draw specified PCB
     grid = pcb_grid(type);
     t = pcb_thickness(type);
+    w = pcb_width(type);
+    l = pcb_length(type);
+
+    module pcb_shape()
+        if(Len(pcb_polygon(type)))
+            polygon(pcb_polygon(type));
+        else
+            rounded_square([l, w], r = pcb_radius(type));
+
     if(pcb_name(type))
         vitamin(str("pcb(", type[0], "): ", pcb_name(type)));
 
     for(part = pcb_accessories(type))
         vitamin(part);
 
-    color(pcb_colour(type)) linear_extrude(t) difference() {
-        if(Len(pcb_polygon(type)))
-            polygon(pcb_polygon(type));
-        else
-            rounded_square([pcb_length(type), pcb_width(type)], r = pcb_radius(type));
+    color(pcb_colour(type))
+        linear_extrude(t)
+            difference() {
+                pcb_shape();
 
-        pcb_hole_positions(type)
-            circle(d = pcb_hole_d(type) + eps);
+                pcb_hole_positions(type)
+                    offset(eps)
+                        circle4n(d = pcb_hole_d(type));
 
-        if(Len(grid))
-            pcb_grid_positions(type)
-                circle(d = 1 + eps);
-    }
+                if(Len(grid))
+                    pcb_grid_positions(type)
+                        circle(d = 1 + eps);
+            }
 
     land = pcb_land_d(type);
+    land_r = Len(land) > 2 ? land[2] : 0;
     hole = pcb_hole_d(type);
-    color("silver")
+    plating = 0.1;
+    color(Len(land) > 3 ? land[3] : silver)
         translate_z(t / 2)
-            pcb_hole_positions(type)
-                if(is_list(land))
-                    linear_extrude(t + 2 * eps, center = true)
-                        difference() {
-                            square(land, center = true);
+            linear_extrude(t + 2 * plating, center = true)
+                difference() {
+                    intersection() {
+                        pcb_hole_positions(type)
+                            if(is_list(land)) {
+                                p = pcb_holes(type)[$i];  // If edge SMT pad then make it rectangular to overlap without gaps
+                                edge = abs(p.x) < eps || abs(p.x - l) < eps || abs(p.y) < eps || abs(p.y - w) < eps;
+                                rounded_square([land.x, land.y], edge ? 0 : land_r);
+                            }
+                            else
+                                circle(d = max(land, 1));
 
-                            circle(d = hole);
-                        }
-                else
-                    tube(or =  max(land, 1) / 2, ir = hole / 2, h = t + 2 * eps);
+                        offset(eps)
+                            pcb_shape();   // Handle half holes on the edge of PCBs such as ESP8266
+                    }
+
+                    pcb_hole_positions(type)
+                        circle4n(d = hole);
+                }
 
     fr4 = pcb_colour(type) != "sienna";
-    plating = 0.15;
-    color(pcb_colour(type) == "green" ? "silver" : "gold")
+    pcb_colour = pcb_colour(type);
+    plating_colour = is_undef(grid[4]) ? ((pcb_colour == "green" || pcb_colour == "#2140BE") ? silver : pcb_colour == "sienna" ? copper : gold) : grid[4];
+    color(plating_colour)
         translate_z(-plating)
             linear_extrude(fr4 ? t + 2 * plating : plating)
                 if(Len(grid)) {
@@ -1121,9 +1206,7 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
 
     screw = pcb_screw(type);
     if(!is_undef(screw)) {
-        washer = screw_washer(screw);
-        nut = screw_nut(screw);
-        screw_length = screw_longer_than(height + thickness + pcb_thickness(type) + washer_thickness(washer) + nut_thickness(nut, true));
+        screw_length = screw_length(screw, height + thickness + pcb_thickness(type), 1, nyloc = true);
 
         taper = screw_smaller_than(pcb_hole_d(type)) > 2 * screw_radius(screw); // Arduino?
         pcb_screw_positions(type) {
@@ -1138,7 +1221,7 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
 
             translate_z(-thickness)
                 vflip()
-                    nut_and_washer(nut, true);
+                    nut_and_washer(screw_nut(screw), true);
         }
     }
 }

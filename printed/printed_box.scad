@@ -65,10 +65,8 @@ function pbox_insert(type) = screw_insert(pbox_screw(type)); //! The insert for 
 function pbox_washer(type) = screw_washer(pbox_screw(type)); //! The washer for the base screws
 
 function pbox_screw_length(type, panel_thickness = 0) =  //! Length of the base screw
-    let(foot = pbox_foot(type))
-        screw_shorter_than(pbox_base(type) + washer_thickness(pbox_washer(type))
-                            + insert_length(pbox_insert(type))
-                            + (foot ? foot_thickness(foot) : panel_thickness));
+    let(foot = pbox_foot(type), screw = pbox_screw(type))
+        screw_length(screw, pbox_base(type) + (foot ? foot_thickness(foot) : panel_thickness), 1, true);
 
 function pbox_mid_offset(type) = pbox_ridges(type).y + pbox_wall(type) / 2; // Offset to wall midpoint
 
@@ -131,28 +129,27 @@ module pbox_outer_shape(type) //! 2D outer shape of the box
     offset(pbox_wall(type) / 2) pbox_mid_shape(type);
 
 module pbox_base(type) { //! Generate the STL for the base
-    stl(str(pbox_name(type),"_base"));
     t = pbox_base(type);
-    difference() {
-        union() {
-            linear_extrude(t)
-                offset(base_outset - 0.2)
-                    pbox_inner_shape(type);
 
-            if($children > 0)
-                children(0);
+    stl(str(pbox_name(type),"_base"))
+        difference() {
+            union() {
+                linear_extrude(t)
+                    offset(base_outset - 0.2)
+                        pbox_inner_shape(type);
+
+                if($children > 0)
+                    children(0);
+            }
+            pbox_screw_positions(type)
+                poly_cylinder(r = screw_clearance_radius(pbox_screw(type)), h = 2 * t + eps, center = true);
+
+            if($children > 1)
+                children(1);
         }
-        pbox_screw_positions(type)
-            poly_cylinder(r = screw_clearance_radius(pbox_screw(type)), h = 2 * t + eps, center = true);
-
-        if($children > 1)
-            children(1);
-    }
 }
 
 module pbox(type) { //! Generate the STL for the main case
-    stl(pbox_name(type));
-
     height = pbox_height(type);
     total_height = pbox_total_height(type);
     top_thickness = pbox_top(type);
@@ -161,60 +158,61 @@ module pbox(type) { //! Generate the STL for the main case
     ledge_inset = base_outset - base_overlap;
     ledge_h = pbox_base(type) ? (ledge_outset - ledge_inset) * 2 : 0;
 
-    difference() {
-        union() {
-            linear_extrude(total_height)
-                pbox_outer_shape(type);
-
-            if($children > 2)
-                children(2);
-        }
+    stl(pbox_name(type))
         difference() {
-            translate_z(top_thickness)
-                union() {
-                    linear_extrude(height + eps)
-                         offset(-wall / 2) pbox_mid_shape(type);
+            union() {
+                linear_extrude(total_height)
+                    pbox_outer_shape(type);
 
-                     translate_z(height)                                     // Recess for the base
-                        linear_extrude(total_height - height)
-                            offset(base_outset)
-                                pbox_inner_shape(type);
-                }
-            // Ledge to support the lid
-            if(ledge_h)
-                translate_z(top_thickness + height - ledge_h)
-                    difference() {
-                        rounded_rectangle([pbox_width(type) + 2 * outset, pbox_depth(type) + 2 * outset, ledge_h], 1, center = false);
+                if($children > 2)
+                    children(2);
+            }
+            difference() {
+                translate_z(top_thickness)
+                    union() {
+                        linear_extrude(height + eps)
+                             offset(-wall / 2) pbox_mid_shape(type);
 
-                        hull() {
-                            linear_extrude(ledge_h + eps)
-                                offset(ledge_inset)
+                         translate_z(height)                                     // Recess for the base
+                            linear_extrude(total_height - height)
+                                offset(base_outset)
                                     pbox_inner_shape(type);
-
-                            linear_extrude(eps)
-                                offset(ledge_outset)
-                                     pbox_inner_shape(type);
-                        }
-                        pbox_screw_positions(type)
-                            insert_hole(pbox_insert(type));
                     }
+                // Ledge to support the lid
+                if(ledge_h)
+                    translate_z(top_thickness + height - ledge_h)
+                        difference() {
+                            rounded_rectangle([pbox_width(type) + 2 * outset, pbox_depth(type) + 2 * outset, ledge_h], 1);
 
-            // Corner lugs for inserts
-            outset = wall + pbox_ridges(type).y;
-            or = pbox_radius(type) + outset;
-            inset = pbox_screw_inset(type) + outset;
-            br = insert_boss_radius(pbox_insert(type), wall);
-            ext = sqrt(2) * inset - or * (sqrt(2) - 1) - br;
-            translate_z(height + top_thickness)
-                pbox_screw_positions(type)
-                    insert_lug(pbox_insert(type), wall, counter_bore = 0, extension = ext, corner_r = or);
+                            hull() {
+                                linear_extrude(ledge_h + eps)
+                                    offset(ledge_inset)
+                                        pbox_inner_shape(type);
 
-            if($children > 0)
-                children(0);
+                                linear_extrude(eps)
+                                    offset(ledge_outset)
+                                         pbox_inner_shape(type);
+                            }
+                            pbox_screw_positions(type)
+                                insert_hole(pbox_insert(type));
+                        }
+
+                // Corner lugs for inserts
+                outset = wall + pbox_ridges(type).y;
+                or = pbox_radius(type) + outset;
+                inset = pbox_screw_inset(type) + outset;
+                br = insert_boss_radius(pbox_insert(type), wall);
+                ext = sqrt(2) * inset - or * (sqrt(2) - 1) - br;
+                translate_z(height + top_thickness)
+                    pbox_screw_positions(type)
+                        insert_lug(pbox_insert(type), wall, counter_bore = 0, extension = ext, corner_r = or);
+
+                if($children > 0)
+                    children(0);
+            }
+            if($children > 1)
+                children(1);
         }
-        if($children > 1)
-            children(1);
-    }
 }
 
 module pbox_inserts(type) //! Place the inserts for the base screws

@@ -1,7 +1,7 @@
 # NopSCADlib usage
 
 ## Requirements
-1. OpenSCAD 2019.05 or later, download it from here: https://www.openscad.org/downloads.html
+1. OpenSCAD 2021.01 or later, download it from here: https://www.openscad.org/downloads.html
 1. Python 2.7+ or 3.6+ from https://www.python.org/downloads/
 1. ImageMagick 7 www.imagemagick.org
 
@@ -172,7 +172,7 @@ This is achieved by having a pair of modules: -
     //! Place inserts in the bottom of the posts and push them home with a soldering iron with a conical bit heated to 200&deg;C.
     //
     module handle_assembly() pose([225, 0, 150], [0, 0, 14]) //! Printed part with inserts in place
-    assembly("handle") {
+    assembly("handle", ngb = true) {
         translate_z(handle_height())
             stl_colour(pp1_colour) vflip() handle_stl();
 
@@ -182,7 +182,7 @@ This is achieved by having a pair of modules: -
     }
 
     module handle_fastened_assembly(thickness) { //! Assembly with fasteners in place
-        screw_length = screw_longer_than(thickness + insert_length(insert) + 2 * washer_thickness(screw_washer(screw)));
+        screw_length = screw_length(screw, thickness, 2, true, longer = true);
 
         handle_assembly();
 
@@ -200,6 +200,9 @@ When the parent assembly is shown exploded the handle's screws will be exploded 
 
 Note also the `pose([225, 0, 150], [0, 0, 14])` call before the `assembly()` call. This allows the sub-assembly to be posed differently in its build step but doesn't
 affect its orientation in the parent assembly. The pose parameters are the rotation and the translation taken from the GUI.
+
+Setting `ngb = true` in the `assembly()` prevents the handle assembly appearing as a columun in the top level BOM in the build instructions.
+Instead its parts are merged into the parent BOM so the correct quantites are listed.
 
 ### Exploded diagrams
 
@@ -266,6 +269,22 @@ Some parametric designs might have several configurations, for example a 3D prin
 The target config file is selected by generating `target.scad` that includes `config_<target_name>.scad`.
 The rest of the project includes `target.scad` to use the configuration.
 Additionally all the generated file directories (assemblies, bom, stls, dxfs, etc.) are placed in a sub-directory called `<target_name>`.
+
+The build system will look for a `<target_name>_assembly` module and use it as the top level module instead of `main_assembly` if it it exists.
+That allows the project description to be target specific if the top level modules are in different scad files.
+The top level assembly instructions and assembly contents could also be different if appropriate.
+
+If the top level module is just a shell wrapper that simply includes one other assembly, with no additional parts, then it is removed from the build instructions and
+the assembly it calls becomes the top level. This allows a different project description for each target but only one set of top level instructions without repeating them.
+
+### Costed BOMs
+
+A costed bill of materials can be made by opening the generated file `bom/bom.csv` in a spreadsheet program using a single quote as the string delimiter and comma as the field separator.
+That gets a list of part descriptions and quantities to which prices can be added to get the total cost and perhaps a URL of where to buy each part.
+
+If a Python file called `parts.py` is found then `bom.py` will attempt to call functions for each part to get a price and URL.
+Any functions not found are printed, so you can see the format expected.
+The function are passed the quantity to allow them to calculate volume discounts, etc.
 
 ### Other libraries
 

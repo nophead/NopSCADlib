@@ -16,12 +16,13 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+include <../core.scad>
 include <../vitamins/geared_steppers.scad>
 
 use <../utils/layout.scad>
 
 module geared_steppers()
-    layout([for(g = geared_steppers) gs_diameter(g)], 5)
+    layout([for(g = geared_steppers) max(gs_diameter(g), gs_pitch(g) + gs_lug_w(g) / 2)], 5)
         geared_stepper(geared_steppers[$i]);
 
 geared_steppers();

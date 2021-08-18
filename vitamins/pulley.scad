@@ -36,13 +36,13 @@ function pulley_hub_length(type)       = type[7];  //! Hub length
 function pulley_bore(type)             = type[8];  //! Bore diameter for shaft
 function pulley_flange_dia(type)       = type[9];  //! Flange diameter
 function pulley_flange_thickness(type) = type[10]; //! Flange thickness
-function pulley_screw_length(type)     = type[11]; //! Grup screw length
+function pulley_screw_length(type)     = type[11]; //! Grub screw length
 function pulley_screw_z(type)          = type[12]; //! Grub screw position
 function pulley_screw(type)            = type[13]; //! Grub screw type
 function pulley_screws(type)           = type[14]; //! Number of grub screws
 
 function pulley_ir(type)     = pulley_od(type) / 2 - (pulley_teeth(type) ? belt_tooth_height(pulley_belt(type)) : 0);   //! Inside radius of the teeth
-function pulley_pr(type)     = let(belt = pulley_belt(type))                                                            //! Pitch radius
+function pulley_pr(type, belt = undef) = let(belt = is_undef(belt) ? pulley_belt(type) : belt)      //! Pitch radius, `belt` only needed for non-standard belt over smooth pulleys
                                  pulley_teeth(type) ? pulley_teeth(type) * belt_pitch(belt) / 2 / PI
                                                     : pulley_ir(type) + belt_thickness(belt) - belt_pitch_height(belt);
 
@@ -53,7 +53,7 @@ function pulley_extent(type) = max(pulley_flange_dia(type), pulley_hub_dia(type)
 T_angle = 40;
 GT_r = 0.555;
 
-module pulley(type) { //! Draw a pulley
+module pulley(type, colour = silver) { //! Draw a pulley, any children are placed above.
     teeth = pulley_teeth(type);
     od = pulley_od(type);
 
@@ -117,7 +117,7 @@ module pulley(type) { //! Draw a pulley
                 rotate([-90, 0, i * -90])
                     cylinder(r = screw_radius(pulley_screw(type)), h = 100);
 
-    color(silver) {
+    color(colour) {
         if(screw_z && screw_z < hl)
             render()
                 difference() {
@@ -138,11 +138,15 @@ module pulley(type) { //! Draw a pulley
         else
             core();
     }
+
+    if($children)
+        translate_z(pulley_height(type))
+            children();
 }
 
-module pulley_assembly(type) { //! Draw a pulley with its grub screws in place
+module pulley_assembly(type, colour = silver) { //! Draw a pulley with its grub screws in place
     translate_z(pulley_offset(type)) {
-        pulley(type);
+        pulley(type, colour);
 
         if(pulley_screws(type))
             translate_z(pulley_screw_z(type))

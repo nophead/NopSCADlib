@@ -135,4 +135,4 @@ function involute_worm_profile(m, pa = 20, clearance = undef) = //! Calculate wo
     let(tooth = involute_rack_tooth_profile(m),
         pitch = PI * m,
         y_min = min([for(p = tooth) p.y])
-    ) [for(p = tooth) [p.x - pitch / 2, p.y - y_min, 0]];   // Offset to be positive in y, centred in x and add 0 z ordintate
+    ) [for(p = tooth) [p.x - pitch / 2, p.y - y_min, 0]];   // Offset to be positive in y, centred in x and add 0 z coordinate

@@ -62,7 +62,7 @@ module sk_bracket(type) { //! SK shaft support bracket
                     }
             for(x = [W / 2 - 2 * fillet, -W / 2 + 2 * fillet])
                 translate([x, G / 2, 0])
-                    rounded_rectangle([4 * fillet, G, L], fillet);
+                    rounded_rectangle([4 * fillet, G, L], fillet, true);
         }
 
         translate([0, -h, -L /2])

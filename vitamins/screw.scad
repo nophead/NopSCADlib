@@ -48,7 +48,7 @@ function screw_head_depth(type, d = 0) =             //! How far a counter sink 
         ? 0
         : let(r = screw_radius(type)) screw_head_radius(type) - max(r, d / 2) + r / 5;
 
-function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length longer or equal to x
+function screw_longer_than(x) = x <=  5 ?  5 : //! Returns the length of the shortest screw length longer or equal to x
                                 x <=  6 ?  6 :
                                 x <=  8 ?  8 :
                                 x <= 10 ? 10 :
@@ -56,13 +56,21 @@ function screw_longer_than(x) = x <=  5 ?  5 : //! Returns shortest screw length
                                 x <= 16 ? 16 :
                                 ceil(x / 5) * 5;
 
-function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns longest screw length shorter than or equal to x
+function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns the length of the longest screw shorter than or equal to x
                                  x >= 16 ? 16 :
                                  x >= 12 ? 12 :
                                  x >= 10 ? 10 :
                                  x >=  8 ?  8 :
                                  x >=  6 ?  6 :
                                  5;
+
+function screw_length(screw, thickness, washers, insert = false, nyloc = false, nut = false, longer = false) = //! Returns the length of the longest or shortest screw that will got through `thickness` and `washers` and possibly an `insert`, `nut` or `nyloc`
+    let(washer = washers ? washers * washer_thickness(screw_washer(screw)) : 0,
+        insert = insert ? insert_length(screw_insert(screw)) : 0,
+        nut = nut || nyloc ? nut_thickness(screw_nut(screw), nyloc)  : 0,
+        total = thickness + washer + insert + nut
+       )
+        longer || nut || nyloc ? screw_longer_than(total) : screw_shorter_than(total);
 
 function screw_smaller_than(d) = d >= 2.5 && d < 3 ? 2.5 : floor(d); // Largest diameter screw less than or equal to specified diameter
 
@@ -276,10 +284,10 @@ function screw_polysink_r(type, z) = //! Countersink hole profile corrected for 
     )
     limit(head_rad + head_t - z + (sqrt(2) - 1) * layer_height / 2, screw_clearance_radius(type), head_rad);
 
-module screw_polysink(type, h = 100, alt = false) { //! A countersink hole made from stacked polyholes for printed parts
+module screw_polysink(type, h = 100, alt = false, sink = 0) { //! A countersink hole made from stacked polyholes for printed parts, default is flush, `sink` can be used to recess the head
     head_depth = screw_head_depth(type);
     assert(head_depth, "Not a countersunk screw");
-    layers = ceil(head_depth / layer_height);
+    layers = ceil((head_depth + sink) / layer_height);
     rmin = screw_clearance_radius(type);
     sides = sides(rmin);
     lh = layer_height + eps;
@@ -287,7 +295,7 @@ module screw_polysink(type, h = 100, alt = false) { //! A countersink hole made 
         for(side = [0, 1]) mirror([0, 0, side]) {
             for(i = [0 : layers - 1])
                 translate_z(i * layer_height) {
-                    r = screw_polysink_r(type, i * layer_height + layer_height / 2);
+                    r = screw_polysink_r(type, i * layer_height + layer_height / 2 - sink);
                     if(alt)
                         rotate(i % 2 == layers % 2 ? 180 / sides : 0)
                             poly_cylinder(r = r, h = lh, center = false, sides = sides);

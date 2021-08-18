@@ -88,6 +88,7 @@ function scale(v) = let(s = is_list(v) ? v : [v, v, v]) //!  Generate a 4x4 matr
                           [0,   0,   0,   1]
                         ];
 
+function vec2(v) = [v.x, v.y]; //! Return a 2 vector with the first two elements of `v`
 function vec3(v) = [v.x, v.y, v.z]; //! Return a 3 vector with the first three elements of `v`
 function vec4(v) = [v.x, v.y, v.z, 1]; //! Return a 4 vector with the first three elements of `v`
 function transform(v, m) = vec3(m * [v.x, v.y, v.z, 1]); //! Apply 4x4 transform to a 3 vector by extending it and cropping it again
@@ -153,3 +154,36 @@ function circle_intersect(c1, r1, c2, r2) =     //! Calculate one point where tw
         d = norm(v),                            // Distance between centres
         a = atan2(v.z, v.x) - acos((sqr(d) + sqr(r2) - sqr(r1)) / (2 * d * r2)) // Cosine rule to find angle from c2
      ) c2 + r2 * [cos(a), 0, sin(a)];           // Point on second circle
+
+function map(v, func) = [ for (e = v) func(e) ]; //! make a new vector where the func function argument is applied to each element of the vector v
+function mapi(v, func) = [ for (i = [0:len(v)-1]) func(i,v[i]) ]; //! make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument.
+function reduce(v, func, unity) = let ( r = function(i,val) i == len(v) ? val : r(i + 1, func(val, v[i])) ) r(0, unity); //! reduce a vector v to a single entity by applying the func function recursively to the reduced value so far and the next element, starting with unity as the initial reduced value
+function sumv(v) = reduce(v, function(a, b) a + b, 0); //! sum a vector of values that can be added with "+"
+
+function xor(a,b) = (a && !b) || (!a && b);     //! Logical exclusive OR
+function cuberoot(x)= sign(x)*abs(x)^(1/3);
+
+function quadratic_real_roots(a, b, c) =        //! Returns real roots of a quadratic equation, biggest first. Returns empty list if no real roots
+    let(2a = 2 * a,
+        2c = 2 * c,
+        det = b^2 - 2a * 2c
+    ) det < 0 ? [] :
+        let(r = sqrt(det),
+            x1 = b < 0 ? 2c / (-b + r) : (-b - r) / 2a,
+            x2 = b < 0 ? (-b + r) / 2a : 2c / (-b - r)
+        ) [x2, x1];
+
+function cubic_real_roots(a, b, c, d) = //! Returns real roots of cubic equation
+    let(b = b / a,
+        c = c / a,
+        d = d / a,
+        inflection = -b / 3,
+        p = c - b^2 / 3,
+        q = 2 * b^3 / 27 - b * c / 3 + d,
+        det = q^2 / 4 + p^3 / 27,
+        roots = !p && !q ? 1 : nearly_zero(det) ? 2 :  det < 0 ? 3 : 1,
+        r = sqrt(det),
+        x = cuberoot(-q / 2 - r) + cuberoot(-q / 2 + r)
+    ) roots == 1 ? [x] :
+      roots == 2 ? [3 * q /p + inflection, -3 * q / p / 2 + inflection] :
+      [for(i = [0 : roots - 1]) 2 * sqrt(-p / 3) * cos(acos(3 * q * sqrt(-3 / p) / p / 2) - i * 120) + inflection];

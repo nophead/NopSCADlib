@@ -61,53 +61,54 @@ module ssr_shroud_holes(type, cable_d) { //! Drill the screw and ziptie holes
 }
 
 module ssr_shroud(type, cable_d, name) {    //! Generate the STL file for a specified ssr and cable
-    stl(str("ssr_shroud_", name));
-
     width = ssr_shroud_width(type);
     depth = ssr_length(type) / 3 + ssr_shroud_extent(type, cable_d);
     height = ssr_shroud_height(type);
     cable_x = ssr_shroud_cable_x(type, cable_d);
     center_x = -ssr_length(type) / 6 - depth / 2;
 
-    // base and sides
-    translate([center_x, 0]) {
-        rounded_rectangle([depth - eps, width - eps, top], rad, center = false);
 
-        linear_extrude(height) difference() {
-            round(or = wall / 2 - eps, ir = 0) difference() {
-                rounded_square([depth, width], rad);
+    stl(str("ssr_shroud_", name)) {
+        // base and sides
+        translate([center_x, 0]) {
+            rounded_rectangle([depth - eps, width - eps, top], rad);
 
-                rounded_square([depth - 2 * wall, width - 2 * wall], rad - wall);
+            linear_extrude(height) difference() {
+                round(or = wall / 2 - eps, ir = 0) difference() {
+                    rounded_square([depth, width], rad);
 
-                translate([depth / 2, 0])
-                    square([2 * rad, width], center = true);
+                    rounded_square([depth - 2 * wall, width - 2 * wall], rad - wall);
 
+                    translate([depth / 2, 0])
+                        square([2 * rad, width], center = true);
+
+                }
+                translate([cable_x - center_x, 0])
+                    square([cable_d, width + 1], center = true);
             }
-            translate([cable_x - center_x, 0])
-                square([cable_d, width + 1], center = true);
         }
-    }
-    // cable slots
-    for(side = [-1, 1])
-        translate([cable_x, side * (width / 2 - wall / 2), height / 2])
-            rotate([90, 0, 0])
-                linear_extrude(wall, center = true)
-                    difference() {
-                        square([cable_d + eps, height], center = true);
+        // cable slots
+        for(side = [-1, 1])
+            translate([cable_x, side * (width / 2 - wall / 2), height / 2])
+                rotate([90, 0, 0])
+                    linear_extrude(wall, center = true)
+                        difference() {
+                            square([cable_d + eps, height], center = true);
 
-                        translate([0, height / 2])
-                            vertical_tearslot(h = 0, r = cable_d / 2, l = cable_d);
-                    }
-    // insert boss
-    ssr_shroud_hole_positions(type)
-        vflip()
-            translate_z(height)
-                rotate($side * 90)
-                    insert_lug(insert, wall, counter_bore);
+                            translate([0, height / 2])
+                                vertical_tearslot(h = 0, r = cable_d / 2, l = cable_d);
+                        }
+        // insert boss
+        ssr_shroud_hole_positions(type)
+            vflip()
+                translate_z(height)
+                    rotate($side * 90)
+                        insert_lug(insert, wall, counter_bore);
+    }
 }
 
 module ssr_shroud_assembly(type, cable_d, name) //! The printed parts with inserts fitted
-assembly(str("SSR_shroud_", name)) {
+assembly(str("SSR_shroud_", name), ngb = true) {
 
     translate_z(ssr_shroud_height(type))
         vflip()
@@ -119,8 +120,7 @@ assembly(str("SSR_shroud_", name)) {
 
 module ssr_shroud_fastened_assembly(type, cable_d, thickness, name) //! Assembly with screws in place
 {
-    washer = screw_washer(screw);
-    screw_length = screw_shorter_than(2 * washer_thickness(washer) + thickness + insert_length(insert) + counter_bore);
+    screw_length = screw_length(screw, thickness + counter_bore, 2, true);
 
     ssr_shroud_assembly(type, cable_d, name);
 
