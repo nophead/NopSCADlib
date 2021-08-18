@@ -22,9 +22,6 @@
 //
 include <nuts.scad>
 
-hs_cap = "hs_cap";
-hs_cs_cap = "hs_cs_cap";
-
 No2_pilot_radius = 1.7 / 2;       // self tapper into ABS
 No4_pilot_radius = 2.0 / 2;       // wood screw into soft wood
 No6_pilot_radius = 2.0 / 2;       // wood screw into soft wood
