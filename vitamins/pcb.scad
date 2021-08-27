@@ -60,8 +60,10 @@ function pcb_component(type, name, index = 0) = //! Return the component specifi
 
 
 function pcb_grid_pos(type, x, y, z = 0) = //! Returns a pcb grid position
-    [-pcb_length(type) / 2 + pcb_grid(type).x + 2.54 * x,
-     -pcb_width(type)  / 2 + pcb_grid(type).y + 2.54 * y, pcb_thickness(type) + z];
+    let(grid = pcb_grid(type))
+        [-pcb_size(type).x / 2 + grid.x + x * (is_undef(grid[5]) ? 2.54 : grid[5]),
+         -pcb_size(type).y / 2 + grid.y + y * (is_undef(grid[6]) ? 2.54 : grid[6]),
+          pcb_size(type).z + z];
 
 module pcb_grid(type, x, y, z = 0)  //! Positions children at specified grid position
     translate(pcb_grid_pos(type, x, y, z))
