@@ -2474,7 +2474,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 |  |  Micro SD card - not shown |
 |   1 | `molex_254(2)` |  Molex KK header 2 way |
 |   1 | `molex_254(3)` |  Molex KK header 3 way |
-|  16 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
+|  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  30 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
 |  26 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
@@ -2490,12 +2490,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(RAMPSEndstop)` |  RAMPS Endstop Switch |
 |   1 | `pcb(RPI3)` |  Raspberry Pi 3 |
 |   1 | `pcb(RPI4)` |  Raspberry Pi 4 |
+|   1 | `pcb(RPI_Pico)` |  Raspberry Pi Pico |
 |   1 | `pcb(RPI0)` |  Raspberry Pi Zero |
 |   8 | `screw(M2_cap_screw, 16)` |  Screw M2 cap x 16mm |
-|   8 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
+|  12 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   2 | `screw(M2p5_cap_screw, 16)` |  Screw M2.5 cap x 16mm |
-|   8 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
+|   4 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
 |   8 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
+|   4 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
 |   8 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
 |   8 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
@@ -2508,7 +2510,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | `green_terminal(gt_2p54, 4)` |  Terminal block 4 way 0.1" |
 |   1 |  |  USB A to Mini B lead - not shown |
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
-|  16 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
+|  20 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  30 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  26 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
@@ -2517,26 +2519,26 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   4 | pcb_spacer20100.stl |
+|   8 | pcb_spacer20100.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
-|   4 | pcb_spacer25100.stl |
 |   4 | pcb_spacer25110.stl |
-|   4 | pcb_spacer25120_2.stl |
+|   4 | pcb_spacer25120.stl |
 |   4 | pcb_spacer25130_2.stl |
-|   4 | pcb_spacer25150.stl |
+|   4 | pcb_spacer25140_2.stl |
 |   4 | pcb_spacer25160.stl |
+|   4 | pcb_spacer25170.stl |
 |   2 | pcb_spacer2550.stl |
 |   4 | pcb_spacer2590.stl |
-|   4 | pcb_spacer30140.stl |
-|   5 | pcb_spacer30170.stl |
+|   4 | pcb_spacer30150.stl |
 |   5 | pcb_spacer30180.stl |
-|   4 | pcb_spacer30190.stl |
+|   5 | pcb_spacer30190.stl |
+|   4 | pcb_spacer30200.stl |
 |   4 | pcb_spacer3050.stl |
 |   4 | pcb_spacer3060.stl |
-|   4 | pcb_spacer40200.stl |
 |   4 | pcb_spacer40210.stl |
+|   4 | pcb_spacer40220.stl |
 
 
 <a href="#top">Top</a>

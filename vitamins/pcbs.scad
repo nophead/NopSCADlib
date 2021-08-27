@@ -555,6 +555,28 @@ RPI0 =  ["RPI0", "Raspberry Pi Zero",     65,    30,    1.4, 3,    2.75, 6, "gre
     [": Micro SD card"],
     [32.5 - 9.5 * 2.54, 26.5 - 1.27, 20, 2]];
 
+RPI_Pico = [
+    "RPI_Pico", "Raspberry Pi Pico",
+    51, 21, 1.6, // size
+    0.5, // corner radius
+    2.1, // mounting hole diameter
+    0, // pad around mounting hole, pad is actually 3.8, but unplated
+    "green", // colour
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        [-2, 4.8], [-2, -4.8], [2, -4.8], [2, 4.8]
+    ],
+    [ // components
+        [  1.75, 21/2, 180, "usb_uA" ],
+        [ 25,    21/2,   0, "chip", 7, 7, 0.8],
+        // mock up the reset button
+        [ 12.75, 7.5,    0, "block", 4.5, 3.35, 2,    "DarkGray"],
+        [ 12.75, 7.5,    0, "block", 3,   2.25, 2.75, "LightGray"],
+    ],
+    [], // accessories
+    [1.37, 1.61, 20, 2, gold, 2.54, 17.78], // 20x2 grid of holes
+];
+
 EnviroPlus =  ["EnviroPlus", "Enviro+",     65,    30.6,    1.6, 3,    2.75, 6, "white", false, [[3.5, 3.8], [-3.5, 3.8], [-3.5, -3.8], [3.5, -3.8]],
     [[32.5, -3.8,   0, "-2p54socket", 20, 2, false, 5, true],
      [-15.5, 2.5,   0, "-chip", 15, 5, 3, "white"],
@@ -798,7 +820,7 @@ LIPO_fuel_gauge = [
 
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+pcbs = [RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI_Pico, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1];
 
