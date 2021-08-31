@@ -2677,7 +2677,7 @@ Pin headers and sockets, etc.
 |:--- |:--- |
 | `box_header(type, cols = 1, rows = 1, smt = false, cutout = false)` | Draw box header |
 | `idc_transition(type, cols = 5, skip = [], cutout = false)` | Draw IDC transition header |
-| `jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false)` | Draw JST XH connector |
+| `jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false, smt = false)` | Draw JST XH connector |
 | `pin(type, length = undef)` | Draw a header pin |
 | `pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false, colour)` | Draw pin header |
 | `pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false, colour)` | Draw pin socket |

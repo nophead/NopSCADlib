@@ -64,8 +64,9 @@ module pin_headers() {
             pin_socket(pin_headers[$i], 3, 3, right_angle = true);
     }
 
-    for(i = [0, 1], p = [5, 2][i], j = [0 , 1]) {
-        h = [jst_ph_header, jst_xh_header][j];
+    headers = [jst_zh_header, jst_ph_header, jst_xh_header];
+    for(i = [0, 1], p = [5, 2][i], j = [0 : len(headers) - 1]) {
+        h = headers[j];
         translate([-20 * (i + 1), 0 + j * 40])
             jst_xh_header(h, p);
 

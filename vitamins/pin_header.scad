@@ -229,7 +229,7 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
     }
 }
 
-module jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false) { //! Draw JST XH connector
+module jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false, smt = false) { //! Draw JST XH connector
     colour = colour ? colour : hdr_base_colour(type);
     pin_colour = pin_colour ? pin_colour : hdr_pin_colour(type);
     pitch = hdr_pitch(type);
@@ -306,10 +306,12 @@ module jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_c
 
     color(pin_colour)
         for(x = [0 : pin_count - 1]) {
+            below = !smt ? 0 : hdr_pin_below(type);
             verticalPinLength = right_angle ? hdr_pin_below(type) + ra_z + y_offset : hdr_pin_length(type);
             horizontalPinLength = hdr_pin_length(type) - hdr_pin_below(type) + ra_box_offset;
             translate([pitch * (x - (pin_count - 1) / 2), 0]) {
-                pin(type, verticalPinLength);
+                translate_z(below)
+                    pin(type, verticalPinLength - below);
 
                 if(right_angle) {
                     translate([0, -pinWidth / 2, ra_z - pinWidth / 2 + y_offset])
