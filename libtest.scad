@@ -185,15 +185,14 @@ translate([x5, cable_grommets_y + 250])
 translate([950, 600])
     box_test();
 
-translate([830, 770])
+translate([900, 750])
     pocket_handles();
 
-translate([950, 750])
+translate([900, 850])
     printed_boxes();
 
-translate([850, 1330])
+translate([850, 1330 + 85])
     bbox_test();
-
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
@@ -206,10 +205,11 @@ sealing_strip_y = springs_y + 20;
 tubings_y = sealing_strip_y + 20;
 pillars_y = tubings_y + 20;
 ball_bearings_y = pillars_y + 40;
-pulleys_y = ball_bearings_y +40;
-hot_ends_y = pulleys_y + 60;
-linear_bearings_y = hot_ends_y + 50;
-sheets_y = linear_bearings_y + 90;
+pulleys_y = ball_bearings_y + 40;
+leadnuts_y = pulleys_y + 60;
+linear_bearings_y = leadnuts_y + 50;
+steppers_y = linear_bearings_y + 110;
+sheets_y = steppers_y + 55;
 pcbs_y = sheets_y + 60;
 displays_y = pcbs_y + 170;
 fans_y = displays_y + 80;
@@ -255,13 +255,16 @@ translate([x0, ball_bearings_y])
 translate([x0, pulleys_y])
     pulleys();
 
+translate([x0, leadnuts_y])
+    leadnuts();
+
 translate([x0, linear_bearings_y]) {
     linear_bearings();
     rods();
 }
 
-translate([x0 + 10, hot_ends_y])
-    hot_ends();
+translate([x0, steppers_y])
+    stepper_motors();
 
 translate([x0, sheets_y])
     sheets();
@@ -279,7 +282,7 @@ translate([x0, fans_y]) {
         fan_guards();
 }
 
-translate([x0, transformers_y])
+translate([760, fans_y])
     variacs();
 
 translate([x0, psus_y]) {
@@ -291,7 +294,6 @@ translate([x0, psus_y]) {
 zipties_y = 0;
 bulldogs_y = zipties_y + 30;
 swiss_clips_y = bulldogs_y + 35;
-leadnuts_y = swiss_clips_y + 50;
 
 translate([x1, zipties_y])
     zipties();
@@ -301,10 +303,6 @@ translate([x1, bulldogs_y])
 
 translate([x1, swiss_clips_y])
     swiss_clips();
-
-translate([x1, leadnuts_y])
-    leadnuts();
-
 
 leds_y = 0;
 carriers_y = leds_y + 40;
@@ -362,9 +360,9 @@ iecs_y = d_connectors_y + 80;
 modules_y = iecs_y + 60;
 ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
-batteries_y = blowers_y + 100;
-steppers_y = batteries_y + 55;
-panel_meters_y = steppers_y + 70;
+hot_ends_y = blowers_y + 100;
+batteries_y = hot_ends_y + 55;
+panel_meters_y = batteries_y + 70;
 extrusions_y = panel_meters_y + 80;
 
 translate([x3, veroboard_y])
@@ -409,8 +407,8 @@ translate([x3, blowers_y])
 translate([x3, batteries_y])
     batteries();
 
-translate([x2, steppers_y])  // interloper
-    stepper_motors();
+translate([x3 + 10, hot_ends_y])
+    hot_ends();
 
 translate([x2, panel_meters_y])
     panel_meters();
@@ -418,7 +416,7 @@ translate([x2, panel_meters_y])
 translate([x2, extrusions_y])
     extrusions();
 
-translate([x3, transformers_y])
+translate([400, transformers_y])
     transformers();
 
 
@@ -426,11 +424,12 @@ belts_y = 0;
 rails_y = belts_y + 200;
 extrusion_brackets_y = rails_y + 250;
 sk_brackets_y = extrusion_brackets_y + 80;
-kp_pillow_blocks_y = sk_brackets_y + 50;
+kp_pillow_blocks_y = sk_brackets_y + 60;
 scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
-cable_strip_y = fans_y + 50;
-box_sections_y = cable_strip_y;
-BLDC_y = sheets_y;
+cable_strip_y = sheets_y;
+box_sections_y = batteries_y;
+BLDC_y = steppers_y;
+
 
 translate([x4 + 200, belts_y + 58]) {
     belt_test();
@@ -446,7 +445,7 @@ translate([x4 + 175, belts_y, -20])
 translate([x4, rails_y + 130])
     rails();
 
-translate([770, cable_strip_y])
+translate([x4, cable_strip_y])
     cable_strips();
 
 translate([x4, kp_pillow_blocks_y])
@@ -458,7 +457,7 @@ translate([x4, sk_brackets_y])
 translate([x4, extrusion_brackets_y])
     extrusion_brackets();
 
-translate([x4 + 120, extrusion_brackets_y])
+translate([x1, swiss_clips_y + 50])
     shaft_couplings();
 
 translate([x4, scs_bearing_blocks_y])
@@ -467,7 +466,7 @@ translate([x4, scs_bearing_blocks_y])
 translate([x4, BLDC_y])
     bldc_motors();
 
-translate([x6, box_sections_y])
+translate([x2, box_sections_y])
     box_sections();
 
 translate([x6, 125])
