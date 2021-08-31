@@ -25,7 +25,9 @@ include <../utils/core/core.scad>
 module ring(or, ir) //! Create a ring with specified external and internal radii
         difference() {
             circle4n(or);
-            circle4n(ir);
+
+            if(ir > 0)
+                circle4n(ir);
         }
 
 module tube(or, ir, h, center = true) //! Create a tube with specified external and internal radii and height `h`

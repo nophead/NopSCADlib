@@ -3635,15 +3635,20 @@ NEMA stepper motor model.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `NEMA_black_caps(type)` | End caps are black |
 | `NEMA_body_radius(type)` | Body radius |
 | `NEMA_boss_height(type)` | Boss height |
 | `NEMA_boss_radius(type)` | Boss around the spindle radius |
 | `NEMA_cap_heights(type)` | Height of the end cap at the corner and the side |
+| `NEMA_end_connector(type)` | If has a connector then plug goes in the end rather than the side |
 | `NEMA_hole_pitch(type)` | Screw hole pitch |
 | `NEMA_length(type)` | Body length |
 | `NEMA_radius(type)` | End cap radius |
+| `NEMA_shaft_bore(type)` | Hollow shaft in non-zero |
 | `NEMA_shaft_dia(type)` | Shaft diameter |
 | `NEMA_shaft_length(type)` | Shaft length above the face, if a list then a leadscrew: length, lead, starts |
+| `NEMA_shaft_length2(type)` | Rear shaft length if non-zero |
+| `NEMA_thread_d(type)` | Screw hole diameter |
 | `NEMA_width(type)` | Width of the square face |
 
 ### Functions
@@ -3674,6 +3679,8 @@ NEMA stepper motor model.
 |   1 | `NEMA(NEMA17M)` |  Stepper motor NEMA17 x 40mm |
 |   1 | `NEMA(NEMA17)` |  Stepper motor NEMA17 x 47mm |
 |   1 | `NEMA(NEMA23)` |  Stepper motor NEMA22 x 51.2mm |
+|   1 | `NEMA(NEMA8)` |  Stepper motor NEMA8 x 30mm |
+|   1 | `NEMA(NEMA8BH)` |  Stepper motor NEMA8 x 30mm |
 |  16 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |  20 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
