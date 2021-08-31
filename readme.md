@@ -2911,12 +2911,16 @@ Linear rails with carriages.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `rail(HGH15CA, 200)` |  Linear rail HGH15CA x 200mm |
+|   1 | `rail(HGH20CA, 200)` |  Linear rail HGH20CA x 200mm |
 |   1 | `rail(MGN12, 200)` |  Linear rail MGN12 x 200mm |
 |   1 | `rail(MGN15, 200)` |  Linear rail MGN15 x 200mm |
 |   1 | `rail(MGN5, 200)` |  Linear rail MGN5 x 200mm |
 |   1 | `rail(MGN7, 200)` |  Linear rail MGN7 x 200mm |
 |   1 | `rail(MGN9, 200)` |  Linear rail MGN9 x 200mm |
 |   1 | `rail(SSR15, 200)` |  Linear rail SSR15 x 200mm |
+|   1 | `carriage(HGH15CA_carriage)` |  Linear rail carriage HGH15CA |
+|   1 | `carriage(HGH20CA_carriage)` |  Linear rail carriage HGH20CA |
 |   1 | `carriage(MGN12C_carriage)` |  Linear rail carriage MGN12C |
 |   1 | `carriage(MGN12H_carriage)` |  Linear rail carriage MGN12H |
 |   1 | `carriage(MGN15C_carriage)` |  Linear rail carriage MGN15C |
@@ -2928,7 +2932,8 @@ Linear rails with carriages.
 |   1 | `carriage(SSR15_carriage)` |  Linear rail carriage SSR15 |
 |  26 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  23 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
-|   4 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
+|   7 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
+|   3 | `nut(M5_nut, nyloc = true)` |  Nut M5 x 4mm nyloc |
 |  11 | `screw(M2_cap_screw, 10)` |  Screw M2 cap x 10mm |
 |  15 | `screw(M2_cs_cap_screw, 10)` |  Screw M2 cs cap x 10mm |
 |   8 | `screw(M3_cap_screw, 10)` |  Screw M3 cap x 10mm |
@@ -2937,10 +2942,15 @@ Linear rails with carriages.
 |   2 | `screw(M3_cs_cap_screw, 12)` |  Screw M3 cs cap x 12mm |
 |   4 | `screw(M3_cs_cap_screw, 16)` |  Screw M3 cs cap x 16mm |
 |   2 | `screw(M4_cap_screw, 16)` |  Screw M4 cap x 16mm |
+|   2 | `screw(M4_cap_screw, 20)` |  Screw M4 cap x 20mm |
 |   2 | `screw(M4_cs_cap_screw, 20)` |  Screw M4 cs cap x 20mm |
+|   2 | `screw(M4_cs_cap_screw, 25)` |  Screw M4 cs cap x 25mm |
+|   2 | `screw(M5_cap_screw, 20)` |  Screw M5 cap x 20mm |
+|   2 | `screw(M5_cs_cap_screw, 25)` |  Screw M5 cs cap x 25mm |
 |  26 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  23 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|   4 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   7 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   3 | `washer(M5_washer)` |  Washer  M5 x 10mm x 1mm |
 
 
 <a href="#top">Top</a>

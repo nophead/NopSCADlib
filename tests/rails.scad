@@ -29,7 +29,7 @@ pos = 1; //[-1 : 0.1 : 1]
 function rail_carriages(rail) = [for(c = carriages) if(carriage_rail(c) == rail) c];
 
 module rails()
-    layout([for(r = rails) carriage_width(rail_carriages(r)[0])], 20)
+    layout([for(r = rails) carriage_width(rail_carriages(r)[0])], 10)
         rotate(-90) {
             rail = rails[$i];
             carriages = rail_carriages(rail);
