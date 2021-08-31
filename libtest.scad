@@ -92,7 +92,7 @@ use <tests/rockers.scad>
 use <tests/rod.scad>
 use <tests/screws.scad>
 use <tests/sealing_strip.scad>
-//use <tests/servo_motors.scad>
+use <tests/servo_motors.scad>
 use <tests/shaft_couplings.scad>
 use <tests/sheets.scad>
 use <tests/SK_brackets.scad>
@@ -431,7 +431,7 @@ cable_strip_y = sheets_y;
 box_sections_y = batteries_y;
 BLDC_y = steppers_y;
 
-*translate([0, transformers_y])
+translate([0, transformers_y])
     servo_motors();
 
 translate([x4 + 200, belts_y + 58]) {
