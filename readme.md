@@ -3160,19 +3160,22 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 |   1 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
 |   1 | `screw(M4_cs_cap_screw, 25)` |  Screw M4 cs cap x 25mm |
 |   1 | `screw(M4_dome_screw, 25)` |  Screw M4 dome x 25mm |
-|   1 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
+|   1 | `screw(M4_grub_screw, 8)` |  Screw M4 grub x  8mm |
 |   1 | `screw(M4_hex_screw, 30)` |  Screw M4 hex x 30mm |
 |   1 | `screw(M4_pan_screw, 30)` |  Screw M4 pan x 30mm |
 |   1 | `screw(M5_cap_screw, 30)` |  Screw M5 cap x 30mm |
 |   1 | `screw(M5_cs_cap_screw, 30)` |  Screw M5 cs cap x 30mm |
 |   1 | `screw(M5_dome_screw, 30)` |  Screw M5 dome x 30mm |
+|   1 | `screw(M5_grub_screw, 10)` |  Screw M5 grub x 10mm |
 |   1 | `screw(M5_hex_screw, 30)` |  Screw M5 hex x 30mm |
 |   1 | `screw(M5_pan_screw, 30)` |  Screw M5 pan x 30mm |
 |   1 | `screw(M6_cap_screw, 30)` |  Screw M6 cap x 30mm |
 |   1 | `screw(M6_cs_cap_screw, 30)` |  Screw M6 cs cap x 30mm |
+|   1 | `screw(M6_grub_screw, 12)` |  Screw M6 grub x 12mm |
 |   1 | `screw(M6_hex_screw, 30)` |  Screw M6 hex x 30mm |
 |   1 | `screw(M6_pan_screw, 30)` |  Screw M6 pan x 30mm |
 |   1 | `screw(M8_cap_screw, 35)` |  Screw M8 cap x 35mm |
+|   1 | `screw(M8_cs_cap_screw, 35)` |  Screw M8 cs cap x 35mm |
 |   1 | `screw(M8_hex_screw, 30)` |  Screw M8 hex x 30mm |
 |   1 | `screw(No2_screw, 10)` |  Screw No2 pan wood x 10mm |
 |   1 | `screw(No4_screw, 10)` |  Screw No4 pan wood x 10mm |

@@ -24,7 +24,8 @@ use <../vitamins/pcb.scad>
 
 module displays()
     layout([for(d = displays) pcb_length(display_pcb(d))], 10)
-        display(displays[$i]);
+        vflip()
+            display(displays[$i]);
 
 if($preview)
     displays();

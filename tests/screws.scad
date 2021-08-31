@@ -48,7 +48,7 @@ module screws() {
         for(x = [0 : len(screw_lists[y]) -1]) {
             screw = screw_lists[y][x];
             if(screw) {
-                 length = screw_head_type(screw) == hs_grub ? 6
+                 length = screw_head_type(screw) == hs_grub ? screw_radius(screw) * 4
                         : screw_radius(screw) <= 1.5 ? 10
                         : screw_max_thread(screw) ? screw_longer_than(screw_max_thread(screw) + 5)
                         : 30;
