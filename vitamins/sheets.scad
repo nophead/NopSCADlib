@@ -42,6 +42,9 @@ DiBond6   = [ "DiBond6",   "Sheet DiBond",            6, [0.2, 0.2, 0.2, 1    ],
 Cardboard = [ "Cardboard", "Corrugated cardboard",    5, [0.8, 0.6, 0.3, 1    ], false];
 FoilTape  = [ "FoilTape",  "Aluminium foil tape",   0.05,[0.9, 0.9, 0.9, 1    ], false];
 Foam20    = [ "Foam20",    "Foam sponge",             20,[0.3, 0.3, 0.3, 1    ], true];
+AL1_6     = [ "AL1_6",     "Aluminium tooling plate", 1.6, [0.5, 0.5, 0.5, 0.5], false];
+AL2       = [ "AL2",       "Aluminium tooling plate", 2, [0.9, 0.9, 0.9, 1    ], false];
+AL3       = [ "AL3",       "Aluminium tooling plate", 3, [0.9, 0.9, 0.9, 1    ], false];
 AL6       = [ "AL6",       "Aluminium tooling plate", 6, [0.9, 0.9, 0.9, 1    ], false];
 AL8       = [ "AL8",       "Aluminium tooling plate", 8, [0.9, 0.9, 0.9, 1    ], false];
 Steel06   = [ "Steel06",   "Sheet mild steel",       0.6,"silver"              , false];
@@ -53,6 +56,6 @@ CF3 =       [ "CF3",       "Sheet carbon fiber",      3, grey(35),              
 
 
 sheets = [CF1, CF2, CF3, MDF6, MDF10, MDF12, MDF19, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10,
-         glass2, DiBond, DiBond6, Cardboard, FoilTape, AL6, AL8, Steel06, Spring05, Silicone3, Foam20];
+         glass2, DiBond, DiBond6, Cardboard, FoilTape, AL1_6, AL2, AL3, AL6, AL8, Steel06, Spring05, Silicone3, Foam20];
 
 use <sheet.scad>

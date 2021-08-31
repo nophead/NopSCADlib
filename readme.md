@@ -3316,6 +3316,9 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `sheet(FoilTape, 30, 30, 2)` |  Aluminium foil tape 30mm x 30mm x 0.05mm |
+|   1 | `sheet(AL1_6, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 1.6mm |
+|   1 | `sheet(AL2, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 2mm |
+|   1 | `sheet(AL3, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 3mm |
 |   1 | `sheet(AL6, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 6mm |
 |   1 | `sheet(AL8, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 8mm |
 |   1 | `sheet(Spring05, 30, 30, 2)` |  Bi-metal saw blade 30mm x 30mm x 0.5mm |
