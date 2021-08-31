@@ -1547,9 +1547,11 @@ Nuts for leadscrews.
 | Function | Description |
 |:--- |:--- |
 | `leadnut_bore(type)` | Thread size |
+| `leadnut_colour(type)` | The colour |
 | `leadnut_flange_dia(type)` | Flange diameter |
 | `leadnut_flange_offset(type)` | Offset of the flange from the top |
 | `leadnut_flange_t(type)` | Flange thickness |
+| `leadnut_flat(type)` | Flat section width |
 | `leadnut_height(type)` | Total height |
 | `leadnut_hole_dia(type)` | The diameter of the screw holes |
 | `leadnut_hole_pitch(type)` | The radial pitch of the screw holes |
@@ -1577,6 +1579,7 @@ Nuts for leadscrews.
 | ---:|:--- |:---|
 |   1 | `leadnut(LSN8x2)` |  Leadscrew nut 8 x 2 |
 |   1 | `leadnut(LSN8x8)` |  Leadscrew nut 8 x 8 RobotDigg |
+|   1 | `leadnut(SFU1610)` |  Leadscrew nut for SFU1610 |
 
 
 <a href="#top">Top</a>

@@ -16,10 +16,18 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+//                                                    b   s     h   f     f    f    h  h    h        s             p   l  f  c
+//                                                    o   h     e   l     l    l    o  o    o        c             i   e  l  o
+//                                                    r   a     i   a     a    a    l  l    l        r             t   a  a  l
+//                                                    e   n     g   n     n    n    e  e    e        e             c   d  t  o
+//                                                        k     h   g     g    g    s                w             h         u
+//                                                              t   e     e    e       d    p                                r
+//
+//                                                                  d     t    o
+LSN8x2  = ["LSN8x2",  "Leadscrew nut 8 x 2",           8, 10.2, 15, 22,   3.5, 1.5, 4, 3.5, 8,       M3_cap_screw, 2,  2, 0, "dimgrey"];
+LSN8x8  = ["LSN8x8",  "Leadscrew nut 8 x 8 RobotDigg", 8, 12.75,19, 25.4, 4.1, 0,   3, 3.5, 19.05/2, M3_cap_screw, 2,  8, 0, "dimgrey"];
+SFU1610 = ["SFU1610", "Leadscrew nut for SFU1610",    16, 28, 42.5, 48,    10, 0,   6, 6,   38/2,    M6_cap_screw, 5, 10, 40, "#DFDAC5"];
 
-LSN8x2 = ["LSN8x2", "Leadscrew nut 8 x 2",          8, 10.2, 15, 22,   3.5, 1.5, 4, 3.5, 8,       M3_cap_screw, 2, 2];
-LSN8x8 = ["LSN8x8", "Leadscrew nut 8 x 8 RobotDigg",8, 12.75,19, 25.4, 4.1, 0,   3, 3.5, 19.05/2, M3_cap_screw, 2, 8];
-
-leadnuts = [LSN8x2, LSN8x8];
+leadnuts = [LSN8x2, LSN8x8, SFU1610];
 
 use <leadnut.scad>

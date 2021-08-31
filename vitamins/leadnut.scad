@@ -36,12 +36,17 @@ function leadnut_hole_pitch(type)    = type[10];    //! The radial pitch of the 
 function leadnut_screw(type)         = type[11];    //! The type of the fixing screws
 function leadnut_pitch(type)         = type[12];    //! Screw pitch
 function leadnut_lead(type)          = type[13];    //! Screw lead
+function leadnut_flat(type)          = type[14];    //! Flat section width
+function leadnut_colour(type)        = type[15];    //! The colour
 
 function leadnut_shank(type)         = leadnut_height(type) - leadnut_flange_t(type) - leadnut_flange_offset(type); //! The length of the shank below the flange
 
 module leadnut_screw_positions(type) { //! Position children at the screw holes
     holes = leadnut_holes(type);
-    for(i = [0 : holes - 1], a = i * 360 / holes + 180)
+    flat = leadnut_flat(type);
+    angles = flat ? [let(h = holes / 2, a = 90 / (h - 1)) for(i = [0 : h - 1], side = [-1, 1]) side * (45 + i * a)]
+                  : [for(i = [0 : holes - 1]) i * 360 / holes + 180];
+    for(a = angles)
         rotate(a)
             translate([leadnut_hole_pitch(type), 0, leadnut_flange_t(type)])
                 rotate(45)
@@ -55,8 +60,10 @@ module leadnut(type) { //! Draw specified leadnut
     h = leadnut_height(type);
     pitch = leadnut_pitch(type);
     lead = leadnut_lead(type);
+    flat = leadnut_flat(type);
+    flange_d = leadnut_flange_dia(type);
 
-    color("dimgrey") vflip()
+    color(leadnut_colour(type)) vflip()
         translate_z(-leadnut_flange_offset(type) - leadnut_flange_t(type)) {
             tube(or = leadnut_od(type) / 2, ir = bore_r, h = h, center = false);
 
@@ -66,12 +73,17 @@ module leadnut(type) { //! Draw specified leadnut
             translate_z(leadnut_flange_offset(type))
                 linear_extrude(leadnut_flange_t(type))
                     difference() {
-                        circle(d = leadnut_flange_dia(type));
+                        circle(d = flange_d);
 
                         circle(bore_r);
 
                         leadnut_screw_positions(type)
                             circle(d = leadnut_hole_dia(type));
+
+                        if(flat)
+                            for(side = [-1, 1])
+                                translate([side * flange_d / 2, 0])
+                                    square([flange_d - flat, flange_d], center = true);
                     }
         }
 }
