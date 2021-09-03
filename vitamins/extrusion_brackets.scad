@@ -20,10 +20,11 @@
 // Extrusion brackets
 //
 
-E20_inner_corner_bracket  = [ "E20_inner_corner_bracket", [25, 25, 4.5] ];
+E20_inner_corner_bracket  = [ "E20_inner_corner_bracket", [26, 25, 4.7], M4_sliding_t_nut, E2020, [7,   6]];
+E40_inner_corner_bracket  = [ "E40_inner_corner_bracket", [38, 31, 8.5], M6_sliding_t_nut, E4040, [13, 10]];
 
-E20_corner_bracket = [ "E20_corner_bracket", [28, 28, 20], 2, 3, 19.5];
+E20_corner_bracket = [ "E20_corner_bracket", [28, 28, 20], 2, 3, 19.5, M4_sliding_t_nut, E2020];
+E40_corner_bracket = [ "E40_corner_bracket", [40, 40, 35], 2, 3, 19.5, M8_sliding_ball_t_nut, E4040];
 
 
 use <extrusion_bracket.scad>
-

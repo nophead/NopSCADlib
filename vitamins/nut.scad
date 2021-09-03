@@ -137,18 +137,60 @@ module wingnut(type) { //! Draw a wingnut
     }
 }
 
+function t_nut_tab(type) = [type[8], type[9]]; //! Sliding t-nut T dimensions
+
+module sliding_ball_t_nut(size, w, h, r) {
+    rad = 0.5;
+    stem = size.z - h;
+    ball_d = 4;
+
+    module shape()
+        rotate([90, 0, 90])
+            translate_z(r)
+                linear_extrude(size.x, center = true) {
+                    hull() {
+                        translate([0, h - size.y / 2])
+                            semi_circle(d = size.y);
+
+                        for(side = [-1, 1])
+                            translate([side * (w / 2 - rad), rad])
+                                circle(rad);
+                    }
+                    rounded_square([size.y, stem * 2], rad / 2, true);
+                }
+
+    render() difference() {
+        shape();
+
+        cylinder(r = r, h = 100, center = true);
+    }
+
+    translate([size.x / 2 + r - ball_d, 0, h - 0.5])
+        sphere(d = ball_d);
+
+    if(show_threads)
+        render() intersection() {
+            translate_z(-stem)
+                female_metric_thread(2 * r, metric_coarse_pitch(2 * r), size.z - 2, center = false);
+
+            shape();
+        }
+}
+
 module sliding_t_nut(type) {
     hammerNut = type[10];
-    vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), hammerNut ? " hammer" : " sliding T"));
-
-    size = [type[7], type[2], nut_thickness(type, true)];
-    tabSizeY1 = type[8];
-    tabSizeY2 = type[9];
+    size = [type[7], nut_square_width(type), nut_thickness(type, true)];
+    tab = t_nut_tab(type);
     tabSizeZ = nut_thickness(type);
     holeRadius  = nut_size(type) / 2;
 
+    vitamin(str("sliding_t_nut(", type[0], "): Nut M", nut_size(type), hammerNut ? " hammer" : " sliding T", !tab[1] ? " with spring loaded ball" : ""));
+
     color(grey(80))
-        extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, 0, hammerNut);
+        if(!tab[1])
+            sliding_ball_t_nut(size, tab[0], tabSizeZ, holeRadius);
+        else
+            extrusionSlidingNut(size, tab[0], tab[1], tabSizeZ, holeRadius, 0, hammerNut);
 }
 
 module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
@@ -171,7 +213,7 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
             }
     linear_extrude(tabSizeZ)
         difference() {
-            square([size.x, tabSizeY2], center = true);
+            square([size.x, tabSizeY1 == tabSizeY2 ? size.y : tabSizeY2], center = true);
             if(holeRadius)
                 translate([holeOffset, 0])
                     circle(holeRadius);
@@ -183,13 +225,25 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
             female_metric_thread(thread_d, metric_coarse_pitch(thread_d), size.z, center = false);
 
     // add the side tabs
+    tab_h = size.z - 2 * stem_h;
+    chamfer =tab_h / 4;
     for(m = [0, 1])
         mirror([0, m, 0])
-            translate([0, tabSizeY2 / 2]) {
+            if(tabSizeY1 == tabSizeY2)
+                translate([-size.x / 2, size.y / 2])
+                    hull() {
+                        cube([size.x, (tabSizeY1 - size.y) / 2 - chamfer, tab_h]);
+
+                        translate_z(chamfer)
+                            cube([size.x, (tabSizeY1 - size.y) / 2,tab_h - 2 * chamfer]);
+                    }
+
+            else {
                 cubeZ = 1;
-                translate([-size.x / 2, 0])
+                translate([-size.x / 2, tabSizeY2 / 2])
                     cube([size.x, (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
-                translate_z(cubeZ)
+
+                translate([0, tabSizeY2 / 2, cubeZ])
                     rotate([0, -90, 0])
                         right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size.x, center = true);
             }

@@ -52,6 +52,12 @@ module nuts() {
 
             if(n == M5_nut)
                 sliding_t_nut(M5_sliding_t_nut);
+
+            if(n == M6_nut)
+                sliding_t_nut(M6_sliding_t_nut);
+
+            if(n == M8_nut)
+                sliding_t_nut(M8_sliding_ball_t_nut);
         }
 
         translate([0, 80]) {

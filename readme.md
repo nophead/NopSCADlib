@@ -963,34 +963,47 @@ Brackets for joining extrusions at a corner.
 | Function | Description |
 |:--- |:--- |
 | `extrusion_corner_bracket_base_thickness(type)` | Thickness of base of bracket |
+| `extrusion_corner_bracket_extrusion(type)` | Default extrusion this bracket is for |
 | `extrusion_corner_bracket_hole_offset(type)` | Hole offset from corner |
 | `extrusion_corner_bracket_side_thickness(type)` | Thickness of side of bracket |
 | `extrusion_corner_bracket_size(type)` | Size of bracket |
+| `extrusion_corner_bracket_tnut(type)` | The sliding t-nut to use in the assembly |
+| `extrusion_inner_corner_bracket_extrusion(type)` | Default extrusion this bracket is for |
+| `extrusion_inner_corner_bracket_screw_offsets(type)` | Screw offsets from the ends |
 | `extrusion_inner_corner_bracket_size(type)` | Size of inner bracket |
+| `extrusion_inner_corner_bracket_tnut(type)` | The sliding t-nut it is based on |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | `extrusion_corner_bracket(type)` | Corner bracket for extrusion |
-| `extrusion_corner_bracket_assembly(type, part_thickness = 2, screw_type = M4_cap_screw, nut_type = M4_sliding_t_nut, max_screw_depth = 6)` | Assembly with fasteners in place |
+| `extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_type = undef, nut_type = undef, max_screw_depth = undef)` | Assembly with fasteners in place |
 | `extrusion_corner_bracket_hole_positions(type)` | Place children at hole positions |
-| `extrusion_inner_corner_bracket(type, grub_screws = true)` | Inner corner bracket for extrusion |
+| `extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false)` | Inner corner bracket for extrusion |
 
 ![extrusion_brackets](tests/png/extrusion_brackets.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `extrusion(E2020, 20)` |  Extrusion E2020 x 20mm |
-|   1 | `extrusion(E2020, 30)` |  Extrusion E2020 x 30mm |
-|   1 | `extrusion(E2020, 40)` |  Extrusion E2020 x 40mm |
-|   1 | `extrusion(E2020, 50)` |  Extrusion E2020 x 50mm |
-|   2 | `extrusion_corner_bracket(E20_corner_bracket)` |  Extrusion corner bracket 20 |
-|   2 | `extrusion_inner_corner_bracket(E20_inner_corner_bracket, true)` |  Extrusion inner corner bracket 4.5 |
-|   1 | `extrusion_inner_corner_bracket(E20_inner_corner_bracket, false)` |  Extrusion inner corner bracket 4.5 |
+|   2 | `extrusion(E2020, 20.3)` |  Extrusion E2020 x 20.3mm |
+|   1 | `extrusion(E2020, 28)` |  Extrusion E2020 x 28mm |
+|   2 | `extrusion(E2020, 39.3)` |  Extrusion E2020 x 39.3mm |
+|   1 | `extrusion(E2020, 48)` |  Extrusion E2020 x 48mm |
+|   1 | `extrusion(E4040, 25.9)` |  Extrusion E4040 x 25.9mm |
+|   1 | `extrusion(E4040, 40)` |  Extrusion E4040 x 40mm |
+|   1 | `extrusion(E4040, 58.9)` |  Extrusion E4040 x 58.9mm |
+|   1 | `extrusion(E4040, 80)` |  Extrusion E4040 x 80mm |
+|   2 | `extrusion_corner_bracket(E20_corner_bracket)` |  Extrusion corner bracket 20mm for E2020 |
+|   2 | `extrusion_corner_bracket(E40_corner_bracket)` |  Extrusion corner bracket 35mm for E4040 |
+|   4 | `extrusion_inner_corner_bracket(E20_inner_corner_bracket)` |  Extrusion inner corner bracket for E2020 |
+|   2 | `extrusion_inner_corner_bracket(E40_inner_corner_bracket)` |  Extrusion inner corner bracket for E4040 |
 |   4 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
+|   4 | `sliding_t_nut(M8_sliding_ball_t_nut)` |  Nut M8 sliding T with spring loaded ball |
 |   4 | `screw(M4_cap_screw, 8)` |  Screw M4 cap x  8mm |
+|   4 | `screw(M8_cap_screw, 16)` |  Screw M8 cap x 16mm |
 |   4 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   4 | `washer(M8_washer)` |  Washer  M8 x 17mm x 1.6mm |
 
 
 <a href="#top">Top</a>
@@ -2048,6 +2061,7 @@ If a nut is given a child then it gets placed on its top surface.
 | `nut_thickness(type, nyloc = false)` | Thickness of plain or nyloc version |
 | `nut_trap_flat_radius(nut, horizontal = false)` | Radius across the flats of a nut trap |
 | `nut_trap_radius(nut, horizontal = false)` | Radius across the corners of a nut trap |
+| `t_nut_tab(type)` | Sliding t-nut T dimensions |
 
 ### Modules
 | Module | Description |
@@ -2083,10 +2097,12 @@ If a nut is given a child then it gets placed on its top surface.
 |   1 | `nut(M5_nut)` |  Nut M5 x 4mm  |
 |   1 | `nut(M5_nut, nyloc = true)` |  Nut M5 x 4mm nyloc |
 |   1 | `nut(M5nS_thin_nut)` |  Nut M5nS 8 x 2.7mm  |
+|   1 | `sliding_t_nut(M6_sliding_t_nut)` |  Nut M6 hammer |
 |   1 | `nut(M6_half_nut)` |  Nut M6 x 3mm  |
 |   1 | `nut(M6_nut)` |  Nut M6 x 5mm  |
 |   1 | `nut(M6_nut, nyloc = true)` |  Nut M6 x 5mm nyloc |
 |   1 | `nut(M6nS_thin_nut)` |  Nut M6nS 10 x 3.2mm  |
+|   1 | `sliding_t_nut(M8_sliding_ball_t_nut)` |  Nut M8 sliding T with spring loaded ball |
 |   1 | `nut(M8_nut)` |  Nut M8 x 6.5mm  |
 |   1 | `nut(M8_nut, nyloc = true)` |  Nut M8 x 6.5mm nyloc |
 |   1 | `nut(M8nS_thin_nut)` |  Nut M8nS 13 x 4mm  |
