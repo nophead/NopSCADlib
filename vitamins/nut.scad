@@ -177,7 +177,7 @@ module sliding_ball_t_nut(size, w, h, r) {
         }
 }
 
-module sliding_t_nut(type) {
+module sliding_t_nut(type) { //! Draw a sliding T nut, T nut with a spring loaded ball or a hammer nut.
     hammerNut = type[10];
     size = [type[7], nut_square_width(type), nut_thickness(type, true)];
     tab = t_nut_tab(type);

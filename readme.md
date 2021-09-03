@@ -2070,6 +2070,7 @@ If a nut is given a child then it gets placed on its top surface.
 | `nut_and_washer(type, nyloc)` | Draw nut with corresponding washer |
 | `nut_square(type, brass = false, nylon = false)` | Draw specified square nut |
 | `nut_trap(screw, nut, depth = 0, horizontal = false, supported = false, h = 200)` | Make a nut trap |
+| `sliding_t_nut(type)` | Draw a sliding T nut, T nut with a spring loaded ball or a hammer nut. |
 | `wingnut(type)` | Draw a wingnut |
 
 ![nuts](tests/png/nuts.png)
