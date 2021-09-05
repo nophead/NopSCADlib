@@ -977,31 +977,31 @@ Brackets for joining extrusions at a corner.
 | Module | Description |
 |:--- |:--- |
 | `extrusion_corner_bracket(type)` | Corner bracket for extrusion |
-| `extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_type = undef, nut_type = undef, max_screw_depth = undef)` | Assembly with fasteners in place |
+| `extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_type = undef, nut_type = undef, max_screw_depth = undef, extrusion = undef)` | Assembly with fasteners in place |
 | `extrusion_corner_bracket_hole_positions(type)` | Place children at hole positions |
-| `extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false)` | Inner corner bracket for extrusion |
+| `extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false, extrusion = undef)` | Inner corner bracket for extrusion |
 
 ![extrusion_brackets](tests/png/extrusion_brackets.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `extrusion(E2020, 20.3)` |  Extrusion E2020 x 20.3mm |
-|   1 | `extrusion(E2020, 28)` |  Extrusion E2020 x 28mm |
-|   2 | `extrusion(E2020, 39.3)` |  Extrusion E2020 x 39.3mm |
-|   1 | `extrusion(E2020, 48)` |  Extrusion E2020 x 48mm |
-|   1 | `extrusion(E4040, 25.9)` |  Extrusion E4040 x 25.9mm |
-|   1 | `extrusion(E4040, 40)` |  Extrusion E4040 x 40mm |
-|   1 | `extrusion(E4040, 58.9)` |  Extrusion E4040 x 58.9mm |
-|   1 | `extrusion(E4040, 80)` |  Extrusion E4040 x 80mm |
-|   2 | `extrusion_corner_bracket(E20_corner_bracket)` |  Extrusion corner bracket 20mm for E2020 |
-|   2 | `extrusion_corner_bracket(E40_corner_bracket)` |  Extrusion corner bracket 35mm for E4040 |
-|   4 | `extrusion_inner_corner_bracket(E20_inner_corner_bracket)` |  Extrusion inner corner bracket for E2020 |
-|   2 | `extrusion_inner_corner_bracket(E40_inner_corner_bracket)` |  Extrusion inner corner bracket for E4040 |
+|   2 | `extrusion(E2020t, 20.5)` |  Extrusion E2020t x 20.5mm |
+|   1 | `extrusion(E2020t, 28)` |  Extrusion E2020t x 28mm |
+|   2 | `extrusion(E2020t, 39.5)` |  Extrusion E2020t x 39.5mm |
+|   1 | `extrusion(E2020t, 48)` |  Extrusion E2020t x 48mm |
+|   1 | `extrusion(E4040t, 27.4, cornerHole = true)` |  Extrusion E4040t x 27.4mm |
+|   1 | `extrusion(E4040t, 40, cornerHole = true)` |  Extrusion E4040t x 40mm |
+|   1 | `extrusion(E4040t, 60.4, cornerHole = true)` |  Extrusion E4040t x 60.4mm |
+|   1 | `extrusion(E4040t, 80, cornerHole = true)` |  Extrusion E4040t x 80mm |
+|   2 | `extrusion_corner_bracket(E20_corner_bracket)` |  Extrusion corner bracket 20mm for E2020t |
+|   2 | `extrusion_corner_bracket(E40_corner_bracket)` |  Extrusion corner bracket 35mm for E4040t |
+|   4 | `extrusion_inner_corner_bracket(E20_inner_corner_bracket)` |  Extrusion inner corner bracket for E2020t |
+|   2 | `extrusion_inner_corner_bracket(E40_inner_corner_bracket)` |  Extrusion inner corner bracket for E4040t |
 |   4 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
 |   4 | `sliding_t_nut(M8_sliding_ball_t_nut)` |  Nut M8 sliding T with spring loaded ball |
 |   4 | `screw(M4_cap_screw, 8)` |  Screw M4 cap x  8mm |
-|   4 | `screw(M8_cap_screw, 16)` |  Screw M8 cap x 16mm |
+|   4 | `screw(M8_cap_screw, 12)` |  Screw M8 cap x 12mm |
 |   4 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   4 | `washer(M8_washer)` |  Washer  M8 x 17mm x 1.6mm |
 
@@ -1022,16 +1022,24 @@ Aluminium  extrusion.
 ### Properties
 | Function | Description |
 |:--- |:--- |
-| `extrusion_center_hole(type)` | Diameter of center hole |
-| `extrusion_center_square(type)` | Size of center square |
+| `extrusion_center_hole_wd(type)` | Diameter of center hole if -ve or square side if +ve |
+| `extrusion_center_square_wd(type)` | Size of center square if +ve or tube diameter if -ve |
+| `extrusion_channel_recess(type)` | Channel recess width and depth or false in none |
 | `extrusion_channel_width(type)` | Channel width |
 | `extrusion_channel_width_internal(type)` | Internal channel width |
-| `extrusion_corner_hole(type)` | Diameter of corner hole |
+| `extrusion_corner_hole_wd(type)` | Diameter of corner hole if -ve or square side if +ve |
 | `extrusion_fillet(type)` | Radius of corner fillet |
 | `extrusion_height(type)` | Height of extrusion |
 | `extrusion_spar_thickness(type)` | Spar thickness |
 | `extrusion_tab_thickness(type)` | Tab thickness |
 | `extrusion_width(type)` | Width of extrusion |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `extrusion_center_hole(type)` | Diameter of center hole or side if square |
+| `extrusion_center_square(type)` | Size of center square or tube |
+| `extrusion_corner_hole(type)` | Diameter of corner hole or side if square |
 
 ### Modules
 | Module | Description |
@@ -1045,12 +1053,14 @@ Aluminium  extrusion.
 | ---:|:--- |:---|
 |   1 | `extrusion(E1515, 80)` |  Extrusion E1515 x 80mm |
 |   1 | `extrusion(E2020, 80)` |  Extrusion E2020 x 80mm |
+|   1 | `extrusion(E2020t, 80)` |  Extrusion E2020t x 80mm |
 |   1 | `extrusion(E2040, 80)` |  Extrusion E2040 x 80mm |
 |   1 | `extrusion(E2060, 80)` |  Extrusion E2060 x 80mm |
 |   1 | `extrusion(E2080, 80)` |  Extrusion E2080 x 80mm |
 |   1 | `extrusion(E3030, 80, cornerHole = true)` |  Extrusion E3030 x 80mm |
 |   1 | `extrusion(E3060, 80, cornerHole = true)` |  Extrusion E3060 x 80mm |
 |   1 | `extrusion(E4040, 80, cornerHole = true)` |  Extrusion E4040 x 80mm |
+|   1 | `extrusion(E4040t, 80, cornerHole = true)` |  Extrusion E4040t x 80mm |
 |   1 | `extrusion(E4080, 80, cornerHole = true)` |  Extrusion E4080 x 80mm |
 
 

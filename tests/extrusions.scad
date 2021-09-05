@@ -21,9 +21,24 @@ use <../utils/layout.scad>
 
 include <../vitamins/extrusions.scad>
 
+gap = 10;
+
 module extrusions()
-    layout([for(e = extrusions) extrusion_width(e)], 10)
-        extrusion(extrusions[$i], 80, cornerHole = extrusion_width(extrusions[$i]) > 20);
+    layout([for(e = extrusions) is_list(e[0]) ? extrusion_width(e[0]) : extrusion_width(e)], gap)
+        let(e = extrusions[$i])
+            if(is_list(e[0])) {
+                list = e;
+                heights = [for(e = list) extrusion_height(e)];
+                l = len(heights) - 1;
+                offset = (heights * [for(i = [0 : l]) 1] + l * gap) / 2;
+                translate([0, -offset])
+                    rotate(90)
+                        layout(heights, gap)
+                            rotate(-90)
+                                extrusion(list[$i], 80, cornerHole = extrusion_width(list[$i]) > 20);
+            }
+            else
+                extrusion(e, 80, cornerHole = extrusion_width(e) > 20);
 
 if ($preview)
     extrusions();

@@ -143,11 +143,12 @@ module sliding_ball_t_nut(size, w, h, r) {
     rad = 0.5;
     stem = size.z - h;
     ball_d = 4;
+    offset = 12;
 
     module shape()
         rotate([90, 0, 90])
-            translate_z(r)
-                linear_extrude(size.x, center = true) {
+            translate_z(-offset)
+                linear_extrude(size.x) {
                     hull() {
                         translate([0, h - size.y / 2])
                             semi_circle(d = size.y);
@@ -165,7 +166,7 @@ module sliding_ball_t_nut(size, w, h, r) {
         cylinder(r = r, h = 100, center = true);
     }
 
-    translate([size.x / 2 + r - ball_d, 0, h - 0.5])
+    translate([-offset + ball_d, 0, h - 0.4])
         sphere(d = ball_d);
 
     if(show_threads)
@@ -239,13 +240,14 @@ module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, hol
                     }
 
             else {
-                cubeZ = 1;
+                dy = (tabSizeY1 - tabSizeY2) / 2;
+                cubeZ = tabSizeZ - dy;
                 translate([-size.x / 2, tabSizeY2 / 2])
                     cube([size.x, (tabSizeY1 - tabSizeY2) / 2, cubeZ]);
 
                 translate([0, tabSizeY2 / 2, cubeZ])
                     rotate([0, -90, 0])
-                        right_triangle(tabSizeZ - cubeZ, (tabSizeY1 - tabSizeY2) / 2, size.x, center = true);
+                        right_triangle(tabSizeZ - cubeZ, dy, size.x, center = true);
             }
 }
 

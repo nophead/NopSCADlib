@@ -23,8 +23,9 @@ include <../vitamins/extrusion_brackets.scad>
 include <../vitamins/washers.scad>
 include <../vitamins/nuts.scad>
 
-module inner_bracket_test(bracket, extrusion, backwards = false)
+module inner_bracket_test(bracket, backwards = false)
     rotate([90, 0, 180]) {
+        extrusion = extrusion_inner_corner_bracket_extrusion(bracket);
         eWidth = extrusion_width(extrusion);
         size = extrusion_inner_corner_bracket_size(bracket);
         tnut = extrusion_inner_corner_bracket_tnut(bracket);
@@ -34,16 +35,17 @@ module inner_bracket_test(bracket, extrusion, backwards = false)
 
         translate([-eWidth / 2, 0])
             rotate([-90, 0, 0])
-                extrusion(extrusion, size.x - nut_thickness(tnut) - extrusion_tab_thickness(extrusion), false);
+                extrusion(extrusion, size.x - nut_thickness(tnut) - extrusion_tab_thickness(extrusion), false, cornerHole = eWidth > 20);
 
         translate([-eWidth, -eWidth / 2])
             rotate([0, 90, 0])
-                extrusion(extrusion, eWidth + size.y - nut_thickness(tnut) - extrusion_tab_thickness(extrusion), false);
+                extrusion(extrusion, eWidth + size.y - nut_thickness(tnut) - extrusion_tab_thickness(extrusion), false, cornerHole = eWidth > 20);
     }
 
 
-module bracket_test(bracket, extrusion)
+module bracket_test(bracket)
     rotate([90, 0, 180]) {
+        extrusion = extrusion_corner_bracket_extrusion(bracket);
         eWidth = extrusion_width(extrusion);
         size = extrusion_corner_bracket_size(bracket);
 
@@ -51,11 +53,11 @@ module bracket_test(bracket, extrusion)
 
         translate([-eWidth / 2, 0])
             rotate([-90, 0, 0])
-                extrusion(extrusion, size.y, false);
+                extrusion(extrusion, size.y, false, cornerHole = eWidth > 20);
 
         translate([-eWidth, -eWidth / 2])
             rotate([0, 90, 0])
-                extrusion(extrusion, eWidth + size.x, false);
+                extrusion(extrusion, eWidth + size.x, false, cornerHole = eWidth > 20);
     }
 
 
@@ -76,19 +78,19 @@ module extrusion_brackets(examples = false) {
 
     if(examples) {
         translate([20, 50, 10])
-            inner_bracket_test(E20_inner_corner_bracket, E2020, true);
+            inner_bracket_test(E20_inner_corner_bracket, true);
 
         translate([20, 80, 10])
-            inner_bracket_test(E20_inner_corner_bracket, E2020);
+            inner_bracket_test(E20_inner_corner_bracket);
 
         translate([20, 120, 10])
-            bracket_test(E20_corner_bracket, E2020);
+            bracket_test(E20_corner_bracket);
 
         translate([100, 70, 10])
-            inner_bracket_test(E40_inner_corner_bracket, E4040);
+            inner_bracket_test(E40_inner_corner_bracket);
 
         translate([100, 130, 10])
-            bracket_test(E40_corner_bracket, E4040);
+            bracket_test(E40_corner_bracket);
     }
 }
 

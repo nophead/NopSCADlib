@@ -27,8 +27,8 @@ function extrusion_inner_corner_bracket_tnut(type)           = type[2]; //! The 
 function extrusion_inner_corner_bracket_extrusion(type)      = type[3]; //! Default extrusion this bracket is for
 function extrusion_inner_corner_bracket_screw_offsets(type)  = type[4]; //! Screw offsets from the ends
 
-module extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false) { //! Inner corner bracket for extrusion
-    extrusion = extrusion_inner_corner_bracket_extrusion(type);
+module extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false, extrusion = undef) { //! Inner corner bracket for extrusion
+    extrusion = is_undef(extrusion) ? extrusion_inner_corner_bracket_extrusion(type) : extrusion;
     vitamin(str("extrusion_inner_corner_bracket(", type[0], "): Extrusion inner corner bracket for ", extrusion[0]));
 
     size = extrusion_inner_corner_bracket_size(type);
@@ -140,9 +140,9 @@ module extrusion_corner_bracket_hole_positions(type) { //! Place children at hol
                 children();
 }
 
-module extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_type = undef, nut_type = undef, max_screw_depth = undef) { //! Assembly with fasteners in place
+module extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_type = undef, nut_type = undef, max_screw_depth = undef, extrusion = undef) { //! Assembly with fasteners in place
     extrusion_corner_bracket(type);
-    extrusion = extrusion_corner_bracket_extrusion(type);
+    extrusion = is_undef(extrusion) ? extrusion_corner_bracket_extrusion(type) : extrusion;
 
     nut = is_undef(nut_type) ? extrusion_corner_bracket_tnut(type) : nut_type;
     screw = is_undef(screw_type) ? find_screw(hs_cap, nut_size(nut)) : screw_type;

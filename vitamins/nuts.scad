@@ -56,7 +56,7 @@ M4_sliding_t_nut = ["M4_sliding_t_nut", 4,   6,   3.7, 4.7,  false,         0,  
 M5_sliding_t_nut = ["M5_sliding_t_nut", 5,   6,   3.7, 4.7,  false,         0,  11,  10,  7, false];
 M6_sliding_t_nut = ["M6_sliding_t_nut", 6,   8,   6.6, 8.5,  false,         0,  16,  18.6,8,2, false];
 M8_sliding_ball_t_nut = ["M8_sliding_ball_t_nut",
-                                        8,  9.5,  6.5,  7.5, false,         0,  22,  13,  0, false];
+                                        8,   8,   6.7, 7.6,  false,         0,  22,  13.5,  0, false];
 
 M3_hammer_nut =    ["M3_hammer_nut",    3,   6,   2.75,4.0,  false,         0, 5.5,  10,  6, true];
 M4_hammer_nut =    ["M4_hammer_nut",    4,   6,   3.25,4.5,  false,         0, 5.5,  10,  6, true];
