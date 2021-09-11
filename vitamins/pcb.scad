@@ -878,7 +878,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
             single();
 }
 
-module molex_254(ways) { //! Draw molex header
+module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version.
     vitamin(str("molex_254(", ways, "): Molex KK header ", ways, " way"));
     pitch = 2.54;
     width = ways * pitch - 0.1;
@@ -888,20 +888,41 @@ module molex_254(ways) { //! Draw molex header
     back = 1;
     below = 2.3;
     above = 9;
+    pin_w = 0.64;
+    r = 1;
+    a = right_angle ? width / 2 - r - pin_w / 2 : above;
+    ra_offset = 2.72;
     color("white")
-        union() {
-            translate([ -depth / 2, -width / 2,])
-                cube([depth, width, base]);
+        translate(right_angle ? [-ra_offset, 0, depth / 2] : [ 0, 0, 0])
+            rotate(right_angle ? right_angle > 0 ? [180, 90, 0] : [0, -90, 0] : [ 0, 0, 0])
+                union() {
+                    translate([ -depth / 2, -width / 2,])
+                        cube([depth, width, base]);
 
-            w = width - pitch;
-            translate([- depth / 2, -w / 2])
-                cube([back, w, height]);
-         }
+                    w = width - pitch;
+                    translate([- depth / 2, -w / 2])
+                        cube([back, w, height]);
+                 }
 
     color("silver")
-        for(i = [0: ways -1])
-            translate([0, i * pitch - width / 2 + pitch / 2, (above + below) / 2 - below])
-                cube([0.44, 0.75, above + below], center = true);
+        for(i = [0 : ways -1])
+            if(is_undef(skip) || !in(skip, i))
+                translate([0, i * pitch - width / 2 + pitch / 2]) {
+                    translate_z((a + below) / 2 - below)
+                        cube([pin_w, pin_w, a + below], center = true);
+
+                    l = above + ra_offset - r - pin_w / 2;
+                    if(right_angle) {
+                        translate([-l / 2 - r - pin_w / 2, 0, width / 2])
+                            cube([l, pin_w, pin_w], center = true);
+
+                        translate([-r - pin_w / 2, 0, a])
+                            rotate([90, 0, 0])
+                                rotate_extrude(angle = 90)
+                                    translate([r + pin_w / 2, 0])
+                                        square(pin_w, true);
+                    }
+                }
 }
 
 module vero_pin(cropped = false) { //! Draw a vero pin
