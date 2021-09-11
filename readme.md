@@ -2355,6 +2355,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_components(type, cutouts = false, angle = undef)` | Draw list of PCB components on the PCB |
 | `pcb_cutouts(type, angle = undef)` | Make cut outs to clear components on a PCB |
 | `pcb_grid(type, x, y, z = 0)` | Positions children at specified grid position |
+| `pcb_grid_components(type, components, cutouts = false, angle = undef)` | Draw list of components on the PCB grid for perf board |
 | `pcb_screw_positions(type)` | Positions children at the mounting hole positions |
 | `pcb_spacer(screw, height, wall = 1.8, taper = 0)` | Generate STL for PCB spacer |
 | `rj45(cutout = false)` | Draw RJ45 Ethernet connector |
@@ -2498,6 +2499,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_components(type, cutouts = false, angle = undef)` | Draw list of PCB components on the PCB |
 | `pcb_cutouts(type, angle = undef)` | Make cut outs to clear components on a PCB |
 | `pcb_grid(type, x, y, z = 0)` | Positions children at specified grid position |
+| `pcb_grid_components(type, components, cutouts = false, angle = undef)` | Draw list of components on the PCB grid for perf board |
 | `pcb_screw_positions(type)` | Positions children at the mounting hole positions |
 | `pcb_spacer(screw, height, wall = 1.8, taper = 0)` | Generate STL for PCB spacer |
 | `rj45(cutout = false)` | Draw RJ45 Ethernet connector |

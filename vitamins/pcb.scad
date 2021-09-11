@@ -1093,6 +1093,19 @@ module pcb_components(type, cutouts = false, angle = undef) { //! Draw list of P
         }
 }
 
+module pcb_grid_components(type, components, cutouts = false, angle = undef) //! Draw list of components on the PCB grid for perf board
+    for(comp = components) {
+        p = pcb_grid_pos(type, comp.x, comp.y);
+        if(comp[3][0] == "-")
+            translate([p.x, p.y])
+                vflip()
+                    pcb_component(comp, cutouts, angle);
+        else
+            translate([p.x, p.y, pcb_thickness(type)])
+                pcb_component(comp, cutouts, angle);
+    }
+
+
 module pcb_cutouts(type, angle = undef) pcb_components(type, true, angle); //! Make cut outs to clear components on a PCB
 
 module pcb_grid_positions(type) {
