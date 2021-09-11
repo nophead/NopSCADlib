@@ -97,6 +97,8 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 65,  12,   0, "ax_res", res1_8, 1000],
         [ 65,  17,   0, "ax_res", res1_4, 10000],
         [ 65,  22,   0, "ax_res", res1_2, 100000],
+        [ 55,  22,   0, "vero_pin"],
+        [ 55,  17,   0, "vero_pin", true],
 
         [ 80,   9,   0, "link", inch(0.2), inch(0.4)],
         [ 80,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],

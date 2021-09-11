@@ -2367,6 +2367,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `usb_B(cutout = false)` | Draw USB B connector |
 | `usb_C(cutout = false)` | Draw USB C connector |
 | `usb_uA(cutout = false)` | Draw USB micro A connector |
+| `vero_pin(cropped = false)` | Draw a vero pin |
 
 ![pcb](tests/png/pcb.png)
 
@@ -2417,7 +2418,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `green_terminal(gt_5x17, 3)` |  Terminal block 3 way 5mm |
 |   2 | `green_terminal(gt_3p5, 4)` |  Terminal block 4 way 3.5mm |
 |   1 | `terminal_35(4)` |  Terminal block 4 way 3.5mm |
-|   1 | `pcb(TestPCB)` |  Test PCB |
+|   1 | `pcb(test_pcb)` |  Test PCB |
+|   2 | `vero_pin()` |  Vero board pin |
 |   1 | `wire_link(0.8, 5.08, h = 10.16)` |  Wire link 0.8mm x 0.2" |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
 
@@ -2480,7 +2482,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `barrel_jack(cutout = false)` | Draw barrel power jack |
 | `block(size, colour, makes_cutout, cutouts)` | Draw a coloured cube to represent a random PCB component |
 | `buzzer(height, diameter, colour)` | Draw PCB buzzer with specified height, diameter and colour |
-| `chip(length, width, thickness, colour, cutout = false)` | Draw a coloured cube to represent a chip, or other rectangular component |
+| `chip(length, width, thickness, colour, cutout = false)` | Draw a coloured cube to represent a chip, or other rectangular component, or cylinder if width is zero |
 | `flat_flex(type, cutout = false)` | Draw flat flexistrip connector as used on RPI0 |
 | `flex(cutout = false)` | Draw flexistrip connector |
 | `hdmi(type, cutout = false)` | Draw HDMI socket |
@@ -2508,6 +2510,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `usb_B(cutout = false)` | Draw USB B connector |
 | `usb_C(cutout = false)` | Draw USB C connector |
 | `usb_uA(cutout = false)` | Draw USB micro A connector |
+| `vero_pin(cropped = false)` | Draw a vero pin |
 
 ![pcbs](tests/png/pcbs.png)
 

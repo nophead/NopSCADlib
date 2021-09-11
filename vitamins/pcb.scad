@@ -904,6 +904,31 @@ module molex_254(ways) { //! Draw molex header
                 cube([0.44, 0.75, above + below], center = true);
 }
 
+module vero_pin(cropped = false) { //! Draw a vero pin
+    vitamin("vero_pin(): Vero board pin");
+    l = cropped ? 7.5 : 10;
+    d = 1.03;
+    spline_d = 1.23;
+    spline_h = 1.3;
+    collar_d = 1.72;
+    collar_h = 0.65;
+    above = 3.6;
+    splines = 6;
+    spline_w = 0.3;
+
+    color(silver) {
+        translate_z(-l + above + collar_h)
+            cylinder(d = d, h = l, $fn = 32);
+
+        cylinder(d = collar_d, h = collar_h);
+
+        for(i = [0 : splines - 1])
+            rotate(360 * i / splines)
+                translate([d / 2, 0, -spline_h])
+                    rounded_rectangle([spline_d - d, spline_w, spline_h], spline_w / 4, center = false);
+    }
+}
+
 module standoff(h, d, h2, d2) { //! Draw a standoff
     color("white") {
         cylinder(d = d, h = h);
@@ -1030,6 +1055,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
             if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5]);
+            if(show(comp, "vero_pin"))      vero_pin(param(4, false));
         }
     }
 }
