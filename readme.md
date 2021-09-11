@@ -21,31 +21,32 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 ## Table of Contents<a name="top"/>
 <table><tr>
 <th align="left"> Vitamins A-H </th><th align="left"> Vitamins I-Q </th><th align="left"> Vitamins R-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#Axials">Axials</a> </td><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
-<tr><td> <a href = "#BLDC_motors">BLDC_motors</a> </td><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Box_sections">Box_sections</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Servo_motors">Servo_motors</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#7_segments">7_segments</a> </td><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
+<tr><td> <a href = "#Axials">Axials</a> </td><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
+<tr><td> <a href = "#BLDC_motors">BLDC_motors</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
+<tr><td> <a href = "#Box_sections">Box_sections</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Servo_motors">Servo_motors</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td></td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -2520,18 +2521,21 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
+|   1 | `pcb(ArduinoNano)` |  Arduino Nano |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
 |   1 | `pcb(BTT_SKR_E3_TURBO)` |  BigTreeTech SKR E3 Turbo |
 |   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
 |   1 | `pcb(BTT_SKR_V1_4_TURBO)` |  BigTreeTech SKR v1.4 Turbo |
 |   1 |  |  Cat 5 patch cable 300mm |
-|   1 | `d_plug(DCONN15, pcb = true)` |  D-type 15 way PCB mount plug |
+|   1 | `d_plug(DCONN15, pcb = true)` |  D-type 15 way PCB mount plug - not shown |
 |   1 | `pcb(DuetE)` |  Duet 2 Ethernet electronics |
 |   1 | `pcb(Duex2)` |  Duex2 expansion board - not shown |
 |   1 | `pcb(Duex5)` |  Duex5 expansion board |
 |   1 | `pcb(ESP-01)` |  ESP-01 |
+|   1 | `pcb(ESP32_DOIT_V1)` |  ESP32 DOIT DEV KIT V1 |
 |   1 | `pcb(EnviroPlus)` |  Enviro+ |
-|   1 | `pcb(ExtruderPCB)` |  Extruder connection PCB |
+|   1 | `pcb(ExtruderPCB)` |  Extruder connection PCB - not shown |
+|   1 | `pcb(KY_040)` |  KY_-040 rotart encoder breakout |
 |   1 | `pcb(Keyes5p1)` |  Keyes5.1 Arduino Uno expansion board - not shown |
 |   1 | `pcb(LIPO_fuel_gauge)` |  LIPO fuel gauge |
 |   1 | `pcb(MP1584EN)` |  MP1584EN 3A buck converter |
@@ -2539,13 +2543,13 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(Melzi)` |  Melzi electronics - not shown |
 |   4 |  |  Micro SD card |
 |   1 |  |  Micro SD card - not shown |
-|   1 | `molex_254(2)` |  Molex KK header 2 way |
-|   1 | `molex_254(3)` |  Molex KK header 3 way |
+|   1 | `molex_254(2)` |  Molex KK header 2 way - not shown |
+|   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  30 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  26 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  28 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
-|   1 | `pcb(PI_IO)` |  PI_IO V2 |
+|   1 | `pcb(PI_IO)` |  PI_IO V2 - not shown |
 |   1 | `pcb(PSU12V1A)` |  PSU 12V 1A - not shown |
 |   1 | `pcb(PERF60x40)` |  Perfboard 60 x 40mm |
 |   1 | `pcb(PERF70x30)` |  Perfboard 70 x 30mm |
@@ -2553,7 +2557,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(PERF70x51)` |  Perfboard 70 x 51mm |
 |   1 | `pcb(PERF74x51)` |  Perfboard 74 x 51mm |
 |   1 | `pcb(PERF80x20)` |  Perfboard 80 x 20mm |
-|   1 | `pin_socket(2p54header, 13, 2, right_angle = true)` |  Pin socket 13 x 2 right_angle |
+|   1 | `pin_socket(2p54header, 13, 2, right_angle = true)` |  Pin socket 13 x 2 right_angle - not shown |
 |   1 | `pcb(RAMPSEndstop)` |  RAMPS Endstop Switch |
 |   1 | `pcb(RPI3)` |  Raspberry Pi 3 |
 |   1 | `pcb(RPI4)` |  Raspberry Pi 4 |
@@ -2562,24 +2566,23 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | `screw(M2_cap_screw, 16)` |  Screw M2 cap x 16mm |
 |  12 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   2 | `screw(M2p5_cap_screw, 16)` |  Screw M2.5 cap x 16mm |
-|   4 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
 |   8 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
-|   4 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
+|   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
 |   8 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
-|   8 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
-|   4 | `screw(M3_cap_screw, 25)` |  Screw M3 cap x 25mm |
+|  10 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |  14 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   4 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 35)` |  Screw M4 cap x 35mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
 |   1 | `pcb(TP4056)` |  TP4056 Li-lon Battery charger module |
-|   3 | `terminal_35(2)` |  Terminal block 2 way 3.5mm |
-|   2 | `green_terminal(gt_2p54, 4)` |  Terminal block 4 way 0.1" |
+|   3 | `terminal_35(2)` |  Terminal block 2 way 3.5mm - not shown |
+|   2 | `green_terminal(gt_2p54, 4)` |  Terminal block 4 way 0.1" - not shown |
 |   1 |  |  USB A to Mini B lead - not shown |
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  20 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  30 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  26 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  28 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
@@ -2590,22 +2593,22 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
-|   4 | pcb_spacer25110.stl |
 |   4 | pcb_spacer25120.stl |
-|   4 | pcb_spacer25130_2.stl |
+|   4 | pcb_spacer25130.stl |
 |   4 | pcb_spacer25140_2.stl |
-|   4 | pcb_spacer25160.stl |
+|   4 | pcb_spacer25150_2.stl |
 |   4 | pcb_spacer25170.stl |
+|   4 | pcb_spacer25180.stl |
 |   2 | pcb_spacer2550.stl |
-|   4 | pcb_spacer2590.stl |
-|   4 | pcb_spacer30150.stl |
-|   5 | pcb_spacer30180.stl |
+|   4 | pcb_spacer2580.stl |
+|   4 | pcb_spacer30160.stl |
 |   5 | pcb_spacer30190.stl |
-|   4 | pcb_spacer30200.stl |
+|   5 | pcb_spacer30200.stl |
+|   4 | pcb_spacer30210.stl |
 |   4 | pcb_spacer3050.stl |
-|   4 | pcb_spacer3060.stl |
-|   4 | pcb_spacer40210.stl |
+|   6 | pcb_spacer3060.stl |
 |   4 | pcb_spacer40220.stl |
+|   4 | pcb_spacer40230.stl |
 
 
 <a href="#top">Top</a>
@@ -2764,6 +2767,50 @@ Pin headers and sockets, etc.
 |   1 | `pin_socket(2p54header, 3, 2, right_angle = true)` |  Pin socket 3 x 2 right_angle |
 |   1 | `pin_socket(2p54header, 3, 3, right_angle = true)` |  Pin socket 3 x 3 right_angle |
 |   1 | `pin_socket(2p54header, 8, 1)` |  Pin socket 8 x 1 |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Potentiometers"></a>
+## Potentiometers
+Potentiometers and rotary encoders
+
+[vitamins/potentiometers.scad](vitamins/potentiometers.scad) Object definitions.
+
+[vitamins/potentiometer.scad](vitamins/potentiometer.scad) Implementation.
+
+[tests/potentiometers.scad](tests/potentiometers.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `pot_body(type)` | Body diameter or width & depth, height and corner radius |
+| `pot_boss_d(type)` | Boss diameter |
+| `pot_boss_h(type)` | Boss height |
+| `pot_face(type)` | Faceplate rib width, plate depth and plate height |
+| `pot_gangs(type)` | Number of gangs for mult-gang pot |
+| `pot_neck(type)` | Diameter and length of the shaft neck |
+| `pot_shaft(type)` | Diameter, flat diameter, length and flat/slot length and colour. If flat diameter is less than the radius then it is a slot width |
+| `pot_spigot(type)` | Spigot width, length and height above the boss |
+| `pot_spigot_x(type)` | Spigot offset from the shaft centre |
+| `pot_thread_d(type)` | Nomininal thread diameter |
+| `pot_thread_h(type)` | Height of threaded part |
+| `pot_thread_p(type)` | Thread pritch |
+| `pot_wafer(type)` | Width, diameter and thickness of the track wafer plus true if curved |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `pot_size(type)` | Get pot body dimensions |
+| `pot_z(type)` | Ideal distance behind panel surface to get the nut on comfortably |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `potentiometer(type, thickness = 3, shaft_length = undef)` | Draw a potentiometer with nut spaced by specified thickness |
+
+![potentiometers](tests/png/potentiometers.png)
 
 
 <a href="#top">Top</a>

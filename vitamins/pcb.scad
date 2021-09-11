@@ -38,6 +38,7 @@ use <led.scad>
 use <dip.scad>
 use <axial.scad>
 use <smd.scad>
+include <potentiometers.scad>
 
 function pcb_name(type)         = type[1];  //! Description
 function pcb_length(type)       = type[2];  //! Length
@@ -58,7 +59,6 @@ function pcb_size(type) = [pcb_length(type), pcb_width(type), pcb_thickness(type
 
 function pcb_component(type, name, index = 0) = //! Return the component specified by name and index
     [for(component = pcb_components(type)) if(component[3] == name) component][index];
-
 
 function pcb_grid_pos(type, x, y, z = 0) = //! Returns a pcb grid position
     let(grid = pcb_grid(type))
@@ -366,29 +366,9 @@ module jack(cutout = false) { //! Draw 3.5mm jack
 module buzzer(height, diameter, colour) { //! Draw PCB buzzer with specified height, diameter and colour
     color (colour)
         tube(or = diameter / 2, ir = height > 5 ? 1 : 0.75, h = height, center = false);
+
     color("white")
         cylinder(d = 2, h = max(height - 3 , 0.5));
-}
-
-module potentiometer(h1, h2) {
-    color("silver") {
-        baseSize = [12, 11, 6];
-        translate_z(baseSize.z / 2)
-            cube(baseSize, center = true);
-        translate_z(baseSize.z) {
-            cylinder(d = 5, h = h1 - 0.5);
-            if (show_threads)
-                male_metric_thread(6, metric_coarse_pitch(5), length = h1 - 0.5, center = false);
-        }
-        translate_z(baseSize.z + h1 - 0.5)
-            cylinder(d = 3, h = 0.5);
-        translate_z(baseSize.z + h1)
-            linear_extrude(h2)
-                difference() {
-                    circle(d=5);
-                    square([0.75,5], center = true);
-                }
-    }
 }
 
 function hdmi_depth(type)     = type[2]; //! Front to back depth
@@ -1074,7 +1054,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));
             if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
             if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
-            if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
+            if(show(comp, "potentiometer")) let(pot = param(4, BTT_encoder)) translate_z(pot_size(pot).z) vflip() potentiometer(pot, shaft_length = param(5, undef));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
             if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5]);

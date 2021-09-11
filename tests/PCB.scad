@@ -141,7 +141,7 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 52, 194,   0, "2p54socket", 8, 1, false, 0, false, "red" ],
         [ 50, 220,   0, "standoff",  5, 4.5, 12.5, 2.54],
         [ 50, 240,   0, "potentiometer"],
-        [ 75, 240,   0, "potentiometer", 7, 8],
+        [ 75, 240,   0, "potentiometer", KY_040_encoder, 8],
         [ 30,  85,   -90, "7seg", WT5011BSR, 2],
     ],
     // accessories

@@ -21,7 +21,7 @@ include <../vitamins/pcbs.scad>
 
 use <../utils/layout.scad>
 
-function spacing(p) = let(w = pcb_width(p)) w < 22 ? w + 3 : w + 10;
+function spacing(p) = let(w = pcb_width(p)) w < 22 ? w + 3 : w + 7;
 
 module pcbs() {
     layout([for(p = pcbs) spacing(p)], 0)
@@ -29,9 +29,9 @@ module pcbs() {
             rotate(90)
                 pcb_assembly(pcbs[$i], 5 + $i, 3);
 
-    translate([0, 45])
+    translate([0, 65])
         layout([for(p = tiny_pcbs) pcb_length(p)], 3)
-            translate([0, pcb_width(tiny_pcbs[$i]) / 2])
+            translate([0, -pcb_width(tiny_pcbs[$i]) / 2])
                  pcb_assembly(tiny_pcbs[$i], 5 + $i, 3);
 
     translate([0, 120])

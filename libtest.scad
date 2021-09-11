@@ -41,6 +41,7 @@
 //
 include <lib.scad>
 
+use <tests/7_segments.scad>
 use <tests/ball_bearings.scad>
 use <tests/batteries.scad>
 use <tests/bearing_blocks.scad>
@@ -83,6 +84,7 @@ use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
 use <tests/pillars.scad>
 use <tests/pillow_blocks.scad>
+use <tests/potentiometers.scad>
 use <tests/press_fit.scad>
 use <tests/PSUs.scad>
 use <tests/pulleys.scad>
@@ -212,8 +214,8 @@ linear_bearings_y = leadnuts_y + 50;
 steppers_y = linear_bearings_y + 110;
 sheets_y = steppers_y + 55;
 pcbs_y = sheets_y + 60;
-displays_y = pcbs_y + 170;
-fans_y = displays_y + 80;
+displays_y = pcbs_y + 140;
+fans_y = displays_y + 110;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;
 
@@ -427,9 +429,10 @@ extrusion_brackets_y = rails_y + 250;
 sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 60;
 scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
-cable_strip_y = sheets_y;
 box_sections_y = batteries_y;
-BLDC_y = steppers_y;
+BLDC_y = scs_bearing_blocks_y + 120;
+pot_y = BLDC_y + 40;
+cable_strip_y = pot_y + 50;
 
 translate([0, transformers_y])
     servo_motors();
@@ -467,6 +470,9 @@ translate([x4, scs_bearing_blocks_y])
 
 translate([x4, BLDC_y])
     bldc_motors();
+
+translate([x4, pot_y])
+    potentiometers();
 
 translate([x2, box_sections_y])
     box_sections();

@@ -820,11 +820,71 @@ LIPO_fuel_gauge = [
     [] // accessories
 ];
 
+ESP32_DOIT_V1 = let(l = 51.45, w = 28.33, pitch = inch(1), pins = 15, poffset = inch(0.05)) [
+    "ESP32_DOIT_V1", "ESP32 DOIT DEV KIT V1",
+    l, w, 1.6, // Size
+    2, // corner radius
+    3, // mounting hole diameter
+    0, // pad around mounting hole
+    grey(20), // color
+    false, // true if parts should be separate BOM items
+    [for(x = [-1, 1], y = [-1, 1]) [x * 46.7 / 2 + l / 2, y * 23.4 / 2 + w / 2, false]],
+    [ // components
+      [l / 2 + poffset, w / 2 - pitch / 2, 0, "-2p54joiner", pins, 1],
+      [l / 2 + poffset, w / 2 + pitch / 2, 0, "-2p54joiner", pins, 1],
+      [1.75, w / 2, 180, "usb_uA" ],
+      [35,  w / 2, 0, "block", 17.7, 16, 3, silver], // can
+      for(y=[-1,1]) [3.5,  y * 6.5, 0, "chip", 4,  3, 1.6, silver],   // Mock button surround
+      for(y=[-1,1]) [3.5,  y * 6.5, 0, "chip", 1.8,0, 2.0, grey(20)], // Mock buttons
+      for(y=[-1,1]) [21.6, y * 9,   0, "smd_led", LED0603, y < 0 ? "red" : "blue"],
+      [14.8 - 2.5, 8, 0, "chip", 5, 5, 0.8],
+      [l / 2 + poffset + inch(0.7), w / 2 + pitch / 2 - 2, 90, "smd_cap", CAP1206, 1.75],
+   ],
+    [], // accessories
+    [(l - inch(pins - 1) / 10) / 2 + inch(0.05), (w - pitch) / 2, pins, 2, silver, 2.54, pitch], // 15x2 grid of holes
+];
+
+ArduinoNano = let(l = 43.18, w = 17.78, pitch = inch(0.6), pins = 15, poffset = -0.05, led_spacing = [1.5, 1.8]) [
+    "ArduinoNano", "Arduino Nano",
+    l, w, 1.6, // Size
+    0, // corner radius
+    1.85, // mounting hole diameter
+    0, // pad around mounting hole
+    "#2140BE", // color
+    false, // true if parts should be separate BOM items
+    [for(x = [-1, 1], y = [-1, 1]) [x * 40.64 / 2 + l / 2, y * 15.24 / 2 + w / 2]],
+    [ // components
+      [l / 2 + poffset, w / 2 - pitch / 2,  0, "-2p54joiner", pins, 1],
+      [l / 2 + poffset, w / 2 + pitch / 2,  0, "-2p54joiner", pins, 1],
+      [l / 2 + poffset + inch(0.75), w / 2, 0, "2p54header",  2,    3],
+      [1.75, w / 2, 180, "usb_uA" ],
+      [l / 2 - inch(0.25), w / 2, 45, "chip", 7, 7, 1.3],
+      [l / 2 + poffset + inch(0.15), w / 2,    0, "chip", 3.5, 6,   1.8, silver ], // mock button
+      [l / 2 + poffset + inch(0.15), w / 2,    0, "chip", 1.3, 2.6, 2.6, grey(90) ], // mock button
+      for(y = [-1.5 : 1.5]) [l / 2 + poffset + inch(0.4) - led_spacing.x, w / 2 + y * led_spacing.y, 0, "smd_res", RES0603, "1K"],
+      for(y = [-1.5 : 1.5]) [l / 2 + poffset + inch(0.4) + led_spacing.x, w / 2 + y * led_spacing.y, 0, "smd_led", LED0603, ["green", "red", "orange", "orange"][y + 1.5]],
+    ],
+    [], // accessories
+    [(l - inch(pins - 1) / 10) / 2 + poffset, (w - pitch) / 2, pins, 2, silver, 2.54, pitch], // 15x2 grid of holes
+];
+
+KY_040 = ["KY_040", "KY_-040 rotart encoder breakout",
+    26.3, 19.5, 1.6, 0, 3, 0, grey(20),  false,
+    [
+     [3.23 + 1.5, 1.3 + 1.5],
+     [3.23 + 1.5 + 16.775, 1.3 + 1.5]
+    ],
+    [
+       [-3, 12, 90, "2p54header", 5, 1, undef, undef, true],
+       [10.8, 11.3, 0, "potentiometer", KY_040_encoder],
+    ],
+    []];
+
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, MT3608, PI_IO, ExtruderPCB, ZC_A0591, RPI_Pico, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+pcbs = [RAMPSEndstop, KY_040, MT3608, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1];
+pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
 perfboards = [PERF74x51, PERF70x51, PERF70x50, PERF60x40, PERF70x30, PERF80x20];
 
