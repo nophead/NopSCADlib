@@ -57,7 +57,7 @@ function ax_res_colour(type)  = type[7]; //! Body colour
 module orientate_axial(length, height, pitch, wire_d) { // Orient horizontal or vertical and add the wires
     min_pitch = ceil((length + 1) / inch(0.1)) * inch(0.1);
     lead_pitch = pitch ? pitch : min_pitch;
-    if(lead_pitch >= min_pitch) {
+    if(lead_pitch > min_pitch - eps) {
         not_on_bom()
             wire_link(wire_d, lead_pitch, height);
 
