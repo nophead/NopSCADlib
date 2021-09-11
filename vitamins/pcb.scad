@@ -88,10 +88,13 @@ module pcb_hole_positions(type, all = true) { // Position children at the hole p
 module pcb_screw_positions(type)  //! Positions children at the mounting hole positions
     pcb_hole_positions(type, false) children();
 
-module chip(length, width, thickness, colour, cutout = false) //! Draw a coloured cube to represent a chip, or other rectangular component
+module chip(length, width, thickness, colour, cutout = false) //! Draw a coloured cube to represent a chip, or other rectangular component, or cylinder if width is zero
     if(!cutout)
         color(colour)
-            translate_z(thickness / 2) cube([length, width, thickness], center = true);
+            if(width)
+                translate_z(thickness / 2) cube([length, width, thickness], center = true);
+            else
+                cylinder(d = length, h = thickness);
 
 module usb_A_tongue() {
     l = 9;

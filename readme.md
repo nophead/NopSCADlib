@@ -2339,7 +2339,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `barrel_jack(cutout = false)` | Draw barrel power jack |
 | `block(size, colour, makes_cutout, cutouts)` | Draw a coloured cube to represent a random PCB component |
 | `buzzer(height, diameter, colour)` | Draw PCB buzzer with specified height, diameter and colour |
-| `chip(length, width, thickness, colour, cutout = false)` | Draw a coloured cube to represent a chip, or other rectangular component |
+| `chip(length, width, thickness, colour, cutout = false)` | Draw a coloured cube to represent a chip, or other rectangular component, or cylinder if width is zero |
 | `flat_flex(type, cutout = false)` | Draw flat flexistrip connector as used on RPI0 |
 | `flex(cutout = false)` | Draw flexistrip connector |
 | `hdmi(type, cutout = false)` | Draw HDMI socket |
