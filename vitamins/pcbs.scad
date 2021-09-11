@@ -22,6 +22,8 @@ include <leds.scad>
 include <axials.scad>
 include <smds.scad>
 include <green_terminals.scad>
+include <7_segments.scad>
+include <potentiometers.scad>
 
 //
 //                                   l      w      t    r     h     l  c        b     h

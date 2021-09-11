@@ -22,6 +22,8 @@ include <../vitamins/d_connectors.scad>
 include <../vitamins/leds.scad>
 include <../vitamins/axials.scad>
 include <../vitamins/smds.scad>
+include <../vitamins/7_segments.scad>
+include <../vitamins/potentiometers.scad>
 
 use <../vitamins/pcb.scad>
 
@@ -46,7 +48,7 @@ TMC2130 = ["TMC2130", "TMC2130",
     []
 ];
 
-test_pcb = ["TestPCB", "Test PCB",
+test_pcb = ["test_pcb", "Test PCB",
     100, 250, 1.6, // length, width, thickness
     3,      // Corner radius
     2.75,   // Mounting hole diameter
@@ -138,6 +140,7 @@ test_pcb = ["TestPCB", "Test PCB",
         [ 50, 220,   0, "standoff",  5, 4.5, 12.5, 2.54],
         [ 50, 240,   0, "potentiometer"],
         [ 75, 240,   0, "potentiometer", 7, 8],
+        [ 30,  85,   -90, "7seg", WT5011BSR, 2],
     ],
     // accessories
     []

@@ -49,6 +49,36 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 </table>
 
 ---
+<a name="7_segments"></a>
+## 7_segments
+7 Segment displays
+
+[vitamins/7_segments.scad](vitamins/7_segments.scad) Object definitions.
+
+[vitamins/7_segment.scad](vitamins/7_segment.scad) Implementation.
+
+[tests/7_segments.scad](tests/7_segments.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `7_segment_digit_size(type)` | Size of the actual digit and segemnt width and angle |
+| `7_segment_pin_pitch(type)` | x and y pin pitches and pin diameter |
+| `7_segment_pins(type)` | None |
+| `7_segment_size(type)` | Size of the body |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `7_segment_digit(type, colour = grey(95)` | Draw the specified 7 segment digit |
+| `7_segment_digits(type, n, colour = grey(70)` | Draw n digits side by side |
+
+![7_segments](tests/png/7_segments.png)
+
+
+<a href="#top">Top</a>
+
+---
 <a name="Axials"></a>
 ## Axials
 Axial components for PCBs.
