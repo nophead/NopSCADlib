@@ -27,6 +27,7 @@ include <buttons.scad>
 include <green_terminals.scad>
 include <pin_headers.scad>
 use <microswitch.scad>
+use <7_segment.scad>
 
 use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
@@ -1049,6 +1050,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
         if(show(comp, "molex_usb_Ax1")) molex_usb_Ax1(cutouts);
         if(show(comp, "smd_led"))       smd_led(comp[4], comp[5], cutouts);
+        if(show(comp, "7seg"))          let(z = param(6, 0)) translate_z(z) 7_segment_digits(comp[4], comp[5], pin_length = z + 3, cutout = cutouts);
         if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8));
         if(!cutouts) {
             // Components that don't have a cutout parameter go in this section
@@ -1069,7 +1071,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
-            if(show(comp, "molex_hdr"))     molex_254(comp[4]);
+            if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));
             if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
             if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
             if(show(comp, "potentiometer")) potentiometer(param(4, 5), param(5, 9));
@@ -1212,7 +1214,7 @@ module pcb(type) { //! Draw specified PCB
 
                             circle(d = 1);
                         }
-                    if(fr4 && len(grid) < 3) { // oval lands at the ends
+                    if(fr4 && len(grid) < 3 && pcb_holes(type)) { // oval lands at the ends
                         screw_x = pcb_coord(type, pcb_holes(type)[0]).x;
                         y0 = pcb_grid(type).y;
                         rows = round((pcb_width(type) - 2 * y0) / inch(0.1));
