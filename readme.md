@@ -1524,6 +1524,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 |:--- |:--- |
 | `jack_4mm_hole_radius()` | Panel hole radius for 4mm jack |
 | `jack_4mm_shielded_hole_radius()` | Panel hole radius for 4mm shielded jack |
+| `jack_4mm_shielded_nut_radius()` | Largest diameter of 4mm shielded jack |
 | `post_4mm_diameter()` | Outer diameter of 4mm binding post |
 
 ### Modules

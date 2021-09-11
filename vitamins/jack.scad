@@ -87,7 +87,8 @@ module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack
             }
 }
 
-function jack_4mm_shielded_hole_radius() = 12/2; //! Panel hole radius for 4mm shielded jack
+function jack_4mm_shielded_hole_radius() = 12 / 2; //! Panel hole radius for 4mm shielded jack
+function jack_4mm_shielded_nut_radius() = 14.4 / 2; //! Largest diameter of 4mm shielded jack
 
 module jack_4mm_shielded(colour, thickness, display_colour = false) { //! Draw a 4mm shielded jack
     vitamin(str("jack_4mm_shielded(\"", colour, "\", 3", arg(display_colour, false), "): 4mm shielded jack socket ", colour));
