@@ -73,6 +73,19 @@ SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD
         [[0, -34.5], [12, -31.5]],
         ];
 
+TFT128x160PCB = ["", "", 56, 35, 1.2, 1, 2.0, 0, "mediumblue", false, [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+      [ [2, 17.5, 0, "molex_hdr", 8]
+      ],
+      []];
+
+TFT128x160 = ["TFT128x160", "LCD TFT ST7735 display 128x160", 46, 34, 2.1, TFT128x160PCB,
+          [0, 0, 0],                                // pcb offset
+          [[-37 / 2 - 2.5, -30 / 2], [37 / 2 - 2.5, 30 / 2, 0.3]],              // aperture
+          [],                                       // touch screen
+          0,                                        // thread length
+          [],                                       // clearance need for the ts ribbon
+        ];
+
 
 /* Dimensions taken from:
 https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0/blob/master/Hardware/TFT35%20V3.0-SIZE-TOP.pdf
@@ -124,6 +137,6 @@ BigTreeTech_TFT35v3_0 = ["BigTreeTech_TFT35v3_0", "BigTreeTech TFT35 v3.0",
 ];
 
 
-displays = [HDMI5, SSD1963_4p3, BigTreeTech_TFT35v3_0, LCD1602A, LCDS7282B];
+displays = [HDMI5, SSD1963_4p3, BigTreeTech_TFT35v3_0, LCD1602A, LCDS7282B, TFT128x160];
 
 use <display.scad>

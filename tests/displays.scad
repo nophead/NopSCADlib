@@ -24,8 +24,10 @@ use <../vitamins/pcb.scad>
 
 module displays()
     layout([for(d = displays) pcb_length(display_pcb(d))], 10)
-        vflip()
-            display(displays[$i]);
+        translate([0, pcb_width(displays[$i]) / 2])
+            vflip()
+                display(displays[$i]);
 
 if($preview)
-    displays();
+    let($show_threads = true)
+        displays();
