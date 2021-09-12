@@ -24,13 +24,10 @@
 //  bom defaults to 0
 //  Setting $bom on the command line or in the main file before including lib.scad overrides it everywhere.
 //  Setting $bom after including lib overrides bom in the libs but not in the local file.
-//  Setting $_bom in the local file overrides it in the local file but not in the libs.
 //
 rr_green = [0, 146/255, 0];                                               // RepRap logo colour
 crimson  = [220/255, 20/255, 60/255];
 
-$_bom           = is_undef($bom)             ? 0      : $bom;             // 0 no bom, 1 assemblies and stls, 2 vitamins as well
-$exploded       = is_undef($explode)         ? 0      : $explode;         // 1 for exploded view
 layer_height    = is_undef($layer_height)    ? 0.25   : $layer_height;    // layer height when printing
 extrusion_width = is_undef($extrusion_width) ? 0.5    : $extrusion_width; // filament width when printing
 nozzle          = is_undef($nozzle)          ? 0.45   : $nozzle;          // 3D printer nozzle

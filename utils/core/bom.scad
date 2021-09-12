@@ -42,24 +42,24 @@
 //! * To get the parameter values make the GUI window square, pose the view with the mouse and then copy the viewport parameters from the Edit menu and paste them into the pose invocation.
 //! * Two `pose()` modules can be chained to allow different poses for exploded and assembled views.
 //
-function bom_mode(n = 1) = $_bom >= n && (is_undef($on_bom) || $on_bom);  //! Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well
-function exploded() = is_undef($exploded_parent) ? $exploded : 0;   //! Returns the value of `$exploded` if it is defined, else `0`
+function bom_mode(n = 1) = (is_undef($bom) ? 0 : $bom) >= n && (is_undef($on_bom) || $on_bom);  //! Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well
+function exploded() = is_undef($exploded_parent) ? is_undef($explode) ? 0 : $explode : 0;   //! Returns the value of `$exploded` if it is defined, else `0`
 function show_supports() = !$preview || exploded();                 //! True if printed support material should be shown
 
 module no_explode() let($exploded_parent = true) children();        //! Prevent children being exploded
 module explode(d, explode_children = false, offset = [0,0,0]) {     //! Explode children by specified Z distance or vector `d`, option to explode grand children
     v = is_list(d) ? d : [0, 0, d];
     o = is_list(offset) ? offset : [0, 0, offset];
-    if($exploded && is_undef($exploded_parent) && norm(v)) {
+    if(exploded() && norm(v)) {
         translate(o)                                                // Draw the line first in case the child is transparent
             color("yellow") hull() {
                 sphere(0.2);
 
-                translate(v * $exploded)
+                translate(v * exploded())
                     sphere(0.2);
             }
 
-        translate(v * $exploded)
+        translate(v * exploded())
             let($exploded_parent = explode_children ? undef : true)
                 children();
     }

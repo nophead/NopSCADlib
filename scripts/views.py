@@ -216,6 +216,7 @@ def views(target, do_assemblies = None):
                                                 #
                                                 png_maker_name = tmp_dir + '/png.scad'
                                                 with open(png_maker_name, "w") as f:
+                                                    f.write("include <NopSCADlib/global_defs.scad>\n")
                                                     f.write("use <%s/%s>\n" % (reltmp(dir, target), filename))
                                                     f.write("%s();\n" % module);
                                                 t = time.time()

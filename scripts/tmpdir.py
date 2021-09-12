@@ -25,6 +25,7 @@ import time
 def mktmpdir(top_dir):
     tmp_dir = top_dir + 'tmp'
     if not os.path.isdir(tmp_dir):
+        time.sleep(0.1)
         os.makedirs(tmp_dir)
     else:
         for file in os.listdir(tmp_dir):

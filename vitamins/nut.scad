@@ -116,7 +116,7 @@ module wingnut(type) { //! Draw a wingnut
                 polygon([
                     [hole_rad, 0],
                     [bottom_rad, 0],
-                    [top_rad,, thickness],
+                    [top_rad, thickness],
                     [hole_rad, thickness]
                 ]);
             for(rot = [0, 180])
