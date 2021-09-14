@@ -72,7 +72,7 @@ def update_image(tmp_name, png_name):
     if pixels < 0 or pixels > threshold:
         shutil.copyfile(tmp_name, png_name)
         print(Fore.YELLOW + png_name + " updated" + Fore.WHITE, pixels if pixels > 0 else '')
-        if png_name.endswith('_tn.png'):
+        if png_name.endswith('_tn.png') and os.path.isfile(diff_name):
             os.remove(diff_name)
     else:
         os.utime(png_name, None)
