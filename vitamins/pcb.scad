@@ -1196,9 +1196,10 @@ module pcb(type) { //! Draw specified PCB
                         }
                     if(fr4 && len(grid) < 3 && pcb_holes(type)) { // oval lands at the ends
                         screw_x = pcb_coord(type, pcb_holes(type)[0]).x;
+                        both_ends = len(pcb_holes(type)) > 2;
                         y0 = pcb_grid(type).y;
                         rows = round((pcb_width(type) - 2 * y0) / inch(0.1));
-                        for(end = [-1, 1], y = [1 : rows - 1])
+                        for(end = both_ends ? [-1, 1] : [1], y = [1 : rows - 1])
                             translate([end * screw_x, y0 + y * inch(0.1) - pcb_width(type) / 2])
                                 hull()
                                     for(x = [-1, 1])
