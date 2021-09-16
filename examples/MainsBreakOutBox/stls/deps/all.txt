@@ -1,0 +1,5 @@
+socket_box.stl
+foot.stl
+foot.stl
+foot.stl
+foot.stl
