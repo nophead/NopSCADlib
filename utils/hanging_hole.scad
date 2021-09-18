@@ -26,35 +26,35 @@ module hanging_hole(z, ir, h = 100, h2 = 100) { //! Hole radius `ir` hanging at 
     module polyhole(r, h, n = 8) {
         if(h > 0)
             rotate(180 / n) {
-                poly_cylinder(r = r, h = layer_height, sides = n);
+                poly_cylinder(r = r, h = layer_height(), sides = n);
 
-                translate_z(layer_height)
+                translate_z(layer_height())
                     if(2 * n <= sides(r))
-                        polyhole(r - eps, h - layer_height, n * 2);
+                        polyhole(r - eps, h - layer_height(), n * 2);
                     else
-                        poly_cylinder(r - eps, h - layer_height);
+                        poly_cylinder(r - eps, h - layer_height());
             }
     }
-    assert(z - layer_height * floor(z / layer_height) < eps, str(z));
-    infill_angle = z % (2 * layer_height) ? -45 : 45;
+    assert(z - layer_height() * floor(z / layer_height()) < eps, str(z));
+    infill_angle = z % (2 * layer_height()) ? -45 : 45;
     below = min(z + eps, h2);
     big = 1000;
     render(convexity = 3) translate_z(z)
         union() {
-            translate_z(2 * layer_height)
+            translate_z(2 * layer_height())
                 if(sides(ir) > 4)
-                    polyhole(ir - eps, h - 2 * layer_height);
+                    polyhole(ir - eps, h - 2 * layer_height());
                 else
-                    poly_cylinder(ir, h - 2 * layer_height);
+                    poly_cylinder(ir, h - 2 * layer_height());
 
             difference() {
                 translate_z(-below)
-                    linear_extrude(below + 2 * layer_height)
+                    linear_extrude(below + 2 * layer_height())
                         children();
 
                 rotate(infill_angle)
                     for(side = [-1, 1]) {
-                        translate([side * (ir + big), 0, big + layer_height])
+                        translate([side * (ir + big), 0, big + layer_height()])
                             cube(2 * big, center = true);
 
                         translate([0, side * (ir + big), big])

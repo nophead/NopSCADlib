@@ -21,7 +21,7 @@
 //
 include <../utils/core/core.scad>
 
-function extrusion_width(type)                  = type[1];  //! Width of extrusion
+function width_of_extrusion(type)               = type[1];  //! Width of extrusion
 function extrusion_height(type)                 = type[2];  //! Height of extrusion
 function extrusion_center_hole_wd(type)         = type[3];  //! Diameter of center hole if -ve or square side if +ve
 function extrusion_corner_hole_wd(type)         = type[4];  //! Diameter of corner hole if -ve or square side if +ve
@@ -38,7 +38,7 @@ function extrusion_corner_hole(type)            = abs(extrusion_corner_hole_wd(t
 function extrusion_center_square(type)          = abs(extrusion_center_square_wd(type)); //! Size of center square or tube
 
 module extrusion_cross_section(type, cornerHole) {
-    width = extrusion_width(type);
+    width = width_of_extrusion(type);
     height = extrusion_height(type);
     centerSquare = extrusion_center_square(type);
     tabThickness = extrusion_tab_thickness(type);

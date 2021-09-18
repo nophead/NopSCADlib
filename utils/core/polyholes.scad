@@ -44,7 +44,7 @@ module poly_circle(r, sides = undef) { //! Make a circle adjusted to print the c
 
 module poly_cylinder(r, h, center = false, sides = undef, chamfer = false, twist = 0) {//! Make a cylinder adjusted to print the correct size
     if(twist) {
-        slices = ceil(h / layer_height);
+        slices = ceil(h / layer_height());
         twists = min(twist + 1, slices);
         sides = sides(r, sides);
         rot = 360 / sides / twists * (twists < slices ? (1 + 1 / slices) : 1);
@@ -55,21 +55,21 @@ module poly_cylinder(r, h, center = false, sides = undef, chamfer = false, twist
         else
             render(convexity = 5)
                 for(i = [0 : slices - 1])
-                    translate_z(i * layer_height - eps)
+                    translate_z(i * layer_height() - eps)
                         rotate(rot * i)
-                            poly_cylinder(r = r, h = layer_height + 2 * eps, sides = sides);
+                            poly_cylinder(r = r, h = layer_height() + 2 * eps, sides = sides);
     }
     else
         extrude_if(h, center)
             poly_circle(r, sides);
 
     if(h && chamfer)
-        poly_cylinder(r + layer_height, center ? layer_height * 2 : layer_height, center, sides = sides(r, sides));
+        poly_cylinder(r + layer_height(), center ? layer_height() * 2 : layer_height(), center, sides = sides(r, sides));
 }
 
 module poly_ring(or, ir, sides = undef) { //! Make a 2D ring adjusted to have the correct internal radius
     cir = corrected_radius(ir, sides);
-    filaments = (or - cir) / extrusion_width;
+    filaments = (or - cir) / extrusion_width();
     if(filaments > 3 + eps)
         difference() {
             circle(or);

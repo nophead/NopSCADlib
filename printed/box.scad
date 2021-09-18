@@ -167,20 +167,20 @@ module box_corner_profile_section(type, section, sections) { //! Generates inter
 
             if(!last_section)                              // male end always at the top
                 translate_z(section_length - 1)
-                    for(i = [0 : 1], offset = i * layer_height)
+                    for(i = [0 : 1], offset = i * layer_height())
                         linear_extrude(overlap + 1 - offset)
-                            offset(1 + offset - layer_height)
+                            offset(1 + offset - layer_height())
                                 offset(-overlap_wall - 1)
                                     box_corner_profile_2D(type);
         }
         if(section > 0)
             translate_z(last_section ? h : 0) {       // female at bottom unless last section
-                linear_extrude(2 * (overlap + layer_height), center = true, convexity = 5)
+                linear_extrude(2 * (overlap + layer_height()), center = true, convexity = 5)
                     offset(-overlap_wall)
                         box_corner_profile_2D(type);
 
-                linear_extrude(2 * layer_height, center = true, convexity = 5)
-                    offset(-overlap_wall + layer_height)
+                linear_extrude(2 * layer_height(), center = true, convexity = 5)
+                    offset(-overlap_wall + layer_height())
                         box_corner_profile_2D(type);
             }
         if(!section || last_section)                        // insert holes always at the bottom
@@ -284,8 +284,8 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
 }
 
 dowel_length = 20;
-dowel_wall = extrusion_width * 3;
-dowel_h_wall = layer_height * 6;
+dowel_wall = extrusion_width() * 3;
+dowel_h_wall = layer_height() * 6;
 
 module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlocking sections of the bezel to allow it to be bigger than the printer
     tw = box_width(type) + 2 * box_outset(type);
@@ -308,8 +308,8 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
             linear_extrude(dowel_length - 2 * end_clearance, center = true)
                 difference() {
                     union() {
-                        h1 = dh - layer_height;
-                        h2 = dh2 - layer_height;
+                        h1 = dh - layer_height();
+                        h2 = dh2 - layer_height();
                         hull() {
                             translate([bw / 2, h1 / 2])
                                 square([dw - 1, h1], center = true);
@@ -344,7 +344,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
                     cube([2, dw, dh], center = true);
 
                 translate([0, bw / 2, dh / 2])
-                    cube([eps, dw + 2 * extrusion_width, dh], center = true);
+                    cube([eps, dw + 2 * extrusion_width(), dh], center = true);
 
             }
             hull() {
@@ -352,7 +352,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
                     cube([2, bw2 - 2 * dowel_wall, dh2], center = true);
 
                 translate([0, bw2 / 2, dh2 / 2])
-                    cube([eps, bw2 - 2 * dowel_wall + 2 * extrusion_width, dh2], center = true);
+                    cube([eps, bw2 - 2 * dowel_wall + 2 * extrusion_width(), dh2], center = true);
 
             }
         }
@@ -361,7 +361,7 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
     module support() {
         if(!$preview)
             translate([0, bw / 2 + dw / 2])
-                cube([dowel_length / 2 - 0.25, 2 * extrusion_width + 0.2, dh2]);
+                cube([dowel_length / 2 - 0.25, 2 * extrusion_width() + 0.2, dh2]);
     }
 
     union() {

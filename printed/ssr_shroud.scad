@@ -35,7 +35,7 @@ insert = screw_insert(screw);
 boss_r = insert_boss_radius(insert, wall);
 counter_bore = 2;
 rad = 3;
-clearance = layer_height;
+clearance = layer_height();
 
 function ssr_shroud_pitch(type) = ssr_width(type) + 2 * wall - 2 * boss_r - eps;
 function ssr_shroud_screw(type) = screw;                                    //! Screw used to fasten

@@ -35,7 +35,7 @@ insert = screw_insert(screw);
 boss_r = insert_boss_radius(insert, wall);
 counter_bore = 2;
 rad = 2;
-clearance = layer_height;
+clearance = layer_height();
 overlap = 6;
 
 cable_tie_inset = wall + 4;

@@ -30,11 +30,11 @@ overlap_y = 10;
 
 module hole_positions() {
     x0 = (length - 40) / 2;
-    for($i = [0 : 4], $z = 5 + $i * layer_height / 5, $r = 3)
+    for($i = [0 : 4], $z = 5 + $i * layer_height() / 5, $r = 3)
         translate([x0 + $i * 10, $z])
             children();
 
-    for($i = [0 : 4], $z = 15 + $i * layer_height / 5, $r = 0.5 + $i / 2)
+    for($i = [0 : 4], $z = 15 + $i * layer_height() / 5, $r = 0.5 + $i / 2)
         translate([x0 + $i * 10, $z])
             children();
 }

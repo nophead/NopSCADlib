@@ -64,7 +64,7 @@ function drag_chain_outer_size(type) = //! Link outer dimensions
         [s.x + z, s.y + 4 * drag_chain_wall(type) + 2 * clearance, z];
 
 function screw_lug_radius(screw) = //! Radius of a screw lug
-    corrected_radius(screw_clearance_radius(screw)) + 3.1 * extrusion_width;
+    corrected_radius(screw_clearance_radius(screw)) + 3.1 * extrusion_width();
 
 module screw_lug(screw, h = 0) //! Create a D shaped lug for a screw
     extrude_if(h, center = false)
@@ -234,7 +234,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
 
     if(show_supports() && !end) {
         for(side = [-1, 1]) {
-            w = 2.1 * extrusion_width;
+            w = 2.1 * extrusion_width();
             translate([s.x + r + cam_x - w / 2, side * (s.y / 2 + wall / 2), twall / 2])
                 cube([w, wall, twall], center = true);
 
@@ -243,9 +243,9 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
             translate([s.x + r, side * y, h / 2])
                 cube([pin_r * sqrt(2), w, h], center = true);
 
-            gap = cam_x - pin_r / sqrt(2) + extrusion_width;
-            translate([s.x + r + cam_x - gap / 2, side * (s.y / 2 + wall + clearance / 2), layer_height / 2])
-                cube([gap, 2 * wall + clearance, layer_height], center = true);
+            gap = cam_x - pin_r / sqrt(2) + extrusion_width();
+            translate([s.x + r + cam_x - gap / 2, side * (s.y / 2 + wall + clearance / 2), layer_height() / 2])
+                cube([gap, 2 * wall + clearance, layer_height()], center = true);
         }
     }
 }

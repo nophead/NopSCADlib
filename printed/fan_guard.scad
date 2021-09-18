@@ -25,7 +25,7 @@ use <../utils/tube.scad>
 
 function fan_guard_thickness() = 2; //! Default thickness
 
-function fan_guard_wall() = extrusion_width - layer_height / 2 + nozzle / 2 + extrusion_width / 2;
+function fan_guard_wall() = extrusion_width() - layer_height() / 2 + nozzle / 2 + extrusion_width() / 2;
 function fan_guard_corner_r(type) = washer_diameter(screw_washer(fan_screw(type))) / 2 + 0.5; //! Corner radius of the guard
 function fan_guard_width(type) = max(2 * (fan_hole_pitch(type) + fan_guard_corner_r(type)), fan_bore(type) + 4 * fan_guard_wall()); //! Width of the guard
 

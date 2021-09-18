@@ -25,7 +25,7 @@ include <../utils/core/core.scad>
 use <../vitamins/cable_strip.scad>
 
 base = 1.25;
-slot_height = round_to_layer(1.27) + layer_height;
+slot_height = round_to_layer(1.27) + layer_height();
 wall = 1.6;
 overlap = 1.5;
 height = base + slot_height + wall + overlap;
@@ -84,7 +84,7 @@ module ribbon_grommet(ways, thickness) { //! Generate the STL for a printed ribb
 }
 
 module round_grommet_top(diameter, thickness, od = undef) { //! Generate the STL for a round grommet top half
-    chamfer = layer_height;
+    chamfer = layer_height();
     h = wall + thickness + wall;
     r1 = diameter / 2;
     r2 = od == undef ? corrected_radius(r1) + wall : od / 2;
@@ -113,7 +113,7 @@ module round_grommet_top(diameter, thickness, od = undef) { //! Generate the STL
 }
 
 module round_grommet_bottom(diameter, od = undef) { //! Generate the STL for a round grommet bottom half
-    chamfer = layer_height;
+    chamfer = layer_height();
     r1 = diameter / 2;
     r2 = od == undef ? corrected_radius(r1) + wall : od / 2;
     r3 = r2 + max(overlap, wall + chamfer);

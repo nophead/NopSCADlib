@@ -28,8 +28,10 @@
 rr_green = [0, 146/255, 0];                                               // RepRap logo colour
 crimson  = [220/255, 20/255, 60/255];
 
-layer_height    = is_undef($layer_height)    ? 0.25   : $layer_height;    // layer height when printing
-extrusion_width = is_undef($extrusion_width) ? 0.5    : $extrusion_width; // filament width when printing
+function layer_height()
+                = is_undef($layer_height)    ? 0.25   : $layer_height;    // layer height when printing
+function extrusion_width()
+                = is_undef($extrusion_width) ? 0.5    : $extrusion_width; // filament width when printing
 nozzle          = is_undef($nozzle)          ? 0.45   : $nozzle;          // 3D printer nozzle
 cnc_bit_r       = is_undef($cnc_bit_r)       ? 1.2    : $cnc_bit_r;       // minimum tool radius when milling 2D objects
 pp1_colour      = is_undef($pp1_colour)      ? rr_green : $pp1_colour;    // printed part colour 1, RepRap logo colour
@@ -40,15 +42,15 @@ show_rays       = is_undef($show_rays)       ? false  : $show_rays;       // sho
 show_threads    = is_undef($show_threads)    ? false  : $show_threads;    // show screw threads
 
 // Minimum wall is about two filaments wide but we extrude it closer to get better bonding
-squeezed_wall = $preview ? 2 * extrusion_width - layer_height * (1 - PI / 4)
-                         : extrusion_width - layer_height / 2 + nozzle / 2 + extrusion_width / 2;
+squeezed_wall = $preview ? 2 * extrusion_width() - layer_height() * (1 - PI / 4)
+                         : extrusion_width() - layer_height() / 2 + nozzle / 2 + extrusion_width() / 2;
 
 inf = 1e10;      // very big
 eps = 1/128;     // small fudge factor to stop CSG barfing on coincident faces.
 $fa = 6;
-$fs = extrusion_width / 2;
+$fs = extrusion_width() / 2;
 
-function round_to_layer(z) = ceil(z / layer_height) * layer_height;
+function round_to_layer(z) = ceil(z / layer_height()) * layer_height();
 // Some additional named colours
 function grey(n) = [0.01, 0.01, 0.01] * n;                                          //! Generate a shade of grey to pass to color().
 silver                          = [0.75, 0.75, 0.75];

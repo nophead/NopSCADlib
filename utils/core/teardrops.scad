@@ -26,7 +26,7 @@
 //
 module teardrop(h, r, center = true, truncate = true, chamfer = 0, chamfer_both_ends = true, plus = false) { //! For making horizontal holes that don't need support material, set `truncate = false` to make traditional RepRap teardrops that don't even need bridging
     module teardrop_2d(r, truncate) {
-        er = layer_height / 2 - eps;    // Extrusion edge radius
+        er = layer_height() / 2 - eps;    // Extrusion edge radius
         R = plus ? r + er : r;          // Corrected radius
         offset = plus ? -er : 0;        // Offset inwards
         hull()

@@ -26,7 +26,7 @@ use <../vitamins/pcb.scad>
 use <../vitamins/insert.scad>
 
 wall = 1.75;
-min_wall = 2 * extrusion_width;
+min_wall = 2 * extrusion_width();
 clearance = 0.2;
 
 connector_size = [23, 6, 2.65]; // Worst case size of flat flex connector
@@ -58,7 +58,7 @@ hinge_screw = M2_cap_screw;
 hinge_nut = screw_nut(hinge_screw);
 hinge_screw_length = 12;
 
-hinge_r = nut_trap_radius(hinge_nut) + 3 * extrusion_width;
+hinge_r = nut_trap_radius(hinge_nut) + 3 * extrusion_width();
 hinge_h = wall + nut_trap_depth(hinge_nut);
 hinge_offset = hinge_r + 1;
 
@@ -153,7 +153,7 @@ module camera_front(cam, hinge = 0) { //! Make the STL for a camera case front
 
     shelf = front.z - back.z;
 
-    connector_slot = connector_size + 2 * [clearance, 0, layer_height];
+    connector_slot = connector_size + 2 * [clearance, 0, layer_height()];
     rad = wall;
     led_hole_r = 1;
     led_clearance = [5,   2, 1 * 2];
@@ -199,7 +199,7 @@ module camera_front(cam, hinge = 0) { //! Make the STL for a camera case front
                 rotate([90, 0, 90])
                     teardrop_plus(r = screw_clearance_radius(hinge_screw), h = 100, center = true);
 
-            translate_z(front.z / 2 + shelf - layer_height)                                 // recess for the back
+            translate_z(front.z / 2 + shelf - layer_height())                                 // recess for the back
                 cube([back.x + 2 * clearance, back.y + 2 * clearance, front.z], center = true);
 
             translate_z(front.z / 2 + shelf - pcb_size.z)                                   // recess for PCB
@@ -220,7 +220,7 @@ module camera_front(cam, hinge = 0) { //! Make the STL for a camera case front
             translate([0, -front.y / 2, shelf + front.z / 2])                               // slot for connector
                 cube([connector_slot.x, connector_slot.y, front.z], center = true);
 
-            translate_z(cam_back_clearance + layer_height)
+            translate_z(cam_back_clearance + layer_height())
                 cam_holes(cam)
                     rotate(90)
                         poly_cylinder(r = screw_clearance_radius(screw), h = 100, center = true);

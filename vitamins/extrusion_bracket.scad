@@ -42,7 +42,7 @@ module extrusion_inner_corner_bracket(type, grub_screws = true, backwards = fals
     tabSizeZ = nut_thickness(tnut);
     screw = find_screw(hs_grub, nut_size(tnut));
     holeRadius = screw_pilot_hole(screw);
-    depth = (extrusion_width(extrusion) - extrusion_center_square(extrusion)) / 2;
+    depth = (width_of_extrusion(extrusion) - extrusion_center_square(extrusion)) / 2;
 
     offset = extrusion_tab_thickness(extrusion) + tabSizeZ;
     offset2 = extrusion_tab_thickness(extrusion) - nut_thickness(tnut, true) + nut_thickness(tnut);
@@ -147,7 +147,7 @@ module extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_typ
     nut = is_undef(nut_type) ? extrusion_corner_bracket_tnut(type) : nut_type;
     screw = is_undef(screw_type) ? find_screw(hs_cap, nut_size(nut)) : screw_type;
     thickness = is_undef(part_thickness) ? extrusion_tab_thickness(extrusion) : part_thickness;
-    depth = is_undef(max_screw_depth) ? (extrusion_width(extrusion) - extrusion_center_square(extrusion)) / 2 - eps : max_screw_depth;
+    depth = is_undef(max_screw_depth) ? (width_of_extrusion(extrusion) - extrusion_center_square(extrusion)) / 2 - eps : max_screw_depth;
 
     screw_washer_thickness = washer_thickness(screw_washer(screw));
     nut_washer_type = nut_washer(nut);

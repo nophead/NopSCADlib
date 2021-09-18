@@ -230,10 +230,10 @@ module iec_holes(type, h = 100, poly = false, horizontal = false, insert = false
 
     extrude_if(h)
         hull()
-            for(x = [-1, 1], y = [-1, 1], sag = horizontal && y > 1 ? layer_height : 0)
+            for(x = [-1, 1], y = [-1, 1], sag = horizontal && y > 1 ? layer_height() : 0)
                 translate([x * (iec_body_w(type) / 2 - iec_body_r(type)), y * (iec_body_h(type) / 2  - iec_body_r(type) + sag )])
                     if(horizontal)
-                        teardrop(0, iec_body_r(type) + clearance / 2 + layer_height / 4);
+                        teardrop(0, iec_body_r(type) + clearance / 2 + layer_height() / 4);
                     else
                         drill(iec_body_r(type) + clearance / 2, 0);
 }

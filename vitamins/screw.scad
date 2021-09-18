@@ -42,7 +42,7 @@ function screw_nut(type)              = type[10];    //! Default nut
 function screw_pilot_hole(type)       = type[11];    //! Pilot hole radius for wood screws, tap radius for machine screws
 function screw_clearance_radius(type) = type[12];    //! Clearance hole radius
 function screw_nut_radius(type) = screw_nut(type) ? nut_radius(screw_nut(type)) : 0; //! Radius of matching nut
-function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width)); //! Boss big enough for nut trap and washer
+function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width())); //! Boss big enough for nut trap and washer
 function screw_head_depth(type, d = 0) =             //! How far a counter sink head will go into a straight hole diameter d
     screw_head_height(type)
         ? 0
@@ -282,20 +282,20 @@ function screw_polysink_r(type, z) = //! Countersink hole profile corrected for 
         head_t = rad / 5,
         head_rad = screw_head_radius(type)
     )
-    limit(head_rad + head_t - z + (sqrt(2) - 1) * layer_height / 2, screw_clearance_radius(type), head_rad);
+    limit(head_rad + head_t - z + (sqrt(2) - 1) * layer_height() / 2, screw_clearance_radius(type), head_rad);
 
 module screw_polysink(type, h = 100, alt = false, sink = 0) { //! A countersink hole made from stacked polyholes for printed parts, default is flush, `sink` can be used to recess the head
     head_depth = screw_head_depth(type);
     assert(head_depth, "Not a countersunk screw");
-    layers = ceil((head_depth + sink) / layer_height);
+    layers = ceil((head_depth + sink) / layer_height());
     rmin = screw_clearance_radius(type);
     sides = sides(rmin);
-    lh = layer_height + eps;
+    lh = layer_height() + eps;
     render(convexity = 5)
         for(side = [0, 1]) mirror([0, 0, side]) {
             for(i = [0 : layers - 1])
-                translate_z(i * layer_height) {
-                    r = screw_polysink_r(type, i * layer_height + layer_height / 2 - sink);
+                translate_z(i * layer_height()) {
+                    r = screw_polysink_r(type, i * layer_height() + layer_height() / 2 - sink);
                     if(alt)
                         rotate(i % 2 == layers % 2 ? 180 / sides : 0)
                             poly_cylinder(r = r, h = lh, center = false, sides = sides);
@@ -303,9 +303,9 @@ module screw_polysink(type, h = 100, alt = false, sink = 0) { //! A countersink 
                         poly_cylinder(r = r, h = lh, center = false);
                 }
 
-            remainder = h / 2 - layers * layer_height;
+            remainder = h / 2 - layers * layer_height();
             if(remainder > 0)
-                translate_z(layers * layer_height)
+                translate_z(layers * layer_height())
                     poly_cylinder(r = rmin, h = remainder, center = false);
         }
 }

@@ -83,7 +83,7 @@ module polyholes() {
     for(i = [0 : len(sizes) - 1])
         translate([i * 10, -10]) {
             stl_colour(pp1_colour)
-                poly_tube(ir = ir, or = cir + sizes[i] * extrusion_width, h = 1);
+                poly_tube(ir = ir, or = cir + sizes[i] * extrusion_width(), h = 1);
 
             rod(2 * ir, 3);
        }

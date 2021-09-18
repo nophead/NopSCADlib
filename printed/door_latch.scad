@@ -35,7 +35,7 @@ screw = M4_hex_screw;
 function door_latch_screw() = screw; //! The screw used for the axle
 function door_latch_offset() = width / 2 + 1; //! Offset of the axle from the door edge
 
-nut_trap_depth = round_to_layer(screw_head_height(screw)) + 4 * layer_height;
+nut_trap_depth = round_to_layer(screw_head_height(screw)) + 4 * layer_height();
 
 module door_latch_stl() { //! Generates the STL for the printed part
     ridge = 4;

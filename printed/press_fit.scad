@@ -26,7 +26,7 @@ include <../core.scad>
 
 interference = 0.0;
 
-bridge_droop = layer_height; //sqrt(4 * layer_height * filament_width / PI) - layer_height;
+bridge_droop = layer_height(); //sqrt(4 * layer_height() * filament_width / PI) - layer_height();
 
 module press_fit_socket(w = 5, h = 50, horizontal = false) { //! Make a square hole to accept a peg
     h = horizontal ? h : h + bridge_droop;
@@ -41,10 +41,10 @@ module press_fit_peg(h, w = 5, horizontal = false) {    //! Make a rounded chamf
     }
 
     translate_z(-eps)
-        linear_extrude(height = h + eps - layer_height)
+        linear_extrude(height = h + eps - layer_height())
             chamfered_square(w + interference, horizontal);
 
-    translate_z(h - layer_height - eps)
-        linear_extrude(height = layer_height + eps)
-            chamfered_square(w - layer_height, horizontal);
+    translate_z(h - layer_height() - eps)
+        linear_extrude(height = layer_height() + eps)
+            chamfered_square(w - layer_height(), horizontal);
 }

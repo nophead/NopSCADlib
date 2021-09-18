@@ -53,7 +53,7 @@ function corner_block_v_hole(screw = def_screw) = let(offset = corner_block_hole
 function corner_block_h_holes(screw = def_screw) = //! List of transforms to side holes
     let(offset = corner_block_hole_offset(screw))
         [translate([offset, 0,      offset])                * rotate([90, 0,   0]),
-         translate([0,      offset, offset - layer_height]) * rotate([90, 0, -90])];
+         translate([0,      offset, offset - layer_height()]) * rotate([90, 0, -90])];
 
 function corner_block_holes(screw) = concat([corner_block_v_hole(screw)], corner_block_h_holes(screw)); //! List of transforms to all holes
 

@@ -25,7 +25,7 @@ include <../core.scad>
 use <../vitamins/pcb.scad>
 
 clearance = 0.2;
-min_wall = extrusion_width * 2;
+min_wall = extrusion_width() * 2;
 wall = 2;
 
 overlap = 2;
@@ -87,7 +87,7 @@ module pcb_mount(pcb, height = 5, washers = true) { //! Make the STL of a pcb mo
             linear_extrude(height)
                 pcb_mount_ring();
 
-        linear_extrude(height + pcb_thickness(pcb) - layer_height)
+        linear_extrude(height + pcb_thickness(pcb) - layer_height())
             difference() {
                 pcb_mount_screw_positions(pcb)
                     pcb_mount_ring();

@@ -109,7 +109,7 @@ module insert_hole(type, counterbore = 0, horizontal = false) { //! Make a hole 
 
 function insert_boss_radius(type, wall) = corrected_radius(insert_hole_radius(type)) + wall; //! Compute the outer radius of an insert boss
 
-module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to take an insert
+module insert_boss(type, z, wall = 2 * extrusion_width()) { //! Make a boss to take an insert
     ir = insert_hole_radius(type);
     or = corrected_radius(ir) + wall;
 
@@ -127,8 +127,8 @@ module insert_boss(type, z, wall = 2 * extrusion_width) { //! Make a boss to tak
             poly_circle(insert_screw_diameter(type) / 2 + 0.1);
         }
 
-    if(z > insert_hole_length(type) + 2 * layer_height)
-        linear_extrude(2 * layer_height)       // cap the end if room
+    if(z > insert_hole_length(type) + 2 * layer_height())
+        linear_extrude(2 * layer_height())       // cap the end if room
             shape();
 }
 

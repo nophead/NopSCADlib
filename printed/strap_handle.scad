@@ -138,7 +138,7 @@ module strap_end(type = strap) { //! Generate the STL for end piece
                         }
                     }
 
-            linear_extrude(strap_height(type) - layer_height)
+            linear_extrude(strap_height(type) - layer_height())
                 with_hole()
                     strap_boss_shape(type);
 

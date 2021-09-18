@@ -26,7 +26,7 @@ include <../vitamins/nuts.scad>
 module inner_bracket_test(bracket, backwards = false)
     rotate([90, 0, 180]) {
         extrusion = extrusion_inner_corner_bracket_extrusion(bracket);
-        eWidth = extrusion_width(extrusion);
+        eWidth = width_of_extrusion(extrusion);
         size = extrusion_inner_corner_bracket_size(bracket);
         tnut = extrusion_inner_corner_bracket_tnut(bracket);
 
@@ -46,7 +46,7 @@ module inner_bracket_test(bracket, backwards = false)
 module bracket_test(bracket)
     rotate([90, 0, 180]) {
         extrusion = extrusion_corner_bracket_extrusion(bracket);
-        eWidth = extrusion_width(extrusion);
+        eWidth = width_of_extrusion(extrusion);
         size = extrusion_corner_bracket_size(bracket);
 
         extrusion_corner_bracket_assembly(bracket);

@@ -276,11 +276,11 @@ module nut_square(type, brass = false, nylon = false) { //! Draw specified squar
         female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
 }
 
-function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height / 4 : 0); //! Radius across the corners of a nut trap
+function nut_trap_radius(nut, horizontal = false) = nut_radius(nut) + (horizontal ? layer_height() / 4 : 0); //! Radius across the corners of a nut trap
 function nut_trap_flat_radius(nut, horizontal = false) = nut_trap_radius(nut, horizontal) * cos(30);       //! Radius across the flats of a nut trap
 
 module nut_trap(screw, nut, depth = 0, horizontal = false, supported = false, h = 200) { //! Make a nut trap
-    nut_r = is_list(nut) ? nut_trap_radius(nut, horizontal) : nut + (horizontal ? layer_height / 4 : 0);
+    nut_r = is_list(nut) ? nut_trap_radius(nut, horizontal) : nut + (horizontal ? layer_height() / 4 : 0);
     nut_d = depth ? depth : nut_trap_depth(nut);
     screw_r = is_list(screw) ? screw_clearance_radius(screw) : screw;
     render(convexity = 5) union() {
@@ -300,7 +300,7 @@ module nut_trap(screw, nut, depth = 0, horizontal = false, supported = false, h 
                 }
                 if(supported)
                     translate_z(nut_d - eps)
-                        cylinder(r = nut_r + eps, h = layer_height, center = false);
+                        cylinder(r = nut_r + eps, h = layer_height(), center = false);
             }
         }
     }

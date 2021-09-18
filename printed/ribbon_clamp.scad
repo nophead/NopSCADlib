@@ -25,7 +25,7 @@ use <../vitamins/insert.scad>
 use <../vitamins/cable_strip.scad>
 
 wall = 1.6;
-min_wall = 2 * extrusion_width;
+min_wall = 2 * extrusion_width();
 screw = M3_cap_screw;
 
 function ribbon_clamp_screw_depth(screw = screw) = insert_length(screw_insert(screw)) + 1;

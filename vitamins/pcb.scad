@@ -1223,7 +1223,7 @@ module pcb_spacer(screw, height, wall = 1.8, taper = 0) { //! Generate STL for P
 
     if(taper)
         linear_extrude(height)
-            poly_ring(ir + 2 * extrusion_width, ir);
+            poly_ring(ir + 2 * extrusion_width(), ir);
 }
 
 module pcb_base(type, height, thickness, wall = 2) { //! Generate STL for a base with PCB spacers

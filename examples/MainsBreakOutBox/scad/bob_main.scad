@@ -45,7 +45,7 @@ use <NopSCADlib/vitamins/wire.scad>
 use <NopSCADlib/vitamins/jack.scad>
 use <NopSCADlib/printed/foot.scad>
 
-echo(extrusion_width = extrusion_width, layer_height = layer_height);
+echo(extrusion_width = extrusion_width(), layer_height = layer_height());
 wall = 2.5;
 
 iec = IEC_inlet_atx;
@@ -118,10 +118,10 @@ module socket_box_stl() {
                                 cylinder(d = insert_boss, h = 100);
                     hull() {
                         translate([side * mains_socket_pitch(socket) / 2, 0, 0])
-                            cylinder(d = insert_boss - 4 * extrusion_width, h = z);
+                            cylinder(d = insert_boss - 4 * extrusion_width(), h = z);
 
                         translate([side * (mains_socket_width(socket) / 2 - wall - 1), 0, z / 2])
-                            cube([2, insert_boss - 4 * extrusion_width, z], center = true);
+                            cube([2, insert_boss - 4 * extrusion_width(), z], center = true);
                     }
                     w = show_supports() ? 1 : 20;
                     translate([side * (mains_socket_width(socket) / 2 - wall - w/ 2), 0, z / 2])

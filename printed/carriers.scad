@@ -31,7 +31,7 @@ module ESP12F_carrier_stl() { //! Generate the STL for an ESP12 carrier
     pitch1 = 2;
     pitch2 = 2.54;
     hole = pitch1 - squeezed_wall;
-    hole2 = pitch2 - 3 * extrusion_width;
+    hole2 = pitch2 - 3 * extrusion_width();
     length1 = (pins - 1) * pitch1 + hole + squeezed_wall * 2;
     length2 = (pins - 1) * pitch2 + hole + squeezed_wall * 2;
     height = carrier_height();
@@ -68,7 +68,7 @@ module TP4056_carrier_stl() { //! Generate the STL for an TP4056 carrier, two re
     pitch = 2.54;
     outer_pitch = 13.9;
     inner_pitch = 7.54;
-    hole = pitch - 3 * extrusion_width;
+    hole = pitch - 3 * extrusion_width();
     pins = 6;
     length1 = outer_pitch + hole + squeezed_wall * 2;
     length2 = (pins - 1) * pitch + hole + squeezed_wall * 2;
@@ -108,7 +108,7 @@ module MT3608_carrier_stl() { //! Generate the STL for an MT3608 carrier, two re
     l_pitch_bot = inch(1.2);
     hole = 1;
     height = carrier_height();
-    wall = 2 * extrusion_width;
+    wall = 2 * extrusion_width();
     width = hole + 2 * wall;
     offset = (l_pitch_top - l_pitch_bot) / 2;
 

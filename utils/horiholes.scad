@@ -36,22 +36,22 @@ function teardrop_plus_x(r, y, h) = //! Calculate the ordinate of a compensated 
         0);
 
 module horihole(r, z, h = 0, center = true) { //! For making horizontal holes that don't need support material and are correct dimensions
-    bot_layer = floor((z - r) / layer_height);
-    top_layer = ceil((z + r) / layer_height);
+    bot_layer = floor((z - r) / layer_height());
+    top_layer = ceil((z + r) / layer_height());
     render(convexity = 5)
         extrude_if(h, center)
             for(i = [bot_layer : top_layer]) {
-                Z = i * layer_height;
-                y = Z - z + layer_height / 2;
-                x = teardrop_plus_x(r, y, layer_height);
+                Z = i * layer_height();
+                y = Z - z + layer_height() / 2;
+                x = teardrop_plus_x(r, y, layer_height());
                 if(x > 0)
                     translate([0, y])
                         difference() {
-                            square([2 * x + layer_height, layer_height], center = true);
+                            square([2 * x + layer_height(), layer_height()], center = true);
 
                             for(end = [-1, 1])
-                                translate([end * (x + layer_height / 2), 0])
-                                    circle(d = layer_height, $fn = 32);
+                                translate([end * (x + layer_height() / 2), 0])
+                                    circle(d = layer_height(), $fn = 32);
                         }
              }
 }
@@ -63,21 +63,21 @@ function teardrop_minus_x(r, y, h) = //! Calculate the ordinate of a compensated
         x = x2 > 0 ? sqrt(x2) : 0,
         X = y >= -hpot / sqrt(2) ? x + fr : 0
     )
-    X >= extrusion_width ? X : 0;
+    X >= extrusion_width() ? X : 0;
 
 module horicylinder(r, z, h = 0, center = true) { //! For making horizontal cylinders that don't need support material and are correct dimensions
-    bot_layer = floor((z - r) / layer_height);
-    top_layer = ceil((z + r) / layer_height);
+    bot_layer = floor((z - r) / layer_height());
+    top_layer = ceil((z + r) / layer_height());
     render(convexity = 5)
         extrude_if(h, center)
             for(i = [bot_layer : top_layer]) {
-                Z = i * layer_height;
-                y = Z - z + layer_height / 2;
-                x = teardrop_minus_x(r, y, layer_height);
-                if(x >= extrusion_width)
+                Z = i * layer_height();
+                y = Z - z + layer_height() / 2;
+                x = teardrop_minus_x(r, y, layer_height());
+                if(x >= extrusion_width())
                     hull()
                         for(end = [-1, 1])
-                            translate([end * (x - layer_height / 2), y])
-                                circle(d = layer_height, $fn = 32);
+                            translate([end * (x - layer_height() / 2), y])
+                                circle(d = layer_height(), $fn = 32);
              }
 }
