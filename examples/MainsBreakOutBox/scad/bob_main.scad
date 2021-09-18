@@ -31,7 +31,8 @@
 //! while its earth is disconnected. Don't be tempted to float the earth of an oscilloscope this way, use a mains isolation transformer to power the DUT instead.
 //! Earth leakage can be measured Canadian CSA style by disconnected the neutral link from the left socket and linking the central neutral to the live.
 //
-$extrusion_width = 0.5;
+$extrusion_width = 0.4;
+$layer_height = 0.2;
 $pp1_colour = "dimgrey";
 $pp2_colour = [0.9, 0.9, 0.9];
 

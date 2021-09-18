@@ -28,7 +28,11 @@ use <../utils/thread.scad>
 module fuseholder_hole(h = 100) //! Hole with flats for fuseholder
     extrude_if(h)
         intersection() {
-            circle(d = 12);
+            r = 12 / 2;
+            if(cnc_bit_r)
+                drill(r, 0);
+            else
+                poly_circle(r);
 
             square([100, 11], center = true);
         }

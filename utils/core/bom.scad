@@ -43,7 +43,7 @@
 //! * Two `pose()` modules can be chained to allow different poses for exploded and assembled views.
 //
 function bom_mode(n = 1) = (is_undef($bom) ? 0 : $bom) >= n && (is_undef($on_bom) || $on_bom);  //! Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well
-function exploded() = is_undef($exploded_parent) ? is_undef($explode) ? 0 : $explode : 0;   //! Returns the value of `$exploded` if it is defined, else `0`
+function exploded() = is_undef($exploded_parent) ? is_undef($explode) ? 0 : $explode : 0;   //! Returns the value of `$explode` if it is defined, else `0`
 function show_supports() = !$preview || exploded();                 //! True if printed support material should be shown
 
 module no_explode() let($exploded_parent = true) children();        //! Prevent children being exploded
@@ -69,7 +69,7 @@ module explode(d, explode_children = false, offset = [0,0,0]) {     //! Explode 
 
 module no_pose() let($posed = true, $zoomed = undef) children();    //! Force children not to be posed even if parent is
 
-module pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef)       //! Pose an STL or assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only.
+module pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef) //! Pose an STL or assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only.
     let($zoomed = is_undef(d)
             ? is_undef($zoomed)
                 ? undef
@@ -107,7 +107,6 @@ module pose_vflip(exploded = undef)       //! Pose an STL or assembly for render
             vflip()
                 children();
 
-
 module assembly(name, big = undef, ngb = false) {    //! Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams.
     if(bom_mode()) {
         zoom = is_undef($zoomed) ? 0 : $zoomed;
@@ -140,7 +139,7 @@ module stl(name) {                      //! Name an stl that will appear on the 
     }
     if($children)
         if(is_undef($pose))
-            let($in_stl = true)
+            let($in_stl = true, $cnc_bit_r = 0)
                 children();
         else {
             path = is_undef($target) ? "/stls/" : str("/", $target, "/stls/");
