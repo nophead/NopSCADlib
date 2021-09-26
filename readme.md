@@ -1524,6 +1524,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 | Function | Description |
 |:--- |:--- |
 | `jack_4mm_hole_radius()` | Panel hole radius for 4mm jack |
+| `jack_4mm_plastic_flange_radius()` | 4mm plastic jack socket flange radius |
 | `jack_4mm_shielded_hole_radius()` | Panel hole radius for 4mm shielded jack |
 | `jack_4mm_shielded_nut_radius()` | Largest diameter of 4mm shielded jack |
 | `post_4mm_diameter()` | Outer diameter of 4mm binding post |
@@ -1532,6 +1533,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 | Module | Description |
 |:--- |:--- |
 | `jack_4mm(colour, thickness, display_colour = false)` | Draw a 4mm jack socket with nut positioned for specified panel thickness |
+| `jack_4mm_plastic(colour, thickness, display_colour = false)` | Draw a 4mm plastic jack socket with nut positioned for specified panel thickness |
 | `jack_4mm_shielded(colour, thickness, display_colour = false)` | Draw a 4mm shielded jack |
 | `post_4mm(colour, thickness, display_colour = false)` | Draw a 4mm binding post |
 | `post_4mm_hole(h = 100, poly = false)` | Drill hole for 4mm binding post |
@@ -1543,6 +1545,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 | ---:|:--- |:---|
 |   1 | `post_4mm("red", 3)` |  4mm jack binding post red |
 |   1 | `jack_4mm("blue", 3, "royalblue")` |  4mm jack socket blue |
+|   1 | `jack_4mm_plastic("[0.2, 0.2, 0.2]", 3, [0.2, 0.2, 0.2])` |  4mm plastic jack socket [0.2, 0.2, 0.2] |
 |   1 | `jack_4mm_shielded("brown", 3, "sienna")` |  4mm shielded jack socket brown |
 
 

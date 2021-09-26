@@ -87,6 +87,81 @@ module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack
             }
 }
 
+function jack_4mm_plastic_flange_radius() = 11.66 / 2; //! 4mm plastic jack socket flange radius
+
+module jack_4mm_plastic(colour, thickness, display_colour = false) { //! Draw a 4mm plastic jack socket with nut positioned for specified panel thickness
+    vitamin(str("jack_4mm_plastic(\"", colour, "\", 3", arg(display_colour, false), "): 4mm plastic jack socket ", colour));
+    flange_r2 = jack_4mm_plastic_flange_radius();
+    flange_d1 = 10.75;
+    flange_t = 4;
+    flange_id1 = 7.66;
+    flange_id2 = 5.12;
+
+    length = 19.6;
+    sleaved_d = 6.4;
+    thread = 16;
+    thread_d = 8;
+    thread_p = 0.75;
+
+    barrel_d = 5.4;
+    barrel = 18.5;
+
+    solder_bucket = [3.75 / 2, 2.4 / 2, 5.6];
+
+    nut_d = 10.8;
+    nut_t = 3;
+
+    colour = display_colour ? display_colour : colour;
+    explode(length, offset = -length + flange_t) {
+        color(colour) rotate_extrude() difference() {
+            union() {
+                polygon([
+                    [flange_id2 / 2, -eps],
+                    [flange_id1 / 2, flange_t],
+                    [flange_d1 / 2,  flange_t],
+                    [flange_r2,      -eps],
+                ]);
+
+                translate([0, -length])
+                    square([sleaved_d / 2, length]);
+
+                translate([0, -thread])
+                    square([(thread_d - (show_threads ? thread_p : 0)) / 2, thread]);
+            }
+            square([4.1, 2 * length +1], center = true);
+        }
+        color(silver) rotate_extrude() {
+            difference() {
+                translate([0, -length + eps])
+                    square([barrel_d / 2, length]);
+
+                square([4, 2 * (barrel - 1)], center = true);
+            }
+            translate([solder_bucket.y, -length - solder_bucket.z])
+                square([solder_bucket.x - solder_bucket.y, solder_bucket.z]);
+        }
+        if(show_threads)
+            color(colour)
+                translate_z(-thread)
+                    male_metric_thread(thread_d, thread_p, thread, false, solid = false);
+
+    }
+    translate_z(-thickness)
+        explode(-length)
+            vflip() {
+                color(silver)
+                    linear_extrude(nut_t)
+                        difference() {
+                            circle(d = nut_d, $fn = 6);
+
+                            circle(d = thread_d);
+                        }
+
+                if(show_threads)
+                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
+            }
+}
+
 function jack_4mm_shielded_hole_radius() = 12 / 2; //! Panel hole radius for 4mm shielded jack
 function jack_4mm_shielded_nut_radius() = 14.4 / 2; //! Largest diameter of 4mm shielded jack
 

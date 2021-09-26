@@ -22,12 +22,15 @@ use <../vitamins/jack.scad>
 
 module jacks() {
     translate([0, 0])
-        jack_4mm("blue",3, "royalblue");
+        jack_4mm_plastic("black",3, grey(20));
 
     translate([20, 0])
-        jack_4mm_shielded("brown", 3, "sienna");
+        jack_4mm("blue",3, "royalblue");
 
     translate([40, 0])
+        jack_4mm_shielded("brown", 3, "sienna");
+
+    translate([60, 0])
         post_4mm("red",3);
 }
 
