@@ -24,7 +24,7 @@
 //! Because the tangents need to be calculated to find the length these can be calculated separately and re-used when drawing to save calculating them twice.
 //
 include <../utils/core/core.scad>
-use <../utils/maths.scad>
+use <maths.scad>
 
 function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two circles represented as [x,y,r]
     let(
@@ -49,14 +49,14 @@ function rounded_polygon_arcs(points, tangents) = //! Compute the arcs at the po
             v2 = p2 - p,
             sr = points[i][2],
             r = abs(sr),
-            a = r < 0.001 ? 0 : let( aa = acos((v1 * v2) / sqr(r)) ) cross(v1, v2) * sign(sr) <= 0 ? aa : 360 - aa,
+            a = r < 0.001 ? 0 : let( aa = acos(limit((v1 * v2) / sqr(r), -1, 1)) ) cross(v1, v2) * sign(sr) <= 0 ? aa : 360 - aa,
             l = PI * a * r / 180,
             v0 = [r, 0],
             v = let (
                 vv = norm(v0 - v2) < 0.001 ? 0 : abs(v2.y) < 0.001 ? 180 :
-                        let( aa = acos((v0 * v2) / sqr(r)) ) cross(v0, v2) * sign(sr) <= 0 ? aa : 360 - aa
+                        let( aa = acos( limit((v0 * v2) / sqr(r), -1, 1)) ) cross(v0, v2) * sign(sr) <= 0 ? aa : 360 - aa
             ) sr > 0 ? 360 - vv : vv - a
-        ) [a, v, l]
+        ) [a, v % 360, l]
     ];
 
 function rounded_polygon_tangents(points) = //! Compute the straight sections between a point and the next point, for each section [start_point, end_point, length]
@@ -67,36 +67,29 @@ function rounded_polygon_tangents(points) = //! Compute the straight sections be
     ];
 
 // the cross product of 2D vectors is the area of the parallelogram between them. We use the sign of this to decide if the angle is bigger than 180.
-function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents`
+function rounded_polygon_length(points, tangents) = //! Calculate the length given the point list and the list of tangents computed by `rounded_polygon_tangents`
     let(
         arcs = rounded_polygon_arcs(points, tangents)
     ) sumv( map( concat(tangents, arcs), function(e) e[2] ) );
 
-module rounded_polygon(points, _tangents = undef) { //! Draw the rounded polygon from the point list, can pass the tangent list to save it being calculated
-    len = len(points);
-    indices = [0 : len - 1];
-    tangents = _tangents ? _tangents : rounded_polygon_tangents(points);
+function rounded_polygon(points, _tangents = undef) = //! Return the rounded polygon from the point list, can pass the tangent list to save it being calculated
+    let(
+        len = len(points),
+        tangents = _tangents ? _tangents : rounded_polygon_tangents(points),
+        arcs = rounded_polygon_arcs(points, tangents),
+    ) [for(i = [0 : len - 1], last = (i - 1 + len) % len, R = points[i][2]) each [
+        vec2(tangents[last][1]),                        // End of last tangent
+        if(R)                                               // If rounded
+            let(r = abs(R),                                     // Get radius
+                n = r2sides4n(r),                               // Decide number of vertices
+                step = 360 / n,                                 // Angular step
+                arc = arcs[i],                                  // Get corner arc details
+                start = ceil(arc[1] / step + eps),              // Starting index
+                end = floor((arc[0] + arc[1]) / step - eps),    // Ending index
+                c = vec2(points[i]),                            // Centre of arc
+            ) for(j = R > 0 ? [end : -1 : start] : [start : 1 : end], a = j * step) c + r * [cos(a), sin(a)], // Points on the arc
+        vec2(tangents[i][0])]                           // Start of next tangent
+       ];
 
-    difference() {
-        union() {
-            for(i = indices, last = (i - 1 + len) % len)
-                if(points[i][2] > 0)
-                    hull() {
-                        translate(vec2(points[i]))
-                            circle(points[i][2]);
-
-                        polygon([vec2(tangents[last][1]), vec2(tangents[i][0]), vec2(points[i])]);
-                    }
-
-            polygon([for(t = tangents) each(vec2(t))], convexity = points);
-        }
-        for(i = indices, last = (i - 1 + len) % len)
-            if(points[i][2] < 0)
-                hull() {
-                    translate(vec2(points[i]))
-                        circle(-points[i][2]);
-
-                    polygon([vec2(tangents[last][1]), vec2(tangents[i][0]), vec2(points[i])]);
-                }
-     }
-}
+module rounded_polygon(points, _tangents = undef) //! Draw the rounded polygon from the point list, can pass the tangent list to save it being calculated
+    polygon(rounded_polygon(points, _tangents), convexity = len(points));

@@ -6312,8 +6312,9 @@ Because the tangents need to be calculated to find the length these can be calcu
 | Function | Description |
 |:--- |:--- |
 | `circle_tangent(p1, p2)` | Compute the clockwise tangent between two circles represented as [x,y,r] |
+| `rounded_polygon(points, _tangents = undef)` | Return the rounded polygon from the point list, can pass the tangent list to save it being calculated |
 | `rounded_polygon_arcs(points, tangents)` | Compute the arcs at the points, for each point [angle, rotate_angle, length] |
-| `rounded_polygon_length(points, tangents)` | Calculate the length given the point list and the list of tangents computed by ` rounded_polygon_tangents` |
+| `rounded_polygon_length(points, tangents)` | Calculate the length given the point list and the list of tangents computed by `rounded_polygon_tangents` |
 | `rounded_polygon_tangents(points)` | Compute the straight sections between a point and the next point, for each section [start_point, end_point, length] |
 
 ### Modules
@@ -6506,7 +6507,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 |:--- |:--- |
 | `arg(value, default, name = "")` | Create string for arg if not default, helper for `vitamin()` |
 | `bom_mode(n = 1)` | Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well |
-| `exploded()` | Returns the value of `$exploded` if it is defined, else `0` |
+| `exploded()` | Returns the value of `$explode` if it is defined, else `0` |
 | `show_supports()` | True if printed support material should be shown |
 | `value_string(value)` | Convert `value` to a string or quote it if it is already a string |
 
