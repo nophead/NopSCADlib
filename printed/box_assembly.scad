@@ -28,7 +28,7 @@ assembly("box") {
 
     t = sheet_thickness(box_sheets(type));
 
-    for(corner = [0 :  corners - 1]) {
+    for(corner = [0 : 1 : corners - 1]) {
         x = [-1,1,1,-1][corner];
         y = [-1,-1,1,1][corner];
         translate([x * (box_width(type) / 2 + 25 * exploded()), y * (box_depth(type) / 2 + 25 * exploded())])
