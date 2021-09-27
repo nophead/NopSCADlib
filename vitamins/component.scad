@@ -257,6 +257,79 @@ module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 packa
         children();
 }
 
+function TO247_size() = [15.7, 20.82, 4.82, 5.58]; //! Body dimensions of a T247 and the hole offset
+
+module  TO247(description, leads = 3, lead_length = 20) { //! Draw a TO247 package, use `description` to describe what it is
+    size =  TO247_size();
+    hole_y = size[3];
+    metal = [12.81, 13.08, 1.5];
+    metal_y_offset = 1.35;
+    hole = 3.5;
+    metal_hole = 6.85;
+    lead_height = 2.5;
+    lead_t = 0.61;
+    lead_w2 = 2.5;
+    lead_w = 1.25;
+    lead_pitch = 5.56;
+    lead_l = 3.8;
+
+    vitamin(str("TO247(\"", description, "\"", arg(leads, 3, "leads"), arg(lead_length, 16, "lead_length"), "): ", description));
+
+    module body_shape()
+        difference() {
+            translate([-size.x / 2, 0])
+                square([size.x, size.y]);
+
+            translate([0, size.y - hole_y])
+                circle(d = hole);
+        }
+
+    translate([0, -size.y + hole_y]) {
+        color("silver") {
+            linear_extrude(metal.z)
+                difference() {
+                    translate([-metal.x / 2, size.y - metal.y - metal_y_offset])
+                        square([metal.x, metal.y]);
+
+                    translate([0, size.y - hole_y])
+                        circle(d = metal_hole);
+                }
+
+            translate_z(lead_height)
+                linear_extrude(lead_t)
+                    intersection() {
+                        for(i = [-1 : 1])
+                            if(i || leads == 3) {
+                                translate([lead_pitch * i, -lead_length / 2, lead_height])
+                                    square([lead_w, lead_length], center = true);
+
+                                translate([lead_pitch * i, -lead_l / 2, lead_height])
+                                    square([lead_w2, lead_l], center = true);
+                            }
+                         square([2 * lead_pitch + lead_w, 100], center = true);
+                    }
+        }
+
+        color("dimgrey")
+            translate_z(eps) {
+                linear_extrude(metal.z - 2 * eps)
+                    body_shape();
+
+                linear_extrude(size.z)
+                    difference() {
+                        body_shape();
+
+                        for(side = [-1, 1])
+                            translate([side * size.x / 2, size.y - hole_y])
+                                circle(d = 5);
+                    }
+
+            }
+    }
+    translate_z(size.z)
+        children();
+}
+
 panel_USBA_pitch = 30;
 
 module panel_USBA_hole_positions() //! Place children at hole positions

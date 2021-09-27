@@ -42,6 +42,9 @@ module components() {
         TO220("Generic TO220 package");
 
     translate([40, 50])
+        TO247("Generic TO247 package");
+
+    translate([40, 80])
         panel_USBA();
 
     translate([80, 50])
