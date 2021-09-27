@@ -50,9 +50,10 @@ eps = 1/128;     // small fudge factor to stop CSG barfing on coincident faces.
 $fa = 6;
 $fs = extrusion_width / 2;
 
-function round_to_layer(z) = ceil(z / layer_height) * layer_height;
+function round_to_layer(z) = ceil(z / layer_height) * layer_height;         //! Round up to a multiple of layer_height.
+
 // Some additional named colours
-function grey(n) = [0.01, 0.01, 0.01] * n;                                          //! Generate a shade of grey to pass to color().
+function grey(n) = [0.01, 0.01, 0.01] * n;                                  //! Generate a shade of grey to pass to color().
 silver           = [0.75, 0.75, 0.75];
 gold             = [255, 215,   0] / 255;
 brass            = [255, 220, 100] / 255;

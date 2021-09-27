@@ -141,7 +141,8 @@ module vero_components(type, cutouts = false, angle = undef)
                 translate_z(vero_thickness(type))
                     pcb_component(comp, cutouts, angle);
 
-module vero_cutouts(type, angle = undef) vero_components(type, true, angle); //! Make cutouts to clear components
+module vero_cutouts(type, angle = undef) //! Make cutouts to clear components
+    vero_components(type, true, angle);
 
 module veroboard_assembly(type, height, thickness, flip = false, ngb = false) //! Draw the assembly with components and fasteners in place
 assembly(vero_assembly(type), ngb = ngb) {

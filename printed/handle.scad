@@ -79,7 +79,8 @@ module handle_stl() { //! generate the STL
 //
 //! Place inserts in the bottom of the posts and push them home with a soldering iron with a conical bit heated to 200&deg;C.
 //
-module handle_assembly() pose([225, 0, 150], [0, 0, 14]) //! Printed part with inserts in place
+module handle_assembly() //! Printed part with inserts in place
+pose([225, 0, 150], [0, 0, 14])
 assembly("handle", ngb = true) {
     translate_z(handle_height())
         stl_colour(pp1_colour) vflip() handle_stl();

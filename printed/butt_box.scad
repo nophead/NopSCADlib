@@ -198,12 +198,29 @@ module bbox_back_blank(type, sheet = false) { //! 2D template for the back
     }
 }
 
-module bbox_base(type)  render_2D_sheet(bbox_base_sheet(type)) bbox_base_blank(type);   //! Default base, can be overridden to customise
-module bbox_top(type)   render_2D_sheet(bbox_top_sheet(type)) bbox_top_blank(type);     //! Default top, can be overridden to customise
-module bbox_back(type)  render_2D_sheet(bbox_sheets(type)) bbox_back_blank(type);       //! Default back, can be overridden to customise
-module bbox_front(type) render_2D_sheet(bbox_sheets(type)) bbox_front_blank(type);      //! Default front, can be overridden to customise
-module bbox_left(type)  render_2D_sheet(bbox_sheets(type)) bbox_left_blank(type);       //! Default left side, can be overridden to customise
-module bbox_right(type) render_2D_sheet(bbox_sheets(type)) bbox_right_blank(type);      //! Default right side, can be overridden to customise
+module bbox_base(type)  //! Default base, can be overridden to customise
+    render_2D_sheet(bbox_base_sheet(type))
+        bbox_base_blank(type);
+
+module bbox_top(type)   //! Default top, can be overridden to customise
+    render_2D_sheet(bbox_top_sheet(type))
+        bbox_top_blank(type);
+
+module bbox_back(type)  //! Default back, can be overridden to customise
+    render_2D_sheet(bbox_sheets(type))
+        bbox_back_blank(type);
+
+module bbox_front(type) //! Default front, can be overridden to customise
+    render_2D_sheet(bbox_sheets(type))
+        bbox_front_blank(type);
+
+module bbox_left(type)  //! Default left side, can be overridden to customise
+    render_2D_sheet(bbox_sheets(type))
+        bbox_left_blank(type);
+
+module bbox_right(type) //! Default right side, can be overridden to customise
+    render_2D_sheet(bbox_sheets(type))
+        bbox_right_blank(type);
 
 module _bbox_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true) { //! The box assembly, wrap with a local copy without parameters
     width = bbox_width(type);

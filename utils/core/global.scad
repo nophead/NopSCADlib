@@ -38,10 +38,17 @@ function r2sides(r) = $fn ? $fn : ceil(max(min(360/ $fa, r * 2 * PI / $fs), 5));
 function r2sides4n(r) = floor((r2sides(r) + 3) / 4) * 4;                            //! Round up the number of sides to a multiple of 4 to ensure points land on all axes
 function limit(x, min, max) = max(min(x, max), min);                                //! Force x in range min <= x <= max
 
-module translate_z(z) translate([0, 0, z]) children();                              //! Shortcut for Z only translations
-module vflip(flip=true) rotate([flip ? 180 : 0, 0, 0]) children();                  //! Invert children by doing a 180&deg; flip around the X axis
-module hflip(flip=true) rotate([0, flip ? 180: 0, 0]) children();                   //! Invert children by doing a 180&deg; flip around the Y axis
-module ellipse(xr, yr) scale([1, yr / xr]) circle4n(xr);                            //! Draw an ellipse
+module translate_z(z)                                                               //! Shortcut for Z only translations
+    translate([0, 0, z]) children();
+
+module vflip(flip=true)                                                             //! Invert children by doing a 180&deg; flip around the X axis
+    rotate([flip ? 180 : 0, 0, 0]) children();
+
+module hflip(flip=true)                                                             //! Invert children by doing a 180&deg; flip around the Y axis
+    rotate([0, flip ? 180: 0, 0]) children();
+
+module ellipse(xr, yr)                                                              //! Draw an ellipse
+    scale([1, yr / xr]) circle4n(xr);
 
 function slice_str(str, start, end, s ="") = start >= end ? s : slice_str(str, start + 1, end, str(s, str[start])); // Helper for slice()
 

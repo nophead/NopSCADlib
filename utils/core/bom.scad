@@ -46,7 +46,9 @@ function bom_mode(n = 1) = (is_undef($bom) ? 0 : $bom) >= n && (is_undef($on_bom
 function exploded() = is_undef($exploded_parent) ? is_undef($explode) ? 0 : $explode : 0;   //! Returns the value of `$explode` if it is defined, else `0`
 function show_supports() = !$preview || exploded();                 //! True if printed support material should be shown
 
-module no_explode() let($exploded_parent = true) children();        //! Prevent children being exploded
+module no_explode()                                                 //! Prevent children being exploded
+    let($exploded_parent = true) children();
+
 module explode(d, explode_children = false, offset = [0,0,0]) {     //! Explode children by specified Z distance or vector `d`, option to explode grand children
     v = is_list(d) ? d : [0, 0, d];
     o = is_list(offset) ? offset : [0, 0, offset];
@@ -67,7 +69,8 @@ module explode(d, explode_children = false, offset = [0,0,0]) {     //! Explode 
         children();
 }
 
-module no_pose() let($posed = true, $zoomed = undef) children();    //! Force children not to be posed even if parent is
+module no_pose()                                                    //! Force children not to be posed even if parent is
+    let($posed = true, $zoomed = undef) children();
 
 module pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef) //! Pose an STL or assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only.
     let($zoomed = is_undef(d)

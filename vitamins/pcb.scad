@@ -1109,7 +1109,8 @@ module pcb_grid_components(type, components, cutouts = false, angle = undef) //!
     }
 
 
-module pcb_cutouts(type, angle = undef) pcb_components(type, true, angle); //! Make cut outs to clear components on a PCB
+module pcb_cutouts(type, angle = undef)  //! Make cut outs to clear components on a PCB
+    pcb_components(type, true, angle);
 
 module pcb_grid_positions(type) {
     grid =  pcb_grid(type);

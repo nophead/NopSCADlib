@@ -71,8 +71,8 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `7_segment_digit(type, colour = grey(95)` | Draw the specified 7 segment digit |
-| `7_segment_digits(type, n, colour = grey(70)` | Draw n digits side by side |
+| `7_segment_digit(type, colour = grey(95), pin_length = 6.4)` | Draw the specified 7 segment digit |
+| `7_segment_digits(type, n, colour = grey(70), pin_length = 6.4, cutout = false)` | Draw n digits side by side |
 
 ![7_segments](tests/png/7_segments.png)
 
@@ -343,7 +343,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `belt(type, points, belt_colour = grey(20)` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless open is specified |
+| `belt(type, points, belt_colour = grey(20), tooth_colour = grey(50), open = false, twist = undef, auto_twist = false, start_twist = false)` | Draw a belt path given a set of points and pitch radii where the pulleys are. Closed loop unless open is specified |
 
 ![belts](tests/png/belts.png)
 
@@ -909,7 +909,7 @@ Dual inline IC packages and sockets
 | Module | Description |
 |:--- |:--- |
 | `dip(n, part, size, w, pitch, pin)` | Draw DIP package |
-| `pdip(pins, part, socketed, w = inch(0.3)` | Draw standard 0.1" PDIP IC package |
+| `pdip(pins, part, socketed, w = inch(0.3), pitch = inch(0.1))` | Draw standard 0.1" PDIP IC package |
 | `pdip_pin(type, l, end)` | Draw a pin |
 
 ![dip](tests/png/dip.png)
@@ -3013,10 +3013,10 @@ Linear rails with carriages.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `carriage(type, end_colour = grey(20)` | Draw the specified carriage |
+| `carriage(type, end_colour = grey(20), wiper_colour = grey(20))` | Draw the specified carriage |
 | `carriage_hole_positions(type)` | Position children over screw holes |
-| `rail(type, length, colour = grey(90)` | Draw the specified rail |
-| `rail_assembly(carriage, length, pos, carriage_end_colour = grey(20)` | Rail and carriage assembly |
+| `rail(type, length, colour = grey(90), use_polycircles = false)` | Draw the specified rail |
+| `rail_assembly(carriage, length, pos, carriage_end_colour = grey(20), carriage_wiper_colour = grey(20))` | Rail and carriage assembly |
 | `rail_hole_positions(type, length, first = 0, screws = 100, both_ends = true)` | Position children over screw holes |
 | `rail_screws(type, length, thickness, screws = 100, index_screws = undef)` | Place screws in the rail |
 
@@ -4977,7 +4977,7 @@ The ring spacing as well as the number of spokes can be specified, if zero a gas
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `fan_guard(type, name = false, thickness = fan_guard_thickness()` | Generate the STL |
+| `fan_guard(type, name = false, thickness = fan_guard_thickness(), spokes = 4, finger_width = 7, grill = false, screws = true)` | Generate the STL |
 
 ![fan_guard](tests/png/fan_guard.png)
 
@@ -6467,7 +6467,7 @@ Simple tube or ring
 | `rectangular_tube(size, center = true, thickness = 1, fillet = 0.5)` | Create a rectangular tube with filleted corners |
 | `ring(or, ir)` | Create a ring with specified external and internal radii |
 | `tube(or, ir, h, center = true)` | Create a tube with specified external and internal radii and height `h` |
-| `woven_tube(or, ir, h, center= true, colour = grey(30)` | Create a woven tube with specified external and internal radii, height `h`, colours, warp and weft |
+| `woven_tube(or, ir, h, center= true, colour = grey(30), colour2, warp = 2, weft)` | Create a woven tube with specified external and internal radii, height `h`, colours, warp and weft |
 
 ![tube](tests/png/tube.png)
 

@@ -81,7 +81,7 @@ def scrape_code(scad_file):
             match = re.match(r'^function (.*?\(.*?\)).*?(?://! ?(.*))$', line)
             if match:
                 functions[match.group(1)] = match.group(2)
-        match = re.match(r'^module (.*?\(.*?\)).*?(?://! ?(.*))$', line)
+        match = re.match(r'^module (.*?\(.*\)).*?(?://! ?(.*))$', line)
         if match:
             modules[match.group(1)] = match.group(2)
 
