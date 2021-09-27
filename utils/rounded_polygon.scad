@@ -76,7 +76,7 @@ function rounded_polygon(points, _tangents = undef) = //! Return the rounded pol
     let(
         len = len(points),
         tangents = _tangents ? _tangents : rounded_polygon_tangents(points),
-        arcs = rounded_polygon_arcs(points, tangents),
+        arcs = rounded_polygon_arcs(points, tangents)
     ) [for(i = [0 : len - 1], last = (i - 1 + len) % len, R = points[i][2]) each [
         vec2(tangents[last][1]),                        // End of last tangent
         if(R)                                               // If rounded
@@ -86,7 +86,7 @@ function rounded_polygon(points, _tangents = undef) = //! Return the rounded pol
                 arc = arcs[i],                                  // Get corner arc details
                 start = ceil(arc[1] / step + eps),              // Starting index
                 end = floor((arc[0] + arc[1]) / step - eps),    // Ending index
-                c = vec2(points[i]),                            // Centre of arc
+                c = vec2(points[i])                             // Centre of arc
             ) for(j = R > 0 ? [end : -1 : start] : [start : 1 : end], a = j * step) c + r * [cos(a), sin(a)], // Points on the arc
         vec2(tangents[i][0])]                           // Start of next tangent
        ];
