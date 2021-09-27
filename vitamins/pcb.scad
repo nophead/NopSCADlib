@@ -859,7 +859,28 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
             single();
 }
 
-module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version.
+module molex_254_housing(ways) { //! Draw a Molex KK housing
+    vitamin(str("molex_254_housing(", ways, "): Molex KK housing ", ways, " way"));
+    pitch = 2.54;
+    width = ways * pitch + 0.6;
+    depth = 4.9;
+    height = 12.8;
+    header_depth = 6.35;
+    tab = [1.73, 0.96, 2.15];
+
+    color("white")
+        translate([(header_depth - depth) / 2, 0]) {
+            linear_extrude(height)
+                square([depth, width], center = true);
+
+            for(side = [-1, 1])
+                translate([-depth / 2 - tab.x / 2, side * (pitch / 2 - tab.y / 4) * ways, tab.z / 2])
+                    cube(tab, center = true);
+
+        }
+}
+
+module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version.
     vitamin(str("molex_254(", ways, "): Molex KK header ", ways, " way"));
     pitch = 2.54;
     width = ways * pitch - 0.1;
@@ -872,10 +893,11 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex header, s
     pin_w = 0.64;
     r = 1;
     a = right_angle ? width / 2 - r - pin_w / 2 : above;
-    ra_offset = 2.72;
+    ra_offset = 2.2;
+
     color("white")
         translate(right_angle ? [-ra_offset, 0, depth / 2] : [ 0, 0, 0])
-            rotate(right_angle ? right_angle > 0 ? [180, 90, 0] : [0, -90, 0] : [ 0, 0, 0])
+            rotate(right_angle ? right_angle > 0 ? [180, 90, 0] : [0, -90, 0] : [ 0, 0, 0]) {
                 union() {
                     translate([ -depth / 2, -width / 2,])
                         cube([depth, width, base]);
@@ -884,6 +906,11 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex header, s
                     translate([- depth / 2, -w / 2])
                         cube([back, w, height]);
                  }
+
+                 if(show_plugs)
+                    translate_z(base + 0.1)
+                        molex_254_housing(ways);
+            }
 
     color("silver")
         for(i = [0 : ways -1])
@@ -1007,9 +1034,11 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     function param(n, default = 0) = len(comp) > n ? comp[n] : default;
     rotate(comp.z) {
         // Components that have a cutout parameter go in this section
-        if(show(comp, "2p54header"))    pin_header(2p54header, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
+        if(show(comp, "2p54header")) let($show_plugs = show_plugs && param(9, true))
+                                        pin_header(2p54header, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
         if(show(comp, "2p54joiner"))    pin_header(2p54joiner, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
-        if(show(comp, "2p54boxhdr"))    box_header(2p54header, comp[4], comp[5], param(6, false), cutouts);
+        if(show(comp, "2p54boxhdr")) let($show_plugs = show_plugs && param(7, true))
+                                        box_header(2p54header, comp[4], comp[5], param(6, false), cutouts);
         if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);

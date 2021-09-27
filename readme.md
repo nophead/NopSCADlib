@@ -2351,7 +2351,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `flex(cutout = false)` | Draw flexistrip connector |
 | `hdmi(type, cutout = false)` | Draw HDMI socket |
 | `jack(cutout = false)` | Draw 3.5mm jack |
-| `molex_254(ways, right_angle = 0, skip = undef)` | Draw molex header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version. |
+| `molex_254(ways, right_angle = 0, skip = undef)` | Draw molex KK header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version. |
+| `molex_254_housing(ways)` | Draw a Molex KK housing |
 | `molex_usb_Ax1(cutout)` | Draw Molex USB A connector suitable for perf board |
 | `molex_usb_Ax2(cutout)` | Draw Molex dual USB A connector suitable for perf board |
 | `pcb(type)` | Draw specified PCB |
@@ -2495,7 +2496,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `flex(cutout = false)` | Draw flexistrip connector |
 | `hdmi(type, cutout = false)` | Draw HDMI socket |
 | `jack(cutout = false)` | Draw 3.5mm jack |
-| `molex_254(ways, right_angle = 0, skip = undef)` | Draw molex header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version. |
+| `molex_254(ways, right_angle = 0, skip = undef)` | Draw molex KK header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version. |
+| `molex_254_housing(ways)` | Draw a Molex KK housing |
 | `molex_usb_Ax1(cutout)` | Draw Molex USB A connector suitable for perf board |
 | `molex_usb_Ax2(cutout)` | Draw Molex dual USB A connector suitable for perf board |
 | `pcb(type)` | Draw specified PCB |

@@ -21,6 +21,8 @@ include <../utils/core/core.scad>
 use <../utils/dogbones.scad>
 
 panel_clearance = 0.2;
+housing_height = 14.12;  // measured height of a Dupont connector.
+housing_colour = grey(25);
 
 function hdr_pitch(type)        = type[1];  //! Header pitch
 function hdr_pin_length(type)   = type[2];  //! Header pin length
@@ -96,7 +98,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
             }
             // Insulator
             translate([0, right_angle ? -ra_offset - (rows - 1) * pitch / 2 : 0, right_angle ? width / 2 : 0])
-                rotate([right_angle ? 90 : 0, 0, 0])
+                rotate([right_angle ? 90 : 0, 0, 0]) {
                     color(base_colour)
                         linear_extrude(h)
                             for(x = [0 : cols - 1], y = [0 : rows - 1])
@@ -107,12 +109,18 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
 
                                         square([pitch - chamfer, pitch + eps], center = true);
                                     }
+                    if(show_plugs && hdr_pin_length(type) > 7)
+                        color(housing_colour)
+                            translate_z(h + eps)
+                                linear_extrude(housing_height)
+                                    square([cols * pitch , rows * pitch], center = true);
+                }
         }
     }
 }
 
 module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! Draw box header
-    pitch =  hdr_pitch(type);
+    pitch = hdr_pitch(type);
     size = hdr_box_size(type);
     w = cols * pitch + 7.62;
     l = rows * pitch + 3.52;
@@ -144,6 +152,11 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
                             square([4.5, 4.5], center = true);
                     }
             }
+            if(show_plugs)
+                color(housing_colour)
+                    translate_z(base)
+                        linear_extrude(housing_height)
+                            square([cols * pitch, rows * pitch], center = true);
         }
     }
 }
