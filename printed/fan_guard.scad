@@ -29,7 +29,7 @@ function fan_guard_wall() = extrusion_width - layer_height / 2 + nozzle / 2 + ex
 function fan_guard_corner_r(type) = washer_diameter(screw_washer(fan_screw(type))) / 2 + 0.5; //! Corner radius of the guard
 function fan_guard_width(type) = max(2 * (fan_hole_pitch(type) + fan_guard_corner_r(type)), fan_bore(type) + 4 * fan_guard_wall()); //! Width of the guard
 
-module fan_guard(type, name = false, thickness = fan_guard_thickness(), spokes = 4, finger_width = 7, grill = false) { //! Generate the STL
+module fan_guard(type, name = false, thickness = fan_guard_thickness(), spokes = 4, finger_width = 7, grill = false, screws = true) { //! Generate the STL
     if(thickness)
         stl(name ? name : str("fan_guard_", fan_width(type)));
     hole_pitch = fan_hole_pitch(type);
@@ -54,7 +54,7 @@ module fan_guard(type, name = false, thickness = fan_guard_thickness(), spokes =
                 difference() {
                     rounded_square([width, width], r = width / 2 - hole_pitch);
 
-                    fan_holes(type, !grill, !grill, h = 0);
+                    fan_holes(type, !grill, !grill && screws, h = 0);
                 }
                 if(spokes) {
                     intersection() {
