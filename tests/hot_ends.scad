@@ -19,18 +19,13 @@
 include <../utils/core/core.scad>
 use <../utils/layout.scad>
 
-use <../vitamins/jhead.scad>
-use <../vitamins/e3d.scad>
 include <../vitamins/hot_ends.scad>
 
 module hot_ends()
     layout([for(h = hot_ends) 40])
         translate([-20, 0])
             rotate(90)
-                if($i == 0)
-                    jhead_hot_end_assembly(hot_ends[$i], 3);
-                else
-                    e3d_hot_end_assembly(hot_ends[$i], 3, bowden = $i == 3);
+                hot_end(hot_ends[$i], 3, bowden = $i == 3);
 
 if($preview)
     hot_ends();
