@@ -73,11 +73,6 @@ hs_grub   = 4;     // pulley set screw
 hs_cs_cap = 5;
 hs_dome   = 6;
 //
-// Hot end descriptions
-//
-jhead   = 1;
-e3d     = 2;
-//
 // Face enumeration
 //
 f_bottom = 0;
