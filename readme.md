@@ -785,7 +785,7 @@ Various electronic components used in hot ends and heated beds.
 | Function | Description |
 |:--- |:--- |
 | `TO220_thickness()` | Thickness of the tab of a TO220 |
-| `TO247_size()` | Body dimensions of a T247 and the hole offset |
+| `TO247_size()` | Body dimensions of a T247, hole offset, lead height and lead wide length |
 | `fack2spm_bezel_size()` | FACK2SPM Bezel dimensions |
 | `fack2spm_screw()` | Screw type for FACK2SPM |
 
@@ -793,7 +793,7 @@ Various electronic components used in hot ends and heated beds.
 | Module | Description |
 |:--- |:--- |
 | ` TO220(description, leads = 3, lead_length = 16)` | Draw a TO220 package, use `description` to describe what it is |
-| ` TO247(description, leads = 3, lead_length = 20)` | Draw a TO247 package, use `description` to describe what it is |
+| ` TO247(description, lead_length = 20)` | Draw a TO247 package, use `description` to describe what it is |
 | `al_clad_resistor(type, value, leads = true)` | Draw an aluminium clad resistor |
 | `al_clad_resistor_hole_positions(type)` | Position children at the screw holes of an aluminium clad resistor |
 | `al_clad_resistor_holes(type, h = 100)` | Drill screw holes for an aluminium clad resistor |
@@ -814,7 +814,7 @@ Various electronic components used in hot ends and heated beds.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `TO220("Generic TO220 package")` |  Generic TO220 package |
-|   1 | `TO247("Generic TO247 package", lead_length = 20)` |  Generic TO247 package |
+|   1 | `TO247("Generic TO247 package")` |  Generic TO247 package |
 |   8 | `tubing(HSHRNK32)` |  Heatshrink sleeving ID 3.2mm x 15mm |
 |   1 | `resistor(RWM04106R80J)` |  Resistor RWM04106R80J 6R8 3W vitreous enamel |
 |   1 | `resistor(RIE1212UB5C5R6)` |  Resistor UB5C 5R6F 5R6 3W vitreous enamel |

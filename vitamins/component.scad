@@ -223,7 +223,7 @@ module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 packa
     body = 8;
     hole_y = 2.9;
 
-    vitamin(str("TO220(\"", description, "\"", arg(leads, 3, "leads"), arg(lead_length, 16, "lead_length"), "): ", description));
+    vitamin(str("TO220(\"", description, "\"", arg(leads, 3, "leads"), "): ", description));
 
     translate([0, -length + hole_y]) {
         color("silver") {
@@ -257,23 +257,23 @@ module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 packa
         children();
 }
 
-function TO247_size() = [15.7, 20.82, 4.82, 5.58]; //! Body dimensions of a T247 and the hole offset
+function TO247_size() = [15.7, 20.82, 4.82, 5.58, 2.5, 3.8]; //! Body dimensions of a T247, hole offset, lead height and lead wide length
 
-module  TO247(description, leads = 3, lead_length = 20) { //! Draw a TO247 package, use `description` to describe what it is
+module  TO247(description, lead_length = 20) { //! Draw a TO247 package, use `description` to describe what it is
     size =  TO247_size();
     hole_y = size[3];
+    lead_height = size[4];
+    lead_l = size[5];
     metal = [12.81, 13.08, 1.5];
     metal_y_offset = 1.35;
     hole = 3.5;
     metal_hole = 6.85;
-    lead_height = 2.5;
     lead_t = 0.61;
     lead_w2 = 2.5;
     lead_w = 1.25;
     lead_pitch = 5.56;
-    lead_l = 3.8;
 
-    vitamin(str("TO247(\"", description, "\"", arg(leads, 3, "leads"), arg(lead_length, 16, "lead_length"), "): ", description));
+    vitamin(str("TO247(\"", description, "\"): ", description));
 
     module body_shape()
         difference() {
@@ -298,15 +298,15 @@ module  TO247(description, leads = 3, lead_length = 20) { //! Draw a TO247 packa
             translate_z(lead_height)
                 linear_extrude(lead_t)
                     intersection() {
-                        for(i = [-1 : 1])
-                            if(i || leads == 3) {
-                                translate([lead_pitch * i, -lead_length / 2, lead_height])
-                                    square([lead_w, lead_length], center = true);
+                        for(i = [-1 : 1]) {
+                            length = is_list(lead_length) ? lead_length[i + 1] : lead_length;
+                            translate([lead_pitch * i, -length / 2, lead_height])
+                                square([lead_w, length], center = true);
 
-                                translate([lead_pitch * i, -lead_l / 2, lead_height])
-                                    square([lead_w2, lead_l], center = true);
-                            }
-                         square([2 * lead_pitch + lead_w, 100], center = true);
+                            translate([lead_pitch * i, -lead_l / 2, lead_height])
+                                square([lead_w2, lead_l], center = true);
+                        }
+                        square([2 * lead_pitch + lead_w, 100], center = true);
                     }
         }
 
