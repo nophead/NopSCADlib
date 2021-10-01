@@ -2543,7 +2543,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(ESP32_DOIT_V1)` |  ESP32 DOIT DEV KIT V1 |
 |   1 | `pcb(EnviroPlus)` |  Enviro+ |
 |   1 | `pcb(ExtruderPCB)` |  Extruder connection PCB - not shown |
-|   1 | `pcb(KY_040)` |  KY_-040 rotart encoder breakout |
+|   1 | `pcb(KY_040)` |  KY-040 rotart encoder breakout |
 |   1 | `pcb(Keyes5p1)` |  Keyes5.1 Arduino Uno expansion board - not shown |
 |   1 | `pcb(LIPO_fuel_gauge)` |  LIPO fuel gauge |
 |   1 | `pcb(MP1584EN)` |  MP1584EN 3A buck converter |

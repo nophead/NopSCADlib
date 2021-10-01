@@ -868,7 +868,7 @@ ArduinoNano = let(l = 43.18, w = 17.78, pitch = inch(0.6), pins = 15, poffset = 
     [(l - inch(pins - 1) / 10) / 2 + poffset, (w - pitch) / 2, pins, 2, silver, 2.54, pitch], // 15x2 grid of holes
 ];
 
-KY_040 = ["KY_040", "KY_-040 rotart encoder breakout",
+KY_040 = ["KY_040", "KY-040 rotart encoder breakout",
     26.3, 19.5, 1.6, 0, 3, 0, grey(20),  false,
     [
      [3.23 + 1.5, 1.3 + 1.5],
