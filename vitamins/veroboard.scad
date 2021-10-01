@@ -82,7 +82,7 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
     width = strips * pitch;
     hole_d = 1;
     tw = vero_track_width(type);
-    colour = vero_fr4(type) ? "green" : "goldenrod";
+    colour = vero_fr4(type) ? "#BEB564" : "goldenrod";
     tc = vero_fr4(type) ? "silver" : copper;
     no_track = vero_no_track(type);
 
@@ -124,9 +124,9 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
                 for(p = vero_breaks(type))
                     vero_grid_pos(type, p.x, p.y)
                         if(ceil(p.x) == p.x)
-                            circle(d = pitch);
+                            circle(d = pitch * 1.1);
                         else
-                            square([pitch * 0.2, pitch], center = true);
+                            square([pitch * 0.3, pitch], center = true);
             }
         }
 }
