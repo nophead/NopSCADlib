@@ -27,7 +27,7 @@ RIE1212UB5C5R6 = [ "RIE1212UB5C5R6", "Resistor UB5C 5R6F 5R6 3W vitreous enamel"
 //
 Honewell       = [ "Honewell",  "Thermistor Honeywell 135-104LAC-J01 100K 1%",   4.75, 1.8, 0.5,  28.6,  2, "red",                        false];
 Epcos          = [ "Epcos",     "Thermistor Epcos B57560G104F 100K 1%",          4.6,  2.5, 0.3,  67,  2.5, [0.8, 0.8, 0.8, 0.25], true,  false];
-EpcosBlue      = [ "EpcosBlue", "Thermistor Epcos B57861S104F40 100K 1%",        6.5,  2.41,0.25, 43.5,2.5, "black",               true,  true];
+EpcosBlue      = [ "EpcosBlue", "Thermistor Epcos B57861S104F40 100K 1%",        4.5,  2.41,0.25, 43.5,2.5, "black",               true,  true];
 
 resistors = [Honewell, Epcos, EpcosBlue, RWM04106R80J, RIE1212UB5C5R6];
 //

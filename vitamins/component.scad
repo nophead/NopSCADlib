@@ -54,9 +54,9 @@ module resistor(type) { //! Draw specified type of resitor
             for(side= [-1,1])
                 translate([side *  dia / 6, 0, length / 2])
                     rotate([0, splay_angle * side, 0])
-                        cylinder(r = resistor_wire_diameter(type) / 2, h = resistor_wire_length(type), center = false);
+                        cylinder(r = resistor_wire_diameter(type) / 2, h = resistor_wire_length(type), center = false, $fn = 16);
         else
-            cylinder(r = resistor_wire_diameter(type) / 2, h = length + 2 * resistor_wire_length(type), center = true);
+            cylinder(r = resistor_wire_diameter(type) / 2, h = length + 2 * resistor_wire_length(type), center = true, $fn = 16);
     //
     // Sleeving
     //
@@ -66,7 +66,7 @@ module resistor(type) { //! Draw specified type of resitor
                 for(side= [-1, 1])
                     translate([side *  resistor_diameter(type) / 6, 0, length / 2]) {
                         rotate([0, splay_angle * side, 0])
-                            cylinder(r = resistor_wire_diameter(type) / 2 + 0.1, h = resistor_wire_length(type) - 5, center = false);                   }
+                            cylinder(r = resistor_wire_diameter(type) / 2 + 0.1, h = resistor_wire_length(type) - 5, center = false, $fn = 16);                   }
     //
     // Body
     //
