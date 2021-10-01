@@ -20,7 +20,9 @@
 //
 //! Random screw down modules. Currently just DROK buck converters.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
+use <screw.scad>
+use <nut.scad>
 
 function mod_part(type)   = type[1];        //! Description
 function mod_length(type) = type[2];        //! Body length

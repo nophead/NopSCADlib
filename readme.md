@@ -4410,7 +4410,7 @@ Normally the side sheets are the same type but they can be overridden individual
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = M3_dome_screw)` | Construct a property list for a box. |
+| `box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = undef)` | Construct a property list for a box. |
 | `box_bezel_height(type, bottom)` | Bezel height for top or bottom |
 | `box_corner_gap(type)` | Gap between box_sheets at the corners to connect inside and outside profiles |
 | `box_inset(type)` | How much the bezel intrudes on the specified width and length, away from the corners |

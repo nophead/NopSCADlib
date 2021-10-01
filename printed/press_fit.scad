@@ -22,7 +22,7 @@
 //!
 //! Add solvent or glue to make a permanent fixture.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 
 interference = 0.0;
 

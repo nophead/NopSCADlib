@@ -20,9 +20,8 @@
 //! SK shaft support brackets
 //
 include <../core.scad>
-include <../utils/fillet.scad>
+use <../utils/fillet.scad>
 
-use <washer.scad>
 
 sk_bracket_colour = grey(70);
 

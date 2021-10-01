@@ -19,7 +19,6 @@
 
 include <../core.scad>
 include <../vitamins/pulleys.scad>
-include <../vitamins/screws.scad>
 include <../vitamins/stepper_motors.scad>
 include <../vitamins/washers.scad>
 

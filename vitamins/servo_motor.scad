@@ -19,7 +19,7 @@
 //! BLDC servos for CNC machines
 //
 
-include <../core.scad>
+include <../utils/core/core.scad>
 include <../utils/tube.scad>
 include <../utils/round.scad>
 include <../utils/quadrant.scad>

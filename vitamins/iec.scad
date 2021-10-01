@@ -20,7 +20,7 @@
 //
 //! IEC mains inlets and outlet.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <screw.scad>
 use <nut.scad>
 use <washer.scad>

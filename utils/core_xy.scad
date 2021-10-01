@@ -29,7 +29,7 @@
 //! 4. The drive pulleys may be offset in the X and Y directions. If this is done, extra idler pulleys are added. This
 //! allows flexible positioning of the motors.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 include <../vitamins/belts.scad>
 include <../vitamins/pulleys.scad>
 

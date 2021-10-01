@@ -31,9 +31,11 @@
 //!
 //! Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../vitamins/sheet.scad>
 use <../vitamins/insert.scad>
+use <../vitamins/screw.scad>
+use <../vitamins/washer.scad>
 use <../utils/quadrant.scad>
 use <../utils/round.scad>
 
@@ -52,8 +54,8 @@ function box_width(type)       = type[7]; //! Internal width
 function box_depth(type)       = type[8]; //! Internal depth
 function box_height(type)      = type[9]; //! Internal height
 
-function box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = M3_dome_screw) = //! Construct a property list for a box.
- concat([screw, shelf_screw, wall, sheets, top_sheet, base_sheet, feet], size);
+function box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = undef) = //! Construct a property list for a box.
+ concat([screw, is_undef(shelf_screw) ? screw : shelf_screw, wall, sheets, top_sheet, base_sheet, feet], size);
 
 function box_bezel_clearance(type) = bezel_clearance;
 

@@ -27,7 +27,6 @@ include <../vitamins/pin_headers.scad>
 use <../utils/tube.scad>
 use <../utils/thread.scad>
 use <../utils/round.scad>
-use <washer.scad>
 use <rod.scad>
 
 function NEMA_width(type)        = type[1]; //! Width of the square face

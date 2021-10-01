@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../core.scad>
+include <../utils/core/core.scad>
 use <../vitamins/dip.scad>
 
 dips = [[6, "OPTO"], [8, "NE555"], [14, "74HC00"], [16, "ULN2003"], [18, "ULN2803"], [20, "74HC245"], [28, "ATMEGA328"]];
