@@ -25,6 +25,11 @@ WiFi controllable PSU
 
 ![](IOT_50V_PSU.png)
 
+## IOT LOAD
+WiFi controllable programmable load
+
+![](IOT_LOAD.png)
+
 ## Lab ATX PSU
 Bench power supply built around an ATX PSU.
 
@@ -64,6 +69,16 @@ Mains isolated and variable supply with metering.
 ![](Mains_Box.png)
 
 
+
+## PSU Cover
+A base and shroud to make PSU safe to sit on a desk
+
+![](PSU_cover.png)
+
+## PotBox
+Potentiometer box with course and fine controls and three 4mm binding posts
+
+![](PotBox.png)
 
 ## SunBot
 A solar tracker to keep a solar panel pointing at the sun.
