@@ -138,6 +138,6 @@ module extrusion(type, length, center = true, cornerHole = false) { //! Draw the
     vitamin(str("extrusion(", type[0], ", ", length, arg(cornerHole, false, "cornerHole"), "): Extrusion ", type[0], " x ", length, "mm"));
 
     color(grey(90))
-        linear_extrude(length, center = center)
+        linear_extrude(length, center = center, convexity = 8)
             extrusion_cross_section(type, cornerHole);
 }
