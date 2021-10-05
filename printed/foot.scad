@@ -67,18 +67,18 @@ module foot(type = foot) { //! Generate STL
         }
 }
 
-module foot_assembly(t = 0, type = foot, flip = false) { //! Assembly with fasteners in place for specified sheet thickness
+module foot_assembly(t = 0, type = foot, flip = false, no_washer = false) { //! Assembly with fasteners in place for specified sheet thickness
     screw = foot_screw(type);
     nut = screw_nut(screw);
     squeeze = 0.5;
-    screw_length = screw_length(screw, foot_thickness(type) + t - squeeze, 2, nyloc = true);
+    screw_length = screw_length(screw, foot_thickness(type) + t - squeeze, no_washer ? 1 : 2, nyloc = true);
 
     vflip() explode(15, true) {
         stl_colour(pp4_colour) foot(type);
 
         if(t)
             explode(15, true)
-                translate_z(foot_thickness(type))
+                translate_z(foot_thickness(type) - squeeze)
                     if(flip)
                         nut_and_washer(nut, true);
                     else
@@ -87,9 +87,15 @@ module foot_assembly(t = 0, type = foot, flip = false) { //! Assembly with faste
     if(t)
         translate_z(t)
             if(flip)
-                screw_and_washer(screw, screw_length);
+                if(no_washer)
+                    screw(screw, screw_length);
+                else
+                    screw_and_washer(screw, screw_length);
             else
-                nut_and_washer(nut, true);
+                if(no_washer)
+                    nut(nut, true);
+                else
+                    nut_and_washer(nut, true);
 }
 
 module insert_foot(type = insert_foot) { //! Generate STL for foot with insert
