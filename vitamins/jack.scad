@@ -77,12 +77,12 @@ module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack
                 spade(spade4p8l, spade);
     }
     translate_z(-thickness)
-        explode(-length)
+        explode(-length, explode_children = true)
             vflip() {
                 color(silver)
                     tube(ir = thread_d / 2, or = nut_d / 2, h = nut_t, center = false);
 
-                if(show_threads)
+                if(show_threads && exploded())
                     female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
             }
 }
