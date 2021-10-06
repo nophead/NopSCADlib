@@ -23,8 +23,12 @@ include <../vitamins/potentiometers.scad>
 
 module potentiometers()
     layout([for(p = potentiometers) pot_size(p).x])
-        hflip()
+        hflip() {
             potentiometer(potentiometers[$i], shaft_length = 30);
+
+            translate_z(-3)
+                pot_nut(potentiometers[$i]);
+        }
 
 if($preview)
     let($show_threads = true)

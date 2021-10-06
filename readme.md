@@ -2799,6 +2799,7 @@ Potentiometers and rotary encoders
 | `pot_face(type)` | Faceplate rib width, plate depth and plate height |
 | `pot_gangs(type)` | Number of gangs for mult-gang pot |
 | `pot_neck(type)` | Diameter and length of the shaft neck |
+| `pot_nut(type)` | Across flat diameter and thickness of the nut |
 | `pot_shaft(type)` | Diameter, flat diameter, length and flat/slot length and colour. If flat diameter is less than the radius then it is a slot width |
 | `pot_spigot(type)` | Spigot width, length and height above the boss |
 | `pot_spigot_x(type)` | Spigot offset from the shaft centre |
@@ -2806,16 +2807,18 @@ Potentiometers and rotary encoders
 | `pot_thread_h(type)` | Height of threaded part |
 | `pot_thread_p(type)` | Thread pritch |
 | `pot_wafer(type)` | Width, diameter and thickness of the track wafer plus true if curved |
+| `pot_washer(type)` | Outside diameter and thickness of the washer |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
 | `pot_size(type)` | Get pot body dimensions |
-| `pot_z(type)` | Ideal distance behind panel surface to get the nut on comfortably |
+| `pot_z(type, washer = true)` | Ideal distance behind panel surface to get the nut and washer on comfortably |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `pot_nut(type, washer = true)` | Draw the nut for a potentiometer and possibly a washer |
 | `potentiometer(type, thickness = 3, shaft_length = undef)` | Draw a potentiometer with nut spaced by specified thickness |
 
 ![potentiometers](tests/png/potentiometers.png)

@@ -40,11 +40,51 @@ function pot_spigot(type)   = type[9];  //! Spigot width, length and height abov
 function pot_spigot_x(type) = type[10]; //! Spigot offset from the shaft centre
 function pot_shaft(type)    = type[11]; //! Diameter, flat diameter, length and flat/slot length and colour. If flat diameter is less than the radius then it is a slot width
 function pot_neck(type)     = type[12]; //! Diameter and length of the shaft neck
+function pot_nut(type)      = type[13]; //! Across flat diameter and thickness of the nut
+function pot_washer(type)   = type[14]; //! Outside diameter and thickness of the washer
 
 function pot_size(type) = let(d = pot_body(type)) len(d) > 3 ? [d.x , d.y, d.z] : [d.x, d.x, d.y]; //! Get pot body dimensions
 
-function pot_z(type) = pot_thread_h(type) - pot_nut_t - pot_proud; //! Ideal distance behind panel surface to get the nut on comfortably
+function pot_z(type, washer = true) = pot_thread_h(type) - pot_nut(type)[1] - pot_proud - (washer ? pot_washer(type)[1] : 0); //! Ideal distance behind panel surface to get the nut and washer on comfortably
 function pot_spigot_r(type) = let(sp = pot_spigot(type)) sp.x > 2 * spigot_r ? spigot_r : 0;
+
+module pot_nut(type, washer = true) { //! Draw the nut for a potentiometer and possibly a washer
+    nut = pot_nut(type);
+    washer = washer ? pot_washer(type) : false;
+    nut_z = washer ? washer[1] : 0;
+    thread_d = pot_thread_d(type);
+    vflip() explode(23, explode_children = true) {
+        if(washer)
+            color(washer[2])
+                linear_extrude(washer[1])
+                    difference() {
+                        circle(d = washer.x);
+
+                        circle(d =  thread_d);
+
+                        serations = washer[3];
+                        if(serations)
+                            for(i = [1 : serations])
+                                rotate(i * 360 / serations)
+                                    translate([thread_d / 2, 0])
+                                        square([(washer.x - thread_d) / 2, PI * thread_d / (2 * serations)], center = true);
+                    }
+
+        if(nut)
+            color(nut[2])
+                translate_z(nut_z + exploded() * 10) {
+                    linear_extrude(nut[1])
+                        difference() {
+                            circle(d = nut.x / cos(30), $fn = 6);
+
+                            circle(d =  thread_d);
+                        }
+
+                    if(show_threads && exploded())
+                        female_metric_thread(thread_d, pot_thread_p(type), nut[1], center = false, colour = nut[2]);
+                }
+    }
+}
 
 module potentiometer(type, thickness = 3, shaft_length = undef) {//! Draw a potentiometer with nut spaced by specified thickness
     bh = pot_boss_h(type);
