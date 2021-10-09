@@ -62,7 +62,9 @@ function screw_shorter_than(x) = x >= 20 ? floor(x / 5) * 5 : //! Returns the le
                                  x >= 10 ? 10 :
                                  x >=  8 ?  8 :
                                  x >=  6 ?  6 :
-                                 5;
+                                 x >=  5 ?  5 :
+                                 x >=  4 ?  4 :
+                                 3;
 
 function screw_length(screw, thickness, washers, insert = false, nyloc = false, nut = false, longer = false) = //! Returns the length of the longest or shortest screw that will got through `thickness` and `washers` and possibly an `insert`, `nut` or `nyloc`
     let(washer = washers ? washers * washer_thickness(screw_washer(screw)) : 0,
