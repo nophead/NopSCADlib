@@ -59,7 +59,8 @@ IEC_320_C14_switched_fused_inlet = ["IEC_320_C14_switched_fused_inlet", "IEC320 
                                                                      M3_cs_cap_screw, 40,  27, 16,46.8,3,28,   48, 2.4, 1.0, 33,   57, 4, 3.0, 48,16.5, iec320c14FusedSwitchedSpades,  false ];
 IEC_inlet       = ["IEC_inlet",       "IEC inlet",                   M3_cs_cap_screw, 40, 28, 18, 20, 3, 28,   20.5, 4, 2.5, 37,   23, 1, 2.5, 48, 14, inlet_spades,  false ];
 IEC_inlet_atx   = ["IEC_inlet_atx",   "IEC inlet for ATX",           M3_cs_cap_screw, 40, 27, 18, 19, 3, 30.5, 22,   2, 2.0, 30.5, 22, 2, 4.0, 50, 15, atx_spades,    false ];
+IEC_inlet_atx2  = ["IEC_inlet_atx2",  "IEC pressfit inlet for ATX",  M3_cs_cap_screw,  0, 27, 18, 19, 3, 30.5, 22,   1, 0,   30.5, 22, 1, 4.0, 50, 15, atx_spades,    false ]; // lugless
 IEC_outlet      = ["IEC_outlet",      "IEC outlet RS 811-7193",      M3_cs_cap_screw, 40, 32, 18, 24, 3, 28,   20.5, 2, 0.0, 29,   29, 2, 2.8, 50, 23, outlet_spades, true ];
 
-iecs = [IEC_inlet, IEC_inlet_atx, IEC_fused_inlet, IEC_fused_inlet2, IEC_320_C14_switched_fused_inlet, IEC_outlet];
+iecs = [IEC_inlet_atx2, IEC_inlet, IEC_inlet_atx, IEC_fused_inlet, IEC_fused_inlet2, IEC_320_C14_switched_fused_inlet, IEC_outlet];
 use <iec.scad>

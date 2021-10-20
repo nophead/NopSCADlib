@@ -203,9 +203,10 @@ module iec(type) { //! Draw specified IEC connector
 function iec_spade_depth(type) = iec_depth(type) + max([for(spade = iec_spades(type)) spade[1]]);
 
 module iec_screw_positions(type) //! Position children at the screw holes
-    for(side = [-1, 1])
-        translate([side * iec_pitch(type) / 2, 0])
-            children();
+    if(iec_pitch(type))
+        for(side = [-1, 1])
+            translate([side * iec_pitch(type) / 2, 0])
+                children();
 
 module iec_holes(type, h = 100, poly = false, horizontal = false, insert = false) { //! Drill the required panel holes
     clearance = 0.2;

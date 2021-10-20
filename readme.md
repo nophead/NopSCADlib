@@ -1454,6 +1454,7 @@ IEC mains inlets and outlet.
 |   1 | `iec(IEC_inlet)` |  IEC inlet |
 |   1 | `iec(IEC_inlet_atx)` |  IEC inlet for ATX |
 |   1 | `iec(IEC_outlet)` |  IEC outlet RS 811-7193 |
+|   1 | `iec(IEC_inlet_atx2)` |  IEC pressfit inlet for ATX |
 |   1 | `iec(IEC_320_C14_switched_fused_inlet)` |  IEC320 C14 switched fused inlet module |
 |  12 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   4 | `screw(M3_cs_cap_screw, 10)` |  Screw M3 cs cap x 10mm |
