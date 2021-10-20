@@ -124,19 +124,23 @@ function psu_face_transform(type, face) =           //! Returns a transformation
         translations = [h / 2, h / 2, l / 2 - left, l / 2 - right, w / 2, w / 2]
     ) translate([0, 0, h / 2]) * rotate(rotations[face]) * translate([0, 0, translations[face]]);
 
-grill_hole = 4.5;
-grill_gap = 1.5;
-module psu_grill(width, height) {
+module psu_grill(width, height, grill_hole = 4.5, grill_gap = 1.5, fn = 0, avoid = []) {
     nx = floor(width / (grill_hole + grill_gap));
     xpitch = width / nx;
     ny = floor(height / ((grill_hole + grill_gap) * cos(30)));
     ypitch = height / ny;
+    r = grill_hole / 2;
+    avoid = avoid ? [for(p = avoid) [[p.x - p[2] / 2 - r, p.y - p[3] / 2 - r], [p.x + p[2] / 2 + r, p.y + p[3] / 2 + r]]] : false;
+
+    function in(regions, x, y) = [for(r = regions) if(x >= r[0].x && x <= r[1].x && y >= r[0].y && y <= r[1].y) true];
 
     for(y = [0 : ny - 1], x = [0 : nx - 1 - (y % 2)]) {
         x = -width / 2 + (x + 0.5 + (y % 2) / 2) * xpitch;
         y = -height / 2 + (y + 0.5) * ypitch;
-        translate([x, y])
-            circle(d = grill_hole);
+        if(!avoid || !in(avoid, x, y))
+            translate([x, y])
+                rotate(30)
+                    circle(r, $fn = fn);
     }
 }
 
@@ -185,12 +189,18 @@ module psu(type) { //! Draw a power supply
                                     translate(h)
                                         drill(screw_pilot_hole(psu_screw(type)), 0);
 
-                                if(psu_face_grill(f)) {
+                                g = psu_face_grill(f);
+                                if(g) {
+                                    list = is_list(g);
+                                    fn = list ? g[2] : 0;
+                                    hole = list ? g[0] : 4.5;
+                                    gap = list ? g[1] : 1.5;
+                                    avoid = list ? g[3] : [];
                                     mx = 6;
                                     my1 = i == f_top && psu_face_grill(faces[f_back]) ? 0 : 6;
                                     my2 = i == f_back && psu_face_grill(faces[f_top]) ? 0 : 6;
                                     translate([0, (my2 - my1) / 2])
-                                        psu_grill(xw - 2 * mx, yw - my1 - my2);
+                                        psu_grill(xw - 2 * mx, yw - my1 - my2, grill_hole = hole, grill_gap = gap, fn = fn, avoid = avoid);
                                 }
                                 if(fan)
                                     translate([fan.x, fan.y]) intersection() {
@@ -234,7 +244,7 @@ module psu(type) { //! Draw a power supply
                             }
 
                         if(iec)
-                            translate([iec.x, iec.y])
+                            translate([iec.x, iec.y, t])
                                 rotate(iec.z)
                                     iec_assembly(iec[3], t);
 
