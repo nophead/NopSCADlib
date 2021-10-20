@@ -2890,18 +2890,18 @@ Face order is bottom, top, left, right, front, back.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 |  |  IEC mains lead |
+|   2 |  |  IEC mains lead |
 |   1 | `psu(ATX500)` |  PSU ATX500 |
-|   1 | `psu(KY240W)` |  PSU KY-240W-12-L |
+|   1 | `psu(ATX300)` |  PSU FSP300-60GHX |
+|   1 | `psu(KY240W)` |  PSU KY-240W-12-L - not shown |
 |   1 | `psu(PD_150_12)` |  PSU PD-150-12 |
 |   1 | `psu(S_250_48)` |  PSU S-250-48 |
 |   1 | `psu(S_300_12)` |  PSU S-300-12 |
-|   4 | `screw(No632_pan_screw, 8)` |  Screw 6-32 pan x  8mm |
-|   4 | `screw(M3_cap_screw, 8)` |  Screw M3 cap x  8mm |
+|   9 | `screw(No632_pan_screw, 8)` |  Screw 6-32 pan x  8mm |
 |   8 | `screw(M3_pan_screw, 8)` |  Screw M3 pan x  8mm |
 |   4 | `screw(M4_cap_screw, 8)` |  Screw M4 cap x  8mm |
-|  12 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   8 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  13 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 
 
 <a href="#top">Top</a>

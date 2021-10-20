@@ -22,7 +22,7 @@ include <../vitamins/psus.scad>
 use <../utils/layout.scad>
 
 module psus()
-    layout([for(p = psus) psu_width(p)], 10) let(p = psus[$i])
+    layout([for(p = psus) atx_psu(p) ? psu_length(p) : psu_width(p)], 10) let(p = psus[$i])
     rotate(atx_psu(p) ? 0 : 90) {
         psu(p);
 
@@ -31,5 +31,10 @@ module psus()
                 screw_and_washer(psu_screw(p), 8);
     }
 
-if($preview)
+if($preview) {
     psus();
+
+    for(p = psus_not_shown)
+        hidden()
+            psu(p);
+}

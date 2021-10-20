@@ -68,6 +68,29 @@ ATX500 =
         [": IEC mains lead"]
     ];
 
+// Single fan in the top, wires exit opposite side from mains in
+ATX300 = let(p = [113 / 2, 51 / 2], iec = [35.5, 6], sw = [6.5, 7])
+    ["ATX300", "FSP300-60GHX", 125, 100, 64, No632_pan_screw, 5/2, true, 0, 0, [],
+        [
+            [[], 0.5, []],
+            [[], 0.5, [], false, [0, 8, fan80x25]],
+            [[], 0.5, []],
+            [[], 0.5, []],
+            [[-p, p, [-p.x,  p.y], [p.x, -p.y], [p.x, 0]], 0.5, [], [3, 0.35, 6, [
+                [-p.x, -p.y, 5, 5],
+                [-p.x, p.y, 5, 5],
+                [p.x, 0, 9, 100],
+                [p.x, -p.y, 17, 6],
+                [iec.x, iec.y, 32, 22],
+                [sw.x, sw.y, 23, 20],
+                [sw.x, sw.y, 28, 12],
+                ]], false, [iec.x, iec.y, 180, IEC_inlet_atx2], [sw.x, sw.y, 90, small_rocker]],
+            [[], 0.5, []],
+        ],
+        [": IEC mains lead"]
+    ];
+
+
 KY240W =
     ["KY240W", "KY-240W-12-L", 199, 110, 50, M3_cap_screw, M3_clearance_radius, false, 0, 0, [],
         [
@@ -75,7 +98,6 @@ KY240W =
             [ 199 / 2 - 12,  110 / 2 - 9 ],
             [ 199 / 2 - 138, 110 / 2 - 93],
             [ 199 / 2 - 138, 110 / 2 - 9 ]]]
-
         ],
         []
     ];
@@ -179,6 +201,8 @@ External =
         [": IEC mains lead"]
     ];
 
-psus = [PD_150_12, S_250_48, S_300_12, ATX500, KY240W];
+psus = [PD_150_12, S_250_48, S_300_12, ATX300, ATX500];
+
+psus_not_shown = [KY240W];
 
 use <psu.scad>
