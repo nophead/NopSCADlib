@@ -22,10 +22,11 @@
 //
 include <../utils/core/core.scad>
 
-function magnet_od(type)    = type[1]; //! Outer diameter
-function magnet_id(type)    = type[2]; //! Inside diameter if a ring
-function magnet_h(type)     = type[3]; //! Height
-function magnet_r(type)     = type[4]; //! Corner radius
+function magnet_name(type)  = type[1]; //! Name
+function magnet_od(type)    = type[2]; //! Outer diameter
+function magnet_id(type)    = type[3]; //! Inside diameter if a ring
+function magnet_h(type)     = type[4]; //! Height
+function magnet_r(type)     = type[5]; //! Corner radius
 
 module magnet(type) { //! Draw specified magnet
     od = magnet_od(type);
@@ -33,7 +34,7 @@ module magnet(type) { //! Draw specified magnet
     h = magnet_h(type);
     r = magnet_r(type);
 
-    vitamin(str("magnet(", type[0], "): Magnet ", od, "mm diameter, ", h, "mm high", id ? str(", ", id, "mm bore") : "" ));
+    vitamin(str("magnet(", type[0], "): ", magnet_name(type), ", ", od, "mm diameter, ", h, "mm high", id ? str(", ", id, "mm bore") : "" ));
 
     or = od / 2;
     ir = id / 2;

@@ -20,11 +20,12 @@
 //! Cylindrical and ring magnets.
 //
 
-//                          od,        id,        h,         r
-MAG8x4x4p2 = ["MAG8x4x4p2", 8,         4.2,       4,         0.5];
-MAG484     = ["MAG484",     inch(1/4), inch(1/8), inch(1/4), 0.5];
-MAG5x8     = ["MAG5x8",     8,         0,         5,         0.5];
+//                          name,                     od,        id,        h,         r
+MAG8x4x4p2 = ["MAG8x4x4p2", "Magnet",                 8,         4.2,       4,         0.5];
+MAG484     = ["MAG484",     "Magnet",                 inch(1/4), inch(1/8), inch(1/4), 0.5];
+MAG5x8     = ["MAG5x8",     "Magnet",                 8,         0,         5,         0.5];
+MAGRE6x2p5 = ["MAGRE6x2p5", "Radial encoder magnet",  6,         0,         2.5,       0.5];
 
-magnets = [MAG8x4x4p2, MAG484, MAG5x8];
+magnets = [MAG8x4x4p2, MAG484, MAG5x8, MAGRE6x2p5];
 
 use <magnet.scad>
