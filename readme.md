@@ -1881,6 +1881,7 @@ Cylindrical and ring magnets.
 |:--- |:--- |
 | `magnet_h(type)` | Height |
 | `magnet_id(type)` | Inside diameter if a ring |
+| `magnet_name(type)` | Name |
 | `magnet_od(type)` | Outer diameter |
 | `magnet_r(type)` | Corner radius |
 
@@ -1894,9 +1895,10 @@ Cylindrical and ring magnets.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `magnet(MAG484)` |  Magnet 6.35mm diameter, 6.35mm high, 3.175mm bore |
-|   1 | `magnet(MAG8x4x4p2)` |  Magnet 8mm diameter, 4mm high, 4.2mm bore |
-|   1 | `magnet(MAG5x8)` |  Magnet 8mm diameter, 5mm high |
+|   1 | `magnet(MAG484)` |  Magnet, 6.35mm diameter, 6.35mm high, 3.175mm bore |
+|   1 | `magnet(MAG8x4x4p2)` |  Magnet, 8mm diameter, 4mm high, 4.2mm bore |
+|   1 | `magnet(MAG5x8)` |  Magnet, 8mm diameter, 5mm high |
+|   1 | `magnet(MAGRE6x2p5)` |  Radial encoder magnet, 6mm diameter, 2.5mm high |
 
 
 <a href="#top">Top</a>
