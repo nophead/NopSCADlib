@@ -103,7 +103,7 @@ module drill(r, h = 100, center = true) //! Make a cylinder for drilling holes s
 
 module poly_drill(r, h = 100, center = true) //! Make a cylinder for drilling holes suitable for CNC routing if cnc_bit_r is non zero, otherwise a poly_cylinder.
     if(cnc_bit_r)
-        drill(r, h, center = true);
+        drill(r, h, center = center);
     else
         poly_cylinder(r, h, center);
 
