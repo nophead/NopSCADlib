@@ -1527,6 +1527,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `jack_4mm_flange_radius()` | 4mm jack socket flange radius |
 | `jack_4mm_hole_radius()` | Panel hole radius for 4mm jack |
 | `jack_4mm_plastic_flange_radius()` | 4mm plastic jack socket flange radius |
 | `jack_4mm_shielded_hole_radius()` | Panel hole radius for 4mm shielded jack |

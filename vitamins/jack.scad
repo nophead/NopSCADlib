@@ -29,10 +29,11 @@ use <../utils/thread.scad>
 use <ring_terminal.scad>
 
 function jack_4mm_hole_radius() = 8/2; //! Panel hole radius for 4mm jack
+function jack_4mm_flange_radius() = 10.6 / 2; //! 4mm jack socket flange radius
 
 module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack socket with nut positioned for specified panel thickness
     vitamin(str("jack_4mm(\"", colour, "\", 3", arg(display_colour, false), "): 4mm jack socket ", colour));
-    flange_d = 10.6;
+    flange_r = jack_4mm_flange_radius();
     flange_t = 3;
     flange_id = 4.6;
     length = 28.5;
@@ -50,7 +51,7 @@ module jack_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm jack
     explode(length, offset = -length + flange_t) {
         color(display_colour ? display_colour : colour) rotate_extrude() difference() {
             union() {
-                square([flange_d / 2, flange_t]);
+                square([flange_r, flange_t]);
 
                 translate([0, -sleaved])
                     square([sleaved_d / 2, sleaved]);
