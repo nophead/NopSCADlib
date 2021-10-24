@@ -2846,6 +2846,7 @@ Face order is bottom, top, left, right, front, back.
 |:--- |:--- |
 | `atx_psu(type)` | True if an ATX style PSU |
 | `psu_accessories(type)` | Accessories to add to BOM, e.g. mains lead |
+| `psu_face_cutout(type)` | Panel cutout to accommodate this face, e.g. for ATX |
 | `psu_face_cutouts(type)` | List of polygons to remove |
 | `psu_face_fan(type)` | Fan x,y position and type |
 | `psu_face_grill(type)` | Is this face a grill |
@@ -2881,7 +2882,7 @@ Face order is bottom, top, left, right, front, back.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `atx_psu_cutout(type)` | Cut out for the rear of an ATX |
+| `atx_psu_cutout(type, face = f_front)` | Cut out for the rear of an ATX, which is actually f_front! |
 | `psu(type)` | Draw a power supply |
 | `psu_screw_positions(type, face = undef)` | Position children at the screw positions on the preferred mounting face, which can be overridden. |
 | `terminal_block(type, ways)` | Draw a power supply terminal block |

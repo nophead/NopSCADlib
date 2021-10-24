@@ -62,29 +62,58 @@ ATX500 =
             [[], 0.8, []],
             [[], 0.8, []],
             [[], 0.8, []],
-            [[[-69, -27], [-69,  37], [69,  37], [45, -37]], 0.8, [], false, [-25, 0, fan80x25], [45, -19.6, 180, IEC_inlet_atx], [45, 23, 90, small_rocker]],
+            [[[-69, -27], [-69,  37], [69,  37], [45, -37]], 0.8, [], false, [-25, 0, fan80x25], [45, -19.6, 180, IEC_inlet_atx], [45, 23, 90, small_rocker], false,
+             let(h0 = [-69, -27]) [ // https://www.techpowerup.com/forums/threads/pc-component-dimensions.157239, tweaked
+                [18.7, -13] + h0,
+                [ 5.7,   0] + h0,
+                [ 5.7,  54] + h0,
+                [18.7,  67] + h0,
+                [127,   67] + h0,
+                [140,   67 - 13 / tan(52)] + h0,
+                [140,   -5 + 11 / tan(52)] + h0,
+                [129,   -5] + h0,
+                [81.3,  -5] + h0,
+                [73.3, -13] + h0,
+             ]
+            ],
             [[], 0.8, [], true],
         ],
         [": IEC mains lead"]
     ];
 
 // Single fan in the top, wires exit opposite side from mains in
-ATX300 = let(p = [113 / 2, 51 / 2], iec = [35.5, 6], sw = [6.5, 7])
-    ["ATX300", "FSP300-60GHX", 125, 100, 64, No632_pan_screw, 5/2, true, 0, 0, [],
+ATX300 = let(p = [113 / 2, 51.5 / 2], s = [125, 100, 64], iec = [35.5, 6], sw = [6.5, 7])
+    ["ATX300", "FSP300-60GHX", s.x, s.y, s.z, No632_pan_screw, No6_clearance_radius, true, 0, 0, [],
         [
             [[], 0.5, []],
             [[], 0.5, [], false, [0, 8, fan80x25]],
             [[], 0.5, []],
             [[], 0.5, []],
-            [[-p, p, [-p.x,  p.y], [p.x, -p.y], [p.x, 0]], 0.5, [], [3, 0.35, 6, [
+            [[-p, p, [-p.x,  p.y], [p.x, -p.y], [p.x, 0]], 0.5, [], [3, 0.6, 6, [6.3, 7, 6.4, 5.5], [
                 [-p.x, -p.y, 5, 5],
                 [-p.x, p.y, 5, 5],
-                [p.x, 0, 9, 100],
-                [p.x, -p.y, 17, 6],
+                [p.x, 0, 5, 100],
+                [p.x,  p.y, 12, 6],
+                [p.x, -p.y, 12, 6],
                 [iec.x, iec.y, 32, 22],
-                [sw.x, sw.y, 23, 20],
-                [sw.x, sw.y, 28, 12],
-                ]], false, [iec.x, iec.y, 180, IEC_inlet_atx2], [sw.x, sw.y, 90, small_rocker]],
+                [sw.x, sw.y, 20, 20],
+                [sw.x, sw.y, 27, 12],
+                ]], false, [iec.x, iec.y, 180, IEC_inlet_atx2], [sw.x, sw.y, 90, small_rocker], false, [
+                    [-s.x / 2 + 11.5, -s.z / 2 + 4.5],
+                    [-s.x / 2 + 5.5,  -s.z / 2 + 4.5 + 6 * tan(60)],
+
+                    [-s.x / 2 + 5.5,   s.z / 2 - 5.4 - 6 * tan(60)],
+                    [-s.x / 2 + 11.5,  s.z / 2 - 5.4],
+
+                    [ s.x / 2 - 14,   s.z / 2 - 5.4],
+                    [ s.x / 2 - 10.5, s.z / 2 - 5.4 - 3.5 * tan(60)],
+                    [ s.x / 2 - 10.5, -6],
+                    [ s.x / 2 - 8,    -8.5],
+
+                    [ s.x / 2 - 8, -s.z / 2 + 4.5 + 6 * tan(60)],
+                    [ s.x / 2 - 14, -s.z / 2 + 4.5],
+                ]
+             ],
             [[], 0.5, []],
         ],
         [": IEC mains lead"]

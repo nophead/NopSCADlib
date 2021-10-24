@@ -16,10 +16,14 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+show_cutout = false;
+
 include <../core.scad>
 include <../vitamins/psus.scad>
 
 use <../utils/layout.scad>
+
+
 
 module psus()
     layout([for(p = psus) atx_psu(p) ? psu_length(p) : psu_width(p)], 10) let(p = psus[$i])
@@ -29,6 +33,9 @@ module psus()
         psu_screw_positions(p)
             translate_z(3)
                 screw_and_washer(psu_screw(p), 8);
+
+        if(show_cutout && atx_psu(p))
+            #atx_psu_cutout(p);
     }
 
 if($preview) {

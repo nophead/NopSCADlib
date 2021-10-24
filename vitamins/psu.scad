@@ -39,6 +39,7 @@ function psu_face_fan(type)          = type[4];     //! Fan x,y position and typ
 function psu_face_iec(type)          = type[5];     //! IEC connector x,y, rotation and type
 function psu_face_switch(type)       = type[6];     //! Rocker switch x,y, rotation and type
 function psu_face_vents(type)        = type[7];     //! Vents array position x,y, rotation, size and corner radius
+function psu_face_cutout(type)       = type[8];     //! Panel cutout to accommodate this face, e.g. for ATX
 
 function psu_name(type)              = type[1];     //! The part name
 function psu_length(type)            = type[2];     //! Length
@@ -125,9 +126,9 @@ function psu_face_transform(type, face) =           //! Returns a transformation
     ) translate([0, 0, h / 2]) * rotate(rotations[face]) * translate([0, 0, translations[face]]);
 
 module psu_grill(width, height, grill_hole = 4.5, grill_gap = 1.5, fn = 0, avoid = []) {
-    nx = floor(width / (grill_hole + grill_gap));
+    nx = floor(width / (grill_hole + grill_gap)) + 1;
     xpitch = width / nx;
-    ny = floor(height / ((grill_hole + grill_gap) * cos(30)));
+    ny = floor(height / ((grill_hole + grill_gap) * cos(30))) + 1;
     ypitch = height / ny;
     r = grill_hole / 2;
     avoid = avoid ? [for(p = avoid) [[p.x - p[2] / 2 - r, p.y - p[3] / 2 - r], [p.x + p[2] / 2 + r, p.y + p[3] / 2 + r]]] : false;
@@ -192,15 +193,17 @@ module psu(type) { //! Draw a power supply
                                 g = psu_face_grill(f);
                                 if(g) {
                                     list = is_list(g);
-                                    fn = list ? g[2] : 0;
                                     hole = list ? g[0] : 4.5;
                                     gap = list ? g[1] : 1.5;
-                                    avoid = list ? g[3] : [];
-                                    mx = 6;
-                                    my1 = i == f_top && psu_face_grill(faces[f_back]) ? 0 : 6;
-                                    my2 = i == f_back && psu_face_grill(faces[f_top]) ? 0 : 6;
-                                    translate([0, (my2 - my1) / 2])
-                                        psu_grill(xw - 2 * mx, yw - my1 - my2, grill_hole = hole, grill_gap = gap, fn = fn, avoid = avoid);
+                                    fn = list ? g[2] : 0;
+                                    margins = list ? g[3] : [6, 6, 6, 6];
+                                    avoid = list ? g[4] : [];
+                                    mx1 = margins[0];
+                                    mx2 = margins[1];
+                                    my1 = i == f_top && psu_face_grill(faces[f_back]) ? 0 : margins[2];
+                                    my2 = i == f_back && psu_face_grill(faces[f_top]) ? 0 : margins[3];
+                                    translate([(mx1 - mx2) / 2, (my2 - my1) / 2])
+                                        psu_grill(xw - mx1 - mx2, yw - my1 - my2, grill_hole = hole, grill_gap = gap, fn = fn, avoid = avoid);
                                 }
                                 if(fan)
                                     translate([fan.x, fan.y]) intersection() {
@@ -343,22 +346,9 @@ module psu_screw_positions(type, face = undef) { //! Position children at the sc
                     children();
 }
 
-module atx_psu_cutout(type) { //! Cut out for the rear of an ATX
-    holes = psu_face_holes(psu_faces(type)[f_front]);
-    translate([holes[0].x, -psu_width(type) / 2, psu_height(type) / 2 + holes[0].y])
-        rotate([90, 0, 0])
-            linear_extrude(100, center = true)
-                round(5)
-                polygon([ // https://www.techpowerup.com/forums/threads/pc-component-dimensions.157239, tweaked
-                    [18.7, -13],
-                    [ 5.7,   0],
-                    [ 5.7,  54],
-                    [18.7,  67],
-                    [127,   67],
-                    [140,   67 - 13 / tan(52)],
-                    [140,   -5 + 11 / tan(52)],
-                    [129,   -5],
-                    [81.3,  -5],
-                    [73.3, -13],
-                ]);
+module atx_psu_cutout(type, face = f_front) { //! Cut out for the rear of an ATX, which is actually f_front!
+    multmatrix(psu_face_transform(type, face))
+        linear_extrude(100, center = true)
+            round(5)
+                polygon(psu_face_cutout(psu_faces(type)[face]));
 }
