@@ -74,7 +74,8 @@ module foot_assembly(t = 0, type = foot, flip = false, no_washer = false) { //! 
     screw_length = screw_length(screw, foot_thickness(type) + t - squeeze, no_washer ? 1 : 2, nyloc = true);
 
     vflip() explode(15, true) {
-        stl_colour(pp4_colour) foot(type);
+        translate_z(-squeeze)
+            stl_colour(pp4_colour) foot(type);
 
         if(t)
             explode(15, true)
