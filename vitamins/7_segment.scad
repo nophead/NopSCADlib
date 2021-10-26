@@ -18,7 +18,10 @@
 //
 
 //
-//! 7 Segment displays
+//! 7 Segment displays.
+//!
+//! Can be single digits stacked side by side or can be multiple digits in one unit. This is determined by the overall width compared to the width of a digit.
+//! Presence of a decimal point is determined by the number of pins. Its position is determined by a heuristic.
 //
 include <../utils/core/core.scad>
 
@@ -28,11 +31,19 @@ function 7_segment_digit_size(type) = type[2]; //! Size of the actual digit and 
 function 7_segment_pins(type)       = type[3]; //! [x, y] array of pins
 function 7_segment_pin_pitch(type)  = type[4]; //! x and y pin pitches and pin diameter
 
+function 7_segment_digits(type) = let(d = 7_segment_digit_size(type)) floor(7_segment_size(type).x / (d.x + d.y * tan(d[3])));
+
 module 7_segment_digit(type, colour = grey(95), pin_length = 6.4) { //! Draw the specified 7 segment digit
     size = 7_segment_size(type);
     digit = 7_segment_digit_size(type);
     pins = 7_segment_pins(type);
     pin_pitch = 7_segment_pin_pitch(type);
+
+    t = digit[2];
+    a = digit[3];
+    digits = 7_segment_digits(type);
+    pitch = size.x / digits;
+    has_dp = (pins.x * pins.y) > 7 + digits;
 
     color(grey(95))
         linear_extrude(size.z)
@@ -43,48 +54,48 @@ module 7_segment_digit(type, colour = grey(95), pin_length = 6.4) { //! Draw the
             cube([size.x - 0.1, size.y, eps], center = true);
 
     color(colour)
-         translate_z(size.z)
-            linear_extrude(2 * eps) {
-                t = digit[2];
-                a = digit[3];
-                sq = [digit.x - 2 * t, (digit.y - 3 * t) / 2];
+        for(i = [0 : digits - 1])
+            translate([(i - (digits - 1) / 2) * pitch, 0, size.z])
+                linear_extrude(2 * eps) {
+                    sq = [digit.x - 2 * t, (digit.y - 3 * t) / 2];
 
-                multmatrix([                    // Skew
-                    [1, tan(a), 0, 0],
-                    [0, 1, 0, 0],
-                    [0, 0, 1, 0],
-                    [0, 0, 0, 1]
-                ])
-                difference() {
-                    square([digit.x, digit.y], center = true);
+                    multmatrix([                    // Skew
+                        [1, tan(a), 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 0, 1, 0],
+                        [0, 0, 0, 1]
+                    ])
+                    difference() {
+                        square([digit.x, digit.y], center = true);
 
-                    for(y = [-1, 1], x = [-1, 1]) {
-                        translate([0, y * (t + sq.y) / 2])
-                            square(sq, center = true);
+                        for(y = [-1, 1], x = [-1, 1]) {
+                            translate([0, y * (t + sq.y) / 2])
+                                square(sq, center = true);
 
 
-                        translate([x * digit.x / 2, y * digit.y / 2])
-                            rotate(-45 * x * y) {
-                                square([10, t], center = true);
+                            translate([x * digit.x / 2, y * digit.y / 2])
+                                rotate(-45 * x * y) {
+                                    square([10, t], center = true);
 
-                                square([t / 5, 10], center = true);
-                            }
+                                    square([t / 5, 10], center = true);
+                                }
 
-                        translate([x * (digit.x - t) / 2, 0])
-                            rotate(45) {
-                                square([t / 5, t * 2], center = true);
+                            translate([x * (digit.x - t) / 2, 0])
+                                rotate(45) {
+                                    square([t / 5, t * 2], center = true);
 
-                                square([t * 2, t / 5], center = true);
+                                    square([t * 2, t / 5], center = true);
 
-                                translate([x * t / 2, -x * t / 2])
-                                    square([t, t], center = true);
-                            }
+                                    translate([x * t / 2, -x * t / 2])
+                                        square([t, t], center = true);
+                                }
+                        }
                     }
+                    r = 1.25 * t / 2;
+                    if(has_dp)
+                        translate([max(digit.x / 2 + digit.y / 2 * tan(a) - r, digit.x / 2 - digit.y /2 * tan(a) + r * 1.25), -digit.y / 2 + r])
+                            circle(r);
                 }
-                r = 1.25 * t / 2;
-                translate([digit.x / 2 - r + digit.y / 2 * tan(a), -digit.y / 2 + r])
-                    circle(r);
-            }
 
     color(silver)
         translate_z(-pin_length)

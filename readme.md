@@ -52,7 +52,10 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 ---
 <a name="7_segments"></a>
 ## 7_segments
-7 Segment displays
+7 Segment displays.
+
+Can be single digits stacked side by side or can be multiple digits in one unit. This is determined by the overall width compared to the width of a digit.
+Presence of a decimal point is determined by the number of pins. Its position is determined by a heuristic.
 
 [vitamins/7_segments.scad](vitamins/7_segments.scad) Object definitions.
 
