@@ -24,7 +24,7 @@ include <../utils/core/core.scad>
 
 
 function 7_segment_size(type)       = type[1]; //! Size of the body
-function 7_segment_digit_size(type) = type[2]; //! Size of the actual digit and segemnt width and angle
+function 7_segment_digit_size(type) = type[2]; //! Size of the actual digit and segment width and angle
 function 7_segment_pins(type)       = type[3]; //! [x, y] array of pins
 function 7_segment_pin_pitch(type)  = type[4]; //! x and y pin pitches and pin diameter
 

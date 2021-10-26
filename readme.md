@@ -63,7 +63,7 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 ### Properties
 | Function | Description |
 |:--- |:--- |
-| `7_segment_digit_size(type)` | Size of the actual digit and segemnt width and angle |
+| `7_segment_digit_size(type)` | Size of the actual digit and segment width and angle |
 | `7_segment_pin_pitch(type)` | x and y pin pitches and pin diameter |
 | `7_segment_pins(type)` | None |
 | `7_segment_size(type)` | Size of the body |
