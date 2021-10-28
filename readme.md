@@ -2390,6 +2390,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
 |   1 | `box_header(2p54header, 4, 2)` |  Box header 4 x 2 |
 |   1 | `d_plug(DCONN9, pcb = true)` |  D-type 9 way PCB mount plug |
 |   1 | `dil_socket(12, 15.24)` |  DIL socket 24 x 0.6" |
@@ -2397,6 +2398,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pdip(24, 27C32, w = 15.24)` |  IC 27C32 PDIP24 |
 |   1 | `pdip(8, NE555)` |  IC NE555 PDIP8 |
 |   1 | `idc_transition(2p54header, 5)` |  IDC transition header 5 x 2 |
+|   1 | `potentiometer(KY_040_encoder)` |  KY_040_encoder |
 |   1 | `led(LED10mm, "yellow")` |  LED 10 mm yellow |
 |   1 | `led(LED3mm)` |  LED 3 mm red |
 |   1 | `led(LED5mm, "orange")` |  LED 5 mm orange |
@@ -2826,9 +2828,18 @@ Potentiometers and rotary encoders
 | Module | Description |
 |:--- |:--- |
 | `pot_nut(type, washer = true)` | Draw the nut for a potentiometer and possibly a washer |
-| `potentiometer(type, thickness = 3, shaft_length = undef)` | Draw a potentiometer with nut spaced by specified thickness |
+| `potentiometer(type, thickness = 3, shaft_length = undef, value = false)` | Draw a potentiometer with nut spaced by specified thickness |
 
 ![potentiometers](tests/png/potentiometers.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
+|   1 | `potentiometer(KY_040_encoder)` |  KY_040_encoder |
+|   1 | `potentiometer(imperial_pot)` |  Potentiometer imperial_pot |
+|   1 | `potentiometer(imperial_pot_x2)` |  Potentiometer imperial_pot_x2 |
+|   1 | `potentiometer(metric_pot)` |  Potentiometer metric_pot |
 
 
 <a href="#top">Top</a>

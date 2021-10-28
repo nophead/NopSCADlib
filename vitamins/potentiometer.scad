@@ -27,21 +27,21 @@ pot_proud = 0.3;
 spigot_r = 0.5;
 tab = [3.2, 0.5];
 
-function pot_body(type)     = type[0];  //! Body diameter or width & depth, height and corner radius
-function pot_face(type)     = type[1];  //! Faceplate rib width, plate depth and plate height
-function pot_wafer(type)    = type[2];  //! Width, diameter and thickness of the track wafer plus true if curved
-function pot_gangs(type)    = type[3];  //! Number of gangs for mult-gang pot
-function pot_thread_d(type) = type[4];  //! Nomininal thread diameter
-function pot_thread_p(type) = type[5];  //! Thread pritch
-function pot_thread_h(type) = type[6];  //! Height of threaded part
-function pot_boss_d(type)   = type[7];  //! Boss diameter
-function pot_boss_h(type)   = type[8];  //! Boss height
-function pot_spigot(type)   = type[9];  //! Spigot width, length and height above the boss
-function pot_spigot_x(type) = type[10]; //! Spigot offset from the shaft centre
-function pot_shaft(type)    = type[11]; //! Diameter, flat diameter, length and flat/slot length and colour. If flat diameter is less than the radius then it is a slot width
-function pot_neck(type)     = type[12]; //! Diameter and length of the shaft neck
-function pot_nut(type)      = type[13]; //! Across flat diameter and thickness of the nut
-function pot_washer(type)   = type[14]; //! Outside diameter and thickness of the washer
+function pot_body(type)     = type[1];  //! Body diameter or width & depth, height and corner radius
+function pot_face(type)     = type[2];  //! Faceplate rib width, plate depth and plate height
+function pot_wafer(type)    = type[3];  //! Width, diameter and thickness of the track wafer plus true if curved
+function pot_gangs(type)    = type[4];  //! Number of gangs for mult-gang pot
+function pot_thread_d(type) = type[5];  //! Nomininal thread diameter
+function pot_thread_p(type) = type[6];  //! Thread pritch
+function pot_thread_h(type) = type[7];  //! Height of threaded part
+function pot_boss_d(type)   = type[8];  //! Boss diameter
+function pot_boss_h(type)   = type[9];  //! Boss height
+function pot_spigot(type)   = type[10]; //! Spigot width, length and height above the boss
+function pot_spigot_x(type) = type[11]; //! Spigot offset from the shaft centre
+function pot_shaft(type)    = type[12]; //! Diameter, flat diameter, length and flat/slot length and colour. If flat diameter is less than the radius then it is a slot width
+function pot_neck(type)     = type[13]; //! Diameter and length of the shaft neck
+function pot_nut(type)      = type[14]; //! Across flat diameter and thickness of the nut
+function pot_washer(type)   = type[15]; //! Outside diameter and thickness of the washer
 
 function pot_size(type) = let(d = pot_body(type)) len(d) > 3 ? [d.x , d.y, d.z] : [d.x, d.x, d.y]; //! Get pot body dimensions
 
@@ -86,7 +86,7 @@ module pot_nut(type, washer = true) { //! Draw the nut for a potentiometer and p
     }
 }
 
-module potentiometer(type, thickness = 3, shaft_length = undef) {//! Draw a potentiometer with nut spaced by specified thickness
+module potentiometer(type, thickness = 3, shaft_length = undef, value = false) {//! Draw a potentiometer with nut spaced by specified thickness
     bh = pot_boss_h(type);
     s = pot_size(type);
     face =  pot_face(type);
@@ -97,6 +97,7 @@ module potentiometer(type, thickness = 3, shaft_length = undef) {//! Draw a pote
     thread_d = pot_thread_d(type);
     thread_h = pot_thread_h(type);
     shaft = pot_shaft(type);
+    vitamin(str("potentiometer(", type[0], "): ", slice(type[0], start = -8) != "_encoder" ? "Potentiometer " : "", value ? value : type[0]));
 
     color(dia_cast_colour) {
         // Boss
