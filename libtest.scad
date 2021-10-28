@@ -123,6 +123,7 @@ use <tests/fixing_block.scad>
 use <tests/flat_hinge.scad>
 use <tests/foot.scad>
 use <tests/handle.scad>
+use <tests/knob.scad>
 use <tests/PCB_mount.scad>
 use <tests/pocket_handle.scad>
 use <tests/printed_box.scad>
@@ -173,16 +174,19 @@ translate([x5, cable_grommets_y + 470]) {
         flat_hinges();
 }
 
-translate([x5, cable_grommets_y + 370])
+translate([x5, cable_grommets_y + 380])
     no_explode() socket_boxes();
-
-translate([x5 + 60, cable_grommets_y + 200])
-    strap_handles();
 
 translate([640, cable_grommets_y + 200])
     printed_pulley_test();
 
-translate([x5, cable_grommets_y + 250])
+translate([x5, cable_grommets_y + 200])
+    knobs();
+
+translate([x5 + 60, cable_grommets_y + 250])
+    strap_handles();
+
+translate([x5, cable_grommets_y + 300])
     handle();
 
 translate([950, 600])

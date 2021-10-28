@@ -35,18 +35,18 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
 <tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
 <tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Knob">Knob</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
 ---
@@ -5287,6 +5287,75 @@ Printed handle that can be printed without needing support material due to its t
 | Qty | Name |
 | ---:|:--- |
 |   1 | handle_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Knob"></a>
+## Knob
+Parametric knobs for potentiometers and encoders.
+
+A knob can be constructed by specififying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
+An optional skirt and / or a pointer can be specified.
+
+The STL includes a support membrane that needs to be cut out and a thread needs to be tapped for the grub screw.
+
+[printed/knob.scad](printed/knob.scad) Implementation.
+
+[tests/knob.scad](tests/knob.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `knob_bot_d(type)` | Diameter at the bottom |
+| `knob_corner_r(type)` | Rounded top corner |
+| `knob_flat_d(type)` | The shaft diameter at the flat |
+| `knob_flat_h(type)` | The length of the flat |
+| `knob_height(type)` | Height |
+| `knob_name(type)` | Name for the stl maker |
+| `knob_pointer(type)` | None |
+| `knob_recess(type)` | Recess diameter and thickness to clear nut and thread, diameter, nut height, thread height |
+| `knob_screw(type)` | The grub screw type |
+| `knob_shaft_d(type)` | Shaft diameter |
+| `knob_shaft_len(type)` | Shaft length |
+| `knob_skirt(type)` | Skirt diameter and thickness |
+| `knob_top_d(type)` | Diameter at the top |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `knob(name = "knob", top_d = 12, bot_d = 15, height = 18, shaft_length, skirt = [20, 2], pointer = false, corner_r = 2, screw = M3_grub_screw, shaft_d, flat_d, flat_h, recess)` | Constructor |
+| `knob_for_pot(pot, thickness, z = 1, shaft_length = undef, top_d = 12, bot_d = 15, skirt = [20, 2], pointer = false, corner_r = 2, height = 0, washer = true)` | Construct a knob to fit specified pot |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `knob(type, supports = true)` | Generate the STL for a knob |
+| `knob_assembly(type) explode(40, explode_children = true)` | Assembly with the grub screw in place |
+
+![knob](tests/png/knob.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
+|   1 | `potentiometer(KY_040_encoder)` |  KY_040_encoder |
+|   1 | `potentiometer(imperial_pot)` |  Potentiometer imperial_pot |
+|   1 | `potentiometer(imperial_pot_x2)` |  Potentiometer imperial_pot_x2 |
+|   1 | `potentiometer(metric_pot)` |  Potentiometer metric_pot |
+|   1 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
+|   2 | `screw(M3_grub_screw, 5)` |  Screw M3 grub x  5mm |
+|   2 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | BTT_encoder_knob.stl |
+|   1 | KY_040_encoder_knob.stl |
+|   1 | imperial_pot_knob.stl |
+|   1 | imperial_pot_x2_knob.stl |
+|   1 | metric_pot_knob.stl |
 
 
 <a href="#top">Top</a>
