@@ -82,6 +82,7 @@ def codify(word, url):
 
 
 def fixup_comment(comment, url):
+    comment = comment.replace('cnc_bit+_r', 'cnc_bit_r')
     """ markup code words and fix new paragraphs """
     result = ''
     word = ''
@@ -161,6 +162,6 @@ if __name__ == '__main__':
 
             # Print commits excluding merges
 
-            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated changelog.*', c.comment):
+            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated chang.*log.*', c.comment):
                 print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment, url)), file = file)
     do_cmd(('codespell -w -L od ' + filename).split())
