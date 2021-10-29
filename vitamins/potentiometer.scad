@@ -211,7 +211,7 @@ module potentiometer(type, thickness = 3, shaft_length = undef, value = false) {
 
                 color(shaft[4])
                     vflip()
-                    cylinder(d = shaft.x, h = gap);
+                        cylinder(d = shaft.x, h = gap);
             }
         }
 

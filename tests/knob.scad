@@ -20,7 +20,7 @@ z = 1; // [0: 5]
 thickness = 3; // [0: 5]
 shaft_length = 10;
 
-include <../utils/core/core.scad>
+include <../core.scad>
 use <../printed/knob.scad>
 use <../utils/layout.scad>
 
@@ -31,7 +31,8 @@ knobs = [for(i = [0 : len(potentiometers) - 1]) let(p = potentiometers[i])
                   top_d   = [10,    12,      20,    16,        16       ][i],
                   bot_d   = [10,    15,      20,    20,        20       ][i],
                   skirt   = [false, [20, 2], false,      [27, 1.5], [27, 1.5]][i],
-                  pointer = [false, false,   [14, [1, 5], 2], [13.5, [1, 1], 3], [13.5, [1, 3], 3]][i]
+                  pointer = [false, false,   [14, [1, 5], 2], [13.5, [1, 1], 3], [13.5, [1, 3], 3]][i],
+                  screw = let(s = pot_shaft(p)) s.y > s.x / 2 ? M3_grub_screw : false
                  )];
 
 

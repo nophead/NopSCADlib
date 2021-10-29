@@ -5326,7 +5326,7 @@ The STL includes a support membrane that needs to be cut out and a thread needs 
 | Function | Description |
 |:--- |:--- |
 | `knob(name = "knob", top_d = 12, bot_d = 15, height = 18, shaft_length, skirt = [20, 2], pointer = false, corner_r = 2, screw = M3_grub_screw, shaft_d, flat_d, flat_h, recess)` | Constructor |
-| `knob_for_pot(pot, thickness, z = 1, shaft_length = undef, top_d = 12, bot_d = 15, skirt = [20, 2], pointer = false, corner_r = 2, height = 0, washer = true)` | Construct a knob to fit specified pot |
+| `knob_for_pot(pot, thickness, z = 1, washer = true, top_d = 12, bot_d = 15, height = 0, shaft_length = undef, skirt = [20, 2], pointer = false, corner_r = 2, screw = M3_grub_screw)` | Construct a knob to fit specified pot |
 
 ### Modules
 | Module | Description |
@@ -5344,9 +5344,9 @@ The STL includes a support membrane that needs to be cut out and a thread needs 
 |   1 | `potentiometer(imperial_pot)` |  Potentiometer imperial_pot |
 |   1 | `potentiometer(imperial_pot_x2)` |  Potentiometer imperial_pot_x2 |
 |   1 | `potentiometer(metric_pot)` |  Potentiometer metric_pot |
-|   1 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
-|   2 | `screw(M3_grub_screw, 5)` |  Screw M3 grub x  5mm |
-|   2 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+|   1 | `screw(M3_grub_screw, 3)` |  Screw M3 grub x  3mm |
+|   2 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
+|   1 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
 
 ### Printed
 | Qty | Filename |

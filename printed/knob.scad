@@ -52,7 +52,7 @@ function knob(name = "knob", top_d = 12, bot_d = 15, height = 18, shaft_length, 
     name, top_d, bot_d, height, corner_r, shaft_d, shaft_length, flat_d, flat_h, screw, skirt, recess, pointer
 ];
 
-function knob_for_pot(pot, thickness, z = 1, shaft_length = undef, top_d = 12, bot_d = 15, skirt = [20, 2], pointer = false, corner_r = 2, height = 0, washer = true) =  //! Construct a knob to fit specified pot
+function knob_for_pot(pot, thickness, z = 1, washer = true, top_d = 12, bot_d = 15, height = 0, shaft_length = undef, skirt = [20, 2], pointer = false, corner_r = 2, screw = M3_grub_screw) =  //! Construct a knob to fit specified pot
     let(s = pot_shaft(pot),
         washer = washer && pot_washer(pot) ? pot_washer(pot) : [0, 0],
         nut = pot_nut(pot) ? pot_nut(pot) : [pot_thread_d(pot) * cos(30), pot_thread_h(pot) - thickness],
@@ -68,6 +68,7 @@ function knob_for_pot(pot, thickness, z = 1, shaft_length = undef, top_d = 12, b
          bot_d = bot_d,
          height = height,
          corner_r = corner_r,
+         screw = screw,
          skirt = skirt,
          pointer = pointer,
          shaft_d = s.x,
@@ -83,11 +84,11 @@ module knob(type, supports = true) { //! Generate the STL for a knob
     r_bot = knob_bot_d(type) / 2;
     h = knob_height(type);
     r = knob_corner_r(type);
-    sr = knob_shaft_d(type) / 2 + clearance;
+    screw = knob_screw(type);
+    sr = knob_shaft_d(type) / 2 + (screw ? clearance : 0);
     top_wall = h - knob_shaft_len(type);
     fr = knob_flat_d(type) - sr + 2 * clearance;
     fh = knob_flat_h(type);
-    screw = knob_screw(type);
     skirt = knob_skirt(type);
     recess = knob_recess(type);
     pointer = knob_pointer(type);
@@ -125,8 +126,9 @@ module knob(type, supports = true) { //! Generate the STL for a knob
                     difference() {
                         poly_circle(sr);
 
-                        translate([-sr, fr])
-                            square([2 * sr, sr]);
+                        if(fr > 0)
+                            translate([-sr, fr])
+                                square([2 * sr, sr]);
                     }
 
                 if(h > fh)
@@ -153,14 +155,17 @@ module knob(type, supports = true) { //! Generate the STL for a knob
 
 //! Knob with grub screw in place
 module knob_assembly(type) explode(40, explode_children = true) { //! Assembly with the grub screw in place
-    fr = knob_flat_d(type) - knob_shaft_d(type) / 2;
+    sr = knob_shaft_d(type) / 2;
+    fr = knob_flat_d(type) < sr ? knob_flat_d(type) - sr : sr;
     r_top = knob_top_d(type) / 2;
     r_bot = knob_bot_d(type) / 2;
     screw_length = screw_shorter_than(min(r_top, r_bot) - fr);
+    screw = knob_screw(type);
 
     stl_colour(pp1_colour) render() knob(type, supports = false);
 
-    translate([0, (fr + screw_length), knob_screw_z(type)])
-        rotate([90, 0, 180])
-            screw(knob_screw(type), screw_length);
+    if(screw)
+        translate([0, (fr + screw_length), knob_screw_z(type)])
+            rotate([90, 0, 180])
+                screw(screw, screw_length);
 }
