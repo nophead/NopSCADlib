@@ -129,21 +129,26 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         head_t = rad / 5;
         head_height = head_rad + head_t;
 
-        rotate_extrude()
-            difference() {
-                polygon([[0, 0], [head_rad, 0], [head_rad, -head_t], [0, -head_height]]);
-
-                translate([0, -socket_depth + eps])
-                    square([socket_rad, 10]);
-            }
-
-        translate_z(-socket_depth)
-            linear_extrude(socket_depth)
+        color(colour) {
+            rotate_extrude()
                 difference() {
-                    circle(socket_rad + 0.1);
+                    polygon([[0, 0], [head_rad, 0], [head_rad, -head_t], [0, -head_height]]);
 
-                    children();
+                    translate([0, -socket_depth + eps])
+                        square([socket_rad, 10]);
                 }
+
+            translate_z(-socket_depth)
+                linear_extrude(socket_depth)
+                    difference() {
+                        circle(socket_rad + 0.1);
+
+                        children();
+                    }
+        }
+        color(colour * 0.9)
+            translate_z(-socket_depth)
+                cylinder(h=2 * eps, r=socket_rad, $fn = 6);
     }
 
     explode(length + 10) {
@@ -160,6 +165,9 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                         }
 
             }
+            color(colour * 0.9)
+                translate_z(head_height - socket_depth)
+                    cylinder(h=2 * eps, r=socket_rad, $fn = 6);
             shaft();
         }
         if(head_type == hs_grub) {
@@ -179,6 +187,9 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     translate_z(-length)
                         cylinder(r = r, h = length - socket_depth);
             }
+            color(colour * 0.8)
+                translate_z(head_height - socket_depth)
+                    cylinder(h=2 * eps, r=socket_rad, $fn = 6);
         }
         if(head_type == hs_hex) {
             color(colour)
@@ -207,6 +218,9 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                         square([socket_width, 2 * socket_rad], center = true);
                     }
             }
+            color(colour * 0.9)
+                translate_z(head_height - socket_depth)
+                    cylinder(h=2 * eps, r=socket_rad + eps);
             shaft();
         }
 
@@ -234,6 +248,9 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                         circle(socket_rad, $fn = 6);
                     }
             }
+            color(colour * 0.9)
+                translate_z(head_height - socket_depth)
+                    cylinder(h=2 * eps, r=socket_rad, $fn = 6);
             shaft();
         }
 
@@ -241,19 +258,17 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
             socket_rad = 0.6 * head_rad;
             socket_depth = 0.3 * head_rad;
             socket_width = 1;
-            color(colour)
-                cs_head(socket_rad, socket_depth) {
-                    square([2 * socket_rad, socket_width], center = true);
-                    square([socket_width, 2 * socket_rad], center = true);
-                }
+            cs_head(socket_rad, socket_depth) {
+                square([2 * socket_rad, socket_width], center = true);
+                square([socket_width, 2 * socket_rad], center = true);
+            }
 
             shaft(socket_depth);
         }
 
         if(head_type == hs_cs_cap) {
-            color(colour)
-                cs_head(socket_rad, socket_depth)
-                    circle(socket_rad, $fn = 6);
+            cs_head(socket_rad, socket_depth)
+                circle(socket_rad, $fn = 6);
 
             shaft(socket_depth);
         }
