@@ -113,7 +113,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
     clearance = drag_chain_clearance(type);
     r = os.z / 2;
     pin_r = r / 2 + wall / 4;
-    pin_z = min(wall, pin_r - 0.4);
+    pin_h = min(wall, pin_r - 0.4);
 
     socket_x = r;
     pin_x = socket_x + s.x;
@@ -160,8 +160,8 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                 translate([socket_x, r, -side * (wall + clearance) / 2])
                                     hull() {
                                         horihole(r = pin_r, z = r, h = eps);
-                                        translate_z(side * (pin_z + clearance))
-                                            horihole(r = pin_r - pin_z, z = r, h = eps);
+                                        translate_z(side * (pin_h + clearance))
+                                            horihole(r = pin_r - pin_h, z = r, h = eps);
                                     }
                         }
                     // Inner cheeks
@@ -186,7 +186,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                         if(!end)
                             translate([pin_x, r, side * wall / 2])
                                 vflip(side == -1)
-                                    cylinder(r1 = pin_r, r2 = pin_r - pin_z, h = pin_z);
+                                    cylinder(r1 = pin_r, r2 = pin_r - pin_h, h = pin_h);
                     }
 
                     // Cheek joint
