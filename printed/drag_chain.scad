@@ -120,9 +120,8 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
     outer_normal_x =  pin_x - r - clearance;     // s.x - clearance
     outer_end_x = end ? os.x : outer_normal_x;
 
-    inner_x = start ? 0 : s.x - r / 2 + clearance;
+    inner_x = start ? 0 : socket_x + r + clearance;
 
-    roof_x_normal = 2 * r - twall;
     assert(r + norm([drag_chain_cam_x(type), r - drag_chain_twall(type)]) + clearance <= outer_normal_x - wall || start, "Link must be longer");
 
     difference() {
@@ -190,7 +189,10 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
             roof_x = start ? 0 : inner_x;
             roof_end = end ? s.x + 2 * r : s.x + r - twall - clearance;
             translate([roof_x, -s.y / 2 - wall, 0])
-                cube([roof_end - roof_x , s.y + 2 * wall, twall]);
+                hull() {
+                    cube([roof_end - roof_x, s.y + 2 * wall, twall]);
+                    cube([roof_end - roof_x + twall / 2, s.y + 2 * wall, twall / 2]);
+                }
 
             // Floor, actually the roof when printed
             floor_x = roof_x;
