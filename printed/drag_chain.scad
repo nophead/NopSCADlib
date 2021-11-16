@@ -200,7 +200,8 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
             translate([roof_x, -s.y / 2 - wall, 0])
                 hull() {
                     cube([roof_end - roof_x, s.y + 2 * wall, twall]);
-                    cube([roof_end - roof_x + twall / 2, s.y + 2 * wall, twall / 2]);
+                    if(!end)
+                        cube([roof_end - roof_x + twall / 2, s.y + 2 * wall, twall / 2]);
                 }
 
             // Floor, actually the roof when printed
