@@ -124,6 +124,14 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
 
     assert(r + norm([drag_chain_cam_x(type), r - drag_chain_twall(type)]) + clearance <= outer_normal_x - wall || start, "Link must be longer");
 
+    module teardrop_2d(r, extra_x) {
+        hull() {
+            circle4n(r);
+            translate([0, r / 2])
+                square([2 * r * (sqrt(2) - 1) + extra_x, r], center = true);
+        }
+    }
+
     difference() {
         union() {
             for(side = [-1, 1])
@@ -138,9 +146,9 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                     } else {
                                         translate([socket_x, r])
                                             rotate(180)
-                                                teardrop(r = r, h = 0, extra_x = 2 * clearance);
+                                                teardrop_2d(r = r, extra_x = 2 * clearance);
                                         translate([0, r])
-                                            square([r, r/2]);
+                                            square([r, r / 2.5]);
                                     }
 
                                     translate([outer_end_x - eps, 0])
@@ -162,7 +170,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                 if(!end) {
                                     translate([pin_x, r]) {
                                         rotate(180)
-                                            teardrop(r = r, h = 0, extra_x = 2 * clearance);
+                                            teardrop_2d(r = r, extra_x = 2 * clearance);
                                         square([r, r/2]);
                                     }
                                 } else {
