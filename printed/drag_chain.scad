@@ -63,6 +63,9 @@ function drag_chain_outer_size(type) = //! Link outer dimensions
     let(s = drag_chain_size(type), z = s.z + drag_chain_bwall(type) + drag_chain_twall(type))
         [s.x + z, s.y + 4 * drag_chain_wall(type) + 2 * clearance, z];
 
+function drag_chain_links(type) = //! Number of links in chain
+    ceil(drag_chain_travel(type) / drag_chain_size(type).x) + 4;
+
 function screw_lug_radius(screw) = //! Radius of a screw lug
     corrected_radius(screw_clearance_radius(screw)) + 3.1 * extrusion_width;
 
@@ -255,16 +258,15 @@ module _drag_chain_assembly(type, pos = 0, render = false) {
     s = drag_chain_size(type);
     x = (1 + exploded()) * s.x;
     r = drag_chain_radius(type) * x / s.x;
-    travel = drag_chain_travel(type);
-    links = ceil(travel / s.x);
-    actual_travel = links * s.x;
+    links = drag_chain_links(type);
+    actual_travel = (links - 4) * s.x;
     z = drag_chain_outer_size(type).z;
 
     zb = z / 2;                                     // z of bottom track
     c = [actual_travel / 2 + pos / 2, 0, r + zb];   // centre of bend
 
     points = [                                      // Calculate list of hinge points
-        for(i = 0, p = [0, 0, z / 2 + 2 * r]; i < links + 5;
+        for(i = 0, p = [0, 0, z / 2 + 2 * r]; i < links + 1;
             i = i + 1,
             dx = p.z > c.z ? x : -x,
             p = max(p.x + dx, p.x) <= c.x ? p + [dx, 0, 0]      // Straight sections
