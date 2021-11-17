@@ -152,7 +152,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                             rotate(180)
                                                 teardrop_2d(r = r, extra_x = 2 * clearance);
                                         translate([0, r])
-                                            square([r, r / 2]);
+                                            square([r, r / 2.5]);
                                     }
 
                                     translate([outer_end_x - eps, 0])
