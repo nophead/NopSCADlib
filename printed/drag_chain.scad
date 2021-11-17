@@ -128,8 +128,11 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
     module teardrop_2d(r, extra_x) {
         hull() {
             circle4n(r);
+            square_size = [2 * r * (sqrt(2) - 1) + extra_x, r];
             translate([0, r / 2])
-                square([2 * r * (sqrt(2) - 1) + extra_x, r], center = true);
+                square(square_size, center = true);
+            translate([0, 3 * r / 4])
+                square([square_size.x + r / 2, eps], center = true);
         }
     }
 
@@ -172,7 +175,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                     translate([pin_x, r]) {
                                         rotate(180)
                                             teardrop_2d(r = r, extra_x = 2 * clearance);
-                                        square([r, r/2]);
+                                        square([r, r / 2.5]);
                                     }
                                 } else {
                                     translate([os.x - eps, 0])
