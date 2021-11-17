@@ -112,8 +112,8 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
     os = drag_chain_outer_size(type);
     clearance = drag_chain_clearance(type);
     r = os.z / 2;
-    pin_r = r / 2 + wall / 4;
-    pin_h = min(wall, pin_r - 0.4);
+    pin_r = r / 2 - 0.2;
+    pin_h = min(wall + clearance, 2 * pin_r - 1); // ensure minimum radius of top of pin
 
     socket_x = r;
     pin_x = socket_x + s.x;
@@ -152,7 +152,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                             rotate(180)
                                                 teardrop_2d(r = r, extra_x = 2 * clearance);
                                         translate([0, r])
-                                            square([r, r / 2.5]);
+                                            square([r, r / 2.5]); // this shouldn't protrude when link rotates
                                     }
 
                                     translate([outer_end_x - eps, 0])
@@ -160,11 +160,11 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                 }
                             // Conical horihole for pin
                             if(!start)
-                                translate([socket_x, r, -side * wall / 2])
+                                translate([socket_x, r, -side * (wall / 2 + clearance)])
                                     hull() {
-                                        horihole(r = pin_r, z = r, h = eps);
+                                        horihole(r = pin_r + pin_h / 2, z = r, h = eps);
                                         translate_z(side * pin_h)
-                                            horihole(r = pin_r - pin_h, z = r, h = eps);
+                                            horihole(r = pin_r - pin_h / 2, z = r, h = eps);
                                     }
                         }
                     // Inner cheeks
@@ -175,7 +175,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                     translate([pin_x, r]) {
                                         rotate(180)
                                             teardrop_2d(r = r, extra_x = 2 * clearance);
-                                        square([r, r / 2]);
+                                        square([r, r / 1.5]); // this can protrude when link rotates
                                     }
                                 } else {
                                     translate([os.x - eps, 0])
@@ -189,7 +189,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                         if(!end)
                             translate([pin_x, r, side * wall / 2])
                                 vflip(side == -1)
-                                    cylinder(r1 = pin_r, r2 = pin_r - pin_h, h = pin_h);
+                                    cylinder(r1 = pin_r + pin_h / 2, r2 = pin_r - pin_h / 2, h = pin_h + eps);
                     }
 
                     // Cheek joint
