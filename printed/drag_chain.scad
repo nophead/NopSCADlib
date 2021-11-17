@@ -152,7 +152,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                             rotate(180)
                                                 teardrop_2d(r = r, extra_x = 2 * clearance);
                                         translate([0, r])
-                                            square([r, r / 2.5]);
+                                            square([r, r / 2]);
                                     }
 
                                     translate([outer_end_x - eps, 0])
@@ -160,10 +160,10 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                 }
                             // Conical horihole for pin
                             if(!start)
-                                translate([socket_x, r, -side * (wall + clearance) / 2])
+                                translate([socket_x, r, -side * wall / 2])
                                     hull() {
                                         horihole(r = pin_r, z = r, h = eps);
-                                        translate_z(side * (pin_h + clearance))
+                                        translate_z(side * pin_h)
                                             horihole(r = pin_r - pin_h, z = r, h = eps);
                                     }
                         }
@@ -175,7 +175,7 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                     translate([pin_x, r]) {
                                         rotate(180)
                                             teardrop_2d(r = r, extra_x = 2 * clearance);
-                                        square([r, r / 2.5]);
+                                        square([r, r / 2]);
                                     }
                                 } else {
                                     translate([os.x - eps, 0])
@@ -200,13 +200,20 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
             // Roof, actually the floor when printed
             roof_x = start ? 0 : inner_x;
             roof_end = end ? s.x + 2 * r : s.x + r - twall - clearance;
-            translate([roof_x, -s.y / 2 - wall, 0])
+            translate([roof_x, -s.y / 2 - wall, 0]) {
                 hull() {
                     cube([roof_end - roof_x, s.y + 2 * wall, twall]);
                     if(!end)
                         cube([roof_end - roof_x + twall / 2, s.y + 2 * wall, twall / 2]);
                 }
-
+                if(!start)
+                    hull() {
+                        translate([-3 * twall / 4 + clearance, -wall, 0])
+                            cube([3 * twall / 4 - clearance, s.y + 4 * wall, twall / 3]);
+                        translate([0, -wall, 0])
+                            cube([eps, s.y + 4 * wall, twall]);
+                    }
+            }
             // Floor, actually the roof when printed
             floor_x = roof_x;
             floor_end = end ? s.x + 2 * r : s.x + r - clearance;
