@@ -159,11 +159,12 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                             horihole(pin_r, r, wall + 2*eps);
                                     else
                                         translate([socket_x, r, -side * (wall / 2 + clearance)])
-                                            hull() {
-                                                horihole(r = pin_r + pin_h / 2, z = r, h = eps);
-                                                translate_z(side * pin_h)
-                                                    horihole(r = pin_r - pin_h / 2, z = r, h = eps);
-                                            }
+                                            rotate(180)
+                                                hull() {
+                                                    horihole(r = pin_r + pin_h / 2, z = r, h = eps);
+                                                    translate_z(side * pin_h)
+                                                        horihole(r = pin_r - pin_h / 2, z = r, h = eps);
+                                                }
                             }
                     // Inner cheeks
                     translate_z(side * (s.y / 2 + wall / 2)) {
