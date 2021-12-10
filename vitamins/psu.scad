@@ -115,15 +115,10 @@ module terminal_block(type, ways) { //! Draw a power supply terminal block
 }
 
 function psu_face_transform(type, face) =           //! Returns a transformation matrix to get to the specified face
-    let(l = psu_length(type),
-        w = psu_width(type),
-        h = psu_height(type),
-        f = psu_faces(type)[face],
-        left = psu_left_bay(type),
-        right = psu_right_bay(type),
+    let(size = psu_size(type),
         rotations = [[180, 0, 0], [0, 0, 0], [90, 0, -90], [90, 0, 90], [90, 0, 0], [-90, 0, 0]],
-        translations = [h / 2, h / 2, l / 2 - left, l / 2 - right, w / 2, w / 2]
-    ) translate([0, 0, h / 2]) * rotate(rotations[face]) * translate([0, 0, translations[face]]);
+        translations = [size.z / 2, size.z / 2, size.x / 2 - psu_left_bay(type), size.x / 2 - psu_right_bay(type), size.y / 2, size.y / 2]
+    ) translate([0, 0, size.z / 2]) * rotate(rotations[face]) * translate([0, 0, translations[face]]);
 
 module psu_grill(width, height, grill_hole = 4.5, grill_gap = 1.5, fn = 0, avoid = []) {
     nx = floor(width / (grill_hole + grill_gap)) + 1;
@@ -273,18 +268,18 @@ module psu(type) { //! Draw a power supply
         pcb_thickness = 1.6;
         heatsink_offset = 13.5;
         color("#FCD67E")
-            translate([(-right - rt) / 2, (ft - bt) / 2, z - pcb_thickness])
+            translate([(-right - rt) / 2 - eps, (ft - bt) / 2, z - pcb_thickness])
                 linear_extrude(pcb_thickness)
                     difference() {
                         square([pl, pw], center = true);
-
-                        translate([-pl / 2, -pw / 2])
-                            square(16, center = true);
+                        if(right)
+                            translate([-pl / 2, -pw / 2])
+                                square(16, center = true);
                     }
 
         tab_w = w / 2 + cutout[2].x;
         // if the cutout is too wide, then don't draw earth strap, pillar and screw
-        if (tab_w - bt > 0) {
+        if (tab_w - bt > 0 && left > 0) {
             // earth strap
             color("silver")
                 translate([-l / 2, w / 2 - tab_w, z])
@@ -304,11 +299,17 @@ module psu(type) { //! Draw a power supply
             }
         }
 
-        // terminal block
+        // terminal blocks
         tb = terminals[2];
         if(tb)
-           translate([-l / 2, w / 2 - terminals.y, z])
+           translate([-l / 2, w / 2 - terminals[1], z])
                 terminal_block(tb, terminals[0]);
+        if(len(terminals) == 6) {
+            tb = terminals[5];
+            translate([l / 2, w / 2 - terminals[4] - terminal_block_length(tb, terminals[3]), z])
+                rotate(180)
+                    terminal_block(tb, terminals[3]);
+        }
 
         // Heatsink
         //
