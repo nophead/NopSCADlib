@@ -35,18 +35,17 @@ include <../core.scad>
 use <../utils/horiholes.scad>
 use <../utils/maths.scad>
 
-clearance = 0.1;
-
 function drag_chain_name(type)        = type[0]; //! The name to allow more than one in a project
 function drag_chain_size(type)        = type[1]; //! The internal size and link length
 function drag_chain_travel(type)      = type[2]; //! X travel
 function drag_chain_wall(type)        = type[3]; //! Side wall thickness
 function drag_chain_bwall(type)       = type[4]; //! Bottom wall
 function drag_chain_twall(type)       = type[5]; //! Top wall
-function drag_chain_screw(type)       = type[6]; //! Mounting screw for the ends
-function drag_chain_screw_lists(type) = type[7]; //! Two lists of four bools to say which screws positions are used
+function drag_chain_clearance(type)   = type[6]; //! Clearance around joints
+function drag_chain_supports(type)    = type[7]; //! Whether to print version of chain with or without supports
+function drag_chain_screw(type)       = type[8]; //! Mounting screw for the ends
+function drag_chain_screw_lists(type) = type[9]; //! Two lists of four bools to say which screws positions are used
 
-function drag_chain_clearance() = clearance; //! Clearance around joints.
 
 function drag_chain_radius(type) = //! The bend radius at the pivot centres
     let(s = drag_chain_size(type))
@@ -56,12 +55,12 @@ function drag_chain_z(type) = //! Outside dimension of a 180 bend
     let(os = drag_chain_outer_size(type), s = drag_chain_size(type))
         2 * drag_chain_radius(type) + os.z;
 
-function drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]]) = //! Constructor
-    [name, size, travel, wall, bwall, twall, screw, screw_lists];
+function drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, clearance = 0.1, supports = true, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]]) = //! Constructor
+    [name, size, travel, wall, bwall, twall, clearance, supports, screw, screw_lists];
 
 function drag_chain_outer_size(type) = //! Link outer dimensions
     let(s = drag_chain_size(type), z = s.z + drag_chain_bwall(type) + drag_chain_twall(type))
-        [s.x + z, s.y + 4 * drag_chain_wall(type) + 2 * clearance, z];
+        [s.x + z, s.y + 4 * drag_chain_wall(type) + 2 * drag_chain_clearance(type), z];
 
 function screw_lug_radius(screw) = //! Radius of a screw lug
     corrected_radius(screw_clearance_radius(screw)) + 3.1 * extrusion_width;
@@ -85,6 +84,7 @@ module drag_chain_screw_positions(type, end) { //! Place children at the screw p
     r = screw_lug_radius(drag_chain_screw(type));
     s = drag_chain_size(type);
     os = drag_chain_outer_size(type);
+    clearance = drag_chain_clearance(type);
     R = os.z / 2;
     x0 = end ? R + norm([drag_chain_cam_x(type), R - drag_chain_twall(type)]) + clearance + r : r;
     x1 = end ? os.x - r : os.x - 2 * R - clearance - r;
@@ -99,7 +99,7 @@ function drag_chain_cam_x(type) = // how far the cam sticks out
     let(s = drag_chain_size(type),
         r =  drag_chain_outer_size(type).z / 2,
         wall =  drag_chain_wall(type),
-        cam_r = s.x - 2 * clearance - wall - r,  // inner_x_normal - clearance - r
+        cam_r = s.x - 2 * drag_chain_clearance(type) - wall - r,  // inner_x_normal - clearance - r
         twall = drag_chain_twall(type)
     )   min(sqrt(max(sqr(cam_r) - sqr(r - twall), 0)), r);
 
@@ -111,8 +111,15 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
     bwall = drag_chain_bwall(type);
     twall = drag_chain_twall(type);
     os = drag_chain_outer_size(type);
+    clearance = drag_chain_clearance(type);
+    supports = drag_chain_supports(type);
     r = os.z / 2;
-    pin_r = r / 2;
+    // initial estimates of pin_r and pin_h
+    pin_r0 = r / 2 - 0.2;
+    pin_h0 = min(wall + clearance, 2 * pin_r0 - 1);
+     // for conical pin: ensure minimum radius of top of pin and pin does not overlap cutout
+    pin_r = supports ? r / 2 : min(r / 2 - 0.2, (os.z - 2 * twall - 3 * pin_h0 / 4 - 0.2) / 2);
+    pin_h = min(wall + clearance, 2 * pin_r - 1);
 
     socket_x = r;
     pin_x = socket_x + s.x;
@@ -123,44 +130,51 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
     inner_x = start ? 0 : outer_normal_x - wall; // s.x - clearance - wall
 
     roof_x_normal = 2 * r - twall;
-    roof_x = start ? 0 : roof_x_normal;
-
-    floor_x = start ? 0 : 2 * r;
     cam_x = drag_chain_cam_x(type);
     assert(r + norm([drag_chain_cam_x(type), r - drag_chain_twall(type)]) + clearance <= inner_x || start, "Link must be longer");
 
+    vflip(!supports)
     difference() {
         union() {
             for(side = [-1, 1])
                 rotate([90, 0, 0]) {
                     // Outer cheeks
                     translate_z(side * (os.y / 2 - wall / 2))
-                        linear_extrude(wall, center = true)
-                            difference() {
+                        difference() {
+                            linear_extrude(wall, center = true)
                                 hull() {
                                     if(start)
                                         square([eps, os.z]);
                                     else
                                         translate([socket_x, r])
-                                            rotate(180)
+                                            rotate(supports ? 180 : 0)
                                                 teardrop(r = r, h = 0);
 
                                     translate([outer_end_x - eps, 0])
                                         square([eps, os.z]);
                                 }
                                 if(!start)
-                                    translate([socket_x, r])
-                                        horihole(pin_r, r);
+                                    if(supports)
+                                        translate([socket_x, r, 0])
+                                            horihole(pin_r, r, wall + 2*eps);
+                                    else
+                                        translate([socket_x, r, -side * (wall / 2 + clearance)])
+                                            rotate(180)
+                                                hull() {
+                                                    horihole(r = pin_r + pin_h / 2, z = r, h = eps);
+                                                    translate_z(side * pin_h)
+                                                        horihole(r = pin_r - pin_h / 2, z = r, h = eps);
+                                                }
                             }
                     // Inner cheeks
-                    translate_z(side * (s.y / 2 + wall / 2))
+                    translate_z(side * (s.y / 2 + wall / 2)) {
                         linear_extrude(wall, center = true)
                             difference() {
                                 union() {
                                     hull() {
                                         if(!end) {
                                             translate([pin_x, r])
-                                                rotate(180)
+                                                rotate(supports ? 180 : 0)
                                                     teardrop(r = r, h = 0);
 
                                             translate([pin_x, twall])
@@ -186,31 +200,39 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                                                     square(os.z);
                                     }
                             }
-                    // Pin
-                    if(!end)
-                        translate([pin_x, r, side * (s.y / 2 + wall + clearance)])
-                            horicylinder(r = pin_r, z = r, h = 2 * wall);
+                        // Pin
+                        if(!end)
+                            if(supports)
+                                translate([pin_x, r, side * (wall / 2 + clearance)])
+                                    horicylinder(r = pin_r, z = r, h = 2 * wall + eps);
+                            else
+                                translate([pin_x, r, side * wall / 2])
+                                    vflip(side == -1)
+                                        cylinder(r1 = pin_r + pin_h / 2, r2 = pin_r - pin_h / 2, h = pin_h + eps);
+                    }
 
                     // Cheek joint
                     translate([inner_x, 0, side * (s.y / 2 + wall) - 0.5])
                         cube([outer_end_x - inner_x, os.z, 1]);
                 }
 
-            // Roof, actually the floor when printed
+            // Roof, actually the floor when printed with supports
+            roof_x = start ? 0 : roof_x_normal;
             roof_end = end ? s.x + 2 * r : s.x + r - twall - clearance;
-            translate([roof_x, -s.y / 2 - 0.5])
-                cube([roof_end - roof_x , s.y + 1, twall]);
+            translate([roof_x, -s.y / 2 - wall, 0]) {
+                cube([roof_end - roof_x, s.y + 2 * wall, twall]);
+                translate([0, -wall, 0])
+                    cube([s.x - roof_x - clearance, s.y + 4 * wall, twall]);
+            }
 
-            translate([roof_x, -os.y / 2 + 0.5])
-                cube([s.x - clearance - roof_x, os.y - 1, twall]);
-
-            // Floor, actually the roof when printed
+            // Floor, actually the roof when printed with supports
+            floor_x = start ? 0 : 2 * r;
             floor_end = end ? s.x + 2 * r : s.x + r;
-            translate([floor_x, -s.y / 2 - wall, os.z - bwall])
+            translate([floor_x, -s.y / 2 - wall, os.z - bwall]) {
                 cube([floor_end - floor_x, s.y + 2 * wall, bwall]);
-
-            translate([floor_x, -os.y / 2 + 0.5,  os.z - bwall])
-                cube([s.x - floor_x - clearance, os.y -1, bwall]);
+                translate([0, -wall, 0])
+                    cube([s.x - floor_x - clearance, s.y + 4 * wall, bwall]);
+            }
 
             if(start || end) {
                 drag_chain_screw_positions(type, end)
@@ -223,16 +245,16 @@ module drag_chain_link(type, start = false, end = false, check_kids = true) { //
                 }
                 children();
             }
-        }
+        } // end union
+
         if(start || end)
             translate_z(-eps)
                 drag_chain_screw_positions(type, end)
                     rotate($a)
                         poly_cylinder(r = screw_clearance_radius(drag_chain_screw(type)), h = os.z + 2 * eps, center = false);
+    } // end difference
 
-    }
-
-    if(show_supports() && !end) {
+    if(supports && show_supports() && !end) {
         for(side = [-1, 1]) {
             w = 2.1 * extrusion_width;
             translate([s.x + r + cam_x - w / 2, side * (s.y / 2 + wall / 2), twall / 2])
@@ -277,11 +299,12 @@ module _drag_chain_assembly(type, pos = 0, render = false) {
 
     module link(n)                                  // Position and colour link with origin at the hinge hole
         translate([-z / 2, 0, -z / 2]) {
-            stl_colour(n < 0 || n == npoints - 1 ? pp3_colour : n % 2 ? pp1_colour : pp2_colour)
-                render_if(render)
-                    drag_chain_link(type, start = n == -1, end = n == npoints - 1, check_kids = false)
-                        let($fasteners = 0)
-                            children();
+            vflip(!drag_chain_supports(type))
+                stl_colour(n < 0 || n == npoints - 1 ? pp3_colour : n % 2 ? pp1_colour : pp2_colour)
+                    render_if(render)
+                        drag_chain_link(type, start = n == -1, end = n == npoints - 1, check_kids = false)
+                            let($fasteners = 0)
+                                children();
 
             let($fasteners = 1) children();
         }
