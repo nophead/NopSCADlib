@@ -37,11 +37,14 @@ module teardrop(h, r, center = true, truncate = true, chamfer = 0, chamfer_both_
                         translate([offset, 0]) {
                             circle4n(R);
 
-                            if(truncate)
-                                translate([0, R / 2])
-                                    square([2 * R * (sqrt(2) - 1), R], center = true);
-                            else
-                                polygon([[0, 0], [eps, 0], [0, R * sqrt(2)]]);
+                            if (teardrop_angle > 0) {
+                                x = sin(teardrop_angle) - (1 - cos(teardrop_angle)) / tan(teardrop_angle);
+                                if(truncate)
+                                    translate([0, R / 2])
+                                        square([2 * R * x, R], center = true);
+                                else
+                                    polygon([[0, 0], [eps, 0], [0, R * (1 + x * tan(min(teardrop_angle, 90 - eps)))]]);
+                            }
                         }
                         translate([0, -2 * R])
                             square([R, 4 * R]);
