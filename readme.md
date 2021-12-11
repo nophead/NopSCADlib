@@ -4940,10 +4940,12 @@ to the assembly, for example to add inserts.
 | Function | Description |
 |:--- |:--- |
 | `drag_chain_bwall(type)` | Bottom wall |
+| `drag_chain_clearance(type)` | Clearance around joints |
 | `drag_chain_name(type)` | The name to allow more than one in a project |
 | `drag_chain_screw(type)` | Mounting screw for the ends |
 | `drag_chain_screw_lists(type)` | Two lists of four bools to say which screws positions are used |
 | `drag_chain_size(type)` | The internal size and link length |
+| `drag_chain_supports(type)` | Whether to print version of chain with or without supports |
 | `drag_chain_travel(type)` | X travel |
 | `drag_chain_twall(type)` | Top wall |
 | `drag_chain_wall(type)` | Side wall thickness |
@@ -4951,8 +4953,7 @@ to the assembly, for example to add inserts.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]])` | Constructor |
-| `drag_chain_clearance()` | Clearance around joints. |
+| `drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, clearance = 0.1, supports = true, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]])` | Constructor |
 | `drag_chain_outer_size(type)` | Link outer dimensions |
 | `drag_chain_radius(type)` | The bend radius at the pivot centres |
 | `drag_chain_z(type)` | Outside dimension of a 180 bend |
