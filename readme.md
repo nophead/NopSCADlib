@@ -4954,6 +4954,7 @@ to the assembly, for example to add inserts.
 | Function | Description |
 |:--- |:--- |
 | `drag_chain(name, size, travel, wall = 1.6, bwall = 1.5, twall = 1.5, clearance = 0.1, supports = true, screw = M2_cap_screw, screw_lists = [[1,0,0,1],[1,0,0,1]])` | Constructor |
+| `drag_chain_links(type)` | Number of links in chain |
 | `drag_chain_outer_size(type)` | Link outer dimensions |
 | `drag_chain_radius(type)` | The bend radius at the pivot centres |
 | `drag_chain_z(type)` | Outside dimension of a 180 bend |
