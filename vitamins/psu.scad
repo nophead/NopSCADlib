@@ -182,8 +182,13 @@ module psu(type) { //! Draw a power supply
                                         polygon([for(p = cutout) p]);
 
                                 for(h = psu_face_holes(f))
-                                    translate(h)
-                                        drill(screw_pilot_hole(psu_screw(type)), 0);
+                                    translate([h.x, h.y])
+                                        hull() {
+                                            drill(screw_pilot_hole(psu_screw(type)), 0);
+                                            if (is_list(h[2]))
+                                                translate([h[2].x, h[2].y])
+                                                    drill(screw_pilot_hole(psu_screw(type)), 0);
+                                        }
 
                                 g = psu_face_grill(f);
                                 if(g) {
@@ -263,17 +268,17 @@ module psu(type) { //! Draw a power supply
         lt =  psu_face_thickness(faces[f_left]);
         cutout = psu_face_cutouts(faces[f_left])[0];
         z = psu_terminal_block_z(type);
-        pw = w -ft - bt;
-        pl = l - right - rt;
-        pcb_thickness = 1.6;
+        offset_left = is_list(terminals[1]) ? [terminals[1].x, -terminals[1].y, 0] : [lt, terminals[1] ? -terminals[1] : 0, 0];
+        offset_right = is_list(terminals[4]) ? [-terminals[4].x, -terminals[4].y, 0] : [-rt, terminals[4] ? -terminals[4] : 0, 0];
+        pcb = [l - offset_left.x + offset_right.x, w - ft - bt, 1.6];
         heatsink_offset = 13.5;
         color("#FCD67E")
-            translate([(-right - rt) / 2 - eps, (ft - bt) / 2, z - pcb_thickness])
-                linear_extrude(pcb_thickness)
+            translate([(-right + offset_left.x + offset_right.x) / 2, (ft - bt) / 2, z - pcb.z])
+                linear_extrude(pcb.z)
                     difference() {
-                        square([pl, pw], center = true);
+                        square([pcb.x, pcb.y], center = true);
                         if(right)
-                            translate([-pl / 2, -pw / 2])
+                            translate([-pcb.x / 2, -pcb.y / 2])
                                 square(16, center = true);
                     }
 
@@ -302,11 +307,11 @@ module psu(type) { //! Draw a power supply
         // terminal blocks
         tb = terminals[2];
         if(tb)
-           translate([-l / 2, w / 2 - terminals[1], z])
+            translate([-l / 2, w / 2, z] + offset_left)
                 terminal_block(tb, terminals[0]);
         if(len(terminals) == 6) {
             tb = terminals[5];
-            translate([l / 2, w / 2 - terminals[4] - terminal_block_length(tb, terminals[3]), z])
+            translate([l / 2, w / 2 - terminal_block_length(tb, terminals[3]), z] + offset_right)
                 rotate(180)
                     terminal_block(tb, terminals[3]);
         }
