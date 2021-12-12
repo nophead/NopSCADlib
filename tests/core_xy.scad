@@ -30,22 +30,25 @@ module coreXY_belts_test() {
     plain_idler = coreXY_plain_idler(coreXY_type);
     toothed_idler = coreXY_toothed_idler(coreXY_type);
 
+    pos = [100, 50];
     coreXYPosBL = [0, 0, 0];
     coreXYPosTR = [200, 150, 0];
     separation = [0, coreXY_coincident_separation(coreXY_type).y, pulley_height(plain_idler) + washer_thickness(M3_washer)];
-    pos = [100, 50];
+    x_gap = 10;
 
-    upper_drive_pulley_offset = [40, 10];
+    plain_idler_offset = [10, 5];
+    upper_drive_pulley_offset = [40, 0];
     lower_drive_pulley_offset = [0, 0];
 
     coreXY_belts(coreXY_type,
-        carriagePosition = pos,
-        coreXYPosBL = coreXYPosBL,
-        coreXYPosTR = coreXYPosTR,
-        separation = separation,
-        x_gap = 10,
-        upper_drive_pulley_offset = upper_drive_pulley_offset,
-        lower_drive_pulley_offset = lower_drive_pulley_offset,
+        pos,
+        coreXYPosBL,
+        coreXYPosTR,
+        separation,
+        x_gap,
+        plain_idler_offset,
+        upper_drive_pulley_offset,
+        lower_drive_pulley_offset,
         show_pulleys = true);
 
 
@@ -56,18 +59,18 @@ module coreXY_belts_test() {
 
         // add the screws for the upper drive offset idler pulleys if required
         if (upper_drive_pulley_offset.x > 0) {
-            translate(coreXY_drive_plain_idler_offset(coreXY_type))
-                translate_z(-pulley_offset(plain_idler))
+            translate(coreXY_drive_plain_idler_offset(coreXY_type) + plain_idler_offset)
+                translate([0, -upper_drive_pulley_offset.y, -pulley_offset(plain_idler)])
                     screw(M3_cap_screw, 20);
             translate(coreXY_drive_toothed_idler_offset(coreXY_type))
-                translate_z(-pulley_offset(toothed_idler))
+                translate([0, -upper_drive_pulley_offset.y, -pulley_offset(toothed_idler)])
                     screw(M3_cap_screw, 20);
          } else if (upper_drive_pulley_offset.x < 0) {
-            translate([-pulley_od(plain_idler), coreXY_drive_plain_idler_offset(coreXY_type).y])
-                translate_z(-pulley_offset(plain_idler))
+            translate([-pulley_od(plain_idler), coreXY_drive_plain_idler_offset(coreXY_type).y + plain_idler_offset.y])
+                translate([0, -upper_drive_pulley_offset.y, -pulley_offset(plain_idler)])
                     screw(M3_cap_screw, 20);
-            translate([2*coreXY_drive_pulley_x_alignment(coreXY_type), coreXY_drive_toothed_idler_offset(coreXY_type).y])
-                translate_z(-pulley_offset(toothed_idler))
+            translate([2*coreXY_drive_pulley_x_alignment(coreXY_type) + plain_idler_offset.x, coreXY_drive_toothed_idler_offset(coreXY_type).y])
+                translate([0, -upper_drive_pulley_offset.y, -pulley_offset(toothed_idler)])
                     screw(M3_cap_screw, 20);
         }
     }
@@ -79,18 +82,18 @@ module coreXY_belts_test() {
 
         // add the screws for the lower drive offset idler pulleys if required
         if (lower_drive_pulley_offset.x < 0) {
-            translate([-coreXY_drive_plain_idler_offset(coreXY_type).x, coreXY_drive_plain_idler_offset(coreXY_type).y])
-                translate_z(-pulley_offset(plain_idler))
+            translate([-coreXY_drive_plain_idler_offset(coreXY_type).x - plain_idler_offset.x, coreXY_drive_plain_idler_offset(coreXY_type).y + plain_idler_offset.y])
+                translate([0, -lower_drive_pulley_offset.y, -pulley_offset(plain_idler)])
                     screw(M3_cap_screw, 20);
             translate(coreXY_drive_toothed_idler_offset(coreXY_type))
-                translate_z(-pulley_offset(toothed_idler))
+                translate([0, -lower_drive_pulley_offset.y, -pulley_offset(toothed_idler)])
                     screw(M3_cap_screw, 20);
         } else if (lower_drive_pulley_offset.x > 0) {
-            translate([pulley_od(plain_idler), coreXY_drive_plain_idler_offset(coreXY_type).y])
-                translate_z(-pulley_offset(plain_idler))
+            translate([pulley_od(plain_idler), coreXY_drive_plain_idler_offset(coreXY_type).y + plain_idler_offset.y])
+                translate([0, -lower_drive_pulley_offset.y, -pulley_offset(plain_idler)])
                     screw(M3_cap_screw, 20);
-            translate([-2*coreXY_drive_pulley_x_alignment(coreXY_type), coreXY_drive_toothed_idler_offset(coreXY_type).y])
-                translate_z(-pulley_offset(toothed_idler))
+            translate([-2*coreXY_drive_pulley_x_alignment(coreXY_type) - plain_idler_offset.x, coreXY_drive_toothed_idler_offset(coreXY_type).y])
+                translate([0, -lower_drive_pulley_offset.y, -pulley_offset(toothed_idler)])
                     screw(M3_cap_screw, 20);
         }
     }
@@ -118,13 +121,13 @@ module coreXY_belts_test() {
         translate([coreXYPosBL.x, coreXY_toothed_idler_offset(coreXY_type).y, 0])
             screw(M3_cap_screw, 20);
         // add the screw for the left Y carriage plain idler
-        translate([coreXYPosBL.x + separation.x + coreXY_plain_idler_offset(coreXY_type).x, separation.y + coreXY_plain_idler_offset(coreXY_type).y, separation.z])
+        translate([coreXYPosBL.x + separation.x + coreXY_plain_idler_offset(coreXY_type).x + (upper_drive_pulley_offset.x == 0 ? 0 : plain_idler_offset.x), separation.y + coreXY_plain_idler_offset(coreXY_type).y, separation.z])
             screw(M3_cap_screw, 20);
         // add the screw for the right Y carriage toothed idler
         translate([coreXYPosTR.x + separation.x, coreXY_toothed_idler_offset(coreXY_type).y, separation.z])
             screw(M3_cap_screw, 20);
         // add the screw for the right Y carriage plain idler
-        translate([coreXYPosTR.x - coreXY_plain_idler_offset(coreXY_type).x, separation.y + coreXY_plain_idler_offset(coreXY_type).y, 0])
+        translate([coreXYPosTR.x - coreXY_plain_idler_offset(coreXY_type).x - (lower_drive_pulley_offset.x == 0 ? 0 : plain_idler_offset.x), separation.y + coreXY_plain_idler_offset(coreXY_type).y, 0])
             screw(M3_cap_screw, 20);
     }
 }

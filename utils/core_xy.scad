@@ -90,13 +90,13 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
 
     // toothed idler for offset stepper motor drive pulley
     p3t_type = coreXY_toothed_idler(type);
-    p3t = [ -size.x / 2 + (drive_pulley_offset.x > 0 ? 0 : 2 * coreXY_drive_pulley_x_alignment(type)),
+    p3t = [ -size.x / 2 + (drive_pulley_offset.x > 0 ? 0 : plain_idler_offset.x + 2 * coreXY_drive_pulley_x_alignment(type)),
              size.y / 2 + coreXY_drive_pulley_x_alignment(type)
     ];
 
     // y-carriage plain pulley
     p4_type = coreXY_plain_idler(type);
-    p4 = [ -size.x / 2 + pulley_od(p4_type) / 2 + pulley_od(p3d_type) / 2 + coreXY_drive_pulley_x_alignment(type) + plain_idler_offset.x,
+    p4 = [ -size.x / 2 + pulley_od(p4_type) / 2 + pulley_od(p3d_type) / 2 + coreXY_drive_pulley_x_alignment(type) + (drive_pulley_offset.x == 0 ? 0 : plain_idler_offset.x),
            -size.y / 2 + pulley_od(p4_type) / 2 + pos.y + separation_y / 2
     ];
 
