@@ -678,6 +678,7 @@ PCB cameras.
 |:--- |:--- |
 | `camera_connector_pos(type)` | The flex connector block for the camera itself's position |
 | `camera_connector_size(type)` | The flex connector block for the camera itself's size |
+| `camera_fov(type)` | The field of view of the camera lens |
 | `camera_lens(type)` | Stack of lens parts, can be round, rectangular or rounded rectangular, with optional tapered aperture |
 | `camera_lens_offset(type)` | Offset of the lens center from the PCB centre |
 | `camera_pcb(type)` | The PCB part of the camera |
@@ -685,7 +686,7 @@ PCB cameras.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `camera(type, show_lens = true)` | Draw specified PCB camera |
+| `camera(type, show_lens = true, fov_distance = 0, fov = undef)` | Draw specified PCB camera |
 | `camera_lens(type, offset = 0, show_lens = true)` | Draw the lens stack, with optional offset for making a clearance hole |
 
 ![cameras](tests/png/cameras.png)
