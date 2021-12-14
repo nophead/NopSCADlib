@@ -67,8 +67,7 @@ rpi_camera = ["rpi_camera", "Raspberry Pi focusable camera", rpi_camera_pcb, [0,
         [[0, 0,  12], 6],
         [[0, 11, 4.3], 14 / 2, [8/2, 11/2, 1]],
     ],
-    [0, 18 - 1.5 - 2.5], [8, 5, 1.6],
-    63 // FOV
+    [0, 18 - 1.5 - 2.5], [8, 5, 1.6]
 ];
 
 cameras = [rpi_camera_v1, rpi_camera_v2, rpi_camera];

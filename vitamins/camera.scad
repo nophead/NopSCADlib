@@ -58,7 +58,7 @@ module camera_lens(type, offset = 0, show_lens = true) //! Draw the lens stack, 
                                 }
             }
 
-module camera(type, show_lens = true, fov = undef, fov_distance = 0) {           //! Draw specified PCB camera
+module camera(type, show_lens = true, fov_distance = 0, fov = undef) {           //! Draw specified PCB camera
     vitamin(str("camera(", type[0], "): ", type[1]));
     pcb = camera_pcb(type);
 
@@ -67,19 +67,17 @@ module camera(type, show_lens = true, fov = undef, fov_distance = 0) {          
 
     translate_z(pcb_thickness(pcb)) {
         camera_lens(type, show_lens = show_lens);
-        if (show_lens && fov_distance > 0) {
+        if (show_lens&& fov_distance > 0) {
             lens = camera_lens(type);
             fov = is_undef(fov) ? camera_fov(type) : fov;
-            #translate_z(lens[2][0].z) // note: use of # is deliberate, to show highlighted field of view
-                translate(camera_lens_offset(type))
-                    if (is_list(fov))
+            if (is_list(fov))
+                #translate_z(lens[2][0].z) // note: use of # is deliberate, to show highlighted field of view
+                    translate(camera_lens_offset(type))
                         hull() {
                             cube([lens[1][1]/2, lens[1][1]/2, eps], center=true);
                             translate_z(fov_distance)
-                                cube([2 * fov_distance * (sin(fov.x) + (fov.x > 90 ? 1 : 0)), 2 * fov_distance * (sin(fov.y) + (fov.y > 90 ? 1 : 0)), eps], center=true);
+                                cube([2 * fov_distance * tan(fov.x / 2), 2 * fov_distance * tan(fov.y / 2), eps], center=true);
                         }
-                    else
-                        cylinder(r1 = lens[0][1] / 2, r2 = fov_distance * (sin(fov) + (fov > 90 ? 1 : 0)), h = fov_distance);
         }
 
         conn = camera_connector_size(type);
