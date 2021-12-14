@@ -35,6 +35,7 @@ cnc_bit_r       = is_undef($cnc_bit_r)       ? 1.2    : $cnc_bit_r;       // min
 show_rays       = is_undef($show_rays)       ? false  : $show_rays;       // show camera sight lines and light direction
 show_threads    = is_undef($show_threads)    ? false  : $show_threads;    // show screw threads
 show_plugs      = is_undef($show_plugs)      ? false  : $show_plugs;      // plugs on headers
+teardrop_angle  = is_undef($teardrop_angle)  ? 45     : $teardrop_angle;  // teardrop angle
 pp1_colour      = is_undef($pp1_colour)      ? rr_green     : $pp1_colour;// printed part colour 1, RepRap logo colour
 pp2_colour      = is_undef($pp2_colour)      ? crimson      : $pp2_colour;// printed part colour 2
 pp3_colour      = is_undef($pp3_colour)      ? "SteelBlue"  : $pp3_colour;// printed part colour 3
