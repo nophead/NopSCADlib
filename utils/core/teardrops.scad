@@ -34,18 +34,18 @@ module teardrop(h, r, center = true, truncate = true, chamfer = 0, chamfer_both_
                 mirror([side, 0, 0])
                     intersection() {
                         hull()
-                        translate([offset, 0]) {
-                            circle4n(R);
+                            translate([offset, 0]) {
+                                circle4n(R);
 
-                            if (teardrop_angle > 0) {
-                                x = sin(teardrop_angle) - (1 - cos(teardrop_angle)) / tan(teardrop_angle);
-                                if(truncate)
-                                    translate([0, R / 2])
-                                        square([2 * R * x, R], center = true);
-                                else
-                                    polygon([[0, 0], [eps, 0], [0, R * (1 + x * tan(min(teardrop_angle, 90 - eps)))]]);
+                                if (teardrop_angle > 0) {
+                                    x = R * tan(teardrop_angle / 2);
+                                    if(truncate)
+                                        translate([0, R / 2])
+                                            square([2 * x, R], center = true);
+                                    else
+                                        polygon([[0, 0], [eps, 0], [0, R + x * tan(min(teardrop_angle, 90 - eps))]]);
+                                }
                             }
-                        }
                         translate([0, -2 * R])
                             square([R, 4 * R]);
                     }
