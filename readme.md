@@ -876,6 +876,7 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 | `d_connector_holes(type)` | Place children at the screw hole positions |
 | `d_pillar()` | Draw a pillar for a D-connector |
 | `d_plug(type, socket = false, pcb = false, idc = false)` | Draw specified D plug, which can be IDC, PCB or plain solder bucket |
+| `d_plug_D(length, width, rad)` | D plug D shape |
 | `d_socket(connector, pcb = false, idc = false)` | Draw specified D socket, which can be IDC, PCB or plain solder bucket |
 
 ![d_connectors](tests/png/d_connectors.png)

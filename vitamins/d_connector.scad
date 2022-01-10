@@ -72,6 +72,16 @@ module d_pillar() { //! Draw a pillar for a D-connector
         female_metric_thread(screw, pitch, height, false, colour = d_pillar_colour);
 }
 
+module d_plug_D(length, width, rad) { //! D plug D shape
+    d = width / 2 - rad;
+    offset = d * sin(10);
+
+    hull()
+        for(x = [-1, 1], y = [-1, 1])
+            translate([x * (length / 2 - rad) + y * x * offset, y * (width / 2 - rad)])
+                circle(rad);
+}
+
 module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specified D plug, which can be IDC, PCB or plain solder bucket
     hole_r = 3.05 / 2;
     dwall = 0.5;
@@ -88,16 +98,6 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     desc = idc ? "IDC" : pcb ? "PCB mount" : "";
     vitamin(str(socket ? "d_socket(" : "d_plug(", type[0], arg(pcb, false, "pcb"), arg(idc, false, "idc"),
                                   "): D-type ", pins, " way ", desc, socket ? " socket" : " plug"));
-
-    module D(length, width, rad) {
-        d = width / 2 - rad;
-        offset = d * sin(10);
-
-        hull()
-            for(x = [-1, 1], y = [-1, 1])
-                translate([x * (length / 2 - rad) + y * x * offset, y * (width / 2 - rad)])
-                    circle(rad);
-    }
 
     module pin_positions()
         for($i = [1 : pins])
@@ -117,14 +117,14 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
 
         linear_extrude(front_height, convexity = 5)
             difference() {
-                D(d_length, d_width, 2.5);
-                D(d_length - 2 * dwall, d_width - 2 * dwall, 2.5 - dwall);
+                d_plug_D(d_length, d_width, 2.5);
+                d_plug_D(d_length - 2 * dwall, d_width - 2 * dwall, 2.5 - dwall);
             }
 
         if(!idc)
-            rotate([0,180,0])
+            hflip()
                 linear_extrude(back_height, convexity = 5)
-                    D(d_lengths(type)[0] + 2 * dwall, d_widths(type)[0] + 2 * dwall, 2.5 + dwall);
+                    d_plug_D(d_lengths(type)[0] + 2 * dwall, d_widths(type)[0] + 2 * dwall, 2.5 + dwall);
 
     }
     //
@@ -134,12 +134,12 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
         translate_z(d_flange_thickness(type) + eps)
             rotate([0, 180, 0])
                 linear_extrude(back_height + 1 + d_flange_thickness(type), convexity = 5)
-                    D(d_length - dwall, d_width - dwall, 2.5 - dwall/2);
+                    d_plug_D(d_length - dwall, d_width - dwall, 2.5 - dwall/2);
 
         if(socket)
             linear_extrude(front_height - eps, convexity = 5)
                 difference() {
-                    D(d_length - dwall, d_width - dwall, 2.5 - dwall/2);
+                    d_plug_D(d_length - dwall, d_width - dwall, 2.5 - dwall/2);
 
                     pin_positions()
                         circle(r = 0.7);
