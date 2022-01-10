@@ -20,7 +20,9 @@
 //
 //! Used for limit switches. Currently only the button type is supported as the lever and roller types are less accurate.
 //!
-//! The switch is drawn with the button at the nominal operation point. This can be plus or minus `microswitch_op_tol(type)`.
+//! The origin of the switch is in the center of the body. `microswitch_button_pos()` is the offset to tip of the button at its operating point.
+//!
+//! The switch is drawn with the button at the nominal operation point. This actual trigger point can be plus or minus `microswitch_op_tol(type)`.
 //!
 //! When the button is released it comes out by a maximum of `microswitch_fp_max(type)` from the nominal operating point.
 //
