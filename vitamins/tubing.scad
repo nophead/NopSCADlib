@@ -29,6 +29,7 @@ function tubing_id(type)       = type[3]; //! Inside diameter
 function tubing_colour(type)   = type[4]; //! Colour
 
 function tubing_or(type)        = tubing_od(type) / 2; //! Outside radius
+function tubing_ir(type)        = tubing_id(type) / 2; //! Inside radius
 
 module tubing(type, length = 15, forced_id = 0, center = true) { //! Draw specified tubing with optional forced internal diameter
     original_od = tubing_od(type);
@@ -50,4 +51,3 @@ module tubing(type, length = 15, forced_id = 0, center = true) { //! Draw specif
                     circle(d = id);
                 }
 }
-

@@ -4069,6 +4069,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `tubing_ir(type)` | Inside radius |
 | `tubing_or(type)` | Outside radius |
 
 ### Modules
