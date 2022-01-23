@@ -28,7 +28,7 @@ include <iecs.scad>
 mw_terminals = [9.525, 1.5, 15, 17.8, 7, 15];
 
 PD_150_12 =
-    ["PD_150_12", "PD-150-12", 199, 98, 38, M3_pan_screw, M3_clearance_radius, false, 11, 4.5, [7, 11, mw_terminals],
+    ["PD_150_12", "PD-150-12", 199, 98, 38, M3_pan_screw, M3_clearance_radius, false, 11, 4.5, [7, 11, mw_terminals], false,
         [
             [[[82.5, -40], [82.5, 40], [-37.5, -40], [-37.5, 40]], 1.5, []],
             [[],                                                   0.5, [], true],
@@ -42,7 +42,7 @@ PD_150_12 =
 
 st_terminals = [9.666, 2, 13, 15, 8, 13.5];
 S_250_48 =
-    ["S_250_48", "S-250-48", 200, 110, 50, M3_pan_screw, M3_clearance_radius, false, 13, 5, [9, 11, st_terminals],
+    ["S_250_48", "S-250-48", 200, 110, 50, M3_pan_screw, M3_clearance_radius, false, 13, 5, [9, 11, st_terminals], false,
         [
             [[[-39, -45.5], [-39,  39.5], [86, -45.5], [86, 39.5]], 1.5, []],
             [[],                                                    0.5, [], true],
@@ -56,7 +56,7 @@ S_250_48 =
 
 // Single fan at back, wires exit opposite side from mains in
 ATX500 =
-    ["ATX500", "ATX500", 150, 140, 86, No632_pan_screw, 5/2, true, 0, 0, [],
+    ["ATX500", "ATX500", 150, 140, 86, No632_pan_screw, 5/2, true, 0, 0, [], false,
         [
             [[], 0.8, []],
             [[], 0.8, []],
@@ -83,7 +83,7 @@ ATX500 =
 
 // Single fan in the top, wires exit opposite side from mains in
 ATX300 = let(p = [113 / 2, 51.5 / 2], s = [125, 100, 64], iec = [35.5, 6], sw = [6.5, 7])
-    ["ATX300", "FSP300-60GHX", s.x, s.y, s.z, No632_pan_screw, No6_clearance_radius, true, 0, 0, [],
+    ["ATX300", "FSP300-60GHX", s.x, s.y, s.z, No632_pan_screw, No6_clearance_radius, true, 0, 0, [], false,
         [
             [[], 0.5, []],
             [[], 0.5, [], false, [0, 8, fan80x25]],
@@ -121,7 +121,7 @@ ATX300 = let(p = [113 / 2, 51.5 / 2], s = [125, 100, 64], iec = [35.5, 6], sw = 
 
 
 KY240W =
-    ["KY240W", "KY-240W-12-L", 199, 110, 50, M3_cap_screw, M3_clearance_radius, false, 0, 0, [],
+    ["KY240W", "KY-240W-12-L", 199, 110, 50, M3_cap_screw, M3_clearance_radius, false, 0, 0, [], false,
         [
             [[[ 199 / 2 - 12,  110 / 2 - 93],
             [ 199 / 2 - 12,  110 / 2 - 9 ],
@@ -147,6 +147,7 @@ S_300_12 = [
         18,// y offset
         st_terminals
     ],
+    false, // pcb
     // faces
     [
         [// f_bottom, bottom
@@ -224,13 +225,87 @@ S_300_12 = [
     []
 ];
 
+// NIUGUY PSUs
+
+function NIUGUY_CB_PCB(size, left=0, right=0, front=0, back=0) =
+let(s = [size.x - left - right, size.y - front - back], c=9.5)
+[
+    [left/2 - right/2, front/2 - back/2, 3], // offset
+    [ // pcb
+        "", "",
+        s.x, s.y, size.z, // size
+        //size.x, size.y, size.z,
+        1, // corner radius
+        0, // mounting hole diameter
+        0, // pad around mounting hole
+        "DarkBlue", // color
+        false, // true if parts should be separate BOM items
+        [], // hole positions
+        [ // components
+            // terminal parameters are:  pitch, divider width, divider height, total depth, height under contacts, depth of contact well
+            [  -0.25,   12, 180, "terminal",   3, [8.333, 1.5, 12, 15.5, 5, 13.5] ],
+            [   0.25,   35.5, 0, "terminal",   4, [8.333, 1.5, 12, 15.5, 5, 13.5] ],
+        ],
+        [], // accessories
+        [], // grid
+        [ // pcb polygon
+            [-s.x/2, -s.y/2],
+            [-s.x/2, s.y/2 - c], [-s.x/2 + c, s.y/2 - c], [-s.x/2 + c, s.y/2],
+            [s.x/2, s.y/2],
+            [s.x/2, -s.y/2 + c], [s.x/2 - c, -s.y/2 + c], [s.x/2 - c, -s.y/2]
+        ]
+    ],
+];
+
+function NIUGUY_CB_PSU(id, name, s /*size*/, c=10/*corner*/) =
+    [id, name, // ID and Name
+    s.x, s.y, s.z, // Size
+    false, 2.5, // Screw type and hole radius
+    false, // true if ATX
+    0, 0, // left and right bays
+    false, // terminals
+    NIUGUY_CB_PCB([s.x, s.y, 1.6], 0.5, 0.5, 2, 2), // pcb
+    [ // parameters are: holes, thickness, cutouts, grill, fans, iec, switch, vents, panel cutout
+        // bottom
+        [ [[s.x/2 - 4, s.y/2 - 7.5, [5, 0]], [-s.x/2 + 4, -s.y/2 + 7.5, [-5, 0] ], ], 1.5, [] ], // two slots cutout for screws
+        // top
+        [ [], 0.5,  [
+                        [ [-s.x/2 + 20, -s.y/2], [-s.x/2 + 20, s.y/2], [-s.x/2, s.y/2], [-s.x/2, -s.y/2] ],
+                        [ [ s.x/2 - 20, -s.y/2], [ s.x/2 - 20, s.y/2], [ s.x/2, s.y/2], [ s.x/2, -s.y/2] ]
+                    ], [5.5, 1, 6, [50, 30, 6, 6], []] ], // grill
+        // left
+        [ [], 0.5,  [
+                        [ [s.y/2, s.z/2], [s.y/2, -s.z/2 + 3], [-s.y/2, -s.z/2 + 3], [-s.y/2, s.z/2] ], // +3 is for placement of pcb
+                        [ [s.y/2, s.z/2], [s.y/2, -s.z/2], [-s.y/2, -s.z/2], [-s.y/2, s.z/2] ],
+                    ] ],
+        // right
+        [ [], 0.5,  [
+                        [ [-s.y/2, -s.z/2], [s.y/2, -s.z/2], [s.y/2, s.z/2], [-s.y/2, s.z/2] ],
+                    ] ],
+        // front
+        [ [], 2.0,  [
+                        [ [-s.x/2, s.z/2 - c], [-s.x/2, s.z/2], [-s.x/2 + c, s.z/2] ],
+                        [ [ s.x/2, s.z/2 - c], [ s.x/2, s.z/2], [ s.x/2 - c, s.z/2] ]
+                    ], [4.5, 1.5, 6, [15, 15, 4, 8], []] ], // grill
+        // back
+        [ [], 2.0,  [
+                        [ [-s.x/2, -s.z/2 + c], [-s.x/2, -s.z/2], [-s.x/2 + c, -s.z/2] ],
+                        [ [ s.x/2, -s.z/2 + c], [ s.x/2, -s.z/2], [ s.x/2 - c, -s.z/2] ]
+                    ] ],
+    ],
+    [] // accessories for BOM
+];
+
+NG_CB_200W_24V = NIUGUY_CB_PSU("NG_CB_200W_24V", "NIUGUY NG-CB-200W-24V", [178, 50, 22]);
+NG_CB_500W_24V = NIUGUY_CB_PSU("NG_CB_500W_24V", "NIUGUY NG-CB-500W-24V", [238, 50, 22]);
+
 External =
-    ["External", "X Box", 0, 0, 0, false, false, false, 0, 0, [],
+    ["External", "X Box", 0, 0, 0, false, false, false, 0, 0, [], false,
         [],
         [": IEC mains lead"]
     ];
 
-psus = [PD_150_12, S_250_48, S_300_12, ATX300, ATX500];
+psus = [NG_CB_200W_24V, NG_CB_500W_24V, PD_150_12, S_250_48, S_300_12, ATX300, ATX500];
 
 psus_not_shown = [KY240W];
 

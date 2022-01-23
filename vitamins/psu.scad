@@ -29,6 +29,7 @@ use <../utils/sector.scad>
 use <../utils/round.scad>
 use <fan.scad>
 use <iec.scad>
+use <pcb.scad>
 use <rocker.scad>
 use <terminal.scad>
 
@@ -53,8 +54,9 @@ function atx_psu(type)               = type[7];     //! True if an ATX style PSU
 function psu_left_bay(type)          = type[8];     //! Bay for terminals
 function psu_right_bay(type)         = type[9];     //! Bay for heatsink
 function psu_terminals(type)         = type[10];    //! How many terminals and the y offset from the back
-function psu_faces(type)             = type[11];    //! List of face descriptions
-function psu_accessories(type)       = type[12];    //! Accessories to add to BOM, e.g. mains lead
+function psu_pcb(type)               = type[11];    //! The PCB
+function psu_faces(type)             = type[12];    //! List of face descriptions
+function psu_accessories(type)       = type[13];    //! Accessories to add to BOM, e.g. mains lead
 
 function psu_face_transform(type, face) =           //! Returns a transformation matrix to get to the specified face
     let(l = psu_length(type),
@@ -129,8 +131,13 @@ module psu(type) { //! Draw a power supply
                                         polygon([for(p = cutout) p]);
 
                                 for(h = psu_face_holes(f))
-                                    translate(h)
-                                        drill(screw_pilot_hole(psu_screw(type)), 0);
+                                    translate([h.x, h.y])
+                                        hull() {
+                                            drill(psu_screw(type) == false ? psu_screw_hole_radius(type) : screw_pilot_hole(psu_screw(type)), 0);
+                                            if (is_list(h[2]))
+                                                translate([h[2].x, h[2].y])
+                                                    drill(psu_screw(type) == false ? psu_screw_hole_radius(type) : screw_pilot_hole(psu_screw(type)), 0);
+                                        }
 
                                 g = psu_face_grill(f);
                                 if(g) {
@@ -210,17 +217,15 @@ module psu(type) { //! Draw a power supply
         lt =  psu_face_thickness(faces[f_left]);
         cutout = psu_face_cutouts(faces[f_left])[0];
         z = psu_terminal_block_z(type);
-        pw = w -ft - bt;
-        pl = l - right - rt;
-        pcb_thickness = 1.6;
+        pcb =  [l - right - rt, w - ft - bt, 1.6];
         heatsink_offset = 13.5;
         color("#FCD67E")
-            translate([(-right - rt) / 2, (ft - bt) / 2, z - pcb_thickness])
-                linear_extrude(pcb_thickness)
+            translate([(-right - rt) / 2, (ft - bt) / 2, z - pcb.z])
+                linear_extrude(pcb.z)
                     difference() {
-                        square([pl, pw], center = true);
+                        square([pcb.x, pcb.y], center = true);
 
-                        translate([-pl / 2, -pw / 2])
+                        translate([-pcb.x / 2, -pcb.y / 2])
                             square(16, center = true);
                     }
 
@@ -237,7 +242,7 @@ module psu(type) { //! Draw a power supply
             earth_d = 5;
             translate([-l / 2 + earth_inset, w / 2 - tab_w / 2]) {
                 color("silver")
-                    cylinder(d = earth_d, h = z - pcb_thickness);
+                    cylinder(d = earth_d, h = z - pcb.z);
 
                 translate_z(z + lt)
                     not_on_bom() no_explode()
@@ -274,6 +279,13 @@ module psu(type) { //! Draw a power supply
                         }
         }
     }
+    // PCB
+    pcb = psu_pcb(type);
+    if (pcb) {
+        translate(pcb[0])
+            pcb(pcb[1]);
+    }
+
 }
 
 module psu_screw_positions(type, face = undef) { //! Position children at the screw positions on the preferred mounting face, which can be overridden.
@@ -284,7 +296,7 @@ module psu_screw_positions(type, face = undef) { //! Position children at the sc
     if(len(psu_faces(type)) > f)
         multmatrix(psu_face_transform(type, f))
             for(point = psu_face_holes(psu_faces(type)[f]))
-                translate(point)
+                translate([point.x, point.y])
                     children();
 }
 
