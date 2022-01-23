@@ -4430,6 +4430,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | `box_depth(type)` | Internal depth |
 | `box_feet(type)` | True to enable feet on the bottom bezel |
 | `box_height(type)` | Internal height |
+| `box_name(type)` | Name for projects with more than one box |
 | `box_screw(type)` | Screw type to be used at the corners |
 | `box_sheets(type)` | Sheet type used for the sides |
 | `box_shelf_screw(type)` | Screw type to hold a shelf |
@@ -4440,9 +4441,10 @@ Normally the side sheets are the same type but they can be overridden individual
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = undef)` | Construct a property list for a box. |
+| `box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = undef, name = "box")` | Construct a property list for a box. |
 | `box_bezel_height(type, bottom)` | Bezel height for top or bottom |
 | `box_corner_gap(type)` | Gap between box_sheets at the corners to connect inside and outside profiles |
+| `box_hole_inset(type)` | Screw inset from the corner of the internal dimensions |
 | `box_inset(type)` | How much the bezel intrudes on the specified width and length, away from the corners |
 | `box_intrusion(type)` | Corner profile intrusion |
 | `box_margin(type)` | How much the bezel intrudes on the specified height |

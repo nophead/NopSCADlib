@@ -23,7 +23,7 @@
 // parameters to make the assembly views. E.g. module box_assembly() _box_assembly(box);
 //
 module _box_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true, bezels = true, corners = 4)
-assembly("box") {
+assembly(box_name(type)) {
     echo("Box:", box_width(type), box_depth(type), box_height(type));
 
     t = sheet_thickness(box_sheets(type));
