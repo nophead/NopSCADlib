@@ -158,14 +158,14 @@ module mouse_grommet_hole(r, h = 50, z = undef, expand = wall + clearance) //! M
                 square([2 * R, eps]);
         }
 
-function mouse_grommet_offset(r) = r + wall;
+function mouse_grommet_offset(r) = r + wall; //! Offset of the wire from the ground
+function mouse_grommet_length(r) = 2 * r + 2 * wall + 2 * overlap; //! Length of grommet given r
 
 module mouse_grommet(r, thickness) { //! Make the STL for a mouse grommet
 
     width = 2 * (wall + clearance) + thickness;
-    length = 2 * r + 2 * wall + 2 * overlap;
 
-    stl(str("mouse_grommet_", r * 10, "_", thickness))
+    stl(str("mouse_grommet_", r * 20, "_", thickness))
         rotate([90, 0, 0])
             union() {
                 for(side = [-1, 1])
@@ -193,10 +193,10 @@ module mouse_grommet_assembly(r, thickness)
             mouse_grommet(r, thickness);
 
 module ribbon_grommet_20_3_stl() ribbon_grommet(20, 3);
-module mouse_grommet_15_3_stl() mouse_grommet(1.5, 3);
-module mouse_grommet_20_3_stl() mouse_grommet(2, 3);
-module mouse_grommet_25_3_stl() mouse_grommet(2.5, 3);
-module mouse_grommet_30_3_stl() mouse_grommet(3, 3);
+module mouse_grommet_30_3_stl() mouse_grommet(1.5, 3);
+module mouse_grommet_40_3_stl() mouse_grommet(2, 3);
+module mouse_grommet_50_3_stl() mouse_grommet(2.5, 3);
+module mouse_grommet_60_3_stl() mouse_grommet(3, 3);
 
 module round_grommet_bottom_30_stl() round_grommet_bottom(3);
 module round_grommet_bottom_40_stl() round_grommet_bottom(4);

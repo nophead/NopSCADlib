@@ -4337,8 +4337,8 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 | `cable_radius(cable)` | Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>. |
 | `cable_width(cable)` | Width in flat clip |
 | `cable_wire_size(cable)` | Size of each wire in a bundle |
-| `cable_wires(cable)` | Number of wires in a bindle |
-| `wire_hole_radius(cable)` | Radius of a hole to accept a bundle of wires |
+| `cable_wires(cable)` | Number of wires in a bundle |
+| `wire_hole_radius(cable)` | Radius of a hole to accept a bundle of wires, rounded up to standard metric drill size |
 
 ### Modules
 | Module | Description |
@@ -4632,6 +4632,12 @@ of conductive panels, an extra layer of insulation.
 
 [tests/cable_grommets.scad](tests/cable_grommets.scad) Code for this example.
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `mouse_grommet_length(r)` | Length of grommet given r |
+| `mouse_grommet_offset(r)` | Offset of the wire from the ground |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
@@ -4648,7 +4654,7 @@ of conductive panels, an extra layer of insulation.
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   1 | mouse_grommet_50_3.stl |
+|   1 | mouse_grommet_100_3.stl |
 |   1 | ribbon_grommet_20_3.stl |
 |   1 | round_grommet_bottom_60.stl |
 |   1 | round_grommet_top_60_3.stl |

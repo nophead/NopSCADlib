@@ -32,13 +32,13 @@ module ribbon_cable(ways, length)                   //! Add ribbon cable to the 
 //
 // Cable sizes
 //
-function cable_wires(cable)     = cable[0]; //! Number of wires in a bindle
+function cable_wires(cable)     = cable[0]; //! Number of wires in a bundle
 function cable_wire_size(cable) = cable[1]; //! Size of each wire in a bundle
 
 // numbers from http://mathworld.wolfram.com/CirclePacking.html
 function cable_radius(cable) = [0, 1, 2, 2.15, 2.41, 2.7, 3, 3, 3.3][cable_wires(cable)] * cable_wire_size(cable) / 2; //! Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>.
 
-function wire_hole_radius(cable) = ceil(2 * cable_radius(cable) +1) / 2; //! Radius of a hole to accept a bundle of wires
+function wire_hole_radius(cable) = ceil(4 * cable_radius(cable) + 1) / 4; //! Radius of a hole to accept a bundle of wires, rounded up to standard metric drill size
 
 function cable_bundle(cable) = //! Arrangement of a bundle in a flat cable clip
     [[0,0], [1,1], [2,1], [2, 0.5 + sin(60)], [2,2], [3, 0.5 + sin(60)], [3,2]][cable_wires(cable)];
@@ -49,11 +49,11 @@ function cable_height(cable) = cable_bundle(cable)[1] * cable_wire_size(cable); 
 module mouse_hole(cable, h = 100, teardrop = false) { //! A mouse hole to allow a panel to go over a wire bundle.
     r = wire_hole_radius(cable);
 
-        if(teardrop)
-            vertical_tearslot(r = r, l = 2 * r, h = h, plus = true);
-        else
-            rotate(90)
-                slot(r, 2 * r, h = h);
+    if(teardrop)
+        vertical_tearslot(r = r, l = 2 * r, h = h, plus = true);
+    else
+        rotate(90)
+            slot(r, 2 * r, h = h);
 }
 
 module cable_tie_holes(cable_r, h = 100) { //! Holes to thread a ziptie through a panel to make a cable tie.
