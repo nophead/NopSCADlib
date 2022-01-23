@@ -20,6 +20,8 @@
 //
 //! Models of radial blowers.
 //
+//! Note that blower_exit() and blower_exit_offset() are for the inside of the exit for square blowers but the outside for spiral blowers.
+//
 include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/quadrant.scad>
@@ -45,8 +47,10 @@ function blower_wall_left(type)   = type[15]; //! Left side wall thickness
 function blower_wall_right(type)  = type[17]; //! Right wall thickness (for square fans)
 
 function blower_casing_is_square(type) = blower_depth(type) < 15; //! True for square radial fans, false for spiral shape radial blowers
-function blower_exit_offset(type) = blower_casing_is_square(type) ? blower_length(type) / 2 : blower_exit(type) / 2; //! Offset of exit's centre from the edge
-
+function blower_exit_offset(type) =   //! Offset of exit's centre from the edge
+    blower_casing_is_square(type) ? len(blower_screw_holes(type)) > 2 ? blower_length(type) / 2
+                                                                      : blower_wall_left(type) + blower_exit(type) / 2
+                                  : blower_exit(type) / 2;
 fan_colour = grey(20);
 
 module blower_fan(type, casing_is_square) {
@@ -100,6 +104,7 @@ module blower_square(type) { //! Draw a square blower
                 // cut out the inside, leaving the corners
                 translate([hole_count == 2 ? wall_left : corner_inset + wall_left, -eps])
                     square([blower_exit(type), width / 2], center = false);
+
                 translate(blower_axis(type))
                     circle(d = blower_bore(type) + 1);
             } else {
@@ -225,6 +230,9 @@ module blower(type) { //! Draw specified blower
 
         blower_fan(type, is_square);
     }
+    *translate([blower_exit(type) / 2 + blower_exit_offset(type), 0])
+        rotate(180)
+            #cube([blower_exit(type), 30, depth]);
 }
 
 module blower_hole_positions(type) //! Translate children to screw hole positions

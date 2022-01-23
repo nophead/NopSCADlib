@@ -442,6 +442,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 <a name="Blowers"></a>
 ## Blowers
 Models of radial blowers.
+Note that blower_exit() and blower_exit_offset() are for the inside of the exit for square blowers but the outside for spiral blowers.
 
 [vitamins/blowers.scad](vitamins/blowers.scad) Object definitions.
 
