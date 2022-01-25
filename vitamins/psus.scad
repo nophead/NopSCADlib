@@ -296,8 +296,8 @@ function NIUGUY_CB_PSU(id, name, s /*size*/, c=10/*corner*/) =
     [] // accessories for BOM
 ];
 
-NG_CB_200W_24V = NIUGUY_CB_PSU("NG_CB_200W_24V", "NIUGUY NG-CB-200W-24V", [178, 50, 22]);
-NG_CB_500W_24V = NIUGUY_CB_PSU("NG_CB_500W_24V", "NIUGUY NG-CB-500W-24V", [238, 50, 22]);
+NG_CB_200W_24V = NIUGUY_CB_PSU("NG_CB_200W_24V", "NIUGUY CB-200W-24V", [178, 50, 22]);
+NG_CB_500W_24V = NIUGUY_CB_PSU("NG_CB_500W_24V", "NIUGUY CB-500W-24V", [238, 50, 22]);
 
 External =
     ["External", "X Box", 0, 0, 0, false, false, false, 0, 0, [], false,
