@@ -2885,6 +2885,7 @@ Face order is bottom, top, left, right, front, back.
 | `psu_left_bay(type)` | Bay for terminals |
 | `psu_length(type)` | Length |
 | `psu_name(type)` | The part name |
+| `psu_pcb(type)` | The PCB |
 | `psu_right_bay(type)` | Bay for heatsink |
 | `psu_screw(type)` | Screw type |
 | `psu_screw_hole_radius(type)` | Clearance hole for screw, bigger than normal on ATX |
@@ -2913,6 +2914,8 @@ Face order is bottom, top, left, right, front, back.
 |   1 | `psu(ATX500)` |  PSU ATX500 |
 |   1 | `psu(ATX300)` |  PSU FSP300-60GHX |
 |   1 | `psu(KY240W)` |  PSU KY-240W-12-L - not shown |
+|   1 | `psu(NG_CB_200W_24V)` |  PSU NIUGUY CB-200W-24V |
+|   1 | `psu(NG_CB_500W_24V)` |  PSU NIUGUY CB-500W-24V |
 |   1 | `psu(PD_150_12)` |  PSU PD-150-12 |
 |   1 | `psu(S_250_48)` |  PSU S-250-48 |
 |   1 | `psu(S_300_12)` |  PSU S-300-12 |
@@ -4610,23 +4613,23 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|  48 | `insert(F1BM3)` |  Heatfit insert M3 |
-|  36 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
+|  60 | `insert(F1BM3)` |  Heatfit insert M3 |
+|  44 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   4 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
-|   8 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
-|   2 | `sheet(DiBond, 303, 126)` |  Sheet DiBond 303mm x 126mm x 3mm |
-|   1 | `sheet(DiBond, 400, 126)` |  Sheet DiBond 400mm x 126mm x 3mm |
-|   1 | `sheet(DiBond6, 400, 300, 1)` |  Sheet DiBond 400mm x 300mm x 6mm |
-|   1 | `sheet(DiBond, 406, 129)` |  Sheet DiBond 406mm x 129mm x 3mm |
-|   1 | `sheet(PMMA3, 406, 303)` |  Sheet acrylic 406mm x 303mm x 3mm |
-|  48 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|  48 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
+|  12 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
+|   2 | `sheet(DiBond, 203, 126)` |  Sheet DiBond 203mm x 126mm x 3mm |
+|   1 | `sheet(DiBond, 300, 126)` |  Sheet DiBond 300mm x 126mm x 3mm |
+|   1 | `sheet(DiBond6, 300, 200, 1)` |  Sheet DiBond 300mm x 200mm x 6mm |
+|   1 | `sheet(DiBond, 306, 129)` |  Sheet DiBond 306mm x 129mm x 3mm |
+|   1 | `sheet(PMMA3, 306, 203)` |  Sheet acrylic 306mm x 203mm x 3mm |
+|  60 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  60 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
 |   8 | corner_block_M30.stl |
-|   8 | fixing_block_M30.stl |
+|  12 | fixing_block_M30.stl |
 
 ### Routed
 | Qty | Filename |
@@ -4643,7 +4646,7 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ---:|:--- |
 |   1 | bbox_assembly |
 |   8 | corner_block_M30_assembly |
-|   8 | fixing_block_M30_assembly |
+|  12 | fixing_block_M30_assembly |
 
 
 <a href="#top">Top</a>

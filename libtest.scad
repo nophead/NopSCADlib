@@ -198,8 +198,9 @@ translate([900, 750])
 translate([900, 850])
     printed_boxes();
 
-translate([850, 1330 + 85])
-    bbox_test();
+translate([950, 1400])
+    rotate(-90)
+        bbox_test();
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
