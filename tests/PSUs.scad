@@ -30,9 +30,10 @@ module psus()
     rotate(atx_psu(p) ? 0 : 90) {
         psu(p);
 
-        psu_screw_positions(p)
-            translate_z(3)
-                screw_and_washer(psu_screw(p), 8);
+        if (psu_screw(p))
+            psu_screw_positions(p)
+                translate_z(3)
+                    screw_and_washer(psu_screw(p), 8);
 
         if(show_cutout && atx_psu(p))
             #atx_psu_cutout(p);
