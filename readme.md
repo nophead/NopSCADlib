@@ -2885,6 +2885,7 @@ Face order is bottom, top, left, right, front, back.
 | `psu_left_bay(type)` | Bay for terminals |
 | `psu_length(type)` | Length |
 | `psu_name(type)` | The part name |
+| `psu_pcb(type)` | The PCB |
 | `psu_right_bay(type)` | Bay for heatsink |
 | `psu_screw(type)` | Screw type |
 | `psu_screw_hole_radius(type)` | Clearance hole for screw, bigger than normal on ATX |
@@ -2913,6 +2914,8 @@ Face order is bottom, top, left, right, front, back.
 |   1 | `psu(ATX500)` |  PSU ATX500 |
 |   1 | `psu(ATX300)` |  PSU FSP300-60GHX |
 |   1 | `psu(KY240W)` |  PSU KY-240W-12-L - not shown |
+|   1 | `psu(NG_CB_200W_24V)` |  PSU NIUGUY CB-200W-24V |
+|   1 | `psu(NG_CB_500W_24V)` |  PSU NIUGUY CB-500W-24V |
 |   1 | `psu(PD_150_12)` |  PSU PD-150-12 |
 |   1 | `psu(S_250_48)` |  PSU S-250-48 |
 |   1 | `psu(S_300_12)` |  PSU S-300-12 |
