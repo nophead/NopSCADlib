@@ -38,15 +38,15 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Knob">Knob</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
 ---
@@ -2546,6 +2546,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
 |   1 | `pcb(ArduinoNano)` |  Arduino Nano |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
+|   1 | `pcb(BTT_RELAY_V1_2)` |  BigTreeTech Relay Module v1.2 |
 |   1 | `pcb(BTT_SKR_E3_TURBO)` |  BigTreeTech SKR E3 Turbo |
 |   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
 |   1 | `pcb(BTT_SKR_V1_4_TURBO)` |  BigTreeTech SKR v1.4 Turbo |
@@ -2570,7 +2571,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  30 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  28 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  32 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 - not shown |
 |   1 | `pcb(PSU12V1A)` |  PSU 12V 1A - not shown |
@@ -2594,8 +2595,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
 |   8 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
 |  10 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
-|  14 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
-|   4 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
+|  13 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   9 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 35)` |  Screw M4 cap x 35mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
 |   1 | `pcb(TP4056)` |  TP4056 Li-lon Battery charger module |
@@ -2605,7 +2606,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  20 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  30 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  28 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  32 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
@@ -2625,13 +2626,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | pcb_spacer2550.stl |
 |   4 | pcb_spacer2580.stl |
 |   4 | pcb_spacer30160.stl |
-|   5 | pcb_spacer30190.stl |
+|   4 | pcb_spacer30190.stl |
 |   5 | pcb_spacer30200.stl |
-|   4 | pcb_spacer30210.stl |
+|   5 | pcb_spacer30210.stl |
+|   4 | pcb_spacer30220.stl |
 |   4 | pcb_spacer3050.stl |
 |   6 | pcb_spacer3060.stl |
-|   4 | pcb_spacer40220.stl |
 |   4 | pcb_spacer40230.stl |
+|   4 | pcb_spacer40240.stl |
 
 
 <a href="#top">Top</a>
@@ -2888,19 +2890,12 @@ Face order is bottom, top, left, right, front, back.
 | `psu_screw_hole_radius(type)` | Clearance hole for screw, bigger than normal on ATX |
 | `psu_terminals(type)` | How many terminals and the y offset from the back |
 | `psu_width(type)` | Width |
-| `terminal_block_depth(type)` | Total depth |
-| `terminal_block_depth2(type)` | Depth of contact well |
-| `terminal_block_divider(type)` | Width of the dividers |
-| `terminal_block_height(type)` | Height of the dividers |
-| `terminal_block_height2(type)` | Height under the contacts |
-| `terminal_block_pitch(type)` | Pitch between screws |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
 | `psu_face_transform(type, face)` | Returns a transformation matrix to get to the specified face |
 | `psu_size(type)` | Size |
-| `terminal_block_length(type, ways)` | Total length of terminal block |
 
 ### Modules
 | Module | Description |
@@ -2908,7 +2903,6 @@ Face order is bottom, top, left, right, front, back.
 | `atx_psu_cutout(type, face = f_front)` | Cut out for the rear of an ATX, which is actually f_front! |
 | `psu(type)` | Draw a power supply |
 | `psu_screw_positions(type, face = undef)` | Position children at the screw positions on the preferred mounting face, which can be overridden. |
-| `terminal_block(type, ways)` | Draw a power supply terminal block |
 
 ![psus](tests/png/psus.png)
 
@@ -3936,6 +3930,38 @@ Should be reasonably accurate if not close to fully open.
 |   1 | `sheet(AL6, 40, 20, 1)` |  Aluminium tooling plate 40mm x 20mm x 6mm |
 |   1 | `sheet(glass2, 40, 20, 1)` |  Sheet glass 40mm x 20mm x 2mm |
 |   2 | `swiss_clip(UKPFS1008_10)` |  Swiss picture clip UKPFS1008_10 11mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Terminals"></a>
+## Terminals
+[vitamins/terminal.scad](vitamins/terminal.scad) Implementation.
+
+[tests/terminals.scad](tests/terminals.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `terminal_block_depth(type)` | Total depth |
+| `terminal_block_depth2(type)` | Depth of contact well |
+| `terminal_block_divider(type)` | Width of the dividers |
+| `terminal_block_height(type)` | Height of the dividers |
+| `terminal_block_height2(type)` | Height under the contacts |
+| `terminal_block_pitch(type)` | Pitch between screws |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `terminal_block_length(type, ways)` | Total length of terminal block |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `terminal_block(type, ways)` | Draw a power supply terminal block |
+
+![terminals](tests/png/terminals.png)
 
 
 <a href="#top">Top</a>

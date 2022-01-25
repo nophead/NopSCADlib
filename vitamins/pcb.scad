@@ -38,6 +38,7 @@ use <led.scad>
 use <dip.scad>
 use <axial.scad>
 use <smd.scad>
+use <terminal.scad>
 include <potentiometers.scad>
 
 function pcb_name(type)         = type[1];  //! Description
@@ -1088,6 +1089,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
             if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5]);
             if(show(comp, "vero_pin"))      vero_pin(param(4, false));
+            if(show(comp, "terminal"))      terminal_block(comp[5], comp[4]);
         }
     }
 }
