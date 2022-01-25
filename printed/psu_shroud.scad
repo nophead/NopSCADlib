@@ -27,6 +27,7 @@ use <../vitamins/insert.scad>
 use <../vitamins/wire.scad>
 use <../vitamins/psu.scad>
 use <../utils/round.scad>
+use <../vitamins/terminal.scad>
 
 wall = 1.8;
 top = 1.5;
