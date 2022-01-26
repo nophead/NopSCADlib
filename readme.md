@@ -4579,9 +4579,9 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | `bbox_sheets(type)` | Sheet type for the sides |
 | `bbox_skip_blocks(type)` | List of fixing blocks to skip, used to allow a hinged panel for example |
 | `bbox_span(type)` | Maximum span between fixing blocks |
+| `bbox_star_washers(type)` | Set to false to remove star washers. |
 | `bbox_top_sheet(type)` | Sheet type for the top |
 | `bbox_width(type)` | Internal width |
-| `star_washers(type)` | Set to false to remove star washers. |
 
 ### Functions
 | Function | Description |
