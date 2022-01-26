@@ -226,7 +226,7 @@ module _bbox_assembly(type, top = true, base = true, left = true, right = true, 
     width = bbox_width(type);
     depth = bbox_depth(type);
     height = bbox_height(type);
-    echo("Box:", width, depth, height, volume = bbox_volume(type), area = bbox_area(type));
+    echo("Butt_box:", width, depth, height, volume = bbox_volume(type), area = bbox_area(type));
 
     t = sheet_thickness(bbox_sheets(type));
     bt = sheet_thickness(bbox_base_sheet(type));
