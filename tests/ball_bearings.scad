@@ -24,7 +24,7 @@ include <../vitamins/ball_bearings.scad>
 module ball_bearings()
     layout([for(b = ball_bearings) bb_diameter(b)])
         ball_bearing(ball_bearings[$i])
-            bearing_ball(3);
-
+            if (bb_width(ball_bearings[$i]) >= 5)
+                bearing_ball(3);
 if($preview)
     ball_bearings();
