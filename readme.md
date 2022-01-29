@@ -4568,7 +4568,8 @@ maximum spacing.
  * An optional list of fixing blocks to be omitted can be given.
  * Star washers can be omitted by setting the 11th parameter to false.
 
-Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
+Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block) by default. Setting `thin_blocks` uses 2screw_blocks instead of
+fixing_blocks along the sides.
 
 [printed/butt_box.scad](printed/butt_box.scad) Implementation.
 
@@ -4586,13 +4587,14 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | `bbox_skip_blocks(type)` | List of fixing blocks to skip, used to allow a hinged panel for example |
 | `bbox_span(type)` | Maximum span between fixing blocks |
 | `bbox_star_washers(type)` | Set to false to remove star washers. |
+| `bbox_thin_blocks(type)` | Set for 2 screw blocks instead of three hole fixing blocks. |
 | `bbox_top_sheet(type)` | Sheet type for the top |
 | `bbox_width(type)` | Internal width |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true)` | Construct the property list for a butt_box |
+| `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true, thin_blocks = false)` | Construct the property list for a butt_box |
 | `bbox_area(type)` | Internal surface area in m^2 |
 | `bbox_volume(type)` | Internal volume in litres |
 
