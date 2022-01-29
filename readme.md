@@ -645,6 +645,9 @@ When the sides are constrained then a circular model is more accurate.
 |:--- |:--- |
 | `bezier_cable_length(depth, min_z, pos)` | Calculate a length that will achieve the desired minimum z |
 | `cable_strip_length(depth, travel, extra = 15)` | Calculate circular cable strip length |
+| `ribbon_clamp_slot(ways)` | Width of the slot to accept a ribbon cable |
+| `ribbon_clamp_slot_depth()` | Depth of slot to accept a ribbon cable and a cable strip |
+| `ribbon_ways(ways)` | Allows ribbon clamps to accept multiple cables |
 
 ### Modules
 | Module | Description |
@@ -5768,7 +5771,10 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ---
 <a name="Ribbon_clamp"></a>
 ## Ribbon_clamp
-Clamp for ribbon cable and polypropylene strip.
+Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
+
+* When `ways` is a scalar number the slot is sized for one rubbon cable and a PP strip.
+* When `ways` is a two element vector the second element indicates the number of cables and the slot is size for just the cables.
 
 [printed/ribbon_clamp.scad](printed/ribbon_clamp.scad) Implementation.
 
@@ -5777,7 +5783,7 @@ Clamp for ribbon cable and polypropylene strip.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `ribbon_clamp_height(screw = screw)` | Height |
+| `ribbon_clamp_height(screw = screw, ways = undef)` | Height |
 | `ribbon_clamp_length(ways, screw = screw)` | Length given ways |
 | `ribbon_clamp_width(screw = screw)` | Width |
 

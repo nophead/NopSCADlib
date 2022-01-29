@@ -27,8 +27,9 @@
 //
 include <../utils/core/core.scad>
 cable_strip_thickness = 0.8;
-function ribbon_clamp_slot(ways) = ways * inch(0.05) + 1;
-function ribbon_clamp_slot_depth() = cable_strip_thickness + inch(0.05);
+function ribbon_ways(ways) = is_list(ways) ? ways : [ways, 1]; //! Allows ribbon clamps to accept multiple cables
+function ribbon_clamp_slot(ways) = let(w = ribbon_ways(ways)) w[0] * inch(0.05) + 1; //! Width of the slot to accept a ribbon cable
+function ribbon_clamp_slot_depth() = cable_strip_thickness + inch(0.05); //! Depth of slot to accept a ribbon cable and a cable strip
 function cable_strip_thickness() = cable_strip_thickness;
 
 use <../utils/bezier.scad>

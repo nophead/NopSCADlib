@@ -18,7 +18,10 @@
 //
 
 //
-//! Clamp for ribbon cable and polypropylene strip.
+//! Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
+//!
+//! * When `ways` is a scalar number the slot is sized for one rubbon cable and a PP strip.
+//! * When `ways` is a two element vector the second element indicates the number of cables and the slot is size for just the cables.
 //
 include <../core.scad>
 use <../vitamins/insert.scad>
@@ -34,7 +37,8 @@ function ribbon_clamp_hole_pitch(ways, screw = screw) =
 
 function ribbon_clamp_width(screw = screw) = 2 * (insert_hole_radius(screw_insert(screw)) + wall); //! Width
 function ribbon_clamp_length(ways, screw = screw) = ribbon_clamp_hole_pitch(ways, screw) + ribbon_clamp_width(screw); //! Length given ways
-function ribbon_clamp_height(screw = screw) = ribbon_clamp_screw_depth(screw) + 1; //! Height
+function ribbon_clamp_height(screw = screw, ways = undef) = ribbon_clamp_screw_depth(screw) + 1 +  //! Height
+        (!is_undef(ways) && is_list(ways) ?  (ways[1] - 1) * inch(0.05) : 0);
 
 module ribbon_clamp_hole_positions(ways, screw = screw, side = undef) //! Place children at hole positions
     for(x = is_undef(side) ? [-1, 1] : side)
@@ -45,16 +49,20 @@ module ribbon_clamp_holes(ways, h = 20, screw = screw) //! Drill screw holes
     ribbon_clamp_hole_positions(ways, screw)
         drill(screw_clearance_radius(screw), h);
 
+function str_ways(ways) = is_list(ways) ? str(ways[0], "_", ways[1]) : str(ways);
+function str_screw_d(screw_d) = screw_d != 3 ? str("_", screw_d) : "";
+
 module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of ways
     screw_d = screw_radius(screw) * 2;
 
     pitch = ribbon_clamp_hole_pitch(ways, screw);
     d = ribbon_clamp_width(screw);
-    h = ribbon_clamp_height(screw);
-    t = round_to_layer(ribbon_clamp_slot_depth() + wall);
+    h = ribbon_clamp_height(screw, ways);
+    slot_d = is_list(ways) ? ways[1] * inch(0.05) : ribbon_clamp_slot_depth();
+    t = round_to_layer(slot_d + wall);
     insert = screw_insert(screw);
 
-    stl(str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : ""))
+    stl(str("ribbon_clamp_", str_ways(ways), str_screw_d(screw_d)))
         difference() {
             union() {
                 hull() {
@@ -72,7 +80,7 @@ module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of 
             }
 
             translate_z(h)
-                cube([ribbon_clamp_slot(ways), d + 1, ribbon_clamp_slot_depth() * 2], center = true);
+                cube([ribbon_clamp_slot(ways), d + 1, slot_d * 2], center = true);
 
             ribbon_clamp_hole_positions(ways, screw)
                 translate_z(h)
@@ -83,8 +91,8 @@ module ribbon_clamp(ways, screw = screw) { //! Generate STL for given number of 
 
 module ribbon_clamp_assembly(ways, screw = screw)  //! Printed part with inserts in place
 pose([55, 180, 25])
-assembly(let(screw_d = screw_radius(screw) * 2)str("ribbon_clamp_", ways, screw_d != 3 ? str("_", screw_d) : ""), ngb = true) {
-    h = ribbon_clamp_height(screw);
+assembly(let(screw_d = screw_radius(screw) * 2)str("ribbon_clamp_", str_ways(ways), str_screw_d(screw_d)), ngb = true) {
+    h = ribbon_clamp_height(screw, ways);
     insert = screw_insert(screw);
 
     stl_colour(pp1_colour) render()
