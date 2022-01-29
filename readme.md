@@ -3940,6 +3940,8 @@ Should be reasonably accurate if not close to fully open.
 ---
 <a name="Terminals"></a>
 ## Terminals
+Terminal blocks for power supplies and PCBs.
+
 [vitamins/terminal.scad](vitamins/terminal.scad) Implementation.
 
 [tests/terminals.scad](tests/terminals.scad) Code for this example.

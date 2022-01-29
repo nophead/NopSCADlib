@@ -17,6 +17,8 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
+//! Terminal blocks for power supplies and PCBs.
+
 include <../core.scad>
 
 function terminal_block_pitch(type)   = type[0];    //! Pitch between screws
