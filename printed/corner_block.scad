@@ -29,6 +29,9 @@
 //! This allows the block and one set of fasteners to be on one assembly and the other fasteners on the mating assemblies.
 //!
 //! Star washers can be omitted by setting `star_washers` to false.
+//!
+//! A 2screw_block is a thinner version with two screws and two mating surfaces. It can be used as an alternative to fixing blocks when
+//! high lateral rigity is not required.
 //
 include <../core.scad>
 use <../vitamins/insert.scad>
@@ -44,6 +47,7 @@ function corner_block_screw() = def_screw; //! Default screw type
 function corner_block_hole_offset(screw = def_screw) = //! Hole offset from the edge
     let(insert = screw_insert(screw))
         insert_length(insert) + max(overshoot + screw_clearance_radius(screw), insert_hole_radius(insert)) + 1;
+
 
 function corner_block_width(screw = def_screw) = //! Block width, depth and height
     corner_block_hole_offset(screw) + insert_outer_d(screw_insert(screw)) / 2 + wall;
@@ -192,3 +196,127 @@ module corner_block_M30_assembly() corner_block_assembly(M3_cap_screw);
 //! 1. Lay the blocks on each of their other two flat sides and repeat.
 //
 module corner_block_M40_assembly() corner_block_assembly(M4_cap_screw);
+
+function 2screw_block_width(screw = def_screw) = //! 2 screw block width is narrower, height and depth are as corner_block
+    insert_outer_d(screw_insert(screw)) + 2 * wall;
+
+function 2screw_block_v_hole(screw = def_screw) = translate([0, corner_block_hole_offset(screw)]) * rotate([180, 0, 0]); //! Transform to bottom hole
+function 2screw_block_h_hole(screw = def_screw) = translate([0, 0, corner_block_hole_offset(screw)]) * rotate([90, 0, 0]); //! Transform to front hole
+function 2screw_block_holes(screw) = concat([2screw_block_v_hole(screw)], [2screw_block_h_hole(screw)]); //! List of transforms to both holes
+
+module 2screw_block_v_hole(screw = def_screw) //! Place children at the bottom screw hole
+    multmatrix(2screw_block_v_hole(screw))
+        children();
+
+module 2screw_block_h_hole(screw = def_screw) //! Place children at the front screw hole
+    multmatrix(2screw_block_h_hole(screw))
+        children();
+
+module 2screw_block_holes(screw = def_screw) //! Place children at both screw holes
+    for(p = 2screw_block_holes(screw))
+        multmatrix(p)
+            children();
+
+module 2screw_block(screw = def_screw, name = false) { //! Generate the STL for a printed 2screw block
+    r = 1;
+    cb_width = 2screw_block_width(screw);
+    cb_height = corner_block_width(screw);
+    cb_depth = cb_height;
+    insert = screw_insert(screw);
+    corner_rad = insert_outer_d(insert) / 2 + wall;
+    offset = corner_block_hole_offset(screw);
+
+    stl(name ? name : str("2screw_block", "_M", screw_radius(screw) * 20))
+        difference() {
+            hull()  {
+                translate([-cb_width / 2 + r, r])
+                    cylinder(r = r, h = 1);
+
+                translate([cb_width / 2 - r, r])
+                    cylinder(r = r, h = 1);
+
+                translate([0, offset, offset])
+                    sphere(corner_rad);
+
+                translate([0, offset])
+                    cylinder(r = corner_rad, h = 1);
+
+                translate([0, r, offset])
+                    rotate([-90, 0, 180])
+                        rounded_cylinder(r = corner_rad, h = r, r2 = r);
+            }
+            2screw_block_v_hole(screw)
+                insert_hole(insert, overshoot);
+
+            2screw_block_h_hole(screw)
+                insert_hole(insert, overshoot, true);
+
+            children();
+        }
+}
+
+module 2screw_block_assembly(screw = def_screw, name = false) //! The printed block with inserts
+assembly(str("2screw_block_M", 20 * screw_radius(screw)), ngb = true) {
+    insert = screw_insert(screw);
+
+    stl_colour(name ? pp2_colour : pp1_colour)
+        render() 2screw_block(screw, name) children();
+
+    2screw_block_holes(screw)
+        insert(insert);
+}
+
+module fastened_2screw_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false, show_block = true, star_washers = true) { //! Printed block with fasteners
+    thickness2 = !is_undef(thickness_below) ? thickness_below : thickness;
+    function screw_len(t) = screw_length(screw, t + overshoot, star_washers ? 2 : 1, true);
+    screw_length = screw_len(thickness);
+    screw_length2 = screw_len(thickness2);
+
+    if(show_block)
+        2screw_block_assembly(screw, name) children();
+
+    if(thickness)
+        2screw_block_h_hole(screw)
+            translate_z(thickness)
+                screw_and_washer(screw, screw_length, star_washers);
+
+    if(thickness2)
+        2screw_block_v_hole(screw)
+            translate_z(thickness2)
+                screw_and_washer(screw, screw_length2, star_washers);
+}
+module 2screw_block_M20_stl() 2screw_block(M2_cap_screw);
+module 2screw_block_M25_stl() 2screw_block(M2p5_cap_screw);
+module 2screw_block_M30_stl() 2screw_block(M3_cap_screw);
+module 2screw_block_M40_stl() 2screw_block(M4_cap_screw);
+//
+//! 1. Lay the blocks out and place an M2 insert in the forward facing hole.
+//! 1. Push them home with a soldering iron with a conical bit heated to 200&deg;C.
+//! When removing the iron it helps to twist it a little anti-clockwise to release it from the thread.
+//! 1. Lay the blocks on each of their other flat side and repeat.
+//
+module 2screw_block_M20_assembly() 2screw_block_assembly(M2_cap_screw);
+
+//
+//! 1. Lay the blocks out and place an M2.5 insert in the forward facing hole.
+//! 1. Push them home with a soldering iron with a conical bit heated to 200&deg;C.
+//! When removing the iron it helps to twist it a little anti-clockwise to release it from the thread.
+//! 1. Lay the blocks on each of their other flat side and repeat.
+//
+module 2screw_block_M25_assembly() 2screw_block_assembly(M2p5_cap_screw);
+
+//
+//! 1. Lay the blocks out and place an M3 insert in the forward facing hole.
+//! 1. Push them home with a soldering iron with a conical bit heated to 200&deg;C.
+//! When removing the iron it helps to twist it a little anti-clockwise to release it from the thread.
+//! 1. Lay the blocks on each of their other flat side and repeat.
+//
+module 2screw_block_M30_assembly() 2screw_block_assembly(M3_cap_screw);
+
+//
+//! 1. Lay the blocks out and place an M4 insert in the forward facing hole.
+//! 1. Push them home with a soldering iron with a conical bit heated to 200&deg;C.
+//! When removing the iron it helps to twist it a little anti-clockwise to release it from the thread.
+//! 1. Lay the blocks on each of their other flat side and repeat.
+//
+module 2screw_block_M40_assembly() 2screw_block_assembly(M4_cap_screw);

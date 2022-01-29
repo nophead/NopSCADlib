@@ -160,10 +160,10 @@ translate([x5, cable_grommets_y + 60])
 translate([x5, cable_grommets_y + 90])
     corner_blocks();
 
-translate([x5, cable_grommets_y + 150])
+translate([x5, cable_grommets_y + 160])
     feet();
 
-translate([x5 + 70, cable_grommets_y + 150])
+translate([x5 + 70, cable_grommets_y + 160])
     screw_knobs();
 
 translate([x5, cable_grommets_y + 470]) {

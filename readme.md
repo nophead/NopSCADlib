@@ -4810,6 +4810,9 @@ This allows the block and one set of fasteners to be on one assembly and the oth
 
 Star washers can be omitted by setting `star_washers` to false.
 
+A 2screw_block is a thinner version with two screws and two mating surfaces. It can be used as an alternative to fixing blocks when
+high lateral rigity is not required.
+
 [printed/corner_block.scad](printed/corner_block.scad) Implementation.
 
 [tests/corner_block.scad](tests/corner_block.scad) Code for this example.
@@ -4817,6 +4820,10 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `2screw_block_h_hole(screw = def_screw)` | Transform to front hole |
+| `2screw_block_holes(screw)` | List of transforms to both holes |
+| `2screw_block_v_hole(screw = def_screw)` | Transform to bottom hole |
+| `2screw_block_width(screw = def_screw)` | 2 screw block width is narrower, height and depth are as corner_block |
 | `corner_block_h_holes(screw = def_screw)` | List of transforms to side holes |
 | `corner_block_hole_offset(screw = def_screw)` | Hole offset from the edge |
 | `corner_block_holes(screw)` | List of transforms to all holes |
@@ -4827,11 +4834,17 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `2screw_block(screw = def_screw, name = false)` | Generate the STL for a printed 2screw block |
+| `2screw_block_assembly(screw = def_screw, name = false)` | The printed block with inserts |
+| `2screw_block_h_hole(screw = def_screw)` | Place children at the front screw hole |
+| `2screw_block_holes(screw = def_screw)` | Place children at both screw holes |
+| `2screw_block_v_hole(screw = def_screw)` | Place children at the bottom screw hole |
 | `corner_block(screw = def_screw, name = false)` | Generate the STL for a printed corner block |
 | `corner_block_assembly(screw = def_screw, name = false)` | The printed block with inserts |
 | `corner_block_h_holes(screw = def_screw, index = undef)` | Place children at the side screw holes |
 | `corner_block_holes(screw = def_screw)` | Place children at all the holes |
 | `corner_block_v_hole(screw = def_screw)` | Place children at the bottom screw hole |
+| `fastened_2screw_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false, show_block = true, star_washers = true)` | Printed block with fasteners |
 | `fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true)` | Printed block with all fasteners |
 
 ![corner_block](tests/png/corner_block.png)
@@ -4839,26 +4852,30 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   3 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   3 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
-|   3 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   3 | `insert(F1BM4)` |  Heatfit insert M4 |
-|   3 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
-|   3 | `screw(M2p5_pan_screw, 10)` |  Screw M2.5 pan x 10mm |
-|   3 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
-|   3 | `screw(M4_dome_screw, 12)` |  Screw M4 dome x 12mm |
-|   3 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
-|   3 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|   3 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|   3 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
-|   3 | `star_washer(M2_washer)` |  Washer star M2 x 0.3mm |
-|   3 | `star_washer(M2p5_washer)` |  Washer star M2.5 x 0.5mm |
-|   3 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
-|   3 | `star_washer(M4_washer)` |  Washer star M4 x 0.8mm |
+|   5 | `insert(F1BM2)` |  Heatfit insert M2 |
+|   5 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
+|   5 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   5 | `insert(F1BM4)` |  Heatfit insert M4 |
+|   5 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
+|   5 | `screw(M2p5_pan_screw, 10)` |  Screw M2.5 pan x 10mm |
+|   5 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
+|   5 | `screw(M4_dome_screw, 12)` |  Screw M4 dome x 12mm |
+|   5 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
+|   5 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|   5 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|   5 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   5 | `star_washer(M2_washer)` |  Washer star M2 x 0.3mm |
+|   5 | `star_washer(M2p5_washer)` |  Washer star M2.5 x 0.5mm |
+|   5 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
+|   5 | `star_washer(M4_washer)` |  Washer star M4 x 0.8mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
+|   1 | 2screw_block_M20.stl |
+|   1 | 2screw_block_M25.stl |
+|   1 | 2screw_block_M30.stl |
+|   1 | 2screw_block_M40.stl |
 |   1 | corner_block_M20.stl |
 |   1 | corner_block_M25.stl |
 |   1 | corner_block_M30.stl |
@@ -4867,6 +4884,10 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
+|   1 | 2screw_block_M20_assembly |
+|   1 | 2screw_block_M25_assembly |
+|   1 | 2screw_block_M30_assembly |
+|   1 | 2screw_block_M40_assembly |
 |   1 | corner_block_M20_assembly |
 |   1 | corner_block_M25_assembly |
 |   1 | corner_block_M30_assembly |
