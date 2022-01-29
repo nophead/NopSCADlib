@@ -30,6 +30,10 @@
 //! ![](docs/box.png)
 //!
 //! Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
+//!
+//! A box can have an optional name to allow more than one in the same project.
+//!
+//! The top bezel can have an optional child, which is subtracted to allow modification.
 //
 include <../utils/core/core.scad>
 use <../vitamins/sheet.scad>
@@ -92,7 +96,7 @@ function box_bezel_height(type, bottom) = //! Bezel height for top or bottom
     let(t1 = sheet_thickness(box_base_sheet(type)), t2 = sheet_thickness(box_top_sheet(type)))
         box_corner_rad(type) + box_profile_overlap(type) + (bottom ? max(t1, t2) : t2) - sheet_thickness(box_sheets(type));
 
-function box_bc_name(type, suffix) = let(name = box_name(type)) name == "box" ? suffix : str(name, "_", suffix); // Backwards compatibale name
+function box_bc_name(type, suffix) = let(name = box_name(type)) name == "box" ? suffix : str(name, "_", suffix); // Backwards compatible name
 
 grill_hole = 5;
 grill_gap = 1.9;
@@ -285,6 +289,12 @@ module box_bezel(type, bottom) { //! Generates top and bottom bezel STLs
                         box_screw_hole_positions(type)
                             poly_circle(screw_clearance_radius(box_screw(type)));
                     }
+            //
+            // Optional child to subtract
+            //
+            if($children && !bottom)
+                translate_z(-box_profile_overlap(type))
+                    children();
          }
 }
 
@@ -373,7 +383,9 @@ module box_bezel_section(type, bottom, rows, cols, x, y) { //! Generates interlo
             union() {
                 clip(xmin = 0, xmax = w, ymin = 0, ymax = h)
                     translate([tw / 2 - x * w, th / 2 - y * h, profile_overlap])
-                        box_bezel(type, bottom);
+                        box_bezel(type, bottom)
+                            if($children && !bottom)
+                                children();
 
                 if(x < cols - 1 && y == 0)
                     translate([w, 0])

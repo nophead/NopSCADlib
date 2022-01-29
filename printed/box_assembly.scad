@@ -50,7 +50,9 @@ assembly(box_name(type)) {
         translate_z(z * (box_height(type) / 2 - box_corner_gap(type) + 50 * exploded()))
             rotate([z * 90 - 90, 0, 0])
                 if(bezels && (z > 0 ? top : base))
-                    stl_colour(pp1_colour) render() box_bezel(type, z < 0);
+                    stl_colour(pp1_colour) render() box_bezel(type, z < 0)
+                        if(z > 0 && $children)
+                            children();
 
         translate_z(z * (box_height(type) / 2 + sheet_thickness + 50 * exploded()))
             box_screw_hole_positions(type)

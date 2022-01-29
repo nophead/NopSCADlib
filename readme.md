@@ -4450,6 +4450,10 @@ screw type and printed part wall thickness. This diagram shows how the various d
 
 Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
 
+A box can have an optional name to allow more than one in the same project.
+
+The top bezel can have an optional child, which is subtracted to allow modification.
+
 [printed/box.scad](printed/box.scad) Implementation.
 
 [tests/box.scad](tests/box.scad) Code for this example.
