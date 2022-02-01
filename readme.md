@@ -3876,7 +3876,7 @@ NEMA stepper motor model.
 | `NEMA(type, shaft_angle = 0, jst_connector = false)` | Draw specified NEMA stepper motor |
 | `NEMA_outline(type)` | 2D outline |
 | `NEMA_screw_positions(type, n = 4)` | Positions children at the screw holes |
-| `NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef)` | Place screws and optional earth tag |
+| `NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef, earth_rot = undef)` | Place screws and optional earth tag |
 
 ![stepper_motors](tests/png/stepper_motors.png)
 
