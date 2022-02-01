@@ -103,11 +103,11 @@ function reverse(v) = let(n = len(v) - 1) n < 0 ? [] : [for(i = [0 : n]) v[n - i
 
 function angle_between(v1, v2) = acos(v1 * v2 / (norm(v1) * norm(v2))); //! Return the angle between two vectors
 
-// https://www.gregslabaugh.net/publications/euler.pdf
+// http://eecs.qmul.ac.uk/~gslabaugh/publications/euler.pdf
 function euler(R) = let(ay = asin(-R[2][0]), cy = cos(ay)) //! Convert a rotation matrix to a Euler rotation vector.
     cy ? [ atan2(R[2][1] / cy, R[2][2] / cy), ay, atan2(R[1][0] / cy, R[0][0] / cy) ]
-       : R[2][0] < 0 ? [atan2( R[0][1],  R[0][2]),  180, 0]
-                     : [atan2(-R[0][1], -R[0][2]), -180, 0];
+       : R[2][0] < 0 ? [atan2( R[0][1],  R[0][2]),  90, 0]
+                     : [atan2(-R[0][1], -R[0][2]), -90, 0];
 
 module position_children(list, t) //! Position children if they are on the Z = 0 plane when transformed by t
     for(p = list)
