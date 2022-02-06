@@ -86,7 +86,6 @@ function box_screw_length(type, top) =
     let(s = top ? box_top_sheet(type) : box_base_sheet(type))
         screw_length(box_screw(type), sheet_thickness(s) + box_corner_gap(type) + box_profile_overlap(type) - 1, washers = 2, insert = true, longer = true);
 
-function box_wall_clearance(type) = box_sheet_slot(type) / 2 - sheet_thickness(box_sheets(type)) / 2;
 function box_margin(type) = box_profile_overlap(type) + box_corner_gap(type); //! How much the bezel intrudes on the specified height
 function box_intrusion(type) = box_hole_inset(type) + box_boss_r(type); //! Corner profile intrusion
 function sheet_reduction(type) = 2 * box_corner_gap(type) + sheet_end_clearance;
