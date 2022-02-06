@@ -121,7 +121,7 @@ module corner_block(screw = def_screw, name = false) { //! Generate the STL for 
 }
 
 module corner_block_assembly(screw = def_screw, name = false) //! The printed block with inserts
-assembly(str("corner_block_M", 20 * screw_radius(screw)), ngb = true) {
+assembly(name ? name : str("corner_block_M", 20 * screw_radius(screw)), ngb = true) {
     insert = screw_insert(screw);
 
     stl_colour(name ? pp2_colour : pp1_colour)
@@ -256,7 +256,7 @@ module 2screw_block(screw = def_screw, name = false) { //! Generate the STL for 
 }
 
 module 2screw_block_assembly(screw = def_screw, name = false) //! The printed block with inserts
-assembly(str("2screw_block_M", 20 * screw_radius(screw)), ngb = true) {
+assembly(name ? name : str("2screw_block_M", 20 * screw_radius(screw)), ngb = true) {
     insert = screw_insert(screw);
 
     stl_colour(name ? pp2_colour : pp1_colour)
