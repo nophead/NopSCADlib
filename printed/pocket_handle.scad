@@ -137,7 +137,7 @@ module pocket_handle_assembly(type) { //! Assembly with fasteners in place
 
     translate_z(f.z + t / 2) hflip() {
         stl_colour(pp1_colour)
-            pocket_handle(type);
+            render() pocket_handle(type);
 
         pocket_handle_hole_positions(type) {
             translate_z(f.z + t)
