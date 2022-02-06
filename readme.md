@@ -6565,6 +6565,10 @@ Subsequent rotations use the minimum rotation method.
 The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
 
+`rounded_path()` can be used to generate a path of lines connected by arcs, useful for wire runs, etc.
+The vertices specify where the the path would be without any rounding.
+Each vertex, apart from the first and the last, has an associated radius and the path shortcuts the vertex with an arc specified by the radius.
+
 [utils/sweep.scad](utils/sweep.scad) Implementation.
 
 [tests/sweep.scad](tests/sweep.scad) Code for this example.
@@ -6580,6 +6584,7 @@ An additional twist around the path can be specified. If the path is closed this
 | `helical_twist_per_segment(r, pitch, sides)` | Calculate the twist around Z that rotate_from_to() introduces |
 | `path_length(path, i = 0, length = 0)` | Calculated the length along a path |
 | `rectangle_points(w, h)` | Generate the points of a rectangle |
+| `rounded_path(path)` | Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep. |
 | `skin_faces(points, npoints, facets, loop, offset = 0)` | Create the mesh for the swept volume without end caps |
 | `sweep(path, profile, loop = false, twist = 0)` | Generate the point list and face list of the swept volume |
 

@@ -25,6 +25,10 @@
 //!
 //! The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 //! An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
+//!
+//! `rounded_path()` can be used to generate a path of lines connected by arcs, useful for wire runs, etc.
+//! The vertices specify where the the path would be without any rounding.
+//! Each vertex, apart from the first and the last, has an associated radius and the path shortcuts the vertex with an arc specified by the radius.
 //
 include <../utils/core/core.scad>
 
@@ -179,3 +183,31 @@ function before(path1, path2) =  //! Translate `path1` so its end meets the star
 function after(path1, path2) =  //! Translate `path2` so its start meets the end of `path1` and then concatenate
     let(end1 = len(path1) - 1, end2 = len(path2) - 1, offset = path1[end1] - path2[0])
         concat(path1, [for(i = [1 : end2]) path2[i] + offset]);
+
+function rounded_path(path) = //! Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep.
+    let(len = len(path)) assert(len > 3 && len % 2 == 0) [
+        path[0],                                        // First point has no radius
+        for(i = [1 : 2 : len - 3]) let(                 // Step through the vertices with radii, i.e. not the first or last
+            prev = max(i - 2, 0),                       // Index of previous point, might be the first point, which is a special case
+            p0 = path[prev],                            // Point before the vertex
+            p1 = path[i],                               // Vertex
+            r = path[i + 1],                            // Radius of shortcut curve
+            p2 = path[i + 2],                           // Point after the vertex
+            v1 = assert(Len(p0) == 3, str("expected path[", prev,  "] to be a vertex coordinate, got ", p0))
+                 assert(Len(p1) == 3, str("expected path[", i,     "] to be a vertex coordinate, got ", p1))
+                 assert(Len(p2) == 3, str("expected path[", i + 2, "] to be a vertex coordinate, got ", p2))
+                 assert(is_num(r),    str("expected path[", i + 1, "] to be a radius, got ", r))
+            p0 - p1,                                    // Calculate vectors between vertices
+            v2 = p2 - p1,
+            a = angle_between(v1, -v2),                 // Angle turned through
+            arc_start = p1 + unit(v1) * r * tan(a / 2), // Calc the start position
+            z_axis = unit(cross(v1, v2)),               // z_axis is perpendicular to both vectors
+            centre = arc_start + unit(cross(z_axis, v1)) * r, // Arc center is a radius away, and perpendicular to v1 and the z_axis.
+            x_axis = arc_start - centre,                // Make the x_axis along the radius to the start point, includes radius a scale factor
+            y_axis = cross(x_axis, z_axis),             // y_axis perpendicular to the other two
+            sides = r2sides(ceil(r2sides(r) * a / 360)) // Sides needed to make the arc
+        )
+        for(j = [0 : sides], t = a * j / sides)         // For each vertex in the arc
+            cos(t) * x_axis + sin(t) * y_axis + centre, // Circular arc in the tiled xy plane.
+        path[len - 1],                                  // Last point has no radius
+    ];

@@ -32,22 +32,25 @@ loop_y = transform_points(loop, rotate([0, -90, $t * 360]));
 
 loop_z = transform_points(loop, rotate([$t * 360, 0, 0]));
 
-sweep(loop_z, L_points, loop = true);
+color("yellow") {
+    sweep(loop_z, L_points, loop = true);
 
-sweep(loop_x, L_points, loop = true);
+    sweep(loop_x, L_points, loop = true);
 
-sweep(loop_y, L_points, loop = true);
-
+    sweep(loop_y, L_points, loop = true);
+}
 
 knot = [ for(i=[0:.2:359])
          [ (19*cos(3*i) + 40)*cos(2*i),
            (19*cos(3*i) + 40)*sin(2*i),
             19*sin(3*i) ] ];
 
-sweep(knot, L_points, loop = true);
+color("red") sweep(knot, L_points, loop = true);
 
 p = transform_points([[0,0,0], [20,0,5], [10,30,4], [0,0,0], [0,0,20]], scale(10));
 n = 100;
 path = bezier_path(p, n);
 
-rotate(45) sweep(path, circle_points(5, $fn = 64));
+color("blue") rotate(45) sweep(path, circle_points(5, $fn = 64));
+
+color("green") sweep(rounded_path([[-170, 0, 0], [-170, 170, 0], 10, [-170, 170, 30], 20, [-50, 170, 30], 10, [-130, 100, 40]]), circle_points(3, $fn = 64));
