@@ -29,6 +29,8 @@
 //! `rounded_path()` can be used to generate a path of lines connected by arcs, useful for wire runs, etc.
 //! The vertices specify where the the path would be without any rounding.
 //! Each vertex, apart from the first and the last, has an associated radius and the path shortcuts the vertex with an arc specified by the radius.
+//!
+//! `spiral_paths()` makes a list of new paths that spiral around a given path. It can be used to make twisted wires that follow a rounded_path, for example.
 //
 include <../utils/core/core.scad>
 
@@ -107,17 +109,18 @@ function helical_twist_per_segment(r, pitch, sides) = //! Calculate the twist ar
        ) step_angle * sin(slope);                   // angle tangent should rotate around z projected onto axis rotate_from_to() uses
 
 //
-// Generate all the surface points of the swept volume.
+// Generate all the transforms for the profile of the swept volume.
 //
-function skin_points(profile, path, loop, twist = 0) =
+function sweep_transforms(path, loop = false, twist = 0) =
     let(len = len(path),
         last = len - 1,
-
-        profile4 = [for(p = profile) [p.x, p.y, p.z, 1]],
 
         tangents = [tangent(path, loop ? last : 0, 0, 1),
                     for(i = [1 : last - 1]) tangent(path, i - 1, i, i + 1),
                     tangent(path, last - 1, last, loop ? 0 : last)],
+
+        lengths = [for(i = 0, t = 0; i < len; t = t + norm(path[min(i + 1, last)] - path[i]), i = i + 1) t],
+        length = lengths[last],
 
         rotations = [for(i = 0, rot = fs_frame(tangents);
                          i < len;
@@ -128,8 +131,20 @@ function skin_points(profile, path, loop, twist = 0) =
         rotation = missmatch + twist
     )
     [for(i = [0 : last])
-        let(za = rotation * i / last)
-            each profile4 * orientate(path[i], rotations[i] * rot3_z(za))
+        let(za = rotation * lengths[i] / length)
+            orientate(path[i], rotations[i] * rot3_z(za))
+    ];
+
+//
+// Generate all the surface points of the swept volume.
+//
+function skin_points(profile, path, loop, twist = 0) =
+    let(profile4 = [for(p = profile) [p.x, p.y, p.z, 1]],
+
+        transforms = sweep_transforms(path, loop, twist)
+    )
+    [for(t = transforms)
+        each profile4 * t
     ];
 
 function cap(facets, segment = 0, end) = //! Create the mesh for an end cap
@@ -211,3 +226,37 @@ function rounded_path(path) = //! Convert a rounded_path, consisting of a start 
             cos(t) * x_axis + sin(t) * y_axis + centre, // Circular arc in the tiled xy plane.
         path[len - 1],                                  // Last point has no radius
     ];
+
+function segmented_path(path, min_segment) = [  //! Add points to a path to enforce a minimum segment length
+    for(i = [0 : len(path) - 2])
+            let(delta =
+                    assert(path[i] != path[i + 1], str("Coincident points at path[", i, "] = ", path[i]))
+                    path[i+1] - path[i],
+                segs = ceil(norm(delta) / min_segment)
+            )
+            for(j = [0 : segs - 1])
+                path[i] + delta * j / segs, // Linear interpolation
+            path[len(path) - 1]
+];
+
+function spiral_paths(path, n, r, twists, start_angle) = let( //! Create a new paths which sprial around the given path. Use for making twisted cables
+        segment = path_length(path) / twists / r2sides(2 * r),
+        transforms = sweep_transforms(segmented_path(path, segment), twist = 360 * twists),
+        initial = [r, 0, 0, 1] * rotate(start_angle)
+    ) [for(i = [0 : n - 1]) let(initial = [r, 0, 0, 1] * rotate(start_angle + i * 360 / n)) [for(t = transforms) initial * t]];
+
+function rounded_path_vertices(path) = [path[0], for(i = [1 : 2 : len(path) - 1]) path[i]]; //! Show the unrounded version of a rounded_path for debug
+
+module show_path(path) //! Show a path using a chain of hulls for debugging, duplicate points are highlighted.
+    for(i = [0 : len(path) - 2]) {
+        hull($fn = 16) {
+            translate(path[i])
+                sphere(0.1);
+
+            translate(path[i + 1])
+                sphere(0.1);
+        }
+        if(path[i] == path[i + 1])
+            translate(path[i])
+                color("red") sphere(1);
+    }

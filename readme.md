@@ -6569,6 +6569,8 @@ An additional twist around the path can be specified. If the path is closed this
 The vertices specify where the the path would be without any rounding.
 Each vertex, apart from the first and the last, has an associated radius and the path shortcuts the vertex with an arc specified by the radius.
 
+`spiral_paths()` makes a list of new paths that spiral around a given path. It can be used to make twisted wires that follow a rounded_path, for example.
+
 [utils/sweep.scad](utils/sweep.scad) Implementation.
 
 [tests/sweep.scad](tests/sweep.scad) Code for this example.
@@ -6585,12 +6587,16 @@ Each vertex, apart from the first and the last, has an associated radius and the
 | `path_length(path, i = 0, length = 0)` | Calculated the length along a path |
 | `rectangle_points(w, h)` | Generate the points of a rectangle |
 | `rounded_path(path)` | Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep. |
+| `rounded_path_vertices(path)` | Show the unrounded version of a rounded_path for debug |
+| `segmented_path(path, min_segment)` | Add points to a path to enforce a minimum segment length |
 | `skin_faces(points, npoints, facets, loop, offset = 0)` | Create the mesh for the swept volume without end caps |
+| `spiral_paths(path, n, r, twists, start_angle)` | Create a new paths which sprial around the given path. Use for making twisted cables |
 | `sweep(path, profile, loop = false, twist = 0)` | Generate the point list and face list of the swept volume |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `show_path(path)` | Show a path using a chain of hulls for debugging, duplicate points are highlighted. |
 | `sweep(path, profile, loop = false, twist = 0, convexity = 1)` | Draw a polyhedron that is the swept volume |
 
 ![sweep](tests/png/sweep.png)

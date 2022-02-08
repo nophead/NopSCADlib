@@ -53,4 +53,12 @@ path = bezier_path(p, n);
 
 color("blue") rotate(45) sweep(path, circle_points(5, $fn = 64));
 
-color("green") sweep(rounded_path([[-170, 0, 0], [-170, 170, 0], 10, [-170, 170, 30], 20, [-50, 170, 30], 10, [-130, 100, 40]]), circle_points(3, $fn = 64));
+vertices = [[-170, 0, 0], [-170, 170, 0], 10, [-170, 170, 30], 20, [-50, 170, 31], 10, [-130, 100, 40]];
+rounded_path = rounded_path(vertices);
+
+show_path(rounded_path_vertices(vertices));
+
+paths = spiral_paths(rounded_path, 2, 1.5, 15, 0);
+for(i = [0 : len(paths) - 1])
+    color(["red", "green"][i])
+        sweep(paths[i],  circle_points(1.5, $fn = 64));
