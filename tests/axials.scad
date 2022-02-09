@@ -28,6 +28,9 @@ module axials() {
         rotate(90)
             wire_link(0.8, inch(0.4));
 
+    pcb_grid(pcb, 0, 7)
+        wire_link(0.8, 0, 5);
+
     for(i = [0 : len(ax_resistors) - 1]) {
         pcb_grid(pcb, 2 * i + 2, 1 + [0, 0.5, 1.5][i])
             rotate(90)

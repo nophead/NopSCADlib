@@ -33,6 +33,11 @@ module smds() {
         layout([for(c = smd_capacitors) smd_cap_size(c).x], 1)
             let(c = smd_capacitors[$i])
                 smd_capacitor(c, smd_cap_size(c).y * 0.8);
+
+    translate([0, 12])
+        layout([for(s = smd_sots) smd_sot_size(s).x], 1)
+            let(s = smd_sots[$i])
+                smd_sot(s, ["2N7000", "FZT851"][$i]);
 }
 
 if($preview)

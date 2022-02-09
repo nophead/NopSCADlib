@@ -23,6 +23,7 @@
 include <../utils/core/core.scad>
 
 use <../utils/tube.scad>
+use <../utils/sweep.scad>
 
 function smd_led_size(type) = type[1]; //! Body length, width and height
 function smd_led_lens(type) = type[2]; //! Lens length width and height
@@ -104,7 +105,7 @@ module smd_resistor(type, value) { //! Draw an SMD resistor with specified value
                 cube([cap, size.y - 2 * eps, size.z], center = true);
 
     color("white")
-        translate([0, 0, size.z])
+        translate_z(size.z)
             linear_extrude(eps)
                 resize([(size.x - 2 * cap) * 0.75, size.y / 2])
                     text(value, halign = "center", valign = "center");
@@ -113,9 +114,9 @@ module smd_resistor(type, value) { //! Draw an SMD resistor with specified value
 function smd_cap_size(type)    = type[1]; //! Body length, width
 function smd_cap_end_cap(type) = type[2]; //! End cap width
 
-module smd_capacitor(type, height) { //! Draw an SMD capacitor with specified height
+module smd_capacitor(type, height, value = undef) { //! Draw an SMD capacitor with specified height
     size = smd_cap_size(type);
-    vitamin(str("smd_capacitor(", type[0], "): SMD capacitor ", smd_size(size)));
+    vitamin(str("smd_capacitor(", type[0], "): SMD capacitor ", smd_size(size), !is_undef(value) ? str(" ", value) : ""));
 
     cap = smd_cap_end_cap(type);
 
@@ -128,4 +129,52 @@ module smd_capacitor(type, height) { //! Draw an SMD capacitor with specified he
         for(end = [-1, 1])
             translate([end * (size.x / 2 - cap / 2), 0, height / 2])
                 cube([cap, size.y - 2 * eps, height], center = true);
+}
+
+function smd_sot_size(type)       = type[1];    //! Body length, width and height
+function smd_sot_z(type)          = type[2];    //! Height above PCB surface
+function smd_sot_lead_z(type)     = type[3];    //! Top of lead frame from top
+function smd_sot_lead_pitch(type) = type[4];    //! Lead pitch
+function smd_sot_lead_span(type)  = type[5];    //! Total span of leads
+function smd_sot_lead_size(type)  = type[6];    //! Lead width, foot depth, lead thickness
+function smd_sot_tab_width(type)  = type[7];    //! The wide lead at the top
+
+module smd_sot(type, value) { //! Draw an SMD transistor
+    vitamin(str("smd_sot(", type[0], "): ", type[0], " package ", value));
+
+    size = smd_sot_size(type);
+    z0 = smd_sot_z(type);
+    z2 = z0 + size.z;
+    z1 = z2 - smd_sot_lead_z(type);
+    slant = 7;                              //! 7 degree body draft angle
+    pitch = smd_sot_lead_pitch(type);
+    span = smd_sot_lead_span(type);
+    leads = floor(size.x / pitch) + 1;
+    ls = smd_sot_lead_size(type);
+
+    r = ls.z;
+    gullwing = rounded_path([[0, 0, ls.z / 2], [0, ls.y - ls.z, ls.z / 2], r, [0, ls.y -ls.z + z1 - ls.z, z1 - ls.z / 2], r, [0, span / 2, z1 - ls.z / 2]]);
+
+    color(grey(20))
+        hull()
+            for(z = [z0, z1, z2], inset = abs(z - z1) * tan(slant))
+                translate_z(z)
+                    cube([size.x - 2 * inset, size.y - 2 * inset, eps], center = true);
+
+    color(silver) {
+        for(i = [0 : leads - 1])
+            translate([i * pitch - size.x / 2 + (size.x - (leads - 1) * pitch) / 2, -span / 2])
+                sweep(gullwing, rectangle_points(ls.x, ls.z));
+
+        rotate(180)
+            translate([0, -span / 2])
+                sweep(gullwing, rectangle_points(smd_sot_tab_width(type), ls.z));
+    }
+
+    color("white")
+        translate_z(z0 + size.z)
+            linear_extrude(eps)
+                resize([size.x - 4 * (z2 - z1) * tan(slant), size.y / 2])
+                    text(value, halign = "center", valign = "center");
+
 }

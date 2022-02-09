@@ -108,7 +108,7 @@ Axial components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | `ax_res(type, value, tol = 5, pitch = 0)` | Through hole axial resistor. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
-| `wire_link(d, l, h = 1, tail = 3)` | Draw a wire jumper link. |
+| `wire_link(d, l, h = 1, tail = 3)` | Draw a wire jumper link. If `l` is zero then a vertical wire is drawn. |
 
 ![axials](tests/png/axials.png)
 
@@ -123,6 +123,7 @@ Axial components for PCBs.
 |   1 | `ax_res(res1_2, 8200)` |  Resistor 8200 Ohms 5% 0.5W |
 |   1 | `ax_res(res1_2, 8250, tol = 1)` |  Resistor 8250 Ohms 1% 0.5W |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
+|   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
 
 
 <a href="#top">Top</a>
@@ -2441,6 +2442,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_resistor(RES0603, 1K)` |  SMD resistor 0603 1K 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
 |   1 | `smd_resistor(RES1206, 1K)` |  SMD resistor 1206 1K 0.25W |
+|   1 | `smd_sot(SOT223)` |  SOT223 package LM117 |
+|   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 |   1 | `square_button(button_4p5mm)` |  Square button 4.5mm |
 |   1 | `square_button(button_6mm)` |  Square button 6mm |
 |   1 | `pcb(TMC2130)` |  TMC2130 |
@@ -2457,6 +2460,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | `vero_pin()` |  Vero board pin |
 |   1 | `wire_link(0.8, 5.08, h = 10.16)` |  Wire link 0.8mm x 0.2" |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
+|   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
 
 
 <a href="#top">Top</a>
@@ -3634,6 +3638,13 @@ Surface mount components for PCBs.
 | `smd_res_end_cap(type)` | End cap width |
 | `smd_res_power(type)` | Power rating in Watts |
 | `smd_res_size(type)` | Body length, width and height |
+| `smd_sot_lead_pitch(type)` | Lead pitch |
+| `smd_sot_lead_size(type)` | Lead width, foot depth, lead thickness |
+| `smd_sot_lead_span(type)` | Total span of leads |
+| `smd_sot_lead_z(type)` | Top of lead frame from top |
+| `smd_sot_size(type)` | Body length, width and height |
+| `smd_sot_tab_width(type)` | The wide lead at the top |
+| `smd_sot_z(type)` | Height above PCB surface |
 
 ### Functions
 | Function | Description |
@@ -3645,9 +3656,10 @@ Surface mount components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `smd_capacitor(type, height)` | Draw an SMD capacitor with specified height |
+| `smd_capacitor(type, height, value = undef)` | Draw an SMD capacitor with specified height |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
+| `smd_sot(type, value)` | Draw an SMD transistor |
 
 ![smds](tests/png/smds.png)
 
@@ -3662,6 +3674,8 @@ Surface mount components for PCBs.
 |   1 | `smd_resistor(RES0603, 1R0)` |  SMD resistor 0603 1R0 0.1W |
 |   1 | `smd_resistor(RES0805, 10M)` |  SMD resistor 0805 10M 0.125W |
 |   1 | `smd_resistor(RES1206, 100K)` |  SMD resistor 1206 100K 0.25W |
+|   1 | `smd_sot(SOT223)` |  SOT223 package FZT851 |
+|   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 
 
 <a href="#top">Top</a>
