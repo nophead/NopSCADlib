@@ -1,0 +1,6 @@
+enviro_assembly:
+Vitamins:
+  1 Enviro+
+
+Assemblies:
+  1 fan_controller_assembly

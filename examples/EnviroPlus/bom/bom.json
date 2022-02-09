@@ -1,0 +1,194 @@
+[
+    {
+        "name": "back_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {},
+        "vitamins": {
+            "pms5003(): PMS5003 particle detector": {
+                "count": 1
+            },
+            "fan(fan17x8): Fan 17mm x 8mm": {
+                "count": 1
+            }
+        },
+        "printed": {
+            "fan_duct.stl": {
+                "count": 1,
+                "colour": "darkorange"
+            },
+            "enviro_plus_case_base.stl": {
+                "count": 1,
+                "colour": "grey"
+            }
+        },
+        "routed": {}
+    },
+    {
+        "name": "RPI_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {},
+        "vitamins": {
+            "pcb(RPI0): Raspberry Pi Zero": {
+                "count": 1
+            },
+            ": Micro SD card": {
+                "count": 1
+            },
+            "pin_header(2p54header, 20, 2, right_angle = true): Pin header 20 x 2 right_angle": {
+                "count": 1
+            }
+        },
+        "printed": {},
+        "routed": {}
+    },
+    {
+        "name": "fan_controller_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {},
+        "vitamins": {
+            "veroboard(fan_vb): Veroboard 6 holes x 6strips": {
+                "count": 1
+            },
+            "wire_link(0.8, 10.16, tail = 2.5): Wire link 0.8mm x 0.4\"": {
+                "count": 1
+            },
+            "wire_link(0.8, 0, h = 4, tail = 2.5): Wire link 0.8mm x 6.5mm": {
+                "count": 3
+            },
+            "smd_resistor(RES0805, 3K3): SMD resistor 0805 3K3 0.125W": {
+                "count": 1
+            },
+            "smd_capacitor(CAP1206): SMD capacitor 1206 10uF": {
+                "count": 1
+            },
+            "smd_sot(SOT223): SOT223 package FZT851": {
+                "count": 1
+            }
+        },
+        "printed": {},
+        "routed": {}
+    },
+    {
+        "name": "enviro_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {
+            "fan_controller_assembly": 1
+        },
+        "vitamins": {
+            "pcb(EnviroPlus): Enviro+": {
+                "count": 1
+            }
+        },
+        "printed": {},
+        "routed": {}
+    },
+    {
+        "name": "case_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {},
+        "vitamins": {
+            "insert(F1BM2): Heatfit insert M2": {
+                "count": 4
+            },
+            "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
+                "count": 3
+            },
+            "screw(M3_pan_screw, 6): Screw M3 pan x  6mm": {
+                "count": 3
+            }
+        },
+        "printed": {
+            "enviro_plus_case.stl": {
+                "count": 1,
+                "colour": "grey"
+            },
+            "bulkhead.stl": {
+                "count": 1,
+                "colour": "[0.862745, 0.0784314, 0.235294]"
+            },
+            "foot.stl": {
+                "count": 3,
+                "colour": "darkorange"
+            }
+        },
+        "routed": {}
+    },
+    {
+        "name": "enviro_case_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {
+            "case_assembly": 1,
+            "enviro_assembly": 1
+        },
+        "vitamins": {
+            "screw(M2p5_pan_screw, 8): Screw M2.5 pan x  8mm": {
+                "count": 4
+            },
+            "washer(M2p5_washer): Washer  M2.5 x 5.9mm x 0.5mm": {
+                "count": 4
+            },
+            "nut(M2p5_nut, nyloc = true): Nut M2.5 x 2.2mm nyloc": {
+                "count": 4
+            }
+        },
+        "printed": {},
+        "routed": {}
+    },
+    {
+        "name": "RPI_case_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {
+            "enviro_case_assembly": 1,
+            "RPI_assembly": 1
+        },
+        "vitamins": {
+            "screw(M2p5_pan_screw, 6.4): Screw M2.5 pan x  6.4mm": {
+                "count": 2
+            }
+        },
+        "printed": {},
+        "routed": {}
+    },
+    {
+        "name": "main_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {
+            "RPI_case_assembly": 1,
+            "back_assembly": 1
+        },
+        "vitamins": {
+            "washer(M2_washer): Washer  M2 x 5mm x 0.3mm": {
+                "count": 4
+            },
+            "screw(M2_cap_screw, 6): Screw M2 cap x  6mm": {
+                "count": 4
+            }
+        },
+        "printed": {},
+        "routed": {}
+    }
+]

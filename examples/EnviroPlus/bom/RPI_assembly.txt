@@ -1,0 +1,5 @@
+RPI_assembly:
+Vitamins:
+  1 Micro SD card
+  1 Raspberry Pi Zero
+  1 Pin header 20 x 2 right_angle

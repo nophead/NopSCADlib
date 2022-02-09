@@ -1,0 +1,8 @@
+back_assembly:
+Vitamins:
+  1 Fan 17mm x 8mm
+  1 PMS5003 particle detector
+
+Printed:
+  1 enviro_plus_case_base.stl
+  1 fan_duct.stl

@@ -1,0 +1,53 @@
+Vitamins:
+                   F   
+                   a   
+                   n   
+                E      
+                n  c   
+                v  o   
+    R           i  n   
+    p           r  t   
+    i        E  o  r   
+             n     o   
+    c  B  C  v  c  l  M
+ R  a  a  a  i  a  l  a
+ p  s  c  s  r  s  e  i
+ i  e  k  e  o  e  r  n
+ 1|  |  |  |  |  |  |  |  1 Micro SD card
+  |  | 1|  |  |  |  |  |  1 Fan 17mm x 8mm
+  |  |  | 4|  |  |  |  |  4 Heatfit insert M2
+  |  |  |  |  | 4|  |  |  4 Nut M2.5 x 2.2mm nyloc
+  |  |  |  | 1|  |  |  |  1 Enviro+
+ 1|  |  |  |  |  |  |  |  1 Raspberry Pi Zero
+ 1|  |  |  |  |  |  |  |  1 Pin header 20 x 2 right_angle
+  |  | 1|  |  |  |  |  |  1 PMS5003 particle detector
+  |  |  |  |  |  |  | 4|  4 Screw M2 cap x  6mm
+  | 2|  |  |  |  |  |  |  2 Screw M2.5 pan x  6.4mm
+  |  |  |  |  | 4|  |  |  4 Screw M2.5 pan x  8mm
+  |  |  | 3|  |  |  |  |  3 Screw M3 pan x  6mm
+  |  |  |  |  |  | 1|  |  1 SMD capacitor 1206 10uF
+  |  |  |  |  |  | 1|  |  1 SMD resistor 0805 3K3 0.125W
+  |  |  |  |  |  | 1|  |  1 SOT223 package FZT851
+  |  |  |  |  |  | 1|  |  1 Veroboard 6 holes x 6strips
+  |  |  |  |  |  |  | 4|  4 Washer  M2 x 5mm x 0.3mm
+  |  |  |  |  | 4|  |  |  4 Washer  M2.5 x 5.9mm x 0.5mm
+  |  |  | 3|  |  |  |  |  3 Washer  M3 x 7mm x 0.5mm
+  |  |  |  |  |  | 3|  |  3 Wire link 0.8mm x 6.5mm
+  |  |  |  |  |  | 1|  |  1 Wire link 0.8mm x 0.4"
+
+Printed:
+  |  |  | 1|  |  |  |  |  1 bulkhead.stl
+  |  |  | 1|  |  |  |  |  1 enviro_plus_case.stl
+  |  | 1|  |  |  |  |  |  1 enviro_plus_case_base.stl
+  |  | 1|  |  |  |  |  |  1 fan_duct.stl
+  |  |  | 3|  |  |  |  |  3 foot.stl
+
+Assemblies:
+  1 RPI_assembly
+  1 RPI_case_assembly
+  1 back_assembly
+  1 case_assembly
+  1 enviro_assembly
+  1 enviro_case_assembly
+  1 fan_controller_assembly
+  1 main_assembly

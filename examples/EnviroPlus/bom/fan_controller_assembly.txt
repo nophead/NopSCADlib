@@ -1,0 +1,8 @@
+fan_controller_assembly:
+Vitamins:
+  1 SMD capacitor 1206 10uF
+  1 SMD resistor 0805 3K3 0.125W
+  1 SOT223 package FZT851
+  1 Veroboard 6 holes x 6strips
+  3 Wire link 0.8mm x 6.5mm
+  1 Wire link 0.8mm x 0.4"

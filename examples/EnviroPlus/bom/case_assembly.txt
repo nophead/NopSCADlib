@@ -1,0 +1,10 @@
+case_assembly:
+Vitamins:
+  4 Heatfit insert M2
+  3 Screw M3 pan x  6mm
+  3 Washer  M3 x 7mm x 0.5mm
+
+Printed:
+  1 bulkhead.stl
+  1 enviro_plus_case.stl
+  3 foot.stl
