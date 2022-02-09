@@ -4227,6 +4227,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `vero(name, assembly, holes, strips, pitch = inch(0.1)` | Constructor |
 | `vero_length(type)` | Length of the board |
 | `vero_size(type)` | Board size |
 | `vero_thickness(type)` | Thickness of the substrate |
@@ -4237,6 +4238,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `solder_meniscus(type, ir = 0.3, r = undef)` | Draw a solder meniscus |
 | `vero_cutouts(type, angle = undef)` | Make cutouts to clear components |
 | `vero_grid_pos(type, x, y)` | Convert grid position to offset from the centre |
 | `vero_mounting_hole_positions(type)` | Positions children at the mounting holes |
