@@ -25,13 +25,15 @@ bundle = [7, 1.4];
 bundle_r = cable_radius(bundle);
 
 thickness = 2;
-w = 50;
+w = 60;
 d = 20;
 h = 40;
 wire_l = 90;
+mouse_y = 10;
+cable_pitch = 7;
 
 module wires() {
-    translate_z(bundle_r)
+    translate([0, mouse_y, bundle_r])
         rotate([0, 90, 0]) {
             n = cable_wires(bundle);
             d = cable_wire_size(bundle);
@@ -58,24 +60,39 @@ module wires() {
         rotate([90, 0, 90])
             linear_extrude(thickness)
                 difference() {
-                    translate([-w / 2, 0])
-                        square([w, h]);
+                    square([w, h]);
 
-                    mouse_hole(bundle, 0, true);
+                    translate([mouse_y, 0])
+                        mouse_hole(bundle, 0, true);
+
+                    for(i = [1 : 6])
+                        let(cable = [i, 1.4], bundle = cable_bundle(cable))
+                            translate([mouse_y + cable_pitch * i - bundle.x / 2, -eps])
+                                square([bundle.x, bundle.y]);
                 }
 
         translate_z(-thickness)
             linear_extrude(thickness)
                 difference() {
-                    translate([thickness -d, -w / 2])
+                    translate([thickness -d, 0])
                         square([d, w]);
 
-                    translate([-15, 0])
+                    translate([-15, mouse_y])
                         cable_tie_holes(bundle_r, 0);
                 }
     }
-    translate([-15, 0])
+    translate([-15, mouse_y])
         cable_tie(bundle_r, thickness);
+
+    for(i = [1 : 6]) let(cable = [i, 1.4])
+        translate([0, mouse_y + cable_pitch * i])
+            let(positions = cable_bundle_positions(cable))
+                for(i = [0 : len(positions) - 1])
+                    let(p = positions[i])
+                        translate([0, p.x, p.y])
+                            rotate([0, 90, 0])
+                                color([grey(10), "blue", "red", "orange", "yellow", "green"][i])
+                                    cylinder(d = cable_wire_size(cable), h = 60, center = true);
 }
 
 if($preview)

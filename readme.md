@@ -4391,7 +4391,9 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 | Function | Description |
 |:--- |:--- |
 | `cable_bundle(cable)` | Arrangement of a bundle in a flat cable clip |
+| `cable_bundle_positions(cable)` | Positions of wires in a bundle to go through a cable strip |
 | `cable_height(cable)` | Height in flat clip |
+| `cable_is_ribbon(cable)` | Is a ribbon cable? |
 | `cable_radius(cable)` | Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>. |
 | `cable_width(cable)` | Width in flat clip |
 | `cable_wire_size(cable)` | Size of each wire in a bundle |

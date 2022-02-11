@@ -34,6 +34,7 @@ module ribbon_cable(ways, length)                   //! Add ribbon cable to the 
 //
 function cable_wires(cable)     = cable[0]; //! Number of wires in a bundle
 function cable_wire_size(cable) = cable[1]; //! Size of each wire in a bundle
+function cable_is_ribbon(cable) = len(cable) > 2 && cable[2]; //! Is a ribbon cable?
 
 // numbers from http://mathworld.wolfram.com/CirclePacking.html
 function cable_radius(cable) = [0, 1, 2, 2.15, 2.41, 2.7, 3, 3, 3.3][cable_wires(cable)] * cable_wire_size(cable) / 2; //! Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>.
@@ -41,10 +42,20 @@ function cable_radius(cable) = [0, 1, 2, 2.15, 2.41, 2.7, 3, 3, 3.3][cable_wires
 function wire_hole_radius(cable) = ceil(4 * cable_radius(cable) + 1) / 4; //! Radius of a hole to accept a bundle of wires, rounded up to standard metric drill size
 
 function cable_bundle(cable) = //! Arrangement of a bundle in a flat cable clip
-    [[0,0], [1,1], [2,1], [2, 0.5 + sin(60)], [2,2], [3, 0.5 + sin(60)], [3,2]][cable_wires(cable)];
+    (cable_is_ribbon(cable) ? [cable_wires(cable), 1] :
+    [[0,0], [1,1], [2,1], [2, 1 + sin(60)], [2,2], [3, 1 + sin(60)], [3,2]][cable_wires(cable)]) * cable_wire_size(cable);
 
-function cable_width(cable)  = cable_bundle(cable)[0] * cable_wire_size(cable); //! Width in flat clip
-function cable_height(cable) = cable_bundle(cable)[1] * cable_wire_size(cable); //! Height in flat clip
+function cable_bundle_positions(cable) = let( //! Positions of wires in a bundle to go through a cable strip
+        wires = cable_wires(cable),
+        bottom = cable_is_ribbon(cable) ? wires : wires < 3 ? wires : ceil(wires / 2),
+        top = wires - bottom
+    )
+    [for(i = [0 : 1 : bottom - 1]) [i - (bottom - 1) / 2, 0.5],
+     for(i = [0 : 1 : top - 1])    [i - (top - 1) / 2, top == bottom ? 1.5 : 0.5 + sin(60)]
+    ] * cable_wire_size(cable);
+
+function cable_width(cable)  = cable_bundle(cable).x; //! Width in flat clip
+function cable_height(cable) = cable_bundle(cable).y; //! Height in flat clip
 
 module mouse_hole(cable, h = 100, teardrop = false) { //! A mouse hole to allow a panel to go over a wire bundle.
     r = wire_hole_radius(cable);
