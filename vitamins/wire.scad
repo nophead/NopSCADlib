@@ -35,6 +35,8 @@ module ribbon_cable(ways, length)                   //! Add ribbon cable to the 
 function cable_wires(cable)     = cable[0]; //! Number of wires in a bundle
 function cable_wire_size(cable) = cable[1]; //! Size of each wire in a bundle
 function cable_is_ribbon(cable) = len(cable) > 2 && cable[2]; //! Is a ribbon cable?
+function cable_wire_colours(cable) = assert(len(cable[3]) == cable_wires(cable)) cable[3]; //! Individual wire colours
+function cable(wires, size, colours, ribbon = false) = [wires, size, ribbon, colours]; //! Cable constructor
 
 // numbers from http://mathworld.wolfram.com/CirclePacking.html
 function cable_radius(cable) = [0, 1, 2, 2.15, 2.41, 2.7, 3, 3, 3.3][cable_wires(cable)] * cable_wire_size(cable) / 2; //! Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>.
