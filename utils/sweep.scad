@@ -215,12 +215,16 @@ function rounded_path(path) = //! Convert a rounded_path, consisting of a start 
             p0 - p1,                                    // Calculate vectors between vertices
             v2 = p2 - p1,
             a = angle_between(v1, -v2),                 // Angle turned through
-            arc_start = p1 + unit(v1) * r * tan(a / 2), // Calc the start position
+            d = r * tan(a / 2),                         // Distance from vertex to tangents
+            room = min(norm(v1), norm(v2)),             // Maximum distance
+            arc_start = assert(d <= room,
+                str("Can't fit radius ", r, " into corner at vertex path[", i, "] = ", p1, " only room for radius ", room / tan(a / 2)))
+                p1 + unit(v1) * d,                      // Calc the start position
             z_axis = unit(cross(v1, v2)),               // z_axis is perpendicular to both vectors
             centre = arc_start + unit(cross(z_axis, v1)) * r, // Arc center is a radius away, and perpendicular to v1 and the z_axis.
             x_axis = arc_start - centre,                // Make the x_axis along the radius to the start point, includes radius a scale factor
             y_axis = cross(x_axis, z_axis),             // y_axis perpendicular to the other two
-            sides = r2sides(ceil(r2sides(r) * a / 360)) // Sides needed to make the arc
+            sides = ceil(r2sides(r) * a / 360)          // Sides needed to make the arc
         )
         for(j = [0 : sides], t = a * j / sides)         // For each vertex in the arc
             cos(t) * x_axis + sin(t) * y_axis + centre, // Circular arc in the tiled xy plane.
@@ -240,7 +244,7 @@ function segmented_path(path, min_segment) = [  //! Add points to a path to enfo
 ];
 
 function spiral_paths(path, n, r, twists, start_angle) = let( //! Create a new paths which sprial around the given path. Use for making twisted cables
-        segment = path_length(path) / twists / r2sides(2 * r),
+        segment = twists ? path_length(path) / twists / r2sides(2 * r) : inf,
         transforms = sweep_transforms(segmented_path(path, segment), twist = 360 * twists),
         initial = [r, 0, 0, 1] * rotate(start_angle)
     ) [for(i = [0 : n - 1]) let(initial = [r, 0, 0, 1] * rotate(start_angle + i * 360 / n)) [for(t = transforms) initial * t]];
