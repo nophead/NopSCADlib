@@ -105,7 +105,7 @@ assembly(let(screw_d = screw_radius(screw) * 2)str("ribbon_clamp_", str_ways(way
 
 module ribbon_clamp_fastened_assembly(ways, thickness, screw = screw) { //! Clamp with fasteners in place
     tape_l = floor(ribbon_clamp_slot(ways));
-    tape_width = 25;
+    tape_width = ribbon_clamp_width(screw) + 2;
     tape_thickness = 0.5;
 
     vitamin(str(": Tape self amalgamating silicone ",tape_l," x 25mm"));
