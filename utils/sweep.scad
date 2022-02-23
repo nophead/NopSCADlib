@@ -177,10 +177,6 @@ module sweep(path, profile, loop = false, twist = 0, convexity = 1) { //! Draw a
     polyhedron(points = mesh[0], faces = mesh[1], convexity = convexity);
 }
 
-function path_length(path, i = 0, length = 0) = //! Calculated the length along a path
-    i >= len(path) - 1 ? length
-                       : path_length(path, i + 1, length + norm(path[i + 1] - path[i]));
-
 function circle_points(r = 1, z = 0, dir = -1) = //! Generate the points of a circle, setting z makes a single turn spiral
     let(sides = r2sides(r))
         [for(i = [0 : sides - 1]) let(a = dir * i * 360 / sides) [r * cos(a), r * sin(a), z * i / sides]];

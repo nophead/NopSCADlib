@@ -187,3 +187,7 @@ function cubic_real_roots(a, b, c, d) = //! Returns real roots of cubic equation
     ) roots == 1 ? [x] :
       roots == 2 ? [3 * q /p + inflection, -3 * q / p / 2 + inflection] :
       [for(i = [0 : roots - 1]) 2 * sqrt(-p / 3) * cos(acos(3 * q * sqrt(-3 / p) / p / 2) - i * 120) + inflection];
+
+function path_length(path, i = 0, length = 0) = //! Calculated the length along a path
+    i >= len(path) - 1 ? length
+                       : path_length(path, i + 1, length + norm(path[i + 1] - path[i]));

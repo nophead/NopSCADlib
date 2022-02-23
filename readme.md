@@ -6130,6 +6130,10 @@ Annotation used in this documentation
 ## Bezier
 Bezier curves and function to get and adjust the length or minimum z point.
 
+`bezier_join()` joins two paths with a Bezier curve that starts tangential to the end of `path1` and ends tangential to the end of `path2`.
+To do this the outer control points are the path ends and the inner two control points are along the tangents to the path ends.
+The only degree of freedom is how far along those tangents, which are the `d` and optional `d2` parameters.
+
 [utils/bezier.scad](utils/bezier.scad) Implementation.
 
 [tests/bezier.scad](tests/bezier.scad) Code for this example.
@@ -6140,6 +6144,7 @@ Bezier curves and function to get and adjust the length or minimum z point.
 | `adjust_bezier_length(v, l, eps = 0.001, r1 = 1.0, r2 = 1.5, l1, l2)` | Adjust Bezier control points `v` to get the required curve length `l` |
 | `adjust_bezier_z(v, z, eps = 0.001, r1 = 1, r2 = 1.5, z1, z2)` | Adjust Bezier control points `v` to get the required minimum `z` |
 | `bezier(t, v)` | Returns a point at distance `t` [0 - 1] along the curve with control points `v` |
+| `bezier_join(path1, path2, d, d2 = undef)` | Join two paths with a Bezier curve, control points are the path ends are `d` and `d2` from the ends in the same direction. |
 | `bezier_length(v, delta = 0.01, t = 0, length = 0)` | Calculate the length of a Bezier curve from control points `v` |
 | `bezier_min_z(v, steps = 100, z = inf, i = 0)` | Calculate the minimum z coordinate of a Bezier curve from control points `v` |
 | `bezier_path(v, steps = 100)` | Returns a Bezier path from control points `v` with `steps` segments |
@@ -6430,6 +6435,7 @@ Maths utilities for manipulating vectors and matrices.
 | `map(v, func)` | make a new vector where the func function argument is applied to each element of the vector v |
 | `mapi(v, func)` | make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument. |
 | `nearly_zero(x)` | True if x is close to zero |
+| `path_length(path, i = 0, length = 0)` | Calculated the length along a path |
 | `quadratic_real_roots(a, b, c)` | Returns real roots of a quadratic equation, biggest first. Returns empty list if no real roots |
 | `radians(degrees)` | Convert radians to degrees |
 | `reduce(v, func, unity)` | reduce a vector v to a single entity by applying the func function recursively to the reduced value so far and the next element, starting with unity as the initial reduced value |
@@ -6650,7 +6656,6 @@ Each vertex, apart from the first and the last, has an associated radius and the
 | `cap(facets, segment = 0, end)` | Create the mesh for an end cap |
 | `circle_points(r = 1, z = 0, dir = -1)` | Generate the points of a circle, setting z makes a single turn spiral |
 | `helical_twist_per_segment(r, pitch, sides)` | Calculate the twist around Z that rotate_from_to() introduces |
-| `path_length(path, i = 0, length = 0)` | Calculated the length along a path |
 | `rectangle_points(w, h)` | Generate the points of a rectangle |
 | `rounded_path(path)` | Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep. |
 | `rounded_path_vertices(path)` | Show the unrounded version of a rounded_path for debug |
