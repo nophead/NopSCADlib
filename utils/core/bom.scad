@@ -49,17 +49,18 @@ function show_supports() = !$preview || exploded();                 //! True if 
 module no_explode()                                                 //! Prevent children being exploded
     let($exploded_parent = true) children();
 
-module explode(d, explode_children = false, offset = [0,0,0]) {     //! Explode children by specified Z distance or vector `d`, option to explode grand children
+module explode(d, explode_children = false, offset = [0,0,0], show_line = true) {     //! Explode children by specified Z distance or vector `d`, option to explode grand children
     v = is_list(d) ? d : [0, 0, d];
     o = is_list(offset) ? offset : [0, 0, offset];
     if(exploded() && norm(v)) {
-        translate(o)                                                // Draw the line first in case the child is transparent
-            color("yellow") hull() {
-                sphere(0.2);
-
-                translate(v * exploded())
+        if(show_line)
+            translate(o)                                                // Draw the line first in case the child is transparent
+                color("yellow") hull() {
                     sphere(0.2);
-            }
+
+                    translate(v * exploded())
+                        sphere(0.2);
+                }
 
         translate(v * exploded())
             let($exploded_parent = explode_children ? undef : true)

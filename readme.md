@@ -6787,7 +6787,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 |:--- |:--- |
 | `assembly(name, big = undef, ngb = false)` | Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams. |
 | `dxf(name)` | Name a dxf that will appear on the BOM, there needs to a module named `<name>_dxf` to make it |
-| `explode(d, explode_children = false, offset = [0,0,0])` | Explode children by specified Z distance or vector `d`, option to explode grand children |
+| `explode(d, explode_children = false, offset = [0,0,0], show_line = true)` | Explode children by specified Z distance or vector `d`, option to explode grand children |
 | `hidden()` | Make item invisible, except on the BOM |
 | `no_explode()` | Prevent children being exploded |
 | `no_pose()` | Force children not to be posed even if parent is |
