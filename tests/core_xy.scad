@@ -55,7 +55,7 @@ module coreXY_belts_test() {
     translate([coreXYPosBL.x + separation.x/2, coreXYPosTR.y + upper_drive_pulley_offset.y, separation.z/2]) {
         // add the upper drive pulley stepper motor
         translate([coreXY_drive_pulley_x_alignment(coreXY_type) + upper_drive_pulley_offset.x, 0, -pulley_height(coreXY_drive_pulley(coreXY_type))])
-            NEMA(NEMA17M);
+            NEMA(NEMA17_40);
 
         // add the screws for the upper drive offset idler pulleys if required
         if (upper_drive_pulley_offset.x > 0) {
@@ -78,7 +78,7 @@ module coreXY_belts_test() {
     translate([coreXYPosTR.x - separation.x/2, coreXYPosTR.y + lower_drive_pulley_offset.y, -separation.z/2]) {
         // add the lower drive pulley stepper motor
         translate([-coreXY_drive_pulley_x_alignment(coreXY_type) + lower_drive_pulley_offset.x, 0, -pulley_height(coreXY_drive_pulley(coreXY_type))])
-            NEMA(NEMA17M);
+            NEMA(NEMA17_40);
 
         // add the screws for the lower drive offset idler pulleys if required
         if (lower_drive_pulley_offset.x < 0) {
