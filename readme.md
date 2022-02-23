@@ -3900,15 +3900,15 @@ NEMA stepper motor model.
 | ---:|:--- |:---|
 |   4 | `ring_terminal(M3_ringterm)` |  Ring terminal 3mm |
 |  20 | `screw(M3_pan_screw, 8)` |  Screw M3 pan x  8mm |
-|   1 | `NEMA(NEMA14)` |  Stepper motor NEMA14 x 36mm |
-|   1 | `NEMA(NEMA16)` |  Stepper motor NEMA16 x 19.2mm |
-|   1 | `NEMA(NEMA17P)` |  Stepper motor NEMA17 x 26.5mm |
-|   1 | `NEMA(NEMA17S)` |  Stepper motor NEMA17 x 34mm |
-|   1 | `NEMA(NEMA17M)` |  Stepper motor NEMA17 x 40mm |
-|   1 | `NEMA(NEMA17)` |  Stepper motor NEMA17 x 47mm |
-|   1 | `NEMA(NEMA23)` |  Stepper motor NEMA22 x 51.2mm |
-|   1 | `NEMA(NEMA8)` |  Stepper motor NEMA8 x 30mm |
-|   1 | `NEMA(NEMA8BH)` |  Stepper motor NEMA8 x 30mm |
+|   1 | `NEMA(NEMA14_36)` |  Stepper motor NEMA14 x 36mm |
+|   1 | `NEMA(NEMA16_19)` |  Stepper motor NEMA16 x 19.2mm |
+|   1 | `NEMA(NEMA17_27)` |  Stepper motor NEMA17 x 26.5mm |
+|   1 | `NEMA(NEMA17_34)` |  Stepper motor NEMA17 x 34mm |
+|   1 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm |
+|   1 | `NEMA(NEMA17_47)` |  Stepper motor NEMA17 x 47mm |
+|   1 | `NEMA(NEMA23_51)` |  Stepper motor NEMA22 x 51.2mm |
+|   1 | `NEMA(NEMA8_30)` |  Stepper motor NEMA8 x 30mm |
+|   1 | `NEMA(NEMA8_30BH)` |  Stepper motor NEMA8 x 30mm |
 |  16 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |  20 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
@@ -6242,7 +6242,7 @@ allows flexible positioning of the motors.
 |   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
 |   8 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
-|   2 | `NEMA(NEMA17M)` |  Stepper motor NEMA17 x 40mm |
+|   2 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm |
 
 
 <a href="#top">Top</a>
