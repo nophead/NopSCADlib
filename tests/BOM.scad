@@ -32,7 +32,7 @@ height = 10;
 insert = screw_insert(screw);
 
 module widget(thickness) {
-    vitamin(str("widget(", thickness, "): Rivit like thing for ", thickness, "mm sheets"));
+    vitamin(str("widget(", thickness, "): Rivet like thing for ", thickness, "mm sheets"));
     t = 1;
     color("silver") {
         cylinder(d = 3, h = thickness + 2 * eps, center = true);
@@ -85,7 +85,7 @@ assembly("widget_top") {
 module widget_assembly()
 assembly("widget") {
 
-    widget_base_assembly();                 // Note this is not exloded because it is sub-assembly
+    widget_base_assembly();                 // Note this is not exploded because it is sub-assembly
 
     translate_z(height) {
         translate_z(sheet_thickness(sheet))

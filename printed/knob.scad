@@ -20,7 +20,7 @@
 //
 //! Parametric knobs for potentiometers and encoders.
 //!
-//! A knob can be constructed by specififying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
+//! A knob can be constructed by specifying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
 //! An optional skirt and / or a pointer can be specified.
 //!
 //! The STL includes a support membrane that needs to be cut out and a thread needs to be tapped for the grub screw.

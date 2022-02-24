@@ -31,7 +31,7 @@
 //! Star washers can be omitted by setting `star_washers` to false.
 //!
 //! A 2screw_block is a thinner version with two screws and two mating surfaces. It can be used as an alternative to fixing blocks when
-//! high lateral rigity is not required.
+//! high lateral rigidity is not required.
 //
 include <../core.scad>
 use <../vitamins/insert.scad>
