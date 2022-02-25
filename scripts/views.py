@@ -422,7 +422,7 @@ def views(target, do_assemblies = None):
     times.add_time(html_name, t)
     times.print_times(pngs + [html_name])
     #
-    # Make the printme.html by replacing empty spans that invisbly mark the page breaks by page break divs.
+    # Make the printme.html by replacing empty spans that invisibly mark the page breaks by page break divs.
     #
     with open(html_name, 'rt') as src:
         lines = src.readlines()

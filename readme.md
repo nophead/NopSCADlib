@@ -4890,7 +4890,7 @@ This allows the block and one set of fasteners to be on one assembly and the oth
 Star washers can be omitted by setting `star_washers` to false.
 
 A 2screw_block is a thinner version with two screws and two mating surfaces. It can be used as an alternative to fixing blocks when
-high lateral rigity is not required.
+high lateral rigidity is not required.
 
 [printed/corner_block.scad](printed/corner_block.scad) Implementation.
 
@@ -5449,7 +5449,7 @@ Printed handle that can be printed without needing support material due to its t
 ## Knob
 Parametric knobs for potentiometers and encoders.
 
-A knob can be constructed by specififying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
+A knob can be constructed by specifying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
 An optional skirt and / or a pointer can be specified.
 
 The STL includes a support membrane that needs to be cut out and a thread needs to be tapped for the grub screw.
@@ -5847,7 +5847,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ## Ribbon_clamp
 Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
 
-* When `ways` is a scalar number the slot is sized for one rubbon cable and a PP strip.
+* When `ways` is a scalar number the slot is sized for one ribbon cable and a PP strip.
 * When `ways` is a two element vector the second element indicates the number of cables and the slot is size for just the cables.
 
 [printed/ribbon_clamp.scad](printed/ribbon_clamp.scad) Implementation.
@@ -6807,7 +6807,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   1 | `widget(3)` |  Rivit like thing for 3mm sheets |
+|   1 | `widget(3)` |  Rivet like thing for 3mm sheets |
 |   1 | `screw(M3_cap_screw, 8)` |  Screw M3 cap x  8mm |
 |   1 | `sheet(PMMA3, 20, 20, 1)` |  Sheet acrylic 20mm x 20mm x 3mm |
 |   1 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
