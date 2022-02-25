@@ -20,7 +20,7 @@
 //
 //! Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
 //!
-//! * When `ways` is a scalar number the slot is sized for one rubbon cable and a PP strip.
+//! * When `ways` is a scalar number the slot is sized for one ribbon cable and a PP strip.
 //! * When `ways` is a two element vector the second element indicates the number of cables and the slot is size for just the cables.
 //
 include <../core.scad>
