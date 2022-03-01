@@ -241,8 +241,7 @@ function segmented_path(path, min_segment) = [  //! Add points to a path to enfo
 
 function spiral_paths(path, n, r, twists, start_angle) = let( //! Create a new paths which sprial around the given path. Use for making twisted cables
         segment = twists ? path_length(path) / twists / r2sides(2 * r) : inf,
-        transforms = sweep_transforms(segmented_path(path, segment), twist = 360 * twists),
-        initial = [r, 0, 0, 1] * rotate(start_angle)
+        transforms = sweep_transforms(segmented_path(path, segment), twist = 360 * twists)
     ) [for(i = [0 : n - 1]) let(initial = [r, 0, 0, 1] * rotate(start_angle + i * 360 / n)) [for(t = transforms) initial * t]];
 
 function rounded_path_vertices(path) = [path[0], for(i = [1 : 2 : len(path) - 1]) path[i]]; //! Show the unrounded version of a rounded_path for debug
