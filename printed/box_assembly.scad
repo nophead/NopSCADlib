@@ -23,7 +23,7 @@
 // parameters to make the assembly views. E.g. module box_assembly() _box_assembly(box);
 //
 module _box_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true, bezels = true, corners = 4)
-assembly("box") {
+assembly(box_name(type)) {
     echo("Box:", box_width(type), box_depth(type), box_height(type));
 
     t = sheet_thickness(box_sheets(type));
@@ -50,7 +50,9 @@ assembly("box") {
         translate_z(z * (box_height(type) / 2 - box_corner_gap(type) + 50 * exploded()))
             rotate([z * 90 - 90, 0, 0])
                 if(bezels && (z > 0 ? top : base))
-                    stl_colour(pp1_colour) render() box_bezel(type, z < 0);
+                    stl_colour(pp1_colour) render() box_bezel(type, z < 0)
+                        if(z > 0 && $children)
+                            children();
 
         translate_z(z * (box_height(type) / 2 + sheet_thickness + 50 * exploded()))
             box_screw_hole_positions(type)

@@ -25,6 +25,12 @@
 //!
 //! The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 //! An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
+//!
+//! `rounded_path()` can be used to generate a path of lines connected by arcs, useful for wire runs, etc.
+//! The vertices specify where the the path would be without any rounding.
+//! Each vertex, apart from the first and the last, has an associated radius and the path shortcuts the vertex with an arc specified by the radius.
+//!
+//! `spiral_paths()` makes a list of new paths that spiral around a given path. It can be used to make twisted wires that follow a rounded_path, for example.
 //
 include <../utils/core/core.scad>
 
@@ -103,17 +109,18 @@ function helical_twist_per_segment(r, pitch, sides) = //! Calculate the twist ar
        ) step_angle * sin(slope);                   // angle tangent should rotate around z projected onto axis rotate_from_to() uses
 
 //
-// Generate all the surface points of the swept volume.
+// Generate all the transforms for the profile of the swept volume.
 //
-function skin_points(profile, path, loop, twist = 0) =
+function sweep_transforms(path, loop = false, twist = 0) =
     let(len = len(path),
         last = len - 1,
-
-        profile4 = [for(p = profile) [p.x, p.y, p.z, 1]],
 
         tangents = [tangent(path, loop ? last : 0, 0, 1),
                     for(i = [1 : last - 1]) tangent(path, i - 1, i, i + 1),
                     tangent(path, last - 1, last, loop ? 0 : last)],
+
+        lengths = [for(i = 0, t = 0; i < len; t = t + norm(path[min(i + 1, last)] - path[i]), i = i + 1) t],
+        length = lengths[last],
 
         rotations = [for(i = 0, rot = fs_frame(tangents);
                          i < len;
@@ -124,8 +131,20 @@ function skin_points(profile, path, loop, twist = 0) =
         rotation = missmatch + twist
     )
     [for(i = [0 : last])
-        let(za = rotation * i / last)
-            each profile4 * orientate(path[i], rotations[i] * rot3_z(za))
+        let(za = rotation * lengths[i] / length)
+            orientate(path[i], rotations[i] * rot3_z(za))
+    ];
+
+//
+// Generate all the surface points of the swept volume.
+//
+function skin_points(profile, path, loop, twist = 0) =
+    let(profile4 = [for(p = profile) [p.x, p.y, p.z, 1]],
+
+        transforms = sweep_transforms(path, loop, twist)
+    )
+    [for(t = transforms)
+        each profile4 * t
     ];
 
 function cap(facets, segment = 0, end) = //! Create the mesh for an end cap
@@ -158,10 +177,6 @@ module sweep(path, profile, loop = false, twist = 0, convexity = 1) { //! Draw a
     polyhedron(points = mesh[0], faces = mesh[1], convexity = convexity);
 }
 
-function path_length(path, i = 0, length = 0) = //! Calculated the length along a path
-    i >= len(path) - 1 ? length
-                       : path_length(path, i + 1, length + norm(path[i + 1] - path[i]));
-
 function circle_points(r = 1, z = 0, dir = -1) = //! Generate the points of a circle, setting z makes a single turn spiral
     let(sides = r2sides(r))
         [for(i = [0 : sides - 1]) let(a = dir * i * 360 / sides) [r * cos(a), r * sin(a), z * i / sides]];
@@ -179,3 +194,69 @@ function before(path1, path2) =  //! Translate `path1` so its end meets the star
 function after(path1, path2) =  //! Translate `path2` so its start meets the end of `path1` and then concatenate
     let(end1 = len(path1) - 1, end2 = len(path2) - 1, offset = path1[end1] - path2[0])
         concat(path1, [for(i = [1 : end2]) path2[i] + offset]);
+
+function rounded_path(path) = //! Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep.
+    let(len = len(path)) assert(len > 3 && len % 2 == 0) [
+        path[0],                                        // First point has no radius
+        for(i = [1 : 2 : len - 3]) let(                 // Step through the vertices with radii, i.e. not the first or last
+            prev = max(i - 2, 0),                       // Index of previous point, might be the first point, which is a special case
+            p0 = path[prev],                            // Point before the vertex
+            p1 = path[i],                               // Vertex
+            r = path[i + 1],                            // Radius of shortcut curve
+            p2 = path[i + 2],                           // Point after the vertex
+            v1 = assert(Len(p0) == 3, str("expected path[", prev,  "] to be a vertex coordinate, got ", p0))
+                 assert(Len(p1) == 3, str("expected path[", i,     "] to be a vertex coordinate, got ", p1))
+                 assert(Len(p2) == 3, str("expected path[", i + 2, "] to be a vertex coordinate, got ", p2))
+                 assert(is_num(r),    str("expected path[", i + 1, "] to be a radius, got ", r))
+            p0 - p1,                                    // Calculate vectors between vertices
+            v2 = p2 - p1,
+            a = angle_between(v1, -v2),                 // Angle turned through
+            d = r * tan(a / 2),                         // Distance from vertex to tangents
+            room = min(norm(v1), norm(v2)),             // Maximum distance
+            arc_start = assert(d <= room,
+                str("Can't fit radius ", r, " into corner at vertex path[", i, "] = ", p1, " only room for radius ", room / tan(a / 2)))
+                p1 + unit(v1) * d,                      // Calc the start position
+            z_axis = unit(cross(v1, v2)),               // z_axis is perpendicular to both vectors
+            centre = arc_start + unit(cross(z_axis, v1)) * r, // Arc center is a radius away, and perpendicular to v1 and the z_axis.
+            x_axis = arc_start - centre,                // Make the x_axis along the radius to the start point, includes radius a scale factor
+            y_axis = cross(x_axis, z_axis),             // y_axis perpendicular to the other two
+            sides = ceil(r2sides(r) * a / 360)          // Sides needed to make the arc
+        )
+        for(j = [0 : sides], t = a * j / sides)         // For each vertex in the arc
+            cos(t) * x_axis + sin(t) * y_axis + centre, // Circular arc in the tiled xy plane.
+        path[len - 1],                                  // Last point has no radius
+    ];
+
+function segmented_path(path, min_segment) = [  //! Add points to a path to enforce a minimum segment length
+    for(i = [0 : len(path) - 2])
+            let(delta =
+                    assert(path[i] != path[i + 1], str("Coincident points at path[", i, "] = ", path[i]))
+                    path[i+1] - path[i],
+                segs = ceil(norm(delta) / min_segment)
+            )
+            for(j = [0 : segs - 1])
+                path[i] + delta * j / segs, // Linear interpolation
+            path[len(path) - 1]
+];
+
+function spiral_paths(path, n, r, twists, start_angle) = let( //! Create a new paths which sprial around the given path. Use for making twisted cables
+        segment = twists ? path_length(path) / twists / r2sides(2 * r) : inf,
+        transforms = sweep_transforms(segmented_path(path, segment), twist = 360 * twists),
+        initial = [r, 0, 0, 1] * rotate(start_angle)
+    ) [for(i = [0 : n - 1]) let(initial = [r, 0, 0, 1] * rotate(start_angle + i * 360 / n)) [for(t = transforms) initial * t]];
+
+function rounded_path_vertices(path) = [path[0], for(i = [1 : 2 : len(path) - 1]) path[i]]; //! Show the unrounded version of a rounded_path for debug
+
+module show_path(path) //! Show a path using a chain of hulls for debugging, duplicate points are highlighted.
+    for(i = [0 : len(path) - 2]) {
+        hull($fn = 16) {
+            translate(path[i])
+                sphere(0.1);
+
+            translate(path[i + 1])
+                sphere(0.1);
+        }
+        if(path[i] == path[i + 1])
+            translate(path[i])
+                color("red") sphere(1);
+    }

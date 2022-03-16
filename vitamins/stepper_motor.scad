@@ -205,12 +205,12 @@ module NEMA_screw_positions(type, n = 4) { //! Positions children at the screw h
                     children();
 }
 
-module NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef) //! Place screws and optional earth tag
+module NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef, earth_rot = undef) //! Place screws and optional earth tag
     NEMA_screw_positions(type, n)
         if($i != earth)
             screw_and_washer(screw, screw_length, true);
         else
-            rotate($i > 1 ? 180 : 0)
+            rotate(is_undef(earth_rot) ? $i > 1 ? 180 : 0 : earth_rot)
                 ring_terminal(M3_ringterm)
                     star_washer(screw_washer(screw))
                         screw(screw, screw_length);

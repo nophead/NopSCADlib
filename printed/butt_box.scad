@@ -31,7 +31,8 @@
 //!  * An optional list of fixing blocks to be omitted can be given.
 //!  * Star washers can be omitted by setting the 11th parameter to false.
 //!
-//! Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
+//! Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block) by default. Setting `thin_blocks` uses 2screw_blocks instead of
+//! fixing_blocks along the sides.
 //
 
 use <fixing_block.scad>
@@ -46,12 +47,13 @@ function bbox_span(type)       = type[4]; //! Maximum span between fixing blocks
 function bbox_width(type)      = type[5]; //! Internal width
 function bbox_depth(type)      = type[6]; //! Internal depth
 function bbox_height(type)     = type[7]; //! Internal height
-function bbox_name(type)       = type[8] ? type[8] : "bbox"; //! Optional name if there is more than one box in a project
-function bbox_skip_blocks(type)= type[9] ? type[9] : [];  //! List of fixing blocks to skip, used to allow a hinged panel for example
-function star_washers(type)    = type[10] ? type[10] : is_undef(type[10]); //! Set to false to remove star washers.
+function bbox_name(type)       = type[8]; //! Optional name if there is more than one box in a project
+function bbox_skip_blocks(type)= type[9]; //! List of fixing blocks to skip, used to allow a hinged panel for example
+function bbox_star_washers(type)= type[10];//! Set to false to remove star washers.
+function bbox_thin_blocks(type) = type[11];//! Set for 2 screw blocks instead of three hole fixing blocks.
 
-function bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true) = //! Construct the property list for a butt_box
- [ screw, sheets, base_sheet, top_sheet, span, size.x, size.y, size.z, name, skip_blocks, star_washers ];
+function bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true, thin_blocks = false) = //! Construct the property list for a butt_box
+ [ screw, sheets, base_sheet, top_sheet, span, size.x, size.y, size.z, name, skip_blocks, star_washers, thin_blocks ];
 
 function bbox_volume(type) = bbox_width(type) * bbox_depth(type) * bbox_height(type) / 1000000; //! Internal volume in litres
 function bbox_area(type) = let(w =  bbox_width(type), d = bbox_depth(type), h = bbox_height(type)) //! Internal surface area in m^2
@@ -108,7 +110,10 @@ function fixing_block_positions(type) = let(
                 rotate([y > 0 ? 180 : 0, x * y * 90, 0]),
     ];
 
-function side_holes(type) = [for(p = fixing_block_positions(type), q = fixing_block_holes(bbox_screw(type))) p * q];
+function side_holes(type) = let(
+    screw = bbox_screw(type),
+    holes = bbox_thin_blocks(type) ? 2screw_block_holes(screw) : fixing_block_holes(screw))
+        [for(p = fixing_block_positions(type), q = holes) p * q];
 
 module bbox_drill_holes(type, t)
     position_children(concat(corner_holes(type), side_holes(type)), t)
@@ -226,11 +231,13 @@ module _bbox_assembly(type, top = true, base = true, left = true, right = true, 
     width = bbox_width(type);
     depth = bbox_depth(type);
     height = bbox_height(type);
-    echo("Box:", width, depth, height, volume = bbox_volume(type), area = bbox_area(type));
+    echo("Butt_box:", width, depth, height, volume = bbox_volume(type), area = bbox_area(type));
 
     t = sheet_thickness(bbox_sheets(type));
     bt = sheet_thickness(bbox_base_sheet(type));
     tt = sheet_thickness(bbox_top_sheet(type));
+    star_washers = bbox_star_washers(type);
+    thin_blocks = bbox_thin_blocks(type);
 
     function is_missing_screw(p) = p.y > depth / 2 - 1 ? !back : false;
 
@@ -240,13 +247,16 @@ module _bbox_assembly(type, top = true, base = true, left = true, right = true, 
             let(q = transform([0, 0, 0], p), thickness = q.z > 0 ? tt : bt)
                 multmatrix(p)
                     fastened_corner_block_assembly(is_missing_screw(q) && ((q.z > 0) != (q.x > 0)) ? 0 : t, bbox_screw(type), thickness,
-                                                   is_missing_screw(q) && ((q.z > 0) == (q.x > 0)) ? 0 : t, star_washers = star_washers(type));
+                                                   is_missing_screw(q) && ((q.z > 0) == (q.x > 0)) ? 0 : t, star_washers = star_washers);
 
         h = height / 2 - 1;
         for(p = fixing_block_positions(type))
             let(q = transform([0, 0, 0], p), thickness = q.z > h ? tt : q.z < -h ? bt : t)
                 multmatrix(p)
-                    fastened_fixing_block_assembly(is_missing_screw(q) ? 0 : t, bbox_screw(type), thickness2 = thickness, star_washers = star_washers(type));
+                    if(thin_blocks)
+                        fastened_2screw_block_assembly(is_missing_screw(q) ? 0 : t, bbox_screw(type), thickness_below = thickness, star_washers = star_washers);
+                    else
+                        fastened_fixing_block_assembly(is_missing_screw(q) ? 0 : t, bbox_screw(type), thickness2 = thickness, star_washers = star_washers);
 
         for(x = [-1, 1])
             translate([x * (width / 2 + t / 2 + eps + 25 * exploded()), 0])

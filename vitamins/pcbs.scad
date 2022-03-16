@@ -198,6 +198,34 @@ Duex5 = ["Duex5", "Duex5 expansion board",
                                                                     ]),
                                                                     []];
 
+BTT_RELAY_V1_2 = [
+    "BTT_RELAY_V1_2", "BigTreeTech Relay Module v1.2",
+    80.4, 36.3, 1.5, // size
+    1, // corner radius
+    3, // mounting hole diameter
+    5, // pad around mounting hole
+    grey(25), // color
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        [3, 3.5], [-3, 3.5], [3, -3.5], [-3, -3.5]
+    ],
+    [ // components
+        [  44.5,  10.0,    0, "block", 25,  20,    15.8, grey(20) ],
+        [  47.5,  -7.6,    0, "block", 19,  15.25, 15.8, "SkyBlue" ],
+        //[ -14.5,  18.15,   0, "block", 16,  30,    17.0, grey(25) ],
+        //[ -14.5,  18.15,   0, "block", 15,  25.5,  17.1, "PaleGoldenrod" ],
+        [   2.5,  10.65, 270, "jst_xh", 2, false, grey(20), ],
+        [   2.5,  18.15, 270, "jst_xh", 2, false, grey(20), ],
+        [   2.5,  25.65, 270, "jst_xh", 2, false, grey(20), ],
+        [  11.0,   2.0,    0, "2p54header", 2, 1 ],
+        [  23.0,   2.0,    0, "2p54header", 4, 1 ],
+        [   7.9,  -3.3,   90, "2p54header", 2, 1 ],
+        [  -6.5,   2.45, 180, "terminal",   3, [10, 1.33, 13.2, 16, 7, 13] ],
+    ],
+    [], // accessories
+    [], // grid
+];
+
 BTT_SKR_MINI_E3_V2_0 = [
     "BTT_SKR_MINI_E3_V2_0", "BigTreeTech SKR Mini E3 v2.0",
     100.75, 70.25, 1.6, // size
@@ -721,11 +749,11 @@ MP1584EN = ["MP1584EN", "MP1584EN 3A buck converter", 22, 17, 1.2, 0, 1, [2, 2],
     []
 ];
 
-PERF80x20 = ["PERF80x20", "Perfboard 80 x 20mm", 80, 20, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
+PERF80x20 = ["PERF80x20", "Perfboard 80 x 20mm", 80, 20, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.71, 3.65]];
 
-PERF70x50 = ["PERF70x50", "Perfboard 70 x 50mm", 70, 50, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
+PERF70x50 = ["PERF70x50", "Perfboard 70 x 50mm", 70, 50, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.79, 3.41]];
 
-PERF70x30 = ["PERF70x30", "Perfboard 70 x 30mm", 70, 30, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
+PERF70x30 = ["PERF70x30", "Perfboard 70 x 30mm", 70, 30, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.79, 3.57]];
 
 PERF60x40 = ["PERF60x40", "Perfboard 60 x 40mm", 60, 40, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.87, 3.49]];
 
@@ -882,7 +910,7 @@ KY_040 = ["KY_040", "KY-040 rotart encoder breakout",
 
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, KY_040, MT3608, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+pcbs = [RAMPSEndstop, KY_040, MT3608, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 

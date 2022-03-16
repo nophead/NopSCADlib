@@ -52,7 +52,7 @@ module corner(r) {
         if(r < 0)
             translate([-r, r])
                 rotate(45)
-                    square(-r * sqrt(2), -r * sqrt(2), center = true);
+                    square([-r * sqrt(2), -r * sqrt(2)], center = true);
         else
             translate([0.5, -0.5])
                 square(1, center = true);

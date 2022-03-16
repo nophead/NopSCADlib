@@ -51,6 +51,7 @@ use <tests/blowers.scad>
 use <tests/box_sections.scad>
 use <tests/bulldogs.scad>
 use <tests/buttons.scad>
+use <tests/cable_clip.scad>
 use <tests/cable_strips.scad>
 use <tests/cameras.scad>
 use <tests/camera_housing.scad>
@@ -154,19 +155,46 @@ translate([x5 + 50, cable_grommets_y])
 translate([x5 + 95, cable_grommets_y])
     press_fits();
 
-translate([x5, cable_grommets_y + 60])
+fixing_blocks_y = cable_grommets_y + 60;
+translate([x5, fixing_blocks_y])
     fixing_blocks();
 
-translate([x5, cable_grommets_y + 90])
+corner_blocks_y = fixing_blocks_y + 30;
+translate([x5, corner_blocks_y])
     corner_blocks();
 
-translate([x5, cable_grommets_y + 150])
+feet_y = corner_blocks_y + 70;
+translate([x5, feet_y])
     feet();
 
-translate([x5 + 70, cable_grommets_y + 150])
+translate([x5 + 70, feet_y])
     screw_knobs();
 
-translate([x5, cable_grommets_y + 470]) {
+knobs_y = feet_y + 40;
+translate([640, knobs_y])
+    printed_pulley_test();
+
+translate([x5, knobs_y])
+    knobs();
+
+clips_y = knobs_y + 50;
+translate([x5, clips_y])
+    cable_clips();
+
+strap_y = clips_y + 50;
+translate([x5 + 60, strap_y])
+    strap_handles();
+
+handle_y = strap_y + 50;
+translate([x5, handle_y])
+    handle();
+
+pocket_y = handle_y + 70;
+translate([x5 + 65, pocket_y])
+    pocket_handles();
+
+hinge_y = pocket_y + 100;
+translate([x5, hinge_y]) {
     door_hinges()
         door_latches();
 
@@ -174,32 +202,18 @@ translate([x5, cable_grommets_y + 470]) {
         flat_hinges();
 }
 
-translate([x5, cable_grommets_y + 380])
-    no_explode() socket_boxes();
-
-translate([640, cable_grommets_y + 200])
-    printed_pulley_test();
-
-translate([x5, cable_grommets_y + 200])
-    knobs();
-
-translate([x5 + 60, cable_grommets_y + 250])
-    strap_handles();
-
-translate([x5, cable_grommets_y + 300])
-    handle();
-
-translate([950, 600])
-    box_test();
-
-translate([900, 750])
-    pocket_handles();
-
-translate([900, 850])
+pbox_y = hinge_y + 70;
+translate([900, pbox_y])
     printed_boxes();
 
-translate([850, 1330 + 85])
-    bbox_test();
+box_y = pbox_y + 150;
+translate([950, box_y])
+    box_test();
+
+
+translate([950, 1400])
+    rotate(-90)
+        bbox_test();
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
@@ -425,6 +439,9 @@ translate([x2, extrusions_y])
 
 translate([400, transformers_y])
     transformers();
+
+translate([x4 + 50, transformers_y])
+    no_explode() socket_boxes();
 
 
 belts_y = 0;

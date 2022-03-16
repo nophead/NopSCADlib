@@ -38,6 +38,7 @@ use <led.scad>
 use <dip.scad>
 use <axial.scad>
 use <smd.scad>
+use <terminal.scad>
 include <potentiometers.scad>
 
 function pcb_name(type)         = type[1];  //! Description
@@ -1031,7 +1032,7 @@ module block(size, colour, makes_cutout, cutouts) //! Draw a coloured cube to re
 
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
     function show(comp, part) = (comp[3] == part || comp[3] == str("-",part)) && (!cutouts || angle == undef || angle == comp.z);
-    function param(n, default = 0) = len(comp) > n ? comp[n] : default;
+    function param(n, default = 0) = len(comp) > n && !is_undef(comp[n]) ? comp[n] : default;
     rotate(comp.z) {
         // Components that have a cutout parameter go in this section
         if(show(comp, "2p54header")) let($show_plugs = show_plugs && param(9, true))
@@ -1086,8 +1087,12 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "potentiometer")) let(pot = param(4, BTT_encoder)) translate_z(pot_size(pot).z) vflip() potentiometer(pot, shaft_length = param(5, undef));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
-            if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5]);
+            if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5], param(6, undef));
+            if(show(comp, "smd_sot"))       smd_sot(comp[4], comp[5]);
             if(show(comp, "vero_pin"))      vero_pin(param(4, false));
+            if(show(comp, "terminal"))      terminal_block(comp[5], comp[4]);
+            if(show(comp, "text"))          color("white") linear_extrude(eps) resize([comp[4], comp[5]]) text(comp[6], font = param(7, "Liberation Mono"), valign = "center", halign = "center");
+
         }
     }
 }

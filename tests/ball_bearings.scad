@@ -21,10 +21,23 @@ use <../utils/layout.scad>
 
 include <../vitamins/ball_bearings.scad>
 
-module ball_bearings()
-    layout([for(b = ball_bearings) bb_diameter(b)])
-        ball_bearing(ball_bearings[$i])
-            bearing_ball(3);
+
+module do_bearings(list)
+    layout([for(b = list) bb_diameter(b)])
+        ball_bearing(list[$i])
+            if (bb_width(list[$i]) >= 5)
+                bearing_ball(3);
+
+module ball_bearings() {
+    small_bearings = [for(b = ball_bearings) if(bb_diameter(b) < 12) b];
+    big_bearings = [for(b = ball_bearings) if(!in(small_bearings, b)) b];
+
+    translate([0, 0])
+        do_bearings(big_bearings);
+
+    translate([0, -20])
+        do_bearings(small_bearings);
+}
 
 if($preview)
     ball_bearings();

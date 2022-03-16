@@ -1,0 +1,8 @@
+main_assembly:
+Vitamins:
+  4 Screw M2 cap x  6mm
+  4 Washer  M2 x 5mm x 0.3mm
+
+Assemblies:
+  1 RPI_case_assembly
+  1 back_assembly

@@ -22,11 +22,18 @@ use <../printed/corner_block.scad>
 screws = [M2_cap_screw, M2p5_pan_screw, M3_dome_screw, M4_dome_screw];
 
 module do_corner_block(screw)
-    if($preview)
+    if($preview) {
         fastened_corner_block_assembly(3, screw = screw);
-    else
+
+        translate([0, 30])
+            fastened_2screw_block_assembly(3, screw = screw);
+    }
+    else {
         corner_block(screw);
 
+        translate([0, 30])
+            2screw_block(screw);
+    }
 module corner_blocks()
     for(i = [0 : len(screws) - 1])
         translate([i * 30, 0])

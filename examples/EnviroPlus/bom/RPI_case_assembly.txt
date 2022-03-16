@@ -1,0 +1,7 @@
+RPI_case_assembly:
+Vitamins:
+  2 Screw M2.5 pan x  6.4mm
+
+Assemblies:
+  1 RPI_assembly
+  1 enviro_case_assembly

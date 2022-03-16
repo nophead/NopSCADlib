@@ -77,6 +77,17 @@ module beziers() {
 
     translate(control_points[1] - [0, 0, 2])
         label(str("bezier_length = ", length, ", bezier_min_z = ", bezier_min_z(curve)), valign = "top");
+
+    path1 = [[20, 20,  0], [40, 20, 0]];
+    path2 = [[70, 40, -5], [60, 40, 0]];
+
+    color("green")
+        for(p = concat(path1, path2))
+            translate(p)
+                sphere(1);
+
+    color("orange")
+        sweep(bezier_join(path1, path2, 10), circle_points(0.5, $fn = 64));
 }
 
 if($preview)

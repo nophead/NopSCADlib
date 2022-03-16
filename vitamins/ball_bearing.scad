@@ -28,13 +28,16 @@
 include <../utils/core/core.scad>
 include <../utils/tube.scad>
 
-function bb_name(type)     = type[0]; //! Part code without shield type suffix
-function bb_bore(type)     = type[1]; //! Internal diameter
-function bb_diameter(type) = type[2]; //! External diameter
-function bb_width(type)    = type[3]; //! Width
-function bb_colour(type)   = type[4]; //! Shield colour, "silver" for metal
-function bb_rim(type)      = type[5]; //! Outer rim thickness guesstimate
-function bb_hub(type)      = type[6]; //! Inner rim thickness guesstimate
+function bb_name(type)            = type[0]; //! Part code without shield type suffix
+function bb_bore(type)            = type[1]; //! Internal diameter
+function bb_diameter(type)        = type[2]; //! External diameter
+function bb_width(type)           = type[3]; //! Width
+function bb_colour(type)          = type[4]; //! Shield colour, "silver" for metal
+function bb_rim(type)             = type[5]; //! Outer rim thickness guesstimate
+function bb_hub(type)             = type[6]; //! Inner rim thickness guesstimate
+function bb_flange_diameter(type) = type[7]; //! Flange diameter
+function bb_flange_width(type)    = type[8]; //! Flange width
+
 
 module ball_bearing(type) { //! Draw a ball bearing
     shield = bb_colour(type);
@@ -45,32 +48,45 @@ module ball_bearing(type) { //! Draw a ball bearing
     h = bb_width(type);
     or = bb_diameter(type) / 2;
     ir = bb_bore(type) / 2;
+    fr = bb_flange_diameter(type) / 2;
+    fw = bb_flange_width(type);
 
     color("silver") {
         $fn = 360;
 
-        rim_chamfer = rim / 6;
         rotate_extrude()
             hull() {
-                translate([or - rim, -h / 2 + rim_chamfer])
-                    square([rim, h - 2 * rim_chamfer]);
+                chamfer = rim / 6;
+                translate([or - rim, -h / 2 + chamfer])
+                    square([rim, h - 2 * chamfer]);
 
                 translate([or - rim, -h / 2])
-                    square([rim - rim_chamfer, h]);
+                    square([rim - chamfer, h]);
             }
 
-        hub_chamfer = hub / 6;
+        if (fr)
+            rotate_extrude()
+                hull() {
+                    chamfer = fw / 6;
+                    translate([or - rim, -h / 2 + chamfer])
+                        square([fr - or + rim, fw - 2 * chamfer]);
+
+                    translate([or - rim,  -h / 2])
+                        square([fr - or + rim - chamfer, fw]);
+                }
+
         rotate_extrude()
             hull() {
-                translate([ir, -h / 2 + hub_chamfer])
-                    square([hub, h - 2 * hub_chamfer]);
+                chamfer = hub / 6;
+                translate([ir, -h / 2 + chamfer])
+                    square([hub, h - 2 * chamfer]);
 
-                translate([ir + hub_chamfer, -h / 2])
-                    square([hub - hub_chamfer, h]);
+                translate([ir + chamfer, -h / 2])
+                    square([hub - chamfer, h]);
             }
     }
 
-    color(shield) tube(or - rim - eps, ir + hub + eps, h - 1);
+    color(shield) tube(or - rim - eps, ir + hub + eps, h - (h < 5 ? 0.5 : 1));
 
     if($children)
         translate_z(bb_width(type) / 2)

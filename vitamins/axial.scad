@@ -23,27 +23,31 @@
 include <../utils/core/core.scad>
 include <../utils/round.scad>
 
-module wire_link(d, l, h = 1, tail = 3) { //! Draw a wire jumper link.
-    vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"),  "): Wire link ", d, "mm x ", l / inch(1), "\""));
+module wire_link(d, l, h = 1, tail = 3) { //! Draw a wire jumper link. If `l` is zero then a vertical wire is drawn.
+    vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"),  "): Wire link ", d, "mm x ", l ? str(l / inch(1), "\"") : str(h + tail,"mm")));
     r = d;
     $fn = 32;
 
-    color("silver") {
-        for(side = [-1, 1]) {
-            translate([side * l / 2, 0, -tail])
-                cylinder(d = d, h = tail + h - r);
+    color("silver")
+        if(l) {
+            for(side = [-1, 1]) {
+                translate([side * l / 2, 0, -tail])
+                    cylinder(d = d, h = tail + h - r);
 
-            translate([side * (l / 2 - r), 0, h - r])
-                rotate([90, 0, side * 90 - 90])
-                    rotate_extrude(angle = 90)
-                        translate([r, 0])
-                            circle(d = d);
+                translate([side * (l / 2 - r), 0, h - r])
+                    rotate([90, 0, side * 90 - 90])
+                        rotate_extrude(angle = 90)
+                            translate([r, 0])
+                                circle(d = d);
+            }
+
+            translate_z(h)
+                rotate([0, 90, 0])
+                    cylinder(d = d, h = l - 2 * r, center = true);
         }
-
-        translate_z(h)
-            rotate([0, 90, 0])
-                cylinder(d = d, h = l - 2 * r, center = true);
-    }
+    else
+        translate_z(-tail)
+            cylinder(d = d, h = tail + h);
 }
 
 function ax_res_wattage(type) = type[1]; //! Power rating

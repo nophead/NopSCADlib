@@ -23,30 +23,31 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <th align="left"> Vitamins A-H </th><th align="left"> Vitamins I-Q </th><th align="left"> Vitamins R-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
 <tr><td> <a href = "#7_segments">7_segments</a> </td><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
 <tr><td> <a href = "#Axials">Axials</a> </td><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#BLDC_motors">BLDC_motors</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
-<tr><td> <a href = "#Box_sections">Box_sections</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Servo_motors">Servo_motors</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Knob">Knob</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#BLDC_motors">BLDC_motors</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_clip">Cable_clip</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
+<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#Bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
+<tr><td> <a href = "#Box_sections">Box_sections</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
+<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Servo_motors">Servo_motors</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Knob">Knob</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
 ---
@@ -108,7 +109,7 @@ Axial components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | `ax_res(type, value, tol = 5, pitch = 0)` | Through hole axial resistor. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
-| `wire_link(d, l, h = 1, tail = 3)` | Draw a wire jumper link. |
+| `wire_link(d, l, h = 1, tail = 3)` | Draw a wire jumper link. If `l` is zero then a vertical wire is drawn. |
 
 ![axials](tests/png/axials.png)
 
@@ -123,6 +124,7 @@ Axial components for PCBs.
 |   1 | `ax_res(res1_2, 8200)` |  Resistor 8200 Ohms 5% 0.5W |
 |   1 | `ax_res(res1_2, 8250, tol = 1)` |  Resistor 8250 Ohms 1% 0.5W |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
+|   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
 
 
 <a href="#top">Top</a>
@@ -149,6 +151,8 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 | `bb_bore(type)` | Internal diameter |
 | `bb_colour(type)` | Shield colour, "silver" for metal |
 | `bb_diameter(type)` | External diameter |
+| `bb_flange_diameter(type)` | Flange diameter |
+| `bb_flange_width(type)` | Flange width |
 | `bb_hub(type)` | Inner rim thickness guesstimate |
 | `bb_name(type)` | Part code without shield type suffix |
 | `bb_rim(type)` | Outer rim thickness guesstimate |
@@ -170,8 +174,14 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 |   1 | `ball_bearing(BB6201)` |  Ball bearing 6201-2RS 12mm x 32mm x 10mm |
 |   1 | `ball_bearing(BB624)` |  Ball bearing 624-2RS 4mm x 13mm x 5mm |
 |   1 | `ball_bearing(BB6808)` |  Ball bearing 6808-2RS 40mm x 52mm x 7mm |
+|   1 | `ball_bearing(BBF623)` |  Ball bearing F623-2RS 3mm x 10mm x 4mm |
+|   1 | `ball_bearing(BBF693)` |  Ball bearing F693ZZ 3mm x 8mm x 3mm |
+|   1 | `ball_bearing(BBF695)` |  Ball bearing F695ZZ 5mm x 13mm x 4mm |
+|   1 | `ball_bearing(BBMR63)` |  Ball bearing MR63ZZ 3mm x 6mm x 2.5mm |
+|   1 | `ball_bearing(BBMR83)` |  Ball bearing MR83ZZ 3mm x 8mm x 3mm |
+|   1 | `ball_bearing(BBMR93)` |  Ball bearing MR93ZZ 3mm x 9mm x 4mm |
 |   1 | `ball_bearing(BBSMR95)` |  Ball bearing SMR95ZZ 5mm x 9mm x 2.5mm |
-|   6 | ` bearing_ball(3)` |  Steel ball 3mm |
+|   5 | ` bearing_ball(3)` |  Steel ball 3mm |
 
 
 <a href="#top">Top</a>
@@ -442,6 +452,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 <a name="Blowers"></a>
 ## Blowers
 Models of radial blowers.
+Note that blower_exit() and blower_exit_offset() are for the inside of the exit for square blowers but the outside for spiral blowers.
 
 [vitamins/blowers.scad](vitamins/blowers.scad) Object definitions.
 
@@ -644,6 +655,9 @@ When the sides are constrained then a circular model is more accurate.
 |:--- |:--- |
 | `bezier_cable_length(depth, min_z, pos)` | Calculate a length that will achieve the desired minimum z |
 | `cable_strip_length(depth, travel, extra = 15)` | Calculate circular cable strip length |
+| `ribbon_clamp_slot(ways)` | Width of the slot to accept a ribbon cable |
+| `ribbon_clamp_slot_depth()` | Depth of slot to accept a ribbon cable and a cable strip |
+| `ribbon_ways(ways)` | Allows ribbon clamps to accept multiple cables |
 
 ### Modules
 | Module | Description |
@@ -876,6 +890,7 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 | `d_connector_holes(type)` | Place children at the screw hole positions |
 | `d_pillar()` | Draw a pillar for a D-connector |
 | `d_plug(type, socket = false, pcb = false, idc = false)` | Draw specified D plug, which can be IDC, PCB or plain solder bucket |
+| `d_plug_D(length, width, rad)` | D plug D shape |
 | `d_socket(connector, pcb = false, idc = false)` | Draw specified D socket, which can be IDC, PCB or plain solder bucket |
 
 ![d_connectors](tests/png/d_connectors.png)
@@ -1961,7 +1976,9 @@ UK 13A sockets at the moment.
 ## Microswitches
 Used for limit switches. Currently only the button type is supported as the lever and roller types are less accurate.
 
-The switch is drawn with the button at the nominal operation point. This can be plus or minus `microswitch_op_tol(type)`.
+The origin of the switch is in the center of the body. `microswitch_button_pos()` is the offset to tip of the button at its operating point.
+
+The switch is drawn with the button at the nominal operation point. This actual trigger point can be plus or minus `microswitch_op_tol(type)`.
 
 When the button is released it comes out by a maximum of `microswitch_fp_max(type)` from the nominal operating point.
 
@@ -2426,6 +2443,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_resistor(RES0603, 1K)` |  SMD resistor 0603 1K 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
 |   1 | `smd_resistor(RES1206, 1K)` |  SMD resistor 1206 1K 0.25W |
+|   1 | `smd_sot(SOT223)` |  SOT223 package LM117 |
+|   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 |   1 | `square_button(button_4p5mm)` |  Square button 4.5mm |
 |   1 | `square_button(button_6mm)` |  Square button 6mm |
 |   1 | `pcb(TMC2130)` |  TMC2130 |
@@ -2442,6 +2461,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | `vero_pin()` |  Vero board pin |
 |   1 | `wire_link(0.8, 5.08, h = 10.16)` |  Wire link 0.8mm x 0.2" |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
+|   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
 
 
 <a href="#top">Top</a>
@@ -2542,6 +2562,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
 |   1 | `pcb(ArduinoNano)` |  Arduino Nano |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
+|   1 | `pcb(BTT_RELAY_V1_2)` |  BigTreeTech Relay Module v1.2 |
 |   1 | `pcb(BTT_SKR_E3_TURBO)` |  BigTreeTech SKR E3 Turbo |
 |   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
 |   1 | `pcb(BTT_SKR_V1_4_TURBO)` |  BigTreeTech SKR v1.4 Turbo |
@@ -2566,7 +2587,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  30 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  28 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  32 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 - not shown |
 |   1 | `pcb(PSU12V1A)` |  PSU 12V 1A - not shown |
@@ -2590,8 +2611,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
 |   8 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
 |  10 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
-|  14 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
-|   4 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
+|  13 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   9 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 35)` |  Screw M4 cap x 35mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
 |   1 | `pcb(TP4056)` |  TP4056 Li-lon Battery charger module |
@@ -2601,7 +2622,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  20 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  30 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  28 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  32 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
@@ -2621,13 +2642,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | pcb_spacer2550.stl |
 |   4 | pcb_spacer2580.stl |
 |   4 | pcb_spacer30160.stl |
-|   5 | pcb_spacer30190.stl |
+|   4 | pcb_spacer30190.stl |
 |   5 | pcb_spacer30200.stl |
-|   4 | pcb_spacer30210.stl |
+|   5 | pcb_spacer30210.stl |
+|   4 | pcb_spacer30220.stl |
 |   4 | pcb_spacer3050.stl |
 |   6 | pcb_spacer3060.stl |
-|   4 | pcb_spacer40220.stl |
 |   4 | pcb_spacer40230.stl |
+|   4 | pcb_spacer40240.stl |
 
 
 <a href="#top">Top</a>
@@ -2670,6 +2692,7 @@ Threaded pillars. Each end can be male or female.
 | ---:|:--- |:---|
 |   1 | `pillar(M3x13_hex_pillar)` |  Pillar hex M/F M3x13 |
 |   1 | `pillar(M3x20_hex_pillar)` |  Pillar hex M/F M3x20 |
+|   1 | `pillar(M3x6_hex_pillar)` |  Pillar hex M/F M3x6 |
 |   1 | `pillar(M3x10_nylon_hex_pillar)` |  Pillar hex nylon M/F M3x10 |
 |   1 | `pillar(M3x20_nylon_hex_pillar)` |  Pillar hex nylon M/F M3x20 |
 |   1 | `pillar(M2x16_brass_pillar)` |  Pillar nurled F/M M2x16 |
@@ -2878,24 +2901,18 @@ Face order is bottom, top, left, right, front, back.
 | `psu_left_bay(type)` | Bay for terminals |
 | `psu_length(type)` | Length |
 | `psu_name(type)` | The part name |
+| `psu_pcb(type)` | The PCB |
 | `psu_right_bay(type)` | Bay for heatsink |
 | `psu_screw(type)` | Screw type |
 | `psu_screw_hole_radius(type)` | Clearance hole for screw, bigger than normal on ATX |
 | `psu_terminals(type)` | How many terminals and the y offset from the back |
 | `psu_width(type)` | Width |
-| `terminal_block_depth(type)` | Total depth |
-| `terminal_block_depth2(type)` | Depth of contact well |
-| `terminal_block_divider(type)` | Width of the dividers |
-| `terminal_block_height(type)` | Height of the dividers |
-| `terminal_block_height2(type)` | Height under the contacts |
-| `terminal_block_pitch(type)` | Pitch between screws |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
 | `psu_face_transform(type, face)` | Returns a transformation matrix to get to the specified face |
 | `psu_size(type)` | Size |
-| `terminal_block_length(type, ways)` | Total length of terminal block |
 
 ### Modules
 | Module | Description |
@@ -2903,7 +2920,6 @@ Face order is bottom, top, left, right, front, back.
 | `atx_psu_cutout(type, face = f_front)` | Cut out for the rear of an ATX, which is actually f_front! |
 | `psu(type)` | Draw a power supply |
 | `psu_screw_positions(type, face = undef)` | Position children at the screw positions on the preferred mounting face, which can be overridden. |
-| `terminal_block(type, ways)` | Draw a power supply terminal block |
 
 ![psus](tests/png/psus.png)
 
@@ -2914,6 +2930,8 @@ Face order is bottom, top, left, right, front, back.
 |   1 | `psu(ATX500)` |  PSU ATX500 |
 |   1 | `psu(ATX300)` |  PSU FSP300-60GHX |
 |   1 | `psu(KY240W)` |  PSU KY-240W-12-L - not shown |
+|   1 | `psu(NG_CB_200W_24V)` |  PSU NIUGUY CB-200W-24V |
+|   1 | `psu(NG_CB_500W_24V)` |  PSU NIUGUY CB-500W-24V |
 |   1 | `psu(PD_150_12)` |  PSU PD-150-12 |
 |   1 | `psu(S_250_48)` |  PSU S-250-48 |
 |   1 | `psu(S_300_12)` |  PSU S-300-12 |
@@ -3621,6 +3639,13 @@ Surface mount components for PCBs.
 | `smd_res_end_cap(type)` | End cap width |
 | `smd_res_power(type)` | Power rating in Watts |
 | `smd_res_size(type)` | Body length, width and height |
+| `smd_sot_lead_pitch(type)` | Lead pitch |
+| `smd_sot_lead_size(type)` | Lead width, foot depth, lead thickness |
+| `smd_sot_lead_span(type)` | Total span of leads |
+| `smd_sot_lead_z(type)` | Top of lead frame from top |
+| `smd_sot_size(type)` | Body length, width and height |
+| `smd_sot_tab_width(type)` | The wide lead at the top |
+| `smd_sot_z(type)` | Height above PCB surface |
 
 ### Functions
 | Function | Description |
@@ -3632,9 +3657,10 @@ Surface mount components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `smd_capacitor(type, height)` | Draw an SMD capacitor with specified height |
+| `smd_capacitor(type, height, value = undef)` | Draw an SMD capacitor with specified height |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
+| `smd_sot(type, value)` | Draw an SMD transistor |
 
 ![smds](tests/png/smds.png)
 
@@ -3649,6 +3675,8 @@ Surface mount components for PCBs.
 |   1 | `smd_resistor(RES0603, 1R0)` |  SMD resistor 0603 1R0 0.1W |
 |   1 | `smd_resistor(RES0805, 10M)` |  SMD resistor 0805 10M 0.125W |
 |   1 | `smd_resistor(RES1206, 100K)` |  SMD resistor 1206 100K 0.25W |
+|   1 | `smd_sot(SOT223)` |  SOT223 package FZT851 |
+|   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 
 
 <a href="#top">Top</a>
@@ -3863,7 +3891,7 @@ NEMA stepper motor model.
 | `NEMA(type, shaft_angle = 0, jst_connector = false)` | Draw specified NEMA stepper motor |
 | `NEMA_outline(type)` | 2D outline |
 | `NEMA_screw_positions(type, n = 4)` | Positions children at the screw holes |
-| `NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef)` | Place screws and optional earth tag |
+| `NEMA_screws(type, screw, n = 4, screw_length = 8, earth = undef, earth_rot = undef)` | Place screws and optional earth tag |
 
 ![stepper_motors](tests/png/stepper_motors.png)
 
@@ -3872,15 +3900,15 @@ NEMA stepper motor model.
 | ---:|:--- |:---|
 |   4 | `ring_terminal(M3_ringterm)` |  Ring terminal 3mm |
 |  20 | `screw(M3_pan_screw, 8)` |  Screw M3 pan x  8mm |
-|   1 | `NEMA(NEMA14)` |  Stepper motor NEMA14 x 36mm |
-|   1 | `NEMA(NEMA16)` |  Stepper motor NEMA16 x 19.2mm |
-|   1 | `NEMA(NEMA17P)` |  Stepper motor NEMA17 x 26.5mm |
-|   1 | `NEMA(NEMA17S)` |  Stepper motor NEMA17 x 34mm |
-|   1 | `NEMA(NEMA17M)` |  Stepper motor NEMA17 x 40mm |
-|   1 | `NEMA(NEMA17)` |  Stepper motor NEMA17 x 47mm |
-|   1 | `NEMA(NEMA23)` |  Stepper motor NEMA22 x 51.2mm |
-|   1 | `NEMA(NEMA8)` |  Stepper motor NEMA8 x 30mm |
-|   1 | `NEMA(NEMA8BH)` |  Stepper motor NEMA8 x 30mm |
+|   1 | `NEMA(NEMA14_36)` |  Stepper motor NEMA14 x 36mm |
+|   1 | `NEMA(NEMA16_19)` |  Stepper motor NEMA16 x 19.2mm |
+|   1 | `NEMA(NEMA17_27)` |  Stepper motor NEMA17 x 26.5mm |
+|   1 | `NEMA(NEMA17_34)` |  Stepper motor NEMA17 x 34mm |
+|   1 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm |
+|   1 | `NEMA(NEMA17_47)` |  Stepper motor NEMA17 x 47mm |
+|   1 | `NEMA(NEMA23_51)` |  Stepper motor NEMA22 x 51.2mm |
+|   1 | `NEMA(NEMA8_30)` |  Stepper motor NEMA8 x 30mm |
+|   1 | `NEMA(NEMA8_30BH)` |  Stepper motor NEMA8 x 30mm |
 |  16 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |  20 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
@@ -3931,6 +3959,40 @@ Should be reasonably accurate if not close to fully open.
 |   1 | `sheet(AL6, 40, 20, 1)` |  Aluminium tooling plate 40mm x 20mm x 6mm |
 |   1 | `sheet(glass2, 40, 20, 1)` |  Sheet glass 40mm x 20mm x 2mm |
 |   2 | `swiss_clip(UKPFS1008_10)` |  Swiss picture clip UKPFS1008_10 11mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Terminals"></a>
+## Terminals
+Terminal blocks for power supplies and PCBs.
+
+[vitamins/terminal.scad](vitamins/terminal.scad) Implementation.
+
+[tests/terminals.scad](tests/terminals.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `terminal_block_depth(type)` | Total depth |
+| `terminal_block_depth2(type)` | Depth of contact well |
+| `terminal_block_divider(type)` | Width of the dividers |
+| `terminal_block_height(type)` | Height of the dividers |
+| `terminal_block_height2(type)` | Height under the contacts |
+| `terminal_block_pitch(type)` | Pitch between screws |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `terminal_block_length(type, ways)` | Total length of terminal block |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `terminal_block(type, ways)` | Draw a power supply terminal block |
+
+![terminals](tests/png/terminals.png)
 
 
 <a href="#top">Top</a>
@@ -4069,6 +4131,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `tubing_ir(type)` | Inside radius |
 | `tubing_or(type)` | Outside radius |
 
 ### Modules
@@ -4179,6 +4242,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `vero(name, assembly, holes, strips, pitch = inch(0.1)` | Constructor |
 | `vero_length(type)` | Length of the board |
 | `vero_size(type)` | Board size |
 | `vero_thickness(type)` | Thickness of the substrate |
@@ -4189,6 +4253,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `solder_meniscus(type, ir = 0.3, r = undef)` | Draw a solder meniscus |
 | `vero_cutouts(type, angle = undef)` | Make cutouts to clear components |
 | `vero_grid_pos(type, x, y)` | Convert grid position to offset from the centre |
 | `vero_mounting_hole_positions(type)` | Positions children at the mounting holes |
@@ -4326,13 +4391,17 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `cable(wires, size, colours, ribbon = false)` | Cable constructor |
 | `cable_bundle(cable)` | Arrangement of a bundle in a flat cable clip |
+| `cable_bundle_positions(cable)` | Positions of wires in a bundle to go through a cable strip |
 | `cable_height(cable)` | Height in flat clip |
+| `cable_is_ribbon(cable)` | Is a ribbon cable? |
 | `cable_radius(cable)` | Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>. |
 | `cable_width(cable)` | Width in flat clip |
+| `cable_wire_colours(cable)` | Individual wire colours |
 | `cable_wire_size(cable)` | Size of each wire in a bundle |
-| `cable_wires(cable)` | Number of wires in a bindle |
-| `wire_hole_radius(cable)` | Radius of a hole to accept a bundle of wires |
+| `cable_wires(cable)` | Number of wires in a bundle |
+| `wire_hole_radius(cable)` | Radius of a hole to accept a bundle of wires, rounded up to standard metric drill size |
 
 ### Modules
 | Module | Description |
@@ -4413,6 +4482,10 @@ screw type and printed part wall thickness. This diagram shows how the various d
 
 Normally the side sheets are the same type but they can be overridden individually as long as the substitute has the same thickness.
 
+A box can have an optional name to allow more than one in the same project.
+
+The top bezel can have an optional child, which is subtracted to allow modification.
+
 [printed/box.scad](printed/box.scad) Implementation.
 
 [tests/box.scad](tests/box.scad) Code for this example.
@@ -4424,6 +4497,7 @@ Normally the side sheets are the same type but they can be overridden individual
 | `box_depth(type)` | Internal depth |
 | `box_feet(type)` | True to enable feet on the bottom bezel |
 | `box_height(type)` | Internal height |
+| `box_name(type)` | Name for projects with more than one box |
 | `box_screw(type)` | Screw type to be used at the corners |
 | `box_sheets(type)` | Sheet type used for the sides |
 | `box_shelf_screw(type)` | Screw type to hold a shelf |
@@ -4434,9 +4508,10 @@ Normally the side sheets are the same type but they can be overridden individual
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = undef)` | Construct a property list for a box. |
+| `box(screw, wall, sheets, top_sheet, base_sheet, size, feet = false, shelf_screw = undef, name = "box")` | Construct a property list for a box. |
 | `box_bezel_height(type, bottom)` | Bezel height for top or bottom |
 | `box_corner_gap(type)` | Gap between box_sheets at the corners to connect inside and outside profiles |
+| `box_hole_inset(type)` | Screw inset from the corner of the internal dimensions |
 | `box_inset(type)` | How much the bezel intrudes on the specified width and length, away from the corners |
 | `box_intrusion(type)` | Corner profile intrusion |
 | `box_margin(type)` | How much the bezel intrudes on the specified height |
@@ -4525,7 +4600,8 @@ maximum spacing.
  * An optional list of fixing blocks to be omitted can be given.
  * Star washers can be omitted by setting the 11th parameter to false.
 
-Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
+Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block) by default. Setting `thin_blocks` uses 2screw_blocks instead of
+fixing_blocks along the sides.
 
 [printed/butt_box.scad](printed/butt_box.scad) Implementation.
 
@@ -4542,14 +4618,15 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | `bbox_sheets(type)` | Sheet type for the sides |
 | `bbox_skip_blocks(type)` | List of fixing blocks to skip, used to allow a hinged panel for example |
 | `bbox_span(type)` | Maximum span between fixing blocks |
+| `bbox_star_washers(type)` | Set to false to remove star washers. |
+| `bbox_thin_blocks(type)` | Set for 2 screw blocks instead of three hole fixing blocks. |
 | `bbox_top_sheet(type)` | Sheet type for the top |
 | `bbox_width(type)` | Internal width |
-| `star_washers(type)` | Set to false to remove star washers. |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true)` | Construct the property list for a butt_box |
+| `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true, thin_blocks = false)` | Construct the property list for a butt_box |
 | `bbox_area(type)` | Internal surface area in m^2 |
 | `bbox_volume(type)` | Internal volume in litres |
 
@@ -4576,23 +4653,23 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|  48 | `insert(F1BM3)` |  Heatfit insert M3 |
-|  36 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
+|  60 | `insert(F1BM3)` |  Heatfit insert M3 |
+|  44 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   4 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
-|   8 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
-|   2 | `sheet(DiBond, 303, 126)` |  Sheet DiBond 303mm x 126mm x 3mm |
-|   1 | `sheet(DiBond, 400, 126)` |  Sheet DiBond 400mm x 126mm x 3mm |
-|   1 | `sheet(DiBond6, 400, 300, 1)` |  Sheet DiBond 400mm x 300mm x 6mm |
-|   1 | `sheet(DiBond, 406, 129)` |  Sheet DiBond 406mm x 129mm x 3mm |
-|   1 | `sheet(PMMA3, 406, 303)` |  Sheet acrylic 406mm x 303mm x 3mm |
-|  48 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|  48 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
+|  12 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
+|   2 | `sheet(DiBond, 203, 126)` |  Sheet DiBond 203mm x 126mm x 3mm |
+|   1 | `sheet(DiBond, 300, 126)` |  Sheet DiBond 300mm x 126mm x 3mm |
+|   1 | `sheet(DiBond6, 300, 200, 1)` |  Sheet DiBond 300mm x 200mm x 6mm |
+|   1 | `sheet(DiBond, 306, 129)` |  Sheet DiBond 306mm x 129mm x 3mm |
+|   1 | `sheet(PMMA3, 306, 203)` |  Sheet acrylic 306mm x 203mm x 3mm |
+|  60 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  60 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
 |   8 | corner_block_M30.stl |
-|   8 | fixing_block_M30.stl |
+|  12 | fixing_block_M30.stl |
 
 ### Routed
 | Qty | Filename |
@@ -4609,7 +4686,52 @@ Uses [fixing blocks](#fixing_block) and [corner blocks](#corner_block).
 | ---:|:--- |
 |   1 | bbox_assembly |
 |   8 | corner_block_M30_assembly |
-|   8 | fixing_block_M30_assembly |
+|  12 | fixing_block_M30_assembly |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Cable_clip"></a>
+## Cable_clip
+Cable clips to order. Can be for one or two cables of different sizes.
+
+[printed/cable_clip.scad](printed/cable_clip.scad) Implementation.
+
+[tests/cable_clip.scad](tests/cable_clip.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `cable_clip_extent(screw, cable)` | How far it extends from the screw. |
+| `cable_clip_height(cable)` | Height given the `cable`. |
+| `cable_clip_offset(screw, cable)` | The offset of the cable from the screw |
+| `cable_clip_width(screw)` | Width given the `screw`. |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `cable_clip(screw, cable1, cable2 = 0)` | Create the STL for a single cable or two cable clip |
+| `cable_clip_assembly(screw, thickness, cable1, cable2 = 0)` | Cable clip with the fasteners |
+
+![cable_clip](tests/png/cable_clip.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   5 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|   2 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
+|   3 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
+|  10 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | cable_clip_30_10_13.stl |
+|   1 | cable_clip_30_1_14_2_14.stl |
+|   1 | cable_clip_30_1_60.stl |
+|   1 | cable_clip_30_3_14_4_14.stl |
+|   1 | cable_clip_30_5_14_6_14.stl |
 
 
 <a href="#top">Top</a>
@@ -4623,6 +4745,12 @@ of conductive panels, an extra layer of insulation.
 [printed/cable_grommets.scad](printed/cable_grommets.scad) Implementation.
 
 [tests/cable_grommets.scad](tests/cable_grommets.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `mouse_grommet_length(r)` | Length of grommet given r |
+| `mouse_grommet_offset(r)` | Offset of the wire from the ground |
 
 ### Modules
 | Module | Description |
@@ -4640,7 +4768,7 @@ of conductive panels, an extra layer of insulation.
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   1 | mouse_grommet_50_3.stl |
+|   1 | mouse_grommet_100_3.stl |
 |   1 | ribbon_grommet_20_3.stl |
 |   1 | round_grommet_bottom_60.stl |
 |   1 | round_grommet_top_60_3.stl |
@@ -4761,6 +4889,9 @@ This allows the block and one set of fasteners to be on one assembly and the oth
 
 Star washers can be omitted by setting `star_washers` to false.
 
+A 2screw_block is a thinner version with two screws and two mating surfaces. It can be used as an alternative to fixing blocks when
+high lateral rigidity is not required.
+
 [printed/corner_block.scad](printed/corner_block.scad) Implementation.
 
 [tests/corner_block.scad](tests/corner_block.scad) Code for this example.
@@ -4768,6 +4899,10 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `2screw_block_h_hole(screw = def_screw)` | Transform to front hole |
+| `2screw_block_holes(screw)` | List of transforms to both holes |
+| `2screw_block_v_hole(screw = def_screw)` | Transform to bottom hole |
+| `2screw_block_width(screw = def_screw)` | 2 screw block width is narrower, height and depth are as corner_block |
 | `corner_block_h_holes(screw = def_screw)` | List of transforms to side holes |
 | `corner_block_hole_offset(screw = def_screw)` | Hole offset from the edge |
 | `corner_block_holes(screw)` | List of transforms to all holes |
@@ -4778,11 +4913,17 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `2screw_block(screw = def_screw, name = false)` | Generate the STL for a printed 2screw block |
+| `2screw_block_assembly(screw = def_screw, name = false)` | The printed block with inserts |
+| `2screw_block_h_hole(screw = def_screw)` | Place children at the front screw hole |
+| `2screw_block_holes(screw = def_screw)` | Place children at both screw holes |
+| `2screw_block_v_hole(screw = def_screw)` | Place children at the bottom screw hole |
 | `corner_block(screw = def_screw, name = false)` | Generate the STL for a printed corner block |
 | `corner_block_assembly(screw = def_screw, name = false)` | The printed block with inserts |
 | `corner_block_h_holes(screw = def_screw, index = undef)` | Place children at the side screw holes |
 | `corner_block_holes(screw = def_screw)` | Place children at all the holes |
 | `corner_block_v_hole(screw = def_screw)` | Place children at the bottom screw hole |
+| `fastened_2screw_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false, show_block = true, star_washers = true)` | Printed block with fasteners |
 | `fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true)` | Printed block with all fasteners |
 
 ![corner_block](tests/png/corner_block.png)
@@ -4790,26 +4931,30 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   3 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   3 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
-|   3 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   3 | `insert(F1BM4)` |  Heatfit insert M4 |
-|   3 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
-|   3 | `screw(M2p5_pan_screw, 10)` |  Screw M2.5 pan x 10mm |
-|   3 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
-|   3 | `screw(M4_dome_screw, 12)` |  Screw M4 dome x 12mm |
-|   3 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
-|   3 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|   3 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|   3 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
-|   3 | `star_washer(M2_washer)` |  Washer star M2 x 0.3mm |
-|   3 | `star_washer(M2p5_washer)` |  Washer star M2.5 x 0.5mm |
-|   3 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
-|   3 | `star_washer(M4_washer)` |  Washer star M4 x 0.8mm |
+|   5 | `insert(F1BM2)` |  Heatfit insert M2 |
+|   5 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
+|   5 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   5 | `insert(F1BM4)` |  Heatfit insert M4 |
+|   5 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
+|   5 | `screw(M2p5_pan_screw, 10)` |  Screw M2.5 pan x 10mm |
+|   5 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
+|   5 | `screw(M4_dome_screw, 12)` |  Screw M4 dome x 12mm |
+|   5 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
+|   5 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|   5 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|   5 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+|   5 | `star_washer(M2_washer)` |  Washer star M2 x 0.3mm |
+|   5 | `star_washer(M2p5_washer)` |  Washer star M2.5 x 0.5mm |
+|   5 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
+|   5 | `star_washer(M4_washer)` |  Washer star M4 x 0.8mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
+|   1 | 2screw_block_M20.stl |
+|   1 | 2screw_block_M25.stl |
+|   1 | 2screw_block_M30.stl |
+|   1 | 2screw_block_M40.stl |
 |   1 | corner_block_M20.stl |
 |   1 | corner_block_M25.stl |
 |   1 | corner_block_M30.stl |
@@ -4818,6 +4963,10 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
+|   1 | 2screw_block_M20_assembly |
+|   1 | 2screw_block_M25_assembly |
+|   1 | 2screw_block_M30_assembly |
+|   1 | 2screw_block_M40_assembly |
 |   1 | corner_block_M20_assembly |
 |   1 | corner_block_M25_assembly |
 |   1 | corner_block_M30_assembly |
@@ -5300,7 +5449,7 @@ Printed handle that can be printed without needing support material due to its t
 ## Knob
 Parametric knobs for potentiometers and encoders.
 
-A knob can be constructed by specififying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
+A knob can be constructed by specifying all the parameters or the potentiometer can be specified to customise it for its shaft with a recess to clear the nut, washer and thread.
 An optional skirt and / or a pointer can be specified.
 
 The STL includes a support membrane that needs to be cut out and a thread needs to be tapped for the grub screw.
@@ -5696,7 +5845,10 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ---
 <a name="Ribbon_clamp"></a>
 ## Ribbon_clamp
-Clamp for ribbon cable and polypropylene strip.
+Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
+
+* When `ways` is a scalar number the slot is sized for one ribbon cable and a PP strip.
+* When `ways` is a two element vector the second element indicates the number of cables and the slot is size for just the cables.
 
 [printed/ribbon_clamp.scad](printed/ribbon_clamp.scad) Implementation.
 
@@ -5705,7 +5857,7 @@ Clamp for ribbon cable and polypropylene strip.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `ribbon_clamp_height(screw = screw)` | Height |
+| `ribbon_clamp_height(screw = screw, ways = undef)` | Height |
 | `ribbon_clamp_length(ways, screw = screw)` | Length given ways |
 | `ribbon_clamp_width(screw = screw)` | Width |
 
@@ -5978,6 +6130,10 @@ Annotation used in this documentation
 ## Bezier
 Bezier curves and function to get and adjust the length or minimum z point.
 
+`bezier_join()` joins two paths with a Bezier curve that starts tangential to the end of `path1` and ends tangential to the end of `path2`.
+To do this the outer control points are the path ends and the inner two control points are along the tangents to the path ends.
+The only degree of freedom is how far along those tangents, which are the `d` and optional `d2` parameters.
+
 [utils/bezier.scad](utils/bezier.scad) Implementation.
 
 [tests/bezier.scad](tests/bezier.scad) Code for this example.
@@ -5988,6 +6144,7 @@ Bezier curves and function to get and adjust the length or minimum z point.
 | `adjust_bezier_length(v, l, eps = 0.001, r1 = 1.0, r2 = 1.5, l1, l2)` | Adjust Bezier control points `v` to get the required curve length `l` |
 | `adjust_bezier_z(v, z, eps = 0.001, r1 = 1, r2 = 1.5, z1, z2)` | Adjust Bezier control points `v` to get the required minimum `z` |
 | `bezier(t, v)` | Returns a point at distance `t` [0 - 1] along the curve with control points `v` |
+| `bezier_join(path1, path2, d, d2 = undef)` | Join two paths with a Bezier curve, control points are the path ends are `d` and `d2` from the ends in the same direction. |
 | `bezier_length(v, delta = 0.01, t = 0, length = 0)` | Calculate the length of a Bezier curve from control points `v` |
 | `bezier_min_z(v, steps = 100, z = inf, i = 0)` | Calculate the minimum z coordinate of a Bezier curve from control points `v` |
 | `bezier_path(v, steps = 100)` | Returns a Bezier path from control points `v` with `steps` segments |
@@ -6085,7 +6242,7 @@ allows flexible positioning of the motors.
 |   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
 |   8 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
-|   2 | `NEMA(NEMA17M)` |  Stepper motor NEMA17 x 40mm |
+|   2 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm |
 
 
 <a href="#top">Top</a>
@@ -6278,6 +6435,7 @@ Maths utilities for manipulating vectors and matrices.
 | `map(v, func)` | make a new vector where the func function argument is applied to each element of the vector v |
 | `mapi(v, func)` | make a new vector where the func function argument is applied to each element of the vector v. The func will get the index number as first argument, and the element as second argument. |
 | `nearly_zero(x)` | True if x is close to zero |
+| `path_length(path, i = 0, length = 0)` | Calculated the length along a path |
 | `quadratic_real_roots(a, b, c)` | Returns real roots of a quadratic equation, biggest first. Returns empty list if no real roots |
 | `radians(degrees)` | Convert radians to degrees |
 | `reduce(v, func, unity)` | reduce a vector v to a single entity by applying the func function recursively to the reduced value so far and the next element, starting with unity as the initial reduced value |
@@ -6479,6 +6637,12 @@ Subsequent rotations use the minimum rotation method.
 The path can be open or closed. If closed sweep ensures that the start and end have the same rotation to line up.
 An additional twist around the path can be specified. If the path is closed this should be a multiple of 360.
 
+`rounded_path()` can be used to generate a path of lines connected by arcs, useful for wire runs, etc.
+The vertices specify where the the path would be without any rounding.
+Each vertex, apart from the first and the last, has an associated radius and the path shortcuts the vertex with an arc specified by the radius.
+
+`spiral_paths()` makes a list of new paths that spiral around a given path. It can be used to make twisted wires that follow a rounded_path, for example.
+
 [utils/sweep.scad](utils/sweep.scad) Implementation.
 
 [tests/sweep.scad](tests/sweep.scad) Code for this example.
@@ -6492,14 +6656,18 @@ An additional twist around the path can be specified. If the path is closed this
 | `cap(facets, segment = 0, end)` | Create the mesh for an end cap |
 | `circle_points(r = 1, z = 0, dir = -1)` | Generate the points of a circle, setting z makes a single turn spiral |
 | `helical_twist_per_segment(r, pitch, sides)` | Calculate the twist around Z that rotate_from_to() introduces |
-| `path_length(path, i = 0, length = 0)` | Calculated the length along a path |
 | `rectangle_points(w, h)` | Generate the points of a rectangle |
+| `rounded_path(path)` | Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep. |
+| `rounded_path_vertices(path)` | Show the unrounded version of a rounded_path for debug |
+| `segmented_path(path, min_segment)` | Add points to a path to enforce a minimum segment length |
 | `skin_faces(points, npoints, facets, loop, offset = 0)` | Create the mesh for the swept volume without end caps |
+| `spiral_paths(path, n, r, twists, start_angle)` | Create a new paths which sprial around the given path. Use for making twisted cables |
 | `sweep(path, profile, loop = false, twist = 0)` | Generate the point list and face list of the swept volume |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `show_path(path)` | Show a path using a chain of hulls for debugging, duplicate points are highlighted. |
 | `sweep(path, profile, loop = false, twist = 0, convexity = 1)` | Draw a polyhedron that is the swept volume |
 
 ![sweep](tests/png/sweep.png)
@@ -6619,7 +6787,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 |:--- |:--- |
 | `assembly(name, big = undef, ngb = false)` | Name an assembly that will appear on the BOM, there needs to a module named `<name>_assembly` to make it. `big` can force big or small assembly diagrams. |
 | `dxf(name)` | Name a dxf that will appear on the BOM, there needs to a module named `<name>_dxf` to make it |
-| `explode(d, explode_children = false, offset = [0,0,0])` | Explode children by specified Z distance or vector `d`, option to explode grand children |
+| `explode(d, explode_children = false, offset = [0,0,0], show_line = true)` | Explode children by specified Z distance or vector `d`, option to explode grand children |
 | `hidden()` | Make item invisible, except on the BOM |
 | `no_explode()` | Prevent children being exploded |
 | `no_pose()` | Force children not to be posed even if parent is |
@@ -6639,7 +6807,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   1 | `widget(3)` |  Rivit like thing for 3mm sheets |
+|   1 | `widget(3)` |  Rivet like thing for 3mm sheets |
 |   1 | `screw(M3_cap_screw, 8)` |  Screw M3 cap x  8mm |
 |   1 | `sheet(PMMA3, 20, 20, 1)` |  Sheet acrylic 20mm x 20mm x 3mm |
 |   1 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |

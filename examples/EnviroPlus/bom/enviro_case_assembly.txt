@@ -1,0 +1,9 @@
+enviro_case_assembly:
+Vitamins:
+  4 Nut M2.5 x 2.2mm nyloc
+  4 Screw M2.5 pan x  8mm
+  4 Washer  M2.5 x 5.9mm x 0.5mm
+
+Assemblies:
+  1 case_assembly
+  1 enviro_assembly

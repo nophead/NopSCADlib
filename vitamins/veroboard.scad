@@ -41,19 +41,22 @@ function vero_track_width(type)    = vero_pitch(type) * 0.8; //! The width of th
 function vero_length(type) = vero_holes(type) * vero_pitch(type); //! Length of the board
 function vero_width(type) = vero_strips(type) * vero_pitch(type); //! Width of the board
 
+function vero(name, assembly, holes, strips, pitch = inch(0.1), fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = []) = //! Constructor
+    [ name, assembly, holes, strips, pitch, fr4, screw, mounting_holes, breaks, no_tracks, components, joints ];
+
 function vero_size(type) = [vero_length(type), vero_width(type), vero_thickness(type)]; //! Board size
 
-module solder_meniscus(type) {
-    h = 1;
-    r = vero_track_width(type) / 2;
+module solder_meniscus(type, ir = 0.3, r = undef) { //! Draw a solder meniscus
+    h = 0.7;
+    r = is_undef(r) ? vero_track_width(type) / 2 : r;
 
     translate_z(vero_track_thickness(type))
         color("silver") rotate_extrude()
             difference() {
                 square([r, h]);
 
-                translate([r - eps, h + eps])
-                    ellipse(r , h);
+                translate([r + eps, h + eps])
+                    ellipse(r - ir , h, $fn = 64);
             }
 }
 

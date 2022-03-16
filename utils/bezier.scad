@@ -19,8 +19,13 @@
 
 //
 //! Bezier curves and function to get and adjust the length or minimum z point.
+//!
+//! `bezier_join()` joins two paths with a Bezier curve that starts tangential to the end of `path1` and ends tangential to the end of `path2`.
+//! To do this the outer control points are the path ends and the inner two control points are along the tangents to the path ends.
+//! The only degree of freedom is how far along those tangents, which are the `d` and optional `d2` parameters.
 //
 include <../global_defs.scad>
+include <maths.scad>
 
 function bezier(t, v) = //! Returns a point at distance `t` [0 - 1] along the curve with control points `v`
     (len(v) > 2) ? bezier(t, [for (i = [0 : len(v) - 2]) v[i] * (1 - t) + v[i + 1] * (t)])
@@ -55,3 +60,16 @@ function adjust_bezier_z(v, z, eps = 0.001, r1 = 1, r2 = 1.5, z1, z2) = //! Adju
                            : let(r = r1 + (z - z1) * (r2 - r1) / (z2 - z1))
                                  abs(r - r1) < abs(r - r2) ? adjust_bezier_z(v, z, eps, r, r1, undef, z1)
                                                            : adjust_bezier_z(v, z, eps, r, r2, undef, z2);
+
+function bezier_join(path1, path2, d, d2 = undef) = let( //! Join two paths with a Bezier curve, control points are the path ends are `d` and `d2` from the ends in the same direction.
+        d2 = is_undef(d2) ? d : d2,
+        l = len(path1),
+        p0 = path1[l - 1],
+        p1 = p0 + unit(p0 - path1[l - 2]) * d,
+        p3 = path2[0],
+        p2 = p3 + unit(path2[0] - path2[1]) * d2,
+        v = [p0, p1, p2, p3],
+        segs = path_length(v) / $fs,
+        path = [for(i = [1 : segs - 1], t = i / segs) bezier(t, v)],
+        len = len(path)
+    ) concat(path1, path, path2);
