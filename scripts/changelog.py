@@ -162,6 +162,6 @@ if __name__ == '__main__':
 
             # Print commits excluding merges
 
-            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated chang.*log.*', c.comment):
+            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated ch.*log.*', c.comment):
                 print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment, url)), file = file)
     do_cmd(('codespell -w -L od ' + filename).split())
