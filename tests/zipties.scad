@@ -16,14 +16,23 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+wire_r = 5; // [1 : 20]
+t = 0; // [0 : 3]
+
 include <../utils/core/core.scad>
 use <../utils/layout.scad>
 
 include <../vitamins/zipties.scad>
 
 module zipties()
-    layout([for(z = zipties) 9], 10)
-        ziptie(zipties[$i], 5);
+    layout([for(z = zipties) 9], 2 * wire_r) {
+        ziptie(zipties[$i], wire_r, t);
+
+        if(t)
+            color(grey(20))
+                cylinder(r = wire_r, h = 10, center = true);
+
+    }
 
 if($preview)
     zipties();

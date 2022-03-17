@@ -33,17 +33,16 @@ function ziptie_tail(type)      = type[5]; //! The length without teeth
 module ziptie(type, r = 5, t = 0) //! Draw specified ziptie wrapped around radius `r` and optionally through panel thickness `t`
 {
     latch = ziptie_latch(type);
-    lx = latch.x / 2;
     zt = ziptie_thickness(type);
-    cr = zt;                        // sharp corner radius
+    lx = min(latch.x / 2, r + zt / 2);
+    right_bulge = (r > lx - zt / 2) || !t;
+    cr = zt / 2;                        // sharp corner radius
     z = r + t - cr;
     x = r - cr;
-    inside_corners  = t ? [ [0, 0, r],      [-x, z, cr],      [x, z, cr]      ] : [];
     outside_corners = t ? [ [0, 0, r + zt], [-x, z, cr + zt], [x, z, cr + zt] ] : [];
     x1 = lx - zt / 2;
     x2 = x1 + x1 * zt / r;
-    inside_path  = concat([ [0, 0, r],      [x1, -r,      eps] ], inside_corners);
-    outside_path = concat([ [0, 0, r + zt], [x2, -r - zt, eps] ], outside_corners);
+    outside_path = concat([ if(right_bulge) [0, 0, r + zt], [x2, -r - zt, eps] ], outside_corners);
 
     tangents = rounded_polygon_tangents(outside_path);
     length = ceil(rounded_polygon_length(outside_path, tangents) + ziptie_tail(type) + latch.z + 1);
@@ -56,7 +55,9 @@ module ziptie(type, r = 5, t = 0) //! Draw specified ziptie wrapped around radiu
         linear_extrude(width, center = true)
             difference() {
                 rounded_polygon(outside_path, tangents);
-                rounded_polygon(inside_path);
+
+                offset(-zt)
+                    rounded_polygon(outside_path, tangents);
              }
 
         translate([lx, -r])
