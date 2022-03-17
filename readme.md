@@ -234,8 +234,9 @@ exposing enough information to make a battery box.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   6 | `battery_contact(bcontact, false)` |  Battery negative contact |
-|   6 | `battery_contact(bcontact, true)` |  Battery positive contact |
+|   7 | `battery_contact(bcontact, false)` |  Battery negative contact |
+|   7 | `battery_contact(bcontact, true)` |  Battery positive contact |
+|   1 | `battery(A23CELL)` |  Cell A23 12v |
 |   1 | `battery(AACELL)` |  Cell AA |
 |   1 | `battery(AAACELL)` |  Cell AAA |
 |   1 | `battery(CCELL)` |  Cell C |

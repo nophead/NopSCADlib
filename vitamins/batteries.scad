@@ -44,7 +44,7 @@ AACELL    = ["AACELL",    "Cell AA",                                  50.5, 14.5
 AAACELL   = ["AAACELL",   "Cell AAA",                                 44.5, 10.5,  8, 3.8, 0.8, "grey",           [],                      0, bcontact];
 CCELL     = ["CCELL",     "Cell C",                                   50,   26.2, 20, 7.5, 1.5, "brown",          [],                      0, bcontact];
 DCELL     = ["DCELL",     "Cell D",                                   61.5, 34.2, 22, 8.2, 2.4, "brown",          [],                      0, bcontact];
-A23CELL   = ["A23CELL",   "Cell A23 12v",                              28.5, 10.3, 5.2,5.2, 1.0, "silver",         [],                      0, bcontact];
+A23CELL   = ["A23CELL",   "Cell A23 12v",                             28.5, 10.3, 5.2,5.2, 1.0, "silver",         [],                      0, bcontact];
 
 batteries = [AAACELL, AACELL, CCELL, DCELL, LUMINTOP, S25R18650, A23CELL];
 
