@@ -4382,7 +4382,7 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 ---
 <a name="Wire"></a>
 ## Wire
-Just a BOM entry at the moment and cable bundle size functions for holes, plus cable ties.
+Utilities for adding wires to the BOM and optionally drawing them and cable bundle size functions for holes, plus cable ties.
 
 [vitamins/wire.scad](vitamins/wire.scad) Implementation.
 
@@ -4391,21 +4391,25 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `cable(wires, size, colours, ribbon = false)` | Cable constructor |
-| `cable_bundle(cable)` | Arrangement of a bundle in a flat cable clip |
+| `cable(wires, size, colours, ribbon = false, tlen = 25)` | Cable constructor |
+| `cable_bundle(cable)` | Dimensions of the bounding rectangle of a bundle of wires in a flat cable clip |
 | `cable_bundle_positions(cable)` | Positions of wires in a bundle to go through a cable strip |
 | `cable_height(cable)` | Height in flat clip |
 | `cable_is_ribbon(cable)` | Is a ribbon cable? |
 | `cable_radius(cable)` | Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>. |
+| `cable_tlen(cable)` | Twisted cable twist length |
+| `cable_twisted_radius(cable)` | Approximate radius of a cable when twisted |
 | `cable_width(cable)` | Width in flat clip |
 | `cable_wire_colours(cable)` | Individual wire colours |
 | `cable_wire_size(cable)` | Size of each wire in a bundle |
 | `cable_wires(cable)` | Number of wires in a bundle |
+| `twisted_cable(cable, path, irot = 0, frot = 0)` | Return the paths for a twisted cable, `irot` is the initial rotation and frot the final rotation |
 | `wire_hole_radius(cable)` | Radius of a hole to accept a bundle of wires, rounded up to standard metric drill size |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `cable(cable, paths)` | Draw a cable, given a list of paths |
 | `cable_tie(cable_r, thickness)` | A ziptie threaded around cable radius `cable_r` and through a panel with specified `thickness`. |
 | `cable_tie_holes(cable_r, h = 100)` | Holes to thread a ziptie through a panel to make a cable tie. |
 | `mouse_hole(cable, h = 100, teardrop = false)` | A mouse hole to allow a panel to go over a wire bundle. |
@@ -4417,13 +4421,13 @@ Just a BOM entry at the moment and cable bundle size functions for holes, plus c
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 |  |  Wire black 7/0.2mm strands, length 90mm |
-|   1 |  |  Wire blue 7/0.2mm strands, length 90mm |
-|   1 |  |  Wire brown 7/0.2mm strands, length 90mm |
-|   1 |  |  Wire green 7/0.2mm strands, length 90mm |
-|   1 |  |  Wire orange 7/0.2mm strands, length 90mm |
-|   1 |  |  Wire red 7/0.2mm strands, length 90mm |
-|   1 |  |  Wire yellow 7/0.2mm strands, length 90mm |
+|   1 |  |  Wire black 7/0.2mm strands, length 60mm |
+|   1 |  |  Wire blue 7/0.2mm strands, length 60mm |
+|   1 |  |  Wire brown 7/0.2mm strands, length 60mm |
+|   1 |  |  Wire green 7/0.2mm strands, length 60mm |
+|   1 |  |  Wire orange 7/0.2mm strands, length 60mm |
+|   1 |  |  Wire red 7/0.2mm strands, length 60mm |
+|   1 |  |  Wire yellow 7/0.2mm strands, length 60mm |
 |   1 | `ziptie(small_ziptie)` |  Ziptie 2.5mm x 100mm min length |
 
 

@@ -17,18 +17,25 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../utils/core/core.scad>
+use <../utils/sweep.scad>
+use <../utils/bezier.scad>
 
 use <../vitamins/wire.scad>
 
-bundle = [7, 1.4];
+twist_len = 25; // [5 : 50]
+wires = 7; // [1 : 7]
+irot = -60; // [-90 : 0]
 
+/* [Hidden] */
+wire_d = 1.4;
+bundle = cable(wires, wire_d);
 bundle_r = cable_radius(bundle);
 
 thickness = 2;
 w = 60;
 d = 20;
-h = 40;
-wire_l = 90;
+h = 10;
+wire_l = 60;
 mouse_y = 10;
 cable_pitch = 7;
 
@@ -49,6 +56,7 @@ module wires() {
                     translate([bundle_r - d / 2, 0]) {
                         colour = ["black", "brown", "red", "orange", "yellow", "blue", "purple"][i];
                         wire(colour, 7, wire_l);
+
                         color(colour)
                             cylinder(d = d, h = wire_l, center = true);
                    }
@@ -66,7 +74,7 @@ module wires() {
                         mouse_hole(bundle, 0, true);
 
                     for(i = [1 : 6])
-                        let(cable = [i, 1.4], bundle = cable_bundle(cable))
+                        let(cable = cable(i, wire_d), bundle = cable_bundle(cable))
                             translate([mouse_y + cable_pitch * i - bundle.x / 2, -eps])
                                 square([bundle.x, bundle.y]);
                 }
@@ -81,18 +89,28 @@ module wires() {
                         cable_tie_holes(bundle_r, 0);
                 }
     }
+
     translate([-15, mouse_y])
         cable_tie(bundle_r, thickness);
 
-    for(i = [1 : 6]) let(cable = [i, 1.4])
-        translate([0, mouse_y + cable_pitch * i])
-            let(positions = cable_bundle_positions(cable))
-                for(i = [0 : len(positions) - 1])
-                    let(p = positions[i])
-                        translate([0, p.x, p.y])
-                            rotate([0, 90, 0])
-                                color([grey(10), "blue", "red", "orange", "yellow", "green"][i])
-                                    cylinder(d = cable_wire_size(cable), h = 60, center = true);
+    for(i = [1 : 6]) let(cable = cable(i, wire_d, [grey(10), "blue", "red", "orange", "yellow", "green"], tlen = twist_len))
+        translate([0, mouse_y + cable_pitch * i]) {
+            tr = cable_twisted_radius(cable);
+            bend_r = 5;
+            x = -d + thickness - bend_r;
+            path = [
+                        [-5, 0, tr],
+                        [x,  0, tr],
+                bend_r, [x,  0, -25]
+            ];
+            rpath = rounded_path(path);
+            tpaths = twisted_cable(cable, rpath, irot = irot, frot = -irot);
+            positions = cable_bundle_positions(cable);
+
+            ends = [for(p = positions) [[30, p.x, p.y], [0, p.x, p.y]]];
+            paths = [for(i = [0 : len(tpaths) - 1]) bezier_join(ends[i], tpaths[i], 1.3, 3)];
+            cable(cable, paths, $fn = 32);
+        }
 }
 
 if($preview)
