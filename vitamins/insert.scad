@@ -33,7 +33,7 @@ function insert_ring1_h(type)        = type[6];     //! Height of the top and mi
 function insert_ring2_d(type)        = type[7];     //! Diameter of the middle ring
 function insert_ring3_d(type)        = type[8];     //! Diameter of the bottom ring
 
-function insert_hole_length(type) = round_to_layer(insert_length(type));
+function insert_hole_length(type) = round_to_layer(insert_length(type)); //! Length of the insert rounded to layer height
 
 function insert_nose_length(type, d) = let( //! The length before the second ring.
         length = insert_length(type),
