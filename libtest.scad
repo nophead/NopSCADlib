@@ -163,14 +163,11 @@ corner_blocks_y = fixing_blocks_y + 30;
 translate([x5, corner_blocks_y])
     corner_blocks();
 
-feet_y = corner_blocks_y + 70;
-translate([x5, feet_y])
-    feet();
-
-translate([x5 + 70, feet_y])
+screw_knobs_y = corner_blocks_y + 70;
+translate([x5, screw_knobs_y])
     screw_knobs();
 
-knobs_y = feet_y + 40;
+knobs_y = screw_knobs_y + 40;
 translate([640, knobs_y])
     printed_pulley_test();
 
@@ -184,6 +181,9 @@ translate([x5, clips_y])
 strap_y = clips_y + 50;
 translate([x5 + 60, strap_y])
     strap_handles();
+
+translate([x6, strap_y])
+   feet();
 
 handle_y = strap_y + 50;
 translate([x5, handle_y])

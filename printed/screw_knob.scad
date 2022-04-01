@@ -23,49 +23,93 @@
 include <../core.scad>
 use <../utils/hanging_hole.scad>
 
-knob_wall = 2;
+function screw_knob_screw(type)    = type[0]; //! The hex screw
+function screw_knob_wall(type)     = type[1]; //! Wall thickness
+function screw_knob_stem_h(type)   = type[2]; //! The stem height below the flange
+function screw_knob_flange_t(type) = type[3]; //! The thickness of the flange
+function screw_knob_flange_r(type) = type[4]; //! The flange outside radius
+function screw_knob_solid(type)    = type[5]; //! Is the flange solid or just a wall
+function screw_knob_waves(type)    = type[6]; //! Number of waves around the flange edge
+function screw_knob_wave_amp(type) = type[7]; //! Wave amplitude
+function screw_knob_fluted(type)   = type[8]; //! Fluted instead of sine wave
+
+function screw_knob(screw, wall = 2, stem_h = 6, flange_t = 4, flange_r = 9, solid = true, waves = 5, wave_amp = 2, fluted = false) = //! Constructor
+    [screw, wall, stem_h, flange_t, flange_r, solid, waves, wave_amp, fluted];
+
 function knob_nut_trap_depth(screw) = round_to_layer(screw_head_height(screw));
-knob_stem_h = 6;
-knob_thickness = 4;
-knob_r = 8;
-knob_wave = 1;
-knob_waves = 5;
-knob_height = knob_stem_h + knob_thickness;
-function knob_height() = knob_height;
+function knob_height(type) = screw_knob_stem_h(type) + screw_knob_flange_t(type); //! Total height of the knob
 
-module screw_knob(screw) { //! Generate the STL for a knob to fit the specified hex screw
-    knob_stem_r = nut_trap_radius(screw_nut(screw)) + knob_wall;
+module screw_knob(type) { //! Generate the STL for a knob to fit the specified hex screw
+    type = !is_list(type[0]) ? screw_knob(type) : type;         // Allow just the screw to be specified for backwards compatability
+    screw = screw_knob_screw(type);
+    wall = screw_knob_wall(type);
+    trap_r = nut_trap_radius(screw_nut(screw));
+    stem_r = trap_r + wall;
+    amp = screw_knob_wave_amp(type);
+    flange_r = max(screw_knob_flange_r(type), stem_r + amp);
+    flange_t = screw_knob_flange_t(type);
+    knob_h = knob_height(type);
+    waves = screw_knob_waves(type);
 
-    function wave(a) = knob_r + sin(a * knob_waves) * knob_wave;
+    function wave(a) = flange_r - amp / 2 + sin(a * waves) * amp / 2;
+    points = [for(a = [0 : 359]) wave(a) * [sin(a), cos(a)]];
+    solid = screw_knob_solid(type);
+
+    module shape()
+        if(screw_knob_fluted(type))
+            difference() {
+                circle(flange_r, $fn = 360);
+
+                c = flange_r * sin(90 / waves);            // Flute half chord
+                d = flange_r - flange_r * cos(90 / waves); // Distance from chord to perimeter
+                b = amp - d;                               // Distance from chord to flute bottom
+                flute_r = (b^2 + c^2) / b / 2;
+                for(i = [0 : waves - 1])
+                    rotate(360 * i / waves)
+                        translate([0, flange_r - amp + flute_r])
+                            circle(flute_r, $fn = 360);
+            }
+        else
+            polygon(points);
 
     stl(str("screw_knob_M", screw_radius(screw) * 20))
         union() {
             render() difference() {
-                cylinder(r = knob_stem_r, h = knob_thickness + knob_stem_h);
+                cylinder(r = stem_r, h = knob_h);
 
                 hanging_hole(knob_nut_trap_depth(screw), screw_clearance_radius(screw))
                     rotate(45)
-                        circle(r = nut_trap_radius(screw_nut(screw)), $fn = 6);
+                        circle(r = trap_r, $fn = 6);
             }
-            linear_extrude(knob_thickness, convexity = 3)
-                difference() {
-                    polygon(points = [for(a = [0 : 359]) [wave(a) * sin(a), wave(a) * cos(a)]]);
+            for(i = [0 : 1])
+                linear_extrude(i ? flange_t : round_to_layer(wall), convexity = 3)
+                    difference() {
+                        shape();
 
-                    circle(knob_stem_r - eps);
-                }
+                        if(i && ! solid)
+                            offset(-wall)
+                                shape();
+
+                        circle(stem_r - eps);
+                    }
         }
 }
 
 //! Place the screw through the printed part
-module screw_knob_assembly(screw, length) //! Assembly with the screw in place
-assembly(str("screw_knob_M", 20 * screw_radius(screw), "_", length), ngb = true) {
-    translate_z(knob_height)
-        vflip()
-            stl_colour(pp1_colour) screw_knob(screw);
+module screw_knob_assembly(type, length) { //! Assembly with the screw in place
+    type = !is_list(type[0]) ? screw_knob(type) : type;
+    screw = screw_knob_screw(type);
+    knob_h = knob_height(type);
 
-    translate_z(knob_height - knob_nut_trap_depth(screw))
-        rotate(-45)
-            screw(screw, length);
+    assembly(str("screw_knob_M", 20 * screw_radius(screw), "_", length), ngb = true) {
+        translate_z(knob_h)
+            vflip()
+                stl_colour(pp1_colour) screw_knob(type);
+
+        translate_z(knob_h - knob_nut_trap_depth(screw))
+            rotate(-45)
+                screw(screw, length);
+    }
 }
 
 module screw_knob_M30_stl() screw_knob(M3_hex_screw);

@@ -17,20 +17,26 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 include <../core.scad>
+use <../utils/layout.scad>
 
 use <../printed/screw_knob.scad>
 
-screws = [M3_hex_screw, M4_hex_screw];
+knobs = [
+    M3_hex_screw,
+    M4_hex_screw,
+    screw_knob(M5_hex_screw, flange_r = 12, flange_t = 6, stem_h = 2, waves = 6),
+    screw_knob(M6_hex_screw, flange_r = 15, flange_t = 6, solid = false, stem_h = 2, waves = 6, wall = 1.6, fluted = true),
+];
 
-module do_screw_knob(screw)
+module do_screw_knob(knob) {
     if($preview)
-        screw_knob_assembly(screw, 16);
+        screw_knob_assembly(knob, 16);
     else
-        screw_knob(screw);
+        screw_knob(knob);
+}
 
 module screw_knobs()
-    for(i = [0 : len(screws) - 1])
-        translate([i * 30, 0])
-            do_screw_knob(screws[i]);
+    layout([for(k = knobs) 2 * screw_knob_flange_r(k)], 10)
+        do_screw_knob(knobs[$i]);
 
 screw_knobs();

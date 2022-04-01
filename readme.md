@@ -5918,11 +5918,30 @@ Knob with embedded hex head screw.
 
 [tests/screw_knob.scad](tests/screw_knob.scad) Code for this example.
 
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `screw_knob_flange_r(type)` | The flange outside radius |
+| `screw_knob_flange_t(type)` | The thickness of the flange |
+| `screw_knob_fluted(type)` | Fluted instead of sine wave |
+| `screw_knob_screw(type)` | The hex screw |
+| `screw_knob_solid(type)` | Is the flange solid or just a wall |
+| `screw_knob_stem_h(type)` | The stem height below the flange |
+| `screw_knob_wall(type)` | Wall thickness |
+| `screw_knob_wave_amp(type)` | Wave amplitude |
+| `screw_knob_waves(type)` | Number of waves around the flange edge |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `knob_height(type)` | Total height of the knob |
+| `screw_knob(screw, wall = 2, stem_h = 6, flange_t = 4, flange_r = 9, solid = true, waves = 5, wave_amp = 2, fluted = false)` | Constructor |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `screw_knob(screw)` | Generate the STL for a knob to fit the specified hex screw |
-| `screw_knob_assembly(screw, length)` | Assembly with the screw in place |
+| `screw_knob(type)` | Generate the STL for a knob to fit the specified hex screw |
+| `screw_knob_assembly(type, length)` | Assembly with the screw in place |
 
 ![screw_knob](tests/png/screw_knob.png)
 
@@ -5931,18 +5950,24 @@ Knob with embedded hex head screw.
 | ---:|:--- |:---|
 |   1 | `screw(M3_hex_screw, 16)` |  Screw M3 hex x 16mm |
 |   1 | `screw(M4_hex_screw, 16)` |  Screw M4 hex x 16mm |
+|   1 | `screw(M5_hex_screw, 16)` |  Screw M5 hex x 16mm |
+|   1 | `screw(M6_hex_screw, 16)` |  Screw M6 hex x 16mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
 |   1 | screw_knob_M30.stl |
 |   1 | screw_knob_M40.stl |
+|   1 | screw_knob_M50.stl |
+|   1 | screw_knob_M60.stl |
 
 ### Assemblies
 | Qty | Name |
 | ---:|:--- |
 |   1 | screw_knob_M30_16_assembly |
 |   1 | screw_knob_M40_16_assembly |
+|   1 | screw_knob_M50_16_assembly |
+|   1 | screw_knob_M60_16_assembly |
 
 
 <a href="#top">Top</a>
