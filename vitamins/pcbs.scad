@@ -885,7 +885,7 @@ ArduinoNano = let(l = 43.18, w = 17.78, pitch = inch(0.6), pins = 15, poffset = 
       [l / 2 + poffset, w / 2 - pitch / 2,  0, "-2p54joiner", pins, 1],
       [l / 2 + poffset, w / 2 + pitch / 2,  0, "-2p54joiner", pins, 1],
       [l / 2 + poffset + inch(0.75), w / 2, 0, "2p54header",  2,    3, false, undef, false, false],
-      [1.75, w / 2, 180, "usb_uA" ],
+      [3.1, w / 2, 180, "usb_miniA" ],
       [l / 2 - inch(0.25), w / 2, 45, "chip", 7, 7, 1.3],
       [l / 2 + poffset + inch(0.15), w / 2,    0, "chip", 3.5, 6,   1.8, silver ], // mock button
       [l / 2 + poffset + inch(0.15), w / 2,    0, "chip", 1.3, 2.6, 2.6, grey(90) ], // mock button

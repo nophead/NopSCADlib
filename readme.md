@@ -2403,6 +2403,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `usb_Ax2(cutout = false)` | Draw USB type A dual socket |
 | `usb_B(cutout = false)` | Draw USB B connector |
 | `usb_C(cutout = false)` | Draw USB C connector |
+| `usb_miniA(cutout = false)` | Draw USB mini A connector |
 | `usb_uA(cutout = false)` | Draw USB micro A connector |
 | `vero_pin(cropped = false)` | Draw a vero pin |
 
@@ -2553,6 +2554,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `usb_Ax2(cutout = false)` | Draw USB type A dual socket |
 | `usb_B(cutout = false)` | Draw USB B connector |
 | `usb_C(cutout = false)` | Draw USB C connector |
+| `usb_miniA(cutout = false)` | Draw USB mini A connector |
 | `usb_uA(cutout = false)` | Draw USB micro A connector |
 | `vero_pin(cropped = false)` | Draw a vero pin |
 

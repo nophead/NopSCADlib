@@ -485,6 +485,50 @@ module usb_uA(cutout = false) { //! Draw USB micro A connector
         }
 }
 
+module usb_miniA(cutout = false) { //! Draw USB mini A connector
+    l = 9.2;
+    iw1 = 7.0;
+    iw2 = 6.0;
+    ih1 = 1.05;
+    ih2 = 1.0;
+    h = 4.0;
+    t = 0.4;
+
+    module D() {
+        hull() {
+            translate([-iw1 / 2, h - t - ih1])
+                square([iw1, ih1]);
+
+            translate([-iw2 / 2, t + ih2])
+                square([iw2, eps]);
+
+        }
+        translate([-iw2 / 2, t])
+            square([iw2, ih2]);
+    }
+
+    if(cutout)
+        rotate([90, 0, 90])
+            linear_extrude(100)
+                offset(2 * panel_clearance)
+                    D();
+    else
+        color("silver") rotate([90, 0, 90]) {
+            linear_extrude(l, center = true)
+                difference() {
+                    offset(t)
+                        D();
+
+                    D();
+                }
+
+            translate_z(-l / 2)
+                linear_extrude(1)
+                    offset(t)
+                        D();
+        }
+}
+
 module usb_C(cutout = false) { //! Draw USB C connector
     l = 7.35;
     w = 8.94;
@@ -1046,6 +1090,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "usb_A"))         usb_Ax1(cutouts);
         if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
         if(show(comp, "usb_uA"))        usb_uA(cutouts);
+        if(show(comp, "usb_miniA"))     usb_miniA(cutouts);
         if(show(comp, "usb_B"))         usb_B(cutouts);
         if(show(comp, "usb_C"))         usb_C(cutouts);
         if(show(comp, "jack"))          jack(cutouts);
