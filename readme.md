@@ -5916,6 +5916,8 @@ Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
 ## Screw_knob
 Knob with embedded hex head screw.
 
+Most aspects can be customised, e.g. the flange thickness and radius. It can also be solid or just a wall and be wavey edged or fluted.
+
 [printed/screw_knob.scad](printed/screw_knob.scad) Implementation.
 
 [tests/screw_knob.scad](tests/screw_knob.scad) Code for this example.

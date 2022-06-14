@@ -19,6 +19,8 @@
 
 //
 //! Knob with embedded hex head screw.
+//!
+//! Most aspects can be customised, e.g. the flange thickness and radius. It can also be solid or just a wall and be wavey edged or fluted.
 //
 include <../core.scad>
 use <../utils/hanging_hole.scad>
@@ -37,7 +39,9 @@ function screw_knob(screw, wall = 2, stem_h = 6, flange_t = 4, flange_r = 9, sol
     [screw, wall, stem_h, flange_t, flange_r, solid, waves, wave_amp, fluted];
 
 function knob_nut_trap_depth(screw) = round_to_layer(screw_head_height(screw));
-function knob_height(type) = screw_knob_stem_h(type) + screw_knob_flange_t(type); //! Total height of the knob
+function knob_height(type) = //! Total height of the knob
+    let(type = !is_list(type[0]) ? screw_knob(type) : type)
+        screw_knob_stem_h(type) + screw_knob_flange_t(type);
 
 module screw_knob(type) { //! Generate the STL for a knob to fit the specified hex screw
     type = !is_list(type[0]) ? screw_knob(type) : type;         // Allow just the screw to be specified for backwards compatability
@@ -52,13 +56,14 @@ module screw_knob(type) { //! Generate the STL for a knob to fit the specified h
     waves = screw_knob_waves(type);
 
     function wave(a) = flange_r - amp / 2 + sin(a * waves) * amp / 2;
-    points = [for(a = [0 : 359]) wave(a) * [sin(a), cos(a)]];
+    fn = r2sides(flange_r);
+    points = [for(i = [0 : fn - 1], a = i * 360 / fn) wave(a) * [sin(a), cos(a)]];
     solid = screw_knob_solid(type);
 
     module shape()
         if(screw_knob_fluted(type))
             difference() {
-                circle(flange_r, $fn = 360);
+                circle4n(flange_r);
 
                 c = flange_r * sin(90 / waves);            // Flute half chord
                 d = flange_r - flange_r * cos(90 / waves); // Distance from chord to perimeter
@@ -67,7 +72,7 @@ module screw_knob(type) { //! Generate the STL for a knob to fit the specified h
                 for(i = [0 : waves - 1])
                     rotate(360 * i / waves)
                         translate([0, flange_r - amp + flute_r])
-                            circle(flute_r, $fn = 360);
+                            circle4n(flute_r);
             }
         else
             polygon(points);
