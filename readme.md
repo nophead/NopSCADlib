@@ -6883,7 +6883,7 @@ Original version by Doug Moen on the OpenSCAD forum
 | Module | Description |
 |:--- |:--- |
 | `box(xmin, ymin, zmin, xmax, ymax, zmax)` | Construct a box given its bounds |
-| `clip(xmin = -inf, ymin = -inf, zmin = -inf, xmax = inf, ymax = inf, zmax = inf)` | Clip child to specified boundaries |
+| `clip(xmin = -inf, ymin = -inf, zmin = -inf, xmax = inf, ymax = inf, zmax = inf, convexity = 1)` | Clip child to specified boundaries |
 
 ![clip](tests/png/clip.png)
 
