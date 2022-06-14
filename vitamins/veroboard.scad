@@ -41,7 +41,7 @@ function vero_track_width(type)    = vero_pitch(type) * 0.8; //! The width of th
 function vero_length(type) = vero_holes(type) * vero_pitch(type); //! Length of the board
 function vero_width(type) = vero_strips(type) * vero_pitch(type); //! Width of the board
 
-function vero(name, assembly, holes, strips, pitch = inch(0.1), fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = []) = //! Constructor
+function vero(name, assembly, holes, strips, pitch = 2.54, fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = []) = //! Constructor
     [ name, assembly, holes, strips, pitch, fr4, screw, mounting_holes, breaks, no_tracks, components, joints ];
 
 function vero_size(type) = [vero_length(type), vero_width(type), vero_thickness(type)]; //! Board size
@@ -89,7 +89,7 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
     tc = vero_fr4(type) ? "silver" : copper;
     no_track = vero_no_track(type);
 
-    vitamin(str("veroboard(", type[0], "): Veroboard ", holes, " holes x ", strips, "strips"));
+    vitamin(str("veroboard(", type[0], "): Veroboard ", holes, " holes x ", strips, " strips"));
 
     color(colour) linear_extrude(vero_thickness(type))
         difference() {

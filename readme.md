@@ -4246,7 +4246,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `vero(name, assembly, holes, strips, pitch = inch(0.1)` | Constructor |
+| `vero(name, assembly, holes, strips, pitch = 2.54, fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = [])` | Constructor |
 | `vero_length(type)` | Length of the board |
 | `vero_size(type)` | Board size |
 | `vero_thickness(type)` | Thickness of the substrate |
@@ -4274,7 +4274,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 |   4 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   4 | `screw(M3_dome_screw, 25)` |  Screw M3 dome x 25mm |
 |   2 | `green_terminal(gt_2p54, 10)` |  Terminal block 10 way 0.1" |
-|   2 | `veroboard(z_vb)` |  Veroboard 5 holes x 22strips |
+|   2 | `veroboard(z_vb)` |  Veroboard 5 holes x 22 strips |
 |   8 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 
 ### Printed
