@@ -33,7 +33,7 @@ function circle_tangent(p1, p2) = //! Compute the clockwise tangent between two 
         dx = p2.x - p1.x,
         dy = p2.y - p1.y,
         d = sqrt(dx * dx + dy * dy),
-        theta = atan2(dy, dx) + acos((r1 - r2) / d),
+        theta = assert(d, str("points conicident ", p1)) atan2(dy, dx) + acos((r1 - r2) / d),
         v = [cos(theta), sin(theta)]
     )[ p1 + r1 * v, p2 + r2 * v ];
 
@@ -72,24 +72,52 @@ function rounded_polygon_length(points, tangents) = //! Calculate the length giv
         arcs = rounded_polygon_arcs(points, tangents)
     ) sumv( map( concat(tangents, arcs), function(e) e[2] ) );
 
+function line_intersection(l0, l1) = //! Return the point where two 2D lines intersect or undef if they don't.
+    assert(Len(l0) == 2 && Len(l1) == 2, "Two 2D vectors expected")
+    let(
+        p0 = l0[0], p1 = l0[1], p2 = l1[0], p3 = l1[1],
+        v1 = p1 - p0,
+        v2 = p3 - p2,
+        v3 = p0 - p2,
+        det = v1.x * v2.y - v2.x * v1.y,
+        s = det ? (-v1.y * v3.x + v1.x * v3.y) / det : inf,
+        t = det ? ( v2.x * v3.y - v2.y * v3.x) / det : inf
+    ) s >= 0 && s <= 1 && t >= 0 && t <= 1 ? p0 + t * v1 : undef;
+
 function rounded_polygon(points, _tangents = undef) = //! Return the rounded polygon from the point list, can pass the tangent list to save it being calculated
     let(
         len = len(points),
         tangents = _tangents ? _tangents : rounded_polygon_tangents(points),
         arcs = rounded_polygon_arcs(points, tangents)
-    ) [for(i = [0 : len - 1], last = (i - 1 + len) % len, R = points[i][2]) each [
-        vec2(tangents[last][1]),                        // End of last tangent
-        if(R)                                               // If rounded
-            let(r = abs(R),                                     // Get radius
-                n = r2sides4n(r),                               // Decide number of vertices
-                step = 360 / n,                                 // Angular step
-                arc = arcs[i],                                  // Get corner arc details
-                start = ceil(arc[1] / step + eps),              // Starting index
-                end = floor((arc[0] + arc[1]) / step - eps),    // Ending index
-                c = vec2(points[i])                             // Centre of arc
-            ) for(j = R > 0 ? [end : -1 : start] : [start : 1 : end], a = j * step) c + r * [cos(a), sin(a)], // Points on the arc
-        vec2(tangents[i][0])]                           // Start of next tangent
+    ) [for(i = [0 : len - 1], last = (i - 1 + len) % len)
+        let(
+            t0 = vec2(tangents[last]),
+            t1 = vec2(tangents[i]),
+            p = line_intersection(t0, t1),                              // Do the tangents cross?
+            R = points[i][2]
+        )
+        if(!is_undef(p))                                                // Tangents intersect, so just add the intersection point
+            p
+        else
+            each [                                                      // Else link the two tangent ends with an arc
+                t0[1],                                                  // End of last tangent
+                if(R)                                                   // If rounded
+                    let(r = abs(R),                                     // Get radius
+                        n = r2sides4n(r),                               // Decide number of vertices
+                        step = 360 / n,                                 // Angular step
+                        arc = arcs[i],                                  // Get corner arc details
+                        start = ceil(arc[1] / step + eps),              // Starting index
+                        end = floor((arc[0] + arc[1]) / step - eps),    // Ending index
+                        c = vec2(points[i])                             // Centre of arc
+                    ) for(j = R > 0 ? [end : -1 : start] : [start : 1 : end], a = j * step)
+                        c + r * [cos(a), sin(a)],                       // Points on the arc
+                if(R)
+                    t1[0],                                              // Start of next tangent
+            ]
        ];
+
+function offset(points, offset) =                                       //! Offset a 2D polygon, breaks for concave shapes and negative offsets if the offset is more than half the smallest feature size.
+    rounded_polygon([for(p = points) [p.x, p.y, offset]]);
 
 module rounded_polygon(points, _tangents = undef) //! Draw the rounded polygon from the point list, can pass the tangent list to save it being calculated
     polygon(rounded_polygon(points, _tangents), convexity = len(points));

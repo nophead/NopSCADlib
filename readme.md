@@ -6608,6 +6608,8 @@ Because the tangents need to be calculated to find the length these can be calcu
 | Function | Description |
 |:--- |:--- |
 | `circle_tangent(p1, p2)` | Compute the clockwise tangent between two circles represented as [x,y,r] |
+| `line_intersection(l0, l1)` | Return the point where two 2D lines intersect or undef if they don't. |
+| `offset(points, offset)` | Offset a 2D polygon, breaks for concave shapes and negative offsets if the offset is more than half the smallest feature size. |
 | `rounded_polygon(points, _tangents = undef)` | Return the rounded polygon from the point list, can pass the tangent list to save it being calculated |
 | `rounded_polygon_arcs(points, tangents)` | Compute the arcs at the points, for each point [angle, rotate_angle, length] |
 | `rounded_polygon_length(points, tangents)` | Calculate the length given the point list and the list of tangents computed by `rounded_polygon_tangents` |
