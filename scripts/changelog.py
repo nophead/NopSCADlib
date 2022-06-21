@@ -157,7 +157,7 @@ if __name__ == '__main__':
                         break
                     j += 1
 
-                # Print verson info
+                # Print version info
                 print('%s [%s](%s "show release") %s %s' % ('#' * (level + 1), ver, url + '/releases/tag/' + ver, type, diff), file = file)
 
             # Print commits excluding merges
