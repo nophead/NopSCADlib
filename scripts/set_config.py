@@ -57,13 +57,13 @@ def set_config(target, usage = None):
         sys.exit(1)
 
     if not targets:
-        print("Not a muli-configuration project (no config_<target>.scad files found)")
+        print("Not a multi-configuration project (no config_<target>.scad files found)")
         if usage:
             usage()
         sys.exit(1)
 
     if not target in targets:
-        print(target + " is not a configuration, avaliable configurations are: " + valid_targets_string())
+        print(target + " is not a configuration, available configurations are: " + valid_targets_string())
         if usage:
             usage()
         sys.exit(1)
