@@ -36,8 +36,7 @@ from blurb import *
 from colorama import Fore
 from tmpdir import *
 
-w = 4096
-h = w
+image_size = "--imgsize=4096,4096"
 threshold = 20  # Image comparison allowed number of different pixels
 fuzz = 5       # Image comparison allowed percentage error in pixel value
 
@@ -119,7 +118,7 @@ def tests(tests):
         libtest = True
         lib_blurb = scrape_blurb(scad_name)
         if not os.path.isfile(png_name):
-            openscad.run(scad_name, "-o", png_name, colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall");
+            openscad.run(scad_name, "-o", png_name, colour_scheme, "--projection=p", image_size, "--camera=0,0,0,50,0,340,500", "--autocenter", "--viewall");
             do_cmd(["magick", png_name, "-trim", "-resize", "1280", "-bordercolor", background, "-border", "10", png_name])
     else:
         #
@@ -240,7 +239,7 @@ def tests(tests):
                 print(changed)
                 t = time.time()
                 tmp_name = tmp_dir + '/tmp.png'
-                openscad.run_list([scad_name, "-o", tmp_name] + options.list() + ["-D$bom=2", colour_scheme, "--projection=p", "--imgsize=%d,%d" % (w, h), "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname]);
+                openscad.run_list([scad_name, "-o", tmp_name] + options.list() + ["-D$bom=2", colour_scheme, "--projection=p", image_size, "--camera=0,0,0,70,0,315,500", "--autocenter", "--viewall", "-d", dname]);
                 times.add_time(scad_name, t)
                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1000x600", "-bordercolor", background, "-border", "10", tmp_name])
                 update_image(tmp_name, png_name)

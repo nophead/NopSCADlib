@@ -25,7 +25,7 @@
 from __future__ import print_function
 from set_config import *
 import openscad
-from tests import do_cmd, update_image, colour_scheme, background
+from tests import do_cmd, update_image, colour_scheme, background, image_size
 import time
 import times
 import options
@@ -223,7 +223,7 @@ def views(target, do_assemblies = None):
                                                 target_def = ['-D$target="%s"' % target] if target else []
                                                 cwd_def = ['-D$cwd="%s"' % os.getcwd().replace('\\', '/')]
                                                 view_def = ['--viewall', '--autocenter'] if not (zoomed & (1 << explode)) else ['--camera=0,0,0,55,0,25,140']
-                                                openscad.run_list(["-o", tmp_name, png_maker_name] + options.list() + target_def + cwd_def + view_def + ["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", "--imgsize=4096,4096", "-d", dname]);
+                                                openscad.run_list(["-o", tmp_name, png_maker_name] + options.list() + target_def + cwd_def + view_def + ["-D$pose=1", "-D$explode=%d" % explode, colour_scheme, "--projection=p", image_size, "-d", dname]);
                                                 times.add_time(png_name, t)
                                                 do_cmd(["magick", tmp_name, "-trim", "-resize", "1004x1004", "-bordercolor", background, "-border", "10", tmp_name])
                                                 update_image(tmp_name, png_name)
