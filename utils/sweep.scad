@@ -127,8 +127,8 @@ function sweep_transforms(path, loop = false, twist = 0) =
                          i = i + 1,
                          rot = i < len ? rotate_from_to(tangents[i - 1], tangents[i]) * rot : undef) rot],
 
-        missmatch = loop ? calculate_twist(rotations[0], rotations[last]) : 0,
-        rotation = missmatch + twist
+        mismatch = loop ? calculate_twist(rotations[0], rotations[last]) : 0,
+        rotation = mismatch + twist
     )
     [for(i = [0 : last])
         let(za = rotation * lengths[i] / length)
