@@ -44,7 +44,7 @@ function knob_height(type) = //! Total height of the knob
         screw_knob_stem_h(type) + screw_knob_flange_t(type);
 
 module screw_knob(type) { //! Generate the STL for a knob to fit the specified hex screw
-    type = !is_list(type[0]) ? screw_knob(type) : type;         // Allow just the screw to be specified for backwards compatability
+    type = !is_list(type[0]) ? screw_knob(type) : type;         // Allow just the screw to be specified for backwards compatibility
     screw = screw_knob_screw(type);
     wall = screw_knob_wall(type);
     trap_r = nut_trap_radius(screw_nut(screw));
