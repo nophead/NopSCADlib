@@ -3887,6 +3887,7 @@ NEMA stepper motor model.
 | Function | Description |
 |:--- |:--- |
 | `NEMA_big_hole(type)` | Clearance hole for the big boss |
+| `NEMA_connection_pos(type, jst_connector = false)` | Position of the wires or the connector |
 | `NEMA_holes(type)` | Screw positions for for loop |
 
 ### Modules

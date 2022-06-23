@@ -51,6 +51,18 @@ stepper_body_colour = grey(20);
 stepper_cap_colour  = grey(50);
 stepper_machined_colour = grey(90);
 
+function NEMA_connection_pos(type, jst_connector = false) = let( //! Position of the wires or the connector
+        side = NEMA_width(type),
+        length = NEMA_length(type),
+        cap = NEMA_cap_heights(type)[1],
+        hdr = NEMA_end_connector(type) ? jst_zh_header : jst_ph_header,
+        socket_size = hdr_box_size(hdr),
+        end_conn_inset = socket_size.y - 2
+    )
+    jst_connector ? NEMA_end_connector(type) ? [0, side / 2 + hdr_y_offset(hdr) + socket_size.y / 2 - end_conn_inset, -length]
+                                             : [0, side / 2 + socket_size.z,  hdr_y_offset(hdr) - socket_size.y / 2 - length + cap]
+                  : [0, side / 2, -length + cap / 2];
+
 module NEMA_outline(type) //! 2D outline
     intersection() {
         side = NEMA_width(type);
@@ -185,14 +197,14 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
                 not_on_bom()
                     leadscrew(shaft_rad * 2, shaft.x + length + shaft2, shaft.y, shaft.z, center = false);
 
-    if(!jst_connector)
+    if(jst_connector == false)
         translate([0, side / 2, -length + cap / 2])
             rotate([90, 0, 0])
                 for(i = [0 : 3])
                     rotate(225 + i * 90)
-                        color(["red", "blue","green","black"][i])
-                            translate([1, 0, 0])
-                                cylinder(r = 1.5 / 2, h = 12, center = true);
+                        color(["red", "green", "black", "blue"][i])
+                            translate([1.48 / sqrt(2), 0, 0])
+                                cylinder(d = 1.48, h = 12, center = true);
 }
 
 module NEMA_screw_positions(type, n = 4) { //! Positions children at the screw holes
