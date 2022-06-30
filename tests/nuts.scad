@@ -19,6 +19,9 @@
 include <../core.scad>
 use <../utils/layout.scad>
 
+nuts = [M2_nut, M2p5_nut, M3_nut, M4_nut, M5_nut, M6_nut, M8_nut];
+
+
 module nuts() {
     layout([for(n = nuts) 2 * nut_radius(n)], 5) let(n = nuts[$i]) {
         for(nyloc = [false, true])

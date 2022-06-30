@@ -26,6 +26,13 @@ length = 200;
 sheet = 3;
 pos = 1; //[-1 : 0.1 : 1]
 
+rails = [MGN5, MGN7, MGN9, MGN12, MGN15, SSR15, HGH15CA, HGH20CA];
+carriages = [MGN5C_carriage, MGN7C_carriage, MGN7H_carriage, MGN9C_carriage, MGN9H_carriage, 
+            MGN12C_carriage, MGN12H_carriage, MGN12H_carriage, MGN15C_carriage, SSR15_carriage,
+            HGH15CA_carriage, HGH20CA_carriage
+            ];
+
+
 function rail_carriages(rail) = [for(c = carriages) if(carriage_rail(c) == rail) c];
 
 module rails()
