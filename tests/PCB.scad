@@ -61,6 +61,7 @@ test_pcb = ["test_pcb", "Test PCB",
     [
         [ 20, -5,  180, "trimpot10"],
         [ 20, -15,  90, "trimpot10", true],
+        [  7,  2,   90, "smd_led", LED1206, "blue"],
         [ 10,  2,   90, "smd_led", LED0805, "red"],
         [ 13,  2,   90, "smd_led", LED0603, "orange"],
         [ 16,  2,   90, "smd_res", RES1206, "1K"],
