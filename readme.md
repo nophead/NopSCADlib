@@ -2440,6 +2440,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `ax_res(res1_8, 1e+6, tol = 1)` |  Resistor 1e+6 Ohms 1% 0.125W |
 |   1 | `smd_led(LED0603, orange)` |  SMD LED 0603 orange |
 |   1 | `smd_led(LED0805, red)` |  SMD LED 0805 red |
+|   1 | `smd_led(LED1206, blue)` |  SMD LED 1306 blue |
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
@@ -3673,6 +3674,7 @@ Surface mount components for PCBs.
 | ---:|:--- |:---|
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
 |   1 | `smd_led(LED0805, blue)` |  SMD LED 0805 blue |
+|   1 | `smd_led(LED1206, red)` |  SMD LED 1306 red |
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
