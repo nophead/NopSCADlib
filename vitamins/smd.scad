@@ -178,3 +178,53 @@ module smd_sot(type, value) { //! Draw an SMD transistor
                     text(value, halign = "center", valign = "center");
 
 }
+
+function smd_soic_size(type)       = type[1];    //! Body length, width and height
+function smd_soic_z(type)          = type[2];    //! Height above PCB surface
+function smd_soic_lead_z(type)     = type[3];    //! Top of lead frame from top
+function smd_soic_lead_pitch(type) = type[4];    //! Lead pitch
+function smd_soic_lead_span(type)  = type[5];    //! Total span of leads
+function smd_soic_lead_size(type)  = type[6];    //! Lead width, foot depth, lead thickness
+
+module smd_soic(type, value) { //! Draw an SMD SOIC
+    vitamin(str("smd_soic(", type[0], "): ", type[0], " package ", value));
+
+    size = smd_soic_size(type);
+    z0 = smd_soic_z(type);
+    z2 = z0 + size.z;
+    z1 = z2 - smd_soic_lead_z(type);
+    slant = 5;                              //! 5 degree body draft angle
+    pitch = smd_soic_lead_pitch(type);
+    span = (smd_soic_lead_span(type) / 2);
+    leads = floor(size.x / pitch) + 1;
+    ls = smd_soic_lead_size(type);
+    
+    r = ls.z;
+    gullwing = rounded_path([[0, 0, ls.z / 2], [0, ls.y - ls.z, ls.z / 2], r, [0, ls.y -ls.z + z1 - ls.z, z1 - ls.z / 2], r, [0, span / 2, z1 - ls.z / 2]], $fn = 32);
+
+    color(grey(20))
+        hull()
+            for(z = [z0, z1, z2], inset = abs(z - z1) * tan(slant))
+                translate_z(z)
+                    cube([size.x - 2 * inset, size.y - 2 * inset, eps], center = true);
+
+    color(silver) {
+        for(i = [0 : leads - 1]) {
+            translate([i * pitch - size.x / 2 + (size.x - (leads - 1) * pitch) / 2, -span])
+                sweep(gullwing, rectangle_points(ls.x, ls.z));
+
+        rotate(180)
+            translate([0, -span / 2])
+                translate([i * pitch - size.x / 2 + (size.x - (leads - 1) * pitch) / 2, -span / 2])
+                    sweep(gullwing, rectangle_points(ls.x, ls.z));
+        }
+
+    }
+
+    color("white")
+        translate_z(z0 + size.z)
+            linear_extrude(eps)
+                resize([size.x - 4 * (z2 - z1) * tan(slant), size.y / 2])
+                    text(value, halign = "center", valign = "center");
+
+}
