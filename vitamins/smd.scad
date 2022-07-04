@@ -198,7 +198,7 @@ module smd_soic(type, value) { //! Draw an SMD SOIC
     span = (smd_soic_lead_span(type) / 2);
     leads = floor(size.x / pitch) + 1;
     ls = smd_soic_lead_size(type);
-    
+
     r = ls.z;
     gullwing = rounded_path([[0, 0, ls.z / 2], [0, ls.y - ls.z, ls.z / 2], r, [0, ls.y -ls.z + z1 - ls.z, z1 - ls.z / 2], r, [0, span / 2, z1 - ls.z / 2]], $fn = 32);
 
@@ -224,7 +224,7 @@ module smd_soic(type, value) { //! Draw an SMD SOIC
     color("white")
         translate_z(z0 + size.z)
             linear_extrude(eps)
-                resize([size.x - 4 * (z2 - z1) * tan(slant), size.y / 2])
+                resize([size.x * 0.9, size.y / 2])
                     text(value, halign = "center", valign = "center");
 
 }
