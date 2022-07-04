@@ -38,6 +38,12 @@ module smds() {
         layout([for(s = smd_sots) smd_sot_size(s).x], 1)
             let(s = smd_sots[$i])
                 smd_sot(s, ["2N7000", "FZT851"][$i]);
+
+    translate([0, 20])
+        layout([for(s = smd_soics) smd_soic_size(s).x], 1)
+            let(s = smd_soics[$i])
+                smd_soic(s, s[0]);
+
 }
 
 if($preview)
