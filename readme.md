@@ -2447,6 +2447,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_resistor(RES0603, 1K)` |  SMD resistor 0603 1K 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
 |   1 | `smd_resistor(RES1206, 1K)` |  SMD resistor 1206 1K 0.25W |
+|   1 | `smd_soic(SOIC16)` |  SOIC16 package ICL323 |
+|   1 | `smd_soic(SOIC18)` |  SOIC18 package PIC18F88 |
+|   1 | `smd_soic(SOIC8)` |  SOIC8 package M34063 |
 |   1 | `smd_sot(SOT223)` |  SOT223 package LM117 |
 |   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 |   1 | `square_button(button_4p5mm)` |  Square button 4.5mm |
@@ -3644,6 +3647,12 @@ Surface mount components for PCBs.
 | `smd_res_end_cap(type)` | End cap width |
 | `smd_res_power(type)` | Power rating in Watts |
 | `smd_res_size(type)` | Body length, width and height |
+| `smd_soic_lead_pitch(type)` | Lead pitch |
+| `smd_soic_lead_size(type)` | Lead width, foot depth, lead thickness |
+| `smd_soic_lead_span(type)` | Total span of leads |
+| `smd_soic_lead_z(type)` | Top of lead frame from top |
+| `smd_soic_size(type)` | Body length, width and height |
+| `smd_soic_z(type)` | Height above PCB surface |
 | `smd_sot_lead_pitch(type)` | Lead pitch |
 | `smd_sot_lead_size(type)` | Lead width, foot depth, lead thickness |
 | `smd_sot_lead_span(type)` | Total span of leads |
@@ -3665,6 +3674,7 @@ Surface mount components for PCBs.
 | `smd_capacitor(type, height, value = undef)` | Draw an SMD capacitor with specified height |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
+| `smd_soic(type, value)` | Draw an SMD SOIC |
 | `smd_sot(type, value)` | Draw an SMD transistor |
 
 ![smds](tests/png/smds.png)
@@ -3681,6 +3691,9 @@ Surface mount components for PCBs.
 |   1 | `smd_resistor(RES0603, 1R0)` |  SMD resistor 0603 1R0 0.1W |
 |   1 | `smd_resistor(RES0805, 10M)` |  SMD resistor 0805 10M 0.125W |
 |   1 | `smd_resistor(RES1206, 100K)` |  SMD resistor 1206 100K 0.25W |
+|   1 | `smd_soic(SOIC16)` |  SOIC16 package SOIC16 |
+|   1 | `smd_soic(SOIC18)` |  SOIC18 package SOIC18 |
+|   1 | `smd_soic(SOIC8)` |  SOIC8 package SOIC8 |
 |   1 | `smd_sot(SOT223)` |  SOT223 package FZT851 |
 |   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 
