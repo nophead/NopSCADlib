@@ -20,11 +20,11 @@
 //
 //!  Brushless DC electric motor
 //
-include <NopSCADlib/core.scad>
+include <../utils/core/core.scad>
 
-use <NopSCADlib/vitamins/rod.scad>
-use <NopSCADlib/utils/thread.scad>
-use <NopSCADlib/utils/tube.scad>
+use <rod.scad>
+use <../utils/thread.scad>
+use <../utils/tube.scad>
 
 
 function BLDC_diameter(type)                    = type[1]; //! Diameter of motor
