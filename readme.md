@@ -6714,7 +6714,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 | `rounded_path_vertices(path)` | Show the unrounded version of a rounded_path for debug |
 | `segmented_path(path, min_segment)` | Add points to a path to enforce a minimum segment length |
 | `skin_faces(points, npoints, facets, loop, offset = 0)` | Create the mesh for the swept volume without end caps |
-| `spiral_paths(path, n, r, twists, start_angle)` | Create a new paths which sprial around the given path. Use for making twisted cables |
+| `spiral_paths(path, n, r, twists, start_angle)` | Create a new paths which spiral around the given path. Use for making twisted cables |
 | `sweep(path, profile, loop = false, twist = 0)` | Generate the point list and face list of the swept volume |
 
 ### Modules
