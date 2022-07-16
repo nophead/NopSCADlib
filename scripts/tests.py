@@ -47,7 +47,12 @@ def do_cmd(cmd, output = sys.stdout):
     for arg in cmd:
         print(arg, end = " ")
     print()
-    return subprocess.call(cmd, stdout = output, stderr = output)
+    t = time.time()
+    rv = subprocess.call(cmd, stdout = output, stderr = output)
+    elapsed = time.time() - t
+    with open("cmd_times.txt", 'at') as f:
+        print(cmd[0], cmd[-1], elapsed, file = f)
+    return rv
 
 def compare_images(a, b, c):
     if not os.path.isfile(b):
