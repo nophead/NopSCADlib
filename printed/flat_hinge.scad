@@ -111,8 +111,8 @@ module hinge_male(type, female = false) {       //! The half with the stationary
                                         rotate(180)
                                             teardrop(r = kr, h = 0);
 
-                                        translate([-kr - 1, -kr])
-                                            square(1);
+                                        translate([-kr - inset - eps, -kr])
+                                            square([eps, t]);
                                     }
                                     teardrop_plus(r = pr + (female ? gap : 0), h = 0);
                                 }
