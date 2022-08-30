@@ -908,9 +908,19 @@ KY_040 = ["KY_040", "KY-040 rotart encoder breakout",
     ],
     []];
 
+L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3, 0, "#2140BE", false, [[10.7, 2.3], [10.7, -2.3], [-5.3, 2.3], [-5.3, -2.3] ],
+    [
+        [ -1.3,  11.5,      0, "2p54header", 1, 6],
+        [  16, 9.5      ,   0, "smd_led", LED0805, "red"],
+        for(i = [-1, 1]) [ 4, 5.5*i, 180, "gterm508", 2],
+        for(i = [-1, 1]) [ 17.38, 3*i, 90, "smd_soic", SOIC8, "" ]
+    ],
+    []];
+
+
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, KY_040, MT3608, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
