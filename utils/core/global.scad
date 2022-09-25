@@ -19,6 +19,7 @@
 
 //
 //! Global constants, functions and modules. This file is used directly or indirectly in every scad file.
+//! See [global_defs.scad](../../global_defs.scad) for a list of global constants.
 //
 include <../../global_defs.scad>
 
@@ -37,6 +38,13 @@ function Len(x) = is_list(x) ? len(x) : 0;                                      
 function r2sides(r) = $fn ? $fn : ceil(max(min(360/ $fa, r * 2 * PI / $fs), 5));    //! Replicates the OpenSCAD logic to calculate the number of sides from the radius
 function r2sides4n(r) = floor((r2sides(r) + 3) / 4) * 4;                            //! Round up the number of sides to a multiple of 4 to ensure points land on all axes
 function limit(x, min, max) = max(min(x, max), min);                                //! Force x in range min <= x <= max
+
+function round_to_layer(z) =  //! Round up to a layer boundary using `layer_height0` for the first layer and `layer_height` for subsequent layers.
+    z <= 0 ? 0 :
+    z <= layer_height0 ? layer_height0 :
+    ceil((z -layer_height0) / layer_height) * layer_height + layer_height0;
+
+function grey(n) = [0.01, 0.01, 0.01] * n;                                          //! Generate a shade of grey to pass to color().
 
 module translate_z(z)                                                               //! Shortcut for Z only translations
     translate([0, 0, z]) children();

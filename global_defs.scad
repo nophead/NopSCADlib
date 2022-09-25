@@ -29,6 +29,7 @@ rr_green = [0, 146/255, 0];                                               // Rep
 crimson  = [220/255, 20/255, 60/255];
 
 layer_height    = is_undef($layer_height)    ? 0.25   : $layer_height;    // layer height when printing
+layer_height0   = is_undef($layer_height0)   ? layer_height : $layer_height0; // height of first layer if different
 extrusion_width = is_undef($extrusion_width) ? 0.5    : $extrusion_width; // filament width when printing
 nozzle          = is_undef($nozzle)          ? 0.45   : $nozzle;          // 3D printer nozzle
 cnc_bit_r       = is_undef($cnc_bit_r)       ? 1.2    : $cnc_bit_r;       // minimum tool radius when milling 2D objects
@@ -51,10 +52,7 @@ eps = 1/128;     // small fudge factor to stop CSG barfing on coincident faces.
 $fa = 6;
 $fs = extrusion_width / 2;
 
-function round_to_layer(z) = ceil(z / layer_height) * layer_height;         //! Round up to a multiple of layer_height.
-
 // Some additional named colours
-function grey(n) = [0.01, 0.01, 0.01] * n;                                  //! Generate a shade of grey to pass to color().
 silver           = [0.75, 0.75, 0.75];
 gold             = [255, 215,   0] / 255;
 brass            = [255, 220, 100] / 255;

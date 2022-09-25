@@ -6918,6 +6918,7 @@ Original version by Doug Moen on the OpenSCAD forum
 <a name="Global"></a>
 ## Global
 Global constants, functions and modules. This file is used directly or indirectly in every scad file.
+See [global_defs.scad](../../global_defs.scad) for a list of global constants.
 
 [utils/core/global.scad](utils/core/global.scad) Implementation.
 
@@ -6930,6 +6931,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 | `cm(x)` | cm to mm conversion |
 | `echoit(x)` | Echo expression and return it, useful for debugging |
 | `foot(x)` | Foot to mm conversion |
+| `grey(n)` | Generate a shade of grey to pass to color(). |
 | `in(list, x)` | Returns true if `x` is an element in the `list` |
 | `inch(x)` | Inch to mm conversion (For fractional inches, 'inch(1 + 7/8)' will work as expected.) |
 | `limit(x, min, max)` | Force x in range min <= x <= max |
@@ -6938,6 +6940,7 @@ Global constants, functions and modules. This file is used directly or indirectl
 | `no_point(str)` | Replace decimal point in string with 'p' |
 | `r2sides(r)` | Replicates the OpenSCAD logic to calculate the number of sides from the radius |
 | `r2sides4n(r)` | Round up the number of sides to a multiple of 4 to ensure points land on all axes |
+| `round_to_layer(z)` | Round up to a layer boundary using `layer_height0` for the first layer and `layer_height` for subsequent layers. |
 | `slice(list, start = 0, end = undef)` | Slice a list or string with Python type semantics |
 | `sqr(x)` | Returns the square of `x` |
 | `yard(x)` | Yard to mm conversion |
