@@ -26,6 +26,7 @@ function sc_length(type)       = type[1]; //! Coupling length
 function sc_diameter(type)     = type[2]; //! Coupling outer diameter
 function sc_diameter1(type)    = type[3]; //! Diameter of smaller shaft
 function sc_diameter2(type)    = type[4]; //! Diameter of larger shaft
+function sc_flexible(type)     = type[5]; //! Flexible coupling
 
 module shaft_coupling(type, colour = "silver") { //! Draw the shaft coupling
     vitamin(str("shaft_coupling(", type[0], "): Shaft coupling ", type[0]));
@@ -34,6 +35,7 @@ module shaft_coupling(type, colour = "silver") { //! Draw the shaft coupling
     radius = sc_diameter(type) / 2;
     r1 = sc_diameter1(type) / 2;
     r2 = sc_diameter2(type) / 2;
+    flexible = is_undef(sc_flexible(type)) ? false : sc_flexible(type);
 
     grub_length = 3;
     module grub_screw_positions() {
@@ -53,6 +55,11 @@ module shaft_coupling(type, colour = "silver") { //! Draw the shaft coupling
                     tube(radius, r1, length / 2, false);
 
                 tube(radius, r2, length / 2, false);
+            }
+            if (flexible) {
+                linear_extrude(length/3, center=true, convexity = 20, twist = -5 * 360)
+                    translate([r1,0,0])
+                       square(radius-r1,1); 
             }
             grub_screw_positions()
                 rotate([180, 0, 0])
