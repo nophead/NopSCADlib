@@ -32,8 +32,8 @@ use <../vitamins/washer.scad>
 use <../vitamins/insert.scad>
 use <foot.scad>
 
-function pbox(name, wall, top_t, base_t, radius, size, foot = false, screw = false, ridges = [0, 0]) //! Construct a printed box property list
-    = concat([name, wall, top_t, base_t, foot, screw, radius, ridges], size);
+function pbox(name, wall, top_t, base_t, radius, size, foot = false, screw = false, short_insert = false, ridges = [0, 0]) //! Construct a printed box property list
+    = concat([name, wall, top_t, base_t, foot, screw, short_insert, radius, ridges], size);
 
 function pbox_name(type)       = type[0]; //! Name to allow more than one box in a project
 function pbox_wall(type)       = type[1]; //! Wall thickness
@@ -41,11 +41,12 @@ function pbox_top(type)        = type[2]; //! Top thickness
 function pbox_base(type)       = type[3]; //! Base thickness, can be zero for no base
 function pbox_foot(type)       = type[4]; //! Printed foot, can be false to suppress feet
 function pbox_base_screw(type) = type[5]; //! Screw type if no feet
-function pbox_radius(type)     = type[6]; //! Internal corner radius
-function pbox_ridges(type)     = type[7]; //! Ridge wavelength and amplitude
-function pbox_width(type)      = type[8]; //! Internal width
-function pbox_depth(type)      = type[9]; //! Internal depth
-function pbox_height(type)     = type[10]; //! Internal height
+function pbox_short_insert(type)=type[6]; //! Use short inserts
+function pbox_radius(type)     = type[7]; //! Internal corner radius
+function pbox_ridges(type)     = type[8]; //! Ridge wavelength and amplitude
+function pbox_width(type)      = type[9]; //! Internal width
+function pbox_depth(type)      = type[10]; //! Internal depth
+function pbox_height(type)     = type[11]; //! Internal height
 
 base_outset = 1;    // How much the base overlaps the inner dimensions
 base_overlap = 2;   // The width of ledge the base sits on
@@ -63,12 +64,12 @@ function pbox_total_height(type) =  //! Total height including base overlap
 function pbox_screw(type) =         //! Foot screw if got feet else base_screw
     let(foot = pbox_foot(type)) foot ? foot_screw(foot) : pbox_base_screw(type);
 
-function pbox_insert(type) = screw_insert(pbox_screw(type)); //! The insert for the base screws
+function pbox_insert(type) = screw_insert(pbox_screw(type), short = pbox_short_insert(type)); //! The insert for the base screws
 function pbox_washer(type) = screw_washer(pbox_screw(type)); //! The washer for the base screws
 
 function pbox_screw_length(type, panel_thickness = 0) =  //! Length of the base screw
     let(foot = pbox_foot(type), screw = pbox_screw(type))
-        screw_length(screw, pbox_base(type) + (foot ? foot_thickness(foot) : panel_thickness), 1, true);
+        screw_length(screw, pbox_base(type) + (foot ? foot_thickness(foot) : panel_thickness), 1,  pbox_insert(type));
 
 function pbox_mid_offset(type) = pbox_ridges(type).y + pbox_wall(type) / 2; // Offset to wall midpoint
 

@@ -5701,7 +5701,7 @@ It can also have printed feet on the base with the screws doubling up to hold th
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `pbox(name, wall, top_t, base_t, radius, size, foot = false, screw = false, ridges = [0, 0])` | Construct a printed box property list |
+| `pbox(name, wall, top_t, base_t, radius, size, foot = false, screw = false, short_insert = false, ridges = [0, 0])` | Construct a printed box property list |
 | `pbox_inclusion(type)` | How far the ledge for the base extends inwards |
 | `pbox_insert(type)` | The insert for the base screws |
 | `pbox_screw(type)` | Foot screw if got feet else base_screw |
