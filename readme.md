@@ -4934,32 +4934,32 @@ high lateral rigidity is not required.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `2screw_block_h_hole(screw = def_screw)` | Transform to front hole |
-| `2screw_block_holes(screw)` | List of transforms to both holes |
-| `2screw_block_v_hole(screw = def_screw)` | Transform to bottom hole |
-| `2screw_block_width(screw = def_screw)` | 2 screw block width is narrower, height and depth are as corner_block |
-| `corner_block_h_holes(screw = def_screw)` | List of transforms to side holes |
-| `corner_block_hole_offset(screw = def_screw)` | Hole offset from the edge |
-| `corner_block_holes(screw)` | List of transforms to all holes |
+| `2screw_block_h_hole(screw = def_screw, short_insert = false)` | Transform to front hole |
+| `2screw_block_holes(screw, short_insert = false)` | List of transforms to both holes |
+| `2screw_block_v_hole(screw = def_screw, short_insert = false)` | Transform to bottom hole |
+| `2screw_block_width(screw = def_screw, short_insert = false)` | 2 screw block width is narrower, height and depth are as corner_block |
+| `corner_block_h_holes(screw = def_screw, short_insert = false)` | List of transforms to side holes |
+| `corner_block_hole_offset(screw = def_screw, short_insert = false)` | Hole offset from the edge |
+| `corner_block_holes(screw, short_insert = false)` | List of transforms to all holes |
 | `corner_block_screw()` | Default screw type |
-| `corner_block_v_hole(screw = def_screw)` | Transform to bottom hole |
-| `corner_block_width(screw = def_screw)` | Block width, depth and height |
+| `corner_block_v_hole(screw = def_screw, short_insert = false)` | Transform to bottom hole |
+| `corner_block_width(screw = def_screw, short_insert = false)` | Block width, depth and height |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `2screw_block(screw = def_screw, name = false)` | Generate the STL for a printed 2screw block |
-| `2screw_block_assembly(screw = def_screw, name = false)` | The printed block with inserts |
-| `2screw_block_h_hole(screw = def_screw)` | Place children at the front screw hole |
-| `2screw_block_holes(screw = def_screw)` | Place children at both screw holes |
-| `2screw_block_v_hole(screw = def_screw)` | Place children at the bottom screw hole |
-| `corner_block(screw = def_screw, name = false)` | Generate the STL for a printed corner block |
-| `corner_block_assembly(screw = def_screw, name = false)` | The printed block with inserts |
-| `corner_block_h_holes(screw = def_screw, index = undef)` | Place children at the side screw holes |
-| `corner_block_holes(screw = def_screw)` | Place children at all the holes |
-| `corner_block_v_hole(screw = def_screw)` | Place children at the bottom screw hole |
-| `fastened_2screw_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false, show_block = true, star_washers = true)` | Printed block with fasteners |
-| `fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true)` | Printed block with all fasteners |
+| `2screw_block(screw = def_screw, name = false, short_insert = false)` | Generate the STL for a printed 2screw block |
+| `2screw_block_assembly(screw = def_screw, name = false, short_insert = false)` | The printed block with inserts |
+| `2screw_block_h_hole(screw = def_screw, short_insert = false)` | Place children at the front screw hole |
+| `2screw_block_holes(screw = def_screw, short_insert = false)` | Place children at both screw holes |
+| `2screw_block_v_hole(screw = def_screw, short_insert = false)` | Place children at the bottom screw hole |
+| `corner_block(screw = def_screw, name = false, short_insert = false)` | Generate the STL for a printed corner block |
+| `corner_block_assembly(screw = def_screw, name = false, short_insert = false)` | The printed block with inserts |
+| `corner_block_h_holes(screw = def_screw, index = undef, short_insert = false)` | Place children at the side screw holes |
+| `corner_block_holes(screw = def_screw, short_insert = false)` | Place children at all the holes |
+| `corner_block_v_hole(screw = def_screw, short_insert = false)` | Place children at the bottom screw hole |
+| `fastened_2screw_block_assembly(thickness, screw = def_screw, thickness_below = undef, name = false, show_block = true, star_washers = true, short_insert = false)` | Printed block with fasteners |
+| `fastened_corner_block_assembly(thickness, screw = def_screw, thickness_below = undef, thickness_side2 = undef, name = false, show_block = true, star_washers = true, short_insert = false)` | Printed block with all fasteners |
 
 ![corner_block](tests/png/corner_block.png)
 
