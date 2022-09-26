@@ -24,8 +24,14 @@ include <../vitamins/inserts.scad>
 module inserts() {
 
     for(i = [0: len(inserts) -1])
-        translate([10 * i, 0])
+        translate([10 * i, 5])
             insert(inserts[i]);
+
+    for(i = [0: len(short_inserts) -1])
+        translate([10 * i, -5])
+            insert(short_inserts[i]);
+
+
 
     stl_colour(pp1_colour)
         translate([len(inserts) * 10, 0]) {

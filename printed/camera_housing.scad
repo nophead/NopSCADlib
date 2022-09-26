@@ -23,7 +23,6 @@
 include <../core.scad>
 include <../vitamins/cameras.scad>
 use <../vitamins/pcb.scad>
-use <../vitamins/insert.scad>
 
 wall = 1.75;
 min_wall = 2 * extrusion_width;

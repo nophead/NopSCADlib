@@ -53,7 +53,7 @@ module insert(type) { //! Draw specified insert
     ring2_h = ring1_h + chamfer1;
     gap = (length - ring1_h - ring2_h - chamfer2) / 3;
 
-    vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type)));
+    vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type), " x ", length, "mm"));
     $fn = 64;
     thread_d = insert_screw_diameter(type);
     explode(20, offset = [0, 0, -5]) translate_z(eps) vflip() {

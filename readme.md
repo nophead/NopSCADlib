@@ -371,7 +371,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 |   1 | `belt(T2p5x6, [ ... ])` |  Belt T2.5 x 6mm x 130mm |
 |   1 | `belt(T5x10, [ ... ])` |  Belt T5 x 10mm x 130mm |
 |   1 | `belt(T5x6, [ ... ])` |  Belt T5 x 6mm x 130mm |
-|   2 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   2 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   2 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
 |   4 | `pulley(GT2x20_toothed_idler)` |  Pulley GT2 idler 20 teeth |
 |   6 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
@@ -1528,10 +1528,14 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   1 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
-|   1 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   1 | `insert(F1BM4)` |  Heatfit insert M4 |
+|   2 | `insert(F1BM2)` |  Heatfit insert M2 x 4mm |
+|   1 | `insert(CNCKM2p5)` |  Heatfit insert M2.5 x 4mm |
+|   1 | `insert(F1BM2p5)` |  Heatfit insert M2.5 x 5.8mm |
+|   1 | `insert(CNCKM3)` |  Heatfit insert M3 x 3mm |
+|   1 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
+|   1 | `insert(CNCKM4)` |  Heatfit insert M4 x 4mm |
+|   1 | `insert(F1BM4)` |  Heatfit insert M4 x 8.2mm |
+|   2 | `insert(CNCKM5)` |  Heatfit insert M5 x 5.8mm |
 
 
 <a href="#top">Top</a>
@@ -3313,6 +3317,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 |:--- |:--- |
 | `screw_boss_diameter(type)` | Boss big enough for nut trap and washer |
 | `screw_head_depth(type, d = 0)` | How far a counter sink head will go into a straight hole diameter d |
+| `screw_insert(screw, short = false, i = 0)` | Find insert to fit specified screw, defaults to longest but can specify the shortest |
 | `screw_length(screw, thickness, washers, insert = false, nyloc = false, nut = false, longer = false)` | Returns the length of the longest or shortest screw that will got through `thickness` and `washers` and possibly an `insert`, `nut` or `nyloc` |
 | `screw_longer_than(x)` | Returns the length of the shortest screw length longer or equal to x |
 | `screw_nut_radius(type)` | Radius of matching nut |
@@ -4579,7 +4584,7 @@ The top bezel can have an optional child, which is subtracted to allow modificat
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   8 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   8 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   4 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
 |   4 | `screw(M3_dome_screw, 20)` |  Screw M3 dome x 20mm |
 |   2 | `sheet(DiBond, 143, 63, 1)` |  Sheet DiBond 143mm x 63mm x 3mm |
@@ -4683,7 +4688,7 @@ fixing_blocks along the sides.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|  60 | `insert(F1BM3)` |  Heatfit insert M3 |
+|  60 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |  44 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   4 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
 |  12 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
@@ -4961,10 +4966,10 @@ high lateral rigidity is not required.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   5 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   5 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
-|   5 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   5 | `insert(F1BM4)` |  Heatfit insert M4 |
+|   5 | `insert(F1BM2)` |  Heatfit insert M2 x 4mm |
+|   5 | `insert(F1BM2p5)` |  Heatfit insert M2.5 x 5.8mm |
+|   5 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
+|   5 | `insert(F1BM4)` |  Heatfit insert M4 x 8.2mm |
 |   5 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
 |   5 | `screw(M2p5_pan_screw, 10)` |  Screw M2.5 pan x 10mm |
 |   5 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
@@ -5253,10 +5258,10 @@ Star washers can be omitted by setting `star_washers` to false.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   3 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   3 | `insert(F1BM2p5)` |  Heatfit insert M2.5 |
-|   3 | `insert(F1BM3)` |  Heatfit insert M3 |
-|   3 | `insert(F1BM4)` |  Heatfit insert M4 |
+|   3 | `insert(F1BM2)` |  Heatfit insert M2 x 4mm |
+|   3 | `insert(F1BM2p5)` |  Heatfit insert M2.5 x 5.8mm |
+|   3 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
+|   3 | `insert(F1BM4)` |  Heatfit insert M4 x 8.2mm |
 |   3 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
 |   3 | `screw(M2p5_pan_screw, 10)` |  Screw M2.5 pan x 10mm |
 |   3 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
@@ -5403,7 +5408,7 @@ inserts don't grip well in rubber.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   1 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   1 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `screw(M3_cap_screw, 8)` |  Screw M3 cap x  8mm |
 |   1 | `screw(M4_cap_screw, 16)` |  Screw M4 cap x 16mm |
@@ -5456,7 +5461,7 @@ Printed handle that can be printed without needing support material due to its t
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `insert(F1BM4)` |  Heatfit insert M4 |
+|   2 | `insert(F1BM4)` |  Heatfit insert M4 x 8.2mm |
 |   2 | `screw(M4_cap_screw, 16)` |  Screw M4 cap x 16mm |
 |   2 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   2 | `star_washer(M4_washer)` |  Washer star M4 x 0.8mm |
@@ -5688,6 +5693,7 @@ It can also have printed feet on the base with the screws doubling up to hold th
 | `pbox_name(type)` | Name to allow more than one box in a project |
 | `pbox_radius(type)` | Internal corner radius |
 | `pbox_ridges(type)` | Ridge wavelength and amplitude |
+| `pbox_short_insert(type)` | Use short inserts |
 | `pbox_top(type)` | Top thickness |
 | `pbox_wall(type)` | Wall thickness |
 | `pbox_width(type)` | Internal width |
@@ -5719,8 +5725,8 @@ It can also have printed feet on the base with the screws doubling up to hold th
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   4 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   4 | `insert(F1BM2)` |  Heatfit insert M2 x 4mm |
+|   4 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   4 | `screw(M2_cap_screw, 6)` |  Screw M2 cap x  6mm |
 |   3 | `screw(M3_pan_screw, 6)` |  Screw M3 pan x  6mm |
 |   4 | `screw(M3_pan_screw, 10)` |  Screw M3 pan x 10mm |
@@ -5849,7 +5855,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   6 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   6 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   6 | `screw(M3_cap_screw, 10)` |  Screw M3 cap x 10mm |
 |   6 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   6 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
@@ -5905,8 +5911,8 @@ Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `insert(F1BM2)` |  Heatfit insert M2 |
-|   2 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   2 | `insert(F1BM2)` |  Heatfit insert M2 x 4mm |
+|   2 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   1 |  |  Ribbon cable 20 way 100mm |
 |   1 |  |  Ribbon cable 8 way 100mm |
 |   2 | `screw(M2_dome_screw, 8)` |  Screw M2 dome x  8mm |
@@ -6024,7 +6030,7 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   4 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   1 | `mains_socket(Contactum)` |  Mains socket 13A |
 |   1 | `mains_socket(MKLOGIC)` |  Mains socket 13A, switched |
 |   2 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
@@ -6081,7 +6087,7 @@ The STL and assembly must be given a name and parameterless wrappers for the stl
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   4 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   4 | `screw(M3_cap_screw, 10)` |  Screw M3 cap x 10mm |
 |   4 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   4 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
@@ -6143,7 +6149,7 @@ be fully customised by passing a list of properties.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   2 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   2 | `screw(M3_pan_screw, 8)` |  Screw M3 pan x  8mm |
 |   2 | `washer(M3_penny_washer)` |  Washer penny  M3 x 12mm x 0.8mm |
 |   2 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
@@ -6865,7 +6871,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `insert(F1BM3)` |  Heatfit insert M3 |
+|   1 | `insert(F1BM3)` |  Heatfit insert M3 x 5.8mm |
 |   1 | `widget(3)` |  Rivet like thing for 3mm sheets |
 |   1 | `screw(M3_cap_screw, 8)` |  Screw M3 cap x  8mm |
 |   1 | `sheet(PMMA3, 20, 20, 1)` |  Sheet acrylic 20mm x 20mm x 3mm |
