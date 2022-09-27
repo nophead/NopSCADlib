@@ -29,5 +29,9 @@ LSN8x8  = ["LSN8x8",  "Leadscrew nut 8 x 8 RobotDigg", 8, 12.75,19, 25.4, 4.1, 0
 SFU1610 = ["SFU1610", "Leadscrew nut for SFU1610",    16, 28, 42.5, 48,    10, 0,   6, 6,   38/2,    M6_cap_screw, 5, 10, 40, "#DFDAC5"];
 
 leadnuts = [LSN8x2, LSN8x8, SFU1610];
+//                                                  L   W   H   Hole    Mounting screws (top)             Nut      Nut mount screw
+//                                                              Pos     Dist L Dist W Type             L            Length
+LNHT8x2 = [ "LNHT8x2", "Lead Screw Nut Housing T8", 30, 34, 30, -1,     20,    24,    M4_cs_cap_screw, 15, LSN8x2,  15 ];
+leadnuthousings = [LNHT8x2];
 
 use <leadnut.scad>
