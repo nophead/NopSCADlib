@@ -3481,6 +3481,7 @@ Shaft couplings
 | `sc_diameter(type)` | Coupling outer diameter |
 | `sc_diameter1(type)` | Diameter of smaller shaft |
 | `sc_diameter2(type)` | Diameter of larger shaft |
+| `sc_flexible(type)` | Flexible coupling |
 | `sc_length(type)` | Coupling length |
 
 ### Modules
@@ -3494,6 +3495,7 @@ Shaft couplings
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `shaft_coupling(SC_5x8_rigid)` |  Shaft coupling SC_5x8_rigid |
+|   1 | `shaft_coupling(SC_6x8_flex)` |  Shaft coupling SC_6x8_flex |
 
 
 <a href="#top">Top</a>
