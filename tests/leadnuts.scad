@@ -25,6 +25,26 @@ module leadnuts()
     layout([for(n = leadnuts) leadnut_flange_dia(n)], 5)
         leadnut(leadnuts[$i]);
 
+module leadnuthousings()
+    layout([for(n = leadnuthousings) leadnuthousing_width(n)], 5) {
+        rotate([0,0,270]) {
+            leadnuthousing(leadnuthousings[$i]);
+            explode(15)
+                leadnuthousing_nut_position(leadnuthousings[$i])
+                    leadnut(leadnuthousing_nut(leadnuthousings[$i]));
+            explode(17 + leadnuthousing_nut_screw_length(leadnuthousings[$i]))
+                translate_z(leadnuthousing_height(leadnuthousings[$i])/2)
+                    leadnuthousing_nut_screw_positions(leadnuthousings[$i])
+                        screw(leadnut_screw(
+                            leadnuthousing_nut(leadnuthousings[$i])),
+                            leadnuthousing_nut_screw_length(leadnuthousings[$i])
+                        );
+        }
+    }
+
 if($preview)
-    let($show_threads = true)
+    let($show_threads = true) {
         leadnuts();
+        translate([0,50,0])
+            leadnuthousings();
+    }

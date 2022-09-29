@@ -23,6 +23,7 @@
 include <../utils/core/core.scad>
 use <../utils/tube.scad>
 use <../utils/thread.scad>
+use <../vitamins/screw.scad>
 
 function leadnut_bore(type)          = type[2];     //! Thread size
 function leadnut_od(type)            = type[3];     //! Outer diameter of the shank
@@ -40,6 +41,17 @@ function leadnut_flat(type)          = type[14];    //! Flat section width
 function leadnut_colour(type)        = type[15];    //! The colour
 
 function leadnut_shank(type)         = leadnut_height(type) - leadnut_flange_t(type) - leadnut_flange_offset(type); //! The length of the shank below the flange
+
+function leadnuthousing_length(type)            = type[2];  //! Length of housing
+function leadnuthousing_width(type)             = type[3];  //! Width of housing
+function leadnuthousing_height(type)            = type[4];  //! Height of housing
+function leadnuthousing_hole_pos(type)          = type[5];  //! Offset from center for nut hole
+function leadnuthousing_screw_dist_l(type)      = type[6];  //! Distance between mounting holes length
+function leadnuthousing_screw_dist_w(type)      = type[7];  //! Distance between mounting holes width
+function leadnuthousing_mount_screw(type)       = type[8];  //! Mounting screw
+function leadnuthousing_mount_screw_len(type)   = type[9];  //! Mounting screw length
+function leadnuthousing_nut(type)               = type[10]; //! Nut type this is suitable for
+function leadnuthousing_nut_screw_length(type)  = type[11]; //! Length of mounting screw for nut
 
 module leadnut_screw_positions(type) { //! Position children at the screw holes
     holes = leadnut_holes(type);
@@ -86,4 +98,59 @@ module leadnut(type) { //! Draw specified leadnut
                                     square([flange_d - flat, flange_d], center = true);
                     }
         }
+}
+
+module leadnuthousing_screw_positions(type) { //! Get screw positions to mount the leadnut housing
+    for(p = [[-1,-1], [1,-1], [1,1], [-1,1]])
+        translate([p.x * leadnuthousing_screw_dist_l(type)/2, p.y * leadnuthousing_screw_dist_w(type)/2, 0])
+            children();
+}
+module leadnuthousing_nut_position(type) { //! The position of the nut may be off-center, use this to get the position
+    translate([leadnuthousing_hole_pos(type),0, leadnuthousing_height(type)/2])
+        children();
+}
+
+module leadnuthousing_nut_screw_positions(type) { //! get screw positions to mount the nut to the nut housing
+    translate([leadnuthousing_hole_pos(type),0, 0])
+        leadnut_screw_positions(leadnuthousing_nut(type))
+            children();
+}
+
+module leadnuthousing(type) { //! Nut housing, to connect a lead nut to another object
+    vitamin(str("nuthousing(", type[0], "): ", type[1]));
+
+    leadnut = leadnuthousing_nut(type);
+    screw = leadnut_screw(leadnut);
+    d = screw_radius(screw) * 2;
+    p = metric_coarse_pitch(d);
+    sl = leadnuthousing_nut_screw_length(type);
+    ms = leadnuthousing_mount_screw(type);
+    msl = leadnuthousing_mount_screw_len(type);
+    md = screw_radius (ms) * 2;
+    mp = metric_coarse_pitch(md);
+
+    color("silver")
+        difference() {
+            cube([leadnuthousing_length(type), leadnuthousing_width(type), leadnuthousing_height(type)], center = true);
+            translate([leadnuthousing_hole_pos(type),0,0]) {
+                cylinder(d=leadnut_od(leadnut), h=leadnuthousing_length(type)+2, center=true);
+                translate_z(leadnut_flange_offset(leadnut))
+                    leadnut_screw_positions(leadnut)
+                cylinder(r=screw_radius(leadnut_screw(leadnut)), h=sl+1);
+            }
+
+            rotate([0,90,0])
+                leadnuthousing_screw_positions(type)
+                    cylinder(r=screw_radius(ms), h=msl+1);
+
+        }
+    if(show_threads) {
+        translate([leadnuthousing_hole_pos(type),0,leadnuthousing_height(type)/2 - sl/2 - leadnut_flange_t(leadnut)])
+            leadnut_screw_positions(leadnut)
+                female_metric_thread(d, p, sl, center = true, colour = silver);
+        rotate([0,90,0])
+            translate_z(msl/2)
+                leadnuthousing_screw_positions(type)
+                    female_metric_thread(md, mp, msl, center = true, colour = silver);
+    }
 }
