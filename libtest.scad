@@ -279,6 +279,9 @@ translate([x0, pulleys_y])
 translate([x0, leadnuts_y])
     leadnuts();
 
+translate([x0 + 120, leadnuts_y])
+    leadnuthousings();
+
 translate([x0, linear_bearings_y]) {
     linear_bearings();
     rods();

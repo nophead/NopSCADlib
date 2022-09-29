@@ -1650,6 +1650,16 @@ Nuts for leadscrews.
 | `leadnut_od(type)` | Outer diameter of the shank |
 | `leadnut_pitch(type)` | Screw pitch |
 | `leadnut_screw(type)` | The type of the fixing screws |
+| `leadnuthousing_height(type)` | Height of housing |
+| `leadnuthousing_hole_pos(type)` | Offset from center for nut hole |
+| `leadnuthousing_length(type)` | Length of housing |
+| `leadnuthousing_mount_screw(type)` | Mounting screw |
+| `leadnuthousing_mount_screw_len(type)` | Mounting screw length |
+| `leadnuthousing_nut(type)` | Nut type this is suitable for |
+| `leadnuthousing_nut_screw_length(type)` | Length of mounting screw for nut |
+| `leadnuthousing_screw_dist_l(type)` | Distance between mounting holes length |
+| `leadnuthousing_screw_dist_w(type)` | Distance between mounting holes width |
+| `leadnuthousing_width(type)` | Width of housing |
 
 ### Functions
 | Function | Description |
@@ -1661,15 +1671,21 @@ Nuts for leadscrews.
 |:--- |:--- |
 | `leadnut(type)` | Draw specified leadnut |
 | `leadnut_screw_positions(type)` | Position children at the screw holes |
+| `leadnuthousing(type)` | Nut housing, to connect a lead nut to another object |
+| `leadnuthousing_nut_position(type)` | The position of the nut may be off-center, use this to get the position |
+| `leadnuthousing_nut_screw_positions(type)` | get screw positions to mount the nut to the nut housing |
+| `leadnuthousing_screw_positions(type)` | Get screw positions to mount the leadnut housing |
 
 ![leadnuts](tests/png/leadnuts.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `leadnut(LSN8x2)` |  Leadscrew nut 8 x 2 |
+|   1 | `nuthousing(LNHT8x2)` |  Lead Screw Nut Housing T8 |
+|   2 | `leadnut(LSN8x2)` |  Leadscrew nut 8 x 2 |
 |   1 | `leadnut(LSN8x8)` |  Leadscrew nut 8 x 8 RobotDigg |
 |   1 | `leadnut(SFU1610)` |  Leadscrew nut for SFU1610 |
+|   4 | `screw(M3_cap_screw, 15)` |  Screw M3 cap x 15mm |
 
 
 <a href="#top">Top</a>
