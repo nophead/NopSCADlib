@@ -28,14 +28,14 @@ M5_nut_depth = 4;
 M6_nut_depth = 5;
 M8_nut_depth = 6.5;
 
-//                                      s    r    t    n     w              t                  t
-//                                      c    a    h    y     a              r                  h
-//                                      r    d    i    l     s              a                  r
-//                                      e    i    c    o     h              p                  e
-//                                      w    u    k    c     e                                 d
-//                                           s    n          r              d
-//                                                e    t                    e                  p
-//                                                s    h                    p                  i
+//                                      s    d    t    n     w              t                  t
+//                                      c    i    h    y     a              r                  h
+//                                      r    a    i    l     s              a                  r
+//                                      e    m    c    o     h              p                  e
+//                                      w    e    k    c     e                                 d
+//                                           t    n          r              d
+//                                           e    e    t                    e                  p
+//                                           r    s    h                    p                  i
 //                                                s    k                    t                  t
 //                                                                          h                  c
 //                                                                                             h
