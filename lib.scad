@@ -63,6 +63,7 @@ include <vitamins/spools.scad>
 include <vitamins/ssrs.scad>
 include <vitamins/stepper_motors.scad>
 include <vitamins/swiss_clips.scad>
+include <vitamins/terminal.scad>
 include <vitamins/toggles.scad>
 include <vitamins/transformers.scad>
 include <vitamins/tubings.scad>
