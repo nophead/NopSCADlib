@@ -28,6 +28,8 @@ by downloading https://github.com/nophead/NopSCADlib/archive/master.zip and unzi
 
 The `NopSCADlib/scripts` directory needs to be added to the executable search path, `PATH` on Windows and `path` on Linux and Mac.
 
+Note that on Linux and OSX the full file name including the `.py` will be needed.
+
 The installation can be tested by opening `NopSCADlib/libtest.scad` in the OpenSCAD GUI. It should render all the objects in the library in about 1 minute.
 
 Running `tests` from the command line will run all the tests in the `tests` directory and build the `readme.md` catalog for GitHub and render it to `readme.html`
