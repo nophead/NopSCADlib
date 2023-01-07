@@ -76,7 +76,7 @@ module render_if(render = true, convexity = 2)      //! Renders an object if `re
 
 module extrude_if(h, center = true)                 //! Extrudes 2D object to 3D when `h` is nonzero, otherwise leaves it 2D
     if(h)
-        linear_extrude(h, center = center, convexity = 2) // 3D
+        linear_extrude(h, center = center, convexity = 5) // 3D
             children();
     else
         children();                                 // 2D

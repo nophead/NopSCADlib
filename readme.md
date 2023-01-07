@@ -37,16 +37,17 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
 <tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#Knob">Knob</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#LED_bezel">LED_bezel</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td></td><td></td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
@@ -1788,7 +1789,7 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `led(LED10mm, "green")` |  LED 10 mm green |
+|   1 | `led(LED10mm, "orange")` |  LED 10 mm orange |
 |   1 | `led(LED3mm, "green")` |  LED 3 mm green |
 |   1 | `led(LED5mm, "blue")` |  LED 5 mm blue |
 |   1 | `led(LED8mm)` |  LED 8 mm red |
@@ -5563,6 +5564,72 @@ The STL includes a support membrane that needs to be cut out and a thread needs 
 |   1 | imperial_pot_knob.stl |
 |   1 | imperial_pot_x2_knob.stl |
 |   1 | metric_pot_knob.stl |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="LED_bezel"></a>
+## LED_bezel
+Printed LED bezels for panel mounting
+
+[printed/led_bezel.scad](printed/led_bezel.scad) Implementation.
+
+[tests/LED_bezel.scad](tests/LED_bezel.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `led_bezel_flange(type)` | Flange width |
+| `led_bezel_flange_t(type)` | Flange thickness |
+| `led_bezel_height(type)` | Total height |
+| `led_bezel_led(type)` | The LED |
+| `led_bezel_wall(type)` | Wall thickness |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `led_bezel(led, flange = 1, flange_h = 1, wall = 1, height = 8)` | Constructor |
+| `led_bezel_hole_r(type)` | Panel hole radius |
+| `led_bezel_r(type)` | Radius of the tube |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `led_bezel(type)` | Makes the STL for the bezel |
+| `led_bezel_assembly(type, colour = "red")` | Led bezel with LED |
+| `led_bezel_fastened_assembly(type, t, colour = "red")` | Led bezel fitted to panel with  and retaining ring |
+| `led_bezel_retainer(type)` | Makes the STL for the retaining ring |
+
+![led_bezel](tests/png/led_bezel.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `led(LED10mm, "orange")` |  LED 10 mm orange |
+|   1 | `led(LED3mm, "yellow")` |  LED 3 mm yellow |
+|   1 | `led(LED5mm, "blue")` |  LED 5 mm blue |
+|   1 | `led(LED8mm)` |  LED 8 mm red |
+
+### Printed
+| Qty | Filename |
+| ---:|:--- |
+|   1 | LED10mm_bezel.stl |
+|   1 | LED10mm_bezel_retainer.stl |
+|   1 | LED3mm_bezel.stl |
+|   1 | LED3mm_bezel_retainer.stl |
+|   1 | LED5mm_bezel.stl |
+|   1 | LED5mm_bezel_retainer.stl |
+|   1 | LED8mm_bezel.stl |
+|   1 | LED8mm_bezel_retainer.stl |
+
+### Assemblies
+| Qty | Name |
+| ---:|:--- |
+|   1 | LED10mm_orange_bezel_assembly |
+|   1 | LED3mm_yellow_bezel_assembly |
+|   1 | LED5mm_blue_bezel_assembly |
+|   1 | LED8mm_red_bezel_assembly |
 
 
 <a href="#top">Top</a>

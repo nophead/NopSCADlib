@@ -74,6 +74,7 @@ use <tests/LDRs.scad>
 use <tests/LEDs.scad>
 use <tests/light_strips.scad>
 use <tests/linear_bearings.scad>
+use <tests/LED_bezel.scad>
 use <tests/LED_meters.scad>
 use <tests/magnets.scad>
 use <tests/microswitches.scad>
@@ -148,6 +149,9 @@ cable_grommets_y = 0;
 
 translate([x5, cable_grommets_y])
     cable_grommets();
+
+translate([x5, cable_grommets_y + 30])
+    led_bezels();
 
 translate([x5 + 50, cable_grommets_y])
     ribbon_clamps();

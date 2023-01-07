@@ -16,14 +16,22 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../utils/core/core.scad>
+include <../core.scad>
 use <../utils/layout.scad>
 
 include <../vitamins/leds.scad>
+use <../printed/led_bezel.scad>
 
-module leds()
-    layout([for(l = LEDs) led_diameter(l)], 5)
-        led(LEDs[$i], ["green", "blue", "red", "orange"][$i % 4]);
+module led_bezels()
+    layout([for(l = LEDs) led_diameter(l)], 6) let(l = LEDs[$i], b = led_bezel(l))
+        if($preview)
+            led_bezel_fastened_assembly(b, 3, ["yellow", "blue", "red", "orange"][$i % 4]);
+        else {
+            led_bezel(b);
 
-if($preview)
-    leds();
+            translate([0, -20])
+                led_bezel_retainer(b);
+        }
+
+
+led_bezels();
