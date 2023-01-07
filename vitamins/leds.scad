@@ -27,8 +27,9 @@
 //
 LED3mm  = ["LED3mm",   3,  3.15, 1.15, 4.6, 2.54, 0.4];
 LED5mm  = ["LED5mm",   5,  5.9,  1.1,  9.0, 2.54, 0.4];
+LED8mm  = ["LED8mm",   8,  9.2,  1.95,11.0, 2.54, 0.4];
 LED10mm = ["LED10mm", 10, 11.0,  2.0, 13.5, 2.54, 0.4];
 
-LEDs = [LED3mm, LED5mm, LED10mm];
+LEDs = [LED3mm, LED5mm, LED8mm, LED10mm];
 
 use <led.scad>

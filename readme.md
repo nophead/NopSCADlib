@@ -1788,9 +1788,10 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `led(LED10mm)` |  LED 10 mm red |
+|   1 | `led(LED10mm, "green")` |  LED 10 mm green |
 |   1 | `led(LED3mm, "green")` |  LED 3 mm green |
 |   1 | `led(LED5mm, "blue")` |  LED 5 mm blue |
+|   1 | `led(LED8mm)` |  LED 8 mm red |
 
 
 <a href="#top">Top</a>
