@@ -3348,6 +3348,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 | `screw(type, length, hob_point = 0, nylon = false)` | Draw specified screw, optionally hobbed or nylon |
 | `screw_and_washer(type, length, star = false, penny = false)` | Screw with a washer which can be standard or penny and an optional star washer on top |
 | `screw_countersink(type, drilled = true)` | Countersink shape |
+| `screw_keyhole(type, h = 0)` | Make keyhole slot to accept and retain screw head |
 | `screw_polysink(type, h = 100, alt = false, sink = 0)` | A countersink hole made from stacked polyholes for printed parts, default is flush, `sink` can be used to recess the head |
 
 ![screws](tests/png/screws.png)

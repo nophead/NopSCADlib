@@ -328,6 +328,19 @@ module screw_polysink(type, h = 100, alt = false, sink = 0) { //! A countersink 
         }
 }
 
+module screw_keyhole(type, h = 0) { //! Make keyhole slot to accept and retain screw head
+    r = screw_head_radius(type);
+    extrude_if(h) {
+        translate([0, - 2 * r])
+            drill(r + 0.5, 0);
+
+        hull()
+            for(y = [0, -2 * r])
+                translate([0, y])
+                    drill(screw_clearance_radius(type), 0);
+    }
+}
+
 module screw_and_washer(type, length, star = false, penny = false) { //! Screw with a washer which can be standard or penny and an optional star washer on top
     washer = screw_washer(type);
     head_type = screw_head_type(type);
