@@ -119,7 +119,8 @@ module hinge_male(type, female = false) {       //! The half with the stationary
         }
 }
 
-module hinge_female(type) hinge_male(type, true);
+module hinge_female(type) //! The half without the pin
+    hinge_male(type, true);
 
 module hinge_both(type) { //! Both parts together for printing
     hinge_male(type);

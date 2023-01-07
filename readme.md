@@ -5357,6 +5357,7 @@ This allows the hinges and one set of screws to belong to one assembly and the o
 |:--- |:--- |
 | `hinge_both(type)` | Both parts together for printing |
 | `hinge_fastened_assembly(type, thickness1, thickness2, angle, show_hinge = true)` | Assembled hinge with its fasteners |
+| `hinge_female(type)` | The half without the pin |
 | `hinge_male(type, female = false)` | The half with the stationary pin |
 | `hinge_screw_positions(type)` | Place children at the screw positions |
 
