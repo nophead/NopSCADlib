@@ -120,8 +120,6 @@ module bbox_drill_holes(type, t)
         drill(screw_clearance_radius(bbox_screw(type)), 0);
 
 module bbox_base_blank(type) { //! 2D template for the base
-    dxf(str(bbox_name(type), "_base"));
-
     difference() {
         sheet_2D(bbox_base_sheet(type), bbox_width(type), bbox_depth(type), 1);
 
@@ -130,8 +128,6 @@ module bbox_base_blank(type) { //! 2D template for the base
 }
 
 module bbox_top_blank(type) { //! 2D template for the top
-    dxf(str(bbox_name(type), "_top"));
-
     t = sheet_thickness(bbox_sheets(type));
 
     difference() {
@@ -147,8 +143,6 @@ function subst_sheet(type, sheet) =
         sheet ? assert(sheet_thickness(sheet) == sheet_thickness(s)) sheet : s;
 
 module bbox_left_blank(type, sheet = false) { //! 2D template for the left side
-    dxf(str(bbox_name(type), "_left"));
-
     t = sheet_thickness(bbox_sheets(type));
     bb = sheet_thickness(bbox_base_sheet(type));
 
@@ -161,8 +155,6 @@ module bbox_left_blank(type, sheet = false) { //! 2D template for the left side
 }
 
 module bbox_right_blank(type, sheet = false) { //! 2D template for the right side
-    dxf(str(bbox_name(type), "_right"));
-
     t = sheet_thickness(bbox_sheets(type));
     bb = sheet_thickness(bbox_base_sheet(type));
 
@@ -175,8 +167,6 @@ module bbox_right_blank(type, sheet = false) { //! 2D template for the right sid
 }
 
 module bbox_front_blank(type, sheet = false, width = 0) { //! 2D template for the front
-    dxf(str(bbox_name(type), "_front"));
-
     t = sheet_thickness(bbox_sheets(type));
     bb = sheet_thickness(bbox_base_sheet(type));
     bt = sheet_thickness(bbox_top_sheet(type));
@@ -190,8 +180,6 @@ module bbox_front_blank(type, sheet = false, width = 0) { //! 2D template for th
 }
 
 module bbox_back_blank(type, sheet = false) { //! 2D template for the back
-    dxf(str(bbox_name(type), "_back"));
-
     bb = sheet_thickness(bbox_base_sheet(type));
     t = sheet_thickness(bbox_sheets(type));
 
@@ -205,27 +193,33 @@ module bbox_back_blank(type, sheet = false) { //! 2D template for the back
 
 module bbox_base(type)  //! Default base, can be overridden to customise
     render_2D_sheet(bbox_base_sheet(type))
-        bbox_base_blank(type);
+        dxf(str(bbox_name(type), "_base"))
+            bbox_base_blank(type);
 
 module bbox_top(type)   //! Default top, can be overridden to customise
     render_2D_sheet(bbox_top_sheet(type))
-        bbox_top_blank(type);
+        dxf(str(bbox_name(type), "_top"))
+            bbox_top_blank(type);
 
 module bbox_back(type)  //! Default back, can be overridden to customise
     render_2D_sheet(bbox_sheets(type))
-        bbox_back_blank(type);
+        dxf(str(bbox_name(type), "_back"))
+            bbox_back_blank(type);
 
 module bbox_front(type) //! Default front, can be overridden to customise
     render_2D_sheet(bbox_sheets(type))
-        bbox_front_blank(type);
+        dxf(str(bbox_name(type), "_front"))
+            bbox_front_blank(type);
 
 module bbox_left(type)  //! Default left side, can be overridden to customise
     render_2D_sheet(bbox_sheets(type))
-        bbox_left_blank(type);
+        dxf(str(bbox_name(type), "_left"))
+            bbox_left_blank(type);
 
 module bbox_right(type) //! Default right side, can be overridden to customise
     render_2D_sheet(bbox_sheets(type))
-        bbox_right_blank(type);
+        dxf(str(bbox_name(type), "_right"))
+            bbox_right_blank(type);
 
 module _bbox_assembly(type, top = true, base = true, left = true, right = true, back = true, front = true) { //! The box assembly, wrap with a local copy without parameters
     width = bbox_width(type);

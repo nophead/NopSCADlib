@@ -453,8 +453,6 @@ module box_screw_hole_positions(type) {
 }
 
 module box_base_blank(type) { //! Generates a 2D template for the base sheet
-    dxf(str(box_name(type), "_base"));
-
     difference() {
         sheet_2D(box_base_sheet(type), box_width(type), box_depth(type), box_sheet_r(type));
 
@@ -464,8 +462,6 @@ module box_base_blank(type) { //! Generates a 2D template for the base sheet
 }
 
 module box_top_blank(type) {  //! Generates a 2D template for the top sheet
-    dxf(str(box_name(type), "_top"));
-
     difference() {
         sheet_2D(box_top_sheet(type), box_width(type), box_depth(type), box_sheet_r(type));
 
@@ -479,8 +475,6 @@ function subst_sheet(type, sheet) =
         sheet ? assert(sheet_thickness(sheet) == sheet_thickness(s)) sheet : s;
 
 module box_shelf_blank(type, sheet = false) { //! Generates a 2D template for a shelf sheet
-    dxf(str(box_name(type), "_shelf"));
-
     difference() {
         sheet_2D(subst_sheet(type, sheet), box_width(type) - bezel_clearance, box_depth(type) - bezel_clearance, 1);
 
@@ -579,50 +573,44 @@ module box_shelf_bracket_section(type, rows, cols, x, y) { //! Generates section
             children();
 }
 
-module box_left_blank(type, sheet = false) { //! Generates a 2D template for the left sheet, `sheet` can be set to override the type
-    dxf(str(box_name(type), "_left"));
-
+module box_left_blank(type, sheet = false) //! Generates a 2D template for the left sheet, `sheet` can be set to override the type
     sheet_2D(subst_sheet(type, sheet), box_depth(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
-}
 
-module box_right_blank(type, sheet = false) { //! Generates a 2D template for the right sheet, `sheet` can be set to override the type
-    dxf(str(box_name(type), "_right"));
-
+module box_right_blank(type, sheet = false) //! Generates a 2D template for the right sheet, `sheet` can be set to override the type
     sheet_2D(subst_sheet(type, sheet), box_depth(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
-}
 
-module box_front_blank(type, sheet = false) { //! Generates a 2D template for the front sheet, `sheet` can be set to override the type
-    dxf(str(box_name(type), "_front"));
-
+module box_front_blank(type, sheet = false) //! Generates a 2D template for the front sheet, `sheet` can be set to override the type
     sheet_2D(subst_sheet(type, sheet), box_width(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
-}
 
-module box_back_blank(type, sheet = false) { //! Generates a 2D template for the back sheet, `sheet` can be set to override the type
-    dxf(str(box_name(type), "_back"));
-
+module box_back_blank(type, sheet = false) //! Generates a 2D template for the back sheet, `sheet` can be set to override the type
     sheet_2D(subst_sheet(type, sheet), box_width(type) - sheet_reduction(type), box_height(type) - sheet_reduction(type), 1);
-}
 
 module box_base(type)   //! Default base, can be overridden to customise
     render_2D_sheet(box_base_sheet(type))
-        box_base_blank(type);
+        dxf(str(box_name(type), "_base"))
+            box_base_blank(type);
 
 module box_top(type)    //! Default top, can be overridden to customise
     render_2D_sheet(box_top_sheet(type))
-        box_top_blank(type);
+        dxf(str(box_name(type), "_top"))
+            box_top_blank(type);
 
 module box_back(type)   //! Default back, can be overridden to customise
     render_2D_sheet(box_sheets(type))
-        box_back_blank(type);
+        dxf(str(box_name(type), "_back"))
+            box_back_blank(type);
 
 module box_front(type)  //! Default front, can be overridden to customise
     render_2D_sheet(box_sheets(type))
-        box_front_blank(type);
+        dxf(str(box_name(type), "_front"))
+            box_front_blank(type);
 
 module box_left(type)   //! Default left side, can be overridden to customise
     render_2D_sheet(box_sheets(type))
-        box_left_blank(type);
+        dxf(str(box_name(type), "_left"))
+            box_left_blank(type);
 
 module box_right(type) //! Default right side, can be overridden to customise
     render_2D_sheet(box_sheets(type))
-        box_right_blank(type);
+        dxf(str(box_name(type), "_right"))
+            box_right_blank(type);
