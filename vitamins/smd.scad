@@ -24,6 +24,7 @@ include <../utils/core/core.scad>
 
 use <../utils/tube.scad>
 use <../utils/sweep.scad>
+use <../utils/sector.scad>
 
 function smd_led_size(type) = type[1]; //! Body length, width and height
 function smd_led_lens(type) = type[2]; //! Lens length width and height
@@ -227,4 +228,206 @@ module smd_soic(type, value) { //! Draw an SMD SOIC
                 resize([size.x * 0.9, size.y / 2])
                     text(value, halign = "center", valign = "center");
 
+}
+
+function smd_diode_size(type)   = type[1]; //! Body length, width and height
+function smd_diode_z(type)      = type[2]; //! Height above PCB surface
+function smd_diode_lead_z(type) = type[3]; //! Top of lead frame from top
+function smd_diode_leads(type)  = type[4]; //! Lead extent in x, width, thickness and gap
+
+module smd_diode(type, value) { //! Draw an SMD diode
+    vitamin(str("smd_diode(", type[0], "): ", type[0], " package ", value));
+
+    slant = 5;                              //! 5 degree body draft angle
+    size = smd_diode_size(type);
+    z0 = smd_diode_z(type);
+    z2 = z0 + size.z;
+    z1 = z2 - smd_diode_lead_z(type);
+    stripe = size.x / 5;
+    leads = smd_diode_leads(type);
+    gap = leads[3];
+    gap2 = gap - leads.z * 2;
+
+    color(grey(20))
+        difference() {
+            hull()
+                for(z = [z0, z1, z2], inset = abs(z - z1) * tan(slant))
+                    translate_z(z)
+                        cube([size.x - 2 * inset, size.y - 2 * inset, eps], center = true);
+
+            for(side = [-1, 1])
+                translate([side * (size.x / 2 - (size.x - gap2) / 4), 0, eps])
+                    cube([(size.x - gap2) / 2, size.y, 3 * leads.z], center = true);
+        }
+
+    color("white")
+        translate([-stripe / 2, 0, z2])
+            linear_extrude(eps)
+                resize([0.9 * (size.x - stripe), size.y / 2])
+                    text(value, halign = "center", valign = "center");
+
+    color(grey(90)) {
+        inset = (z2 - z1) * tan(slant);
+        translate([size.x / 2 - stripe, -size.y / 2 + inset, z2])
+            cube([stripe - inset, size.y - 2 * inset, eps]);
+    }
+
+    color(silver)
+        translate_z(z1 / 2)
+            rotate([90, 0, 0])
+                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = 32)
+                    difference() {
+                        rounded_square([leads.x, z1], 2 * leads.z);
+
+                        rounded_square([leads.x - 2 * leads.z, z1 - 2 * leads.z], leads.z);
+
+                        translate([0, - z1 / 2])
+                            square([gap, leads.z * 2 + eps], center = true);
+                    }
+
+}
+
+function smd_inductor_size(type)   = type[1]; //! Body length, width and height
+function smd_inductor_z(type)      = type[2]; //! Height above PCB surface
+function smd_inductor_lead_z(type) = type[3]; //! Top of lead frame from top
+function smd_inductor_leads(type)  = type[4]; //! Lead extent in x, width, thickness and gap
+function smd_inductor_colour(type) = type[5]; //! Body colour
+
+module smd_inductor(type, value) { //! Draw an SMD inductor
+    vitamin(str("smd_inductor(", type[0], "): ", type[0], " package ", value));
+
+    size = smd_inductor_size(type);
+    z0 = smd_inductor_z(type);
+    z1 = smd_inductor_lead_z(type);
+    z2 = z0 + size.z;
+    leads = smd_inductor_leads(type);
+    gap = leads[3];
+    gap2 = gap - leads.z * 2;
+
+    color(smd_inductor_colour(type))
+        difference() {
+            translate_z(z0)
+                rounded_rectangle(size, 0.5);
+
+            for(side = [-1, 1])
+                translate([side * (size.x / 2 - (size.x - gap2) / 4), 0, eps])
+                    cube([(size.x - gap2) / 2, leads.y + 2 * leads.z, 3 * leads.z], center = true);
+        }
+
+    color("white")
+        translate_z(z2)
+            linear_extrude(eps)
+                resize([0.9 * size.x, size.y / 2])
+                    text(value, halign = "center", valign = "center");
+
+    color(silver)
+        translate_z(z1 / 2)
+            rotate([90, 0, 0])
+                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = 32)
+                    difference() {
+                        rounded_square([leads.x, z1], 2 * leads.z);
+
+                        rounded_square([leads.x - 2 * leads.z, z1 - 2 * leads.z], leads.z);
+
+                        translate([0, - z1 / 2])
+                            square([gap, leads.z * 2 + eps], center = true);
+                    }
+}
+
+function smd_pot_size(type)     = type[1]; //! Base length, width and height
+function smd_pot_contacts(type) = type[2]; //! Contacts width, depth, pitch and width, depth, gap for center contact
+function smd_pot_wiper(type)    = type[3]; //! Wiper diameter, offset, thickness, height, d1, d2, d3, d4
+function smd_pot_cross(type)    = type[4]; //! Cross head slot for screwdriver
+function smd_pot_flat(type)     = type[5]; //! Flat at the back of the wiper
+
+module smd_pot(type, value) { //! Draw an SMD pot
+    vitamin(str("smd_pot(", type[0], "): ", type[0], " package ", value));
+
+    size = smd_pot_size(type);
+    contacts = smd_pot_contacts(type);
+    contacts_pitch = contacts[2];
+    centre_contact_w = contacts[3];
+    centre_contact_d = contacts[4];
+    centre_contact_gap = contacts[5];
+    wiper = smd_pot_wiper(type);
+    wiper_r1 = wiper.x / 2; // outer radius
+    wiper_y = wiper.y;
+    wiper_t = wiper.z;
+    wiper_h = wiper[3];
+    wiper_r2 = wiper[4] / 2;   // inner radius at the top
+    wiper_r3 = wiper[5] / 2;   // inner radius at the bottom
+    wiper_r4 = wiper[6] / 2;   // outer radius of rivet
+    wiper_r5 = wiper[7] / 2;   // inner radius of rivet
+    cross = smd_pot_cross(type);
+    flat = smd_pot_flat(type);
+    track_or = size.x * 0.48;
+    track_ir = track_or * 0.6;
+
+    color(grey(90))
+        translate_z(size.z / 2)
+            cube(size, center = true);
+
+    color(silver) {
+        for(side = [-1, 1])
+            translate([side * contacts_pitch, -size.y / 2 + contacts.y / 2, size.z / 2])
+                cube([contacts.x, contacts.y, size.z] + 2 * eps * [1,1,1], center = true);
+
+        translate([0, size.y / 2 - centre_contact_d / 2, size.z / 2])
+            render() difference() {
+                cube([centre_contact_w, centre_contact_d + 2 * eps, size.z + 2 * eps], center = true);
+
+                translate_z(size.z / 2)
+                    cube([centre_contact_gap, centre_contact_d + 4 * eps, 2 * eps], center = true);
+            }
+        slope_angle = atan((wiper_h - size.z - wiper_t) / (wiper_r2 - wiper_r3));
+        dx = wiper_t / tan(90 - slope_angle / 2);
+        translate([0, wiper_y]) {
+            render() difference() {
+                rotate_extrude() {
+                    polygon([
+                        [wiper_r5,      size.z + wiper_t],
+                        [wiper_r3,      size.z + wiper_t],
+                        [wiper_r2,      wiper_h],
+                        [wiper_r1,      wiper_h],
+                        [wiper_r1,      wiper_h - wiper_t],
+                        [wiper_r2 + dx, wiper_h - wiper_t],
+                        [wiper_r3 + dx, size.z],
+                        [wiper_r5,      size.z],
+                    ]);
+                    r = (wiper_r4 - wiper_r5) / 2;
+                    translate([wiper_r5 + r, size.z + wiper_t])
+                        circle(r, $fn = 16);
+                }
+
+                translate_z(size.z + wiper_t)
+                    linear_extrude(wiper_h - size.z - wiper_t)
+                        difference() {
+                            union() {
+                                square(cross, center = true);
+
+                                rotate(90)
+                                    square(cross, center = true);
+                            }
+                            circle(wiper_r4 + eps);
+                        }
+
+            }
+            translate([0, -(wiper_r1 + cross.x / 2) / 2, wiper_h - wiper_t / 2])
+                cube([flat, wiper_r1 - cross.x / 2, wiper_t], center = true);
+        }
+    }
+
+    color("black")
+        translate([0, wiper.y, size.z])
+            linear_extrude(eps) {
+                difference() {
+                    sector(track_or, -270 / 2 + 90, 270 / 2 + 90);
+                    circle(track_ir);
+                }
+                track_w = track_or - track_ir;
+                track_l = wiper.y - track_ir / sqrt(2) + size.y / 2 - contacts.y;
+                for(side = [-1, 1])
+                    translate([side * (track_ir / sqrt(2) + track_w / 2), -wiper.y -size.y / 2 + track_l / 2 + contacts.y])
+                        square([track_w, track_l], center = true);
+            }
 }

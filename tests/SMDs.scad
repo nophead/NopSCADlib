@@ -34,16 +34,30 @@ module smds() {
             let(c = smd_capacitors[$i])
                 smd_capacitor(c, smd_cap_size(c).y * 0.8);
 
-    translate([0, 12])
+    translate([0, 9])
+        layout([for(d = smd_diodes) smd_diode_size(d).x], 1)
+            let(d = smd_diodes[$i])
+                smd_diode(d, ["SS34"][$i]);
+
+    translate([0, 15])
         layout([for(s = smd_sots) smd_sot_size(s).x], 1)
             let(s = smd_sots[$i])
                 smd_sot(s, ["2N7000", "FZT851"][$i]);
 
-    translate([0, 20])
+    translate([0, 21])
+        layout([for(p = smd_pots) smd_pot_size(p).x], 1)
+            let(p = smd_pots[$i])
+                smd_pot(p, "10K");
+
+    translate([0, 28])
         layout([for(s = smd_soics) smd_soic_size(s).x], 1)
             let(s = smd_soics[$i])
                 smd_soic(s, s[0]);
 
+    translate([0, 36])
+        layout([for(i = smd_inductors) smd_inductor_size(i).x], 1)
+            let(i = smd_inductors[$i])
+                smd_inductor(i, "4R7");
 }
 
 if($preview)

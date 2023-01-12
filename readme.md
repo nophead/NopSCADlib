@@ -2438,14 +2438,17 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `box_header(2p54header, 4, 2)` |  Box header 4 x 2 |
 |   1 | `d_plug(DCONN9, pcb = true)` |  D-type 9 way PCB mount plug |
 |   1 | `dil_socket(12, 15.24)` |  DIL socket 24 x 0.6" |
+|   1 | `smd_diode(DO241AC)` |  DO241AC package SS34 |
 |   1 | `hdmi(hdmi_full)` |  HDMI socket |
 |   1 | `pdip(24, 27C32, w = 15.24)` |  IC 27C32 PDIP24 |
 |   1 | `pdip(8, NE555)` |  IC NE555 PDIP8 |
 |   1 | `idc_transition(2p54header, 5)` |  IDC transition header 5 x 2 |
+|   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
 |   1 | `potentiometer(KY_040_encoder)` |  KY_040_encoder |
 |   1 | `led(LED10mm, "yellow")` |  LED 10 mm yellow |
 |   1 | `led(LED3mm)` |  LED 3 mm red |
 |   1 | `led(LED5mm, "orange")` |  LED 5 mm orange |
+|   1 | `led(LED8mm, "blue")` |  LED 8 mm blue |
 |   1 | `microswitch(small_microswitch)` |  Microswitch DM1-00P-110-3 |
 |   1 | `hdmi(hdmi_mini)` |  Mini HDMI socket |
 |   1 | `molex_254(2)` |  Molex KK header 2 way |
@@ -2476,6 +2479,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
 |   1 | `square_button(button_4p5mm)` |  Square button 4.5mm |
 |   1 | `square_button(button_6mm)` |  Square button 6mm |
+|   1 | `smd_pot(TC33X1)` |  TC33X1 package 10K |
 |   1 | `pcb(TMC2130)` |  TMC2130 |
 |   1 | `green_terminal(gt_5p08, 2)` |  Terminal block 2 way 0.2" |
 |   2 | `green_terminal(gt_6p35, 2)` |  Terminal block 2 way 0.25" |
@@ -3578,7 +3582,7 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(AL3, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 3mm |
 |   1 | `sheet(AL6, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 6mm |
 |   1 | `sheet(AL8, 30, 30, 2)` |  Aluminium tooling plate 30mm x 30mm x 8mm |
-|   1 | `sheet(Spring05, 30, 30, 2)` |  Bi-metal saw blade 30mm x 30mm x 0.5mm |
+|   1 | `sheet(Spring08, 30, 30, 2)` |  Bi-metal saw blade 30mm x 30mm x 0.8mm |
 |   1 | `sheet(Cardboard, 30, 30, 2)` |  Corrugated cardboard 30mm x 30mm x 5mm |
 |   1 | `sheet(Foam20, 30, 30, 2)` |  Foam sponge 30mm x 30mm x 20mm |
 |   1 | `sheet(DiBond, 30, 30, 2)` |  Sheet DiBond 30mm x 30mm x 3mm |
@@ -3674,8 +3678,22 @@ Surface mount components for PCBs.
 |:--- |:--- |
 | `smd_cap_end_cap(type)` | End cap width |
 | `smd_cap_size(type)` | Body length, width |
+| `smd_diode_lead_z(type)` | Top of lead frame from top |
+| `smd_diode_leads(type)` | Lead extent in x, width, thickness and gap |
+| `smd_diode_size(type)` | Body length, width and height |
+| `smd_diode_z(type)` | Height above PCB surface |
+| `smd_inductor_colour(type)` | Body colour |
+| `smd_inductor_lead_z(type)` | Top of lead frame from top |
+| `smd_inductor_leads(type)` | Lead extent in x, width, thickness and gap |
+| `smd_inductor_size(type)` | Body length, width and height |
+| `smd_inductor_z(type)` | Height above PCB surface |
 | `smd_led_lens(type)` | Lens length width and height |
 | `smd_led_size(type)` | Body length, width and height |
+| `smd_pot_contacts(type)` | Contacts width, depth, pitch and width, depth, gap for center contact |
+| `smd_pot_cross(type)` | Cross head slot for screwdriver |
+| `smd_pot_flat(type)` | Flat at the back of the wiper |
+| `smd_pot_size(type)` | Base length, width and height |
+| `smd_pot_wiper(type)` | Wiper diameter, offset, thickness, height, d1, d2, d3, d4 |
 | `smd_res_end_cap(type)` | End cap width |
 | `smd_res_power(type)` | Power rating in Watts |
 | `smd_res_size(type)` | Body length, width and height |
@@ -3704,7 +3722,10 @@ Surface mount components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | `smd_capacitor(type, height, value = undef)` | Draw an SMD capacitor with specified height |
+| `smd_diode(type, value)` | Draw an SMD diode |
+| `smd_inductor(type, value)` | Draw an SMD inductor |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
+| `smd_pot(type, value)` | Draw an SMD pot |
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
 | `smd_soic(type, value)` | Draw an SMD SOIC |
 | `smd_sot(type, value)` | Draw an SMD transistor |
@@ -3714,6 +3735,8 @@ Surface mount components for PCBs.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `smd_diode(DO241AC)` |  DO241AC package SS34 |
+|   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
 |   1 | `smd_led(LED0805, blue)` |  SMD LED 0805 blue |
 |   1 | `smd_led(LED1206, red)` |  SMD LED 1306 red |
@@ -3728,6 +3751,7 @@ Surface mount components for PCBs.
 |   1 | `smd_soic(SOIC8)` |  SOIC8 package SOIC8 |
 |   1 | `smd_sot(SOT223)` |  SOT223 package FZT851 |
 |   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
+|   1 | `smd_pot(TC33X1)` |  TC33X1 package 10K |
 
 
 <a href="#top">Top</a>
