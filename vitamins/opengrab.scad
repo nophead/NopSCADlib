@@ -37,13 +37,12 @@ pole_w = 2;
 pole_l = 36;
 poles = 15;
 
-pcb = ["", "",        width, width, 0.8, 0, 3.5, 0, "darkgreen", false, [],
-    [     [ 3.45,   19,   0, "button_4p5mm"],
-          [ 2.75,   24.5, 0, "smd_led", LED0805, "green"],
-          [ 2.75,   28.0, 0, "smd_led", LED0805, "red"],
-          [ 28.5,   13,   0, "2p54header", 3, 1, false, undef, true],
+pcb = ["", "", width, width, 0.8, 0, 3.5, 0, "darkgreen", false, [],
+    [     [ 3.475,  19.05,    0, "button_4p5mm"],
+          [ 2.2,    24.125,   0, "smd_led", LED0805, "green"],
+          [ 2.375,  27.9,     0, "smd_led", LED0805, "red"],
+          [ 28.4,   13.345,   0, "2p54header", 3, 1, false, undef, true],
      ]];
-
 
 module opengrab_hole_positions()    //! Position children at the screw positions
     let($d = 3.2)
@@ -96,6 +95,17 @@ module opengrab() { //! Draw OpenGrab module
             if(show_threads)
                 female_metric_thread(3, metric_coarse_pitch(3), depth - 1, center = false, colour = brass);
         }
+
+    module molex()
+        translate_z(opengrab_pcb_z() + pcb_thickness(pcb))
+            color(grey(90))
+                import("stl/Molex_5023860470.stl");
+
+    translate([-8.4, -14.2])
+        molex();
+
+    translate([0.125, -14.2])
+        molex();
 }
 
 module opengrab_target() { //! Draw OpenGrab target
