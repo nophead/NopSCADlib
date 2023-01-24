@@ -745,7 +745,7 @@ WD2002SJ = ["WD2002SJ", "WD2002SJ Buck Boost DC-DC converter", 78, 47, 1.6, 0, 3
     []];
 
 MP1584EN = ["MP1584EN", "MP1584EN 3A buck converter", 22, 17, 1.25, 0, 1, [2, 2], "green", false,
-    [[1.75, 1.75], [1.75, -1.75], [-1.75, 1.75], [-1.75, -1.75], [-1.75, -4.4], [-1.75, 4.4], [1.75, -4.4], [1.75, 4.4]],
+    [[1.75, 1.75], [-1.75, 1.75], [-1.75, 4.4], [1.75, 4.4]],
     [ [1.75, 8.5, 90, "smd_cap", CAP1206, 1],
       [-1.75, 8.5, 90, "smd_cap", CAP1206, 1],
       [7.5, 8.5, 0, "smd_soic", SOIC8, "WP1584EN"],
@@ -761,7 +761,12 @@ MP1584EN = ["MP1584EN", "MP1584EN 3A buck converter", 22, 17, 1.25, 0, 1, [2, 2]
       [15.8, 4.9, 0, "smd_cap", CAP0603, 0.5],
       [14.5, 10, 90, "smd_inductor", IND2525, "4R7"],
       [14.7, 1.8,-90,"smd_pot", TC33X1, "10K"],
-    ]
+      [13.9, -1.4, 0,"text", 5, 1.5, "D-SUN", "Liberation Mono:style=Bold"],
+      [17.7, -1.2, 0,"text", 1.5,1.5,"\u2296", "MS Gothic:style=Bold"],
+      [17.9, 1.75, 0,"text", 1.5,1.5,"\u2295", "MS Gothic:style=Bold"],
+   ],
+   [],
+   [1.75,17 -4.4, 2, 2, silver, 18.5, 2.65], // Abuse the grid facility to get the round pads
 ];
 
 PERF80x20 = ["PERF80x20", "Perfboard 80 x 20mm", 80, 20, 1.6, 0, 2.3, 0, "green", true, [[2,2],[-2,2],[2,-2],[-2,-2]], [], [], [5.71, 3.65]];
