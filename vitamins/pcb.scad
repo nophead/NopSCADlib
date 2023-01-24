@@ -1088,6 +1088,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);
         if(show(comp, "usb_A"))         usb_Ax1(cutouts);
+        if(show(comp, "usb_Ax1"))       usb_Ax1(cutouts);
         if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
         if(show(comp, "usb_uA"))        usb_uA(cutouts);
         if(show(comp, "usb_miniA"))     usb_miniA(cutouts);
