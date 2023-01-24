@@ -20,7 +20,7 @@
 include <../utils/core/core.scad>
 use <../utils/dogbones.scad>
 
-panel_clearance = 0.2;
+panel_clearance = 0.5;
 housing_height = 14.12;  // measured height of a Dupont connector.
 housing_colour = grey(25);
 
