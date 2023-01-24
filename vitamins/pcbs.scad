@@ -537,6 +537,20 @@ Melzi = ["Melzi", "Melzi electronics", 203.2, 49.53, 1.6, 3.81, 3.1,  6, "green"
                                                                     [],
                                                                     [": USB A to Mini B lead", ": Micro SD card"]];
 
+RPI3A =  ["RPI3A", "Raspberry Pi 3 A+",     65,    56,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]],
+    [[32.5, -3.5,   0, "2p54header", 20, 2],
+     [27,   -24.6,  0, "chip",       14, 14, 1],
+     [53.5,   6,  -90, "jack"],
+     [32,   4.4,  -90, "hdmi"],
+     [-6.5,  31.45,    0, "usb_Ax1"],
+     [10.6,   2,  -90, "usb_uA"],
+     [3.6,   28,   90, "flex"],
+     [45,    11.5,-90, "flex"],
+     [7.75,  28,  180, "-uSD", [12, 11.5, 1.28]],
+    ],
+    [": Micro SD card"],
+    [32.5 - 9.5 * 2.54, 52.5 - 1.27, 20, 2]];
+
 RPI3 =  ["RPI3", "Raspberry Pi 3",     85,    56,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]],
     [[32.5, -3.5,   0, "2p54header", 20, 2],
      [27,   -24.6,  0, "chip",       14, 14, 1],
@@ -940,7 +954,7 @@ L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3,
 
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3A, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
