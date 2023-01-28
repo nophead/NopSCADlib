@@ -115,6 +115,14 @@ module usb_A_tongue() {
                 }
 }
 
+module usb_vAx1(cutout = false) { //! Draw USB type A single socket
+    translate([0,6.5/2,13.25/2]) {
+      rotate([90,0,0]) {
+        usb_A(h = 6.5, v_flange_l = 0, bar = 0, cutout = cutout, 14);
+      }
+    }
+}
+
 module usb_Ax1(cutout = false) { //! Draw USB type A single socket
     usb_A(h = 6.5, v_flange_l = 4.5, bar = 0, cutout = cutout);
 }
@@ -123,8 +131,7 @@ module usb_Ax2(cutout = false) { //! Draw USB type A dual socket
     usb_A(h = 15.6, v_flange_l = 12.15, bar = 3.4, cutout = cutout);
 }
 
-module usb_A(h, v_flange_l, bar, cutout) {
-    l = 17;
+module usb_A(h, v_flange_l, bar, cutout, l=17) {
     w = 13.25;
     flange_t = 0.4;
     h_flange_h = 0.8;
@@ -1088,6 +1095,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);
         if(show(comp, "usb_A"))         usb_Ax1(cutouts);
+        if(show(comp, "usb_vAx1"))      usb_vAx1(cutouts);
         if(show(comp, "usb_Ax1"))       usb_Ax1(cutouts);
         if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
         if(show(comp, "usb_uA"))        usb_uA(cutouts);
