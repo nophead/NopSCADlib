@@ -4697,6 +4697,7 @@ fixing_blocks along the sides.
 | `bbox_name(type)` | Optional name if there is more than one box in a project |
 | `bbox_screw(type)` | Screw type for corner blocks |
 | `bbox_sheets(type)` | Sheet type for the sides |
+| `bbox_short_inserts(type)` | Set to use short inserts in the blocks |
 | `bbox_skip_blocks(type)` | List of fixing blocks to skip, used to allow a hinged panel for example |
 | `bbox_span(type)` | Maximum span between fixing blocks |
 | `bbox_star_washers(type)` | Set to false to remove star washers. |
@@ -4707,7 +4708,7 @@ fixing_blocks along the sides.
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true, thin_blocks = false)` | Construct the property list for a butt_box |
+| `bbox(screw, sheets, base_sheet, top_sheet, span, size, name = "bbox", skip_blocks = [], star_washers = true, thin_blocks = false, short_inserts = false)` | Construct the property list for a butt_box |
 | `bbox_area(type)` | Internal surface area in m^2 |
 | `bbox_volume(type)` | Internal volume in litres |
 
