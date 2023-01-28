@@ -2242,7 +2242,7 @@ Can be shown stretched by specifying the `actual_id`.
 ---
 <a name="Opengrab"></a>
 ## Opengrab
-Nicodrone OpenGrab V3 electro-permanent magnet, see <https://nicadrone.com/products/epm-v3>.
+Nicodrone OpenGrab V3 electro-permanent magnet, see <https://kb.zubax.com/display/MAINKB/OpenGrab+EPM+v3>.
 
 A permanent magnet that can be magnetized and de-magnetized electronically.
 
