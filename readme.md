@@ -4617,10 +4617,10 @@ The top bezel can have an optional child, which is subtracted to allow modificat
 | `box_left_blank(type, sheet = false)` | Generates a 2D template for the left sheet, `sheet` can be set to override the type |
 | `box_right(type)` | Default right side, can be overridden to customise |
 | `box_right_blank(type, sheet = false)` | Generates a 2D template for the right sheet, `sheet` can be set to override the type |
-| `box_shelf_blank(type, sheet = false)` | Generates a 2D template for a shelf sheet |
+| `box_shelf_blank(type, sheet = false, wall = undef)` | Generates a 2D template for a shelf sheet |
 | `box_shelf_bracket(type, screw_positions, wall = undef)` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts |
 | `box_shelf_bracket_section(type, rows, cols, x, y)` | Generates sections of the shelf bracket to allow it to be bigger than the printer |
-| `box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef)` | Place children at the shelf screw positions |
+| `box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef, top_screws = true)` | Place children at the shelf screw positions |
 | `box_top(type)` | Default top, can be overridden to customise |
 | `box_top_blank(type)` | Generates a 2D template for the top sheet |
 | `grill(width, height, r = 1000, poly = false, h = 0)` | A staggered array of 5mm holes to make grills in sheets. Can be constrained to be circular. Set `poly` `true` for printing, `false` for milling. |

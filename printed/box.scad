@@ -474,16 +474,19 @@ function subst_sheet(type, sheet) =
     let(s = box_sheets(type))
         sheet ? assert(sheet_thickness(sheet) == sheet_thickness(s)) sheet : s;
 
-module box_shelf_blank(type, sheet = false) { //! Generates a 2D template for a shelf sheet
+module box_shelf_blank(type, sheet = false, wall = undef) { //! Generates a 2D template for a shelf sheet
     difference() {
         sheet_2D(subst_sheet(type, sheet), box_width(type) - bezel_clearance, box_depth(type) - bezel_clearance, 1);
 
         offset(bezel_clearance / 2)
             box_corner_quadrants(type, box_width(type), box_depth(type));
+
+        box_shelf_screw_positions(type, [], 0, wall)
+            drill(screw_clearance_radius(box_shelf_screw(type)), 0);
     }
 }
 
-module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef) { //! Place children at the shelf screw positions
+module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef, top_screws = true) { //! Place children at the shelf screw positions
     w = is_undef(wall) ? box_wall(type) : wall;
     insert = box_shelf_insert(type);
     translate_z(-insert_boss_radius(insert, w))
@@ -491,13 +494,22 @@ module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = un
             multmatrix(p)
                 translate_z(thickness)
                     children();
+
+    r = box_boss_r(type);
+    inset = box_intrusion(type) - r + (r + insert_boss_radius(insert, w) + bezel_clearance / 2) / sqrt(2);
+    if(top_screws)
+        translate_z(thickness)
+            for(x = [-1, 1], y = [-1, 1])
+                translate([x * (box_width(type) / 2 - inset), y * (box_depth(type) / 2 - inset)])
+                    rotate(45 * x * (2 + y))
+                        children();
 }
 
 module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts
     w = is_undef(wall) ? box_wall(type) : wall;
     insert = box_shelf_insert(type);
     lip = 2 * insert_boss_radius(insert, w);
-    width = insert_length(insert) + w;
+    width = max(insert_length(insert) + w, lip);
 
     module shape()
         difference() {
