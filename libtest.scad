@@ -215,7 +215,7 @@ translate([950, box_y])
     box_test();
 
 
-translate([950, 1400])
+translate([950, 1525])
     rotate(-90)
         bbox_test();
 
@@ -236,7 +236,7 @@ linear_bearings_y = leadnuts_y + 50;
 steppers_y = linear_bearings_y + 110;
 sheets_y = steppers_y + 55;
 pcbs_y = sheets_y + 60;
-displays_y = pcbs_y + 140;
+displays_y = pcbs_y + 265;
 fans_y = displays_y + 110;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;

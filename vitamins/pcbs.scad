@@ -971,7 +971,9 @@ L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3,
 
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, OPZ2, RPI0, RPI3A, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3A, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+
+pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
