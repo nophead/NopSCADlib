@@ -39,6 +39,12 @@ module pcbs() {
             translate([0, -pcb_width(perfboards[$i]) / 2])
                 pcb_assembly(perfboards[$i], 5 + $i, 3);
 
+    translate([0, 125])
+        layout([for(p = big_pcbs) spacing(p)], 0)
+            translate([0, pcb_length(big_pcbs[$i]) / 2])
+                rotate(90)
+                    pcb_assembly(big_pcbs[$i], 5 + $i, 3);
+
     for(p = pcbs_not_shown)
         hidden()
             pcb(p);
