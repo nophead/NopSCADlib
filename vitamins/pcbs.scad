@@ -544,9 +544,6 @@ OPZ2 =  ["OPZ2", "Orange Pi Zero 2",     60,    53,    1.4, 1.75,    3, 5, "blue
      [6+16/2, -10.5+1, 90, "rj45"],
      [24+9/2, -3.6+1, 90, "usb_C"],
      [37+6.5/2,  -8.5/2+1, 90, "micro_hdmi"],
-     // FIXME: USB A connector is 5.8mm wide, ~13.8mm deep, ~13.8mm high
-     // FIXME: USB A socket tongue/tab is too long
-     // FIXME: USB A socket does not have flanges
      [-7-5.8/2, -7+1,    90, "usb_vAx1"],
      [-17,   18,  0, "chip",       13, 7.5, 1],
      [-17,   28,  0, "chip",       13, 7.5, 1],
