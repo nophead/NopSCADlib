@@ -115,6 +115,14 @@ module usb_A_tongue() {
                 }
 }
 
+module usb_vAx1(cutout = false) { //! Draw a vertical USB type A single socket
+    h = 5.8;
+    w = 13.8;
+    translate([0, h / 2, w / 2])
+        rotate([90, 0, 0])
+            usb_A(h = h, v_flange_l = 0, bar = 0, cutout = cutout, l = 14, h_flange_l = 0, flange_t = 0.3, w = w);
+}
+
 module usb_Ax1(cutout = false) { //! Draw USB type A single socket
     usb_A(h = 6.5, v_flange_l = 4.5, bar = 0, cutout = cutout);
 }
@@ -123,12 +131,8 @@ module usb_Ax2(cutout = false) { //! Draw USB type A dual socket
     usb_A(h = 15.6, v_flange_l = 12.15, bar = 3.4, cutout = cutout);
 }
 
-module usb_A(h, v_flange_l, bar, cutout) {
-    l = 17;
-    w = 13.25;
-    flange_t = 0.4;
+module usb_A(h, v_flange_l, bar, cutout, l=17, h_flange_l = 11, flange_t = 0.4, w = 13.25) {
     h_flange_h = 0.8;
-    h_flange_l = 11;
     v_flange_h = 1;
     socket_h = (h - 2 * flange_t - bar) / 2;
 
@@ -154,9 +158,11 @@ module usb_A(h, v_flange_l, bar, cutout) {
                 translate_z(l / 2 - flange_t)
                     linear_extrude(flange_t) difference() {
                         union() {
-                            square([h + 2 * h_flange_h, h_flange_l], center = true);
+                            if(h_flange_l)
+                                square([h + 2 * h_flange_h, h_flange_l], center = true);
 
-                            square([v_flange_l, w + 2 * v_flange_h], center = true);
+                            if(v_flange_l)
+                                square([v_flange_l, w + 2 * v_flange_h], center = true);
                         }
                         square([h - eps, w - eps], center = true);
                     }
@@ -164,7 +170,8 @@ module usb_A(h, v_flange_l, bar, cutout) {
 
                 for(z = bar ?  [-1, 1] : [0])
                     translate_z(z * (bar / 2 + socket_h / 2))
-                        usb_A_tongue();
+                        translate([l - 17, 0])
+                            usb_A_tongue();
             }
 }
 
@@ -1088,6 +1095,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);
         if(show(comp, "usb_A"))         usb_Ax1(cutouts);
+        if(show(comp, "usb_vAx1"))      usb_vAx1(cutouts);
         if(show(comp, "usb_Ax1"))       usb_Ax1(cutouts);
         if(show(comp, "usb_Ax2"))       usb_Ax2(cutouts);
         if(show(comp, "usb_uA"))        usb_uA(cutouts);

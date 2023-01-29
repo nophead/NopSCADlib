@@ -537,6 +537,23 @@ Melzi = ["Melzi", "Melzi electronics", 203.2, 49.53, 1.6, 3.81, 3.1,  6, "green"
                                                                     [],
                                                                     [": USB A to Mini B lead", ": Micro SD card"]];
 
+OPZ2 =  ["OPZ2", "Orange Pi Zero 2",     60,    53,    1.4, 1.75,    3, 5, "blue", false, [[2.5, 2.5], [-2.5, 2.5], [-2.5, -2.5], [2.5, -2.5]],
+    [[-2.54, 53/2, 90, "2p54header", 13, 2],
+     [-10, -10-2.54*2, 0, "2p54header", 3, 1],
+     [2.54/2, 53/2, 90, "2p54header", 13, 1],
+     [6+16/2, -10.5+1, 90, "rj45"],
+     [24+9/2, -3.6+1, 90, "usb_C"],
+     [37+6.5/2,  -8.5/2+1, 90, "micro_hdmi"],
+     [-7-5.8/2, -7+1,    90, "usb_vAx1"],
+     [-17,   18,  0, "chip",       13, 7.5, 1],
+     [-17,   28,  0, "chip",       13, 7.5, 1],
+     [26,   23,  0, "chip",       12.2, 14, 1],
+     [8.1+10.3/2,   3.7+10.3/2,  0, "chip",       10.3, 10.3, 1.8, "silver"],
+     [10.7+14.6/2,  14.7/2,  90, "-uSD", [14.6, 14.7, 2]],
+    ],
+    [": Micro SD card"],
+    [60-2.54*1.5, 53/2 - 6*2.54, 2, 13]];
+
 RPI3A =  ["RPI3A", "Raspberry Pi 3 A+",     65,    56,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]],
     [[32.5, -3.5,   0, "2p54header", 20, 2],
      [27,   -24.6,  0, "chip",       14, 14, 1],
@@ -954,7 +971,9 @@ L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3,
 
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
-pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, RPI3A, RPI3, RPI4, BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
+
+pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
