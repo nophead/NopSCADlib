@@ -27,6 +27,9 @@ module rounded_cylinders() {
 
     translate([30, 10])
         rounded_cylinder(10, 20, 3, 5, 270);
+
+    translate([65, 10])
+        rounded_top_rectangle([30, 20, 5], 3, 2);
 }
 
 rounded_cylinders();

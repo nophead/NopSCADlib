@@ -45,3 +45,22 @@ module rounded_cylinder(r, h, r2, ir = 0, angle = 360) //! Rounded cylinder give
     rotate_extrude(angle = angle)
         rounded_corner(r, h, r2, ir);
 }
+
+module rounded_top_rectangle(size, r, r2) { //! Make a rounded rectangle with a rounded top edge
+    hull() {
+        translate([size.x / 2 - r, size.y / 2 - r])
+            rounded_cylinder(r = r, h = size.z, r2 = r2, angle = 90);
+
+        translate([-size.x / 2 + r, size.y / 2 - r])
+            rotate(90)
+                rounded_cylinder(r = r, h = size.z, r2 = r2, angle = 90);
+
+        translate([-size.x / 2 + r, -size.y / 2 + r])
+            rotate(180)
+                rounded_cylinder(r = r, h = size.z, r2 = r2, angle = 90);
+
+        translate([size.x / 2 - r, -size.y / 2 + r])
+            rotate(270)
+                rounded_cylinder(r = r, h = size.z, r2 = r2, angle = 90);
+    }
+}

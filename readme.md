@@ -6728,6 +6728,7 @@ Cylinder with a rounded end.
 |:--- |:--- |
 | `rounded_corner(r, h, r2, ir = 0)` | 2D version |
 | `rounded_cylinder(r, h, r2, ir = 0, angle = 360)` | Rounded cylinder given radius `r`, height `h`, optional internal radius `ir` and optional `angle` |
+| `rounded_top_rectangle(size, r, r2)` | Make a rounded rectangle with a rounded top edge |
 
 ![rounded_cylinder](tests/png/rounded_cylinder.png)
 
