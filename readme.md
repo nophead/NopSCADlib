@@ -2473,6 +2473,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_resistor(RES0603, 1K)` |  SMD resistor 0603 1K 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
 |   1 | `smd_resistor(RES1206, 1K)` |  SMD resistor 1206 1K 0.25W |
+|   1 | `smd_soic(SOIC14)` |  SOIC14 package 74HC00 |
 |   1 | `smd_soic(SOIC16)` |  SOIC16 package ICL323 |
 |   1 | `smd_soic(SOIC18)` |  SOIC18 package PIC18F88 |
 |   1 | `smd_soic(SOIC8)` |  SOIC8 package M34063 |

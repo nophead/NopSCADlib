@@ -104,15 +104,15 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 25, 200,   0, "buzzer", 4.5, 8.5],
         [ 25, 218,   0, "buzzer"],
 
-        [ 65,   9,   0, "link", inch(0.4)],
+        [ 65,   9,   0, "link", inch(0.4)], // flat link
         [ 65,  12,   0, "ax_res", res1_8, 1000],
         [ 65,  17,   0, "ax_res", res1_4, 10000],
         [ 65,  22,   0, "ax_res", res1_2, 100000],
         [ 55,  22,   0, "vero_pin"],
         [ 55,  17,   0, "vero_pin", true],
-        [ 55,   9,   0, "link", 0, 5],
+        [ 55,   9,   0, "link", 0, 5], // Vertical wire
 
-        [ 80,   9,   0, "link", inch(0.2), inch(0.4)],
+        [ 80,   9,   0, "link", inch(0.2), inch(0.4)], // Raised link
         [ 80,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
         [ 80,  17,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
         [ 80,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
@@ -148,7 +148,8 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 80, 180,   0, "pdip", 8, "NE555" ],
         [ 71, 180,    0, "smd_inductor", IND2525, "4R7"],
 
-        [ 80, 166, -90, "smd_soic", SOIC18, "PIC18F88"],
+        [ 87, 166, -90, "smd_soic", SOIC18, "PIC18F88"],
+        [ 78, 166, -90, "smd_soic", SOIC14, "74HC00"],
         [ 71, 166, -90, "smd_soic", SOIC16, "ICL323"],
         [ 64, 166, -90, "smd_soic", SOIC8, "M34063"],
         [ 80, 150,   0, "chip", 10, 5, 1, grey(20)],
@@ -159,7 +160,7 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 50, 240,   0, "potentiometer"],
         [ 75, 240,   0, "potentiometer", KY_040_encoder, 8],
         [ 30,  85, -90, "7seg", WT5011BSR, 2],
-        [ 30, 55, -90, "D_plug", DCONN9],
+        [ 30,  55, -90, "D_plug", DCONN9],
     ],
     // accessories
     []
