@@ -20,6 +20,7 @@ include <microswitches.scad>
 include <d_connectors.scad>
 include <leds.scad>
 include <axials.scad>
+include <radials.scad>
 include <smds.scad>
 include <green_terminals.scad>
 include <7_segments.scad>

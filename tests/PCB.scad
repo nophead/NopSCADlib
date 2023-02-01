@@ -21,6 +21,7 @@ include <../vitamins/microswitches.scad>
 include <../vitamins/d_connectors.scad>
 include <../vitamins/leds.scad>
 include <../vitamins/axials.scad>
+include <../vitamins/radials.scad>
 include <../vitamins/smds.scad>
 include <../vitamins/7_segments.scad>
 include <../vitamins/potentiometers.scad>
@@ -116,6 +117,13 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 80,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
         [ 80,  17,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
         [ 80,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
+
+        [ 33,  110, -90, "rd_xtal", HC49,    "4MHz" ],
+        [ 28,  110, -90, "rd_xtal", HC49_4H, "10MHz" ],
+        [ 28,  103, -90, "rd_xtal", C_002RX, "60KHz", 2 ],
+
+        [ 30,  130,-90, "rd_xtal", ACT1100, "40MHz", 0.5 ],
+        [ 30,  150,-90, "rd_xtal", ACT1700, "80MHz", 0.5 ],
 
         [ 60,   3,   0, "flex"],
         [ 50,  15, -90, "flat_flex"],
