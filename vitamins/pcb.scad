@@ -1071,7 +1071,7 @@ module trimpot10(vertical, cutout = false) { //! Draw a ten turn trimpot
              }
 }
 
-module block(size, colour, makes_cutout, cutouts) //! Draw a coloured cube to represent a random PCB component
+module block(size, colour, makes_cutout, cutouts, r = 0, rtop = 0) //! Draw a coloured cube to represent a random PCB component
     if(cutouts) {
         if(makes_cutout)
              translate([-50, 0, size.z / 2 - panel_clearance])
@@ -1079,8 +1079,10 @@ module block(size, colour, makes_cutout, cutouts) //! Draw a coloured cube to re
     }
     else
         color(colour)
-            translate_z(size.z / 2)
-                cube(size, center = true);
+            if(rtop)
+                let($fn = 32) rounded_top_rectangle(size, r, rtop);
+            else
+                rounded_rectangle(size, r);
 
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
     function show(comp, part) = (comp[3] == part || comp[3] == str("-",part)) && (!cutouts || angle == undef || angle == comp.z);
@@ -1116,7 +1118,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "molex_usb_Ax1")) molex_usb_Ax1(cutouts);
         if(show(comp, "smd_led"))       smd_led(comp[4], comp[5], cutouts);
         if(show(comp, "7seg"))          let(z = param(6, 0)) translate_z(z) 7_segment_digits(comp[4], comp[5], pin_length = z + 3, cutout = cutouts);
-        if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8));
+        if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8), r = param(9, 0), rtop = param(10, 0));
         if(!cutouts) {
             // Components that don't have a cutout parameter go in this section
             if(show(comp, "button_6mm"))    square_button(button_6mm);

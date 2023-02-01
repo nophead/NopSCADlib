@@ -864,7 +864,7 @@ XIAO = [
     [for(x = [0:6], y = [-1,1]) [x * 2.54 + 2.71, y * 3 * 2.54 + 9], // Inboard hole positions
      for(x = [0:6], y = [-1,1]) [x * 2.54 + 2.71, y * 9 + 9]],       // Hole positions on the edge, pad overlaps the inboard holes
     [ // components
-        [7.6, 9, 0, "block", 12.3, 12, 2.41, silver], // can
+        [7.6, 9, 0, "block", 12.3, 12, 2.41, silver, false, 0.3, 0.3], // can
         [21 + 1.76 - 7.35 / 2, 9, 0, "usb_C"],
     ],
     [] // accessories
@@ -913,7 +913,7 @@ ESP32_DOIT_V1 = let(l = 51.45, w = 28.33, pitch = inch(1), pins = 15, poffset = 
       [l / 2 + poffset, w / 2 - pitch / 2, 0, "-2p54joiner", pins, 1],
       [l / 2 + poffset, w / 2 + pitch / 2, 0, "-2p54joiner", pins, 1],
       [1.75, w / 2, 180, "usb_uA" ],
-      [35,  w / 2, 0, "block", 17.7, 16, 3, silver], // can
+      [35,  w / 2, 0, "block", 17.7, 16, 3, silver, false, 0.3, 0.3], // can
       for(y=[-1,1]) [3.5,  y * 6.5, 0, "chip", 4,  3, 1.6, silver],   // Mock button surround
       for(y=[-1,1]) [3.5,  y * 6.5, 0, "chip", 1.8,0, 2.0, grey(20)], // Mock buttons
       for(y=[-1,1]) [21.6, y * 9,   0, "smd_led", LED0603, y < 0 ? "red" : "blue"],
