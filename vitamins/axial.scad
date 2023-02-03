@@ -23,8 +23,9 @@
 include <../utils/core/core.scad>
 include <../utils/round.scad>
 
-module wire_link(d, l, h = 1, tail = 3) { //! Draw a wire jumper link. If `l` is zero then a vertical wire is drawn.
-    vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"),  "): Wire link ", d, "mm x ", l ? str(l / inch(1), "\"") : str(h + tail,"mm")));
+module wire_link(d, l, h = 1, tail = 3, sleeve = false) { //! Draw a wire jumper link. `sleeve` can be a list with the diameter and colour. If `l` is zero then a vertical wire is drawn.
+    vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"), arg(sleeve, false, "sleeve"),
+                             "): Wire link ", d, "mm x ", l ? str(l / inch(1), "\"") : str(h + tail,"mm"), sleeve ? str(" with ", sleeve[1], " sleeving") : ""));
     r = d;
     $fn = 32;
 
@@ -48,6 +49,12 @@ module wire_link(d, l, h = 1, tail = 3) { //! Draw a wire jumper link. If `l` is
     else
         translate_z(-tail)
             cylinder(d = d, h = tail + h);
+
+    if(sleeve)
+        color(sleeve[1])
+            translate_z(h)
+                rotate([0, 90, 0])
+                    cylinder(d = sleeve[0], h = l - 2 * r, center = true);
 }
 
 function ax_res_wattage(type) = type[1]; //! Power rating

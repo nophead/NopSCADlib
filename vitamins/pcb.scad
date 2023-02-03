@@ -1137,7 +1137,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
             if(show(comp, "rd_xtal"))       rd_xtal(type = comp[4], value = param(5, undef), z = param(6, 0), pitch = param(7, undef)); // type, value, z, forced pitch
-            if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3));
+            if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3), sleeve = param(8, false));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));
             if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));

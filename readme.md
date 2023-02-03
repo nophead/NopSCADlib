@@ -110,7 +110,7 @@ Axial components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | `ax_res(type, value, tol = 5, pitch = 0)` | Through hole axial resistor. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
-| `wire_link(d, l, h = 1, tail = 3)` | Draw a wire jumper link. If `l` is zero then a vertical wire is drawn. |
+| `wire_link(d, l, h = 1, tail = 3, sleeve = false)` | Draw a wire jumper link. `sleeve` can be a list with the diameter and colour. If `l` is zero then a vertical wire is drawn. |
 
 ![axials](tests/png/axials.png)
 
@@ -124,6 +124,7 @@ Axial components for PCBs.
 |   1 | `ax_res(res1_4, 47000)` |  Resistor 47000 Ohms 5% 0.25W |
 |   1 | `ax_res(res1_2, 8200)` |  Resistor 8200 Ohms 5% 0.5W |
 |   1 | `ax_res(res1_2, 8250, tol = 1)` |  Resistor 8250 Ohms 1% 0.5W |
+|   1 | `wire_link(0.8, 7.62, h = 0.75, sleeve = [1.5, "red"])` |  Wire link 0.8mm x 0.3" with red sleeving |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
 |   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
 
@@ -2501,6 +2502,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | `vero_pin()` |  Vero board pin |
 |   1 | `wire_link(0.8, 5.08, h = 10.16)` |  Wire link 0.8mm x 0.2" |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
+|   1 | `wire_link(0.8, 10.16, h = 0.75, sleeve = [1.5, "red"])` |  Wire link 0.8mm x 0.4" with red sleeving |
 |   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
 
 

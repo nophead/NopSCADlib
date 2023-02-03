@@ -105,18 +105,19 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 25, 200,   0, "buzzer", 4.5, 8.5],
         [ 25, 218,   0, "buzzer"],
 
-        [ 65,   9,   0, "link", inch(0.4)], // flat link
-        [ 65,  12,   0, "ax_res", res1_8, 1000],
-        [ 65,  17,   0, "ax_res", res1_4, 10000],
-        [ 65,  22,   0, "ax_res", res1_2, 100000],
-        [ 55,  22,   0, "vero_pin"],
-        [ 55,  17,   0, "vero_pin", true],
-        [ 55,   9,   0, "link", 0, 5], // Vertical wire
+        [ 45,   5,   0, "link", inch(0.4), 0.75, undef, undef, [1.5, "red"]], // Sleeved link
+        [ 45,   9,   0, "link", inch(0.4)], // Flat link
+        [ 45,  12,   0, "ax_res", res1_8, 1000],
+        [ 45,  17,   0, "ax_res", res1_4, 10000],
+        [ 45,  22,   0, "ax_res", res1_2, 100000],
+        [ 35,  22,   0, "vero_pin"],
+        [ 35,  17,   0, "vero_pin", true],
+        [ 35,   9,   0, "link", 0, 5], // Vertical wire
 
-        [ 80,   9,   0, "link", inch(0.2), inch(0.4)], // Raised link
-        [ 80,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
-        [ 80,  17,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
-        [ 80,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
+        [ 60,   9,   0, "link", inch(0.2), inch(0.4)], // Raised link
+        [ 60,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
+        [ 60,  17,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
+        [ 60,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
 
         [ 33,  110, -90, "rd_xtal", HC49,    "4MHz" ],
         [ 28,  110, -90, "rd_xtal", HC49_4H, "10MHz" ],
@@ -125,9 +126,9 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 30,  130,-90, "rd_xtal", ACT1100, "40MHz", 0.5 ],
         [ 30,  150,-90, "rd_xtal", ACT1700, "80MHz", 0.5 ],
 
-        [ 60,   3,   0, "flex"],
-        [ 50,  15, -90, "flat_flex"],
-        [ 40,  15, -90, "flat_flex", true],
+        [ 77,  15, -90, "flex"],
+        [ 95,  15, -90, "flat_flex"],
+        [ 87,  15, -90, "flat_flex", true],
 
         [ 50,  50,   0, "molex_hdr", 2],
         [ 50,  60,   0, "jst_xh", 2],

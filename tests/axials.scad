@@ -28,6 +28,10 @@ module axials() {
         rotate(90)
             wire_link(0.8, inch(0.4));
 
+    pcb_grid(pcb, 1, 1.5)
+        rotate(90)
+            wire_link(0.8, inch(0.3), 0.75, sleeve = [1.5, "red"]);
+
     pcb_grid(pcb, 0, 7)
         wire_link(0.8, 0, 5);
 
