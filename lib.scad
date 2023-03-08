@@ -48,6 +48,7 @@ include <vitamins/magnets.scad>
 include <vitamins/mains_sockets.scad>
 include <vitamins/modules.scad>
 include <vitamins/panel_meters.scad>
+include <vitamins/photo_interrupters.scad>
 include <vitamins/pillars.scad>
 include <vitamins/pillow_blocks.scad>
 include <vitamins/pin_headers.scad>
@@ -99,3 +100,4 @@ use <utils/round.scad>
 use <utils/offset.scad>
 use <utils/sector.scad>
 use <utils/thread.scad>
+use <vitamins/photo_interrupter.scad>
