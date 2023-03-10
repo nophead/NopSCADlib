@@ -190,10 +190,7 @@ module al_clad_resistor(type, value, leads = true) { //! Draw an aluminium clad 
                 cylinder(r = leads ? 3 : height / 2 - 2, h = length + eps, center = true);
 }
 
-module al_clad_resistor_assembly(type, value, sleeved = true) { //* Draw aluminium clad resistor with optional sleaving, positions children at the screw positions
-    sleeving_length = 15;
-    sleeving = HSHRNK32;
-
+module al_clad_resistor_assembly(type, value, sleeved = true, sleeving = HSHRNK32, sleeving_length = 15) { //! Draw aluminium clad resistor with optional sleaving, positions children at the screw positions
     al_clad_resistor(type, value);
 
     if(sleeved)

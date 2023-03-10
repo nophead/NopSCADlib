@@ -819,6 +819,7 @@ Various electronic components used in hot ends and heated beds.
 | ` TO220(description, leads = 3, lead_length = 16)` | Draw a TO220 package, use `description` to describe what it is |
 | ` TO247(description, lead_length = 20)` | Draw a TO247 package, use `description` to describe what it is |
 | `al_clad_resistor(type, value, leads = true)` | Draw an aluminium clad resistor |
+| `al_clad_resistor_assembly(type, value, sleeved = true, sleeving = HSHRNK32, sleeving_length = 15)` | Draw aluminium clad resistor with optional sleaving, positions children at the screw positions |
 | `al_clad_resistor_hole_positions(type)` | Position children at the screw holes of an aluminium clad resistor |
 | `al_clad_resistor_holes(type, h = 100)` | Drill screw holes for an aluminium clad resistor |
 | `fack2spm()` | Draw a FACK2SPM Cat5E RJ45 shielded panel mount coupler |
