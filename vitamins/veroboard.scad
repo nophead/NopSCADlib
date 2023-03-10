@@ -60,13 +60,14 @@ module solder_meniscus(type, ir = 0.3, r = undef) { //! Draw a solder meniscus
             }
 }
 
-module vero_grid_pos(type, x, y) { //! Convert grid position to offset from the centre
-    holes = vero_holes(type);
-    strips = vero_strips(type);
-    translate([((x + holes) % holes)    - holes / 2 + 0.5,
-               ((y + strips) % strips) - strips / 2 + 0.5] * vero_pitch(type))
+function vero_grid_pos(type, x, y) = //! Convert grid position to offset from the centre
+    let(holes = vero_holes(type), strips = vero_strips(type))
+        [((x + holes) % holes)    - holes / 2 + 0.5,
+         ((y + strips) % strips) - strips / 2 + 0.5] * vero_pitch(type);
+
+module vero_grid_pos(type, x, y) //! Convert grid position to offset from the centre
+    translate(vero_grid_pos(type, x, y))
         children();
-}
 
 module vero_mounting_hole_positions(type) //! Positions children at the mounting holes
     for(p = vero_mounting_holes(type))

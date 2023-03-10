@@ -4424,6 +4424,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | Function | Description |
 |:--- |:--- |
 | `vero(name, assembly, holes, strips, pitch = 2.54, fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = [])` | Constructor |
+| `vero_grid_pos(type, x, y)` | Convert grid position to offset from the centre |
 | `vero_length(type)` | Length of the board |
 | `vero_size(type)` | Board size |
 | `vero_thickness(type)` | Thickness of the substrate |
