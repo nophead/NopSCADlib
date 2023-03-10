@@ -4441,7 +4441,9 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | `vero_mounting_hole_positions(type)` | Positions children at the mounting holes |
 | `vero_mounting_holes(type, h = 100)` | Drill mounting holes in a panel |
 | `veroboard(type)` | Draw specified veroboard with missing tracks and track breaks |
-| `veroboard_assembly(type, height, thickness, flip = false, ngb = false)` | Draw the assembly with components and fasteners in place |
+| `veroboard_assembly(type, ngb = false)` | Draw the assembly with components |
+| `veroboard_fastened_assembly(type, height, thickness, flip = false, ngb = false)` | Draw the assembly with components and fasteners in place |
+| `veroboard_fasteners(type, height, thickness, flip = false)` | Draw the fasteners in place |
 
 ![veroboard](tests/png/veroboard.png)
 
@@ -4449,16 +4451,16 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | `idc_transition(2p54header, 10)` |  IDC transition header 10 x 2 |
-|   4 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
-|   4 | `screw(M3_dome_screw, 25)` |  Screw M3 dome x 25mm |
+|   2 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|   2 | `screw(M3_dome_screw, 25)` |  Screw M3 dome x 25mm |
 |   2 | `green_terminal(gt_2p54, 10)` |  Terminal block 10 way 0.1" |
 |   2 | `veroboard(z_vb)` |  Veroboard 5 holes x 22 strips |
-|   8 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|   4 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 
 ### Printed
 | Qty | Filename |
 | ---:|:--- |
-|   4 | pcb_spacer30120.stl |
+|   2 | pcb_spacer30120.stl |
 
 ### Assemblies
 | Qty | Name |

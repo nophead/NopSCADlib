@@ -148,23 +148,25 @@ module vero_components(type, cutouts = false, angle = undef)
 module vero_cutouts(type, angle = undef) //! Make cutouts to clear components
     vero_components(type, true, angle);
 
-module veroboard_assembly(type, height, thickness, flip = false, ngb = false) //! Draw the assembly with components and fasteners in place
+module veroboard_assembly(type, ngb = false) //! Draw the assembly with components
+pose_vflip(exploded = true)
 assembly(vero_assembly(type), ngb = ngb) {
+    veroboard(type);
+
+    vero_components(type);
+
+    for(r = vero_joints(type))
+        for(x = r.x, y = r.y)
+            vero_grid_pos(type, x, y)
+                 vflip()
+                    solder_meniscus(type);
+}
+
+module veroboard_fasteners(type, height, thickness, flip = false) { //! Draw the fasteners in place
     screw = vero_screw(type);
     nut = screw_nut(screw);
     screw_length = screw_length(screw, height + thickness + vero_thickness(type), 2, nyloc = true);
 
-    translate_z(height) {
-        veroboard(type);
-
-        vero_components(type);
-
-        for(r = vero_joints(type))
-            for(x = r.x, y = r.y)
-                vero_grid_pos(type, x, y)
-                     vflip()
-                        solder_meniscus(type);
-    }
     vero_mounting_hole_positions(type) {
         translate_z(height + vero_thickness(type))
             if(flip)
@@ -181,4 +183,12 @@ assembly(vero_assembly(type), ngb = ngb) {
                 else
                     nut_and_washer(nut, true);
     }
+}
+
+module veroboard_fastened_assembly(type, height, thickness, flip = false, ngb = false) { //! Draw the assembly with components and fasteners in place
+
+    translate_z(height)
+        veroboard_assembly(type, ngb = ngb);
+
+    veroboard_fasteners(type, height, thickness, flip);
 }
