@@ -207,52 +207,55 @@ module al_clad_resistor_assembly(type, value, sleeved = true) { //* Draw alumini
         children();
 }
 
+TO220_hole_y = 2.9; // Distance to hole from top of tab
+
+function TO220_size() = [10.2, 15, 4.4]; //! Size of a TO220
 function TO220_thickness() = 1.5; //! Thickness of the tab of a TO220
+function TO220_lead_pos(i, l) =  //! Position of ith lead end when length = l
+    [i * inch(0.1), -TO220_size().y + TO220_hole_y - l, 1.9];
 
 module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 package, use `description` to describe what it is
-    width = 10.2;
+    s = TO220_size();
     inset = 1.5;
     hole = 3.3;
-    length = 15;
-    height = 4.4;
-    lead_height = 1.9;
     lead_t = 0.4;
     lead_w = 0.7;
     lead_w2 = 1.4;
     lead_l = 4.2;
     body = 8;
-    hole_y = 2.9;
 
     vitamin(str("TO220(\"", description, "\"", arg(leads, 3, "leads"), "): ", description));
 
-    translate([0, -length + hole_y]) {
-        color("silver") {
+    translate([0, -s.y + TO220_hole_y]) {
+        color("silver")
             linear_extrude(TO220_thickness())
                 difference() {
-                    translate([-width / 2, inset])
-                        square([width, length - inset]);
+                    translate([-s.x / 2, inset])
+                        square([s.x, s.y - inset]);
 
-                    translate([0, length - hole_y])
+                    translate([0, s.y - TO220_hole_y])
                         circle(d = hole);
 
                     for(side = [-1, 1])
-                        translate([side * width / 2, 0])
+                        translate([side * s.x / 2, 0])
                             square([inset * 2, body * 2], center = true);
                 }
 
-            for(i = [-1 : 1])
-                if(i || leads == 3) {
-                    translate([inch(0.1) * i, -lead_length / 2, lead_height])
-                        cube([lead_w, lead_length, lead_t], center = true);
-
-                    translate([inch(0.1) * i, -lead_l / 2, lead_height])
-                        cube([lead_w2, lead_l, lead_t], center = true);
-                }
-        }
         color("dimgrey")
-            translate([-width / 2, 0, eps])
-                cube([width, body, height]);
+            translate([-s.x / 2, 0, eps])
+                cube([s.x, body, s.z]);
     }
+
+    color(silver)
+        for(i = [-1 : 1])
+            if(i || leads == 3) {
+                translate(TO220_lead_pos(i, lead_length / 2))
+                    cube([lead_w, lead_length, lead_t], center = true);
+
+                translate(TO220_lead_pos(i, lead_l / 2))
+                    cube([lead_w2, lead_l, lead_t], center = true);
+            }
+
     translate_z(TO220_thickness())
         children();
 }

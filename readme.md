@@ -806,6 +806,8 @@ Various electronic components used in hot ends and heated beds.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `TO220_lead_pos(i, l)` | Position of ith lead end when length = l |
+| `TO220_size()` | Size of a TO220 |
 | `TO220_thickness()` | Thickness of the tab of a TO220 |
 | `TO247_size()` | Body dimensions of a T247, hole offset, lead height and lead wide length |
 | `fack2spm_bezel_size()` | FACK2SPM Bezel dimensions |
