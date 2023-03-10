@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 include <../vitamins/tubings.scad>
 
 module tubings()
-    layout([for(t = tubings) tubing_od(t)], 8)
+    layout([for(t = tubings) tubing_od(t)], 5)
         tubing(tubings[$i]);
 
 if($preview)
