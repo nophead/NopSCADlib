@@ -63,6 +63,7 @@ use <tests/drag_chain.scad>
 use <tests/extrusions.scad>
 use <tests/extrusion_brackets.scad>
 use <tests/fans.scad>
+use <tests/fastons.scad>
 use <tests/fuseholder.scad>
 use <tests/geared_steppers.scad>
 use <tests/hot_ends.scad>
@@ -336,9 +337,10 @@ leds_y = 0;
 carriers_y = leds_y + 40;
 magnets_y = carriers_y + 40;
 spades_y = magnets_y + 20;
-buttons_y = spades_y + 20;
-jacks_y = buttons_y + 40;
-microswitches_y = jacks_y + 40;
+fastons_y = spades_y + 20;
+buttons_y = fastons_y + 20;
+jacks_y = buttons_y + 30;
+microswitches_y = jacks_y + 30;
 rockers_y = microswitches_y + 40;
 toggles_y = rockers_y + 60;
 components_y = toggles_y + 40;
@@ -363,6 +365,9 @@ translate([x2 + 70, leds_y])
 
 translate([x2, spades_y])
     spades();
+
+translate([x2, fastons_y])
+    fastons();
 
 translate([x2,  buttons_y])
     buttons();

@@ -37,6 +37,7 @@ include <vitamins/components.scad>
 include <vitamins/displays.scad>
 include <vitamins/extrusions.scad>
 include <vitamins/extrusion_brackets.scad>
+include <vitamins/fastons.scad>
 include <vitamins/geared_steppers.scad>
 include <vitamins/hot_ends.scad>
 include <vitamins/inserts.scad>

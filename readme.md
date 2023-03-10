@@ -42,12 +42,12 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Fastons">Fastons</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td></td><td></td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
@@ -1193,6 +1193,56 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 |   8 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  12 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |  32 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Fastons"></a>
+## Fastons
+Faston receptacles to mate with spade connectors
+
+[vitamins/fastons.scad](vitamins/fastons.scad) Object definitions.
+
+[vitamins/faston.scad](vitamins/faston.scad) Implementation.
+
+[tests/fastons.scad](tests/fastons.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `faston_d_bot(type)` | Radius of bottom corners |
+| `faston_d_top(type)` | Radius of the clips |
+| `faston_fillet_d(type)` | Fillets at the transition |
+| `faston_insul_crimp_d(type)` | Outside diameter of the insulation crimp |
+| `faston_insul_crimp_l(type)` | Length of the insulation crimp |
+| `faston_insul_crimp_o(type)` | Offset of insulation crimp |
+| `faston_insul_crimp_p(type)` | Position of the tip of the insulation crimp |
+| `faston_size(type)` | Size of the receptical part |
+| `faston_t(type)` | Thickness |
+| `faston_wall_h(type)` | Height of transition web wall |
+| `faston_width(type)` | Width of matching spade |
+| `faston_wire_crimp_d(type)` | Outside diameter of the wire crimp |
+| `faston_wire_crimp_l(type)` | Length of the wire crimp |
+| `faston_wire_crimp_p(type)` | Position of the tip of the wire crimp |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `faston_insul_stop(type)` | Position where insulation stops |
+| `faston_length(type)` | Total length of crimp |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `faston(type, closed = false)` | Draw specified faston |
+
+![fastons](tests/png/fastons.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   4 | `faston(5_160430_7)` |  Faston part no 5_160430_7 to fit 4.75mm spade |
 
 
 <a href="#top">Top</a>
