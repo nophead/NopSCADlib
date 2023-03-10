@@ -25,8 +25,12 @@ use <../utils/sweep.scad>
 use <../utils/maths.scad>
 include <zipties.scad>
 
-module wire(colour, strands, length, strand = 0.2)   //! Add stranded wire to the BOM
-    vitamin(str(": Wire ", colour, " ", strands, "/", strand, "mm strands, length ",length, "mm"));
+module wire(colour, strands, length, strand = 0.2, d = 0, path = []) {  //! Add stranded wire to the BOM and draw it if diameter and path specified
+    vitamin(str(": Wire ", colour, " ", strands, "/", strand, "mm strands, length ", ceil(length + path_length(path)), "mm"));
+
+    if(path && d)
+         color(colour) sweep(path, circle_points(r = d / 2));
+}
 
 module ribbon_cable(ways, length)                   //! Add ribbon cable to the BOM
     vitamin(str(": Ribbon cable ", ways, " way ", length, "mm"));

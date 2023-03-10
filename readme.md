@@ -4545,7 +4545,7 @@ Utilities for adding wires to the BOM and optionally drawing them and cable bund
 | `cable_tie_holes(cable_r, h = 100)` | Holes to thread a ziptie through a panel to make a cable tie. |
 | `mouse_hole(cable, h = 100, teardrop = false)` | A mouse hole to allow a panel to go over a wire bundle. |
 | `ribbon_cable(ways, length)` | Add ribbon cable to the BOM |
-| `wire(colour, strands, length, strand = 0.2)` | Add stranded wire to the BOM |
+| `wire(colour, strands, length, strand = 0.2, d = 0, path = [])` | Add stranded wire to the BOM and draw it if diameter and path specified |
 
 ![wire](tests/png/wire.png)
 
