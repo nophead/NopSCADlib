@@ -42,12 +42,12 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
 <tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
 <tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fastons">Fastons</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Fastons">Fastons</a> </td><td> <a href = "#Photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td></td><td></td><td></td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
@@ -2752,6 +2752,49 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | pcb_spacer3080.stl |
 |   4 | pcb_spacer40100.stl |
 |   4 | pcb_spacer4090.stl |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="Photo_interrupters"></a>
+## Photo_interrupters
+Photo interrupter modules popular in robot kits and from China.
+
+[vitamins/photo_interrupters.scad](vitamins/photo_interrupters.scad) Object definitions.
+
+[vitamins/photo_interrupter.scad](vitamins/photo_interrupter.scad) Implementation.
+
+[tests/photo_interrupters.scad](tests/photo_interrupters.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `pi_base_height(type)` | Height of the base |
+| `pi_base_length(type)` | Length of the base |
+| `pi_base_width(type)` | Width of the base |
+| `pi_color(type)` | Color of photo interrupter |
+| `pi_gap_height(type)` | Height of the gap where the light can be interrupted |
+| `pi_gap_width(type)` | Width of the gap |
+| `pi_hole_diameter(type)` | Diameter of the mounting holes |
+| `pi_pcb(type)` | Parameter for the support PCB, created with pi_pcb |
+| `pi_stem_width(type)` | Width of the stems |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `photo_interrupter(type)` | Draw the photo interrupter, with PCB |
+| `pi_cutout(type)` | Shape to subtract for fitting a photo interrupter |
+| `pi_hole_locations(type)` | Locations of photo interrupter mounting holes |
+| `pi_pcb(type)` | Draw the support PCB |
+| `pi_pcb_hole_locations(pcb)` | Locations of the PCB holes |
+
+![photo_interrupters](tests/png/photo_interrupters.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `photo_interrupter(PH1)` |  PH1 Photo interrupter |
 
 
 <a href="#top">Top</a>

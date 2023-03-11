@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2023
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -22,7 +22,7 @@ include <../vitamins/photo_interrupters.scad>
 use <../utils/layout.scad>
 
 module photo_interrupters()
-    layout([for(l = photo_interrupters) pi_base_length(l)], 5)
+    layout([for(l = photo_interrupters) pi_base_length(l)], 5, true)
         photo_interrupter(photo_interrupters[$i]);
 
 photo_interrupters();

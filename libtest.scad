@@ -85,6 +85,7 @@ use <tests/o_ring.scad>
 use <tests/opengrab.scad>
 use <tests/panel_meters.scad>
 use <tests/PCBs.scad>
+use <tests/photo_interrupters.scad>
 use <tests/pillars.scad>
 use <tests/pillow_blocks.scad>
 use <tests/potentiometers.scad>
@@ -427,6 +428,9 @@ translate([x3 + 60, modules_y])
 
 translate([x3 + 90, modules_y])
     modules();
+
+translate([x3 + 150, modules_y])
+    photo_interrupters();
 
 translate([x3, ssrs_y]) {
     ssrs();
