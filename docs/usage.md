@@ -2,7 +2,7 @@
 
 ## Requirements
 1. OpenSCAD 2021.01 or later, download it from here: https://www.openscad.org/downloads.html
-1. Python 2.7+ or 3.6+ from https://www.python.org/downloads/
+1. Python 3.6+ from https://www.python.org/downloads/
 1. ImageMagick 7 www.imagemagick.org
 
 These are all cross platform tools so NopSCADlib should work on any platform that supports them, although it has currently only been tested on Win7.
