@@ -1,78 +1,75 @@
 include <../utils/core/core.scad>
+include <../utils/rounded_polygon.scad>
 
-function pi_name(type) = type[0];
-function pi_base_height(type) = type[3];
-function pi_base_length(type) = type[2];
-function pi_base_width(type) = type[1];
-function pi_gap_height(type) = type[4];
-function pi_gap_width(type) = type[6];
-function pi_stem_width(type) = type[5];
-function pi_hole_diameter(type) = type[7];
-function pi_color(type) = type[8];
-function pi_pcb(type) = type[9];
+function pi_base_width(type)    = type[1]; //! Width of the base
+function pi_base_length(type)   = type[2]; //! Length of the base
+function pi_base_height(type)   = type[3]; //! Height of the base
+function pi_gap_height(type)    = type[4]; //! Heigth of the gap where the light can be interrupted
+function pi_gap_width(type)     = type[6]; //! Width of the gap 
+function pi_stem_width(type)    = type[5]; //! Width of the stems
+function pi_hole_diameter(type) = type[7]; //! Diameter of the mounting holes
+function pi_color(type)         = type[8]; //! Color of photo interrupter
+function pi_pcb(type)           = type[9]; //! Parameter for the support PCB, created with pi_pcb
 
-module pi_hole_locations(type) {
+module pi_hole_locations(type) { //! Locations of photo interrupter mounting holes
     translate([0, -(pi_base_length(type) - pi_base_width(type)) / 2, 0])
         children();
     translate([0, (pi_base_length(type) - pi_base_width(type)) / 2, 0])
         children();
 }
 
-module pi_pcb_hole_locations(pcb) {
+module pi_pcb_hole_locations(pcb) { //! Locations of the PCB holes
     for (xy = pcb[7]) {
         translate([xy[0], xy[1], 0])
             children();
     }
 }
 
-module pi_pcb(type) {
+module pi_pcb(type) { //! Draw the support PCB
     pcb = pi_pcb(type);
     color(pcb[6]) {
-        difference() {
-            union() {
-                translate([0, 0, -pcb[2]]){
-                    if (pcb[4]) {
-                        hull() {
-                            pi_hole_locations(type)
-                                cylinder(h=pcb[2], d=pi_base_width(type));
-                        }
-                    }
-                }
-                translate([pcb[4], 0, -pcb[2]/2]) {
-                    cube([pcb[0], pcb[1], pcb[2]], center = true); 
-                }
-            }
-            translate([0, 0, -pcb[2]]) {
-                pi_pcb_hole_locations(pcb)
-                    cylinder(h=pcb[2]+0.1, d = pcb[8]);
-                pi_hole_locations(type)
-                    cylinder(h=pcb[2]+0.1, d=pi_hole_diameter(type));
+        translate([0, 0, -pcb[2]]) {
+            linear_extrude(pcb[2]) {
+                difference() {
+                    rounded_polygon([[0, -(pi_base_length(type) - pi_base_width(type)) / 2, -pi_base_width(type) / 2],
+                                     [pi_base_width(type) / 2, -pcb[1]/2, eps],
+                                     [pcb[0]+1, -pcb[1]/2, eps],
+                                     [pcb[0]+1, pcb[1]/2, eps],
+                                     [pi_base_width(type) / 2, pcb[1]/2, eps],
+                                     [0, (pi_base_length(type) - pi_base_width(type)) / 2, -pi_base_width(type) / 2]
+                                     ]);
+                    pi_pcb_hole_locations(pcb)
+                        circle(d = pcb[8]);
+                    pi_hole_locations(type)
+                        circle(d=pi_hole_diameter(type));
+                } 
             }
         }
     }
 }
 
-module photo_interrupter(type) {
-    vitamin(pi_name(type));
-    color(pi_color(type))
-    difference() {
-        union() {
-            hull() {
+module photo_interrupter(type) { //! Draw the photo interrupter, with PCB
+    vitamin(type[0]);
+    color(pi_color(type)) {
+        linear_extrude(pi_base_height(type)) {
+            difference() {
+                hull() {
+                    pi_hole_locations(type) 
+                        circle(d = pi_base_width(type));
+                }
                 pi_hole_locations(type) 
-                    cylinder(h = pi_base_height(type), d = pi_base_width(type));
+                    circle(d = pi_hole_diameter(type));    
             }
-            translate([-pi_base_width(type)/2, -(pi_gap_width(type)/2 + pi_stem_width(type)), 0])
-                cube([pi_base_width(type), pi_stem_width(type), pi_gap_height(type) + pi_base_height(type)]);
-            translate([-pi_base_width(type)/2, pi_gap_width(type)/2, 0])
-                cube([pi_base_width(type), pi_stem_width(type), pi_gap_height(type) + pi_base_height(type)]);
         }
-        pi_hole_locations(type) 
-            cylinder(h = pi_base_height(type), d = pi_hole_diameter(type));    
+        translate([-pi_base_width(type)/2, -(pi_gap_width(type)/2 + pi_stem_width(type)), 0])
+            cube([pi_base_width(type), pi_stem_width(type), pi_gap_height(type) + pi_base_height(type)]);
+        translate([-pi_base_width(type)/2, pi_gap_width(type)/2, 0])
+            cube([pi_base_width(type), pi_stem_width(type), pi_gap_height(type) + pi_base_height(type)]);
     }
     pi_pcb(type);
 }
 
-module pi_cutout(type) {
+module pi_cutout(type) { //! Shape to substract for fitting a photo interrupter
     hull() {
         pi_hole_locations(type) 
             cylinder(h = pi_base_height(type), d = pi_base_width(type));
