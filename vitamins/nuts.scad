@@ -75,6 +75,4 @@ M5nS_thin_nut    =      ["M5nS_thin_nut",         5,   8, 2.7];
 M6nS_thin_nut    =      ["M6nS_thin_nut",         6,  10, 3.2];
 M8nS_thin_nut    =      ["M8nS_thin_nut",         8,  13,   4];
 
-nuts = [M2_nut, M2p5_nut, M3_nut, M4_nut, M5_nut, M6_nut, M8_nut];
-
 use <nut.scad>

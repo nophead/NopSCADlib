@@ -114,26 +114,4 @@ No6_screw        = ["No6", "No6 pan wood",      hs_pan, 3.5, 6.7, 2.2,    0,   0
 No6_cs_screw     = ["No6_cs", "No6 cs wood",    hs_cs,  3.5, 7.0, 0,      0,   0, 0,   M4_washer, false,    No6_pilot_radius, No6_clearance_radius];
 No8_screw        = ["No8", "No8 pan wood",      hs_pan, 4.2, 8.2, 3.05,   0,   0, 0 ,  M5_washer, false,    No8_pilot_radius, No8_clearance_radius];
 
-screw_lists = [
-[ M2_cap_screw,    M2p5_cap_screw, M3_cap_screw,    M4_cap_screw,    M5_cap_screw,    M6_cap_screw, M8_cap_screw],
-[ 0,               0,              M3_low_cap_screw],
-[ M2_cs_cap_screw, 0,              M3_cs_cap_screw, M4_cs_cap_screw, M5_cs_cap_screw, M6_cs_cap_screw, M8_cs_cap_screw],
-[ M2_dome_screw,   M2p5_dome_screw,M3_dome_screw,   M4_dome_screw,   M5_dome_screw],
-[ 0,               0,              M3_hex_screw,    M4_hex_screw,    M5_hex_screw,    M6_hex_screw, M8_hex_screw],
-[ 0,               M2p5_pan_screw, M3_pan_screw,    M4_pan_screw,    M5_pan_screw,    M6_pan_screw, No632_pan_screw],
-[ No2_screw,       0,              No4_screw,       No6_screw,       No8_screw,       No6_cs_screw],
-[ 0,               0,              M3_grub_screw,   M4_grub_screw,   M5_grub_screw,   M6_grub_screw]
-];
-
 use <screw.scad>
-
-screws = [for(list = screw_lists) each list];
-
-function find_screw(type, size, i = 0) =
-    i >= len(screws) ? undef
-                     : screw_head_type(screws[i]) == type && screw_radius(screws[i]) == size / 2 ? screws[i]
-                                                                                                 : find_screw(type, size, i + 1);
-
-function alternate_screw(type, screw) =
-    let(alt_screw = find_screw(type, screw_radius(screw) * 2))
-        alt_screw ? alt_screw :screw;

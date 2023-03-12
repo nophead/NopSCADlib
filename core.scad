@@ -24,4 +24,4 @@ include <utils/core/core.scad>
 //
 // Fasteners used by a lot of other vitamins
 //
-include <vitamins/screws.scad>
+include <utils/screws.scad>

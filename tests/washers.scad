@@ -21,6 +21,9 @@ use <../utils/layout.scad>
 
 include <../vitamins/washers.scad>
 
+washers = [M2_washer, M2p5_washer, M3_washer, M3p5_washer, M4_washer, M5_washer, M6_washer, M8_washer, M3_rubber_washer];
+
+
 function penny_diameter(w) = let(p = penny_washer(w)) washer_diameter(p ? p : w);
 
 module washers()

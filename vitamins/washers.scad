@@ -48,6 +48,4 @@ toggle_washer   = ["toggle",   6.1,12,   0.6, false, 10,      0,   0, undef];
 
 M3_rubber_washer= ["M3_rubber",3,  10,   1.5, true,   5.8, M3_penny_washer];
 
-washers = [M2_washer, M2p5_washer, M3_washer, M3p5_washer, M4_washer, M5_washer, M6_washer, M8_washer, M3_rubber_washer];
-
 use <washer.scad>
