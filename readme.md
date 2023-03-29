@@ -6750,7 +6750,6 @@ Maths utilities for manipulating vectors and matrices.
 | `argcoth(x)` | inverse hyperbolic cotangent |
 | `argsinh(x)` | inverse hyperbolic sine |
 | `argtanh(x)` | inverse hyperbolic tangent |
-| `augment(m)` | Augment a matrix by adding an identity matrix to the right |
 | `circle_intersect(c1, r1, c2, r2)` | Calculate one point where two circles in the X-Z plane intersect, clockwise around c1 |
 | `cosh(x)` | hyperbolic cosine |
 | `coth(x)` | hyperbolic cotangent |
@@ -6770,11 +6769,8 @@ Maths utilities for manipulating vectors and matrices.
 | `rot2_z(a)` | Generate a 2x2 matrix to rotate around z |
 | `rot3_z(a)` | Generate a 3x3 matrix to rotate around z |
 | `rotate(a, v)` | Generate a 4x4 rotation matrix, `a` can be a vector of three angles or a single angle around `z`, or around axis `v` |
-| `rowswap(m, i, j)` | Swap two rows of a matrix |
 | `scale(v)` |  Generate a 4x4 matrix that scales by `v`, which can be a vector of xyz factors or a scalar to scale all axes equally |
 | `sinh(x)` | hyperbolic sine |
-| `solve(m, i = 0, j = 0)` | Solve each row ensuring diagonal is not zero |
-| `solve_row(m, i)` | Make diagonal one by dividing the row by it and subtract from other rows to make column zero |
 | `sqr(x)` | Square x |
 | `sumv(v)` | sum a vector of values that can be added with "+" |
 | `tanh(x)` | hyperbolic tangent |

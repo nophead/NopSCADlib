@@ -118,24 +118,24 @@ module position_children(list, t) //! Position children if they are on the Z = 0
 
 // Matrix inversion: https://www.mathsisfun.com/algebra/matrix-inverse-row-operations-gauss-jordan.html
 
-function augment(m) = let(l = len(m), n = identity(l)) [ //! Augment a matrix by adding an identity matrix to the right
+function augment(m) = let(l = len(m), n = identity(l)) [ // Augment a matrix by adding an identity matrix to the right
     for(i = [0 : l - 1])
         concat(m[i], n[i])
 ];
 
-function rowswap(m, i, j) = [ //! Swap two rows of a matrix
+function rowswap(m, i, j) = [ // Swap two rows of a matrix
     for(k = [0 : len(m) - 1])
         k == i ? m[j] : k == j ? m[i] : m[k]
 ];
 
-function solve_row(m, i) = let(diag = m[i][i]) [ //! Make diagonal one by dividing the row by it and subtract from other rows to make column zero
+function solve_row(m, i) = let(diag = m[i][i]) [ // Make diagonal one by dividing the row by it and subtract from other rows to make column zero
     for(j = [0 : len(m) - 1])
         i == j ? m[j] / diag : m[j] - m[i] * m[j][i] / diag
 ];
 
 function nearly_zero(x) = abs(x) < 1e-5; //! True if x is close to zero
 
-function solve(m, i = 0, j = 0) = //! Solve each row ensuring diagonal is not zero
+function solve(m, i = 0, j = 0) = // Solve each row ensuring diagonal is not zero
     i < len(m) ?
         assert(i + j < len(m), "matrix is singular")
          solve(!nearly_zero(m[i + j][i]) ? solve_row(j ? rowswap(m, i, i + j) : m, i) : solve(m, i, j + 1), i + 1)
