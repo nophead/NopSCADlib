@@ -41,7 +41,7 @@ function resistor_sleeved(type)       = type[9]; //! Are the leads sleeved
 
 splay_angle = 2; // radial lead splay angle
 
-module resistor(type) { //! Draw specified type of resitor
+module resistor(type) { //! Draw specified type of resistor
     length = resistor_length(type);
     dia = resistor_diameter(type);
 

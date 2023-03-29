@@ -828,7 +828,7 @@ Various electronic components used in hot ends and heated beds.
 | `panel_USBA()` | Draw a panel mount USBA connector |
 | `panel_USBA_hole_positions()` | Place children at hole positions |
 | `panel_USBA_holes(h = 100)` | Make holes for USBA connector |
-| `resistor(type)` | Draw specified type of resitor |
+| `resistor(type)` | Draw specified type of resistor |
 | `sleeved_resistor(type, sleeving, bare = 5, heatshrink = false)` | Draw a resistor with sleeved leads and option heatshrink |
 | `thermal_cutout(type)` | Draw specified thermal cutout |
 | `thermal_cutout_hole_positions(type)` | Place children at hole positions |
