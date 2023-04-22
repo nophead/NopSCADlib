@@ -2526,12 +2526,19 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_led(LED0603, orange)` |  SMD LED 0603 orange |
 |   1 | `smd_led(LED0805, red)` |  SMD LED 0805 red |
 |   1 | `smd_led(LED1206, blue)` |  SMD LED 1306 blue |
+|   1 | `smd_tant(TANT_A)` |  SMD Tantalum capacitor package A ,1uF, 2.5V |
+|   1 | `smd_tant(TANT_B)` |  SMD Tantalum capacitor package B ,10uF, 10V |
+|   1 | `smd_tant(TANT_C)` |  SMD Tantalum capacitor package C ,100uF, 16V |
+|   1 | `smd_capacitor(CAP0402)` |  SMD capacitor 0402 10nF |
+|   1 | `smd_capacitor(CAP0502)` |  SMD capacitor 0502 10nF |
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 10nF |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 100nF |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 1uF |
-|   1 | `smd_resistor(RES0603, 1K)` |  SMD resistor 0603 1K 0.1W |
+|   1 | `smd_resistor(RES0402, 1)` |  SMD resistor 0402 1 0.0625W |
+|   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
+|   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
-|   1 | `smd_resistor(RES1206, 1K)` |  SMD resistor 1206 1K 0.25W |
+|   1 | `smd_resistor(RES1206, 1M)` |  SMD resistor 1206 1M 0.25W |
 |   1 | `smd_soic(SOIC14)` |  SOIC14 package 74HC00 |
 |   1 | `smd_soic(SOIC16)` |  SOIC16 package ICL323 |
 |   1 | `smd_soic(SOIC18)` |  SOIC18 package PIC18F88 |
@@ -3812,6 +3819,21 @@ SK shaft support brackets
 ## SMDs
 Surface mount components for PCBs.
 
+Note that the value string for tantalum capacitors is the the capacitance in pico farads expressed as two digits plus an exponent plus a single letter voltage code.
+E.g. 475A is 4.7uF 10V on the parts list.
+
+| Code | Voltage |
+| ---- | ------- |
+| e | 2.5 |
+| G | 4 |
+| J | 6.3 |
+| A | 10 |
+| C | 16 |
+| D | 20 |
+| E | 25 |
+| V | 35 |
+| H | 50 |
+
 [vitamins/smds.scad](vitamins/smds.scad) Object definitions.
 
 [vitamins/smd.scad](vitamins/smd.scad) Implementation.
@@ -3823,6 +3845,7 @@ Surface mount components for PCBs.
 |:--- |:--- |
 | `smd_cap_end_cap(type)` | End cap width |
 | `smd_cap_size(type)` | Body length, width |
+| `smd_diode_colour(type)` | Body colour |
 | `smd_diode_lead_z(type)` | Top of lead frame from top |
 | `smd_diode_leads(type)` | Lead extent in x, width, thickness and gap |
 | `smd_diode_size(type)` | Body length, width and height |
@@ -3855,6 +3878,11 @@ Surface mount components for PCBs.
 | `smd_sot_size(type)` | Body length, width and height |
 | `smd_sot_tab_width(type)` | The wide lead at the top |
 | `smd_sot_z(type)` | Height above PCB surface |
+| `smd_tant_colours(type)` | Colours of body and stripe |
+| `smd_tant_lead_z(type)` | Top of lead frame from top |
+| `smd_tant_leads(type)` | Lead extent in x, width, thickness and gap |
+| `smd_tant_size(type)` | Body length, width and height |
+| `smd_tant_z(type)` | Height above PCB surface |
 
 ### Functions
 | Function | Description |
@@ -3874,6 +3902,7 @@ Surface mount components for PCBs.
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
 | `smd_soic(type, value)` | Draw an SMD SOIC |
 | `smd_sot(type, value)` | Draw an SMD transistor |
+| `smd_tant(type, value)` | Draw an SMD tantalum capacitor |
 
 ![smds](tests/png/smds.png)
 
@@ -3885,10 +3914,17 @@ Surface mount components for PCBs.
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
 |   1 | `smd_led(LED0805, blue)` |  SMD LED 0805 blue |
 |   1 | `smd_led(LED1206, red)` |  SMD LED 1306 red |
+|   1 | `smd_tant(TANT_A)` |  SMD Tantalum capacitor package A ,1uF, 2.5V |
+|   1 | `smd_tant(TANT_B)` |  SMD Tantalum capacitor package B ,10uF, 6.3V |
+|   1 | `smd_tant(TANT_C)` |  SMD Tantalum capacitor package C ,100uF, 10V |
+|   1 | `smd_capacitor(CAP0402)` |  SMD capacitor 0402 |
+|   1 | `smd_capacitor(CAP0502)` |  SMD capacitor 0502 |
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
-|   1 | `smd_resistor(RES0603, 1R0)` |  SMD resistor 0603 1R0 0.1W |
+|   1 | `smd_resistor(RES0402, 1R0)` |  SMD resistor 0402 1R0 0.0625W |
+|   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
+|   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |
 |   1 | `smd_resistor(RES0805, 10M)` |  SMD resistor 0805 10M 0.125W |
 |   1 | `smd_resistor(RES1206, 100K)` |  SMD resistor 1206 100K 0.25W |
 |   1 | `smd_soic(SOIC14)` |  SOIC14 package SOIC14 |

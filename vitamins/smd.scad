@@ -19,6 +19,21 @@
 
 //
 //! Surface mount components for PCBs.
+//!
+//! Note that the value string for tantalum capacitors is the the capacitance in pico farads expressed as two digits plus an exponent plus a single letter voltage code.
+//! E.g. 475A is 4.7uF 10V on the parts list.
+//!
+//! | Code | Voltage |
+//! | ---- | ------- |
+//! | e | 2.5 |
+//! | G | 4 |
+//! | J | 6.3 |
+//! | A | 10 |
+//! | C | 16 |
+//! | D | 20 |
+//! | E | 25 |
+//! | V | 35 |
+//! | H | 50 |
 //
 include <../utils/core/core.scad>
 
@@ -234,6 +249,7 @@ function smd_diode_size(type)   = type[1]; //! Body length, width and height
 function smd_diode_z(type)      = type[2]; //! Height above PCB surface
 function smd_diode_lead_z(type) = type[3]; //! Top of lead frame from top
 function smd_diode_leads(type)  = type[4]; //! Lead extent in x, width, thickness and gap
+function smd_diode_colour(type) = type[5]; //! Body colour
 
 module smd_diode(type, value) { //! Draw an SMD diode
     vitamin(str("smd_diode(", type[0], "): ", type[0], " package ", value));
@@ -248,7 +264,7 @@ module smd_diode(type, value) { //! Draw an SMD diode
     gap = leads[3];
     gap2 = gap - leads.z * 2;
 
-    color(grey(20))
+    color(smd_diode_colour(type))
         difference() {
             hull()
                 for(z = [z0, z1, z2], inset = abs(z - z1) * tan(slant))
@@ -286,6 +302,75 @@ module smd_diode(type, value) { //! Draw an SMD diode
                     }
 
 }
+
+function smd_tant_size(type)   = type[1]; //! Body length, width and height
+function smd_tant_z(type)      = type[2]; //! Height above PCB surface
+function smd_tant_lead_z(type) = type[3]; //! Top of lead frame from top
+function smd_tant_leads(type)  = type[4]; //! Lead extent in x, width, thickness and gap
+function smd_tant_colours(type)= type[5]; //! Colours of body and stripe
+
+module smd_tant(type, value) { //! Draw an SMD tantalum capacitor
+    function dig(c) = let(x = ord(c) - ord("0")) assert(x >= 0 && x <= 9, "expected value in the form 475A for 4.7uF 10V") x;
+    uF = is_undef(value) ? "" : str(" ,", (dig(value[0]) * 10 + dig(value[1])) * 10 ^ dig(value[2]) / 10^6, "uF");
+    codes = "eGJACDEVH";
+    voltages = [2.5, 4, 6.3, 10, 16, 20, 25, 35, 50];
+    volts = is_undef(value) ? "" : let(c = value[3])
+        assert(in(codes, c), str("expected the 4th character of value to be a voltage code: ", codes, ", got ", c))
+            str(", ", voltages[search(c, codes)[0]], "V");
+    vitamin(str("smd_tant(", type[0], "): SMD Tantalum capacitor package ", type[0][len(type[0]) -1], uF, volts));
+
+    size = smd_tant_size(type);
+    slant = 5;                              //! 5 degree body draft angle
+    z0 = smd_tant_z(type);
+    z2 = z0 + size.z;
+    z1 = z2 - smd_tant_lead_z(type);
+    stripe = size.x / 5;
+    leads = smd_tant_leads(type);
+    gap = leads[3];
+    gap2 = gap - leads.z * 2;
+    colours = smd_tant_colours(type);
+    inset = (z2 - z1) * tan(slant);
+
+    color(colours[0])
+        difference() {
+            hull()
+                for(z = [z0, z1, z2], inset = abs(z - z1) * tan(slant))
+                    translate_z(z)
+                        cube([size.x - 2 * inset, size.y - 2 * inset, eps], center = true);
+
+            for(side = [-1, 1])
+                translate([side * (size.x / 2 - (size.x - gap2) / 4), 0, eps])
+                    cube([(size.x - gap2) / 2, size.y, 3 * leads.z], center = true);
+        }
+
+    color("white") {
+        w = 0.9 * (size.x - stripe - inset);
+        translate([-size.x / 2 + inset + stripe + w / 2, 0, z2])
+            linear_extrude(eps)
+                resize([w, size.y / 2])
+                    text(value, halign = "center", valign = "center");
+    }
+
+    color(colours[1]) {
+        translate([-size.x / 2 + stripe * 0.2, -size.y / 2 + inset, z2])
+            cube([(stripe - inset) * 0.8, size.y - 2 * inset, eps]);
+    }
+
+    color(silver)
+        translate_z(z1 / 2)
+            rotate([90, 0, 0])
+                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = 32)
+                    difference() {
+                        rounded_square([leads.x, z1], 2 * leads.z);
+
+                        rounded_square([leads.x - 2 * leads.z, z1 - 2 * leads.z], leads.z);
+
+                        translate([0, - z1 / 2])
+                            square([gap, leads.z * 2 + eps], center = true);
+                    }
+
+}
+
 
 function smd_inductor_size(type)   = type[1]; //! Body length, width and height
 function smd_inductor_z(type)      = type[2]; //! Height above PCB surface

@@ -1146,6 +1146,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
             if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5], param(6, undef));
+            if(show(comp, "smd_tant"))      smd_tant(comp[4], param(5, undef));
             if(show(comp, "smd_sot"))       smd_sot(comp[4], comp[5]);
             if(show(comp, "smd_soic"))      smd_soic(comp[4], comp[5]);
             if(show(comp, "smd_diode"))     smd_diode(comp[4], comp[5]);
