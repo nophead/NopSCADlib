@@ -41,6 +41,7 @@ function screw_washer(type)           = type[9];     //! Default washer
 function screw_nut(type)              = type[10];    //! Default nut
 function screw_pilot_hole(type)       = type[11];    //! Pilot hole radius for wood screws, tap radius for machine screws
 function screw_clearance_radius(type) = type[12];    //! Clearance hole radius
+function screw_thread_diameter(type)  = type[13];    //! Thread diamter, if different from nominal diamter
 function screw_nut_radius(type) = screw_nut(type) ? nut_radius(screw_nut(type)) : 0; //! Radius of matching nut
 function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width)); //! Boss big enough for nut trap and washer
 function screw_head_depth(type, d = 0) =             //! How far a counter sink head will go into a straight hole diameter d
@@ -94,25 +95,27 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     socket_depth= screw_socket_depth(type);
     socket_rad  = socket_af / cos(30) / 2;
     max_thread  = screw_max_thread(type);
+    thread_rad = is_undef(screw_thread_diameter(type)) ? rad : screw_thread_diameter(type) / 2 - eps;
     thread = max_thread ? length >= max_thread + 5 ? max_thread
                                                    : length
                         : length;
+    thread_offset = is_undef(screw_thread_diameter(type)) ? 0 : thread;
     d = 2 * screw_radius(type);
     pitch = metric_coarse_pitch(d);
     colour = nylon || head_type == hs_grub ? grey(40) : grey(80);
 
     module shaft(socket = 0, headless = false) {
         point = screw_nut(type) ? 0 : 3 * rad;
-        shank  = length - thread - socket;
+        shank  = length - socket - (is_undef(screw_thread_diameter(type)) ? thread : 0);
 
         if(show_threads && !point && pitch)
-            translate_z(-length)
-                male_metric_thread(d, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
+            translate_z(-length - thread_offset)
+                male_metric_thread(2 * thread_rad, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
         else
             color(colour * 0.9)
                 rotate_extrude() {
-                    translate([0, -length + point])
-                        square([rad, length - socket - point]);
+                    translate([0, -length + point - thread_offset])
+                        square([thread_rad, length - socket - point]);
 
                     if(point)
                         polygon([

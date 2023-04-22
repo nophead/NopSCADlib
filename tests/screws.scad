@@ -56,7 +56,7 @@ module screws() {
                     screw(screw, length);
             }
         }
-        translate([20, 40, -15])
+        translate([20, 60, -15])
             polysink_stl();
 }
 
