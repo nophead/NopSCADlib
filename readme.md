@@ -3484,6 +3484,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 | `screw_radius(type)` | Nominal radius |
 | `screw_socket_af(type)` | Socket across flats |
 | `screw_socket_depth(type)` | Socket or slot depth |
+| `screw_thread_diameter(type)` | Thread diameter, if different from nominal diamter |
 | `screw_washer(type)` | Default washer |
 
 ### Functions
@@ -3526,12 +3527,14 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 |   1 | `screw(M3_hex_screw, 10)` |  Screw M3 hex x 10mm |
 |   1 | `screw(M3_low_cap_screw, 10)` |  Screw M3 low cap x 10mm |
 |   1 | `screw(M3_pan_screw, 10)` |  Screw M3 pan x 10mm |
+|   1 | `screw(M3_shoulder_screw, 12)` |  Screw M3 shoulder x 12mm |
 |   1 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
 |   1 | `screw(M4_cs_cap_screw, 25)` |  Screw M4 cs cap x 25mm |
 |   1 | `screw(M4_dome_screw, 25)` |  Screw M4 dome x 25mm |
 |   1 | `screw(M4_grub_screw, 8)` |  Screw M4 grub x  8mm |
 |   1 | `screw(M4_hex_screw, 30)` |  Screw M4 hex x 30mm |
 |   1 | `screw(M4_pan_screw, 30)` |  Screw M4 pan x 30mm |
+|   1 | `screw(M4_shoulder_screw, 16)` |  Screw M4 shoulder x 16mm |
 |   1 | `screw(M5_cap_screw, 30)` |  Screw M5 cap x 30mm |
 |   1 | `screw(M5_cs_cap_screw, 30)` |  Screw M5 cs cap x 30mm |
 |   1 | `screw(M5_dome_screw, 30)` |  Screw M5 dome x 30mm |

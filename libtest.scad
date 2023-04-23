@@ -225,7 +225,7 @@ inserts_y = 0;
 nuts_y = inserts_y + 20;
 washers_y = nuts_y + 120;
 screws_y = washers_y + 120;
-circlips_y = screws_y + 160;
+circlips_y = screws_y + 180;
 springs_y = circlips_y + 20;
 o_rings_y = springs_y;
 sealing_strip_y = springs_y + 20;
@@ -402,20 +402,20 @@ extrusions_y = panel_meters_y + 80;
 translate([x3, veroboard_y])
     veroboard_test();
 
-translate([x3 + 60, veroboard_y + 20])
+translate([x3 + 50, veroboard_y + 20])
     geared_steppers();
 
 translate([x3 + 160, ssrs_y])
     pcb_mounts();
 
-translate([x3 + 170, veroboard_y + 16])
+translate([x3 + 145, veroboard_y + 16])
     cameras();
+
+translate([x3 + 145, d_connectors_y - 10])
+    camera_housings();
 
 translate([x3, d_connectors_y])
     d_connectors();
-
-translate([x3 + 170, d_connectors_y - 10])
-    camera_housings();
 
 translate([x3, iecs_y])
     iecs();
