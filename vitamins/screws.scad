@@ -103,6 +103,9 @@ M8_hex_screw     = ["M8_hex", "M8 hex",         hs_hex,   8, 15,  5.65,   0,   0
 
 M3_low_cap_screw = ["M3_low_cap", "M3 low cap", hs_cap,   3, 5.5, 2,    1.5, 2.0, 18,  M3_washer, M3_nut,   M3_tap_radius,    M3_clearance_radius];
 
+M3_shoulder_screw= ["M3_shoulder", "M3 shoulder",hs_cap,  4, 7.0, 2.4,  1.5, 3.0, 6,   M4_washer, M3_nut,   M3_tap_radius,    2,   3];
+M4_shoulder_screw= ["M4_shoulder", "M4 shoulder",hs_cap,  5, 9.0, 2.4,  1.5, 3.0, 8,   M5_washer, M4_nut,   M4_tap_radius,    2.5, 4];
+
 M3_grub_screw    = ["M3_grub", "M3 grub",       hs_grub,  3,   0, 0,    2.5, 1.5, 0,   M3_washer, M3_nut,   M3_tap_radius,    M3_clearance_radius];
 M4_grub_screw    = ["M4_grub", "M4 grub",       hs_grub,  4,   0, 0,    2.4, 2.0, 0,   M4_washer, M4_nut,   M4_tap_radius,    M4_clearance_radius];
 M5_grub_screw    = ["M5_grub", "M5 grub",       hs_grub,  5,   0, 0,    2.4, 2.5, 0,   M5_washer, M5_nut,   M5_tap_radius,    M5_clearance_radius];
@@ -117,6 +120,7 @@ No8_screw        = ["No8", "No8 pan wood",      hs_pan, 4.2, 8.2, 3.05,   0,   0
 screw_lists = [
 [ M2_cap_screw,    M2p5_cap_screw, M3_cap_screw,    M4_cap_screw,    M5_cap_screw,    M6_cap_screw, M8_cap_screw],
 [ 0,               0,              M3_low_cap_screw],
+[ 0,               0,              M3_shoulder_screw, M4_shoulder_screw],
 [ M2_cs_cap_screw, 0,              M3_cs_cap_screw, M4_cs_cap_screw, M5_cs_cap_screw, M6_cs_cap_screw, M8_cs_cap_screw],
 [ M2_dome_screw,   M2p5_dome_screw,M3_dome_screw,   M4_dome_screw,   M5_dome_screw],
 [ 0,               0,              M3_hex_screw,    M4_hex_screw,    M5_hex_screw,    M6_hex_screw, M8_hex_screw],

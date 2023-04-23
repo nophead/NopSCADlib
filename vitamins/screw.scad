@@ -41,6 +41,7 @@ function screw_washer(type)           = type[9];     //! Default washer
 function screw_nut(type)              = type[10];    //! Default nut
 function screw_pilot_hole(type)       = type[11];    //! Pilot hole radius for wood screws, tap radius for machine screws
 function screw_clearance_radius(type) = type[12];    //! Clearance hole radius
+function screw_thread_diameter(type)  = type[13];    //! Thread diameter, if different from nominal diamter
 function screw_nut_radius(type) = screw_nut(type) ? nut_radius(screw_nut(type)) : 0; //! Radius of matching nut
 function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width)); //! Boss big enough for nut trap and washer
 function screw_head_depth(type, d = 0) =             //! How far a counter sink head will go into a straight hole diameter d
@@ -87,47 +88,50 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     vitamin(str("screw(", type[0], "_screw, ", length, arg(hob_point, 0, "hob_point"), arg(nylon, false, "nylon"), "): ", description));
 
     head_type   = screw_head_type(type);
-    rad         = screw_radius(type) - eps;
+    shaft_rad   = screw_radius(type) - eps;
     head_rad    = screw_head_radius(type);
     head_height = screw_head_height(type);
     socket_af   = screw_socket_af(type);
     socket_depth= screw_socket_depth(type);
     socket_rad  = socket_af / cos(30) / 2;
     max_thread  = screw_max_thread(type);
+    has_shoulder = !is_undef(screw_thread_diameter(type));
+    thread_rad = has_shoulder ? screw_thread_diameter(type) / 2 : screw_radius(type);
     thread = max_thread ? length >= max_thread + 5 ? max_thread
                                                    : length
                         : length;
-    d = 2 * screw_radius(type);
-    pitch = metric_coarse_pitch(d);
+    thread_offset = has_shoulder ? thread : 0;
+    thread_d = 2 * thread_rad;
+    pitch = metric_coarse_pitch(thread_d);
     colour = nylon || head_type == hs_grub ? grey(40) : grey(80);
 
     module shaft(socket = 0, headless = false) {
-        point = screw_nut(type) ? 0 : 3 * rad;
-        shank  = length - thread - socket;
+        point = screw_nut(type) ? 0 : 3 * shaft_rad;
+        shank  = length - socket - (has_shoulder ? 0 : thread);
 
         if(show_threads && !point && pitch)
-            translate_z(-length)
-                male_metric_thread(d, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
+            translate_z(-length - thread_offset)
+                male_metric_thread(thread_d, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
         else
             color(colour * 0.9)
                 rotate_extrude() {
-                    translate([0, -length + point])
-                        square([rad, length - socket - point]);
+                    translate([0, -length + point - thread_offset])
+                        square([thread_rad - eps, length - socket - point]);
 
                     if(point)
                         polygon([
-                            [0.4, -length], [0, point - length], [rad, point - length]
+                            [0.4, -length], [0, point - length], [shaft_rad, point - length]
                         ]);
                 }
 
         if(shank > 0)
             color(colour)
                 translate_z(-shank - socket)
-                    cylinder(r = rad + eps, h = shank);
+                    cylinder(r = shaft_rad + eps, h = shank);
     }
 
     module cs_head(socket_rad, socket_depth) {
-        head_t = rad / 5;
+        head_t = shaft_rad / 5;
         head_height = head_rad + head_t;
 
         color(colour) {
@@ -173,7 +177,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
         if(head_type == hs_grub) {
             color(colour) {
-                r = show_threads ? rad - pitch / 2 : rad;
+                r = show_threads ? shaft_rad - pitch / 2 : shaft_rad;
                 translate_z(-socket_depth)
                     linear_extrude(socket_depth)
                         difference() {
