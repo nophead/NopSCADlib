@@ -41,7 +41,7 @@ function screw_washer(type)           = type[9];     //! Default washer
 function screw_nut(type)              = type[10];    //! Default nut
 function screw_pilot_hole(type)       = type[11];    //! Pilot hole radius for wood screws, tap radius for machine screws
 function screw_clearance_radius(type) = type[12];    //! Clearance hole radius
-function screw_thread_diameter(type)  = type[13];    //! Thread diamter, if different from nominal diamter
+function screw_thread_diameter(type)  = type[13];    //! Thread diameter, if different from nominal diamter
 function screw_nut_radius(type) = screw_nut(type) ? nut_radius(screw_nut(type)) : 0; //! Radius of matching nut
 function screw_boss_diameter(type) = max(washer_diameter(screw_washer(type)) + 1, 2 * (screw_nut_radius(type) + 3 * extrusion_width)); //! Boss big enough for nut trap and washer
 function screw_head_depth(type, d = 0) =             //! How far a counter sink head will go into a straight hole diameter d
@@ -100,7 +100,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                                                    : length
                         : length;
     thread_offset = is_undef(screw_thread_diameter(type)) ? 0 : thread;
-    d = 2 * screw_radius(type);
+    d = 2 * (thread_rad + eps);
     pitch = metric_coarse_pitch(d);
     colour = nylon || head_type == hs_grub ? grey(40) : grey(80);
 
@@ -110,7 +110,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
 
         if(show_threads && !point && pitch)
             translate_z(-length - thread_offset)
-                male_metric_thread(2 * thread_rad, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
+                male_metric_thread(d, pitch, thread - (shank > 0 || headless ? 0 : socket), false, top = headless ? -1 : 0, solid = !headless, colour = colour);
         else
             color(colour * 0.9)
                 rotate_extrude() {
