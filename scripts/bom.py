@@ -140,7 +140,7 @@ class BOM:
         for part in sorted(self.vitamins):
             i += 1
             if ': ' in part:
-                part_no, description = part.split(': ')
+                part_no, description = part.split(': ', 1)
             else:
                 part_no, description = "", part
             qty = self.vitamins[part].count
@@ -183,7 +183,7 @@ class BOM:
 
         for part in sorted(self.vitamins):
             if ': ' in part:
-                part_no, description = part.split(': ')
+                part_no, description = part.split(': ', 1)
             else:
                 part_no, description = "", part
             if breakdown:

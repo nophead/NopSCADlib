@@ -259,11 +259,11 @@ def tests(tests):
                     things = BOM[thing]
                     if things:
                         body += ['### %s\n| Qty | %s |\n| ---:|:--- |%s' % (thing.title(), heading, ':---|' if '|' in heading else '')]
-                        for item in sorted(things, key = lambda s: s.split(":")[-1]):
+                        for item in sorted(things, key = lambda s: s.split(":",1)[-1]):
                             name = item
                             desc = ''
                             if thing == "vitamins":
-                                vit = item.split(':')
+                                vit = item.split(':', 1)
                                 name = '`' + vit[0] + '`' if vit[0] else ''
                                 while '[[' in name and ']]' in name:
                                     i = name.find('[[')

@@ -303,7 +303,7 @@ def views(target, do_assemblies = None):
                 grand_total2 = 0
                 heading = headings[t][0].upper() + headings[t][1:]
                 print(('|  ' * len(global_bom) + '| | **%s** |') % heading, file = doc_file)
-                for thing in sorted(things[t], key = lambda s: s.split(":")[-1]):
+                for thing in sorted(things[t], key = lambda s: s.split(":",1)[-1]):
                     for ass in global_bom:
                         count = ass[t][thing]["count"] if thing in ass[t] else 0
                         print('| %s ' % pad(count if count else '.', 2, 1), file = doc_file, end = '')
@@ -313,7 +313,7 @@ def views(target, do_assemblies = None):
                         else:
                             totals[name] = count
                         grand_total2 += count
-                    print('|  %s | %s |' % (pad(things[t][thing], 2, 1), pad(thing.split(":")[-1], 2)), file = doc_file)
+                    print('|  %s | %s |' % (pad(things[t][thing], 2, 1), pad(thing.split(":",1)[-1], 2)), file = doc_file)
 
                 grand_total = 0
                 for ass in global_bom:
@@ -344,8 +344,8 @@ def views(target, do_assemblies = None):
                 print("### Vitamins",         file = doc_file)
                 print("|Qty|Description|",    file = doc_file)
                 print("|---:|:----------|",    file = doc_file)
-                for v in sorted(vitamins, key = lambda s: s.split(":")[-1]):
-                    print("|%d|%s|" % (vitamins[v]["count"], v.split(":")[1]),     file = doc_file)
+                for v in sorted(vitamins, key = lambda s: s.split(":",1)[-1]):
+                    print("|%d|%s|" % (vitamins[v]["count"], v.split(":",1)[1]),     file = doc_file)
                 print("\n", file = doc_file)
 
             printed = ass["printed"]
