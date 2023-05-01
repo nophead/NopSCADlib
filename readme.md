@@ -2534,6 +2534,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 10nF |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 100nF |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 1uF |
+|   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax type: U_FL_R_SMT_1 |
 |   1 | `smd_resistor(RES0402, 1)` |  SMD resistor 0402 1 0.0625W |
 |   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
 |   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |
@@ -3848,6 +3849,13 @@ E.g. 475A is 4.7uF 10V on the parts list.
 |:--- |:--- |
 | `smd_cap_end_cap(type)` | End cap width |
 | `smd_cap_size(type)` | Body length, width |
+| `smd_coax_base_r(type)` | Corner radius of the base |
+| `smd_coax_base_size(type)` | Size of the insulating base |
+| `smd_coax_groove(type)` | Groove id, width and z |
+| `smd_coax_lug_size(type)` | lug size |
+| `smd_coax_pin_d(type)` | Central pin diameter |
+| `smd_coax_tube(type)` | OD, ID, height |
+| `smd_contact_size(type)` | contact size |
 | `smd_diode_colour(type)` | Body colour |
 | `smd_diode_lead_z(type)` | Top of lead frame from top |
 | `smd_diode_leads(type)` | Lead extent in x, width, thickness and gap |
@@ -3898,6 +3906,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 | Module | Description |
 |:--- |:--- |
 | `smd_capacitor(type, height, value = undef)` | Draw an SMD capacitor with specified height |
+| `smd_coax(type)` | Draw an SMD coaxial connector |
 | `smd_diode(type, value)` | Draw an SMD diode |
 | `smd_inductor(type, value)` | Draw an SMD inductor |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
@@ -3925,6 +3934,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
+|   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax connector type: U_FL_R_SMT_1 |
 |   1 | `smd_resistor(RES0402, 1R0)` |  SMD resistor 0402 1R0 0.0625W |
 |   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
 |   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |

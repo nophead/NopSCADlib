@@ -516,3 +516,65 @@ module smd_pot(type, value) { //! Draw an SMD pot
                         square([track_w, track_l], center = true);
             }
 }
+
+function smd_coax_base_size(type) = type[1]; //! Size of the insulating base
+function smd_coax_base_r(type)    = type[2]; //! Corner radius of the base
+function smd_coax_tube(type)      = type[3]; //! OD, ID, height
+function smd_coax_groove(type)    = type[4]; //! Groove id, width and z
+function smd_coax_pin_d(type)     = type[5]; //! Central pin diameter
+function smd_coax_lug_size(type)  = type[6]; //! lug size
+function smd_contact_size(type)   = type[7]; //! contact size
+
+module smd_coax(type) { //! Draw an SMD coaxial connector
+    vitamin(str("smd_coax(", type[0], "): SMD coax connector type: ", type[0]));
+
+    size = smd_coax_base_size(type);
+    t = smd_coax_tube(type);
+    g = smd_coax_groove(type);
+    chamfer = (t.x - g.x) / 2;
+    pin_r = smd_coax_pin_d(type) / 2;
+    lug = smd_coax_lug_size(type);
+    contact = smd_contact_size(type);
+    $fn = 64;
+
+    color(grey(90))
+        translate_z(eps)
+            rounded_rectangle(size, smd_coax_base_r(type));
+
+    color(gold) {
+        rotate_extrude() {
+            polygon([
+                [t.y / 2, 0.1],
+                [t.y / 2, t.z],
+                [g.x / 2, t.z],
+                [t.x / 2, t.z - chamfer],
+                [t.x / 2, g.z + g.y / 2 + chamfer],
+                [g.x / 2, g.z + g.y / 2],
+                [g.x / 2, g.z - g.y / 2],
+                [t.x / 2, g.z - g.y / 2 - chamfer],
+                [t.x / 2, 0.1],
+            ]);
+        }
+        hull() {
+            translate_z(t.z - pin_r)
+                sphere(pin_r);
+
+            translate_z(0.1)
+                cylinder(r = pin_r, h = eps);
+        }
+
+        for(side = [-1, 1])
+            translate([side * size.x / 2, 0, lug.z / 2])
+                cube(lug, center = true);
+
+        rotate(180)
+            translate([-contact.x / 2, 0])
+                cube([contact.x, contact.y / 2, contact.z]);
+
+        cylinder(r = pin_r * 9 / 5, h = 0.1);
+
+        tube_wall = (t.x - t.y) / 2;
+        translate([-contact.x / 2, 0, (size.z - tube_wall) / 2])
+            cube([contact.x, contact.y / 2, tube_wall]);
+    }
+}

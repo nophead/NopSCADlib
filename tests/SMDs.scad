@@ -54,6 +54,11 @@ module smds() {
             let(p = smd_pots[$i])
                 smd_pot(p, "10K");
 
+    translate([6, 18])
+        layout([for(c = smd_coaxs) smd_coax_base_size(c).x], 1)
+            let(c = smd_coaxs[$i])
+                smd_coax(c);
+
     translate([0, 31])
         layout([for(s = smd_soics) smd_soic_size(s).x], 1)
             let(s = smd_soics[$i])

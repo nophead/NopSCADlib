@@ -80,8 +80,10 @@ test_pcb = ["test_pcb", "Test PCB",
         [  7, 16,  -90, "smd_tant", TANT_A, "105e"],
         [ 32,  3,  -90, "smd_diode",DO241AC, "SS34"],
         [ 26,  2,  -90, "smd_pot", TC33X1, "10K"],
-        [ 28,  6,  -90, "smd_sot", SOT23, "2N7000"],
-        [ 28, 12,  -90, "smd_sot", SOT223, "LM117"],
+        [ 26,  6,  -90, "smd_coax",U_FL_R_SMT_1],
+
+        [ 26, 10,  -90, "smd_sot", SOT23, "2N7000"],
+        [ 28, 16,  -90, "smd_sot", SOT223, "LM117"],
 
         [ 45,  35,   0, "2p54header", 4, 1],
         [ 60,  35,   0, "2p54header", 5, 1, false, "blue" ],
