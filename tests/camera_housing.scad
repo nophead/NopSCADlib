@@ -26,8 +26,9 @@ include <../vitamins/cameras.scad>
 use <../vitamins/pcb.scad>
 
 module camera_housings()
-    layout([for(c = cameras) pcb_length(camera_pcb(c))], 15, false) let(c = cameras[$i])
-        camera_fastened_assembly(c, 3);
+    layout([for(c = cameras) pcb_length(camera_pcb(c))], 10, false) let(c = cameras[$i])
+        if(pcb_screw(camera_pcb(c)))
+            camera_fastened_assembly(c, 3);
 
 if($preview)
     camera_housings();

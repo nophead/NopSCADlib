@@ -91,7 +91,7 @@ module camera(type, show_lens = true, fov_distance = 0, fov = undef) {          
             color("orange")
                 hull() {
                     translate_z(flex.y /2)
-                        translate(camera_lens_offset(type) + [0, camera_lens(type)[0][0].y / 2])
+                        translate(camera_lens_offset(type) + [0, sign(pos.y) * camera_lens(type)[0][0].y / 2, 0])
                             cube([flex.x, eps, flex.y], center = true);
 
                     translate_z(conn.z - flex.y)

@@ -711,6 +711,7 @@ PCB cameras.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `camera(ESP32_CAM)` |  ESP32-CAM Camera module |
 |   1 | `camera(rpi_camera_v1)` |  Raspberry Pi camera V1 |
 |   1 | `camera(rpi_camera_v2)` |  Raspberry Pi camera V2 |
 |   1 | `camera(rpi_camera)` |  Raspberry Pi focusable camera |
@@ -2534,7 +2535,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 10nF |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 100nF |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 1uF |
-|   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax type: U_FL_R_SMT_1 |
+|   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax connector type: U_FL_R_SMT_1 |
 |   1 | `smd_resistor(RES0402, 1)` |  SMD resistor 0402 1 0.0625W |
 |   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
 |   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |
