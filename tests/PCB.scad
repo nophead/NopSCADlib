@@ -87,7 +87,9 @@ test_pcb = ["test_pcb", "Test PCB",
 
         [ 45,  35,   0, "2p54header", 4, 1],
         [ 60,  35,   0, "2p54header", 5, 1, false, "blue" ],
+        [ 60,  40, 180, "2p54header", 5, 1, false, undef, true],
         [ 80,  33,   0, "2p54boxhdr", 4, 2],
+        [ 80,  40,   0, "2p54boxhdr", 4, 2, false, true, true],
         [ 45,  30,   0, "2p54socket", 4, 1, false, 0, false, "red" ],
         [ 60,  30,   0, "2p54socket", 6, 1],
 

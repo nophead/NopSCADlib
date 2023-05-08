@@ -62,14 +62,14 @@ function pcb_size(type) = [pcb_length(type), pcb_width(type), pcb_thickness(type
 function pcb_component(type, name, index = 0) = //! Return the component specified by name and index
     [for(component = pcb_components(type)) if(component[3] == name) component][index];
 
-function pcb_grid_pos(type, x, y, z = 0) = //! Returns a pcb grid position
+function pcb_grid_pos(type, x, y, z = 0, i = 0) = //! Returns a pcb grid position
     let(grid = pcb_grid(type))
-        [-pcb_size(type).x / 2 + grid.x + x * (is_undef(grid[5]) ? 2.54 : grid[5]),
-         -pcb_size(type).y / 2 + grid.y + y * (is_undef(grid[6]) ? 2.54 : grid[6]),
+        [-pcb_size(type).x / 2 + grid[i]     + x * (is_undef(grid[i + 5]) ? 2.54 : grid[i + 5]),
+         -pcb_size(type).y / 2 + grid[i + 1] + y * (is_undef(grid[i + 6]) ? 2.54 : grid[i + 6]),
           pcb_size(type).z + z];
 
-module pcb_grid(type, x, y, z = 0)  //! Positions children at specified grid position
-    translate(pcb_grid_pos(type, x, y, z))
+module pcb_grid(type, x, y, z = 0, i = 0)  //! Positions children at specified grid position
+    translate(pcb_grid_pos(type, x, y, z, i))
         children();
 
 // allows negative ordinates to represent offsets from the far edge
@@ -934,7 +934,7 @@ module molex_254_housing(ways) { //! Draw a Molex KK housing
 }
 
 module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header, set `right_angle` to 1 for normal right angle version or -1 for inverted right angle version.
-    vitamin(str("molex_254(", ways, "): Molex KK header ", ways, " way"));
+    vitamin(str("molex_254(", ways, arg(right_angle, 0, "right_angle"), arg(skip, undef, "skip"), "): Molex KK header ", ways, " way", right_angle ? " right angle" : ""));
     pitch = 2.54;
     width = ways * pitch - 0.1;
     depth = 6.35;
@@ -945,7 +945,7 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header
     above = 9;
     pin_w = 0.64;
     r = 1;
-    a = right_angle ? width / 2 - r - pin_w / 2 : above;
+    a = right_angle ? depth / 2 - r - pin_w / 2 : above;
     ra_offset = 2.2;
 
     color("white")
@@ -974,7 +974,7 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header
 
                     l = above + ra_offset - r - pin_w / 2;
                     if(right_angle) {
-                        translate([-l / 2 - r - pin_w / 2, 0, width / 2])
+                        translate([-l / 2 - r - pin_w / 2, 0, depth / 2])
                             cube([l, pin_w, pin_w], center = true);
 
                         translate([-r - pin_w / 2, 0, a])
@@ -1093,7 +1093,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
                                         pin_header(2p54header, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
         if(show(comp, "2p54joiner"))    pin_header(2p54joiner, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
         if(show(comp, "2p54boxhdr")) let($show_plugs = show_plugs && param(7, true))
-                                        box_header(2p54header, comp[4], comp[5], param(6, false), cutouts);
+                                        box_header(2p54header, comp[4], comp[5], param(6, false), cutouts, param(8, false));
         if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);
@@ -1140,8 +1140,9 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3), sleeve = param(8, false));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));
-            if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
-            if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, "white"), param(7, undef));
+            if(show(comp, "jst_xh"))        jst_xh_header(jst_xh_header, comp[4], param(5, false), param(6, false), param(7, undef));
+            if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, false), param(7, undef));
+            if(show(comp, "jst_zh"))        jst_xh_header(jst_zh_header, comp[4], param(5, false), param(6, false), param(7, undef));
             if(show(comp, "potentiometer")) let(pot = param(4, BTT_encoder)) translate_z(pot_size(pot).z) vflip() potentiometer(pot, shaft_length = param(5, undef));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
@@ -1212,14 +1213,16 @@ module pcb_cutouts(type, angle = undef)  //! Make cut outs to clear components o
 
 module pcb_grid_positions(type) {
     grid =  pcb_grid(type);
-    x0 = grid.x;
-    y0 = grid.y;
+    for(i = [0 : 7 : len(grid) - 1]) {
+        x0 = grid[i];
+        y0 = grid[i + 1];
 
-    cols = is_undef(grid[2]) ? round((pcb_length(type) - 2 * x0) / inch(0.1)) : grid[2] - 1;
-    rows = is_undef(grid[3]) ? round((pcb_width(type) - 2 * y0) / inch(0.1))  : grid[3] - 1;
-    for(x = [0 : cols], y = [0 : rows])
-        pcb_grid(type, x, y)
-            children();
+        cols = is_undef(grid[i + 2]) ? round((pcb_length(type) - 2 * x0) / inch(0.1)) : grid[i + 2] - 1;
+        rows = is_undef(grid[i + 3]) ? round((pcb_width(type) - 2 * y0) / inch(0.1))  : grid[i + 3] - 1;
+        for(x = [0 : cols], y = [0 : rows])
+            pcb_grid(type, x, y, i = i)
+                children();
+    }
 }
 
 module pcb(type) { //! Draw specified PCB

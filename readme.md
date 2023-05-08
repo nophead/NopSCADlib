@@ -2441,7 +2441,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_component(type, name, index = 0)` | Return the component specified by name and index |
 | `pcb_component_position(type, name, index = 0)` | Return x y position of specified component |
 | `pcb_coord(type, p)` | Convert offsets from the edge to coordinates relative to the centre |
-| `pcb_grid_pos(type, x, y, z = 0)` | Returns a pcb grid position |
+| `pcb_grid_pos(type, x, y, z = 0, i = 0)` | Returns a pcb grid position |
 | `pcb_screw(type, cap = hs_cap)` | Mounting screw type |
 | `pcb_size(type)` | Length, width and thickness in a vector |
 
@@ -2467,7 +2467,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_component_position(type, name)` | Position child at the specified component position |
 | `pcb_components(type, cutouts = false, angle = undef)` | Draw list of PCB components on the PCB |
 | `pcb_cutouts(type, angle = undef)` | Make cut outs to clear components on a PCB |
-| `pcb_grid(type, x, y, z = 0)` | Positions children at specified grid position |
+| `pcb_grid(type, x, y, z = 0, i = 0)` | Positions children at specified grid position |
 | `pcb_grid_components(type, components, cutouts = false, angle = undef)` | Draw list of components on the PCB grid for perf board |
 | `pcb_screw_positions(type)` | Positions children at the mounting hole positions |
 | `pcb_spacer(screw, height, wall = 1.8, taper = 0)` | Generate STL for PCB spacer |
@@ -2623,7 +2623,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_component(type, name, index = 0)` | Return the component specified by name and index |
 | `pcb_component_position(type, name, index = 0)` | Return x y position of specified component |
 | `pcb_coord(type, p)` | Convert offsets from the edge to coordinates relative to the centre |
-| `pcb_grid_pos(type, x, y, z = 0)` | Returns a pcb grid position |
+| `pcb_grid_pos(type, x, y, z = 0, i = 0)` | Returns a pcb grid position |
 | `pcb_screw(type, cap = hs_cap)` | Mounting screw type |
 | `pcb_size(type)` | Length, width and thickness in a vector |
 
@@ -2649,7 +2649,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | `pcb_component_position(type, name)` | Position child at the specified component position |
 | `pcb_components(type, cutouts = false, angle = undef)` | Draw list of PCB components on the PCB |
 | `pcb_cutouts(type, angle = undef)` | Make cut outs to clear components on a PCB |
-| `pcb_grid(type, x, y, z = 0)` | Positions children at specified grid position |
+| `pcb_grid(type, x, y, z = 0, i = 0)` | Positions children at specified grid position |
 | `pcb_grid_components(type, components, cutouts = false, angle = undef)` | Draw list of components on the PCB grid for perf board |
 | `pcb_screw_positions(type)` | Positions children at the mounting hole positions |
 | `pcb_spacer(screw, height, wall = 1.8, taper = 0)` | Generate STL for PCB spacer |

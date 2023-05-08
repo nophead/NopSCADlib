@@ -858,7 +858,8 @@ ESP_01 = [
         [ -6.6,  -5.8,   0, "block", 0.7, 7.5,  0.1,  gold ],
         [ -4.8,  -2.3,   0, "block", 8.8, 0.7,  0.1,  gold ],
     ],
-    [] // accessories
+    [], // accessories
+    [2.8 - 1.27, 3.54, 2, 4, silver, 2.54, 2.54] // grid
 ];
 
 XIAO = [
