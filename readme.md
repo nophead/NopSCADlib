@@ -2542,6 +2542,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 10nF |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 100nF |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 1uF |
+|   1 | `smd_qfp(QFP50P1200X1200X160_64N)` |  SMD chip: ATSAM4S4BA, package : QFP50P1200X1200X160_64N |
 |   1 | `smd_resistor(L2012C, 1u)` |  SMD choke 0805 1u |
 |   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax connector type: U_FL_R_SMT_1 |
 |   1 | `smd_resistor(RES0402, 1)` |  SMD resistor 0402 1 0.0625W |
@@ -3896,6 +3897,12 @@ E.g. 475A is 4.7uF 10V on the parts list.
 | `smd_pot_flat(type)` | Flat at the back of the wiper |
 | `smd_pot_size(type)` | Base length, width and height |
 | `smd_pot_wiper(type)` | Wiper diameter, offset, thickness, height, d1, d2, d3, d4 |
+| `smd_qfp_body_size(type)` | Size of the body |
+| `smd_qfp_gullwing(type)` | Gullwing S, L, R1, R2 |
+| `smd_qfp_pin_size(type)` | Pins dimensions |
+| `smd_qfp_pins(type)` | Number of pins |
+| `smd_qfp_pitch(type)` | Pin pitch |
+| `smd_qfp_slant(type)` | Angle of the slope |
 | `smd_res_end_cap(type)` | End cap width |
 | `smd_res_power(type)` | Power rating in Watts, 0 for choke |
 | `smd_res_size(type)` | Body length, width and height |
@@ -3934,6 +3941,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 | `smd_inductor(type, value)` | Draw an SMD inductor |
 | `smd_led(type, colour, cutout)` | Draw an SMD LED with specified `colour` |
 | `smd_pot(type, value)` | Draw an SMD pot |
+| `smd_qfp(type, value)` | Draw and SMD QFP package |
 | `smd_resistor(type, value)` | Draw an SMD resistor with specified value |
 | `smd_soic(type, value)` | Draw an SMD SOIC |
 | `smd_sot(type, value)` | Draw an SMD transistor |
@@ -3957,6 +3965,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
+|   1 | `smd_qfp(QFP50P1200X1200X160_64N)` |  SMD chip: ATSAM4S4BA, package : QFP50P1200X1200X160_64N |
 |   1 | `smd_resistor(L2012C, 10u)` |  SMD choke 0805 10u |
 |   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax connector type: U_FL_R_SMT_1 |
 |   1 | `smd_resistor(RES0402, 1R0)` |  SMD resistor 0402 1R0 0.0625W |

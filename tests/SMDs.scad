@@ -68,6 +68,11 @@ module smds() {
         layout([for(i = smd_inductors) smd_inductor_leads(i).x], 1)
             let(i = smd_inductors[$i])
                 smd_inductor(i, "4R7");
+
+    translate([20, 6])
+         layout([for(q = smd_qfps) smd_qfp_body_size(q).x], 3)
+            let(q = smd_qfps[$i])
+                smd_qfp(q, ["ATSAM4S4BA"][$i]);
 }
 
 if($preview)

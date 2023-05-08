@@ -86,6 +86,8 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 26, 10,  -90, "smd_sot", SOT23, "2N7000"],
         [ 28, 16,  -90, "smd_sot", SOT223, "LM117"],
 
+        [ 30, 30,  -90, "smd_qfp", QFP50P1200X1200X160_64N, "ATSAM4S4BA"],
+
         [ 45,  35,   0, "2p54header", 4, 1],
         [ 60,  35,   0, "2p54header", 5, 1, false, "blue" ],
         [ 60,  40, 180, "2p54header", 5, 1, false, undef, true],

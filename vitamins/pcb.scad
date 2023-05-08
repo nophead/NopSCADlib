@@ -929,7 +929,6 @@ module molex_254_housing(ways) { //! Draw a Molex KK housing
             for(side = [-1, 1])
                 translate([-depth / 2 - tab.x / 2, side * (pitch / 2 - tab.y / 4) * ways, tab.z / 2])
                     cube(tab, center = true);
-
         }
 }
 
@@ -1154,6 +1153,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "smd_inductor"))  smd_inductor(comp[4], comp[5]);
             if(show(comp, "smd_pot"))       smd_pot(comp[4], comp[5]);
             if(show(comp, "smd_coax"))      smd_coax(comp[4]);
+            if(show(comp, "smd_qfp"))       smd_qfp(comp[4], comp[5]);
             if(show(comp, "vero_pin"))      vero_pin(param(4, false));
             if(show(comp, "terminal"))      terminal_block(comp[5], comp[4]);
             if(show(comp, "text"))          color("white") linear_extrude(eps) resize([comp[4], comp[5]]) text(comp[6], font = param(7, "Liberation Mono"), valign = "center", halign = "center");

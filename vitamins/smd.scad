@@ -583,3 +583,63 @@ module smd_coax(type) { //! Draw an SMD coaxial connector
             cube([contact.x, contact.y / 2, tube_wall]);
     }
 }
+
+function smd_qfp_body_size(type) = type[1]; //! Size of the body
+function smd_qfp_slant(type)     = type[2]; //! Angle of the slope
+function smd_qfp_pins(type)      = type[3]; //! Number of pins
+function smd_qfp_pitch(type)     = type[4]; //! Pin pitch
+function smd_qfp_pin_size(type)  = type[5]; //! Pins dimensions
+function smd_qfp_gullwing(type)  = type[6]; //! Gullwing S, L, R1, R2
+
+module smd_qfp(type, value) { //! Draw and SMD QFP package
+    vitamin(str("smd_qfp(", type[0], "): SMD chip: ", value, ", package : ", type[0]));
+
+    size = smd_qfp_body_size(type);
+    offset = size.z / 2 * tan(smd_qfp_slant(type));
+    d = 3 * offset;
+    pitch = smd_qfp_pitch(type);
+    pin = smd_qfp_pin_size(type);
+    pins =  smd_qfp_pins(type);
+    g = smd_qfp_gullwing(type);
+    s = g[0]; // length of top flat
+    l = g[1]; // length of bottom flat
+    r1 = g[2]; // top radius
+    r2 = g[3] + pin.z / 2; // bottom radius
+    pz = -size.z / 2 + pin.z / 2;
+    gullwing = rounded_path([[-1, 0, 0], [s, 0, 0], r1, [pin.x - l + r2, 0, pz], r2, [pin.x, 0, pz]], $fn = 32);
+
+    color(grey(20))
+        hull() {
+            translate_z(size.z / 2)
+                linear_extrude(eps)
+                    offset(delta = d, chamfer = true)
+                        offset(-d)
+                            square([size.x, size.y], center = true);
+
+            translate_z(size.z - eps)
+                linear_extrude(eps)
+                    offset(-offset)
+                        square([size.x, size.y], center = true);
+
+            linear_extrude(eps)
+                offset(-offset)
+                    square([size.x, size.y], center = true);
+        }
+
+    color(silver)
+        for(a = [0 : 90: 270])
+            rotate(a)
+                for(i = [0 : pins / 4 - 1])
+                    translate([size.x / 2, (i - (pins / 4 - 1) / 2) * pitch, size.z / 2])
+                        sweep(gullwing, rectangle_points(pin.y, pin.z));
+
+    color("white")
+        translate_z(size.z)
+            linear_extrude(eps) {
+                resize([size.x * 0.9, size.y / 8])
+                    text(value, halign = "center", valign = "center");
+
+                translate([(-(pins / 4 - 1) * pitch) / 2, (-(pins / 4 - 1) * pitch) / 2])
+                    circle(r = pin.y, $fn = 32);
+            }
+}
