@@ -2499,7 +2499,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `rd_xtal(HC49_4H, "10MHz")` |  Crystal HC49_4H 10MHz |
 |   1 | `d_plug(DCONN9, pcb = true)` |  D-type 9 way PCB mount plug |
 |   1 | `dil_socket(12, 15.24)` |  DIL socket 24 x 0.6" |
-|   1 | `smd_diode(DO241AC)` |  DO241AC package SS34 |
+|   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
 |   1 | `hdmi(hdmi_full)` |  HDMI socket |
 |   1 | `pdip(24, 27C32, w = 15.24)` |  IC 27C32 PDIP24 |
 |   1 | `pdip(8, NE555)` |  IC NE555 PDIP8 |
@@ -3922,7 +3922,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `smd_diode(DO241AC)` |  DO241AC package SS34 |
+|   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
 |   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
 |   1 | `smd_led(LED0805, blue)` |  SMD LED 0805 blue |
