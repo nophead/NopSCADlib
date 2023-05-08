@@ -2492,6 +2492,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | ---:|:--- |:---|
 |   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
 |   1 | `box_header(2p54header, 4, 2)` |  Box header 4 x 2 |
+|   1 | `box_header(2p54header, 4, 2, right_angle = true)` |  Box header 4 x 2 right angle  |
 |   1 | `rd_xtal(ACT1100, "40MHz")` |  Crystal ACT1100 40MHz |
 |   1 | `rd_xtal(ACT1700, "80MHz")` |  Crystal ACT1700 80MHz |
 |   1 | `rd_xtal(C_002RX, "60KHz")` |  Crystal C_002RX 60KHz |
@@ -2944,7 +2945,7 @@ Pin headers and sockets, etc.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `box_header(type, cols = 1, rows = 1, smt = false, cutout = false)` | Draw box header |
+| `box_header(type, cols = 1, rows = 1, smt = false, cutout = false, right_angle = false)` | Draw box header |
 | `idc_transition(type, cols = 5, skip = [], cutout = false)` | Draw IDC transition header |
 | `jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false, smt = false)` | Draw JST XH, PH or ZH connector |
 | `pin(type, length = undef)` | Draw a header pin |
@@ -2957,7 +2958,9 @@ Pin headers and sockets, etc.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `box_header(2p54header, 10, 2)` |  Box header 10 x 2 |
+|   1 | `box_header(2p54header, 10, 2, right_angle = true)` |  Box header 10 x 2 right angle  |
 |   1 | `box_header(2p54header, 8, 1)` |  Box header 8 x 1 |
+|   1 | `box_header(2p54header, 8, 1, right_angle = true)` |  Box header 8 x 1 right angle  |
 |   1 | `idc_transition(2p54header, 10)` |  IDC transition header 10 x 2 |
 |   1 | `jst_xh_header(jst_ph_header, 2)` |  JST PH connector 2 way |
 |   1 | `jst_xh_header(jst_ph_header, 2, right_angle = true)` |  JST PH connector 2 way right_angle |

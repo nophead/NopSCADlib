@@ -45,8 +45,14 @@ module pin_headers() {
         translate([0, 50])
             box_header(pin_headers[$i], 8, 1);
 
+        translate([40, 40])
+            box_header(pin_headers[$i], 8, 1, right_angle = true);
+
         translate([0, 60])
             box_header(pin_headers[$i], 10, 2);
+
+        translate([40, 60])
+            box_header(pin_headers[$i], 10, 2, right_angle = true);
 
         translate([0, 70])
             pin_socket(pin_headers[$i], 8, 1);

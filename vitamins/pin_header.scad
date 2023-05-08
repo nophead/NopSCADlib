@@ -74,8 +74,11 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
 
         translate_z(smt ? 3.5 - h : 0) {
             for(x = [0 : cols - 1], y = [0 : rows - 1]) {
+                py = pitch * (y - (rows - 1) / 2);
+                pin = [pitch * (x - (cols - 1) / 2), py, py + width / 2]; // Position of pin joint
+
                 // Vertical part of the pin
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2)])
+                translate([pin.x, pin.y])
                     if(right_angle)
                         pin(type, hdr_pin_below(type) + (y + 0.5) * pitch);
                     else
@@ -84,11 +87,12 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
                 if(right_angle) {
                     w = hdr_pin_width(type);
                     // Horizontal part of the pin
-                    rotate([-90, 0, 180])
-                        translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) - width / 2, hdr_pin_below(type) - (y - (rows - 1) / 2) * pitch])
-                            pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + pitch / 2 + (y - 0.5) * pitch);
+                    translate([pin.x, pin.y - hdr_pin_below(type), pin.z])
+                        rotate([-90, 0, 180])
+                            pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + y * pitch);
+
                     // corner
-                    translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
+                    translate([pin.x, pin.y - w / 2, pin.z - w / 2])
                         rotate([0, -90, 0])
                             color(hdr_pin_colour(type))
                                 rotate_extrude(angle = 90, $fn = 32)
@@ -119,7 +123,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
     }
 }
 
-module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! Draw box header
+module box_header(type, cols = 1, rows = 1, smt = false, cutout = false, right_angle = false) { //! Draw box header
     pitch = hdr_pitch(type);
     size = hdr_box_size(type);
     w = cols * pitch + 7.62;
@@ -127,36 +131,63 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false) { //! D
     h = size.z;
     t = hdr_box_wall(type);
     base = h - 6.4;
+    ra_offset = 2.4;
 
     if(cutout)
         dogbone_rectangle([cols * pitch + 2 * panel_clearance, rows * pitch + 2 * panel_clearance, 100], center = false);
     else {
-        vitamin(str("box_header(", type[0], ", ", cols, ", ", rows, arg(smt, false, "smt"), "): Box header ", cols, " x ", rows));
+        vitamin(str("box_header(", type[0], ", ", cols, ", ", rows, arg(smt, false, "smt"), arg(right_angle, false, "right_angle"), "): Box header ", cols, " x ", rows, right_angle ? " right angle " : ""));
 
         translate_z(smt ? 3.5 - h : 0) {
-            for(x = [0 : cols - 1], y = [0 : rows - 1])
-                translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
-                    pin(type, hdr_pin_length(type) - pitch + base);
+            for(x = [0 : cols - 1], y = [0 : rows - 1]) {
+                py = -pitch * (y - (rows - 1) / 2);
+                pin = [pitch * (x - (cols - 1) / 2), py, l / 2 - py]; // Position of pin joint
 
-            color(hdr_base_colour(type)) {
-                linear_extrude(base)
-                    square([w, l], center = true);
+                translate([pin.x, pin.y])
+                    if(right_angle)
+                        pin(type, hdr_pin_below(type) + pin.z);
+                    else
+                        pin(type, hdr_pin_length(type) - pitch + base);
 
-                linear_extrude(h)
-                    difference() {
-                        square([w, l], center = true);
+                if(right_angle) {
+                    pw = hdr_pin_width(type);
+                    // Horizontal part of the pin
+                    translate([pin.x, pin.y + hdr_pin_below(type), pin.z])
+                        rotate([-90, 0, 0])
+                            pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + y * pitch);
 
-                        square([w - t, l - t], center = true);
-
-                        translate([0, -l / 2])
-                            square([4.5, 4.5], center = true);
-                    }
+                    // corner
+                    translate([pin.x, pin.y + pw / 2,  pin.z - pw / 2])
+                        rotate([0, -90, 180])
+                            color(hdr_pin_colour(type))
+                                rotate_extrude(angle = 90, $fn = 32)
+                                    translate([0, -pw / 2])
+                                        square(pw);
+                }
             }
-            if(show_plugs)
-                color(housing_colour)
-                    translate_z(base)
-                        linear_extrude(housing_height)
-                            square([cols * pitch, rows * pitch], center = true);
+
+            translate([0, right_angle ? ra_offset + (rows - 1) * pitch / 2 : 0, right_angle ? l / 2 : 0])
+                rotate([right_angle ? -90 : 0, 0, 0]) {
+                    color(hdr_base_colour(type)) {
+                        linear_extrude(base)
+                            square([w, l], center = true);
+
+                        linear_extrude(h)
+                            difference() {
+                                square([w, l], center = true);
+
+                                square([w - t, l - t], center = true);
+
+                                translate([0, -l / 2])
+                                    square([4.5, 4.5], center = true);
+                            }
+                    }
+                    if(show_plugs)
+                        color(housing_colour)
+                            translate_z(base)
+                                linear_extrude(housing_height)
+                                    square([cols * pitch, rows * pitch], center = true);
+                }
         }
     }
 }
