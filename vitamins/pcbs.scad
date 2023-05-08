@@ -978,12 +978,73 @@ L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3,
     ],
     []];
 
+PanelDue_v3 = ["PanelDue_v3", "Panel Due v3.0a LCD Display interface", 53, 73, 1.2, 0, 3.2, 0, "#2140BE", false, [[5,5], [5, -5], [43.7, 37.2]],
+   [
+    [ 45.0, 26.5,  45, "buzzer",     6, 12],
+    [ 32.8, 36.5,  90, "2p54socket", 20, 2],
+    [ 31.3,  5.9, 180, "molex_hdr",   4, 1],
+    [ 38.0, 53.2, -90, "2p54boxhdr",  5, 2, false, true, true],
+    [ 40.8, 67.4,   0, "button_6mm"],
+    [ 45.1, 16.5,   0, "button_6mm"],
+    [ 51.2, 68.0,   0, "usb_uA"],
+    [ 13.6, 35.2,   0, "smd_qfp", QFP50P1200X1200X160_64N, "ATSAM4S4BA"],
+    [ 14.6, 7.9,  180, "smd_sot", SOT223],
+    [ 23.2, 14,     0, "smd_sot", SOT23],
+    [ 31.7, 65,   180, "smd_diode", DO214AC],
+    [ 24.9, 3.8,  180, "smd_diode", DO214AC],
+    [ 1.9, 33,    -90, "smd_cap", CAP0603, 0.5],
+    [ 1.9, 28.9,   90, "smd_cap", CAP0603, 0.5],
+    [ 14.6, 13.2,   0, "smd_cap", CAP0805, 0.85],
+    [ 20.3, 57.5,  90, "smd_res", RES0603],
+    [ 18.1, 57.5,  90, "smd_res", RES0603],
+    [ 27.6, 57,     0, "smd_res", RES0603],
+    [ 27.3, 7.2,    0, "smd_res", RES0603],
+    [ 27.3, 9.7,    0, "smd_res", RES0603],
+    [ 18.5, 11.5,  90, "smd_cap", CAP0805, 0.85],
+    [ 32.5, 71.2, 180, "smd_cap", CAP0603, 0.5],
+    [ 14.1, 25.1,  90, "smd_cap", CAP0603, 0.5],
+    [ 4.2,  36.9,   0, "smd_cap", CAP0603, 0.5],
+    [ 7.7,  28.4,  90, "smd_cap", CAP0603, 0.5],
+    [ 22.0, 34.6,   0, "smd_cap", CAP0603, 0.5],
+    [ 11.4, 44.5,  90, "smd_cap", CAP0603, 0.5],
+    [ 22.1, 31.2,   0, "smd_cap", CAP0603, 0.5],
+    [ 12.0, 25.5,  90, "smd_cap", CAP0603, 0.5],
+    [ 16.2, 24.2,  90, "smd_cap", CAP0603, 0.85],
+    [  9.3, 44.5,  90, "smd_cap", CAP0603, 0.85],
+    [  5.3, 34.9,   0, "smd_cap", CAP0603, 0.5],
+    [ 37.5, 61.9,  90, "smd_res", RES0603, "0"],
+    [  4.8, 26.5,   0, "smd_cap", CAP0603, 0.85],
+    [  3.3, 24.5,   0, "smd_res", RES0603, "1"],
+    [  4.8, 30.8,  90, "chip", 5, 3.2, 1.1],
+    [  6.9, 24.5,   0, "smd_res", L2012C],
+    [ 21.8,  7.4,   0, "smd_res", L2012C],
+    [ 40.8, 71.9,   0, "text",  6, 1.42, "Erase"],
+    [ 51.4, 16.5,  90, "text",  6, 1.42, "Reset"],
+    [ 51.4, 52.2,  90, "text", 7.4, 1.42, "CONN_SD"],
+    [ 2.7,  9.7,    0, "text",   4, 1.27, "GND"],
+    [ 8.0,  9.7,    0, "text",   4, 1.27, "3.3V"],
+    [ 38.1, 21.2,   0, "text",   4, 1.42, "3.3V"],
+    [ 40.7, 12.2,   0, "text",   2, 1.42, "5V"],
+    [ 49.8, 9.8,    0, "text",   3, 1.27, "Din"],
+    [ 50.3, 7.3,    0, "text",   4, 1.27, "Dout"],
+    [ 49.8, 4.7,    0, "text",   3, 1.27, "Gnd"],
+    [ 49.8, 2.2,    0, "text",   3, 1.27, "+5V"],
+   ],
+    [],
+    [6,               60.8 - inch(0.3), 1, 4, silver, 2.54, 2.54, // X4
+     38,              16.1 - inch(0.1), 1, 3, silver, 2.54, 2.54, // JP1
+     3.1,             12,               2, 1, silver, 4.6,  2.54, // test points
+     31.3,            5.9 - inch(0.15), 1, 4, silver, 2.54, 2.64, // X1
+     38 - inch(0.05), 53.2 - inch(0.2), 2, 5, silver, 2.54, 2.54, // X5
+     32.8- inch(0.05),36.5 - inch(0.95),2, 20, silver, 2.54, 2.54, // X3
+    ],
+   ];
 
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, RPI3A, RPI3, RPI4];
+pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
