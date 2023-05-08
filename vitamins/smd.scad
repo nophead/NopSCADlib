@@ -99,11 +99,16 @@ module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified `colou
 
 function smd_res_size(type)    = type[1]; //! Body length, width and height
 function smd_res_end_cap(type) = type[2]; //! End cap width
-function smd_res_power(type)   = type[3]; //! Power rating in Watts
+function smd_res_power(type)   = type[3]; //! Power rating in Watts, 0 for choke
 
 module smd_resistor(type, value) { //! Draw an SMD resistor with specified value
     size = smd_res_size(type);
-    vitamin(str("smd_resistor(", type[0], ", ", value, "): SMD resistor ", smd_size(size), " ", value, " ", smd_res_power(type), "W"));
+    power = smd_res_power(type);
+    call = str("smd_resistor(", type[0], ", ", value, "): SMD ");
+    if(power)
+        vitamin(str(call, "resistor ", smd_size(size), " ", value, " ", power, "W"));
+    else
+        vitamin(str(call, "choke ", smd_size(size), " ", value));
 
     t = 0.04;
     cap = smd_res_end_cap(type);
