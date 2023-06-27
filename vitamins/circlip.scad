@@ -32,14 +32,14 @@ function circlip_thickness(type) = type[4];     //! Thickness
 function circlip_a(type)         = type[5];     //! Size of the lugs
 function circlip_b(type)         = type[6];     //! Widest part of the taper
 function circlip_d5(type)        = type[7];     //! Plier hole diameter
+function circlip_closed_angle(type)    = is_undef(type[8]) ? 25 : type[8];     //! Closed angle
 
 circlip_colour = grey(20);
-closed_angle = 25;
 
 module internal_circlip(type, open = 0) { //! Draw specified internal circlip, open = 0, for nominal size installed, 1 for relaxed uninstalled, -1 for squeezed to install
     d1 = circlip_d1(type);
-
-    vitamin(str("circlip(", type[0], "): Circlip internal ", d1, "mm"));
+    wide = is_undef(type[8]) ? "" : " (wide opening)";
+    vitamin(str("circlip(", type[0], "): Circlip internal ", d1, "mm",wide));
     d3 = circlip_d3(type);
     d2 = circlip_d2(type);
     a = circlip_a(type);
@@ -50,7 +50,7 @@ module internal_circlip(type, open = 0) { //! Draw specified internal circlip, o
     or = od / 2;
     c = (d3 - d1);
 
-    angle = (od - d1) / d1 * 360 + closed_angle;
+    angle = (od - d1) / d1 * 360 + circlip_closed_angle(type);
     tab_angle = 360 * a / PI / od;
     p = [0, -or + b / 2, 1] * rot3_z(angle / 2 + tab_angle);
     pitch = (or - a / 2);

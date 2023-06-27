@@ -19,28 +19,13 @@
 include <../core.scad>
 include <../vitamins/bearing_blocks.scad>
 
-use <../utils/layout.scad>
+//
+// SBR Rails
+//
 
-module scs_bearing_blocks()
-    layout([for(s = scs_bearing_blocks) scs_size(s).x], 10) {
-        part_thickness = 5;
-        scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
+//                        d  h   B   T  carriage P    S2            C   S3            S3L
+SBR16S     = ["SBR16S",  16, 25, 40, 5, SBR16UU, 150, M5_cap_screw, 30, M5_cap_screw, 18  ];
 
-        if($i > 0) // skip $i==0, since no SCS6LUU long variant to match SCS6UU
-            translate([0, 60])
-                scs_bearing_block_assembly(scs_bearing_blocks_long[$i - 1], part_thickness);
-    }
+sbr_rails = [SBR16S];
 
-module sbr_bearing_blocks()
-    layout([for(s = sbr_bearing_blocks) sbr_size(s).x], 10) {
-        part_thickness = 5;
-        sbr_bearing_block_assembly(sbr_bearing_blocks[$i], part_thickness);
-    }
-
-module bearing_blocks()
-    scs_bearing_blocks();
-    translate([190,120,0])
-        sbr_bearing_blocks();
-
-if($preview)
-    bearing_blocks();
+use <sbr_rail.scad>

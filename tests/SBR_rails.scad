@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2020
+// NopSCADlib Copyright Chris Palmer 2018
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,14 +16,31 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-//                            d1  d2    d3    s    a    b    d5
-circlip_12i = ["circlip_12i", 12, 12.5, 13.0, 1.0, 3.4, 1.7, 1.5];
-circlip_15i = ["circlip_15i", 15, 15.7, 16.2, 1.0, 3.7, 2.0, 1.7];
-circlip_19i = ["circlip_19i", 19, 20.0, 20.5, 1.0, 4.1, 2.2, 2.0];
-circlip_21i = ["circlip_21i", 21, 22.0, 22.5, 1.0, 4.2, 2.4, 2.0];
-circlip_28i = ["circlip_28i", 28, 29.4, 30.1, 1.2, 4.8, 2.9, 2.0];
-circlip_28iw = ["circlip_28iw", 28, 29.4, 30.1, 1.2, 4.8, 2.9, 2.0, 100]; // with wide opening
+include <../core.scad>
+include <../vitamins/sbr_rails.scad>
 
-circlips = [circlip_12i, circlip_15i, circlip_19i, circlip_21i, circlip_28i, circlip_28iw];
+use <../utils/layout.scad>
+use <../vitamins/bearing_block.scad>
 
-use <circlip.scad>
+length = 200;
+sheet = 3;
+
+module sbr_rails()
+    layout([for(r = sbr_rails) sbr_rail_base_width(r)], 10)
+        rotate([90, 180,0]) {
+            rail = sbr_rails[$i];
+            sbr_rail(rail, length);
+            carriage = sbr_rail_carriage(rail);
+            screw = sbr_rail_screw(rail);
+
+            sbr_bearing_block_assembly(carriage, sheet);
+
+            sbr_screw_positions(rail, length)
+                explode(20)
+                    rotate([90,0,0])
+                        screw(sbr_rail_screw(rail), 18);
+
+         }
+
+if($preview)
+    sbr_rails();

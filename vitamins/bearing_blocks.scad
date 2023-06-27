@@ -36,8 +36,12 @@ SCS10LUU  = ["SCS10LUU",  8, 13, 20, 40, 68, 26,   21, 28,   45, 6,    M5_cap_sc
 SCS12LUU  = ["SCS12LUU",  8, 15, 21, 42, 70, 28,   24, 30.5, 50, 5.75, M5_cap_screw, 4.3, 12, LM12UU, circlip_21i, 4];
 SCS16LUU  = ["SCS16LUU",  9, 19, 25, 50, 85, 38.5, 32.5, 36, 60, 7,    M5_cap_screw, 4.3, 12, LM16UU, circlip_28i, 4];
 
+//                        T  h   H   W   M   G     J   K   A  S1            I   LB                         S2             S2L
+SBR16UU   = ["SBR16UU",  16, 25, 45, 45, 45, 33,   32, 30, 9, M5_cap_screw, 12, LM16UUOP, circlip_28iw, 0, M5_grub_screw, 5];
 
 scs_bearing_blocks = [SCS6UU, SCS8UU,  SCS10UU, SCS12UU, SCS16UU];
 scs_bearing_blocks_long = [SCS8LUU,  SCS10LUU, SCS12LUU, SCS16LUU];
+
+sbr_bearing_blocks = [SBR16UU];
 
 use <bearing_block.scad>

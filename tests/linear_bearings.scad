@@ -28,6 +28,9 @@ module linear_bearings()
         translate([0, 30])
             linear_bearing(long_linear_bearings[$i]);
     }
+    layout([for(b = open_linear_bearings) 2 * bearing_radius(b)])
+        translate([105, 60])
+            linear_bearing(open_linear_bearings[$i]);
 
 if($preview)
     linear_bearings();
