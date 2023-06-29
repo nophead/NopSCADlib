@@ -3019,7 +3019,7 @@ Potentiometers and rotary encoders
 | `pot_spigot_x(type)` | Spigot offset from the shaft centre |
 | `pot_thread_d(type)` | Nomininal thread diameter |
 | `pot_thread_h(type)` | Height of threaded part |
-| `pot_thread_p(type)` | Thread pritch |
+| `pot_thread_p(type)` | Thread pitch |
 | `pot_wafer(type)` | Width, diameter and thickness of the track wafer plus true if curved |
 | `pot_washer(type)` | Outside diameter and thickness of the washer |
 
@@ -3512,7 +3512,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 | `screw_radius(type)` | Nominal radius |
 | `screw_socket_af(type)` | Socket across flats |
 | `screw_socket_depth(type)` | Socket or slot depth |
-| `screw_thread_diameter(type)` | Thread diameter, if different from nominal diamter |
+| `screw_thread_diameter(type)` | Thread diameter, if different from nominal diameter |
 | `screw_washer(type)` | Default washer |
 
 ### Functions
