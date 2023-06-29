@@ -80,9 +80,16 @@ def codify(word, url):
             return  '`' + word + '`'
     return word
 
+typos = [ # Typos that are ambiguous to codespell
+    ('cnc_bit+_r', 'cnc_bit_r'),
+    ('Udated',     'Updated'),
+    ('decription', 'description'),
+    ('Trainling',  'Trailing'),
+]
 
 def fixup_comment(comment, url):
-    comment = comment.replace('cnc_bit+_r', 'cnc_bit_r')
+    for typo in typos:
+        comment = comment.replace(typo[0], typo[1])
     """ markup code words and fix new paragraphs """
     result = ''
     word = ''
@@ -162,6 +169,6 @@ if __name__ == '__main__':
 
             # Print commits excluding merges
 
-            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U..ated ch.*log.*', c.comment):
+            if not c.comment.startswith('Merge branch') and not c.comment.startswith('Merge pull') and not re.match(r'U.?.ated ch.*log.*', c.comment):
                 print('* %s [`%s`](%s "show commit") %s %s\n' % (c.date, c.hash[:7], url + '/commit/' + c.hash, initials(c.author), fixup_comment(c.comment, url)), file = file)
     do_cmd(('codespell -w -L od ' + filename).split())
