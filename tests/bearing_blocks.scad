@@ -24,10 +24,11 @@ use <../utils/layout.scad>
 module scs_bearing_blocks()
     layout([for(s = scs_bearing_blocks) scs_size(s).x], 10) {
         part_thickness = 5;
-        scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
+        translate([0, 60])
+            scs_bearing_block_assembly(scs_bearing_blocks[$i], part_thickness);
 
         if($i > 0) // skip $i==0, since no SCS6LUU long variant to match SCS6UU
-            translate([0, 60])
+            translate([0, 120])
                 scs_bearing_block_assembly(scs_bearing_blocks_long[$i - 1], part_thickness);
     }
 
@@ -37,10 +38,12 @@ module sbr_bearing_blocks()
         sbr_bearing_block_assembly(sbr_bearing_blocks[$i], part_thickness);
     }
 
-module bearing_blocks()
+module bearing_blocks() {
     scs_bearing_blocks();
-    translate([190,120,0])
+
+    translate([190, 0])
         sbr_bearing_blocks();
+}
 
 if($preview)
     bearing_blocks();

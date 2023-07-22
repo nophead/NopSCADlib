@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2023
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -53,8 +53,8 @@ module sbr_rail(type , l) { //! Draw an SBR rail
 
     vitamin(str("sbr_rail(", d, ", ", l, "): SBR", d, " rail, length ", l, "mm"));
 
-    not_on_bom() 
-        no_explode() 
+    not_on_bom()
+        no_explode()
             rod(d, l, center=true);
 
     base = (h1/2 + C/2) /2;  // guess, not clear from drawings
@@ -88,13 +88,13 @@ module sbr_rail(type , l) { //! Draw an SBR rail
 
         }
 
-    not_on_bom() 
-        no_explode() 
+    not_on_bom()
+        no_explode()
             color(screw_colour)
                 sbr_screw_locations(type, l)
                     translate([0,h-T,0])
                         rotate([270,0,0])
-                            screw(S3, S3L); 
+                            screw(S3, S3L);
 }
 
 module sbr_screw_locations(type, l) { //! Linear locations of screws
@@ -114,11 +114,11 @@ module sbr_screw_positions(type, l) { //! Screw positions
     T = type[4];
     C = type[8];
     S2 = sbr_rail_screw(type);
-    
+
     for (x = [-C/2, C/2])
         translate([x,h-T, 0])
             sbr_screw_locations(type, l)
                 children();
-                
+
 
 }

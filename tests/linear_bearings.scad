@@ -21,16 +21,18 @@ use <../utils/layout.scad>
 
 include <../vitamins/linear_bearings.scad>
 
-module linear_bearings()
+module linear_bearings() {
     layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
-        linear_bearing(linear_bearings[$i]);
-
         translate([0, 30])
+            linear_bearing(linear_bearings[$i]);
+
+        translate([0, 60])
             linear_bearing(long_linear_bearings[$i]);
     }
     layout([for(b = open_linear_bearings) 2 * bearing_radius(b)])
-        translate([105, 60])
+        translate([105, 0])
             linear_bearing(open_linear_bearings[$i]);
+}
 
 if($preview)
     linear_bearings();
