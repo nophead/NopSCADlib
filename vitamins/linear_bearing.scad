@@ -37,8 +37,8 @@ function bearing_groove_length(type)    = type[4];   //! Groove length
 function bearing_groove_dia(type)       = type[5];   //! Groove diameter
 function bearing_groove_spacing(type)   = type[6];   //! Spacing between grooves, outer to outer, ie includes the grooves themselves
 
-function open_bearing_theta(type)       = type[7]; //! For open bearings, the angle of the opening
-function open_bearing_width(type)       = type[8]; //! For open bearings, the width of the opening at the rod
+function open_bearing_width(type)       = type[7]; //! For open bearings, the width of the opening at the rod
+function open_bearing_theta(type)       = 2 * asin(open_bearing_width(type) / bearing_rod_dia(type)); //! For open bearings, the angle of the opening
 
 
 function bearing_radius(type)  = bearing_dia(type) / 2; //! Outside radius

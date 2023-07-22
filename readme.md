@@ -1949,13 +1949,13 @@ LMnUU linear bearings.
 | `bearing_groove_spacing(type)` | Spacing between grooves, outer to outer, ie includes the grooves themselves |
 | `bearing_length(type)` | Total length |
 | `bearing_rod_dia(type)` | Internal diameter |
-| `open_bearing_theta(type)` | For open bearings, the angle of the opening |
 | `open_bearing_width(type)` | For open bearings, the width of the opening at the rod |
 
 ### Functions
 | Function | Description |
 |:--- |:--- |
 | `bearing_radius(type)` | Outside radius |
+| `open_bearing_theta(type)` | For open bearings, the angle of the opening |
 
 ### Modules
 | Module | Description |

@@ -49,7 +49,6 @@ module sbr_rail(type , l) { //! Draw an SBR rail
     S3L = type[10]; // length of that screw
 
     h1 = open_bearing_width(sbr_bearing(sbr_rail_carriage(type)));
-    theta = open_bearing_theta(sbr_bearing(sbr_rail_carriage(type)));
 
     vitamin(str("sbr_rail(", d, ", ", l, "): SBR", d, " rail, length ", l, "mm"));
 
