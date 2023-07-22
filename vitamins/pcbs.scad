@@ -1040,11 +1040,46 @@ PanelDue_v3 = ["PanelDue_v3", "Panel Due v3.0a LCD Display interface", 53, 73, 1
     ],
    ];
 
+//================================================
+// Adafruit Feather
+// by Chris Lott, chris@thestumbler.io
+// Sacheon South Korea, 17 Jul 2023
+//================================================
+// NOTES:
+// * mounting holes should be accurate
+// * corner radius was just eyeballed
+// * pin headers should be accurate
+// * battery and qwiik connectore just eyeballed
+
+Feather405 = let(size = [inch(2.0), inch(0.9)])
+ ["Feather405", "Adafruit Feather 405",
+  size.x, size.y, 1.6, inch(0.10),
+  inch(0.1), inch(0.175), "green", false,
+          [[ inch(0.1),  inch(0.1) ], // Holes
+          [ -inch(0.1),  inch(0.1) ],
+          [ -inch(0.1), -inch(0.1) ],
+          [  inch(0.1), -inch(0.1) ],
+        ],
+  [
+    [size.x / 2, inch(0.05),   0, "-2p54header", 16, 1],
+    [inch(1.2), -inch(0.05),   0, "-2p54header", 12, 1],
+    [inch(1.3),  size.y / 2, -90, "smd_qfp", QFP50P1200X1200X160_64N, "STM32F405"],
+    [ 3,         size.y / 2, 180, "usb_C"],
+    [ 10,        -6.5,       180, "jst_ph", 2, true, grey(25) ],
+    [ -5, 0.40 * size.y,      90, "jst_zh", 4, true, grey(30) ],
+  ], // components
+  [], // accessories
+   [inch(0.65), inch(0.05), 12, 2, gold, inch(0.1), inch(0.8),
+    inch(0.25), inch(0.05), 4,  1, gold, inch(0.1), 0 ], //  grids of holes for the pins
+  [], // polygon
+  M2p5_dome_screw,
+];
+
 tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
+pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 

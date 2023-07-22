@@ -2698,6 +2698,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `pcb(Feather405)` |  Adafruit Feather 405 |
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
 |   1 | `pcb(ArduinoNano)` |  Arduino Nano |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
@@ -2726,7 +2727,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(2)` |  Molex KK header 2 way - not shown |
 |   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
-|  34 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
+|  38 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
 |  43 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(OPZ2)` |  Orange Pi Zero 2 |
@@ -2750,10 +2751,12 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |  12 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   2 | `screw(M2p5_cap_screw, 16)` |  Screw M2.5 cap x 16mm |
 |   8 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
-|   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
-|   4 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
+|   4 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
+|   8 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
+|   4 | `screw(M2p5_dome_screw, 20)` |  Screw M2.5 dome x 20mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
-|   8 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
+|   4 | `screw(M2p5_pan_screw, 25)` |  Screw M2.5 pan x 25mm |
+|   4 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
 |  17 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |  15 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |  11 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
@@ -2766,7 +2769,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 |  |  USB A to Mini B lead - not shown |
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  20 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
-|  34 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
+|  38 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
 |  43 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
@@ -2775,22 +2778,23 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Filename |
 | ---:|:--- |
 |   4 | pcb_spacer20100.stl |
-|   4 | pcb_spacer20110.stl |
+|   4 | pcb_spacer20120.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
-|   4 | pcb_spacer25130.stl |
+|   4 | pcb_spacer25110.stl |
 |   4 | pcb_spacer25140.stl |
-|   4 | pcb_spacer25150_2.stl |
+|   4 | pcb_spacer25150.stl |
 |   4 | pcb_spacer25160_2.stl |
-|   4 | pcb_spacer25200.stl |
+|   4 | pcb_spacer25170_2.stl |
 |   4 | pcb_spacer25210.stl |
 |   4 | pcb_spacer25220.stl |
+|   4 | pcb_spacer25230.stl |
 |   2 | pcb_spacer2550.stl |
 |   4 | pcb_spacer2590.stl |
-|   4 | pcb_spacer30170.stl |
 |   4 | pcb_spacer30180.stl |
-|   3 | pcb_spacer30190.stl |
+|   4 | pcb_spacer30190.stl |
+|   3 | pcb_spacer30200.stl |
 |   8 | pcb_spacer3050.stl |
 |   9 | pcb_spacer3060.stl |
 |   7 | pcb_spacer3070.stl |
