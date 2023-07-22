@@ -23,6 +23,7 @@
 include <../utils/core/core.scad>
 
 use <../utils/tube.scad>
+use <../utils/sector.scad>
 
 bearing_colour = grey(70);
 groove_colour = grey(60);
@@ -54,43 +55,34 @@ module linear_bearing(type) { //! Draw specified linear bearing
     gs = bearing_groove_spacing(type);
     offset = (length-gs)/2;
 
-    difference() {
-        union() {
-            if(gs==0) {
-                color(bearing_colour) tube(or = or, ir = casing_ir, h = length);
-            } else {
-                translate_z(-length/2) {
-                    color(bearing_colour) tube(or = or, ir = casing_ir, h = offset, center = false);
-                    color(groove_colour) translate_z(offset) tube(or = gr, ir = casing_ir, h = gl,center = false);
-                    color(bearing_colour) translate_z(offset+gl) tube(or = or, ir = casing_ir, h = gs-2*gl, center = false);
-                    color(groove_colour) translate_z(offset+gs-gl) tube(or = gr, ir = casing_ir, h = gl, center = false);
-                    color(bearing_colour) translate_z(offset+gs) tube(or = or, ir = casing_ir, h = offset, center = false);
+    module cut_tube(or, ir, h, center = true)
+        linear_extrude(h, center = center, convexity = 5)
+            difference() {
+                ring(or = or, ir = ir);
+
+                // Open bearing
+                if (!is_undef(type[7])) {
+                    theta = open_bearing_theta(type);
+
+                    sector(or + 1, 180 - theta / 2, 180 + theta / 2);
                 }
             }
-            rod_r =  bearing_rod_dia(type) / 2;
-            color(seal_colour)
-                tube(or = casing_ir, ir = rod_r + eps, h = length - 0.5);
 
-            color(seal_colour * 0.8)
-                tube(or = rod_r * 1.12, ir = rod_r, h = length);
-
-        }
-
-        // Open bearing
-        if (!is_undef(type[7])) {
-            rod_r =  bearing_rod_dia(type) / 2;
-            theta = open_bearing_theta(type);
-            w = open_bearing_width(type) / 2;
-            h = (w / tan(theta/2));
-            // calculate the midpoint of the width
-            mp = w / tan(asin(w / rod_r));
-
-            color(groove_colour)
-                translate([-(h*3) +(h-mp),0,0]) {
-                    mirror([0,1,0])
-                        right_triangle(h*3, w*3, length + 5);
-                    right_triangle(h*3, w*3, length + 5);
-                }
+    if(gs==0) {
+        color(bearing_colour) tube(or = or, ir = casing_ir, h = length);
+    } else {
+        translate_z(-length/2) {
+            color(bearing_colour)                           cut_tube(or = or, ir = casing_ir, h = offset, center = false);
+            color(groove_colour)  translate_z(offset)       cut_tube(or = gr, ir = casing_ir, h = gl,center = false);
+            color(bearing_colour) translate_z(offset+gl)    cut_tube(or = or, ir = casing_ir, h = gs-2*gl, center = false);
+            color(groove_colour)  translate_z(offset+gs-gl) cut_tube(or = gr, ir = casing_ir, h = gl, center = false);
+            color(bearing_colour) translate_z(offset+gs)    cut_tube(or = or, ir = casing_ir, h = offset, center = false);
         }
     }
+    rod_r =  bearing_rod_dia(type) / 2;
+    color(seal_colour)
+        cut_tube(or = casing_ir, ir = rod_r + eps, h = length - 0.5);
+
+    color(seal_colour * 0.8)
+        cut_tube(or = rod_r * 1.12, ir = rod_r, h = length);
 }
