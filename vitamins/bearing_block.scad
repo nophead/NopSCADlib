@@ -209,7 +209,7 @@ module sbr_bearing_block(type) { //! Draw the specified SBR bearing block
     setScrewRadius = screw_radius(S2);
 
     color(sks_bearing_block_colour) {
-        difference() {
+        render() difference() {
             linear_extrude(M, center = true, convexity=2) {
                 cutoutheight = 15; // chosen to fit SBR16, may not work with others
                 bearingRadius = bearing_dia(bearing) / 2;
@@ -249,10 +249,12 @@ module sbr_bearing_block(type) { //! Draw the specified SBR bearing block
                         for (y = [-K / 2, K / 2])
                             translate([0, y])
                                 cylinder(r = boltHoleRadius, h=I + 0.1, center=true);
+
             // set screw holes
             translate([-width/2 + S2L/2 - 0.1,0,0])
                 rotate([0,90,0])
                     cylinder(r = setScrewRadius, h=S2L, center=true);
+
             translate([0,-(H-h) + chamfer + S2L/2 -0.1,0])
                 rotate([0,90,90])
                     cylinder(r = setScrewRadius, h=S2L, center=true);
