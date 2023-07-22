@@ -6907,7 +6907,7 @@ Maths utilities for manipulating vectors and matrices.
 | `coth(x)` | hyperbolic cotangent |
 | `cubic_real_roots(a, b, c, d)` | Returns real roots of cubic equation |
 | `degrees(radians)` | Convert degrees to radians |
-| `euler(R)` | Convert a rotation matrix to a Euler rotation vector. |
+| `euler(R)` | Convert a rotation matrix to an Euler rotation vector. |
 | `identity(n, x = 1)` | Construct an arbitrary size identity matrix |
 | `invert(m)` | Invert a matrix |
 | `map(v, func)` | make a new vector where the func function argument is applied to each element of the vector v |
