@@ -201,7 +201,7 @@ def tests(tests):
             body = bodies[type]
 
             index[type] += [cap_name]
-            body += ['<a name="%s"></a>' % cap_name]
+            body += ['<a name="%s"></a>' % cap_name.lower()]
             body += ["## " + cap_name]
 
             doc = None
@@ -301,7 +301,7 @@ def tests(tests):
             for type in types:
                 if i < len(index[type]):
                     name = sorted(index[type])[i]
-                    print('<td> <a href = "#' + name + '">' + name + '</a> </td>', file = doc_file, end = '')
+                    print('<td> <a href = "#' + name.lower() + '">' + name + '</a> </td>', file = doc_file, end = '')
                 else:
                     print('<td></td>', file = doc_file, end = '')
             print('</tr>', file = doc_file)

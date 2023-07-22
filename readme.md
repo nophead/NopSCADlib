@@ -21,34 +21,34 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 ## Table of Contents<a name="top"/>
 <table><tr>
 <th align="left"> Vitamins A-H </th><th align="left"> Vitamins I-Q </th><th align="left"> Vitamins R-Z </th><th align="left"> Printed </th><th align="left"> Utilities </th><th align="left"> Core Utilities </th></tr>
-<tr><td> <a href = "#7_segments">7_segments</a> </td><td> <a href = "#IECs">IECs</a> </td><td> <a href = "#Radials">Radials</a> </td><td> <a href = "#Box">Box</a> </td><td> <a href = "#Annotation">Annotation</a> </td><td> <a href = "#BOM">BOM</a> </td></tr>
-<tr><td> <a href = "#Axials">Axials</a> </td><td> <a href = "#Inserts">Inserts</a> </td><td> <a href = "#Rails">Rails</a> </td><td> <a href = "#Butt_box">Butt_box</a> </td><td> <a href = "#Bezier">Bezier</a> </td><td> <a href = "#Clip">Clip</a> </td></tr>
-<tr><td> <a href = "#BLDC_motors">BLDC_motors</a> </td><td> <a href = "#Jack">Jack</a> </td><td> <a href = "#Ring_terminals">Ring_terminals</a> </td><td> <a href = "#Cable_clip">Cable_clip</a> </td><td> <a href = "#Catenary">Catenary</a> </td><td> <a href = "#Global">Global</a> </td></tr>
-<tr><td> <a href = "#Ball_bearings">Ball_bearings</a> </td><td> <a href = "#LDRs">LDRs</a> </td><td> <a href = "#Rockers">Rockers</a> </td><td> <a href = "#Cable_grommets">Cable_grommets</a> </td><td> <a href = "#Core_xy">Core_xy</a> </td><td> <a href = "#Polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#Batteries">Batteries</a> </td><td> <a href = "#LED_meters">LED_meters</a> </td><td> <a href = "#Rod">Rod</a> </td><td> <a href = "#Camera_housing">Camera_housing</a> </td><td> <a href = "#Dogbones">Dogbones</a> </td><td> <a href = "#Rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#Bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#LEDs">LEDs</a> </td><td> <a href = "#SBR_rails">SBR_rails</a> </td><td> <a href = "#Carriers">Carriers</a> </td><td> <a href = "#Fillet">Fillet</a> </td><td> <a href = "#Sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#Belts">Belts</a> </td><td> <a href = "#Leadnuts">Leadnuts</a> </td><td> <a href = "#SK_brackets">SK_brackets</a> </td><td> <a href = "#Corner_block">Corner_block</a> </td><td> <a href = "#Gears">Gears</a> </td><td> <a href = "#Teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#Blowers">Blowers</a> </td><td> <a href = "#Light_strips">Light_strips</a> </td><td> <a href = "#SMDs">SMDs</a> </td><td> <a href = "#Door_hinge">Door_hinge</a> </td><td> <a href = "#Hanging_hole">Hanging_hole</a> </td><td></td></tr>
-<tr><td> <a href = "#Box_sections">Box_sections</a> </td><td> <a href = "#Linear_bearings">Linear_bearings</a> </td><td> <a href = "#SSRs">SSRs</a> </td><td> <a href = "#Door_latch">Door_latch</a> </td><td> <a href = "#Horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#Bulldogs">Bulldogs</a> </td><td> <a href = "#Magnets">Magnets</a> </td><td> <a href = "#Screws">Screws</a> </td><td> <a href = "#Drag_chain">Drag_chain</a> </td><td> <a href = "#Layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#Buttons">Buttons</a> </td><td> <a href = "#Mains_sockets">Mains_sockets</a> </td><td> <a href = "#Sealing_strip">Sealing_strip</a> </td><td> <a href = "#Fan_guard">Fan_guard</a> </td><td> <a href = "#Maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#Cable_strips">Cable_strips</a> </td><td> <a href = "#Microswitches">Microswitches</a> </td><td> <a href = "#Servo_motors">Servo_motors</a> </td><td> <a href = "#Fixing_block">Fixing_block</a> </td><td> <a href = "#Offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#Cameras">Cameras</a> </td><td> <a href = "#Microview">Microview</a> </td><td> <a href = "#Shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#Flat_hinge">Flat_hinge</a> </td><td> <a href = "#Quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#Circlips">Circlips</a> </td><td> <a href = "#Modules">Modules</a> </td><td> <a href = "#Sheets">Sheets</a> </td><td> <a href = "#Foot">Foot</a> </td><td> <a href = "#Round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#Components">Components</a> </td><td> <a href = "#Nuts">Nuts</a> </td><td> <a href = "#Spades">Spades</a> </td><td> <a href = "#Handle">Handle</a> </td><td> <a href = "#Rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#DIP">DIP</a> </td><td> <a href = "#O_ring">O_ring</a> </td><td> <a href = "#Spools">Spools</a> </td><td> <a href = "#Knob">Knob</a> </td><td> <a href = "#Rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#D_connectors">D_connectors</a> </td><td> <a href = "#Opengrab">Opengrab</a> </td><td> <a href = "#Springs">Springs</a> </td><td> <a href = "#LED_bezel">LED_bezel</a> </td><td> <a href = "#Rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#Displays">Displays</a> </td><td> <a href = "#PCB">PCB</a> </td><td> <a href = "#Stepper_motors">Stepper_motors</a> </td><td> <a href = "#PCB_mount">PCB_mount</a> </td><td> <a href = "#Sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#PCBs">PCBs</a> </td><td> <a href = "#Swiss_clips">Swiss_clips</a> </td><td> <a href = "#PSU_shroud">PSU_shroud</a> </td><td> <a href = "#Sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#Extrusions">Extrusions</a> </td><td> <a href = "#PSUs">PSUs</a> </td><td> <a href = "#Terminals">Terminals</a> </td><td> <a href = "#Pocket_handle">Pocket_handle</a> </td><td> <a href = "#Thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#Fans">Fans</a> </td><td> <a href = "#Panel_meters">Panel_meters</a> </td><td> <a href = "#Toggles">Toggles</a> </td><td> <a href = "#Press_fit">Press_fit</a> </td><td> <a href = "#Tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#Fastons">Fastons</a> </td><td> <a href = "#Photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#Transformers">Transformers</a> </td><td> <a href = "#Printed_box">Printed_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Fuseholder">Fuseholder</a> </td><td> <a href = "#Pillars">Pillars</a> </td><td> <a href = "#Tubings">Tubings</a> </td><td> <a href = "#Printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Geared_steppers">Geared_steppers</a> </td><td> <a href = "#Pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#Variacs">Variacs</a> </td><td> <a href = "#Ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Green_terminals">Green_terminals</a> </td><td> <a href = "#Pin_headers">Pin_headers</a> </td><td> <a href = "#Veroboard">Veroboard</a> </td><td> <a href = "#SSR_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hot_ends">Hot_ends</a> </td><td> <a href = "#Potentiometers">Potentiometers</a> </td><td> <a href = "#Washers">Washers</a> </td><td> <a href = "#Screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#Hygrometer">Hygrometer</a> </td><td> <a href = "#Pulleys">Pulleys</a> </td><td> <a href = "#Wire">Wire</a> </td><td> <a href = "#Socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td></td><td></td><td> <a href = "#Zipties">Zipties</a> </td><td> <a href = "#Strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#7_segments">7_segments</a> </td><td> <a href = "#iecs">IECs</a> </td><td> <a href = "#radials">Radials</a> </td><td> <a href = "#box">Box</a> </td><td> <a href = "#annotation">Annotation</a> </td><td> <a href = "#bom">BOM</a> </td></tr>
+<tr><td> <a href = "#axials">Axials</a> </td><td> <a href = "#inserts">Inserts</a> </td><td> <a href = "#rails">Rails</a> </td><td> <a href = "#butt_box">Butt_box</a> </td><td> <a href = "#bezier">Bezier</a> </td><td> <a href = "#clip">Clip</a> </td></tr>
+<tr><td> <a href = "#bldc_motors">BLDC_motors</a> </td><td> <a href = "#jack">Jack</a> </td><td> <a href = "#ring_terminals">Ring_terminals</a> </td><td> <a href = "#cable_clip">Cable_clip</a> </td><td> <a href = "#catenary">Catenary</a> </td><td> <a href = "#global">Global</a> </td></tr>
+<tr><td> <a href = "#ball_bearings">Ball_bearings</a> </td><td> <a href = "#ldrs">LDRs</a> </td><td> <a href = "#rockers">Rockers</a> </td><td> <a href = "#cable_grommets">Cable_grommets</a> </td><td> <a href = "#core_xy">Core_xy</a> </td><td> <a href = "#polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#batteries">Batteries</a> </td><td> <a href = "#led_meters">LED_meters</a> </td><td> <a href = "#rod">Rod</a> </td><td> <a href = "#camera_housing">Camera_housing</a> </td><td> <a href = "#dogbones">Dogbones</a> </td><td> <a href = "#rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#leds">LEDs</a> </td><td> <a href = "#sbr_rails">SBR_rails</a> </td><td> <a href = "#carriers">Carriers</a> </td><td> <a href = "#fillet">Fillet</a> </td><td> <a href = "#sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#belts">Belts</a> </td><td> <a href = "#leadnuts">Leadnuts</a> </td><td> <a href = "#sk_brackets">SK_brackets</a> </td><td> <a href = "#corner_block">Corner_block</a> </td><td> <a href = "#gears">Gears</a> </td><td> <a href = "#teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#blowers">Blowers</a> </td><td> <a href = "#light_strips">Light_strips</a> </td><td> <a href = "#smds">SMDs</a> </td><td> <a href = "#door_hinge">Door_hinge</a> </td><td> <a href = "#hanging_hole">Hanging_hole</a> </td><td></td></tr>
+<tr><td> <a href = "#box_sections">Box_sections</a> </td><td> <a href = "#linear_bearings">Linear_bearings</a> </td><td> <a href = "#ssrs">SSRs</a> </td><td> <a href = "#door_latch">Door_latch</a> </td><td> <a href = "#horiholes">Horiholes</a> </td><td></td></tr>
+<tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#wire">Wire</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td></td><td></td><td> <a href = "#zipties">Zipties</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
 </table>
 
 ---
@@ -85,7 +85,7 @@ Presence of a decimal point is determined by the number of pins. Its position is
 <a href="#top">Top</a>
 
 ---
-<a name="Axials"></a>
+<a name="axials"></a>
 ## Axials
 Axial components for PCBs.
 
@@ -132,7 +132,7 @@ Axial components for PCBs.
 <a href="#top">Top</a>
 
 ---
-<a name="Ball_bearings"></a>
+<a name="ball_bearings"></a>
 ## Ball_bearings
 Simple model of ball bearings with seals, the colour of which can be specified. If silver they are assumed to be metal and the
 part number gets a ZZ suffix. Any other colour is assumed to be rubber and the suffix is -2RS.
@@ -189,7 +189,7 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 <a href="#top">Top</a>
 
 ---
-<a name="Batteries"></a>
+<a name="batteries"></a>
 ## Batteries
 Actually just single cells at the moment, shown here with mating contacts in place.
 
@@ -250,7 +250,7 @@ exposing enough information to make a battery box.
 <a href="#top">Top</a>
 
 ---
-<a name="Bearing_blocks"></a>
+<a name="bearing_blocks"></a>
 ## Bearing_blocks
 SCSnUU and SCSnLUU bearing blocks
 
@@ -327,7 +327,7 @@ SCSnUU and SCSnLUU bearing blocks
 <a href="#top">Top</a>
 
 ---
-<a name="Belts"></a>
+<a name="belts"></a>
 ## Belts
 Models timing belt running in a path over toothed or smooth pulleys and calculates an accurate length.
 Only models 2D paths, belt may twist to support crossed belt core XY and other designs where the belt twists!
@@ -400,7 +400,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 <a href="#top">Top</a>
 
 ---
-<a name="BLDC_motors"></a>
+<a name="bldc_motors"></a>
 ## BLDC_motors
  Brushless DC electric motor
 
@@ -467,7 +467,7 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 <a href="#top">Top</a>
 
 ---
-<a name="Blowers"></a>
+<a name="blowers"></a>
 ## Blowers
 Models of radial blowers.
 Note that blower_exit() and blower_exit_offset() are for the inside of the exit for square blowers but the outside for spiral blowers.
@@ -534,7 +534,7 @@ Note that blower_exit() and blower_exit_offset() are for the inside of the exit 
 <a href="#top">Top</a>
 
 ---
-<a name="Box_sections"></a>
+<a name="box_sections"></a>
 ## Box_sections
 Box sections.
 
@@ -572,7 +572,7 @@ Box sections.
 <a href="#top">Top</a>
 
 ---
-<a name="Bulldogs"></a>
+<a name="bulldogs"></a>
 ## Bulldogs
 Crude representation of a bulldog clip. The handle is not currently drawn but its length can be
 accessed to allow clearance. Used for holding glass on 3D printer beds but Swiss picture clips can be
@@ -612,7 +612,7 @@ better.
 <a href="#top">Top</a>
 
 ---
-<a name="Buttons"></a>
+<a name="buttons"></a>
 ## Buttons
 PCB mounted buttons. Can optionally have a coloured cap
 
@@ -655,7 +655,7 @@ PCB mounted buttons. Can optionally have a coloured cap
 <a href="#top">Top</a>
 
 ---
-<a name="Cable_strips"></a>
+<a name="cable_strips"></a>
 ## Cable_strips
 A strip of polypropylene used with ribbon cable to make a cable flexible in one direction only.
 
@@ -695,7 +695,7 @@ When the sides are constrained then a circular model is more accurate.
 <a href="#top">Top</a>
 
 ---
-<a name="Cameras"></a>
+<a name="cameras"></a>
 ## Cameras
 PCB cameras.
 
@@ -735,7 +735,7 @@ PCB cameras.
 <a href="#top">Top</a>
 
 ---
-<a name="Circlips"></a>
+<a name="circlips"></a>
 ## Circlips
 Circlips aka tapered retaining rings.
 
@@ -782,7 +782,7 @@ Circlips aka tapered retaining rings.
 <a href="#top">Top</a>
 
 ---
-<a name="Components"></a>
+<a name="components"></a>
 ## Components
 Various electronic components used in hot ends and heated beds.
 
@@ -882,7 +882,7 @@ Various electronic components used in hot ends and heated beds.
 <a href="#top">Top</a>
 
 ---
-<a name="D_connectors"></a>
+<a name="d_connectors"></a>
 ## D_connectors
 D-connectors. Can be any number of ways, male or female, solder buckets, PCB mount or IDC, with or without pillars.
 
@@ -938,7 +938,7 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 <a href="#top">Top</a>
 
 ---
-<a name="DIP"></a>
+<a name="dip"></a>
 ## DIP
 Dual inline IC packages and sockets
 
@@ -981,7 +981,7 @@ Dual inline IC packages and sockets
 <a href="#top">Top</a>
 
 ---
-<a name="Displays"></a>
+<a name="displays"></a>
 ## Displays
 LCD displays.
 
@@ -1032,7 +1032,7 @@ LCD displays.
 <a href="#top">Top</a>
 
 ---
-<a name="Extrusion_brackets"></a>
+<a name="extrusion_brackets"></a>
 ## Extrusion_brackets
 Brackets for joining extrusions at a corner.
 
@@ -1092,7 +1092,7 @@ Brackets for joining extrusions at a corner.
 <a href="#top">Top</a>
 
 ---
-<a name="Extrusions"></a>
+<a name="extrusions"></a>
 ## Extrusions
 Aluminium  extrusion.
 
@@ -1150,7 +1150,7 @@ Aluminium  extrusion.
 <a href="#top">Top</a>
 
 ---
-<a name="Fans"></a>
+<a name="fans"></a>
 ## Fans
 Axial fans.
 
@@ -1220,7 +1220,7 @@ Can draw three styles: solid, open frame and open frame with screw bosses.
 <a href="#top">Top</a>
 
 ---
-<a name="Fastons"></a>
+<a name="fastons"></a>
 ## Fastons
 Faston receptacles to mate with spade connectors
 
@@ -1270,7 +1270,7 @@ Faston receptacles to mate with spade connectors
 <a href="#top">Top</a>
 
 ---
-<a name="Fuseholder"></a>
+<a name="fuseholder"></a>
 ## Fuseholder
 20mm panel mount fuse holder.
 
@@ -1300,7 +1300,7 @@ Faston receptacles to mate with spade connectors
 <a href="#top">Top</a>
 
 ---
-<a name="Geared_steppers"></a>
+<a name="geared_steppers"></a>
 ## Geared_steppers
 Geared tin can steppers
 
@@ -1351,7 +1351,7 @@ Geared tin can steppers
 <a href="#top">Top</a>
 
 ---
-<a name="Green_terminals"></a>
+<a name="green_terminals"></a>
 ## Green_terminals
 Parametric green terminal blocks
 
@@ -1402,7 +1402,7 @@ Parametric green terminal blocks
 <a href="#top">Top</a>
 
 ---
-<a name="Hot_ends"></a>
+<a name="hot_ends"></a>
 ## Hot_ends
 Hot end models. The E3D models were originally contributed to Mendel90 by Philippe LUC @philfifi
 
@@ -1465,7 +1465,7 @@ Needs updating as mostly obsolete versions.
 <a href="#top">Top</a>
 
 ---
-<a name="Hygrometer"></a>
+<a name="hygrometer"></a>
 ## Hygrometer
 Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge on eBay
 
@@ -1495,7 +1495,7 @@ Mini LCD Celsius Digital Thermometer Hygrometer Temperature Humidity Meter Gauge
 <a href="#top">Top</a>
 
 ---
-<a name="IECs"></a>
+<a name="iecs"></a>
 ## IECs
 IEC mains inlets and outlet.
 
@@ -1563,7 +1563,7 @@ IEC mains inlets and outlet.
 <a href="#top">Top</a>
 
 ---
-<a name="Inserts"></a>
+<a name="inserts"></a>
 ## Inserts
 Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering iron with a conical bit set to 200&deg;C.
 
@@ -1618,7 +1618,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 <a href="#top">Top</a>
 
 ---
-<a name="Jack"></a>
+<a name="jack"></a>
 ## Jack
 4mm jack sockets and binding posts. Each has a colour for the BOM entry and an optional alternative colour for display.
 E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look realistic.
@@ -1660,7 +1660,7 @@ E.g. a "brown" socket for mains live needs to be displayed as "sienna" to look r
 <a href="#top">Top</a>
 
 ---
-<a name="LDRs"></a>
+<a name="ldrs"></a>
 ## LDRs
 Light dependent resistors.
 
@@ -1700,7 +1700,7 @@ Larger ones seem to have both a higher dark resistance and a lower bright light 
 <a href="#top">Top</a>
 
 ---
-<a name="Leadnuts"></a>
+<a name="leadnuts"></a>
 ## Leadnuts
 Nuts for leadscrews.
 
@@ -1768,7 +1768,7 @@ Nuts for leadscrews.
 <a href="#top">Top</a>
 
 ---
-<a name="LED_meters"></a>
+<a name="led_meters"></a>
 ## LED_meters
 LED voltmeter and ammeter modules available from China and a printed bezel that allows the voltmeter to be mounted into a
 CNC cut panel. The meter is held in the bezel by melting the stakes with a soldering iron set to 200&deg;C. The
@@ -1830,7 +1830,7 @@ The 7 SEGMENT.TTF font from the [docs](docs) directory needs to be installed to 
 <a href="#top">Top</a>
 
 ---
-<a name="LEDs"></a>
+<a name="leds"></a>
 ## LEDs
 Standard domed through hole LEDs. Can specify colour and lead length.
 
@@ -1874,7 +1874,7 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 <a href="#top">Top</a>
 
 ---
-<a name="Light_strips"></a>
+<a name="light_strips"></a>
 ## Light_strips
 LED strip lights that can be cut to size.
 
@@ -1930,7 +1930,7 @@ The `light_strip_clip()` module makes a clip to go around the light that can be 
 <a href="#top">Top</a>
 
 ---
-<a name="Linear_bearings"></a>
+<a name="linear_bearings"></a>
 ## Linear_bearings
 LMnUU linear bearings.
 
@@ -1989,7 +1989,7 @@ LMnUU linear bearings.
 <a href="#top">Top</a>
 
 ---
-<a name="Magnets"></a>
+<a name="magnets"></a>
 ## Magnets
 Cylindrical and ring magnets.
 
@@ -2027,7 +2027,7 @@ Cylindrical and ring magnets.
 <a href="#top">Top</a>
 
 ---
-<a name="Mains_sockets"></a>
+<a name="mains_sockets"></a>
 ## Mains_sockets
 UK 13A sockets at the moment.
 
@@ -2075,7 +2075,7 @@ UK 13A sockets at the moment.
 <a href="#top">Top</a>
 
 ---
-<a name="Microswitches"></a>
+<a name="microswitches"></a>
 ## Microswitches
 Used for limit switches. Currently only the button type is supported as the lever and roller types are less accurate.
 
@@ -2137,7 +2137,7 @@ When the button is released it comes out by a maximum of `microswitch_fp_max(typ
 <a href="#top">Top</a>
 
 ---
-<a name="Microview"></a>
+<a name="microview"></a>
 ## Microview
 Microview OLED display with on board AVR by geekammo / Sparkfun.
 
@@ -2165,7 +2165,7 @@ Uses STL files copyright geekammo and licenced with MIT license, see [microview/
 <a href="#top">Top</a>
 
 ---
-<a name="Modules"></a>
+<a name="modules"></a>
 ## Modules
 Random screw down modules. Currently just DROK buck converters.
 
@@ -2208,7 +2208,7 @@ Random screw down modules. Currently just DROK buck converters.
 <a href="#top">Top</a>
 
 ---
-<a name="Nuts"></a>
+<a name="nuts"></a>
 ## Nuts
 Default is steel but can be drawn as brass or nylon. A utility for making nut traps included.
 
@@ -2292,7 +2292,7 @@ If a nut is given a child then it gets placed on its top surface.
 <a href="#top">Top</a>
 
 ---
-<a name="O_ring"></a>
+<a name="o_ring"></a>
 ## O_ring
 Nitrile rubber O-rings.
 
@@ -2319,7 +2319,7 @@ Can be shown stretched by specifying the `actual_id`.
 <a href="#top">Top</a>
 
 ---
-<a name="Opengrab"></a>
+<a name="opengrab"></a>
 ## Opengrab
 Nicodrone OpenGrab V3 electro-permanent magnet, see <https://kb.zubax.com/display/MAINKB/OpenGrab+EPM+v3>.
 
@@ -2359,7 +2359,7 @@ A permanent magnet that can be magnetized and de-magnetized electronically.
 <a href="#top">Top</a>
 
 ---
-<a name="Panel_meters"></a>
+<a name="panel_meters"></a>
 ## Panel_meters
 Panel mounted digital meter modules
 
@@ -2422,7 +2422,7 @@ Notes on the DSN_VC288:
 <a href="#top">Top</a>
 
 ---
-<a name="PCB"></a>
+<a name="pcb"></a>
 ## PCB
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
 
@@ -2604,7 +2604,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 <a href="#top">Top</a>
 
 ---
-<a name="PCBs"></a>
+<a name="pcbs"></a>
 ## PCBs
 PCBs and perfboard with optional components. The shape can be a rectangle with optionally rounded corners or a polygon for odd shapes like Arduino.
 
@@ -2802,7 +2802,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 <a href="#top">Top</a>
 
 ---
-<a name="Photo_interrupters"></a>
+<a name="photo_interrupters"></a>
 ## Photo_interrupters
 Photo interrupter modules popular in robot kits and from China.
 
@@ -2845,7 +2845,7 @@ Photo interrupter modules popular in robot kits and from China.
 <a href="#top">Top</a>
 
 ---
-<a name="Pillars"></a>
+<a name="pillars"></a>
 ## Pillars
 Threaded pillars. Each end can be male or female.
 
@@ -2893,7 +2893,7 @@ Threaded pillars. Each end can be male or female.
 <a href="#top">Top</a>
 
 ---
-<a name="Pillow_blocks"></a>
+<a name="pillow_blocks"></a>
 ## Pillow_blocks
 KP pillow block bearings
 
@@ -2945,7 +2945,7 @@ KP pillow block bearings
 <a href="#top">Top</a>
 
 ---
-<a name="Pin_headers"></a>
+<a name="pin_headers"></a>
 ## Pin_headers
 Pin headers and sockets, etc.
 
@@ -3018,7 +3018,7 @@ Pin headers and sockets, etc.
 <a href="#top">Top</a>
 
 ---
-<a name="Potentiometers"></a>
+<a name="potentiometers"></a>
 ## Potentiometers
 Potentiometers and rotary encoders
 
@@ -3074,7 +3074,7 @@ Potentiometers and rotary encoders
 <a href="#top">Top</a>
 
 ---
-<a name="PSUs"></a>
+<a name="psus"></a>
 ## PSUs
 Power supplies. Can be a simple cube or can be defined by a list of six faces, each with thickness, holes, cutouts, etc.
 
@@ -3149,7 +3149,7 @@ Face order is bottom, top, left, right, front, back.
 <a href="#top">Top</a>
 
 ---
-<a name="Pulleys"></a>
+<a name="pulleys"></a>
 ## Pulleys
 Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 
@@ -3218,7 +3218,7 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 <a href="#top">Top</a>
 
 ---
-<a name="Radials"></a>
+<a name="radials"></a>
 ## Radials
 Radial components for PCBs.
 
@@ -3258,7 +3258,7 @@ Radial components for PCBs.
 <a href="#top">Top</a>
 
 ---
-<a name="Rails"></a>
+<a name="rails"></a>
 ## Rails
 Linear rails with carriages.
 
@@ -3361,7 +3361,7 @@ Linear rails with carriages.
 <a href="#top">Top</a>
 
 ---
-<a name="Ring_terminals"></a>
+<a name="ring_terminals"></a>
 ## Ring_terminals
 Ring terminals and earth assemblies for DiBond panels.
 
@@ -3412,7 +3412,7 @@ Ring terminals and earth assemblies for DiBond panels.
 <a href="#top">Top</a>
 
 ---
-<a name="Rockers"></a>
+<a name="rockers"></a>
 ## Rockers
 Rocker switch. Also used for neon indicator in the same form factor.
 
@@ -3463,7 +3463,7 @@ Rocker switch. Also used for neon indicator in the same form factor.
 <a href="#top">Top</a>
 
 ---
-<a name="Rod"></a>
+<a name="rod"></a>
 ## Rod
 Steel rods and studding with chamfered ends.
 
@@ -3511,7 +3511,7 @@ These items are symmetrical, so by default the origin is in the centre but it ca
 <a href="#top">Top</a>
 
 ---
-<a name="SBR_rails"></a>
+<a name="sbr_rails"></a>
 ## SBR_rails
 SBR rails
 
@@ -3554,7 +3554,7 @@ The rails are drawn from the center of the rod.
 <a href="#top">Top</a>
 
 ---
-<a name="Screws"></a>
+<a name="screws"></a>
 ## Screws
 Machine screws and wood screws with various head styles.
 
@@ -3659,7 +3659,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 <a href="#top">Top</a>
 
 ---
-<a name="Sealing_strip"></a>
+<a name="sealing_strip"></a>
 ## Sealing_strip
 Sealing strip from B&Q used to seal around the door of 3D printers.
 
@@ -3683,7 +3683,7 @@ Sealing strip from B&Q used to seal around the door of 3D printers.
 <a href="#top">Top</a>
 
 ---
-<a name="Servo_motors"></a>
+<a name="servo_motors"></a>
 ## Servo_motors
 BLDC servos for CNC machines
 
@@ -3738,7 +3738,7 @@ BLDC servos for CNC machines
 <a href="#top">Top</a>
 
 ---
-<a name="Shaft_couplings"></a>
+<a name="shaft_couplings"></a>
 ## Shaft_couplings
 Shaft couplings
 
@@ -3774,7 +3774,7 @@ Shaft couplings
 <a href="#top">Top</a>
 
 ---
-<a name="Sheets"></a>
+<a name="sheets"></a>
 ## Sheets
 Sheet materials. Rectangular with optional rounded corners. Negative radii make a chamfer.
 
@@ -3858,7 +3858,7 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 <a href="#top">Top</a>
 
 ---
-<a name="SK_brackets"></a>
+<a name="sk_brackets"></a>
 ## SK_brackets
 SK shaft support brackets
 
@@ -3913,7 +3913,7 @@ SK shaft support brackets
 <a href="#top">Top</a>
 
 ---
-<a name="SMDs"></a>
+<a name="smds"></a>
 ## SMDs
 Surface mount components for PCBs.
 
@@ -4055,7 +4055,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 <a href="#top">Top</a>
 
 ---
-<a name="Spades"></a>
+<a name="spades"></a>
 ## Spades
 Spade terminals used as parts of electrical components.
 
@@ -4085,7 +4085,7 @@ Spade terminals used as parts of electrical components.
 <a href="#top">Top</a>
 
 ---
-<a name="Spools"></a>
+<a name="spools"></a>
 ## Spools
 Filament spool models
 
@@ -4132,7 +4132,7 @@ Filament spool models
 <a href="#top">Top</a>
 
 ---
-<a name="Springs"></a>
+<a name="springs"></a>
 ## Springs
 Compression springs. Can be tapered, have open, closed or ground ends. Ground ends will render a lot slower.
 
@@ -4179,7 +4179,7 @@ By default springs have their origin at the bottom but can be centered.
 <a href="#top">Top</a>
 
 ---
-<a name="SSRs"></a>
+<a name="ssrs"></a>
 ## SSRs
 Solid state relays.
 
@@ -4223,7 +4223,7 @@ Solid state relays.
 <a href="#top">Top</a>
 
 ---
-<a name="Stepper_motors"></a>
+<a name="stepper_motors"></a>
 ## Stepper_motors
 NEMA stepper motor model.
 
@@ -4290,7 +4290,7 @@ NEMA stepper motor model.
 <a href="#top">Top</a>
 
 ---
-<a name="Swiss_clips"></a>
+<a name="swiss_clips"></a>
 ## Swiss_clips
 Swiss picture clip.
 Used for holding glass on 3D printer beds.
@@ -4338,7 +4338,7 @@ Should be reasonably accurate if not close to fully open.
 <a href="#top">Top</a>
 
 ---
-<a name="Terminals"></a>
+<a name="terminals"></a>
 ## Terminals
 Terminal blocks for power supplies and PCBs.
 
@@ -4372,7 +4372,7 @@ Terminal blocks for power supplies and PCBs.
 <a href="#top">Top</a>
 
 ---
-<a name="Toggles"></a>
+<a name="toggles"></a>
 ## Toggles
 Toggle switches
 
@@ -4436,7 +4436,7 @@ Toggle switches
 <a href="#top">Top</a>
 
 ---
-<a name="Transformers"></a>
+<a name="transformers"></a>
 ## Transformers
 Iron core transformers. The grey shaded area is the keep out region where the terminals are.
 
@@ -4484,7 +4484,7 @@ Iron core transformers. The grey shaded area is the keep out region where the te
 <a href="#top">Top</a>
 
 ---
-<a name="Tubings"></a>
+<a name="tubings"></a>
 ## Tubings
 Tubing and sleeving. The internal diameter can be forced to stretch it over something.
 
@@ -4539,7 +4539,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 <a href="#top">Top</a>
 
 ---
-<a name="Variacs"></a>
+<a name="variacs"></a>
 ## Variacs
 Variable auto transformers.
 
@@ -4592,7 +4592,7 @@ Variable auto transformers.
 <a href="#top">Top</a>
 
 ---
-<a name="Veroboard"></a>
+<a name="veroboard"></a>
 ## Veroboard
 Veroboard with mounting holes, track breaks, removed tracks, solder points and components.
 
@@ -4666,7 +4666,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 <a href="#top">Top</a>
 
 ---
-<a name="Washers"></a>
+<a name="washers"></a>
 ## Washers
 Washers, star washers, penny washers and printed washers.
 
@@ -4759,7 +4759,7 @@ If a washer is given a child, usually a screw or a nut, then it is placed on its
 <a href="#top">Top</a>
 
 ---
-<a name="Wire"></a>
+<a name="wire"></a>
 ## Wire
 Utilities for adding wires to the BOM and optionally drawing them and cable bundle size functions for holes, plus cable ties.
 
@@ -4813,7 +4813,7 @@ Utilities for adding wires to the BOM and optionally drawing them and cable bund
 <a href="#top">Top</a>
 
 ---
-<a name="Zipties"></a>
+<a name="zipties"></a>
 ## Zipties
 Cable zipties.
 
@@ -4850,7 +4850,7 @@ Cable zipties.
 <a href="#top">Top</a>
 
 ---
-<a name="Box"></a>
+<a name="box"></a>
 ## Box
 A box made from routed or laser cut sheet sheets and printed profiles and bezels. It can be arbitrarily large
 compared to the 3D printed parts because they can be cut into interlocking sections and solvent welded
@@ -4968,7 +4968,7 @@ The top bezel can have an optional child, which is subtracted to allow modificat
 <a href="#top">Top</a>
 
 ---
-<a name="Butt_box"></a>
+<a name="butt_box"></a>
 ## Butt_box
 A box made from CNC cut panels butted together using printed fixing blocks. Useful for making large
 boxes with minimal 3D printing.  More blocks are added as the box gets bigger.
@@ -5076,7 +5076,7 @@ fixing_blocks along the sides.
 <a href="#top">Top</a>
 
 ---
-<a name="Cable_clip"></a>
+<a name="cable_clip"></a>
 ## Cable_clip
 Cable clips to order. Can be for one or two cables of different sizes.
 
@@ -5121,7 +5121,7 @@ Cable clips to order. Can be for one or two cables of different sizes.
 <a href="#top">Top</a>
 
 ---
-<a name="Cable_grommets"></a>
+<a name="cable_grommets"></a>
 ## Cable_grommets
 Printed cable grommets for passing cables through panels avoiding sharp edges and in the case
 of conductive panels, an extra layer of insulation.
@@ -5161,7 +5161,7 @@ of conductive panels, an extra layer of insulation.
 <a href="#top">Top</a>
 
 ---
-<a name="Camera_housing"></a>
+<a name="camera_housing"></a>
 ## Camera_housing
 Housings for PCB cameras.
 
@@ -5226,7 +5226,7 @@ Housings for PCB cameras.
 <a href="#top">Top</a>
 
 ---
-<a name="Carriers"></a>
+<a name="carriers"></a>
 ## Carriers
 Adapts ESP12 modules and various small PCBs to 0.1" grid. See <https://hydraraptor.blogspot.com/2018/04/esp-12-module-breakout-adaptor.html>.
 
@@ -5259,7 +5259,7 @@ Adapts ESP12 modules and various small PCBs to 0.1" grid. See <https://hydrarapt
 <a href="#top">Top</a>
 
 ---
-<a name="Corner_block"></a>
+<a name="corner_block"></a>
 ## Corner_block
 Corner brackets using threaded inserts for fastening three sheets together at right angles.
 Defaults to M3 but other screws sizes can be specified provided they have inserts defined.
@@ -5360,7 +5360,7 @@ high lateral rigidity is not required.
 <a href="#top">Top</a>
 
 ---
-<a name="Door_hinge"></a>
+<a name="door_hinge"></a>
 ## Door_hinge
 Door hinges to hang an acrylic sheet door on a 3D printer, default 6mm thick.
 
@@ -5415,7 +5415,7 @@ Rubber door [sealing strip](#sealing_strip) is used to make it airtight and a [d
 <a href="#top">Top</a>
 
 ---
-<a name="Door_latch"></a>
+<a name="door_latch"></a>
 ## Door_latch
 Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 
@@ -5453,7 +5453,7 @@ Door latch for 6mm acrylic door for 3D printer. See [door_hinge](#door_hinge).
 <a href="#top">Top</a>
 
 ---
-<a name="Drag_chain"></a>
+<a name="drag_chain"></a>
 ## Drag_chain
 Parametric cable drag chain to limit the bend radius of a cable run.
 
@@ -5521,7 +5521,7 @@ to the assembly, for example to add inserts.
 <a href="#top">Top</a>
 
 ---
-<a name="Fan_guard"></a>
+<a name="fan_guard"></a>
 ## Fan_guard
 Printable fan finger guard to match the specified fan. To be `include`d, not `use`d.
 
@@ -5562,7 +5562,7 @@ The ring spacing as well as the number of spokes can be specified, if zero a gas
 <a href="#top">Top</a>
 
 ---
-<a name="Fixing_block"></a>
+<a name="fixing_block"></a>
 ## Fixing_block
 Fixing block to mount two sheets at right angles using threaded inserts.
 Defaults to M3 but other screw sizes can be specified provided they have inserts defined.
@@ -5644,7 +5644,7 @@ Star washers can be omitted by setting `star_washers` to false.
 <a href="#top">Top</a>
 
 ---
-<a name="Flat_hinge"></a>
+<a name="flat_hinge"></a>
 ## Flat_hinge
 A parametric flat hinge. A piece of filament can be used for the hinge pin.
 
@@ -5719,7 +5719,7 @@ This allows the hinges and one set of screws to belong to one assembly and the o
 <a href="#top">Top</a>
 
 ---
-<a name="Foot"></a>
+<a name="foot"></a>
 ## Foot
 Customisable printed rubber feet for equipment cases. The insert variant is better for solid feet because
 inserts don't grip well in rubber.
@@ -5781,7 +5781,7 @@ inserts don't grip well in rubber.
 <a href="#top">Top</a>
 
 ---
-<a name="Handle"></a>
+<a name="handle"></a>
 ## Handle
 Printed handle that can be printed without needing support material due to its truncated teardrop profile.
 
@@ -5830,7 +5830,7 @@ Printed handle that can be printed without needing support material due to its t
 <a href="#top">Top</a>
 
 ---
-<a name="Knob"></a>
+<a name="knob"></a>
 ## Knob
 Parametric knobs for potentiometers and encoders.
 
@@ -5899,7 +5899,7 @@ The STL includes a support membrane that needs to be cut out and a thread needs 
 <a href="#top">Top</a>
 
 ---
-<a name="LED_bezel"></a>
+<a name="led_bezel"></a>
 ## LED_bezel
 Printed LED bezels for panel mounting
 
@@ -5965,7 +5965,7 @@ Printed LED bezels for panel mounting
 <a href="#top">Top</a>
 
 ---
-<a name="PCB_mount"></a>
+<a name="pcb_mount"></a>
 ## PCB_mount
 A frame to mount a PCB by its corners when it has no mounting holes.
 The stl must be given a parameterless wrapper in the project that uses it.
@@ -6012,7 +6012,7 @@ The stl must be given a parameterless wrapper in the project that uses it.
 <a href="#top">Top</a>
 
 ---
-<a name="Pocket_handle"></a>
+<a name="pocket_handle"></a>
 ## Pocket_handle
 Customisable pocket handle
 
@@ -6062,7 +6062,7 @@ Customisable pocket handle
 <a href="#top">Top</a>
 
 ---
-<a name="Press_fit"></a>
+<a name="press_fit"></a>
 ## Press_fit
 Utility for making printed press fit connectors to join printed parts.
 
@@ -6084,7 +6084,7 @@ Add solvent or glue to make a permanent fixture.
 <a href="#top">Top</a>
 
 ---
-<a name="Printed_box"></a>
+<a name="printed_box"></a>
 ## Printed_box
 A fully parametric 3D printed case that can be customised with cutouts and additions specified by children.
 
@@ -6168,7 +6168,7 @@ It can also have printed feet on the base with the screws doubling up to hold th
 <a href="#top">Top</a>
 
 ---
-<a name="Printed_pulleys"></a>
+<a name="printed_pulleys"></a>
 ## Printed_pulleys
 Printed pulleys are a remix of droftarts's (see <https://www.thingiverse.com/droftarts/designs>) Parametric Pulleys
 on Thingiverse (see <https://www.thingiverse.com/thing:16627>) and are licensed under the
@@ -6235,7 +6235,7 @@ Creative Commons - Attribution - Share Alike license (see <https://creativecommo
 <a href="#top">Top</a>
 
 ---
-<a name="PSU_shroud"></a>
+<a name="psu_shroud"></a>
 ## PSU_shroud
 A cover to go over the mains end of a PSU terminal strip to make it safe.
 The stl and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
@@ -6295,7 +6295,7 @@ The stl and assembly must be given a name and parameterless wrappers for the stl
 <a href="#top">Top</a>
 
 ---
-<a name="Ribbon_clamp"></a>
+<a name="ribbon_clamp"></a>
 ## Ribbon_clamp
 Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
 
@@ -6356,7 +6356,7 @@ Clamp for ribbon cable and polypropylene strip or one or more ribbon cables.
 <a href="#top">Top</a>
 
 ---
-<a name="Screw_knob"></a>
+<a name="screw_knob"></a>
 ## Screw_knob
 Knob with embedded hex head screw.
 
@@ -6421,7 +6421,7 @@ Most aspects can be customised, e.g. the flange thickness and radius. It can als
 <a href="#top">Top</a>
 
 ---
-<a name="Socket_box"></a>
+<a name="socket_box"></a>
 ## Socket_box
 UK 13A socket and printed backbox with earth terminal for the panel it is mounted on.
 
@@ -6471,7 +6471,7 @@ UK 13A socket and printed backbox with earth terminal for the panel it is mounte
 <a href="#top">Top</a>
 
 ---
-<a name="SSR_shroud"></a>
+<a name="ssr_shroud"></a>
 ## SSR_shroud
 A cover to go over the mains end of an SSR to make it safe to be touched.
 The STL and assembly must be given a name and parameterless wrappers for the stl and assembly added to the project.
@@ -6525,7 +6525,7 @@ The STL and assembly must be given a name and parameterless wrappers for the stl
 <a href="#top">Top</a>
 
 ---
-<a name="Strap_handle"></a>
+<a name="strap_handle"></a>
 ## Strap_handle
 Retracting strap handle. Print the strap with flexible filament. Shown with default dimensions but can
 be fully customised by passing a list of properties.
@@ -6585,7 +6585,7 @@ be fully customised by passing a list of properties.
 <a href="#top">Top</a>
 
 ---
-<a name="Annotation"></a>
+<a name="annotation"></a>
 ## Annotation
 Annotation used in this documentation
 
@@ -6605,7 +6605,7 @@ Annotation used in this documentation
 <a href="#top">Top</a>
 
 ---
-<a name="Bezier"></a>
+<a name="bezier"></a>
 ## Bezier
 Bezier curves and function to get and adjust the length or minimum z point.
 
@@ -6634,7 +6634,7 @@ The only degree of freedom is how far along those tangents, which are the `d` an
 <a href="#top">Top</a>
 
 ---
-<a name="Catenary"></a>
+<a name="catenary"></a>
 ## Catenary
 Catenary curve to model hanging wires, etc.
 
@@ -6663,7 +6663,7 @@ The coordinates of the lowest point on the curve can be retrieved by calling `ca
 <a href="#top">Top</a>
 
 ---
-<a name="Core_xy"></a>
+<a name="core_xy"></a>
 ## Core_xy
 Parameterised Core XY implementation. Draws the belts and provides utilities for positioning the pulleys.
 
@@ -6727,7 +6727,7 @@ allows flexible positioning of the motors.
 <a href="#top">Top</a>
 
 ---
-<a name="Dogbones"></a>
+<a name="dogbones"></a>
 ## Dogbones
 When square holes are cut with a CNC bit they get rounded corners. If it is important that
 a square cornered part fits in the hole then circles are placed in the corners making a bone shape.
@@ -6750,7 +6750,7 @@ a square cornered part fits in the hole then circles are placed in the corners m
 <a href="#top">Top</a>
 
 ---
-<a name="Fillet"></a>
+<a name="fillet"></a>
 ## Fillet
 Rounded fillet for adding to corners.
 
@@ -6769,7 +6769,7 @@ Rounded fillet for adding to corners.
 <a href="#top">Top</a>
 
 ---
-<a name="Gears"></a>
+<a name="gears"></a>
 ## Gears
 Utilities for making involute gears.
 
@@ -6815,7 +6815,7 @@ The origin of the rack is the left end of the pitch line and its width is below 
 <a href="#top">Top</a>
 
 ---
-<a name="Hanging_hole"></a>
+<a name="hanging_hole"></a>
 ## Hanging_hole
 Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/buried-nuts-and-hanging-holes.html>
 
@@ -6834,7 +6834,7 @@ Method to print holes in mid air. See <https://hydraraptor.blogspot.com/2014/03/
 <a href="#top">Top</a>
 
 ---
-<a name="Horiholes"></a>
+<a name="horiholes"></a>
 ## Horiholes
 Utilities for depicting the staircase slicing of horizontal holes made with [`teardrop_plus()`](#teardrops), see <https://hydraraptor.blogspot.com/2020/07/horiholes-2.html>
 
@@ -6862,7 +6862,7 @@ Utilities for depicting the staircase slicing of horizontal holes made with [`te
 <a href="#top">Top</a>
 
 ---
-<a name="Layout"></a>
+<a name="layout"></a>
 ## Layout
 Layout objects in a line with equal gaps given a vector of their widths.
 
@@ -6886,7 +6886,7 @@ Layout objects in a line with equal gaps given a vector of their widths.
 <a href="#top">Top</a>
 
 ---
-<a name="Maths"></a>
+<a name="maths"></a>
 ## Maths
 Maths utilities for manipulating vectors and matrices.
 
@@ -6947,7 +6947,7 @@ Maths utilities for manipulating vectors and matrices.
 <a href="#top">Top</a>
 
 ---
-<a name="Offset"></a>
+<a name="offset"></a>
 ## Offset
 3D offset using `minkowski` with a `sphere`, so very slow if `$fn` is not kept small. The offset can be positive or negative.
 
@@ -6970,7 +6970,7 @@ If `chamfer_base` is true then the bottom edge is made suitable for 3D printing 
 <a href="#top">Top</a>
 
 ---
-<a name="Quadrant"></a>
+<a name="quadrant"></a>
 ## Quadrant
 Square with one rounded corner.
 
@@ -6989,7 +6989,7 @@ Square with one rounded corner.
 <a href="#top">Top</a>
 
 ---
-<a name="Round"></a>
+<a name="round"></a>
 ## Round
 Round 2D shapes using `offset()`, which is fast and 3D shapes with [`offset_3D()`](#offset), which is very slow.
 
@@ -7013,7 +7013,7 @@ the angle gets shallower than 45 degrees.
 <a href="#top">Top</a>
 
 ---
-<a name="Rounded_cylinder"></a>
+<a name="rounded_cylinder"></a>
 ## Rounded_cylinder
 Cylinder with a rounded end.
 
@@ -7034,7 +7034,7 @@ Cylinder with a rounded end.
 <a href="#top">Top</a>
 
 ---
-<a name="Rounded_polygon"></a>
+<a name="rounded_polygon"></a>
 ## Rounded_polygon
 Draw a polygon with rounded corners. Each element of the vector is the XY coordinate and a radius in clockwise order.
 Radius can be negative for a concave corner.
@@ -7067,7 +7067,7 @@ Because the tangents need to be calculated to find the length these can be calcu
 <a href="#top">Top</a>
 
 ---
-<a name="Rounded_triangle"></a>
+<a name="rounded_triangle"></a>
 ## Rounded_triangle
 Draw a 3D right triangle with rounded edges. Intended to be embedded in other parts. Can be optionally offset by the filleted amount.
 
@@ -7086,7 +7086,7 @@ Draw a 3D right triangle with rounded edges. Intended to be embedded in other pa
 <a href="#top">Top</a>
 
 ---
-<a name="Sector"></a>
+<a name="sector"></a>
 ## Sector
 A sector of a circle between two angles.
 
@@ -7105,7 +7105,7 @@ A sector of a circle between two angles.
 <a href="#top">Top</a>
 
 ---
-<a name="Sweep"></a>
+<a name="sweep"></a>
 ## Sweep
 Utility to generate a polyhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
 
@@ -7154,7 +7154,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 <a href="#top">Top</a>
 
 ---
-<a name="Thread"></a>
+<a name="thread"></a>
 ## Thread
 Utilities for making threads with sweep. They can be used to model screws, nuts, studding, leadscrews, etc, and also to make printed threads.
 
@@ -7199,7 +7199,7 @@ Threads obey the $fn, $fa, $fs variables.
 <a href="#top">Top</a>
 
 ---
-<a name="Tube"></a>
+<a name="tube"></a>
 ## Tube
 Simple tube or ring
 
@@ -7221,7 +7221,7 @@ Simple tube or ring
 <a href="#top">Top</a>
 
 ---
-<a name="BOM"></a>
+<a name="bom"></a>
 ## BOM
 Bill Of Materials generation via echo and the `bom.py` script. Also handles exploded assembly views and posing.
 Assembly instructions can precede the module definition that makes the assembly.
@@ -7312,7 +7312,7 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 <a href="#top">Top</a>
 
 ---
-<a name="Clip"></a>
+<a name="clip"></a>
 ## Clip
 Construct arbitrarily large box to partition 3D space and clip objects, useful for creating cross sections to see the inside when debugging.
 
@@ -7334,7 +7334,7 @@ Original version by Doug Moen on the OpenSCAD forum
 <a href="#top">Top</a>
 
 ---
-<a name="Global"></a>
+<a name="global"></a>
 ## Global
 Global constants, functions and modules. This file is used directly or indirectly in every scad file.
 See [global_defs.scad](../../global_defs.scad) for a list of global constants.
@@ -7383,7 +7383,7 @@ See [global_defs.scad](../../global_defs.scad) for a list of global constants.
 <a href="#top">Top</a>
 
 ---
-<a name="Polyholes"></a>
+<a name="polyholes"></a>
 ## Polyholes
 A method of making 3D printed holes come out the right size regardless of the printer, providing
 it gets the linear dimensions right. See <https://hydraraptor.blogspot.com/2011/02/polyholes.html>
@@ -7459,7 +7459,7 @@ leaving a scar on either surface.
 <a href="#top">Top</a>
 
 ---
-<a name="Rounded_rectangle"></a>
+<a name="rounded_rectangle"></a>
 ## Rounded_rectangle
 Rectangle with rounded corners.
 
@@ -7482,7 +7482,7 @@ Rectangle with rounded corners.
 <a href="#top">Top</a>
 
 ---
-<a name="Sphere"></a>
+<a name="sphere"></a>
 ## Sphere
 Redefines `sphere()` to always have a vertex on all six half axes I.e. vertices at the poles and the equator and `$fn` a multiple of four.
 This ensures `hull` and `minkowski` results have the correct dimensions when spheres are placed at the corners.
@@ -7502,7 +7502,7 @@ This ensures `hull` and `minkowski` results have the correct dimensions when sph
 <a href="#top">Top</a>
 
 ---
-<a name="Teardrops"></a>
+<a name="teardrops"></a>
 ## Teardrops
 For making horizontal holes that don't need support material.
 Small holes can get away without it, but they print better with truncated teardrops.
