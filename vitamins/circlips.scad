@@ -22,7 +22,8 @@ circlip_15i = ["circlip_15i", 15, 15.7, 16.2, 1.0, 3.7, 2.0, 1.7];
 circlip_19i = ["circlip_19i", 19, 20.0, 20.5, 1.0, 4.1, 2.2, 2.0];
 circlip_21i = ["circlip_21i", 21, 22.0, 22.5, 1.0, 4.2, 2.4, 2.0];
 circlip_28i = ["circlip_28i", 28, 29.4, 30.1, 1.2, 4.8, 2.9, 2.0];
+circlip_28iw = ["circlip_28iw", 28, 29.4, 30.1, 1.2, 4.8, 2.9, 2.0, 100]; // with wide opening
 
-circlips = [circlip_12i, circlip_15i, circlip_19i, circlip_21i, circlip_28i];
+circlips = [circlip_12i, circlip_15i, circlip_19i, circlip_21i, circlip_28i, circlip_28iw];
 
 use <circlip.scad>

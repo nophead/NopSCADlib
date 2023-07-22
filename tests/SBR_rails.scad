@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2023
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,23 +16,31 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../utils/core/core.scad>
+include <../core.scad>
+include <../vitamins/sbr_rails.scad>
+
 use <../utils/layout.scad>
+use <../vitamins/bearing_block.scad>
 
-include <../vitamins/linear_bearings.scad>
+length = 200;
+sheet = 3;
 
-module linear_bearings() {
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
-        translate([0, 30])
-            linear_bearing(linear_bearings[$i]);
+module sbr_rails()
+    layout([for(r = sbr_rails) sbr_rail_base_width(r)], 10)
+        rotate([90, 180,0]) {
+            rail = sbr_rails[$i];
+            sbr_rail(rail, length);
+            carriage = sbr_rail_carriage(rail);
+            screw = sbr_rail_screw(rail);
 
-        translate([0, 60])
-            linear_bearing(long_linear_bearings[$i]);
-    }
-    layout([for(b = open_linear_bearings) 2 * bearing_radius(b)])
-        translate([105, 0])
-            linear_bearing(open_linear_bearings[$i]);
-}
+            sbr_bearing_block_assembly(carriage, sheet);
+
+            sbr_screw_positions(rail, length)
+                explode(20)
+                    rotate([90,0,0])
+                        screw(sbr_rail_screw(rail), 18);
+
+         }
 
 if($preview)
-    linear_bearings();
+    sbr_rails();

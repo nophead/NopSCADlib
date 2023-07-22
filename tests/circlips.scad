@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 include <../vitamins/circlips.scad>
 
 module circlips(all = false)
-    layout([for(c = circlips) circlip_d3(c)], 10, false) let(c = circlips[$i]) {
+    layout([for(c = circlips) circlip_d3(c)], 5, false) let(c = circlips[$i]) {
         gap = circlip_d3(c) + 2;
 
         internal_circlip(c, 1);

@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2023
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,23 +16,16 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../utils/core/core.scad>
-use <../utils/layout.scad>
+include <../core.scad>
+include <../vitamins/bearing_blocks.scad>
 
-include <../vitamins/linear_bearings.scad>
+//
+// SBR Rails
+//
 
-module linear_bearings() {
-    layout([for(b = linear_bearings) 2 * bearing_radius(b)]) {
-        translate([0, 30])
-            linear_bearing(linear_bearings[$i]);
+//                        d  h   B   T  carriage P    S2            C   S3            S3L
+SBR16S     = ["SBR16S",  16, 25, 40, 5, SBR16UU, 150, M5_cap_screw, 30, M5_cap_screw, 18  ];
 
-        translate([0, 60])
-            linear_bearing(long_linear_bearings[$i]);
-    }
-    layout([for(b = open_linear_bearings) 2 * bearing_radius(b)])
-        translate([105, 0])
-            linear_bearing(open_linear_bearings[$i]);
-}
+sbr_rails = [SBR16S];
 
-if($preview)
-    linear_bearings();
+use <sbr_rail.scad>

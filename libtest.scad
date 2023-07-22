@@ -96,6 +96,7 @@ use <tests/rails.scad>
 use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
+use <tests/SBR_rails.scad>
 use <tests/screws.scad>
 use <tests/sealing_strip.scad>
 use <tests/servo_motors.scad>
@@ -144,7 +145,7 @@ x1 = x0 + 110;
 x2 = x1 + 90;
 x3 = x2 + 130;
 x4 = x3 + 200;
-x5 = 850;
+x5 = 900;
 x6 = x5 + 150;
 
 cable_grommets_y = 0;
@@ -233,8 +234,8 @@ tubings_y = sealing_strip_y + 20;
 pillars_y = tubings_y + 20;
 ball_bearings_y = pillars_y + 40;
 pulleys_y = ball_bearings_y + 40;
-leadnuts_y = pulleys_y + 60;
-linear_bearings_y = leadnuts_y + 50;
+leadnuts_y = pulleys_y + 35;
+linear_bearings_y = leadnuts_y + 65;
 steppers_y = linear_bearings_y + 110;
 sheets_y = steppers_y + 55;
 pcbs_y = sheets_y + 60;
@@ -289,7 +290,9 @@ translate([x0 + 120, leadnuts_y])
     leadnuthousings();
 
 translate([x0, linear_bearings_y]) {
-    linear_bearings();
+    translate([0, -30])
+        linear_bearings();
+
     rods();
 }
 
@@ -397,7 +400,7 @@ blowers_y = ssrs_y + 60;
 hot_ends_y = blowers_y + 100;
 batteries_y = hot_ends_y + 55;
 panel_meters_y = batteries_y + 70;
-extrusions_y = panel_meters_y + 80;
+extrusions_y = panel_meters_y + 100;
 
 translate([x3, veroboard_y])
     veroboard_test();
@@ -465,11 +468,11 @@ rails_y = belts_y + 200;
 extrusion_brackets_y = rails_y + 250;
 sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 60;
-scs_bearing_blocks_y = kp_pillow_blocks_y + 60;
+bearing_blocks_y = kp_pillow_blocks_y + 60;
 box_sections_y = batteries_y;
-BLDC_y = scs_bearing_blocks_y + 120;
-pot_y = BLDC_y + 40;
-cable_strip_y = pot_y + 50;
+BLDC_y = bearing_blocks_y + 180;
+pot_y = bearing_blocks_y;
+cable_strip_y = sheets_y + 30;
 
 translate([0, transformers_y])
     servo_motors();
@@ -484,8 +487,12 @@ translate([x4 + 200, belts_y + 58]) {
 translate([x4 + 175, belts_y, -20])
     drag_chains();
 
-translate([x4, rails_y + 130])
+translate([x4, rails_y + 130]) {
     rails();
+
+    translate([305, 0])
+        sbr_rails();
+}
 
 translate([x4, cable_strip_y])
     cable_strips();
@@ -502,8 +509,8 @@ translate([x4, extrusion_brackets_y])
 translate([x1, swiss_clips_y + 50])
     shaft_couplings();
 
-translate([x4, scs_bearing_blocks_y])
-    scs_bearing_blocks();
+translate([x4, bearing_blocks_y])
+    bearing_blocks();
 
 translate([x4, BLDC_y])
     bldc_motors();
