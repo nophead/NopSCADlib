@@ -119,23 +119,30 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 25, 200,   0, "buzzer", 4.5, 8.5],
         [ 25, 218,   0, "buzzer"],
 
-        [ 45,   5,   0, "link", inch(0.4), 0.75, undef, undef, [1.5, "red"]], // Sleeved link
-        [ 45,   9,   0, "link", inch(0.4)], // Flat link
-        [ 45,  12,   0, "ax_res", res1_8, 1000],
-        [ 45,  17,   0, "ax_res", res1_4, 10000],
+        [ 45,   1,   0, "link", inch(0.4), 0.75, undef, undef, [1.5, "red"]], // Sleeved link
+        [ 45,   3,   0, "link", inch(0.4)], // Flat link
+        [ 45,   6,   0, "ax_diode", DO_41, "1N4007"],
+        [ 45,  10,   0, "ax_diode", DO_35, "1N4148"],
+        [ 45,  14,   0, "ax_res", res1_8, 1000],
+        [ 45,  18,   0, "ax_res", res1_4, 10000],
         [ 45,  22,   0, "ax_res", res1_2, 100000],
         [ 35,  22,   0, "vero_pin"],
         [ 35,  17,   0, "vero_pin", true],
-        [ 35,   9,   0, "link", 0, 5], // Vertical wire
+        [ 35,   8, 180, "rd_transistor", TO92, "78L05", undef,  undef, "Regulator"],
+        [ 35,  13, 180, "rd_transistor", E_LINE, "ZTX853"],
+        [ 35,   3,   0, "link", 0, 5], // Vertical wire
 
-        [ 60,   9,   0, "link", inch(0.2), inch(0.4)], // Raised link
-        [ 60,  12,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
-        [ 60,  17,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
+        [ 60,   3,   0, "link", inch(0.2), inch(0.4)], // Raised link
+        [ 60,   6,   0, "ax_diode", DO_41, "1N4007", inch(0.1)],
+        [ 60,  10,   0, "ax_diode", DO_35, "1N4148", inch(0.1)],
+
+        [ 60,  14,   0, "ax_res", res1_8, 1000000, 1, inch(0.1)],
+        [ 60,  18,   0, "ax_res", res1_4, 100,     2, inch(0.1)],
         [ 60,  22,   0, "ax_res", res1_2, 10,     10, inch(0.2)],
 
         [ 33,  110, -90, "rd_xtal", HC49,    "4MHz" ],
         [ 28,  110, -90, "rd_xtal", HC49_4H, "10MHz" ],
-        [ 28,  103, -90, "rd_xtal", C_002RX, "60KHz", 2 ],
+        [ 28,  102, -90, "rd_xtal", C_002RX, "60KHz", 3, inch(0.1) ],
 
         [ 30,  130,-90, "rd_xtal", ACT1100, "40MHz", 0.5 ],
         [ 30,  150,-90, "rd_xtal", ACT1700, "80MHz", 0.5 ],
@@ -180,7 +187,10 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 78, 166, -90, "smd_soic", SOIC14, "74HC00"],
         [ 71, 166, -90, "smd_soic", SOIC16, "ICL323"],
         [ 64, 166, -90, "smd_soic", SOIC8, "M34063"],
-        [ 80, 150,   0, "chip", 10, 5, 1, grey(20)],
+        [ 70, 150,   0, "chip", 10, 5, 1, grey(20)],
+
+         [90, 140, -90, "relay", HF33F, "012-HSL-3F"],
+
 
         [ 52, 206,   0, "2p54socket", 8, 1 ],
         [ 52, 194,   0, "2p54socket", 8, 1, false, 0, false, "red" ],
@@ -196,5 +206,5 @@ test_pcb = ["test_pcb", "Test PCB",
 
 
 if($preview)
-    let($show_threads = true)
+    let($show_threads = true, $solder = pcb_solder(test_pcb))
         pcb(test_pcb);

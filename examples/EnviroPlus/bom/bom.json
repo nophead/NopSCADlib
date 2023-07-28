@@ -55,7 +55,7 @@
         "count": 1,
         "assemblies": {},
         "vitamins": {
-            "veroboard(fan_vb): Veroboard 6 holes x 6strips": {
+            "veroboard(fan_vb): Veroboard 6 holes x 6 strips": {
                 "count": 1
             },
             "wire_link(0.8, 10.16, tail = 2.5): Wire link 0.8mm x 0.4\"": {
@@ -102,7 +102,7 @@
         "count": 1,
         "assemblies": {},
         "vitamins": {
-            "insert(F1BM2): Heatfit insert M2": {
+            "insert(F1BM2): Heatfit insert M2 x 4mm": {
                 "count": 4
             },
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {

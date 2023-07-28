@@ -12,7 +12,7 @@ Vitamins:
   |  |  | 2|  2 Wire brown 30/0.25mm strands, length 150mm - not shown
   |  | 1| 1|  2 Wire green & yellow 30/0.25mm strands, length 150mm - not shown
   |  |  | 1|  1 IEC inlet for ATX
- 2|  |  |  |  2 Heatfit insert M3
+ 2|  |  |  |  2 Heatfit insert M3 x 5.8mm
   |  | 2|  |  2 4mm shielded jack socket blue
   |  | 1|  |  1 4mm shielded jack socket brown
   |  | 2|  |  2 4mm shielded jack socket green

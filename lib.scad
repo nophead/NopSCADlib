@@ -99,6 +99,7 @@ use <utils/rounded_triangle.scad>
 use <utils/layout.scad>
 use <utils/round.scad>
 use <utils/offset.scad>
+use <utils/pcb_utils.scad>
 use <utils/sector.scad>
 use <utils/thread.scad>
 use <vitamins/photo_interrupter.scad>

@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2020
+// NopSCADlib Copyright Chris Palmer 2023
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -17,19 +17,32 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-//
-//! Axial components
-//
+include <../utils/core/core.scad>
 
-res1_8 = ["res1_8", 0.125, 3.3, 1.35, 1.7, 1,   0.33, "#FAE3AC"];
-res1_4 = ["res1_4", 0.25,  5.7, 1.85, 2.3, 1.5, 0.55, "#FAE3AC"];
-res1_2 = ["res1_2", 0.5,  10,   3.25, 3.7, 1.8, 0.70, "#FAE3AC"];
+use <../utils/pcb_utils.scad>
 
-ax_resistors = [res1_8, res1_4, res1_2];
+module pcb_utils() {
+    let($solder = [1, 0, 1.6])
+        solder();
 
-DO_35 = ["DO_35", [3.4,  1.75, 0.3], 0.55, [[1,1,1, 0.5], grey(10)]];
-DO_41 = ["DO_41", [5.21, 2.72, 0],   0.87, [grey(20),     grey(90)]];
+    r = 2;
+    h = 10;
 
-ax_diodes = [DO_35, DO_41];
+    color(grey(20))
+        cylinder(r = r, h = h);
 
-use <axial.scad>
+    color("silver")
+        vflip()
+            cylinder(d = 0.6, h = 3, $fn = 16);
+
+    color("white")
+        translate_z(h / 2)
+            cylindrical_wrap(r = r)
+                resize([0, h * .8], auto = true)
+                    rotate(90)
+                        text("Hello", halign = "center", valign = "center");
+}
+
+if($preview)
+    rotate(-45)
+        pcb_utils();

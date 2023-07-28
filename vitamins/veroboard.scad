@@ -22,6 +22,7 @@
 //
 include <../core.scad>
 use <pcb.scad>
+use <../utils/pcb_utils.scad>
 
 function vero_assembly(type)       = type[1];   //! Name of the assembly
 function vero_holes(type)          = type[2];   //! Number of holes in each strip
@@ -45,20 +46,6 @@ function vero(name, assembly, holes, strips, pitch = 2.54, fr4 = false, screw = 
     [ name, assembly, holes, strips, pitch, fr4, screw, mounting_holes, breaks, no_tracks, components, joints ];
 
 function vero_size(type) = [vero_length(type), vero_width(type), vero_thickness(type)]; //! Board size
-
-module solder_meniscus(type, ir = 0.3, r = undef) { //! Draw a solder meniscus
-    h = 0.7;
-    r = is_undef(r) ? vero_track_width(type) / 2 : r;
-
-    translate_z(vero_track_thickness(type))
-        color("silver") rotate_extrude()
-            difference() {
-                square([r, h]);
-
-                translate([r + eps, h + eps])
-                    ellipse(r - ir , h, $fn = 64);
-            }
-}
 
 function vero_grid_pos(type, x, y) = //! Convert grid position to offset from the centre
     let(holes = vero_holes(type), strips = vero_strips(type))
@@ -126,11 +113,14 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
                                     circle(d = pitch * 1.1);
 
                 for(p = vero_breaks(type))
-                    vero_grid_pos(type, p.x, p.y)
-                        if(ceil(p.x) == p.x)
-                            circle(d = pitch * 1.1);
-                        else
-                            square([pitch * 0.3, pitch], center = true);
+                    hull() {
+                        for(x = p.x)
+                            vero_grid_pos(type, x, p.y)
+                                if(ceil(x) == x)
+                                    circle(d = pitch * 1.1);
+                                else
+                                    square([pitch * 0.3, pitch], center = true);
+                    }
             }
         }
 }
@@ -153,13 +143,14 @@ pose_vflip(exploded = true)
 assembly(vero_assembly(type), ngb = ngb) {
     veroboard(type);
 
-    vero_components(type);
+    let($solder = [vero_track_width(type) / 2, 0, vero_thickness(type) + vero_track_thickness(type)])
+        vero_components(type);
 
-    for(r = vero_joints(type))
-        for(x = r.x, y = r.y)
-            vero_grid_pos(type, x, y)
-                 vflip()
-                    solder_meniscus(type);
+    let($solder = [vero_track_width(type) / 2, 0, vero_track_thickness(type)])
+        for(r = vero_joints(type))
+            for(x = r.x, y = r.y)
+                vero_grid_pos(type, x, y)
+                    solder();
 }
 
 module veroboard_fasteners(type, height, thickness, flip = false) { //! Draw the fasteners in place

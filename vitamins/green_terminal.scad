@@ -22,6 +22,7 @@
 //
 include <../utils/core/core.scad>
 use <../utils/tube.scad>
+use <../utils/pcb_utils.scad>
 
 function gt_pitch(type)        = type[1];   //! Pitch between terminals
 function gt_depth(type)        = type[2];   //! Total front to back depth
@@ -172,6 +173,7 @@ module green_terminal(type, ways, skip = [], colour = "lime") { //! Draw green t
 
                 translate_z(-pin_l / 2)
                     cube([0.44, 0.75, pin_l], center = true);     // pin
+                solder();
             }
     }
     for(i = [0: ways - 1])

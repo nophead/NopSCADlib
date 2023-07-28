@@ -21,7 +21,8 @@
 //! Axial components for PCBs.
 //
 include <../utils/core/core.scad>
-include <../utils/round.scad>
+use <../utils/round.scad>
+use <../utils/pcb_utils.scad>
 
 module wire_link(d, l, h = 1, tail = 3, sleeve = false) { //! Draw a wire jumper link. `sleeve` can be a list with the diameter and colour. If `l` is zero then a vertical wire is drawn.
     vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"), arg(sleeve, false, "sleeve"),
@@ -40,15 +41,20 @@ module wire_link(d, l, h = 1, tail = 3, sleeve = false) { //! Draw a wire jumper
                         rotate_extrude(angle = 90)
                             translate([r, 0])
                                 circle(d = d);
+
+                translate([side * l /2, 0])
+                    solder(ir = d / 2);
             }
 
             translate_z(h)
                 rotate([0, 90, 0])
                     cylinder(d = d, h = l - 2 * r, center = true);
         }
-    else
-        translate_z(-tail)
-            cylinder(d = d, h = tail + h);
+        else {
+            translate_z(-tail)
+                cylinder(d = d, h = tail + h);
+            solder(ir = d / 2);
+        }
 
     if(sleeve)
         color(sleeve[1])
@@ -149,5 +155,61 @@ module ax_res(type, value, tol = 5, pitch = 0) { //! Through hole axial resistor
                         translate([0, length / 2 - end_l / 2 - i * (length - end_l) / (len(bands) - 1)])
                             square([end_d + 1, (length - end_l) / len(bands) / 2], center = true);
                     }
+    }
+}
+
+function ax_diode_size(type)   = type[1]; //! Body length, diameter and corner radius
+function ax_diode_wire(type)   = type[2]; //! Wire diameter
+function ax_diode_colour(type) = type[3]; //! Body colour and stripe colour
+
+module ax_diode(type, value, pitch = 0) { //! Through hole axial diode. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical.
+    vitamin(str("ax_diode(", type[0], ", \"", value, "\"): Diode ", value));
+
+    wire_d =  ax_diode_wire(type);
+    size = ax_diode_size(type);
+    colours = ax_diode_colour(type);
+    body_r = size.y / 2;
+    length = size.x;
+    r = size.z;
+    $fn = 32;
+
+
+    orientate_axial(length, body_r, pitch, wire_d) {
+        color("darkred") {
+            gap = length / 20;
+            l = (length - gap) / 2 - r - 2 * eps;
+            for(end = [-1, 1])
+                translate_z(end * (l + gap) / 2)
+                    cylinder(r = body_r * 0.8, h = l, center = true);
+
+            cylinder(r = wire_d / 2 + eps, h = gap + eps, center = true);
+        }
+
+        color(colours[0])
+            rotate_extrude()
+                hull() {
+                    translate([0, -length / 2])
+                        square([body_r - r, length]);
+
+                    if(r) {
+                        translate([body_r - r, -length / 2 + r])
+                            circle(r);
+
+                        translate([body_r - r, length / 2 - r])
+                            circle(r);
+                    }
+                }
+
+        color(colours[1]) {
+            translate_z(-length / 2 + r + eps)
+                cylinder(r = body_r + eps, h = length / 5);
+
+            tlength = 2 * PI * body_r * 0.8;
+
+            cylindrical_wrap(body_r)
+                resize([tlength, 0], auto = true)
+                    text(value, halign = "center", valign = "center");
+
+        }
     }
 }

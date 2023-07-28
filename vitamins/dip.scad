@@ -21,6 +21,7 @@
 //! Dual inline IC packages and sockets
 //
 include <../utils/core/core.scad>
+use <../utils/pcb_utils.scad>
 
 pdip_pin = [0.25, 2.54, 0.5, 3.0, 1.524, 1];
 
@@ -178,4 +179,6 @@ module pdip(pins, part, socketed, w = inch(0.3), pitch = inch(0.1)) { //! Draw s
             dip(n, part, [length, width, height], w, pitch, pdip_pin);
         else
             dip(n, part, [length, width, height], w, pitch, pdip_pin);
+    dil_pin_positions(n, w, pitch)
+        solder();
 }

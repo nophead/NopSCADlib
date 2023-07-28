@@ -33,6 +33,8 @@ use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
 use <../utils/thread.scad>
 use <../utils/tube.scad>
+use <../utils/pcb_utils.scad>
+
 use <d_connector.scad>
 use <led.scad>
 use <dip.scad>
@@ -215,12 +217,14 @@ module molex_usb_Ax2(cutout) { //! Draw Molex dual USB A connector suitable for 
         color(silver)
             rotate(-90) {
                 for(x = [-1.5 : 1 : 1.5], y = [0.5 : 1 : 1.5])
-                    translate([inch(x / 10), -l / 2 + inch(y / 10)])
+                    translate([inch(x / 10), -l / 2 + inch(y / 10)]) {
                         hull() {
                             cube([0.6, 0.3, 2 * pin_l - 2], center = true);
 
                             cube([0.4, 0.3, 2 * pin_l], center = true);
                         }
+                        solder();
+                    }
 
                 for(side = [-1, 1], end = [0, 1])
                     translate([side * w / 2, -l / 2 + tag_w / 2 + end * tag_p])
@@ -272,12 +276,14 @@ module molex_usb_Ax1(cutout) { //! Draw Molex USB A connector suitable for perf 
         color(silver)
             rotate(-90) {
                 for(x = [-1.5 : 1 : 1.5])
-                    translate([inch(x / 10), - l / 2 + inch(0.05)])
+                    translate([inch(x / 10), - l / 2 + inch(0.05)]) {
                         hull() {
                             cube([0.6, 0.3, 2 * pin_l - 2], center = true);
 
                             cube([0.4, 0.3, 2 * pin_l], center = true);
                         }
+                        solder();
+                    }
 
                 for(side = [-1, 1])
                     translate([side * w / 2, -l / 2 + 4.2])
@@ -893,6 +899,8 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
             translate_z(box_z - pin_l)
                 cylinder(d = pin_d, h = pin_l + box_z, $fn = 16); // pin
 
+            solder(pin_d / 2);
+
             translate_z(box_z + box_h / 2)                      // terminal
                 rotate([0, -90, 0]) {
                     linear_extrude(depth - 2, center = true)
@@ -940,7 +948,7 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header
     height = 8.15;
     base = 3.18;
     back = 1;
-    below = 2.3;
+    below = 3.3;
     above = 9;
     pin_w = 0.64;
     r = 1;
@@ -970,6 +978,8 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header
                 translate([0, i * pitch - width / 2 + pitch / 2]) {
                     translate_z((a + below) / 2 - below)
                         cube([pin_w, pin_w, a + below], center = true);
+
+                    solder();
 
                     l = above + ra_offset - r - pin_w / 2;
                     if(right_angle) {
@@ -1008,6 +1018,7 @@ module vero_pin(cropped = false) { //! Draw a vero pin
                 translate([d / 2, 0, -spline_h])
                     rounded_rectangle([spline_d - d, spline_w, spline_h], spline_w / 4, center = false);
     }
+    solder(d / 2);
 }
 
 module standoff(h, d, h2, d2) { //! Draw a standoff
@@ -1135,7 +1146,12 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "led"))           translate_z(eps) led(comp[4], comp[5], 2.6);
             if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
+            if(show(comp, "ax_diode"))      ax_diode(type = comp[4], value = comp[5], pitch = param(6, 0));
             if(show(comp, "rd_xtal"))       rd_xtal(type = comp[4], value = param(5, undef), z = param(6, 0), pitch = param(7, undef)); // type, value, z, forced pitch
+            if(show(comp, "rd_disc"))       rd_disc(type = comp[4], value = param(5, undef), z = param(6, 0), pitch = param(7, inch(0.2))); // type, value, z, forced pitch
+            if(show(comp, "rd_module"))     rd_module(type = comp[4], value = comp[5]);
+            if(show(comp, "rd_transistor")) rd_transistor(type = comp[4], value = comp[5], lead_positions = param(6, undef), z = param(7, 5), kind = param(8,"Transistor"));
+                                             // type, value, lead positions, z, kind
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3), sleeve = param(8, false));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));
@@ -1196,16 +1212,17 @@ module pcb_components(type, cutouts = false, angle = undef) { //! Draw list of P
 }
 
 module pcb_grid_components(type, components, cutouts = false, angle = undef) //! Draw list of components on the PCB grid for perf board
-    for(comp = components) {
-        p = pcb_grid_pos(type, comp.x, comp.y);
-        if(comp[3][0] == "-")
-            translate([p.x, p.y])
-                vflip()
+    let($solder = pcb_solder(type))
+        for(comp = components) {
+            p = pcb_grid_pos(type, comp.x, comp.y);
+            if(comp[3][0] == "-")
+                translate([p.x, p.y])
+                    vflip()
+                        pcb_component(comp, cutouts, angle);
+            else
+                translate([p.x, p.y, pcb_thickness(type)])
                     pcb_component(comp, cutouts, angle);
-        else
-            translate([p.x, p.y, pcb_thickness(type)])
-                pcb_component(comp, cutouts, angle);
-    }
+        }
 
 
 module pcb_cutouts(type, angle = undef)  //! Make cut outs to clear components on a PCB
@@ -1224,6 +1241,10 @@ module pcb_grid_positions(type) {
                 children();
     }
 }
+
+plating = 0.1;
+
+function pcb_solder(type) = [1, 0, pcb_thickness(type) + plating];
 
 module pcb(type) { //! Draw specified PCB
     grid = pcb_grid(type);
@@ -1260,7 +1281,6 @@ module pcb(type) { //! Draw specified PCB
     land = pcb_land_d(type);
     land_r = Len(land) > 2 ? land[2] : 0;
     hole = pcb_hole_d(type);
-    plating = 0.1;
     color(Len(land) > 3 ? land[3] : silver)
         translate_z(t / 2)
             linear_extrude(t + 2 * plating, center = true)
@@ -1310,7 +1330,8 @@ module pcb(type) { //! Draw specified PCB
                     }
                 }
 
-    pcb_components(type);
+   let($solder = is_undef($solder) ? undef : pcb_solder(type)) // Handle PCB sub assembly on perfoard
+        pcb_components(type);
 }
 
 module pcb_spacer(screw, height, wall = 1.8, taper = 0) { //! Generate STL for PCB spacer
@@ -1374,4 +1395,4 @@ module pcb_assembly(type, height, thickness) { //! Draw PCB assembly with spaces
                     nut_and_washer(screw_nut(screw), true);
         }
     }
-}
+ }

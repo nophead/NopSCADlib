@@ -23,6 +23,7 @@ include <../vitamins/pcbs.scad>
 module axials() {
     pcb = PERF60x40;
     pcb(pcb);
+    $solder = pcb_solder(pcb);
 
     pcb_grid(pcb, 0, 2)
         rotate(90)
@@ -36,13 +37,25 @@ module axials() {
         wire_link(0.8, 0, 5);
 
     for(i = [0 : len(ax_resistors) - 1]) {
-        pcb_grid(pcb, 2 * i + 2, 1 + [0, 0.5, 1.5][i])
+        x = 2 * i + 3 + len(ax_diodes);
+        pcb_grid(pcb, x, 1 + [0, 0.5, 1.5][i])
             rotate(90)
                 ax_res(ax_resistors[i], [1000, 47000, 8200][i], 5);
 
-        pcb_grid(pcb, 2 * i + 2, 6.5)
+        pcb_grid(pcb, x, 6.5)
             rotate(-90)
                 ax_res(ax_resistors[i], [2200, 39000, 8250][i], 1, inch(0.1));
+    }
+
+    d_values = ["1N4148", "1N4007"];
+    for(i = [0 : len(ax_diodes) - 1]) {
+        pcb_grid(pcb, i + 2, 1 + [0, 0.5, 1.5][i])
+            rotate(90)
+                ax_diode(ax_diodes[i], d_values[i]);
+
+        pcb_grid(pcb, i + 2, 6.5)
+            rotate(-90)
+                ax_diode(ax_diodes[i], d_values[i], inch(0.1));
     }
 }
 

@@ -21,30 +21,16 @@
 //! Radial components for PCBs.
 //
 include <../utils/core/core.scad>
-include <../utils/sweep.scad>
-include <../utils/rounded_polygon.scad>
-include <../utils/rounded_cylinder.scad>
+use <../utils/sweep.scad>
+use <../utils/rounded_polygon.scad>
+use <../utils/rounded_cylinder.scad>
+use <../utils/pcb_utils.scad>
+use <../utils/bezier.scad>
 
 function rd_xtal_size(type)   = type[1]; //! Crystal length, width and height and optional corner radius
 function rd_xtal_flange(type) = type[2]; //! Crystal flange width and thickness
 function rd_xtal_pitch(type)  = type[3]; //! Crystal lead pitch
 function rd_xtal_lead_d(type) = type[4]; //! Crystal lead diameter
-
-module cylindrical_wrap(r, h = eps) { //! Wrap a 2D child extruded to height `h` around a cylinder with radius `r`.
-    sides = r2sides(r);
-    dx = 2 * r * tan(180 / sides);
-    for(i = [0 : sides - 1])
-        rotate((i - 0.5) * 360 / sides)
-            translate([0, r])
-                 rotate([-90, 0, 0])
-                    linear_extrude(h, center = true)
-                        intersection() {
-                            translate([(sides / 2 - i) * -dx, 0])
-                                children();
-
-                            square([dx, inf], center = true);
-                        }
-}
 
 module lead_positions(p, z) {
     if(is_list(p))
@@ -57,25 +43,47 @@ module lead_positions(p, z) {
                 children();
 }
 
+module radial_lead(start, end, z, tail, lead) {
+    profile = is_list(lead) ? rectangle_points(lead.x , lead.y) :  let($fn = 16) circle_points(lead / 2);
+    color(silver)
+        if(start == end)
+            translate([start.x, start.y, -tail])
+                linear_extrude(tail + z)
+                    polygon([for(p = profile) [p.x, p.y]]);
+        else {
+            dz = 2 * [0, 0, is_list(lead) ? norm(lead) : lead];
+
+            top = [start.x, start.y, z];
+            bot = [end.x,   end.y,   0];
+
+            path = [top, top - dz, bot + dz, bot];
+            rpath = concat(bezier_path(path, 20), [bot - [0, 0, tail]]);
+            sweep(rpath, profile);
+        }
+    translate(end)
+        solder((is_list(lead) ? min(lead) : lead) / 2);
+}
+
 module radial_leads(ap, p, z, d, tail)
     color(silver) {
-        assert(p == ap || z > 3 * d, "Must be space to bend the wires");
-        zl = tail + (p == ap ? z : 0);
-        let($fn = 16) {
-            lead_positions(p, -tail)
-                 rotate(90)
-                    cylinder(d = d, h = zl);
-
+         let($fn = 16) {
+            lead_positions(p, 0)
+                solder(d / 2);
 
             if(p != ap) {
                 assert(!is_list(p), "Bending four leads not supported yet");
-                sd = d * sign(p - ap);
-                path = [[0, z, 0], [0 + sd, z - d / 2, -sd], [p / 2 - ap / 2 - sd, d / 2, sd], [p / 2 - ap / 2, 0, 0]];
-                rpath = let($fn = 32) rounded_polygon(path);
+                dz = d;
+                dx = p / 2 - ap / 2;
+                path = [[0, z, 0], [0, z - dz, 0], [dx, dz, 0], [dx, 0, 0]];
+                rpath = concat(bezier_path(path, 20), [[dx, -tail, 0]]);
                 lead_positions(ap, 0)
                     rotate([90, 0, 90 * -$x + 90])
-                        sweep([for(p = rpath) [p.x, p.y, 0]], circle_points(d / 2));
+                        sweep(rpath, circle_points(d / 2));
             }
+            else
+                lead_positions(p, -tail)
+                     rotate(90)
+                        cylinder(d = d, h = tail + z);
         }
     }
 
@@ -133,5 +141,184 @@ module rd_xtal(type, value, z = 0, pitch = undef, tail = 3) { //! Draw a crystal
         else
             translate_z(z)
                 cylinder(d = (s.x + cp) / 2, h = 2 * eps, center = true);
+    }
+}
+
+function rd_module_kind(type)      = type[1]; //! Relay, PSU, etc.
+function rd_module_size(type)      = type[2]; //! Size
+function rd_module_radius(type)    = type[3]; //! Corner radius
+function rd_module_colour(type)    = type[4]; //! Colour
+function rd_module_pin_size(type)  = type[5]; //! Pin size
+function rd_module_pin_posns(type) = type[6]; //! list of pin positions
+
+module rd_module(type, value) { //! Draw a PCB mounted potted module, e.g. PSU or relay
+    vitamin(str("rd_module(", type[0], ", \"", value, "\"): ", rd_module_kind(type), " ", type[0], " / ", value));
+
+    r = rd_module_radius(type);
+    size = rd_module_size(type);
+    pin = rd_module_pin_size(type);
+    color(rd_module_colour(type))
+        hull() {
+            rounded_rectangle([size.x, size.y, eps], r);
+            c = [size.x / 2 - r, size.y / 2 - r, size.z - r];
+
+            translate(c)
+                sphere(r);
+
+            translate([-c.x, c.y, c.z])
+                sphere(r);
+
+            translate([c.x, -c.y, c.z])
+                sphere(r);
+
+            translate([-c.x, -c.y, c.z])
+                sphere(r);
+       }
+
+    color(silver)
+        for(pos = rd_module_pin_posns(type))
+            translate(pos) {
+                translate_z(-pin.z / 2)
+                    cube(pin, center = true);
+
+                solder();
+            }
+
+    color("white")
+        translate([0, -size.y / 2])
+            rotate([90, 0, 0])
+                linear_extrude(eps) {
+                    translate([0, size.z * 0.9])
+                        resize([size.x * 0.5, size.z / 9])
+                            text(type[0], halign = "center", valign = "top");
+
+                    translate([-size.x * 0.45, size.z * 0.75])
+                         resize([size.x * 0.4, size.z / 12])
+                            text(value, halign = "left", valign = "top");
+
+            }
+}
+
+function rd_disc_kind(type)    = type[1]; //! Capacitor, etc
+function rd_disc_size(type)    = type[2]; //! Diameter, thickness and height
+function rd_disc_pitch(type)   = type[3]; //! Lead pitch X & Y
+function rd_disc_lead_d(type)  = type[4]; //! Lead diameter and sleeve diameter
+function rd_disc_colours(type) = type[5]; //! Colours of body and text
+
+module rd_disc(type, value, pitch = undef, z = 0, tail = 3) { //! Draw a radial disc component
+    vitamin(str("rd_disc(", type[0], ", \"", value, "\"): ", rd_disc_kind(type), ", ", type[0], " ", value));
+
+    size = rd_disc_size(type);
+    colours = rd_disc_colours(type);
+    opitch = rd_disc_pitch(type);
+    pitch = is_undef(pitch) ? opitch : pitch;
+    lead_d = rd_disc_lead_d(type);
+
+    lead_positions = [for(side = [-1,1]) [-side * opitch.x / 2, side * opitch.y / 2]];
+
+    r = size / 2;
+    v = [[0, r.y], [r.x, r.y], [r.x, r.y * pow((r.y / r.x), 4)], [r.x, 0]];
+    bez = bezier_path(v, 20);
+
+    path = concat(bez, [for(p = reverse(bez)) [p.x, - p.y]]);
+
+    rotate(is_list(opitch) ? atan2(opitch.y, opitch.x): 0) {
+        color(colours[0]) {
+            translate_z(size.z - size.x / 2 + z)
+                rotate([90, 0, 0])
+                    color(colours[0])
+                        rotate_extrude()
+                            polygon(path);
+
+            r = lead_d[1] / 2;
+            rl = lead_d[0] / 2;
+            h = size.z - size.x / 2;
+            for(p = lead_positions, $fn = 16)
+                translate([p.x, p.y, z + r]) {
+                    dy = (size.y / 2 - r - 0.1) * sign(-p.x);
+
+                    path = [[0,        0,        0],
+                            [0,        0,        h / 2],
+                            [-p.x / 2, dy - p.y, h / 2],
+                            [-p.x,     dy - p.y, h]];
+                    sweep(concat([[0, 0, - r / 2]],bezier_path(path, 20)), circle_points(r));
+
+                    vflip()
+                        rounded_cylinder(r = r, h = r, r2 = r - rl, ir = rl);
+                }
+        }
+
+        diagonal_pitch = norm(opitch);
+
+        pitch = is_undef(pitch)? diagonal_pitch : pitch;
+
+        rotate(is_list(opitch) ? -atan2(opitch.y, opitch.x): 0)
+            radial_leads(diagonal_pitch, pitch, z, lead_d[0], tail);
+
+    }
+}
+
+function rd_transistor_size(type)       = type[1]; //! Width / diameter, depth / flat and height
+function rd_transistor_colours(type)    = type[2]; //! Body colour and text colour
+function rd_transistor_lead(type)       = type[3]; //! Lead diameter or width and depth
+function rd_transistor_lead_posns(type) = type[4]; //! List of lead xy coordinates
+
+module rd_transistor(type, value, kind = "Transistor", lead_positions = undef, z = 5, tail = 3) { //! Draw a radial lead transistor
+    vitamin(str("rd_transistor(", type[0], ", \"", value, "\"): ", kind, " ", type[0], " ", value));
+
+    size = rd_transistor_size(type);
+    colours = rd_transistor_colours(type);
+
+    translate_z(z) {
+        if(type[0] == "TO92") {
+            color(colours[0])
+                linear_extrude(size.z)
+                    difference() {
+                        circle(d = size.z);
+
+                        translate([0, size.x / 2])
+                            square([size.x + 1, 2 * (size.x - size.y)], center = true);
+                    }
+
+            color(colours[1])
+                translate([0, -size.x / 2 + size.y, size.z / 2])
+                    rotate([0, 90, 90])
+                        linear_extrude(eps)
+                            resize([size.z * 0.8, 0], auto = true)
+                                text(value, valign = "center", halign = "center");
+        }
+
+        if(type[0] == "E_LINE") {
+            color(colours[0])
+                linear_extrude(size.z)
+                    hull() {
+                        for(side = [-1, 1])
+                            translate([side * (size.x - size.y) / 2, 0])
+                                circle(d = size.y);
+
+                        translate([-size.x / 2, 0])
+                            square([size.x, size.y / 2]);
+                    }
+
+            color(colours[1])
+                translate([0, size.y / 2, size.z / 2])
+                    rotate([-90, 180, 0])
+                        linear_extrude(eps)
+                            resize([size.x * 0.85, 0], auto = true)
+                                text(value, valign = "center", halign = "center");
+        }
+    }
+
+    lead_positions = is_undef(lead_positions) ? [for(i = [-1:1]) [inch(0.1 * i), 0]] : lead_positions;
+    lead_starts = rd_transistor_lead_posns(type);
+    lead = rd_transistor_lead(type);
+
+    assert(len(lead_positions) == len(lead_starts), "must give a position for each lead");
+
+    for(i = [0 : len(lead_starts) - 1]) {
+        start = lead_starts[i];
+        end = lead_positions[i];
+
+        radial_lead(start, end, z, tail, lead);
     }
 }

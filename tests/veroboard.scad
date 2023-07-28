@@ -24,14 +24,11 @@ use <../vitamins/veroboard.scad>
 z_cable_ways = 20;
 
 z_vb = ["z_vb", "z_bed_terminal", 5, z_cable_ways / 2 + 12, inch(0.1), false, M3_dome_screw,
-        [[2,2],[2,-3]], [], [5, 7, 9],
+        [[2,2],[2,-3]], [], [4, 5, 7, 9],
         [
             [3,   z_cable_ways / 4 + 5.5, 0,  "term254", z_cable_ways / 2,     [1, 3]],
             [0.5, z_cable_ways / 4 + 5.5, 90, "transition", z_cable_ways / 2,  [1, 3]],
         ],
-        [
-            [[0,1,3], 6], [[0,1,3], 8],  [[0,1,3],[10 : 6 + z_cable_ways / 2 - 1]],
-        ]
      ];
 
 module veroboard_test() translate([vero_length(z_vb) / 2, vero_width(z_vb) / 2]) {

@@ -33,16 +33,16 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
 <tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
 <tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#pcb_utils">PCB_utils</a> </td><td></td></tr>
+<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
@@ -98,6 +98,9 @@ Axial components for PCBs.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `ax_diode_colour(type)` | Body colour and stripe colour |
+| `ax_diode_size(type)` | Body length, diameter and corner radius |
+| `ax_diode_wire(type)` | Wire diameter |
 | `ax_res_colour(type)` | Body colour |
 | `ax_res_diameter(type)` | Body diameter |
 | `ax_res_end_d(type)` | End cap diameter |
@@ -109,6 +112,7 @@ Axial components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `ax_diode(type, value, pitch = 0)` | Through hole axial diode. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
 | `ax_res(type, value, tol = 5, pitch = 0)` | Through hole axial resistor. If `pitch` is zero the minimum is used. If below the minimum the resistor is placed vertical. |
 | `wire_link(d, l, h = 1, tail = 3, sleeve = false)` | Draw a wire jumper link. `sleeve` can be a list with the diameter and colour. If `l` is zero then a vertical wire is drawn. |
 
@@ -117,6 +121,8 @@ Axial components for PCBs.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   2 | `ax_diode(DO_41, "1N4007")` |  Diode 1N4007 |
+|   2 | `ax_diode(DO_35, "1N4148")` |  Diode 1N4148 |
 |   1 | `pcb(PERF60x40)` |  Perfboard 60 x 40mm |
 |   1 | `ax_res(res1_8, 1000)` |  Resistor 1000 Ohms 5% 0.125W |
 |   1 | `ax_res(res1_8, 2200, tol = 1)` |  Resistor 2200 Ohms 1% 0.125W |
@@ -2525,6 +2531,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `d_plug(DCONN9, pcb = true)` |  D-type 9 way PCB mount plug |
 |   1 | `dil_socket(12, 15.24)` |  DIL socket 24 x 0.6" |
 |   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
+|   2 | `ax_diode(DO_41, "1N4007")` |  Diode 1N4007 |
+|   2 | `ax_diode(DO_35, "1N4148")` |  Diode 1N4148 |
 |   1 | `hdmi(hdmi_full)` |  HDMI socket |
 |   1 | `pdip(24, 27C32, w = 15.24)` |  IC 27C32 PDIP24 |
 |   1 | `pdip(8, NE555)` |  IC NE555 PDIP8 |
@@ -2549,6 +2557,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pin_socket(2p54header, 4, 1)` |  Pin socket 4 x 1 |
 |   1 | `pin_socket(2p54header, 6, 1)` |  Pin socket 6 x 1 |
 |   2 | `pin_socket(2p54header, 8, 1)` |  Pin socket 8 x 1 |
+|   1 | `rd_transistor(TO92, "78L05")` |  Regulator TO92 78L05 |
 |   1 | `ax_res(res1_2, 10, tol = 10)` |  Resistor 10 Ohms 10% 0.5W |
 |   1 | `ax_res(res1_4, 100, tol = 2)` |  Resistor 100 Ohms 2% 0.25W |
 |   1 | `ax_res(res1_8, 1000)` |  Resistor 1000 Ohms 5% 0.125W |
@@ -2594,6 +2603,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   2 | `green_terminal(gt_3p5, 4)` |  Terminal block 4 way 3.5mm |
 |   1 | `terminal_35(4)` |  Terminal block 4 way 3.5mm |
 |   1 | `pcb(test_pcb)` |  Test PCB |
+|   1 | `rd_transistor(E_LINE, "ZTX853")` |  Transistor E_LINE ZTX853 |
 |   2 | `vero_pin()` |  Vero board pin |
 |   1 | `wire_link(0.8, 5.08, h = 10.16)` |  Wire link 0.8mm x 0.2" |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
@@ -2981,7 +2991,7 @@ Pin headers and sockets, etc.
 | `box_header(type, cols = 1, rows = 1, smt = false, cutout = false, right_angle = false)` | Draw box header |
 | `idc_transition(type, cols = 5, skip = [], cutout = false)` | Draw IDC transition header |
 | `jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_colour = false, smt = false)` | Draw JST XH, PH or ZH connector |
-| `pin(type, length = undef)` | Draw a header pin |
+| `pin(type, length = undef, colour = undef)` | Draw a header pin |
 | `pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false, colour)` | Draw pin header |
 | `pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt = false, cutout = false, colour)` | Draw pin socket |
 
@@ -3235,6 +3245,21 @@ Radial components for PCBs.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `rd_disc_colours(type)` | Colours of body and text |
+| `rd_disc_kind(type)` | Capacitor, etc |
+| `rd_disc_lead_d(type)` | Lead diameter and sleeve diameter |
+| `rd_disc_pitch(type)` | Lead pitch X & Y |
+| `rd_disc_size(type)` | Diameter, thickness and height |
+| `rd_module_colour(type)` | Colour |
+| `rd_module_kind(type)` | Relay, PSU, etc. |
+| `rd_module_pin_posns(type)` | list of pin positions |
+| `rd_module_pin_size(type)` | Pin size |
+| `rd_module_radius(type)` | Corner radius |
+| `rd_module_size(type)` | Size |
+| `rd_transistor_colours(type)` | Body colour and text colour |
+| `rd_transistor_lead(type)` | Lead diameter or width and depth |
+| `rd_transistor_lead_posns(type)` | List of lead xy coordinates |
+| `rd_transistor_size(type)` | Width / diameter, depth / flat and height |
 | `rd_xtal_flange(type)` | Crystal flange width and thickness |
 | `rd_xtal_lead_d(type)` | Crystal lead diameter |
 | `rd_xtal_pitch(type)` | Crystal lead pitch |
@@ -3243,7 +3268,9 @@ Radial components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `cylindrical_wrap(r, h = eps)` | Wrap a 2D child extruded to height `h` around a cylinder with radius `r`. |
+| `rd_disc(type, value, pitch = undef, z = 0, tail = 3)` | Draw a radial disc component |
+| `rd_module(type, value)` | Draw a PCB mounted potted module, e.g. PSU or relay |
+| `rd_transistor(type, value, kind = "Transistor", lead_positions = undef, z = 5, tail = 3)` | Draw a radial lead transistor |
 | `rd_xtal(type, value, z = 0, pitch = undef, tail = 3)` | Draw a crystal |
 
 ![radials](tests/png/radials.png)
@@ -3251,12 +3278,18 @@ Radial components for PCBs.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `rd_disc(6p4mm_disc, "10nF")` |  Ceramic capacitor, 6p4mm_disc 10nF |
 |   1 | `rd_xtal(ACT1100, "ACT1100")` |  Crystal ACT1100 ACT1100 |
 |   1 | `rd_xtal(ACT1700, "ACT1700")` |  Crystal ACT1700 ACT1700 |
 |   1 | `rd_xtal(C_002RX, "C_002RX")` |  Crystal C_002RX C_002RX |
 |   1 | `rd_xtal(HC49, "HC49")` |  Crystal HC49 HC49 |
 |   1 | `rd_xtal(HC49_4H, "HC49_4H")` |  Crystal HC49_4H HC49_4H |
-|   1 | `pcb(PERF60x40)` |  Perfboard 60 x 40mm |
+|   1 | `rd_module(VCE03, "12V 250ma")` |  PSU VCE03 / 12V 250ma |
+|   1 | `pcb(PERF70x50)` |  Perfboard 70 x 50mm |
+|   1 | `rd_module(HF33F, "012-HSL3F")` |  Relay HF33F / 012-HSL3F |
+|   1 | `rd_transistor(E_LINE, "ZTX853")` |  Transistor E_LINE ZTX853 |
+|   1 | `rd_transistor(TO92, "BC337")` |  Transistor TO92 BC337 |
+|   1 | `rd_disc(ERZV07D471, "470V")` |  Varistor, ERZV07D471 470V |
 
 
 <a href="#top">Top</a>
@@ -4634,7 +4667,6 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `solder_meniscus(type, ir = 0.3, r = undef)` | Draw a solder meniscus |
 | `vero_cutouts(type, angle = undef)` | Make cutouts to clear components |
 | `vero_grid_pos(type, x, y)` | Convert grid position to offset from the centre |
 | `vero_mounting_hole_positions(type)` | Positions children at the mounting holes |
@@ -6969,6 +7001,27 @@ If `chamfer_base` is true then the bottom edge is made suitable for 3D printing 
 | `offset_3D(r, chamfer_base = false)` | Offset 3D shape by specified radius `r`, positive or negative. |
 
 ![offset](tests/png/offset.png)
+
+
+<a href="#top">Top</a>
+
+---
+<a name="pcb_utils"></a>
+## PCB_utils
+Utilities for making PCBs and components
+
+[utils/pcb_utils.scad](utils/pcb_utils.scad) Implementation.
+
+[tests/PCB_utils.scad](tests/PCB_utils.scad) Code for this example.
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `cylindrical_wrap(r, h = eps)` | Wrap a 2D child extruded to height `h` around a cylinder with radius `r`. |
+| `solder(ir = 0.3)` | Maybe add solder meniscus if $solder is set |
+| `solder_meniscus(ir = 0.3, r)` | Draw a solder meniscus |
+
+![pcb_utils](tests/png/pcb_utils.png)
 
 
 <a href="#top">Top</a>

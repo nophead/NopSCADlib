@@ -25,6 +25,7 @@ include <NopSCADlib/vitamins/fans.scad>
 use <NopSCADlib/vitamins/insert.scad>
 use <NopSCADlib/vitamins/veroboard.scad>
 use <NopSCADlib/utils/round.scad>
+use <NopSCADlib/utils/pcb.scad>
 use <NopSCADlib/printed/foot.scad>
 use <NopSCADlib/printed/printed_box.scad>
 use <fan_controller.scad>
@@ -402,7 +403,7 @@ assembly("enviro") {
     if(!exploded())
         for(x = [8, 7, 3])
             pcb_grid(pcb, x, 0, 0.05)
-                solder_meniscus(pcb, 0.39, 1);
+                solder_meniscus(0.39, 1);
 }
 
 //! * Screw the Enviro+ PCB to the front of the case using M2.5 x 8mm pan screws with washer and nuts on the inside.

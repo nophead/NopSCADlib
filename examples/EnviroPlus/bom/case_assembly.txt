@@ -1,6 +1,6 @@
 case_assembly:
 Vitamins:
-  4 Heatfit insert M2
+  4 Heatfit insert M2 x 4mm
   3 Screw M3 pan x  6mm
   3 Washer  M3 x 7mm x 0.5mm
 

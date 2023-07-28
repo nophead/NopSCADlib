@@ -22,6 +22,7 @@
 //
 include <../utils/core/core.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/pcb_utils.scad>
 
 function led_diameter(type) = type[1]; //! Body diameter
 function led_rim_dia(type)  = type[2]; //! Rim diameter
@@ -50,7 +51,11 @@ module led(type, colour = "red", lead = 5) { //! Draw specified LED with desired
     }
     color("silver")
         for(side = [-1, 1], len = lead - (lead < 3 ? 0 : side))
-            translate([side * led_pitch(type) / 2, 0, -len / 2])
+            translate([side * led_pitch(type) / 2, 0]) {
                 vflip()
-                    cube([led_lead_t(type), led_lead_t(type), len], center = true);
+                    translate_z(len / 2)
+                        cube([led_lead_t(type), led_lead_t(type), len], center = true);
+
+                solder();
+            }
 }

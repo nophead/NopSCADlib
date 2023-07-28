@@ -22,6 +22,7 @@
 //
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
+use <../utils/pcb_utils.scad>
 
 d_pillar_colour                   = grey(90);
 d_plug_shell_colour               = grey(80);
@@ -194,6 +195,10 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
                                 cube([3, 3, 3], center = true);
                     }
     }
+    if(pcb)
+        translate_z(-d_pcb_offset(type))
+            pin_positions()
+                solder(0.75 / 2);
 }
 
 module d_socket(connector, pcb = false, idc = false) //! Draw specified D socket, which can be IDC, PCB or plain solder bucket

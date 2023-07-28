@@ -19,6 +19,7 @@
 //! Pin headers and sockets, etc.
 include <../utils/core/core.scad>
 use <../utils/dogbones.scad>
+use <../utils/pcb_utils.scad>
 
 panel_clearance = 0.5;
 housing_height = 14.12;  // measured height of a Dupont connector.
@@ -37,17 +38,19 @@ function hdr_y_offset(type)     = type[10]; //! Y offset of pins from center of 
 function hdr_ra_box_offset(type)= type[11]; //! Offset between back of the box and the pins
 function hdr_ra_height(type)    = type[12]; //! Height of right angle connector
 
-module pin(type, length = undef) { //! Draw a header pin
+module pin(type, length = undef, colour = undef) { //! Draw a header pin
     w = hdr_pin_width(type);
     l = length == undef ? hdr_pin_length(type) : length;
     chamfer = w / 2;
-    color(hdr_pin_colour(type))
+    color(is_undef(colour) ? hdr_pin_colour(type) : colour)
         translate_z(l / 2 - hdr_pin_below(type))
             hull() {
                 cube([w, w, l - 2 * chamfer], center = true);
 
                 cube([w - chamfer, w - chamfer, l], center = true);
             }
+     color(silver)
+        solder();
 }
 
 module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cutout = false, colour) { //! Draw pin header
@@ -89,7 +92,8 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
                     // Horizontal part of the pin
                     translate([pin.x, pin.y - hdr_pin_below(type), pin.z])
                         rotate([-90, 0, 180])
-                            pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + y * pitch);
+                            let($solder = undef)
+                                pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + y * pitch);
 
                     // corner
                     translate([pin.x, pin.y - w / 2, pin.z - w / 2])
@@ -154,7 +158,8 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false, right_a
                     // Horizontal part of the pin
                     translate([pin.x, pin.y + hdr_pin_below(type), pin.z])
                         rotate([-90, 0, 0])
-                            pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + y * pitch);
+                            let($solder = undef)
+                                pin(type, hdr_pin_length(type) - hdr_pin_below(type) + ra_offset + y * pitch);
 
                     // corner
                     translate([pin.x, pin.y + pw / 2,  pin.z - pw / 2])
@@ -251,8 +256,7 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
                                     square(hdr_pin_width(type), center = true);
                     }
 
-        color(hdr_pin_colour(type))
-            for(x = [0 : cols - 1], y = [0 : rows -1]) {
+             for(x = [0 : cols - 1], y = [0 : rows -1]) {
                 if(!smt)
                     translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2), 0])
                         pin(type, hdr_pin_below(type) + (y + 0.5) * pitch);
@@ -260,14 +264,16 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
                 if(right_angle) {
                     rotate([-90, 0, 180])
                         translate([pitch * (x - (cols - 1) / 2), -pitch * (y - (rows - 1) / 2) - width / 2, hdr_pin_below(type) - (y - (rows - 1) / 2) * pitch])
-                            pin(type, hdr_pin_below(type) + (y - 0.5) * pitch);
+                            let($solder = undef)
+                                pin(type, hdr_pin_below(type) + (y - 0.5) * pitch);
 
                     w = hdr_pin_width(type);
-                    translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
-                        rotate([0, -90, 0])
-                            rotate_extrude(angle = 90, $fn = 32)
-                                translate([0, -w / 2])
-                                    square(w);
+                    color(hdr_pin_colour(type))
+                        translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
+                            rotate([0, -90, 0])
+                                rotate_extrude(angle = 90, $fn = 32)
+                                    translate([0, -w / 2])
+                                        square(w);
                 }
             }
     }
@@ -351,25 +357,26 @@ module jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_c
             translate([0, y_offset])
                 jst_xh_socket(type, pin_count);
 
-    color(pin_colour)
         for(x = [0 : pin_count - 1]) {
             below = !smt ? 0 : hdr_pin_below(type);
             verticalPinLength = right_angle ? hdr_pin_below(type) + ra_z + y_offset : hdr_pin_length(type);
             horizontalPinLength = hdr_pin_length(type) - hdr_pin_below(type) + ra_box_offset;
             translate([pitch * (x - (pin_count - 1) / 2), 0]) {
                 translate_z(below)
-                    pin(type, verticalPinLength - below);
+                    pin(type, verticalPinLength - below, colour = pin_colour);
 
                 if(right_angle) {
-                    translate([0, -pinWidth / 2, ra_z - pinWidth / 2 + y_offset])
-                        rotate([0, -90, 0])
-                            rotate_extrude(angle = 90, $fn = 32)
-                                translate([0, -pinWidth / 2])
-                                    square(pinWidth);
+                    color(pin_colour)
+                        translate([0, -pinWidth / 2, ra_z - pinWidth / 2 + y_offset])
+                            rotate([0, -90, 0])
+                                rotate_extrude(angle = 90, $fn = 32)
+                                    translate([0, -pinWidth / 2])
+                                        square(pinWidth);
 
                     translate([0, -hdr_pin_below(type), ra_z + y_offset])
                         rotate([90, 0, 0])
-                            pin(type, horizontalPinLength);
+                            let($solder = undef)
+                                pin(type, horizontalPinLength, colour = pin_colour);
                 }
             }
         }

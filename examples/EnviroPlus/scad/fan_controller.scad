@@ -7,7 +7,6 @@
 //
 // Top level model
 //
-
 include <NopSCADlib/core.scad>
 use <NopSCADlib/vitamins/veroboard.scad>
 include <NopSCADlib/vitamins/smds.scad>
@@ -19,10 +18,9 @@ fan_vb = vero("fan_vb", "fan_controller", 6, 6, breaks = [[2, 1], [2 + eps, 5]],
         [0, 1,     0, "link", 0, 4, undef, 2.5],
         [0, 0,     0, "link", 0, 4, undef, 2.5],
         [2, 5,     0, "-smd_res", RES0805, "3K3"],
-        [4, 4.7,  90, "-smd_cap", CAP1206, 1.2, "10uF"],
+        [4, 4.5,  90, "-smd_cap", CAP1206, 1.2, "10uF"],
         [2, 2.5, 180, "-smd_sot", SOT223, "FZT851"],
-    ],
-    joints = [[5, 1], [5, 5], [0, [0, 1, 5]]]
+    ]
  );
 
 //! The fan controller is a single transistor wired as a Miller integrator that effectively multiplies the capacitor value by the gain of the transistor.
@@ -40,6 +38,6 @@ fan_vb = vero("fan_vb", "fan_controller", 6, 6, breaks = [[2, 1], [2 + eps, 5]],
 //!
 //! ![SMT](docs/smt.jpg)
 //!
-module fan_controller_assembly() rotate(90) vflip(!exploded()) veroboard_assembly(fan_vb, -vero_thickness(fan_vb) - 1.4, 0);
+module fan_controller_assembly() rotate(90) vflip() veroboard_fastened_assembly(fan_vb, -vero_thickness(fan_vb) - 1.4, 0);
 
 fan_controller_assembly();
