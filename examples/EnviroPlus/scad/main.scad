@@ -25,7 +25,7 @@ include <NopSCADlib/vitamins/fans.scad>
 use <NopSCADlib/vitamins/insert.scad>
 use <NopSCADlib/vitamins/veroboard.scad>
 use <NopSCADlib/utils/round.scad>
-use <NopSCADlib/utils/pcb.scad>
+use <NopSCADlib/utils/pcb_utils.scad>
 use <NopSCADlib/printed/foot.scad>
 use <NopSCADlib/printed/printed_box.scad>
 use <fan_controller.scad>

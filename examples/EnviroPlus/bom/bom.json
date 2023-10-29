@@ -49,7 +49,7 @@
     },
     {
         "name": "fan_controller_assembly",
-        "big": null,
+        "big": true,
         "ngb": false,
         "zoomed": 0,
         "count": 1,

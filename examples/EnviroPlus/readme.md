@@ -127,7 +127,7 @@ Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
 
 
 ### Assembly instructions
-![fan_controller_assembly](assemblies/fan_controller_assembly_tn.png)
+![fan_controller_assembly](assemblies/fan_controller_assembly.png)
 
 The fan controller is a single transistor wired as a Miller integrator that effectively multiplies the capacitor value by the gain of the transistor.
 It converts the PWM signal on GPI4 to a stead DC voltage so that the fan doesn't whine, or stutter.
@@ -145,7 +145,7 @@ It converts the PWM signal on GPI4 to a stead DC voltage so that the fan doesn't
 ![SMT](docs/smt.jpg)
 
 
-![fan_controller_assembled](assemblies/fan_controller_assembled_tn.png)
+![fan_controller_assembled](assemblies/fan_controller_assembled.png)
 
 <span></span>
 [Top](#TOP)
@@ -168,11 +168,11 @@ It converts the PWM signal on GPI4 to a stead DC voltage so that the fan doesn't
 
 
 ### Assembly instructions
-![enviro_assembly](assemblies/enviro_assembly_tn.png)
+![enviro_assembly](assemblies/enviro_assembly.png)
 
 * Solder the fan_controller to the Enviro+ expansion connector at the 5V, GND and #4 pins.
 
-![enviro_assembled](assemblies/enviro_assembled_tn.png)
+![enviro_assembled](assemblies/enviro_assembled.png)
 
 <span></span>
 [Top](#TOP)
