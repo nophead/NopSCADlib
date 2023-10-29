@@ -35,6 +35,7 @@ function vero_breaks(type)         = type[8];   //! Breaks in the tracks
 function vero_no_track(type)       = type[9];   //! Missing tracks
 function vero_components(type)     = type[10];  //! List of named components and their positions
 function vero_joints(type)         = type[11];  //! List of solder joints
+function vero_solid_tracks(type)   = type[12];  //! List of solid copper tracks (at the edges of some boards)
 
 function vero_thickness(type)      = 1.6;       //! Thickness of the substrate
 function vero_track_thickness(type)= 0.035;     //! Thickness of the tracks
@@ -42,8 +43,8 @@ function vero_track_width(type)    = vero_pitch(type) * 0.8; //! The width of th
 function vero_length(type) = vero_holes(type) * vero_pitch(type); //! Length of the board
 function vero_width(type) = vero_strips(type) * vero_pitch(type); //! Width of the board
 
-function vero(name, assembly, holes, strips, pitch = 2.54, fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = []) = //! Constructor
-    [ name, assembly, holes, strips, pitch, fr4, screw, mounting_holes, breaks, no_tracks, components, joints ];
+function vero(name, assembly, holes, strips, pitch = 2.54, fr4 = false, screw = M3_cap_screw, mounting_holes = [], breaks = [], no_tracks = [], components = [], joints = [], solid = []) = //! Constructor
+    [ name, assembly, holes, strips, pitch, fr4, screw, mounting_holes, breaks, no_tracks, components, joints, solid ];
 
 function vero_size(type) = [vero_length(type), vero_width(type), vero_thickness(type)]; //! Board size
 
@@ -76,16 +77,21 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
     colour = vero_fr4(type) ? "#BEB564" : "goldenrod";
     tc = vero_fr4(type) ? "silver" : copper;
     no_track = vero_no_track(type);
+    solid = vero_solid_tracks(type);
 
     vitamin(str("veroboard(", type[0], "): Veroboard ", holes, " holes x ", strips, " strips"));
+
+    $fs = fs; $fa = fa;
 
     color(colour) linear_extrude(vero_thickness(type))
         difference() {
             rounded_square([length, width], r = 0.5, center = true);
 
-            for(x = [0 : holes - 1], y = [0 : strips - 1])
-                vero_grid_pos(type, x, y)
-                    circle(d = hole_d);
+            for(y = [0 : strips - 1])
+                if(!in(solid, y))
+                    for(x = [0 : holes - 1])
+                        vero_grid_pos(type, x, y)
+                            circle(d = hole_d);
 
             vero_mounting_hole_positions(type)
                 circle(r = screw_radius(vero_screw(type)));
@@ -100,9 +106,10 @@ module veroboard(type) { //! Draw specified veroboard with missing tracks and tr
                             difference() {
                                 square([length - (pitch - tw), tw], center = true);
 
-                                for(x = [0 : holes - 1])
-                                    translate([x * pitch - (holes - 1) * pitch / 2, 0])
-                                        circle(d = hole_d);
+                                if(!in(solid, y))
+                                    for(x = [0 : holes - 1])
+                                        translate([x * pitch - (holes - 1) * pitch / 2, 0])
+                                            circle(d = hole_d);
                             }
             vflip() {
                 vero_mounting_hole_positions(type)
@@ -140,7 +147,7 @@ module vero_cutouts(type, angle = undef) //! Make cutouts to clear components
 
 module veroboard_assembly(type, ngb = false) //! Draw the assembly with components
 pose_vflip(exploded = true)
-assembly(vero_assembly(type), ngb = ngb) {
+assembly(vero_assembly(type), ngb = ngb, big = true) {
     veroboard(type);
 
     let($solder = [vero_track_width(type) / 2, 0, vero_thickness(type) + vero_track_thickness(type)])
@@ -173,6 +180,28 @@ module veroboard_fasteners(type, height, thickness, flip = false) { //! Draw the
                     screw_and_washer(screw, screw_length);
                 else
                     nut_and_washer(nut, true);
+    }
+}
+
+module veroboard_base(type, height, thickness, wall = 2, tapped = false) { //! Generate STL for a base with PCB spacers
+    screw = vero_screw(type);
+    ir = tapped ? screw_pilot_hole(screw) : screw_clearance_radius(screw);
+    or = corrected_radius(ir) + wall;
+
+    union() {
+        linear_extrude(thickness)
+            difference() {
+                hull()
+                    vero_mounting_hole_positions(type)
+                        poly_ring(or, ir);
+
+                vero_mounting_hole_positions(type)
+                    poly_circle(ir);
+            }
+
+        linear_extrude(height)
+            vero_mounting_hole_positions(type)
+                poly_ring(or, ir);
     }
 }
 

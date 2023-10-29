@@ -132,6 +132,8 @@ module jhead_hot_end_assembly(type, filament, naked = false) { //! Assembly with
     tape_overlap = 10;
     tape_thickness = 0.8;
 
+    $fa = fa; $fs = fs;
+
     jhead_hot_end(type, filament);
 
     vitamin(": Tape self amalgamating silicone 110mm x 25mm");

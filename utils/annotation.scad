@@ -34,9 +34,10 @@ module arrow(length = 20) { //! Draw an arrow that faces downwards
     d = length / 20;
     head_r = 1.5 * d;
 
+    $fs = fs; $fa = fa;
     color("grey") %union() {
         translate_z(head_r)
-            cylinder(d = d, h = length - head_r, $fn = 32);
+            cylinder(d = d, h = length - head_r);
 
         cylinder(r1 = 0, r2 = head_r, h = head_r);
     }

@@ -28,8 +28,7 @@ module wire_link(d, l, h = 1, tail = 3, sleeve = false) { //! Draw a wire jumper
     vitamin(str("wire_link(", d, ", ", l, arg(h, 1, "h"), arg(tail, 3, "tail"), arg(sleeve, false, "sleeve"),
                              "): Wire link ", d, "mm x ", l ? str(l / inch(1), "\"") : str(h + tail,"mm"), sleeve ? str(" with ", sleeve[1], " sleeving") : ""));
     r = d;
-    $fn = 32;
-
+    $fn = fn;
     color("silver")
         if(l) {
             for(side = [-1, 1]) {
@@ -38,16 +37,20 @@ module wire_link(d, l, h = 1, tail = 3, sleeve = false) { //! Draw a wire jumper
 
                 translate([side * (l / 2 - r), 0, h - r])
                     rotate([90, 0, side * 90 - 90])
-                        rotate_extrude(angle = 90)
+                        rotate_extrude(angle = 90, $fn = fn * 2)
                             translate([r, 0])
-                                circle(d = d);
+                                circle(d = d, $fn = fn);
 
                 translate([side * l /2, 0])
-                    solder(ir = d / 2);
+                    if(tail > 1)
+                        solder(ir = d / 2);
+                    else
+                        if(!is_undef($solder))
+                            translate_z(0.1)
+                                solder_meniscus(ir = d / 2, r = $solder.x, h = h - r - 0.1);
             }
-
             translate_z(h)
-                rotate([0, 90, 0])
+                rotate([0, -90, 0])
                     cylinder(d = d, h = l - 2 * r, center = true);
         }
         else {
@@ -100,11 +103,11 @@ module ax_res(type, value, tol = 5, pitch = 0) { //! Through hole axial resistor
     body_d = ax_res_diameter(type);
     length = ax_res_length(type);
     h = end_d / 2;
-    $fn = 32;
     r = 0.3;
 
     colours = ["gold", "silver", "black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
 
+    $fs = fs; $fa = fa;
     exp = floor(log(value) + eps);
     mult = exp - (len(str(value / pow(10, exp - 1))) > 2 ? 2 : 1);
     digits = str(value / pow(10, mult));
@@ -171,7 +174,7 @@ module ax_diode(type, value, pitch = 0) { //! Through hole axial diode. If `pitc
     body_r = size.y / 2;
     length = size.x;
     r = size.z;
-    $fn = 32;
+    $fs = fs; $fa = fa;
 
 
     orientate_axial(length, body_r, pitch, wire_d) {

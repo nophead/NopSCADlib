@@ -57,6 +57,8 @@ module bulldog(type, open = 4) { //! Draw bulldog clip open by specified amount
 
     vitamin(str("bulldog(", type[0], "): Bulldog clip ",length, "mm"));
 
+    $fa = fa; $fs = fs;
+
     color("yellow")
     translate([depth / 2 - thickness - eps, 0])
         rotate([90, 0, 0])

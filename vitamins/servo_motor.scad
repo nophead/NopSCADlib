@@ -20,10 +20,10 @@
 //
 
 include <../utils/core/core.scad>
-include <../utils/tube.scad>
-include <../utils/round.scad>
-include <../utils/quadrant.scad>
-include <../utils/rounded_cylinder.scad>
+use <../utils/tube.scad>
+use <../utils/round.scad>
+use <../utils/quadrant.scad>
+use <../utils/rounded_cylinder.scad>
 
 function servo_motor_cap(type)       = type[2]; //! Diameter height and corner radius of encoder cover
 function servo_motor_length(type)    = type[3]; //! Total length from the faceplate

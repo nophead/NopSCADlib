@@ -33,7 +33,7 @@ module pcb_utils() {
 
     color("silver")
         vflip()
-            cylinder(d = 0.6, h = 3, $fn = 16);
+            cylinder(d = 0.6, h = 3, $fs = fs, $fa = fa);
 
     color("white")
         translate_z(h / 2)

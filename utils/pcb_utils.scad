@@ -22,15 +22,14 @@
 //
 include <../utils/core/core.scad>
 
-module solder_meniscus(ir = 0.3, r) { //! Draw a solder meniscus
-    h = 0.7;
-
+module solder_meniscus(ir = 0.3, r = 1, h = 0.7) { //! Draw a solder meniscus
+    $fn = fn;
     color("silver") rotate_extrude()
         difference() {
             square([r, h]);
 
             translate([r + eps, h + eps])
-                ellipse(r - ir + eps, h, $fn = 64);
+                ellipse(r - ir + eps, h);
         }
 }
 

@@ -25,6 +25,7 @@ include <smds.scad>
 include <green_terminals.scad>
 include <7_segments.scad>
 include <potentiometers.scad>
+include <buttons.scad>
 
 //
 //                                   l      w      t    r     h     l  c        b     h
@@ -1052,34 +1053,119 @@ PanelDue_v3 = ["PanelDue_v3", "Panel Due v3.0a LCD Display interface", 53, 73, 1
 // * battery and qwiik connectore just eyeballed
 
 Feather405 = let(size = [inch(2.0), inch(0.9)])
- ["Feather405", "Adafruit Feather 405",
-  size.x, size.y, 1.6, inch(0.10),
-  inch(0.1), inch(0.175), "green", false,
-          [[ inch(0.1),  inch(0.1) ], // Holes
+pcb("Feather405", "Adafruit Feather 405", [size.x, size.y, 1.6],
+    corner_r = inch(0.10),
+    hole_d = inch(0.1),
+    land_d = inch(0.175),
+    screw = M2p5_dome_screw,
+    holes = [
+          [  inch(0.1),  inch(0.1) ],
           [ -inch(0.1),  inch(0.1) ],
           [ -inch(0.1), -inch(0.1) ],
           [  inch(0.1), -inch(0.1) ],
-        ],
-  [
-    [size.x / 2, inch(0.05),   0, "-2p54header", 16, 1],
-    [inch(1.2), -inch(0.05),   0, "-2p54header", 12, 1],
-    [inch(1.3),  size.y / 2, -90, "smd_qfp", QFP50P1200X1200X160_64N, "STM32F405"],
-    [ 3,         size.y / 2, 180, "usb_C"],
-    [ 10,        -6.5,       180, "jst_ph", 2, true, grey(25) ],
-    [ -5, 0.40 * size.y,      90, "jst_zh", 4, true, grey(30) ],
-  ], // components
-  [], // accessories
-   [inch(0.65), inch(0.05), 12, 2, gold, inch(0.1), inch(0.8),
-    inch(0.25), inch(0.05), 4,  1, gold, inch(0.1), 0 ], //  grids of holes for the pins
-  [], // polygon
-  M2p5_dome_screw,
-];
+    ],
+    grid = [inch(0.65), inch(0.05), 12, 2, gold, inch(0.1), inch(0.8),
+            inch(0.25), inch(0.05), 4,  1, gold, inch(0.1), 0 ], //  grids of holes for the pins
+    components = [
+        [size.x / 2, inch(0.05),   0, "-2p54header", 16, 1],
+        [inch(1.2), -inch(0.05),   0, "-2p54header", 12, 1],
+        [inch(1.3),  size.y / 2, -90, "smd_qfp", QFP50P1200X1200X160_64N, "STM32F405"],
+        [ 3,         size.y / 2, 180, "usb_C"],
+        [ 10,        -6.5,       180, "jst_ph", 2, true, grey(25) ],
+        [ -5, 0.40 * size.y,      90, "jst_zh", 4, true, grey(30) ],
+      ]
+);
 
-tiny_pcbs = [XIAO, MP1584EN, TP4056, ESP_01, LIPO_fuel_gauge];
+ESP_201 = let(size = [33.5, 25.5, 1.2], font = "Liberation Mono:style=Bold")
+pcb("ESP_201", "ESP-201 ESP8266 WiFi module", size, colour = "white",
+    components = [
+        for(side = [-1, 1]) [2 + inch(0.5), size.y / 2 + side * inch(0.45), 0, "-2p54joiner", 11, 1],
+        [2 + inch(1.1),                size.y / 2, 90, "2p54header", 4, 1],
+        [-1.5,                         size.y / 2,-90, "text", 10, 1, "3.3V RX TX GND", font, "black"],
+        [2 + inch(0.5),                -3,          0, "text", inch(1) + 2, 1, "3.3V 3.3V IO4  D3   D1   D0   CMD  CLK  D2   IO2  IO0",  font, "black"],
+        [2 + inch(0.5),                 3,        180, "text", inch(1) + 2, 1, "IO15 IO13 IO12 IO14 XPD  CPEN RST  TOUT IO5  GND  GND",  font, "black"],
+        [9.5, 13.5,  90, "smd_coax", U_FL_R_SMT_1],
+        [21,    18,  90, "smd_soic", SOIC8, ""],
+        [21,    9.7,  0, "chip", 5, 5, 0.8],
+        [-7,    9.7, 90, "smd_cap", CAP0603, 0.8],
+        [11.5, -5.5,180, "smd_res", RES0603, "301"],
+        [11.5, -7.0,  0, "smd_led", LED0603, "red"],
+        [14.5, -5.5,180, "smd_res", RES0603, "301"],
+        [14.5, -7.0,  0, "smd_led", LED0603, "blue"],
+        [14.5, -8.5,  0, "smd_cap", CAP0603, 0.6],
+        [15.5,  11,   0, "smd_cap", CAP0603, 0.6],
+        [15.5,  9,  180, "smd_res", RES0603, "123"],
+        [11.5,  7.8,  0, "smd_cap", CAP0603, 0.6],
+        [9.5,   8.7, 90, "smd_res", RES0603, "0"],
+        [15,    14,   0, "block",  3,    2.5,  0.6, silver, false, 0.2],
+        [15,    14,   0, "block",  3.1,  2.6,  0.5, gold,   false, 0.195],
+        [15,    14,   0, "block",  3.11, 2.61, 0.3, "black",false, 0.195],
+       // Antenna
+        let(o = 5, x = [0.9 + o, 3.2 + o, 5.7 + o, 8.1 + o, 10.6 + o, 12.8 + o, 15 + o, 15.2 + o], c = "black")
+        each [
+            for(i = [0, 5,6,7])  [2.8,  -x[i],                0, "block", 4.8, 0.6,             0.2, c], // long verticals
+            for(i = [1: 4])      [2.05, -x[i],                0, "block", 3.3, 0.6,             0.2, c], // short verticals
+            for(i = [0, 2, 4,5]) [0.7, -(x[i] + x[i + 1]) / 2,0, "block", 0.6, x[i + 1] - x[i], 0.2, c], // top horizontals
+            for(i = [1, 3])      [3.4, -(x[i] + x[i + 1]) / 2,0, "block", 0.6, x[i + 1] - x[i], 0.2, c], // lower horizontals
+        ]
+    ],
+    grid = [2,             size.y / 2 - inch(0.45), 11, 2, silver, inch(0.1), inch(0.9),
+            2 + inch(1.1), size.y / 2 - inch(0.15),  1, 4, silver, inch(0.1), inch(0.1)]
+);
+
+ESP_12F = pcb("ESP_12F", "ESP-12F ESP8266 WiFi module", [24, 16, 0.8],
+    colour = grey(25),
+    hole_d = 0.6,
+    land_d = [1, 1, 0, gold],
+    holes = [
+        for(x = [0 : 7], y = [-1, 1])
+            each[
+                [1.5 + x * 2, 8 + y * 7], // Inboard hole positions
+                [1.5 + x * 2, 8 + y * 8]  // Outboard half holes
+             ],
+        for(y = [0 : 5]) [0, 3 + y * 2]       // Along the bottom edge
+    ],
+    components = [
+        [1.3 + 7.5, 8, 0, "block", 15, 12, 2.3, silver, false, 0.1, 0.1], // can
+        [1.3 + 7.5, 8, 0, "block", 15.5, 12.5, 0.2, silver * 1.2, false], // pcb track it is solder on
+        [-6.4, 1.7,     90, "smd_led", LED0603, "blue"],
+       // Antenna
+        let(o = 0, x = [0.9 + o, 3.2 + o, 5.7 + o, 8.1 + o, 10.6 + o, 12.8 + o, 15 + o, 15.2 + o], c = gold)
+        each [
+            for(i = [0, 5,6,7])  [-2.8,  x[i],                0, "block", 4.8, 0.6,             0.2, c], // long verticals
+            for(i = [1: 4])      [-2.05, x[i],                0, "block", 3.3, 0.6,             0.2, c], // short verticals
+            for(i = [0, 2, 4,5]) [-0.7, (x[i] + x[i + 1]) / 2,0, "block", 0.6, x[i + 1] - x[i], 0.2, c], // top horizontals
+            for(i = [1, 3])      [-3.4, (x[i] + x[i + 1]) / 2,0, "block", 0.6, x[i + 1] - x[i], 0.2, c], // lower horizontals
+        ]
+    ]
+);
+
+
+tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
+    hole_d = 1.2,
+    land_d = [2, 2],
+    holes = [for(i = [0: 3]) [1.5, 11 / 2 - inch(0.15 - i / 10)]],
+    components = [
+        [4.5,  2.5, 90, "smd_cap", CAP1210, 2],
+        [4.5, -2.8, 90, "smd_cap", CAP1210, 2],
+        [10,  -4.4, 90, "smd_inductor", IND2525, "4R7"],
+        for(i = [0 : 5]) [6.5 + i * 1.6, 1.5, 90, "smd_res", RES0603],
+        [17.8, 2, 90, "smd_pot", TC33X1],
+        for(i = [0 : 2]) [-1.5, -1.5 - i * 1.6, 0, "smd_res", RES0603],
+        [-1.5, -6.3, 0, "smd_cap", CAP0603, 0.8],
+        [-5,   -1.5, 0, "smd_res", RES0603],
+        [-5.5,  5.5, 0, "smd_cap", CAP0603, 0.8],
+        [-5.5,  4.0, 0, "smd_res", RES0603],
+        [-4.8, -3.5, 90, "smd_soic", TSOT23_8, "DKAAD"],
+        for(i = [0: 3]) [4, 11 / 2 - inch(0.15 - i / 10), 0, "-text", 2.5, 1, ["VO+", "GND", "IN+", "+EN"][i], undef, silver],
+    ]
+);
+
+tiny_pcbs = [ESP_201, ESP_12F, XIAO, MP1584EN, ESP_01, tiny_buck, LIPO_fuel_gauge];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [RAMPSEndstop, MT3608, KY_040, L9110S, ZC_A0591, ArduinoNano, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
+pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RAMPSEndstop, MT3608, ArduinoNano, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 

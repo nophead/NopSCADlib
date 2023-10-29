@@ -22,6 +22,18 @@ include <../vitamins/pcbs.scad>
 module radials() {
     pcb = PERF70x50;
     pcb(pcb);
+    translate([0, pcb_width(pcb) + inch(0.2)]) {
+        pcb(pcb);
+
+        pcb_grid(pcb, 10, 12)
+            rd_module(rd_modules[2], "12V 900ma");
+
+        for(i = [0: len(rd_electrolytics) - 1])
+            pcb_grid(pcb, i * 3, 2)
+                rotate(-90)
+                    rd_electrolytic(rd_electrolytics[i], "220uF35V", z = 3, pitch = inch(0.2));
+    }
+
     $solder = pcb_solder(pcb);
 
     for(i = [0 : len(rd_xtals) - 1])
@@ -34,6 +46,7 @@ module radials() {
     pcb_grid(pcb, 20 -0.4, 9)
         rotate(-90)
             rd_module(rd_modules[1], "12V 250ma");
+
 
     for(i = [0 : len(rd_discs) - 1])
         pcb_grid(pcb, 1 + 2.5 * i, 1) {

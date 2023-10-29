@@ -21,6 +21,8 @@
 //! IEC mains inlets and outlet.
 //
 include <../utils/core/core.scad>
+use <../utils/rounded_cylinder.scad>
+
 use <screw.scad>
 use <nut.scad>
 use <washer.scad>
@@ -36,7 +38,7 @@ function iec_body_h(type)   = type[6];  //! Body height
 function iec_body_r(type)   = type[7];  //! Body corner radius
 function iec_bezel_w(type)  = type[8];  //! Bezel width
 function iec_bezel_h(type)  = type[9];  //! Bezel height
-function iec_bezel_r(type)  = type[10];  //! Bezel corner radius
+function iec_bezel_r(type)  = type[10]; //! Bezel corner radius
 function iec_bezel_t(type)  = type[11]; //! Bezel thickness
 function iec_flange_w(type) = type[12]; //! Flange width not including the lugs
 function iec_flange_h(type) = type[13]; //! Flange height
@@ -46,6 +48,7 @@ function iec_width(type)    = type[16]; //! Widest part including the lugs
 function iec_depth(type)    = type[17]; //! Depth of the body below the flange
 function iec_spades(type)   = type[18]; //! Spade type
 function iec_male(type)     = type[19]; //! True for an outlet
+function iec_can(type)      = type[20]; //! If it has a can then the width, height, thickness and total width of the metal flange
 
 insert_screw_length = 10;
 function iec_insert_screw_length() = insert_screw_length; //! Screw length used for inserts
@@ -77,6 +80,11 @@ module iec(type) { //! Draw specified IEC connector
     socket_r = 3;
     socket_r2 = 0.5;
     socket_offset = iec_bezel_h(type) / 2 - socket_h / 2  - (iec_bezel_w(type) - socket_w) / 2;
+
+    bw = iec_body_w(type);
+    bh = iec_body_h(type);
+    br = iec_body_r(type);
+    can = iec_can(type);
 
     module socket_shape()
         hull()
@@ -114,12 +122,9 @@ module iec(type) { //! Draw specified IEC connector
 
     module body_shape() {
         hull() {
-            bw = iec_body_w(type);
-            bh = iec_body_h(type);
-            br = iec_body_r(type);
             bw2 = iec_body_w2(type);
             bh2 = bh - (bw - bw2);
-            br2 = 1;
+            br2 = can ? br : 1;
 
             for(side = [-1, 1]) {
                 translate([side * (bw / 2 - br), -bh / 2 + br])
@@ -134,70 +139,112 @@ module iec(type) { //! Draw specified IEC connector
         }
     }
 
-    color(grey(20)) {
-        // Flange
-        flange_t = iec_flange_t(type);
-        linear_extrude(flange_t)
-            difference() {
-                hull() {
-                    rounded_square([iec_flange_w(type), iec_flange_h(type)], iec_flange_r(type));
+    translate_z(can ? can.z : 0) {
+        color(grey(20)) {
+            // Flange
+            flange_t = iec_flange_t(type);
+            linear_extrude(flange_t)
+                difference() {
+                    hull() {
+                        rounded_square([iec_flange_w(type), iec_flange_h(type)], iec_flange_r(type));
+
+                        iec_screw_positions(type)
+                            circle(d = iec_width(type) - iec_pitch(type));
+                    }
+                    oriffice_shape();
 
                     iec_screw_positions(type)
-                        circle(d = iec_width(type) - iec_pitch(type));
+                        circle(socket_r);
                 }
-                oriffice_shape();
+            head_r = screw_head_radius(iec_screw(type));
+            screw_r = screw_clearance_radius(iec_screw(type));
+            iec_screw_positions(type)
+                rotate_extrude()
+                    difference() {
+                        translate([screw_r, 0])
+                            square([socket_r - screw_r, flange_t]);
 
-                iec_screw_positions(type)
-                    circle(socket_r);
-            }
-        head_r = screw_head_radius(iec_screw(type));
-        screw_r = screw_clearance_radius(iec_screw(type));
-        iec_screw_positions(type)
-            rotate_extrude()
-                difference() {
-                    translate([screw_r, 0])
-                        square([socket_r - screw_r, flange_t]);
+                        translate([0, flange_t - head_r])
+                            rotate(45)
+                                square(10);
+                    }
+            // Bezel
+            translate_z(iec_flange_t(type))
+                linear_extrude(iec_bezel_t(type))
+                    difference() {
+                        rounded_square([iec_bezel_w(type), iec_bezel_h(type)], iec_bezel_r(type));
 
-                    translate([0, flange_t - head_r])
-                        rotate(45)
-                            square(10);
-                }
-        // Bezel
-        translate_z(iec_flange_t(type))
-            linear_extrude(iec_bezel_t(type))
-                difference() {
-                    rounded_square([iec_bezel_w(type), iec_bezel_h(type)], iec_bezel_r(type));
+                        oriffice_shape();
+                    }
 
-                    oriffice_shape();
-                }
+            // Body
+            h = socket_d - iec_flange_t(type) - iec_bezel_t(type);
+            offset = can ? - can.z : 0;
+            translate_z(-h)
+                linear_extrude(h)
+                    difference() {
+                        offset(offset)
+                            body_shape();
 
-        // Body
-        h = socket_d - iec_flange_t(type) - iec_bezel_t(type);
-        translate_z(-h)
-            linear_extrude(h)
-                difference() {
-                    body_shape();
-
-                    oriffice_shape();
-                }
-        // Back
-        translate_z(-iec_depth(type))
-            linear_extrude(iec_depth(type) - h)
-                body_shape();
-    }
-    if(!iec_male(type))
-        translate([0, socket_offset, iec_flange_t(type) + iec_bezel_t(type) - socket_d]) {
-            translate([0, 2])
-                pin(pin_h2);
-
-            for(side = [-1, 1])
-                translate([side * 7, -2])
-                    pin(pin_h1);
+                        oriffice_shape();
+                    }
+            // Back
+            depth_offset = can ? br : 0;
+            translate_z(-iec_depth(type) + depth_offset)
+                linear_extrude(iec_depth(type) - h- depth_offset)
+                    offset(offset)
+                        body_shape();
         }
-    for(spade = iec_spades(type))
-        translate([spade[2], spade[3], -iec_depth(type)])
-            rotate([180, 0, spade[4]])
-                spade(spade[0], spade[1]);
+        // Can for filters
+        if(can)
+            color(silver)
+                hflip() {
+                    linear_extrude(iec_depth(type) - br)
+                        difference() {
+                            body_shape();
+
+                            offset(-can.z)
+                                body_shape();
+                        }
+
+                    translate_z(iec_depth(type) - br)
+                        rounded_top_rectangle([bw, bh, br], br, br - 1);
+
+                    linear_extrude(can.z)
+                        difference() {
+                            hull() {
+                                rounded_square([can.x, can.y], iec_flange_r(type));
+
+                                iec_screw_positions(type)
+                                    circle(d = can[3] - iec_pitch(type));
+                            }
+                            offset(1)
+                                oriffice_shape();
+
+                            iec_screw_positions(type)
+                                circle(socket_r);
+                        }
+                }
+
+        if(!iec_male(type))
+            translate([0, socket_offset, iec_flange_t(type) + iec_bezel_t(type) - socket_d]) {
+                translate([0, 2])
+                    pin(pin_h2);
+
+                for(side = [-1, 1])
+                    translate([side * 7, -2])
+                        pin(pin_h1);
+            }
+        for(spade = iec_spades(type))
+            translate([spade[2], spade[3], -iec_depth(type)])
+                rotate([180, 0, spade[4]]) {
+                    spade(spade[0], spade[1]);
+
+                    if(can && spade[3] < 0)
+                        color(grey(20))
+                            rounded_rectangle([10, 5.25, 2], 1);
+                }
+    }
 }
 
 function iec_spade_depth(type) = iec_depth(type) + max([for(spade = iec_spades(type)) spade[1]]);
@@ -209,7 +256,7 @@ module iec_screw_positions(type) //! Position children at the screw holes
                 children();
 
 module iec_holes(type, h = 100, poly = false, horizontal = false, insert = false) { //! Drill the required panel holes
-    clearance = 0.2;
+    clearance = iec_can(type) ? 1 : 0.2;
     screw = iec_screw(type);
     insert_type = screw_insert(screw);
     insert_overlap = max(0, insert_screw_length + clearance - iec_flange_t(type) - insert_hole_length(insert_type));

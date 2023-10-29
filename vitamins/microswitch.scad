@@ -85,7 +85,7 @@ module microswitch(type) { //! Draw specified microswitch
         translate(microswitch_button_pos(type) - [0, d / 2])
             linear_extrude(microswitch_button_w(type), center = true)
                 hull() {
-                    circle(d = d);
+                    circle(d = d, $fn = fn);
 
                     translate([0, -3])
                         circle(d = d);

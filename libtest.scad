@@ -42,6 +42,7 @@
 include <lib.scad>
 
 use <tests/7_segments.scad>
+use <tests/antennas.scad>
 use <tests/ball_bearings.scad>
 use <tests/batteries.scad>
 use <tests/bearing_blocks.scad>
@@ -65,6 +66,7 @@ use <tests/extrusion_brackets.scad>
 use <tests/fans.scad>
 use <tests/fastons.scad>
 use <tests/fuseholder.scad>
+use <tests/gear_motors.scad>
 use <tests/geared_steppers.scad>
 use <tests/hot_ends.scad>
 use <tests/IECs.scad>
@@ -299,6 +301,9 @@ translate([x0, linear_bearings_y]) {
 translate([x0, steppers_y])
     stepper_motors();
 
+translate([x0 + 400, steppers_y])
+    gear_motors();
+
 translate([x0, sheets_y])
     sheets();
 
@@ -456,10 +461,10 @@ translate([x2, panel_meters_y])
 translate([x2, extrusions_y])
     extrusions();
 
-translate([400, transformers_y])
+translate([370, transformers_y])
     transformers();
 
-translate([x4 + 50, transformers_y])
+translate([x4, transformers_y])
     no_explode() socket_boxes();
 
 
@@ -496,6 +501,9 @@ translate([x4, rails_y + 130]) {
 
 translate([x4, cable_strip_y])
     cable_strips();
+
+translate([x4 + 150, cable_strip_y])
+    antennas();
 
 translate([x4, kp_pillow_blocks_y])
     kp_pillow_blocks();

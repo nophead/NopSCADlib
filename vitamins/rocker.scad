@@ -54,6 +54,7 @@ module rocker(type, colour) { //! Draw the specified rocker switch
     y2 = rocker_button(type);
     rocker_r2 = (sqr(x2) + sqr(y2)) / (2 * y2);
 
+    $fa = fa; $fs = $fs;
     explode(30) {
         color(grey(20)) {
             linear_extrude(rocker_flange_t(type))
@@ -72,10 +73,10 @@ module rocker(type, colour) { //! Draw the specified rocker switch
                     rotate([90, 0, 90])
                         linear_extrude(rocker_w, center = true)
                             difference() {
-                                circle(rocker_r, $fa = 1);
+                                circle(rocker_r);
 
                                 translate([rocker_h / 2, rocker_flange_t(type) + rocker_r2 - rocker_pivot(type)])
-                                    circle(rocker_r2, $fa = 1);
+                                    circle(rocker_r2);
 
                             }
 

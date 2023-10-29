@@ -22,8 +22,15 @@ use <../utils/layout.scad>
 include <../vitamins/box_sections.scad>
 
 module box_sections() {
-    layout([for(b = box_sections) box_section_size(b).x], 20)
-        box_section(box_sections[$i], 100);
+    woven = [for(b = box_sections) if(box_section_is_woven(b)) b];
+    plain = [for(b = box_sections) if(!box_section_is_woven(b)) b];
+    layout([for(b = woven) box_section_size(b).x * 0], 10)
+        box_section(box_sections[$i], 100 - $i * 20);
+
+    translate([50, 0])
+        for(i = [0 : len(plain) - 1])
+            box_section(plain[i], 100 - i * 20);
+
 }
 
 if($preview)

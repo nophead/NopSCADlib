@@ -49,6 +49,8 @@ module pillar(type) { //! Draw specified pillar
 
     vitamin(str("pillar(", type[0], "): Pillar ", pillar_name(type), " ", sex, " M", thread_d, "x", height));
 
+    $fa = fa; $fs = fs;
+
     if(bot_thread_l > 0)
         translate_z(-bot_thread_l + eps)
             if(show_threads)

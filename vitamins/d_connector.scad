@@ -86,6 +86,7 @@ module d_plug_D(length, width, rad) { //! D plug D shape
 module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specified D plug, which can be IDC, PCB or plain solder bucket
     hole_r = 3.05 / 2;
     dwall = 0.5;
+    $fa = fa; $fs = fs;
 
     flange_length    = d_flange_length(type);
     d_length         = d_lengths(type)[socket ? 1 : 0];
@@ -157,6 +158,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     // Pins
     //
     color("gold") {
+        $fn = fn;
         if(!socket)
             translate_z(-0.5)
                 pin_positions()
@@ -172,11 +174,11 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
            rotate([0, 180, 0]) {
                 linear_extrude(back_height + 1 + 4.5)
                     pin_positions()
-                         circle(r = 0.75 / 2, $fn = 12);
+                         circle(r = 0.75 / 2);
 
                 linear_extrude(back_height + 1 + 1)
                     pin_positions()
-                         circle(r = 0.75, $fn = 12);
+                         circle(r = 0.75);
             }
 
         if(!pcb && !idc)

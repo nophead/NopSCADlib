@@ -99,6 +99,8 @@ module potentiometer(type, thickness = 3, shaft_length = undef, value = false) {
     shaft = pot_shaft(type);
     vitamin(str("potentiometer(", type[0], "): ", slice(type[0], start = -8) != "_encoder" ? "Potentiometer " : "", value ? value : type[0]));
 
+    $fa = fa; $fs = fs;
+
     color(dia_cast_colour) {
         // Boss
         if(bh)

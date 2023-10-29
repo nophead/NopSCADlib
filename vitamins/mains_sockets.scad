@@ -21,9 +21,10 @@
 //! UK 13A sockets at the moment.
 //
 
-MKLOGIC   = ["MKLOGIC",     86, 86, 86, 86, 3.6, 9,    3.6, [-9, -9], 60.3]; // Screwfix, switched
-Contactum = ["Contactum",   84, 84, 80, 80, 4.0, 10.5, 3.6, [ 0,  0], 60.3]; // Old and unswitched
+MKLOGIC   = ["MKLOGIC",     86,    86,    86, 86, 3.6, 9,    3.6, [-9, -9], 60.3, [0,   0, 0]]; // Screwfix, switched
+Contactum = ["Contactum",   84,    84,    80, 80, 4.0, 10.5, 3.6, [ 0,  0], 60.3, [0,   0, 0]]; // Old and unswitched
+PMS9143A  = ["PMS9143A",    85.75, 85.75, 85, 85, 1.5, 8.5,  3.0, [ 0,  0], 60.3, [3.3, 7, 5]]; // Screwfix Essential unswitched.
 
-mains_sockets = [MKLOGIC, Contactum];
+mains_sockets = [MKLOGIC, Contactum, PMS9143A];
 
 use <mains_socket.scad>

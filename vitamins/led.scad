@@ -30,32 +30,47 @@ function led_rim_t(type)    = type[3]; //! Rim height
 function led_height(type)   = type[4]; //! Body height
 function led_pitch(type)    = type[5]; //! Lead pitch
 function led_lead_t(type)   = type[6]; //! Lead thickness
+function led_radius(type) = led_diameter(type) / 2; //! Radius
 
-function led_hole_radius(type) = led_diameter(type) / 2; //! Radius of panel hole to accept LED
+function led_hole_radius(type) = led_radius(type); //! Radius of panel hole to accept LED
 
-module led(type, colour = "red", lead = 5) { //! Draw specified LED with desired colour and led length
+module led(type, colour = "red", lead = 5, right_angle = 0) { //! Draw specified LED with desired colour and lead length
     d = led_diameter(type);
     vitamin(str("led(", type[0], arg(colour, "red"), "): LED ", d, " mm ", colour));
 
-    color(colour) {
-        rotate_extrude()
-            rounded_corner(r = d / 2, h = led_height(type), r2 =  d / 2);
+    rotate([right_angle ? 90 : 0, 0, 0])
+        translate_z(right_angle ? right_angle - led_rim_t(type) : 0)
+            color(colour) {
+                rotate_extrude()
+                    rounded_corner(r = d / 2, h = led_height(type), r2 =  d / 2);
 
-        linear_extrude(led_rim_t(type))
-            difference() {
-                circle(d = led_rim_dia(type));
+                linear_extrude(led_rim_t(type))
+                    difference() {
+                        circle(d = led_rim_dia(type));
 
-                translate([d / 2 + eps, -5])
-                    square(10);
+                        translate([d / 2 + eps, -5])
+                            square(10);
+                    }
             }
-    }
+    t = led_lead_t(type);
+    len = lead - (right_angle ? t : 0);
     color("silver")
-        for(side = [-1, 1], len = lead - (lead < 3 ? 0 : side))
+        for(side = [-1, 1])
             translate([side * led_pitch(type) / 2, 0]) {
                 vflip()
-                    translate_z(len / 2)
-                        cube([led_lead_t(type), led_lead_t(type), len], center = true);
+                    translate_z(len / 2 + (right_angle ? t : 0))
+                        cube([t, t, len], center = true);
 
+                if(right_angle) {
+                    translate([0, -right_angle / 2 - t])
+                        cube([t, right_angle, t], center = true);
+
+                translate([0, -t, - t])
+                    rotate([0, -90, 0])
+                        rotate_extrude(angle = 90)
+                            translate([t, 0])
+                                square(t, center = true);
+                }
                 solder();
             }
 }

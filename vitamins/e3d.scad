@@ -159,6 +159,8 @@ module e3d_hot_end(type, filament, naked = false, resistor_wire_rotate = [0,0,0]
 
     vitamin(str("e3d_hot_end(", type[0], ", ", filament, "): Hot end ", hot_end_part(type), " ", filament, "mm"));
 
+    $fa = fa; $fs = fs;
+
     translate_z(inset - insulator_length)
         color(hot_end_insulator_colour(type))
             rotate_extrude()

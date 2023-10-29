@@ -43,6 +43,8 @@ function washer_id(type) = washer_size(type) + 0.1; //! Inside diameter
 function washer_colour(type) = washer_soft(type) ? soft_washer_colour : hard_washer_colour; //! Washer colour
 
 module washer(type) { //! Draw specified washer
+    $fs = fs; $fa = fa;
+
     hole = washer_size(type);
     thickness = washer_thickness(type);
     diameter  = washer_diameter(type);
@@ -72,6 +74,8 @@ module penny_washer(type) { //! Draw penny version of specified plain washer
 }
 
 module star_washer(type) { //! Draw star version of washer
+    $fs = fs; $fa = fa;
+
     hole = washer_size(type);
     thickness = washer_thickness(type);
     diameter  = star_washer_diameter(type);
@@ -97,6 +101,8 @@ module star_washer(type) { //! Draw star version of washer
 }
 
 module spring_washer(type) { //! Draw spring version of washer
+    $fs = fs; $fa = fa;
+
     hole = washer_size(type);
     thickness = spring_washer_thickness(type);
     diameter  = spring_washer_diameter(type);

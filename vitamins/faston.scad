@@ -60,7 +60,7 @@ module faston(type, closed = false) { //! Draw specified faston
     ic_p = faston_insul_crimp_p(type);
     ic_o = faston_insul_crimp_o(type);
 
-    $fn = 64;
+    $fa = fa; $fs = fs;
     // Receptical
     module reciptical_shape()
         for(side = [-1, 1]) mirror([side < 0 ? 1 : 0, 0]) {

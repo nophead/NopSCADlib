@@ -25,10 +25,10 @@
 //                                                                  c     h    z                             o
 //                                                                                                           f
 2p54header  = ["2p54header",   2.54, 11.6, 3.2, 0.66, gold,   grey(20), 8.5, [0,   0,    8.7], 2.4, 0,     0,    0  ];
-2p54joiner =  ["2p54joiner",   2.54, 6.86, 2.5, 0.66, gold,   grey(20), 8.5, [0,   0,    8.7], 2.4, 0,     0,    0  ]; // Cropped pins for joining PCBs
+2p54joiner =  ["2p54joiner",   2.54, 7.5,  2.5, 0.66, gold,   grey(20), 8.5, [0,   0,    8.7], 2.4, 0,     0,    0  ]; // Cropped pins for joining PCBs
 
 jst_xh_header = ["jst_xh_header",2.5,  10, 3.4, 0.64, gold,   "white", 0,   [4.9, 5.75, 7],   0.8, 0.525, 0.6,  6.1];
-jst_ph_header = ["jst_ph_header",2.0,   9, 3.4, 0.64, silver, "white", 0,   [3.9, 4.5,  6],   0.6, 0.55,  0.25, 4.8];
+jst_ph_header = ["jst_ph_header",2.0,   9, 3.4, 0.64, silver, "white", 0,   [3.9, 4.5,  6],   0.5, 0.55,  0.25, 4.8];
 jst_zh_header = ["jst_zh_header",1.5, 7.4, 3.4, 0.5 , silver, "white", 0,   [3.0, 3.5,4.5],   0.5, 0.45,  0.25, 3.7];
 
 pin_headers = [ 2p54header ];

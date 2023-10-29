@@ -109,7 +109,7 @@ module wires() {
 
             ends = [for(p = positions) [[30, p.x, p.y], [0, p.x, p.y]]];
             paths = [for(i = [0 : len(tpaths) - 1]) bezier_join(ends[i], tpaths[i], 1.3, 3)];
-            cable(cable, paths, $fn = 32);
+            cable(cable, paths, $fs = fs, $fa = fa);
         }
 }
 

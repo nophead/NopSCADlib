@@ -58,6 +58,8 @@ module battery(type) { //! Draw a battery
     h = 2.65;
     t = 0.4;
 
+    $fa = fa; $fs = fs;
+
     module D() {
         hull() {
             translate([-iw1 / 2, h - t - ih1])

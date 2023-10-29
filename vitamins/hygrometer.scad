@@ -51,6 +51,8 @@ function hygrometer_or() = flange_d / 2; //! The outside radius of a hygrometer
 module hygrometer() { //! Draw a hygrometer
     vitamin("hygrometer(): Mini LCD Digital Thermometer / Hygrometer");
 
+    $fa = fa; $fs = fs;
+
     explode(40) {
         color(grey(30))
             rotate_extrude()

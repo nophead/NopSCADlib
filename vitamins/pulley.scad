@@ -68,9 +68,10 @@ module pulley(type, colour = silver) { //! Draw a pulley, any children are place
 
     or =  od / 2;
     ir =  pulley_ir(type);
+    $fa  = fa; $fs = fs;
     module core() {
         translate_z(pulley_hub_length(type) + ft)
-            linear_extrude(w) let($fa  = 1, $fs = 0.1)
+            linear_extrude(w)
                  difference() {
                     circle(or);
 

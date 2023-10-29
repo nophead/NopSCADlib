@@ -24,16 +24,17 @@ include <../core.scad>
 include <ring_terminals.scad>
 use <insert.scad>
 
-function mains_socket_width(type)  = type[1]; //! Width at the base
-function mains_socket_depth(type)  = type[2]; //! Depth at the base
-function mains_socket_top_w(type)  = type[3]; //! Width at the top, might be tapered
-function mains_socket_top_d(type)  = type[4]; //! Depth at the top, might be tapered
-function mains_socket_corner(type) = type[5]; //! Corner radius
-function mains_socket_height(type) = type[6]; //! Height
-function mains_socket_t(type)      = type[7]; //! Plastic thickness
-function mains_socket_offset(type) = type[8]; //! Offset of the socket from the centre
-function mains_socket_pitch(type)  = type[9]; //! Screw hole pitch
-function mains_socket_screw(type)  = M3_cs_cap_screw;  //! Screw type
+function mains_socket_width(type)       = type[1];   //! Width at the base
+function mains_socket_depth(type)       = type[2];   //! Depth at the base
+function mains_socket_top_w(type)       = type[3];   //! Width at the top, might be tapered
+function mains_socket_top_d(type)       = type[4];   //! Depth at the top, might be tapered
+function mains_socket_corner(type)      = type[5];   //! Corner radius
+function mains_socket_height(type)      = type[6];   //! Height
+function mains_socket_t(type)           = type[7];   //! Plastic thickness
+function mains_socket_offset(type)      = type[8];   //! Offset of the socket from the centre
+function mains_socket_pitch(type)       = type[9];   //! Screw hole pitch
+function mains_socket_counterbore(type) = type[10];  //! Screw counterbore
+function mains_socket_screw(type) = M3_cs_cap_screw; //! Screw type
 
 earth = M3_ringterm;
 earth_screw = ringterm_screw(earth);
@@ -56,7 +57,7 @@ module mains_socket_earth_position(type) {  //! Position of earth terminal for D
         children();
 }
 
-module mains_socket_holes(type, h = 0) { //! Panel cutout
+module mains_socket_holes(type, h = 0, earth = true, small = false) { //! Panel cutout
     mains_socket_hole_positions(type)
         drill(screw_clearance_radius(mains_socket_screw(type)), h);
 
@@ -68,20 +69,26 @@ module mains_socket_holes(type, h = 0) { //! Panel cutout
                 hull()
                     for(x = [1, 2])
                         translate([side * mains_socket_pitch(type) / x, 0])
-                            circle(4.5);
+                            if(small)
+                                square([2 * 4.5, mains_socket_top_w(type)], true);
+                            else
+                                circle(4.5);
 
-            mains_socket_earth_position(type)
-                circle(d = washer_diameter(screw_washer(earth_screw)) + 2);
+            if(earth)
+                mains_socket_earth_position(type)
+                    circle(d = washer_diameter(screw_washer(earth_screw)) + 2);
         }
 
-    mains_socket_earth_position(type)
-        drill(screw_clearance_radius(earth_screw), h);
+    if(earth)
+        mains_socket_earth_position(type)
+            drill(screw_clearance_radius(earth_screw), h);
 }
 
 module mains_socket(type) { //! Draw specified 13A socket
     offset = mains_socket_offset(type);
     screw = mains_socket_screw(type);
     height =  mains_socket_height(type);
+    width = mains_socket_width(type);
 
     vitamin(str("mains_socket(", type[0], "): Mains socket 13A", offset.x || offset.y ? ", switched" : ""));
 
@@ -91,7 +98,7 @@ module mains_socket(type) { //! Draw specified 13A socket
                 face_plate(type);
 
             linear_extrude(height)
-                offset(-(mains_socket_width(type) - mains_socket_top_w(type)) / 2)
+                offset(-(width - mains_socket_top_w(type)) / 2)
                     face_plate(type);
         }
         // Holes for pins
@@ -110,13 +117,24 @@ module mains_socket(type) { //! Draw specified 13A socket
                     face_plate(type);
 
             cube(50, center = true);
+
+            cube([mains_socket_top_w(type), 13, 2 * height + 1], center = true);
         }
         // Screw holes
         mains_socket_hole_positions(type) {
             cylinder(r = screw_clearance_radius(screw), h = 100, center = true);
 
-            translate_z(height)
+            counter_bore =  mains_socket_counterbore(type);
+            translate_z(height - counter_bore[0]) {
                 screw_countersink(screw, drilled = false);
+
+                if(counter_bore[1])
+                    cylinder(d = counter_bore[1], h = height);
+
+                if(counter_bore[2])
+                    vflip()
+                        cylinder(d = counter_bore[2], h = height);
+            }
         }
     }
 }

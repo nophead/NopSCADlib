@@ -55,6 +55,8 @@ module nut(type, nyloc = false, brass = false, nylon = false) { //! Draw specifi
     vitamin(str("nut(", type[0], arg(nyloc, false, "nyloc"), arg(brass, false, "brass"), arg(nylon, false, "nylon"),
                    "): Nut M", nut_size(type), " x ", thickness, "mm ", desc));
 
+    $fs = fs; $fa = fa;
+
     colour = brass ? brass_colour : nylon ? grey(30): grey(70);
     explode(nyloc ? 10 : 0) {
         color(colour) {

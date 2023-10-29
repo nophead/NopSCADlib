@@ -99,7 +99,7 @@ module pin_header(type, cols = 1, rows = 1, smt = false, right_angle = false, cu
                     translate([pin.x, pin.y - w / 2, pin.z - w / 2])
                         rotate([0, -90, 0])
                             color(hdr_pin_colour(type))
-                                rotate_extrude(angle = 90, $fn = 32)
+                                rotate_extrude(angle = 90, $fn = fn)
                                     translate([0, -w / 2])
                                         square(w);
                 }
@@ -165,7 +165,7 @@ module box_header(type, cols = 1, rows = 1, smt = false, cutout = false, right_a
                     translate([pin.x, pin.y + pw / 2,  pin.z - pw / 2])
                         rotate([0, -90, 180])
                             color(hdr_pin_colour(type))
-                                rotate_extrude(angle = 90, $fn = 32)
+                                rotate_extrude(angle = 90, $fn = fn)
                                     translate([0, -pw / 2])
                                         square(pw);
                 }
@@ -271,7 +271,7 @@ module pin_socket(type, cols = 1, rows = 1, right_angle = false, height = 0, smt
                     color(hdr_pin_colour(type))
                         translate([pitch * (x - (cols - 1) / 2), pitch * (y - (rows - 1) / 2) - w / 2, pitch * (y - (rows - 1) / 2) + width / 2 - w / 2])
                             rotate([0, -90, 0])
-                                rotate_extrude(angle = 90, $fn = 32)
+                                rotate_extrude(angle = 90, $fn = fn)
                                     translate([0, -w / 2])
                                         square(w);
                 }
@@ -369,7 +369,7 @@ module jst_xh_header(type, pin_count, right_angle = false, colour = false, pin_c
                     color(pin_colour)
                         translate([0, -pinWidth / 2, ra_z - pinWidth / 2 + y_offset])
                             rotate([0, -90, 0])
-                                rotate_extrude(angle = 90, $fn = 32)
+                                rotate_extrude(angle = 90, $fn = fn)
                                     translate([0, -pinWidth / 2])
                                         square(pinWidth);
 

@@ -18,9 +18,11 @@
 //
 
 
-//          name     id od   w    colour       or    ir    fd   fw
+//          name     id od   w    colour       or    ir    fd     fw
 BBSMR95  = ["SMR95", 5,  9,  2.5, "silver",    0.5,  0.7,   0,    0];  // SMR95 ball bearing for FlexDrive extruder
 BB624    = ["624",   4,  13, 5,   "blue",      1.2,  1.2,   0,    0];  // 624 ball bearing for idlers
+BB686    = ["686",   6,  13, 5,   "silver",    0.9,  0.7,   0,    0];
+BB696    = ["696",   6,  16, 5,   "silver",    1.8,  1.3,   0,    0];
 BB608    = ["608",   8,  22, 7,   "black",     1.4,  2.0,   0,    0];  // 608 bearings for wades
 BB6200   = ["6200",  10, 30, 9,   "black",     2.3,  3.6,   0,    0];  // 6200 bearings for KP pillow blocks
 BB6201   = ["6201",  12, 32, 10,  "black",     2.4,  3.7,   0,    0];  // 6201 bearings for KP pillow blocks
@@ -34,6 +36,6 @@ BBF623   = ["F623",  3,  10, 4,   "black",     0.6,  0.7,  11.5,  1];
 BBF693   = ["F693",  3,  8,  3,   "silver",    0.5,  0.7,  9.5,   0.7];
 BBF695   = ["F695",  5,  13, 4,   "silver",    1.0,  1.0,  15,    1];
 
-ball_bearings = [BBF693, BBF623, BBF695, BBMR63, BBMR83, BBMR93, BBSMR95, BB624, BB608, BB6200, BB6201, BB6808];
+ball_bearings = [BBF693, BBF623, BBF695, BBMR63, BBMR83, BBMR93, BBSMR95, BB624, BB686, BB696, BB608, BB6200, BB6201, BB6808];
 
 use <ball_bearing.scad>

@@ -50,6 +50,7 @@ module kp_pillow_block(type) { //! Draw the KP pillow block
     b = type[11];
     bolthole_radius = type[12];
 
+    $fa = fa; $fs = fs;
     color(kp_pillow_block_colour)
         translate([0, -H, 0]) {
             fillet = 1;

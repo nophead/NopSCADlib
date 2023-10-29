@@ -382,3 +382,132 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
                     explode(5, true) washer()
                     explode(5, true) nut();
 }
+
+function power_jack_radius() = 9.8 / 2; //! Power jack socket flange radius
+
+power_jack_flat = 6.7;
+
+module power_jack_hole(h = 0, poly = false, center = true)
+    extrude_if(h, center = center)
+        intersection() {
+            if(poly)
+                poly_circle(4);
+            else
+                drill(4, 0);
+
+            square([power_jack_flat, 8], center = true);
+        }
+
+module power_jack(thickness) { //! Draw a power jack socket with nut positioned for specified panel thickness
+    vitamin("power_jack(): Power jack socket");
+    flange_r = power_jack_radius();
+    flange_t = 3.3;
+    flange_ir = power_jack_flat / 2 - eps;
+
+    thread = 8;
+    thread_d = 8;
+    thread_p = 0.75;
+
+    barrel_ir = 5.6 / 2;
+    barrel_or = 8.9 / 2;
+    barrel_above = 0.7;
+    barrel_chamfer = 0.5;
+    barrel_h = 3;
+
+    pin_r = 2 / 2;
+    pin_z = -2.3;
+
+    nut_d = 10.8;
+    nut_t = 1.9;
+
+    length = 17.7;
+    tag_w = 2;
+    tag_hole_r = 1.2 / 2;
+    tag_t1 = 0.4;
+    tag_t2 = 0.5;
+    tag_pitch = 5.64 - tag_t1 / 2 - tag_t2 / 2;
+
+    colour = grey(20);
+    explode(length, offset = -length + flange_t) {
+        color(colour) {
+            tube(or = flange_r, ir = flange_ir, h = flange_t, center = false);
+
+            r = (thread_d - (show_threads ? thread_p : 0)) / 2;
+            vflip()
+                linear_extrude(thread)
+                    intersection() {
+                        ring(or = r, ir = flange_ir);
+
+                        square([power_jack_flat, thread_d], center = true);
+                    }
+
+            translate_z(-thread)
+                linear_extrude(1)
+                    intersection() {
+                        circle(r);
+
+                        square([power_jack_flat, thread_d], center = true);
+                    }
+            if(show_threads) render()
+                 intersection() {
+                    color(colour)
+                        translate_z(-thread)
+                            male_metric_thread(thread_d, thread_p, thread, false, solid = false);
+
+                    translate_z(-thread / 2)
+                        cube([power_jack_flat, thread_d, thread], center = true);
+                 }
+            }
+
+        color(silver) {
+            translate_z(flange_t + barrel_above) {
+                rotate_extrude()
+                        polygon([
+                            [barrel_ir,                  -barrel_h],
+                            [barrel_ir,                  -barrel_chamfer],
+                            [barrel_ir + barrel_chamfer, 0],
+                            [barrel_or - barrel_chamfer, 0],
+                            [barrel_or,                  -barrel_chamfer],
+                            [barrel_or,                  -barrel_h],
+                        ]);
+
+                hull() {
+                    translate_z(pin_z - pin_r)
+                        sphere(pin_r);
+
+                    translate_z(-flange_t - barrel_above - thread + 1)
+                        cylinder(r = pin_r, h = eps);
+                }
+                for(side = [-1, 1], offset = side > 0 ? 1 : 0)
+                    translate([0, side * tag_pitch / 2, - length + tag_w / 2 + offset])
+                        rotate([90, 0, 0])
+                            linear_extrude(side > 0 ? tag_t2 : tag_t1, center = true)
+                                difference() {
+                                    hull() {
+                                        circle(d = tag_w);
+
+                                        translate([0, length - flange_t - thread - tag_w - offset])
+                                            square([tag_w, eps], center = true);
+                                    }
+                                    circle(tag_hole_r);
+                                }
+
+            }
+        }
+    }
+    // Nut
+    translate_z(-thickness)
+        explode(-length)
+            vflip() {
+                color(silver)
+                    linear_extrude(nut_t)
+                        difference() {
+                            circle(d = nut_d, $fn = 6);
+
+                            circle(d = thread_d);
+                        }
+
+                if(show_threads)
+                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
+            }
+}

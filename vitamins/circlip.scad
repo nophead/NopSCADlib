@@ -21,9 +21,9 @@
 //! Circlips aka tapered retaining rings.
 //
 include <../utils/core/core.scad>
-include <../utils/sector.scad>
-include <../utils/round.scad>
-include <../utils/maths.scad>
+use <../utils/sector.scad>
+use <../utils/round.scad>
+use <../utils/maths.scad>
 
 function circlip_d1(type)        = type[1];     //! Nominal OD, i.e. diameter of tube
 function circlip_d2(type)        = type[2];     //! Groove diameter, i.e. OD when installed

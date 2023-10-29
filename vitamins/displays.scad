@@ -17,14 +17,16 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-HDMI5PCB = ["", "",  121.11, 77.93, 1.65, 0, 2.2, 0, "mediumblue", false, [[4.6, 4.9], [4.6, -3.73], [97.69, -3.73], [97.69, 4.9]],
-    [[ 47.245,-2.5, 90, "usb_uA"],
+HDMI5PCB = pcb("", "",  [121.11, 77.93, 1.65], hole_d = 2.2, colour = "mediumblue",
+    holes = [[4.6, 4.9], [4.6, -3.73], [97.69, -3.73], [97.69, 4.9]],
+    components = [
+     [ 47.245,-2.5, 90, "usb_uA"],
      [-53.14, -4.4, 90, "hdmi"],
      [ 53.7,  40.6,  0, "chip",       14, 14, 1],
      [ 59.8,  25.2,  0, "2p54socket", 13, 2, false, 13.71],
      [ 59.8,  10.12, 0, "2p54header", 13, 2, true],
-    ],
-    []];
+    ]
+);
 
 HDMI5 = ["HDMI5", "HDMI display 5\"", 121, 76, 2.85, HDMI5PCB,
           [0, 0, 1.9],                              // pcb offst
@@ -34,10 +36,15 @@ HDMI5 = ["HDMI5", "HDMI display 5\"", 121, 76, 2.85, HDMI5PCB,
           [[-2.5, -39], [10.5, -33]],               // clearance need for the ts ribbon
         ];
 
-LCD1602APCB = ["", "", 80, 36, 1.65, 0, 2.9, 5, "green", false, [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
-      [ [-27.05, - 2.5, 0, "2p54header", 16, 1]
-      ],
-      []];
+LCD1602APCB = pcb("", "", [80, 36, 1.65], hole_d = 2.9, land_d = 5, colour = "green",
+    holes = [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+    components = [
+        [-27.05, - 2.5, 0, "2p54header", 16, 1]
+    ],
+    grid = [
+          52.95 - inch(0.75), 36 - 2.5, 16, 1, silver, inch(0.1), inch(0.1),
+    ]
+);
 
 LCD1602A = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCB,
           [0, 0, 0],                             // pcb offst
@@ -47,10 +54,13 @@ LCD1602A = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCB,
           [],                                       // clearance need for the ts ribbon
         ];
 
-LCDS7282BPCB = ["", "", 85, 36, 1.65, 0, 2.56, 0, "green", false, [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
-      [ [3.5, 18, 0, "2p54header", 2, 7]
-      ],
-      []];
+LCDS7282BPCB = pcb("", "", [85, 36, 1.65], hole_d = 2.56, colour = "green",
+    holes = [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+    components = [
+        [3.5, 18, 0, "2p54header", 2, 7]
+    ],
+    grid = [3.5 - inch(0.05), 18 - inch(0.3), 2, 7, silver, inch(0.1), inch(0.1)]
+);
 
 LCDS7282B = ["LCDS7282B", "LCD display S-7282B", 73.6, 28.7, 9.6, LCDS7282BPCB,
           [-2.5, 0, 0],                             // pcb offset
@@ -60,10 +70,11 @@ LCDS7282B = ["LCDS7282B", "LCD display S-7282B", 73.6, 28.7, 9.6, LCDS7282BPCB,
           [],                                       // clearance need for the ts ribbon
         ];
 
-SSD1963_4p3PCB = ["", "", 120, 74, 1.65, 3, 3, 0, "mediumblue", false, [[3, 3], [-3, 3], [-3, -3], [3, -3]],
-    [ [2.75 + 1.27, 37, 90, "2p54header", 20, 2]
-    ],
-    []];
+SSD1963_4p3PCB = pcb("", "", [120, 74, 1.65], corner_r = 3, hole_d = 3, colour = "mediumblue",
+    holes = [[3, 3], [-3, 3], [-3, -3], [3, -3]],
+    components = [ [2.75 + 1.27, 37, 90, "2p54header", 20, 2] ],
+    grid = [2.75, 37 - inch(0.95),  2, 20, silver, inch(0.1), inch(0.1)]
+);
 
 SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD1963_4p3PCB,
         [0, 0, 0],
@@ -73,10 +84,11 @@ SSD1963_4p3 = ["SSD1963_4p3", "LCD display SSD1963 4.3\"", 105.5, 67.2, 3.4, SSD
         [[0, -34.5], [12, -31.5]],
         ];
 
-TFT128x160PCB = ["", "", 56, 35, 1.2, 1, 2.0, 0, "mediumblue", false, [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
-      [ [2, 17.5, 0, "molex_hdr", 8]
-      ],
-      []];
+TFT128x160PCB = pcb("", "", [56, 35, 1.2], corner_r = 1, hole_d = 2.0, colour = "mediumblue",
+    holes = [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+    components = [ [2, 17.5, 0, "molex_hdr", 8] ],
+    grid = [2, 17.5 - inch(0.35), 1, 8, silver, inch(0.1), inch(0.1)]
+);
 
 TFT128x160 = ["TFT128x160", "LCD TFT ST7735 display 128x160", 46, 34, 2.1, TFT128x160PCB,
           [0, 0, 0],                                // pcb offset

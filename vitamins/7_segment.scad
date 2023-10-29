@@ -102,7 +102,7 @@ module 7_segment_digit(type, colour = grey(95), pin_length = 6.4) { //! Draw the
         for(x = [0 : 1 : pins.x - 1], y = [0 : 1 : pins.y - 1])
             translate([(x - (pins.x - 1) / 2) * pin_pitch.x, (y - (pins.y - 1) / 2) * pin_pitch.y]) {
                 vflip()
-                    cylinder(d = pin_pitch[2], h = pin_length, $fn = 16);
+                    cylinder(d = pin_pitch[2], h = pin_length, $fn = fn);
 
                 solder();
              }

@@ -42,7 +42,7 @@ M3_washer       = ["M3",       3,   7,   0.5, false,  5.8,  5.6, 1.0, M3_penny_w
 M3p5_washer     = ["M3p5",     3.5, 8,   0.5, false,  6.9,  6.2, 1.0, undef];
 M4_washer       = ["M4",       4,   9,   0.8, false,  7.9,  7.0, 1.2, M4_penny_washer];
 M5_washer       = ["M5",       5,  10,   1.0, false,  9.0,  8.8, 1.6, M5_penny_washer];
-M6_washer       = ["M6",       6,  12.5, 1.5, false, 10.6,  9.9, 1.6, M6_penny_washer];
+M6_washer       = ["M6",       6,  12.5, 1.5, false, 10.6,  9.9, 1.9, M6_penny_washer];
 M8_washer       = ["M8",       8,  17,   1.6, false, 13.8, 12.7, 2.0, M8_penny_washer];
 toggle_washer   = ["toggle",   6.1,12,   0.6, false, 10,      0,   0, undef];
 

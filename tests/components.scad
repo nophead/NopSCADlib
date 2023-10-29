@@ -55,6 +55,10 @@ module components() {
 
     translate([0, 130])
         al_clad_resistors();
+
+    translate([80, 10])
+        multiwatt11("L6203");
+
 }
 
 if($preview)

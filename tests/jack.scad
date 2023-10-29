@@ -32,6 +32,9 @@ module jacks() {
 
     translate([60, 0])
         post_4mm("red",3);
+
+    translate([80, 0])
+        power_jack(3);
 }
 
 if($preview)

@@ -33,7 +33,7 @@ module rounded_corner(r, h, r2, ir = 0) { //! 2D version
 
             translate([r - r2 - ir, h - r2])
                 intersection() {
-                    circle4n(r2, $fs = 0.2);
+                    circle4n(r2);
 
                     square(r2);
                 }

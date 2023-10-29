@@ -29,6 +29,8 @@ include <tubings.scad>
 include <spades.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/dogbones.scad>
+use <../utils/sweep.scad>
+use <../utils/rounded_polygon.scad>
 
 function resistor_length(type)        = type[2]; //! Body length
 function resistor_diameter(type)      = type[3]; //! Body diameter
@@ -45,6 +47,7 @@ module resistor(type) { //! Draw specified type of resistor
     length = resistor_length(type);
     dia = resistor_diameter(type);
 
+    $fa = fa; $fs = fs;
     vitamin(str("resistor(", type[0], "): ", type[1]));
     //
     // wires
@@ -54,9 +57,9 @@ module resistor(type) { //! Draw specified type of resistor
             for(side= [-1,1])
                 translate([side *  dia / 6, 0, length / 2])
                     rotate([0, splay_angle * side, 0])
-                        cylinder(r = resistor_wire_diameter(type) / 2, h = resistor_wire_length(type), center = false, $fn = 16);
+                        cylinder(r = resistor_wire_diameter(type) / 2, h = resistor_wire_length(type), center = false, $fn = fn);
         else
-            cylinder(r = resistor_wire_diameter(type) / 2, h = length + 2 * resistor_wire_length(type), center = true, $fn = 16);
+            cylinder(r = resistor_wire_diameter(type) / 2, h = length + 2 * resistor_wire_length(type), center = true, $fn = fn);
     //
     // Sleeving
     //
@@ -66,7 +69,7 @@ module resistor(type) { //! Draw specified type of resistor
                 for(side= [-1, 1])
                     translate([side *  resistor_diameter(type) / 6, 0, length / 2]) {
                         rotate([0, splay_angle * side, 0])
-                            cylinder(r = resistor_wire_diameter(type) / 2 + 0.1, h = resistor_wire_length(type) - 5, center = false, $fn = 16);                   }
+                            cylinder(r = resistor_wire_diameter(type) / 2 + 0.1, h = resistor_wire_length(type) - 5, center = false, $fn = fn);                   }
     //
     // Body
     //
@@ -88,6 +91,8 @@ module resistor(type) { //! Draw specified type of resistor
 module sleeved_resistor(type, sleeving, bare = 5, heatshrink = false) { //! Draw a resistor with sleeved leads and option heatshrink
     resistor(type);
     sleeving_length = resistor_wire_length(type) - bare;
+
+    $fa = fa; $fs = fs;
 
     for(side= [-1,1])
         if(resistor_radial(type)) {
@@ -145,6 +150,8 @@ module al_clad_resistor(type, value, leads = true) { //! Draw an aluminium clad 
     terminal_l = 5;
 
     body = al_clad_vpitch(type) - 2 * al_clad_clearance(type);
+
+    $fa = fa; $fs = fs;
 
     color("silver") {
         rotate([90, 0, 90])
@@ -223,6 +230,8 @@ module  TO220(description, leads = 3, lead_length = 16) { //! Draw a TO220 packa
 
     vitamin(str("TO220(\"", description, "\"", arg(leads, 3, "leads"), "): ", description));
 
+    $fa = fa; $fs = fs;
+
     translate([0, -s.y + TO220_hole_y]) {
         color("silver")
             linear_extrude(TO220_thickness())
@@ -274,6 +283,8 @@ module  TO247(description, lead_length = 20) { //! Draw a TO247 package, use `de
     lead_pitch = 5.56;
 
     vitamin(str("TO247(\"", description, "\"): ", description));
+
+    $fa = fa; $fs = fs;
 
     module body_shape()
         difference() {
@@ -330,6 +341,102 @@ module  TO247(description, lead_length = 20) { //! Draw a TO247 package, use `de
         children();
 }
 
+module multiwatt11(part_no, tail = 3) { //! Draw a MULTIWATT11 package
+    A = 5;                  // Body thickness, name from datasheet
+    B = 2.65;               // Lead offset from heatsink face
+    C = 1.6;                // Metal tab thickness
+    D = 1;                  // Straight section of leads before bend
+    E = (0.49 + 0.55) / 2;  // Lead thickness
+    F = (0.88 + 0.95) / 2;  // Lead width
+    G = 1.7;                // Lead pitch
+    H = 20;                 // Body width
+    L2 = (17.4 +18.1) / 2;  // Height of hole above the PCB
+    L3 = 17.5;              // Height from base to tab
+    L4 = 10.7;              // height of plastic part
+    L7 = (2.65 + 2.9) / 2;  // Distance of hole from the top
+    M = 4.3;                // Back leads from heatsink
+    M1 = 5.08;              // Back leass to front leads
+    S = (1.9 + 2.6) / 2;    // Chamfer
+    Dia = (3.65 + 3.85) / 2;// Hole diameter
+    inset = 1;              // Metal inset from plastic
+    draft = 7;              // 7 degree body draft angle
+    leads = 11;             // Number of leads
+    h = L2 + L7;            // Total height above PCB
+    z = h - L3;             // Height of base above PCB
+    dimple_d = 2.7;         // Half round dimples in the sides
+    tab_h = L3 - L4;
+    tan = tan(draft);
+    lead_r = E;
+    rotate([90, 0, 0]) {
+        color(silver) {
+            linear_extrude(C)
+                union() {
+                    translate([-H / 2 + inset, z + inset + 0.2])
+                        square([H - 2 * inset, L4]);
+
+                    difference() {
+                        hull() {
+                            translate([-H / 2, z + L4])
+                                square([H, tab_h - S]);
+
+                            translate([-H / 2 + S, z + L4])
+                                square([H - 2 * S, tab_h]);
+                        }
+                        translate([0, h - L7])
+                            circle(d = Dia);
+                    }
+                }
+                $fs = fs;
+                $fa = fa;
+                M2 = M + M1;
+                front_path = [for(p = rounded_polygon([
+                                    [-B,            z,           0],
+                                    [-B - lead_r,   z - D,        lead_r],
+                                    [-M2 + lead_r,  h - L7 - L2, -lead_r],
+                                    [-M2,           h - L7 - L2 - tail, 0],
+                                ])) [0, p.y, -p.x]];
+
+                back_path = [for(p = rounded_polygon([
+                                    [-B,            z,           0],
+                                    [-B - lead_r,   z - D,        lead_r],
+                                    [-M + lead_r,   h - L7 - L2, -lead_r],
+                                    [-M,            h - L7 - L2 - tail,  0],
+                                ])) [0, p.y, -p.x]];
+                profile = rectangle_points(F, E);
+                for(i = [0 : leads - 1])
+                    translate([(i - (leads - 1) / 2) * G, 0, -E / 2])
+                        sweep((i % 2) ? back_path : front_path, profile);
+            }
+
+        color("dimgrey")
+            difference() {
+                s = B * tan;
+                s2 = (A - B) * tan;
+                hull() {
+                    translate([-H / 2 - C * tan, z + s, eps])
+                        cube([H + 2 * C * tan, L4 - s, eps]);
+
+                    translate([-H / 2, z, B])
+                        cube([H, eps, eps]);
+
+                    translate([-H / 2 + s2, z + s2, A - eps])
+                        cube([H - 2 * s2, L4 - (A - C) * tan, eps]);
+                }
+                for(side = [-1,1])
+                    translate([side * (H / 2 + s2), z + 4.5, C - eps])
+                        cylinder(d = dimple_d, h = A - C + 2 * eps);
+            }
+
+        color("white")
+            translate([0, z + L4 / 2, A])
+                linear_extrude(eps)
+                    resize([H * 0.7, 0], auto = true)
+                        text(part_no, halign = "center", valign = "center");
+
+
+    }
+}
+
 panel_USBA_pitch = 30;
 
 module panel_USBA_hole_positions() //! Place children at hole positions
@@ -376,6 +483,8 @@ module panel_USBA() { //! Draw a panel mount USBA connector
     v_flange_l = 3.8;
     tongue_w = 10;
     tongue_t = 1.3;
+
+    $fa = fa; $fs = fs;
 
     vflip() {
         color("dimgrey")  {
@@ -491,6 +600,8 @@ module thermal_cutout(type) { //! Draw specified thermal cutout
     bl = tc_body_length(type);
     spade = spade6p4;
 
+    $fa = fa; $fs = fs;
+
     color("silver") {
         linear_extrude(tc_thickness(type))
             difference() {
@@ -549,6 +660,8 @@ module fack2spm() { //! Draw a FACK2SPM Cat5E RJ45 shielded panel mount coupler
     plug_y = y_offset - socket.y / 2 + 4 + plug.y / 2;
     tab1 = [4, 3];
     tab2 = [6.3, 1.6];
+
+    $fa = fa; $fs = fs;
 
     module socket()
         translate([0, y_offset])

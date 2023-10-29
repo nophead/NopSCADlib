@@ -24,6 +24,7 @@ include <../utils/core/core.scad>
 use <../utils/sweep.scad>
 use <../utils/rounded_polygon.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/round.scad>
 use <../utils/pcb_utils.scad>
 use <../utils/bezier.scad>
 
@@ -44,7 +45,8 @@ module lead_positions(p, z) {
 }
 
 module radial_lead(start, end, z, tail, lead) {
-    profile = is_list(lead) ? rectangle_points(lead.x , lead.y) :  let($fn = 16) circle_points(lead / 2);
+    $fn = fn;
+    profile = is_list(lead) ? rectangle_points(lead.x , lead.y) : circle_points(lead / 2);
     color(silver)
         if(start == end)
             translate([start.x, start.y, -tail])
@@ -66,25 +68,24 @@ module radial_lead(start, end, z, tail, lead) {
 
 module radial_leads(ap, p, z, d, tail)
     color(silver) {
-         let($fn = 16) {
-            lead_positions(p, 0)
-                solder(d / 2);
+        $fn = fn;
+        lead_positions(p, 0)
+            solder(d / 2);
 
-            if(p != ap) {
-                assert(!is_list(p), "Bending four leads not supported yet");
-                dz = d;
-                dx = p / 2 - ap / 2;
-                path = [[0, z, 0], [0, z - dz, 0], [dx, dz, 0], [dx, 0, 0]];
-                rpath = concat(bezier_path(path, 20), [[dx, -tail, 0]]);
-                lead_positions(ap, 0)
-                    rotate([90, 0, 90 * -$x + 90])
-                        sweep(rpath, circle_points(d / 2));
-            }
-            else
-                lead_positions(p, -tail)
-                     rotate(90)
-                        cylinder(d = d, h = tail + z);
+        if(p != ap) {
+            assert(!is_list(p), "Bending four leads not supported yet");
+            dz = d;
+            dx = p / 2 - ap / 2;
+            path = [[0, z, 0], [0, z - dz, 0], [dx, dz, 0], [dx, 0, 0]];
+            rpath = concat(bezier_path(path, 20), [[dx, -tail, 0]]);
+            lead_positions(ap, 0)
+                rotate([90, 0, 90 * -$x + 90])
+                    sweep(rpath, circle_points(d / 2));
         }
+        else
+            lead_positions(p, -tail)
+                 rotate(90)
+                    cylinder(d = d, h = tail + z);
     }
 
 module rd_xtal(type, value, z = 0, pitch = undef, tail = 3) { //! Draw a crystal
@@ -97,18 +98,17 @@ module rd_xtal(type, value, z = 0, pitch = undef, tail = 3) { //! Draw a crystal
     d = rd_xtal_lead_d(type);
     r2 = 0.2;
 
+    $fs = fs; $fa = fa;
     color(silver) {
         translate_z(z) {
             if(s.y) {
-                $fn = 32;
                 rounded_rectangle([s.x, s.y, s.z - r2], r);
 
                 translate_z(s.z - r2)
                     rounded_top_rectangle([s.x, s.y, r2], r, r2);
             }
             else
-                let($fn = 32)
-                    rounded_cylinder(r = s.x / 2, h = s.z, r2 = r2);
+                rounded_cylinder(r = s.x / 2, h = s.z, r2 = r2);
 
             if(f) {
                 rounded_rectangle([s.x + 2 * f.x, s.y + 2 * f.x, f[1]], r + f.x);
@@ -154,32 +154,21 @@ function rd_module_pin_posns(type) = type[6]; //! list of pin positions
 module rd_module(type, value) { //! Draw a PCB mounted potted module, e.g. PSU or relay
     vitamin(str("rd_module(", type[0], ", \"", value, "\"): ", rd_module_kind(type), " ", type[0], " / ", value));
 
+    $fs = fs; $fa = fa;
     r = rd_module_radius(type);
     size = rd_module_size(type);
     pin = rd_module_pin_size(type);
     color(rd_module_colour(type))
-        hull() {
-            rounded_rectangle([size.x, size.y, eps], r);
-            c = [size.x / 2 - r, size.y / 2 - r, size.z - r];
-
-            translate(c)
-                sphere(r);
-
-            translate([-c.x, c.y, c.z])
-                sphere(r);
-
-            translate([c.x, -c.y, c.z])
-                sphere(r);
-
-            translate([-c.x, -c.y, c.z])
-                sphere(r);
-       }
+        rounded_top_rectangle(size, r, r);
 
     color(silver)
         for(pos = rd_module_pin_posns(type))
             translate(pos) {
                 translate_z(-pin.z / 2)
-                    cube(pin, center = true);
+                    if(pin.y)
+                        cube(pin, center = true);
+                    else
+                        cylinder(d = pin.x, h = pin.z, center = true);
 
                 solder();
             }
@@ -214,6 +203,7 @@ module rd_disc(type, value, pitch = undef, z = 0, tail = 3) { //! Draw a radial 
     pitch = is_undef(pitch) ? opitch : pitch;
     lead_d = rd_disc_lead_d(type);
 
+    $fs = fs; $fa = fa;
     lead_positions = [for(side = [-1,1]) [-side * opitch.x / 2, side * opitch.y / 2]];
 
     r = size / 2;
@@ -233,7 +223,7 @@ module rd_disc(type, value, pitch = undef, z = 0, tail = 3) { //! Draw a radial 
             r = lead_d[1] / 2;
             rl = lead_d[0] / 2;
             h = size.z - size.x / 2;
-            for(p = lead_positions, $fn = 16)
+            for(p = lead_positions)
                 translate([p.x, p.y, z + r]) {
                     dy = (size.y / 2 - r - 0.1) * sign(-p.x);
 
@@ -269,6 +259,7 @@ module rd_transistor(type, value, kind = "Transistor", lead_positions = undef, z
     size = rd_transistor_size(type);
     colours = rd_transistor_colours(type);
 
+    $fs = fs; $fa = fa;
     translate_z(z) {
         if(type[0] == "TO92") {
             color(colours[0])
@@ -320,5 +311,85 @@ module rd_transistor(type, value, kind = "Transistor", lead_positions = undef, z
         end = lead_positions[i];
 
         radial_lead(start, end, z, tail, lead);
+    }
+}
+
+function rd_electrolytic_size(type)    = type[1]; //! Diameter, crimp diameter, height
+function rd_electrolytic_radius(type)  = type[2]; //! Corner radius
+function rd_electrolytic_crimp(type)   = type[3]; //! Width and height of crimp
+function rd_electrolytic_lead_d(type)  = type[4]; //! Lead diameter
+function rd_electrolytic_pitch(type)   = type[5]; //! Lead pitch
+function rd_electrolytic_colours(type) = type[6]; //! Colour of jacket and stripe
+
+module rd_electrolytic(type, value, pitch = undef, z = 0, tail = 3) { //! Draw a radial electrolytic capcacitor
+    vitamin(str("rd_electrolytic(", type[0], ", \"", value, "\"): Electolytic capacitor ", type[0], " ", value));
+
+    size = rd_electrolytic_size(type);
+    crimp = rd_electrolytic_crimp(type);
+    colours = rd_electrolytic_colours(type);
+    opitch = rd_electrolytic_pitch(type);
+    pitch = is_undef(pitch) ? opitch : pitch;
+    lead_d = rd_electrolytic_lead_d(type);
+    jacket_t = 0.2;
+    jacket_ir = size.x * 5 / 16;
+    cross = 0.2 / sqrt(2);
+
+    $fs = fs; $fa = fa;
+    radial_leads(opitch, pitch, z + jacket_t, lead_d, tail);
+
+    x = (size.x - size.y) / 2;
+    h = crimp[0] / 2;
+    r = (h / x - x) / 2;
+
+    stripe_angle = 50;
+
+    module profile()
+        difference() {
+            round(rd_electrolytic_radius(type))
+                difference() {
+                    square([size.x / 2, size.z]);
+
+                    translate([size.x / 2 - x + r, crimp.y])
+                        circle(r);
+                }
+
+            square([jacket_ir, size.z]);
+        }
+
+    translate_z(z) {
+        color(colours[0])
+            rotate(stripe_angle / 2)
+                rotate_extrude(angle = 360 - stripe_angle)
+                    profile();
+
+        color(colours[1]) {
+            rotate(-stripe_angle / 2)
+                rotate_extrude(angle = stripe_angle)
+                    profile();
+
+                z0 = crimp.y + crimp.x / 2;
+                translate_z((size.z + z0) / 2)
+                    cylindrical_wrap(size.x / 2)
+                        rotate(-90)
+                           resize([(size.z - z0) * 0.9, 0], auto = true)
+                                text(value, halign = "center", valign = "center");
+
+        }
+
+        color(silver)
+            translate_z(size.z - 1)
+                render() difference() {
+                    cylinder(r = jacket_ir, h = 1 - jacket_t);
+
+                    translate_z(1 - jacket_t)
+                        for(a = [0, 90])
+                            rotate([45, 0, a])
+                                cube([size.x, cross, cross], center = true);
+
+                }
+
+        color(grey(30))
+            translate_z(jacket_t)
+                cylinder(r = jacket_ir, h = eps);
     }
 }

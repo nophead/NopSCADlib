@@ -65,6 +65,8 @@ module geared_stepper(type) { //! Draw the specified geared stepper
     bulge2 = gs_bulge2(type);
     wires = gs_wires(type);
 
+    $fa = fa; $fs = fs;
+
     // Gearbox
     color(motor.y ? gearbox_colour : motor_colour) {
         difference() {

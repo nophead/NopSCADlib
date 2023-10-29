@@ -76,6 +76,8 @@ module display(type) { //! Draw specified display
     aperture = display_aperture(type);
     ts = display_touch_screen(type);
 
+    $fa = fa; $fs = fs;
+
     not_on_bom() {
         translate_z(display_ts_thickness(type)) {
             difference() {

@@ -49,8 +49,14 @@ squeezed_wall = $preview ? 2 * extrusion_width - layer_height * (1 - PI / 4)
 
 inf = 1e10;      // very big
 eps = 1/128;     // small fudge factor to stop CSG barfing on coincident faces.
-$fa = 6;
-$fs = extrusion_width / 2;
+
+fa = is_undef($vitamin_fa) ? 6    : $vitamin_fa;          // Used for drawing vitamins, rather than printing.
+fs = is_undef($vitamin_fs) ? 0.25 : $vitamin_fs;
+fn = 32;
+
+$fa = $fa == 12 ? 6 : $fa;          // Defaults for printing
+$fs = $fs == 2 ? extrusion_width / 2 : $fs;
+
 
 // Some additional named colours
 silver           = [0.75, 0.75, 0.75];

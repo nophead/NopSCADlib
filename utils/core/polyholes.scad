@@ -110,8 +110,8 @@ module poly_drill(r, h = 100, center = true) //! Make a cylinder for drilling ho
 //
 // Horizontal slot
 //
-module slot(r, l, h = 100) //! Make a horizontal slot suitable for CNC routing, set h = 0 for 2D version
-    extrude_if(h)
+module slot(r, l, h = 100, center = false) //! Make a horizontal slot suitable for CNC routing, set h = 0 for 2D version
+    extrude_if(h, center)
         hull() {
             translate([l / 2,0])
                 drill(r, 0);

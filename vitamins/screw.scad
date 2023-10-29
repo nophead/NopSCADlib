@@ -105,6 +105,8 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     pitch = metric_coarse_pitch(thread_d);
     colour = nylon || head_type == hs_grub ? grey(40) : grey(80);
 
+    $fs = fs; $fa = fa;
+
     module shaft(socket = 0, headless = false) {
         point = screw_nut(type) ? 0 : 3 * shaft_rad;
         shank  = length - socket - (has_shoulder ? 0 : thread);
@@ -297,6 +299,23 @@ module screw_countersink(type, drilled = true) { //! Countersink shape
 
                     cylinder(h = head_height + eps, r = head_rad + eps);
                 }
+}
+
+module screw_tearsink(type) { //! Countersink shape for horizontal holes
+    head_type   = screw_head_type(type);
+    head_rad    = screw_head_radius(type);
+    rad = screw_radius(type);
+    head_t = rad / 5;
+    head_height = head_rad - rad + head_t;
+
+    if(head_type == hs_cs || head_type == hs_cs_cap)
+        translate_z(-head_height)
+            hull() {
+                teardrop_plus(h = eps, r = rad, center = false);
+
+                translate_z(head_height - head_t)
+                    teardrop_plus(h = head_t + eps, r = head_rad, center = false);
+            }
 }
 
 function screw_polysink_r(type, z) = //! Countersink hole profile corrected for rounded staircase extrusions.

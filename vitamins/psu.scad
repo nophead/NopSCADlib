@@ -103,6 +103,8 @@ module psu(type) { //! Draw a power supply
     faces = psu_faces(type);
     left = psu_left_bay(type);
     right = psu_right_bay(type);
+    $fa = fa; $fs = fs;
+
     if(len(faces) < 2)
         translate_z(h / 2)
             color("silver") cube([l, w, h], center = true);

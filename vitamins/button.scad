@@ -29,13 +29,14 @@ function square_button_wall(type)         = type[3];  //! Offset of the metal pa
 function square_button_rivit(type)        = type[4];  //! Size of the corner rivets
 function square_button_d(type)            = type[5];  //! Button diameter
 function square_button_h(type)            = type[6];  //! Height of the button above the PCB
-function square_button_cap_flange_d(type) = type[7];  //! Diameter of the flange of the cap
-function square_button_cap_d(type)        = type[8];  //! Diameter of the body of the cap
-function square_button_cap_h(type)        = type[9];  //! Height of the cap including the stem
-function square_button_cap_stem(type)     = type[10]; //! Length of the cap stem
-function square_button_cap_flange_h(type) = type[11]; //! Height of the cap flange
+function square_button_ra_z(type)         = type[7];  //! Height of button centre above the PCB for right_angle version
+function square_button_cap_flange_d(type) = type[8];  //! Diameter of the flange of the cap
+function square_button_cap_d(type)        = type[9];  //! Diameter of the body of the cap
+function square_button_cap_h(type)        = type[10]; //! Height of the cap including the stem
+function square_button_cap_stem(type)     = type[11]; //! Length of the cap stem
+function square_button_cap_flange_h(type) = type[12]; //! Height of the cap flange
 
-module square_button(type, colour = "yellow") { //! Draw square button with specified cap colour if it has a cap
+module square_button(type, colour = "yellow", right_angle = false) { //! Draw square button with specified cap colour if it has a cap
     w = square_button_width(type);
     flange_d = square_button_cap_flange_d(type);
     vitamin(str("square_button(", type[0], flange_d ? str(", \"", colour, "\"") : "", "): Square button ", w, "mm",
@@ -45,30 +46,39 @@ module square_button(type, colour = "yellow") { //! Draw square button with spec
     rivit = square_button_rivit(type);
     pitch = (w/ 2 - wall - rivit * 0.75);
     stem = square_button_cap_stem(type);
+    ra_z = square_button_ra_z(type);
 
-    color(grey(20)) {
-        rounded_rectangle([w, w, h - 0.5], r = wall);
+    $fa = fa; $fs = fs;
 
-        for(x = [-1, 1], y = [-1, 1])
-            translate([x * pitch, y * pitch])
-                cylinder(d = rivit, h = h);
+    translate(right_angle ? [0, 0, ra_z] : [0, 0])
+        rotate([right_angle ? -90 : 0, 0, 0]) {
+        color(grey(20)) {
+            rounded_rectangle([w, w, h - 0.5], r = wall);
 
-        cylinder(d = square_button_d(type), h = square_button_h(type));
-    }
+            for(x = [-1, 1], y = [-1, 1])
+                translate([x * pitch, y * pitch])
+                    cylinder(d = rivit, h = h);
 
-    color("silver")
-        translate_z(h - 0.5)
-            rounded_rectangle([w - 2 * wall, w - 2 * wall, 0.2], r = wall, center = true);
+            d =  square_button_d(type);
+            bh = square_button_h(type) - h + 0.5;
+            translate_z(h - 0.5)
+                cylinder(d1 = d, d2 = bh > 1.5 ? d - 0.5 : d, h = bh);
+        }
 
-    if(flange_d)
-        translate_z(square_button_h(type))
-            color(colour) rotate_extrude() {
-                square([square_button_d(type) / 2, stem]);
+        color("silver")
+            translate_z(h - 0.5)
+                rounded_rectangle([w - 2 * wall, w - 2 * wall, 0.2], r = wall, center = true);
 
-                translate([0, stem]) {
-                    square([flange_d / 2, square_button_cap_flange_h(type)]);
+        if(flange_d)
+            translate_z(square_button_h(type))
+                color(colour) rotate_extrude() {
+                    square([square_button_d(type) / 2, stem]);
 
-                    rounded_corner(r = square_button_cap_d(type) / 2, h = square_button_cap_h(type) - stem, r2 = 0.5);
+                    translate([0, stem]) {
+                        square([flange_d / 2, square_button_cap_flange_h(type)]);
+
+                        rounded_corner(r = square_button_cap_d(type) / 2, h = square_button_cap_h(type) - stem, r2 = 0.5);
+                    }
                 }
-            }
+    }
 }

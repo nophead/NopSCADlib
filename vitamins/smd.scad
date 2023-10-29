@@ -59,7 +59,7 @@ module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified `colou
 
     lens = smd_led_lens(type);
     r = size.y * 0.32;
-    $fn = 32;
+    $fn = fn;
 
     if(cutout)
         poly_drill(r = 2.85 / 2, h = 100, center = false); // For lightguide made from transparent PLA filament
@@ -174,7 +174,7 @@ module smd_sot(type, value) { //! Draw an SMD transistor
     ls = smd_sot_lead_size(type);
 
     r = ls.z;
-    gullwing = rounded_path([[0, 0, ls.z / 2], [0, ls.y - ls.z, ls.z / 2], r, [0, ls.y -ls.z + z1 - ls.z, z1 - ls.z / 2], r, [0, span / 2, z1 - ls.z / 2]], $fn = 32);
+    gullwing = rounded_path([[0, 0, ls.z / 2], [0, ls.y - ls.z, ls.z / 2], r, [0, ls.y -ls.z + z1 - ls.z, z1 - ls.z / 2], r, [0, span / 2, z1 - ls.z / 2]], $fn = fn);
 
     color(grey(20))
         hull()
@@ -217,11 +217,16 @@ module smd_soic(type, value) { //! Draw an SMD SOIC
     slant = 5;                              //! 5 degree body draft angle
     pitch = smd_soic_lead_pitch(type);
     span = (smd_soic_lead_span(type) / 2);
-    leads = floor(size.x / pitch) + 1;
     ls = smd_soic_lead_size(type);
+    leads = floor((size.x - ls.x) / pitch) + 1;
 
     r = ls.z;
-    gullwing = rounded_path([[0, 0, ls.z / 2], [0, ls.y - ls.z, ls.z / 2], r, [0, ls.y -ls.z + z1 - ls.z, z1 - ls.z / 2], r, [0, span / 2, z1 - ls.z / 2]], $fn = 32);
+    gullwing = rounded_path([
+        [0, 0,                          ls.z / 2],
+        [0, ls.y - r,                   ls.z / 2], r,
+        [0, span - size.y / 2 - r, z1 - ls.z / 2], r,
+        [0, span,                  z1 - ls.z / 2]
+    ], $fn = fn);
 
     color(grey(20))
         hull()
@@ -235,9 +240,8 @@ module smd_soic(type, value) { //! Draw an SMD SOIC
                 sweep(gullwing, rectangle_points(ls.x, ls.z));
 
         rotate(180)
-            translate([0, -span / 2])
-                translate([i * pitch - size.x / 2 + (size.x - (leads - 1) * pitch) / 2, -span / 2])
-                    sweep(gullwing, rectangle_points(ls.x, ls.z));
+            translate([i * pitch - size.x / 2 + (size.x - (leads - 1) * pitch) / 2, -span])
+                sweep(gullwing, rectangle_points(ls.x, ls.z));
         }
 
     }
@@ -296,7 +300,7 @@ module smd_diode(type, value) { //! Draw an SMD diode
     color(silver)
         translate_z(z1 / 2)
             rotate([90, 0, 0])
-                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = 32)
+                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = fn)
                     difference() {
                         rounded_square([leads.x, z1], 2 * leads.z);
 
@@ -364,7 +368,7 @@ module smd_tant(type, value) { //! Draw an SMD tantalum capacitor
     color(silver)
         translate_z(z1 / 2)
             rotate([90, 0, 0])
-                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = 32)
+                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = fn)
                     difference() {
                         rounded_square([leads.x, z1], 2 * leads.z);
 
@@ -394,8 +398,10 @@ module smd_inductor(type, value) { //! Draw an SMD inductor
     gap = leads[3];
     gap2 = gap - leads.z * 2;
 
+    $fs = fs; $fa = fa;
+
     color(smd_inductor_colour(type))
-        difference() {
+        render() difference() {
             translate_z(z0)
                 rounded_rectangle(size, 0.5);
 
@@ -413,7 +419,7 @@ module smd_inductor(type, value) { //! Draw an SMD inductor
     color(silver)
         translate_z(z1 / 2)
             rotate([90, 0, 0])
-                linear_extrude(leads.y, center = true, convexity = 3)  let($fn = 32)
+                linear_extrude(leads.y, center = true, convexity = 5) let($fn = fn)
                     difference() {
                         rounded_square([leads.x, z1], 2 * leads.z);
 
@@ -453,6 +459,8 @@ module smd_pot(type, value) { //! Draw an SMD pot
     track_or = size.x * 0.48;
     track_ir = track_or * 0.6;
 
+    $fs = fs; $fa = fa;
+
     color(grey(90))
         translate_z(size.z / 2)
             cube(size, center = true);
@@ -486,7 +494,7 @@ module smd_pot(type, value) { //! Draw an SMD pot
                     ]);
                     r = (wiper_r4 - wiper_r5) / 2;
                     translate([wiper_r5 + r, size.z + wiper_t])
-                        circle(r, $fn = 16);
+                        circle(r, $fn = fn);
                 }
 
                 translate_z(size.z + wiper_t)
@@ -540,7 +548,8 @@ module smd_coax(type) { //! Draw an SMD coaxial connector
     pin_r = smd_coax_pin_d(type) / 2;
     lug = smd_coax_lug_size(type);
     contact = smd_contact_size(type);
-    $fn = 64;
+
+    $fs = fs; $fa = fa;
 
     color(grey(90))
         translate_z(eps)
@@ -562,10 +571,10 @@ module smd_coax(type) { //! Draw an SMD coaxial connector
         }
         hull() {
             translate_z(t.z - pin_r)
-                sphere(pin_r);
+                sphere(pin_r, $fn = fn);
 
             translate_z(0.1)
-                cylinder(r = pin_r, h = eps);
+                cylinder(r = pin_r, h = eps, $fn = fn);
         }
 
         for(side = [-1, 1])
@@ -606,7 +615,7 @@ module smd_qfp(type, value) { //! Draw and SMD QFP package
     r1 = g[2]; // top radius
     r2 = g[3] + pin.z / 2; // bottom radius
     pz = -size.z / 2 + pin.z / 2;
-    gullwing = rounded_path([[-1, 0, 0], [s, 0, 0], r1, [pin.x - l + r2, 0, pz], r2, [pin.x, 0, pz]], $fn = 32);
+    gullwing = rounded_path([[-1, 0, 0], [s, 0, 0], r1, [pin.x - l + r2, 0, pz], r2, [pin.x, 0, pz]], $fn = fn);
 
     color(grey(20))
         hull() {
@@ -640,6 +649,6 @@ module smd_qfp(type, value) { //! Draw and SMD QFP package
                     text(value, halign = "center", valign = "center");
 
                 translate([(-(pins / 4 - 1) * pitch) / 2, (-(pins / 4 - 1) * pitch) / 2])
-                    circle(r = pin.y, $fn = 32);
+                    circle(r = pin.y, $fn = fn);
             }
 }

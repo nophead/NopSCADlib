@@ -32,6 +32,8 @@ function ziptie_tail(type)      = type[5]; //! The length without teeth
 
 module ziptie(type, r = 5, t = 0) //! Draw specified ziptie wrapped around radius `r` and optionally through panel thickness `t`
 {
+    $fa = fa; $fs = fs;
+
     latch = ziptie_latch(type);
     zt = ziptie_thickness(type);
     lx = min(latch.x / 2, r + zt / 2);

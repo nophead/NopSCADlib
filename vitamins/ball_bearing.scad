@@ -52,7 +52,7 @@ module ball_bearing(type) { //! Draw a ball bearing
     fw = bb_flange_width(type);
 
     color("silver") {
-        $fn = 360;
+        $fa = fa; $fa = fs;
 
         rotate_extrude()
             hull() {
@@ -95,5 +95,6 @@ module ball_bearing(type) { //! Draw a ball bearing
 
 module bearing_ball(dia) { //! Draw a steel bearing ball
     vitamin(str(" bearing_ball(", dia, "): Steel ball ", dia, "mm"));
+    $fa = fa; $fa = fs;
     color("silver") sphere(d = dia);
 }

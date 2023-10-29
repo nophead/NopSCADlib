@@ -43,6 +43,7 @@ use <radial.scad>
 use <smd.scad>
 use <terminal.scad>
 include <potentiometers.scad>
+use <component.scad>
 
 function pcb_name(type)         = type[1];  //! Description
 function pcb_length(type)       = type[2];  //! Length
@@ -60,6 +61,9 @@ function pcb_grid(type)         = type[13]; //! Grid origin if a perfboard
 function pcb_polygon(type)      = type[14]; //! Optional outline polygon for odd shaped boards
 function pcb_screw(type, cap = hs_cap) = Len(type[15]) ? type[15] : find_screw(cap, screw_smaller_than(pcb_hole_d(type))); //! Mounting screw type
 function pcb_size(type) = [pcb_length(type), pcb_width(type), pcb_thickness(type)]; //! Length, width and thickness in a vector
+
+function pcb(name, desc, size, corner_r = 0, hole_d = 0, land_d = 0, colour = "green", parts_on_bom = false, holes = [], components = [], accessories = [], grid = undef, polygon = undef, screw = undef) = //! Constructor
+             [name, desc, size.x, size.y, size.z, corner_r, hole_d, land_d, colour, parts_on_bom, holes, components, accessories, grid, polygon, screw ];
 
 function pcb_component(type, name, index = 0) = //! Return the component specified by name and index
     [for(component = pcb_components(type)) if(component[3] == name) component][index];
@@ -897,7 +901,7 @@ module terminal_35(ways, colour = "blue") { //! Draw 3.5mm terminal block
 
             }
             translate_z(box_z - pin_l)
-                cylinder(d = pin_d, h = pin_l + box_z, $fn = 16); // pin
+                cylinder(d = pin_d, h = pin_l + box_z, $fn = fn); // pin
 
             solder(pin_d / 2);
 
@@ -952,7 +956,7 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header
     above = 9;
     pin_w = 0.64;
     r = 1;
-    a = right_angle ? depth / 2 - r - pin_w / 2 : above;
+    a = right_angle ? depth / 2 - r : above;
     ra_offset = 2.2;
 
     color("white")
@@ -976,17 +980,27 @@ module molex_254(ways, right_angle = 0, skip = undef) { //! Draw molex KK header
         for(i = [0 : ways -1])
             if(is_undef(skip) || !in(skip, i))
                 translate([0, i * pitch - width / 2 + pitch / 2]) {
-                    translate_z((a + below) / 2 - below)
-                        cube([pin_w, pin_w, a + below], center = true);
+                    chamfer = pin_w / 2;
+                    l1 = a + below;
+                    translate_z(l1 / 2 - below)
+                        hull() {
+                            cube([pin_w, pin_w, l1 - 2 * chamfer], center = true);
+
+                            cube([pin_w - chamfer, pin_w - chamfer, l1], center = true);
+                        }
 
                     solder();
 
-                    l = above + ra_offset - r - pin_w / 2;
+                    l = above + ra_offset - r;
                     if(right_angle) {
-                        translate([-l / 2 - r - pin_w / 2, 0, depth / 2])
-                            cube([l, pin_w, pin_w], center = true);
+                        translate([-l / 2 - r, 0, depth / 2])
+                            hull() {
+                                cube([l - 2 * chamfer, pin_w, pin_w], center = true);
 
-                        translate([-r - pin_w / 2, 0, a])
+                                cube([l, pin_w - chamfer, pin_w - chamfer], center = true);
+                            }
+
+                        translate([-r - pin_w / 2, 0, a - pin_w / 2])
                             rotate([90, 0, 0])
                                 rotate_extrude(angle = 90)
                                     translate([r + pin_w / 2, 0])
@@ -1009,7 +1023,7 @@ module vero_pin(cropped = false) { //! Draw a vero pin
 
     color(silver) {
         translate_z(-l + above + collar_h)
-            cylinder(d = d, h = l, $fn = 32);
+            cylinder(d = d, h = l, $fn = fn);
 
         cylinder(d = collar_d, h = collar_h);
 
@@ -1089,10 +1103,11 @@ module block(size, colour, makes_cutout, cutouts, r = 0, rtop = 0) //! Draw a co
     }
     else
         color(colour)
-            if(rtop)
-                let($fn = 32) rounded_top_rectangle(size, r, rtop);
-            else
-                rounded_rectangle(size, r);
+            let($fs = fs, $fa = fa)
+                if(rtop)
+                    rounded_top_rectangle(size, r, rtop);
+                else
+                    rounded_rectangle(size, r);
 
 module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb component from description
     function show(comp, part) = (comp[3] == part || comp[3] == str("-",part)) && (!cutouts || angle == undef || angle == comp.z);
@@ -1131,6 +1146,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8), r = param(9, 0), rtop = param(10, 0));
         if(!cutouts) {
             // Components that don't have a cutout parameter go in this section
+            if(show(comp, "button"))        square_button(comp[4], param(6, "yellow"), param(5, false));
             if(show(comp, "button_6mm"))    square_button(button_6mm);
             if(show(comp, "button_4p5mm"))  square_button(button_4p5mm);
             if(show(comp, "microswitch"))   translate_z(microswitch_thickness(comp[4])/2) microswitch(comp[4]);
@@ -1143,11 +1159,12 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "gterm635"))      green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
             if(show(comp, "term35"))        terminal_35(comp[4], param(5,"blue"));
             if(show(comp, "transition"))    idc_transition(2p54header, comp[4], comp[5]);
-            if(show(comp, "led"))           translate_z(eps) led(comp[4], comp[5], 2.6);
+            if(show(comp, "led"))           let(z = param(6, 0)) translate_z(z + eps) led(comp[4], comp[5], 2.6 + z, param(7, 0));
             if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));
             if(show(comp, "ax_diode"))      ax_diode(type = comp[4], value = comp[5], pitch = param(6, 0));
             if(show(comp, "rd_xtal"))       rd_xtal(type = comp[4], value = param(5, undef), z = param(6, 0), pitch = param(7, undef)); // type, value, z, forced pitch
+            if(show(comp, "rd_electrolytic")) rd_electrolytic(type = comp[4], value = param(5, undef), z = param(6, 0), pitch = param(7, undef)); // type, value, z, forced pitch
             if(show(comp, "rd_disc"))       rd_disc(type = comp[4], value = param(5, undef), z = param(6, 0), pitch = param(7, inch(0.2))); // type, value, z, forced pitch
             if(show(comp, "rd_module"))     rd_module(type = comp[4], value = comp[5]);
             if(show(comp, "rd_transistor")) rd_transistor(type = comp[4], value = comp[5], lead_positions = param(6, undef), z = param(7, 5), kind = param(8,"Transistor"));
@@ -1172,8 +1189,9 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "smd_qfp"))       smd_qfp(comp[4], comp[5]);
             if(show(comp, "vero_pin"))      vero_pin(param(4, false));
             if(show(comp, "terminal"))      terminal_block(comp[5], comp[4]);
-            if(show(comp, "text"))          color("white") linear_extrude(eps) resize([comp[4], comp[5]]) text(comp[6], font = param(7, "Liberation Mono"), valign = "center", halign = "center");
-
+            if(show(comp, "multiwatt11"))   multiwatt11(comp[4], param(5, 3));
+            if(show(comp, "text"))          color(param(8, "white"))
+                                                linear_extrude(0.04) resize([comp[4], comp[5]], auto = true) text(comp[6], font = param(7, "Liberation Mono"), valign = "center", halign = "center");
         }
     }
 }
@@ -1251,6 +1269,8 @@ module pcb(type) { //! Draw specified PCB
     t = pcb_thickness(type);
     w = pcb_width(type);
     l = pcb_length(type);
+
+    $fs = fs; $fa = fa;
 
     module pcb_shape()
         if(Len(pcb_polygon(type)))

@@ -36,9 +36,14 @@ inlet_spades = [[spade6p4, 9, -7,  -5.5, 0],
                 [spade6p4, 9,  7,  -5.5, 0],
                 [spade6p4, 9,  0,   5.5, 0]];
 
+
 atx_spades = [[spade3p5, 8, -7,  -3, 90],
               [spade3p5, 8,  7,  -3, 90],
               [spade3p5, 8,  0,   3, 90]];
+
+yunpen_spades = [[spade4p8, 8, -6,  -3, 0],
+                 [spade4p8, 8,  6,  -3, 0],
+                 [spade4p8, 8,  0,   5, 0]];
 
 outlet_spades = [[spade4p8ll, 8, -7,  -2, 90],
                  [spade4p8ll, 8,  7,  -2, 90],
@@ -60,7 +65,8 @@ IEC_320_C14_switched_fused_inlet = ["IEC_320_C14_switched_fused_inlet", "IEC320 
 IEC_inlet       = ["IEC_inlet",       "IEC inlet",                   M3_cs_cap_screw, 40, 28, 18, 20, 3, 28,   20.5, 4, 2.5, 37,   23, 1, 2.5, 48, 14, inlet_spades,  false ];
 IEC_inlet_atx   = ["IEC_inlet_atx",   "IEC inlet for ATX",           M3_cs_cap_screw, 40, 27, 18, 19, 3, 30.5, 22,   2, 2.0, 30.5, 22, 2, 4.0, 50, 15, atx_spades,    false ];
 IEC_inlet_atx2  = ["IEC_inlet_atx2",  "IEC pressfit inlet for ATX",  M3_cs_cap_screw,  0, 27, 18, 19, 3, 30.5, 22,   1, 0,   30.5, 22, 1, 4.0, 50, 15, atx_spades,    false ]; // lugless
+IEC_yunpen      = ["IEC_yunpen",      "IEC inlet filtered",          M3_cs_cap_screw, 40, 29, 29, 21, 4, 30.2, 22,   3, 1.5, 29,   22.5,2,3.6, 50, 41, yunpen_spades, false, [32, 25, 0.8, 52] ]; // Canned filter
 IEC_outlet      = ["IEC_outlet",      "IEC outlet RS 811-7193",      M3_cs_cap_screw, 40, 32, 18, 24, 3, 28,   20.5, 2, 0.0, 29,   29, 2, 2.8, 50, 23, outlet_spades, true ];
 
-iecs = [IEC_inlet_atx2, IEC_inlet, IEC_inlet_atx, IEC_fused_inlet, IEC_fused_inlet2, IEC_320_C14_switched_fused_inlet, IEC_outlet];
+iecs = [IEC_inlet_atx2, IEC_inlet, IEC_inlet_atx, IEC_yunpen, IEC_fused_inlet, IEC_fused_inlet2, IEC_320_C14_switched_fused_inlet, IEC_outlet];
 use <iec.scad>

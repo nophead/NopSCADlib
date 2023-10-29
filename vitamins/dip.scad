@@ -92,6 +92,8 @@ module dil_socket(rows, w, pitch = inch(0.1)) {
     hole = [0.8, 0.5];
     pin_l = 3;
 
+    $fa = fa; $fs = fs;
+
     color(grey(20)) {
         linear_extrude(h)
             difference() {
@@ -174,6 +176,8 @@ module pdip(pins, part, socketed, w = inch(0.3), pitch = inch(0.1)) { //! Draw s
     length = k * pitch + pitch / 2;
     width = w - pitch / 2;
     height = 3;
+    $fa = fa; $fs = fs;
+
     if(socketed)
         dil_socket(n, w, pitch)
             dip(n, part, [length, width, height], w, pitch, pdip_pin);
