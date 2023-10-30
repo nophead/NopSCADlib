@@ -21,11 +21,6 @@ Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
 
 ![](EnviroPlus.png)
 
-## EnviroPlus
-Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
-
-![](EnviroPlus.png)
-
 ## FilamentDryBox
 A small fan oven with a spool holder to keep the filament warm and dry.
 
