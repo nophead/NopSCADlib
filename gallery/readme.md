@@ -4,6 +4,23 @@ Arduino thermostat to control a beer fridge to use it as an environmental chambe
 
 ![](ArduinoThermostat.png)
 
+## Blinder
+
+Tasmota roller blind open / close mechanism
+
+
+![](Blinder.png)
+
+## ClockSetter
+An IOT device for programming UK wireless clocks that are out of reach of the UK MSF time signal but are on UK time, e.g. in Tenerife.
+
+![](ClockSetter.png)
+
+## EnviroPlus
+Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
+
+![](EnviroPlus.png)
+
 ## EnviroPlus
 Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
 
@@ -19,7 +36,6 @@ Current state of HydraRaptor after being modified for laser engraving.
 
 ![](HydraBot.png)
 
-
 ## IOT 50V PSU
 WiFi controllable PSU
 
@@ -29,6 +45,11 @@ WiFi controllable PSU
 WiFi controllable programmable load
 
 ![](IOT_LOAD.png)
+
+## LED Box
+Indicator LEDs used to debug a Bosch diswasher problem.
+
+![](LED_box.png)
 
 ## Lab ATX PSU
 Bench power supply built around an ATX PSU.
@@ -70,15 +91,35 @@ Mains isolated and variable supply with metering.
 
 
 
+## MultiSwitch
+Multi Tasmota switch to replace 5 Sonoffs
+
+![](MultiSwitch.png)
+
+## MultiSwitch2
+Multi Tasmota switch to replace 5 Sonoffs
+
+![](MultiSwitch2.png)
+
 ## PSU Cover
 A base and shroud to make PSU safe to sit on a desk
 
 ![](PSU_cover.png)
 
+## PSU Tube
+12V power supply made in an aluminium tube for fire safety
+
+![](PSU_tube.png)
+
 ## PotBox
 Potentiometer box with course and fine controls and three 4mm binding posts
 
 ![](PotBox.png)
+
+## PowerBank
+LION powerbank with e-paper charge status display
+
+![](PowerBank.png)
 
 ## SunBot
 A solar tracker to keep a solar panel pointing at the sun.
