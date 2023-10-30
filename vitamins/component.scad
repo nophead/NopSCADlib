@@ -367,6 +367,9 @@ module multiwatt11(part_no, tail = 3) { //! Draw a MULTIWATT11 package
     tab_h = L3 - L4;
     tan = tan(draft);
     lead_r = E;
+
+    vitamin(str("multiwatt11(\"", part_no, "\"): MULTIWATT11 ", part_no));
+
     rotate([90, 0, 0]) {
         color(silver) {
             linear_extrude(C)

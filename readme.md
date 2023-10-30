@@ -924,6 +924,7 @@ Various electronic components used in hot ends and heated beds.
 |   1 | `TO220("Generic TO220 package")` |  Generic TO220 package |
 |   1 | `TO247("Generic TO247 package")` |  Generic TO247 package |
 |   8 | `tubing(HSHRNK32)` |  Heatshrink sleeving ID 3.2mm x 15mm |
+|   1 | `multiwatt11("L6203")` |  MULTIWATT11 L6203 |
 |   1 | `resistor(RWM04106R80J)` |  Resistor RWM04106R80J 6R8 3W vitreous enamel |
 |   1 | `resistor(RIE1212UB5C5R6)` |  Resistor UB5C 5R6F 5R6 3W vitreous enamel |
 |   1 | `al_clad_resistor(THS10, 4.7)` |  Resistor aluminium clad THS10 4.7 |
