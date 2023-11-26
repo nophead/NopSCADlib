@@ -1302,7 +1302,7 @@ Faston receptacles to mate with spade connectors
 | `faston_insul_crimp_l(type)` | Length of the insulation crimp |
 | `faston_insul_crimp_o(type)` | Offset of insulation crimp |
 | `faston_insul_crimp_p(type)` | Position of the tip of the insulation crimp |
-| `faston_size(type)` | Size of the receptical part |
+| `faston_size(type)` | Size of the receptacle part |
 | `faston_t(type)` | Thickness |
 | `faston_wall_h(type)` | Height of transition web wall |
 | `faston_width(type)` | Width of matching spade |

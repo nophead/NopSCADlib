@@ -75,7 +75,7 @@ module meter(type, colour = "red", value = "888", display_colour = false) //! Dr
             mirror([1, 0, 0])
                 translate([-size.x / 2 + 1, meter_pos(type)])
                     resize([size.x - 2, size.y - 2]) {
-                        text(value, font = "7 segment", valign = "center");
+                        text(value, font = "7 Segment", valign = "center");
 
                         square(eps);        // Tiny invisible pixel at the origin so numbers starting with 1 scale correctly.
                     }
