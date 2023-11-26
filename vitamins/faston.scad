@@ -24,7 +24,7 @@ include <../utils/core/core.scad>
 include <../utils/sector.scad>
 
 function faston_width(type)         = type[1];  //! Width of matching spade
-function faston_size(type)          = type[2];  //! Size of the receptical part
+function faston_size(type)          = type[2];  //! Size of the receptacle part
 function faston_d_top(type)         = type[3];  //! Radius of the clips
 function faston_d_bot(type)         = type[4];  //! Radius of bottom corners
 function faston_t(type)             = type[5];  //! Thickness
