@@ -2837,7 +2837,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(DuetE)` |  Duet 2 Ethernet electronics |
 |   1 | `pcb(Duex2)` |  Duex2 expansion board - not shown |
 |   1 | `pcb(Duex5)` |  Duex5 expansion board |
-|   1 | `pcb(ESP-01)` |  ESP-01 |
+|   1 | `pcb(ESP_01)` |  ESP-01 |
+|   1 | `pcb(ESP_01M)` |  ESP-01M WiFi module (ESP8285) |
 |   1 | `pcb(ESP_12F)` |  ESP-12F ESP8266 WiFi module |
 |   1 | `pcb(ESP_201)` |  ESP-201 ESP8266 WiFi module |
 |   1 | `pcb(ESP32_DOIT_V1)` |  ESP32 DOIT DEV KIT V1 |

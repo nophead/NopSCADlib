@@ -837,7 +837,7 @@ RAMPSEndstop = ["RAMPSEndstop", "RAMPS Endstop Switch",
     []];
 
 ESP_01 = [
-    "ESP-01", "ESP-01",
+    "ESP_01", "ESP-01",
     24.8, 14.6, 1, // size
     0, // corner radius
     0, // mounting hole diameter
@@ -868,7 +868,7 @@ ESP_01 = [
 // by Karl McMurdo (XrXca)
 //================================================
 ESP_01M = [
-    "ESP-01M", "ESP-01M WiFi module (ESP8285)",
+    "ESP_01M", "ESP-01M WiFi module (ESP8285)",
     18, 18, 0.8, // size
     0, // corner radius
     0, // mounting hole diameter
