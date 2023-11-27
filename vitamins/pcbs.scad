@@ -863,6 +863,42 @@ ESP_01 = [
     [2.8 - 1.27, 3.54, 2, 4, silver, 2.54, 2.54] // grid
 ];
 
+//================================================
+// ESP_01M WIFI Module
+// by Karl McMurdo (XrXca)
+//================================================
+ESP_01M = [
+    "ESP-01M", "ESP-01M WiFi module (ESP8285)",
+    18, 18, 0.8, // size
+    0, // corner radius
+    0, // mounting hole diameter
+    0, // pad around mounting hole
+    grey(25), // color
+    false, // true if parts should be separate BOM items
+    [], // hole positions
+    [ // components
+        [ 7.6,   9,  0, "chip", 8.5, 16.8, 2, "silver" ],
+        // edge connector
+        for (y = [ 2.6 : 1.6 : 16 ]) [ -16.8, -y,  0, "block", 2.4, 0.8,  0.05,  gold ],
+        for (y = [ 2.6 : 1.6 : 16 ]) [ -16.8, -y,  0, "-block", 2.4, 0.8,  0.05,  gold ],
+        // antenna
+        [ -2.6, 15.5, 0, "block", 4.7, 0.5, 0.05, gold ],
+        [ -2.6, 3.75, 0, "block", 4.7, 0.5, 0.05, gold ],
+        [ -2.6, 1.5, 0, "block", 4.7, 0.7, 0.05, gold ],
+        for ( y = [5.9,8.5,10.7,13.3] ) [ -1.9, y, 0, "block", 3.3, 0.5, 0.05, gold ],
+        [ -0.5, 14.4, 0, "block", 0.5, 2.7, 0.05, gold ],
+        [ -0.5, 9.6, 0, "block", 0.5, 2.7, 0.05, gold ],
+        [ -3.3, 12, 0, "block", 0.5, 3.1, 0.05, gold ],
+        [ -3.3, 7.2, 0, "block", 0.5, 3.1, 0.05, gold ],
+        [ -0.5, 3.65, 0, "block", 0.5, 5, 0.05, gold ],
+        // Silkscreen
+        [16.5, -14.5, 270,"-text", 5, 1.2, "ESP-01M", "Liberation Sans:style=Bold"],
+    ],
+    [], // accessories
+    [], //grid
+    [[9,-9],[9,9],[-6,9],[-6,7.4],[-8.5,7.4],[-9,6.9],[-9,-6.9],[-8.5,-7.4],[-6,-7.4],[-6,-9]] // Polygon
+];
+
 XIAO = [
     "XIAO", "Seeeduino XIAO",
     21, 18, 1.2, // Size
@@ -1161,7 +1197,7 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
     ]
 );
 
-tiny_pcbs = [ESP_201, ESP_12F, XIAO, MP1584EN, ESP_01, tiny_buck, LIPO_fuel_gauge];
+tiny_pcbs = [ESP_201, ESP_12F, XIAO, MP1584EN, ESP_01, ESP_01M, tiny_buck, LIPO_fuel_gauge];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
