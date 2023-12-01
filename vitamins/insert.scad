@@ -56,7 +56,7 @@ module insert(type) { //! Draw specified insert
     vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type), " x ", length, "mm"));
     $fn = 64;
     thread_d = insert_screw_diameter(type);
-    explode(20, offset = [0, 0, -5]) translate_z(eps) vflip() {
+    explode(20, offset = [0, 0, -length]) translate_z(eps) vflip() {
         r1 = thread_d / 2;
         r2 = insert_barrel_d(type) / 2;
         r3 = insert_ring3_d(type) / 2;
