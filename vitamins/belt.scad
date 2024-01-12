@@ -65,7 +65,7 @@ module belt(type, points, belt_colour = grey(20), tooth_colour = grey(50), open 
     arcs = info[4];
     length = ceil(_belt_length(info, open) / pitch) * pitch;
 
-    part = str(type[0],pitch);
+    part = type[0];
     vitamin(str("belt(", no_point(part), "x", width, ", ", pointsx, "): Belt ", part," x ", width, "mm x ", length, "mm"));
 
     len = len(points);

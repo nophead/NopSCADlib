@@ -20,17 +20,17 @@
 //
 // Belt model
 //
-//             p     w  t     t     p
-//             i     i  h     o     i
-//             t     d  i     o     t
-//             c     t  c     t     c
-//             h     h  k     h     h line from tooth base
+//                p     w  t     t     p
+//                i     i  h     o     i
+//                t     d  i     o     t
+//                c     t  c     t     c
+//                h     h  k     h     h line from tooth base
 //
-T5x6 =  ["T",  5,    6, 2.2,  1.2,  0.5];
-T5x10 = ["T",  5,   10, 2.2,  1.2,  0.5];
-T2p5x6 =["T",  2.5,  6, 1.7,  0.7,  0.3];
-GT2x6 = ["GT", 2.0,  6, 1.38, 0.75, 0.254];
-GT2x9 = ["GT", 2.0,  9, 1.38, 0.75, 0.254];
+T5x6 =  ["T5",    5,    6, 2.2,  1.2,  0.5];
+T5x10 = ["T5",    5,   10, 2.2,  1.2,  0.5];
+T2p5x6 =["T2.5",  2.5,  6, 1.7,  0.7,  0.3];
+GT2x6 = ["GT2",   2.0,  6, 1.38, 0.75, 0.254];
+GT2x9 = ["GT2",   2.0,  9, 1.38, 0.75, 0.254];
 
 belts = [T5x6, T5x10, T2p5x6, GT2x6, GT2x9];
 use <belt.scad>
