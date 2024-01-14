@@ -50,7 +50,7 @@ function screw_head_depth(type, d = 0) =             //! How far a counter sink 
         : let(r = screw_radius(type)) screw_head_radius(type) - max(r, d / 2) + r / 5;
 
 function screw_thread_radius(type)  = //! Thread radius
-    let(d = echoit(screw_thread_diameter(type))) is_undef(d) ? screw_radius(type) : d / 2;
+    let(d = screw_thread_diameter(type)) is_undef(d) ? screw_radius(type) : d / 2;
 
 function screw_angle(type, length, nut_distance) = //! How much to rotate the screw to align it with a nut at the specified `distance` from the head
     -360 * (length - nut_distance) /  metric_coarse_pitch(screw_thread_radius(type) * 2);
