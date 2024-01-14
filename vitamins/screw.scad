@@ -49,6 +49,12 @@ function screw_head_depth(type, d = 0) =             //! How far a counter sink 
         ? 0
         : let(r = screw_radius(type)) screw_head_radius(type) - max(r, d / 2) + r / 5;
 
+function screw_thread_radius(type)  = //! Thread radius
+    let(d = echoit(screw_thread_diameter(type))) is_undef(d) ? screw_radius(type) : d / 2;
+
+function screw_angle(type, length, nut_distance) = //! How much to rotate the screw to align it with a nut at the specified `distance` from the head
+    -360 * (length - nut_distance) /  metric_coarse_pitch(screw_thread_radius(type) * 2);
+
 function screw_longer_than(x) = x <=  5 ?  5 : //! Returns the length of the shortest screw length longer or equal to x
                                 x <=  6 ?  6 :
                                 x <=  8 ?  8 :
@@ -96,7 +102,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
     socket_rad  = socket_af / cos(30) / 2;
     max_thread  = screw_max_thread(type);
     has_shoulder = !is_undef(screw_thread_diameter(type));
-    thread_rad = has_shoulder ? screw_thread_diameter(type) / 2 : screw_radius(type);
+    thread_rad = screw_thread_radius(type);
     thread = max_thread ? length >= max_thread + 5 ? max_thread
                                                    : length
                         : length;

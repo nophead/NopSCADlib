@@ -3754,6 +3754,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `screw_angle(type, length, nut_distance)` | How much to rotate the screw to align it with a nut at the specified `distance` from the head |
 | `screw_boss_diameter(type)` | Boss big enough for nut trap and washer |
 | `screw_head_depth(type, d = 0)` | How far a counter sink head will go into a straight hole diameter d |
 | `screw_insert(screw, short = false, i = 0)` | Find insert to fit specified screw, defaults to longest but can specify the shortest |
@@ -3762,6 +3763,7 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 | `screw_nut_radius(type)` | Radius of matching nut |
 | `screw_polysink_r(type, z)` | Countersink hole profile corrected for rounded staircase extrusions. |
 | `screw_shorter_than(x)` | Returns the length of the longest screw shorter than or equal to x |
+| `screw_thread_radius(type)` | Thread radius |
 
 ### Modules
 | Module | Description |
