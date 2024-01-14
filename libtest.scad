@@ -482,7 +482,7 @@ cable_strip_y = sheets_y + 30;
 translate([0, transformers_y])
     servo_motors();
 
-translate([x4 + 200, belts_y + 58]) {
+translate([x4 + 200 + 16, belts_y + 58]) {
     belt_test();
 
     translate([0, 60])

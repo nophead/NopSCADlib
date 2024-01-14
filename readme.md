@@ -437,10 +437,14 @@ Individual teeth are not drawn, instead they are represented by a lighter colour
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `belt(GT2x12, [ ... ])` |  Belt GT2 x 12mm x 128mm |
 |   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 128mm |
-|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 552mm |
-|   2 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 556mm |
+|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 584mm |
+|   2 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 588mm |
 |   1 | `belt(GT2x9, [ ... ])` |  Belt GT2 x 9mm x 128mm |
+|   1 | `belt(GT3x12, [ ... ])` |  Belt GT3 x 12mm x 128mm |
+|   1 | `belt(GT3x6, [ ... ])` |  Belt GT3 x 6mm x 128mm |
+|   1 | `belt(GT3x9, [ ... ])` |  Belt GT3 x 9mm x 128mm |
 |   1 | `belt(T2p5x6, [ ... ])` |  Belt T2.5 x 6mm x 130mm |
 |   1 | `belt(T5x10, [ ... ])` |  Belt T5 x 10mm x 130mm |
 |   1 | `belt(T5x6, [ ... ])` |  Belt T5 x 6mm x 130mm |

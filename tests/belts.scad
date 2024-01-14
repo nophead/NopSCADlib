@@ -21,14 +21,20 @@ include <../core.scad>
 include <../vitamins/pulleys.scad>
 use <../vitamins/insert.scad>
 use <../utils/layout.scad>
+use <../utils/maths.scad>
 
 module belt_test() {
-    p2 = [-75, -50];
-    p3 = [-75, 100];
-    p4 = [ 75, 100];
+    widths = [for(b = belts) belt_width(b)];
+    gap = 5;
+    belts_width = sumv(widths) + (len(belts) - 1) * gap;
+    width = belts_width + 50;
 
-    p5 = [ 75 + pulley_pr(GT2x20ob_pulley) - pulley_pr(GT2x16_plain_idler), +pulley_pr(GT2x16_plain_idler)];
-    p6 = [-75 + pulley_pr(GT2x20ob_pulley) + pulley_pr(GT2x16_plain_idler), -pulley_pr(GT2x16_plain_idler)];
+    p2 = [-width / 2, -50];
+    p3 = [-width / 2, 100];
+    p4 = [ width / 2, 100];
+
+    p5 = [ width / 2 + pulley_pr(GT2x20ob_pulley) - pulley_pr(GT2x16_plain_idler), +pulley_pr(GT2x16_plain_idler)];
+    p6 = [-width / 2 + pulley_pr(GT2x20ob_pulley) + pulley_pr(GT2x16_plain_idler), -pulley_pr(GT2x16_plain_idler)];
 
     module pulleys(flip = false) {
         translate(p2) rotate([0, flip ? 180 : 0, 0]) pulley_assembly(GT2x20ob_pulley);
@@ -70,15 +76,15 @@ module belt_test() {
             pulleys(flip=true);
         }
 
-    translate([-25, 0, 10])
-        layout([for(b = belts) belt_width(b)], 10)
+    translate([-belts_width / 2, 0, 10])
+        layout(widths, gap)
             rotate([0, 90, 0])
                 belt(belts[$i], [[0, 0, 20], [0, 1, 20]], belt_colour = $i%2==0 ? grey(90) : grey(20), tooth_colour = $i%2==0 ? grey(70) : grey(50));
 
     // new example with open loop - this is a simplified example of the style used for example for the BLV 3D printer
     pulley = GT2x20ob_pulley;
     idler = GT2x16_plain_idler;
-    corners = [[-75,-50],[75,100]];
+    corners = [[-width / 2,-50],[width / 2,100]];
     carriagepos = [0,0];
     carriagew = 80;
 
@@ -94,7 +100,7 @@ module belt_test() {
     translate_z(-30) {
         belt(belt, points, open=true, auto_twist=true);
         for (p = points)
-            if (is_list(p.z))
+            if(is_list(p.z))
                 translate([p.x, p.y, 0])
                     pulley_assembly(p.z);
     }
