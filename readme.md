@@ -2854,6 +2854,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(LIPO_fuel_gauge)` |  LIPO fuel gauge |
 |   1 | `pcb(MP1584EN)` |  MP1584EN 3A buck converter |
 |   1 | `pcb(MT3608)` |  MT3608 boost converter module |
+|   1 | `pcb(HW803_1WAY_RELAY)` |  HW-803 5V 1 way relay module |
 |   1 | `pcb(Melzi)` |  Melzi electronics - not shown |
 |   6 |  |  Micro SD card |
 |   1 |  |  Micro SD card - not shown |
