@@ -374,7 +374,12 @@ def views(target, do_assemblies = None):
                         print('\n|%s' % ('---|' * n), file =  doc_file)
                         for j in range(n):
                             part = keys[i - n + j + 1]
-                            print('| ![%s](dxfs/%s) %s' % (part, part.replace('.dxf','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
+                            if (part[-4:] == ".dxf"):
+                                print('| ![%s](dxfs/%s) %s' % (part, part.replace('.dxf','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
+                            elif (part[-4:] == ".svg"):
+                                print('| ![%s](svgs/%s) %s' % (part, part.replace('.svg','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
+                            else:
+                                print("Unkown file type ", part[-4:], " for file ", part)
                         print('\n', file = doc_file)
                 print('\n', file  = doc_file)
 

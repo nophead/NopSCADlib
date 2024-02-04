@@ -104,14 +104,14 @@ class BOM:
 
     def add_part(self, s):
         args = []
-        match = re.match(r'^(.*?\.stl|.*?\.dxf)\((.*)\)$', s)                             #look for name.stl(...) or name.dxf(...)
+        match = re.match(r'^(.*?\.stl|.*?\.dxf|.*?\.svg)\((.*)\)$', s)                             #look for name.stl(...), name.dxf(...) or name.svg(...)
         if match:
             s = match.group(1)
             args = [match.group(2)]
         if s[-4:] == ".stl":
             parts = self.printed
         else:
-            if s[-4:] == ".dxf":
+            if s[-4:] == ".dxf" or s[-4:] == ".svg":
                 parts = self.routed
             else:
                 parts = self.vitamins
