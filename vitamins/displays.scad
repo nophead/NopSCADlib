@@ -54,6 +54,24 @@ LCD1602A = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCB,
           [],                                       // clearance need for the ts ribbon
         ];
 
+LCD2004APCB = pcb("", "", [98, 60, 1.65], hole_d = 2.9, land_d = 5, colour = "green",
+    holes = [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+    components = [
+        [49+19.05, - 2.5, 0, "2p54header", 16, 1]
+    ],
+    grid = [
+          49, 60 - 2.5, 16, 1, silver, inch(0.1), inch(0.1),
+    ]
+);
+
+LCD2004A = ["LCD2004A", "LCD display 2004A", 97, 39.5, 9.0, LCD2004APCB,
+          [0, 0, 0],                             // pcb offst
+          [[-76 / 2, -26 / 2], [76 / 2, 26 / 2, 0.6]],              // aperture
+          [],                                       // touch screen
+          0,                                        // thread length
+          [],                                       // clearance need for the ts ribbon
+        ];
+
 LCDS7282BPCB = pcb("", "", [85, 36, 1.65], hole_d = 2.56, colour = "green",
     holes = [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
     components = [
@@ -149,6 +167,6 @@ BigTreeTech_TFT35v3_0 = ["BigTreeTech_TFT35v3_0", "BigTreeTech TFT35 v3.0",
 ];
 
 
-displays = [HDMI5, SSD1963_4p3, BigTreeTech_TFT35v3_0, LCD1602A, LCDS7282B, TFT128x160];
+displays = [HDMI5, SSD1963_4p3, LCD2004A, BigTreeTech_TFT35v3_0, LCD1602A, LCDS7282B, TFT128x160];
 
 use <display.scad>

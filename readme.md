@@ -1091,6 +1091,7 @@ LCD displays.
 |   1 | `display(HDMI5)` |  HDMI display 5" |
 |   1 | `display(TFT128x160)` |  LCD TFT ST7735 display 128x160 |
 |   1 | `display(LCD1602A)` |  LCD display 1602A |
+|   1 | `display(LCD2004A)` |  LCD display 2004A |
 |   1 | `display(LCDS7282B)` |  LCD display S-7282B |
 |   1 | `display(SSD1963_4p3)` |  LCD display SSD1963 4.3" |
 
