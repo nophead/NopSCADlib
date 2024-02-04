@@ -33,7 +33,7 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#box_sections">Box_sections</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
 <tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
 <tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#pcb_utils">PCB_utils</a> </td><td></td></tr>
+<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#pcb_utils">Pcb_utils</a> </td><td></td></tr>
 <tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
 <tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
 <tr><td> <a href = "#components">Components</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
@@ -4012,6 +4012,8 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(MDF10, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 10mm |
 |   1 | `sheet(MDF12, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 12mm |
 |   1 | `sheet(MDF19, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 19mm |
+|   1 | `sheet(MDF22, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 22mm |
+|   1 | `sheet(MDF3, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 3mm |
 |   1 | `sheet(MDF6, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 6mm |
 |   1 | `sheet(PMMA1p25, 30, 30, 2)` |  Sheet acrylic 30mm x 30mm x 1.25mm |
 |   1 | `sheet(PMMA10, 30, 30, 2)` |  Sheet acrylic 30mm x 30mm x 10mm |
@@ -7150,12 +7152,12 @@ If `chamfer_base` is true then the bottom edge is made suitable for 3D printing 
 
 ---
 <a name="pcb_utils"></a>
-## PCB_utils
+## Pcb_utils
 Utilities for making PCBs and components
 
 [utils/pcb_utils.scad](utils/pcb_utils.scad) Implementation.
 
-[tests/PCB_utils.scad](tests/PCB_utils.scad) Code for this example.
+[tests/pcb_utils.scad](tests/pcb_utils.scad) Code for this example.
 
 ### Modules
 | Module | Description |
