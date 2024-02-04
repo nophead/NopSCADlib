@@ -765,6 +765,27 @@ MT3608 = ["MT3608", "MT3608 boost converter module",        37, 17, 1.2, 2, 1.5,
     [ [-12.05 , -6.8, 180, "trimpot10"]
     ]];
 
+HW803_1WAY_RELAY = [
+    "HW803_1WAY_RELAY", "HW-803 5V 1 way relay module",
+    50, 26, 1.6, // size
+    2, // corner radius
+    3, // mounting hole diameter
+    4, // pad around mounting hole
+    "red", // color
+    false, // true if parts should be separate BOM items
+    [ // hole positions
+        [3, 3], [-3, 3], [3, -3], [-3, -3]
+    ],
+    [ // components
+        [ 10.5 + 19/2, 26/2, 0,   "block", 19, 15, 15.5, "SkyBlue" ],
+        [ 50-5,        26/2, 0,   "term35", 3],
+        [ 5,           26/2, 180, "term35", 3],
+        [ 34,             2, 0,   "2p54header", 3, 1 ],
+    ],
+    [], // accessories
+    [], // grid
+];
+
 TP4056 = ["TP4056", "TP4056 Li-lon Battery charger module", 26.2, 17.5, 1.0, 0, 1.0, [2.4, 2.4], "#2140BE", false,
     [[1.67, 1.8], [1.67, -1.8], [-1.67, 1.8], [-1.67, -1.8], [-1.67, -4.98], [-1.67, 4.98]],
     [ [  2, 17.5 / 2, 180, "usb_uA"],
@@ -1197,11 +1218,11 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
     ]
 );
 
-tiny_pcbs = [ESP_201, ESP_12F, XIAO, MP1584EN, ESP_01, ESP_01M, tiny_buck, LIPO_fuel_gauge];
+tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RAMPSEndstop, MT3608, ArduinoNano, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
+pcbs = [KY_040, TP4056, L9110S, ZC_A0591, MT3608, RAMPSEndstop, ArduinoNano, HW803_1WAY_RELAY, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 

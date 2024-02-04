@@ -2849,6 +2849,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(ESP32_DOIT_V1)` |  ESP32 DOIT DEV KIT V1 |
 |   1 | `pcb(EnviroPlus)` |  Enviro+ |
 |   1 | `pcb(ExtruderPCB)` |  Extruder connection PCB - not shown |
+|   1 | `pcb(HW803_1WAY_RELAY)` |  HW-803 5V 1 way relay module |
 |   1 | `pcb(KY_040)` |  KY-040 rotart encoder breakout |
 |   1 | `pcb(Keyes5p1)` |  Keyes5.1 Arduino Uno expansion board - not shown |
 |   1 | `pcb(L9110S)` |  L9110S 2-Channel motor driver module |
@@ -2862,7 +2863,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
 |  38 | `nut(M2p5_nut, nyloc = true)` |  Nut M2.5 x 2.2mm nyloc |
-|  43 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
+|  47 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   8 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `pcb(OPZ2)` |  Orange Pi Zero 2 |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 - not shown |
@@ -2885,14 +2886,17 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   4 | `screw(M2_cap_screw, 25)` |  Screw M2 cap x 25mm |
 |   2 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
-|   8 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
+|   4 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
+|   4 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |  12 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
 |   4 | `screw(M2p5_dome_screw, 25)` |  Screw M2.5 dome x 25mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
 |   8 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
 |  19 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |  13 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
-|  11 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   4 | `screw(M3_cap_screw, 25)` |  Screw M3 cap x 25mm |
+|   8 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
+|   3 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   4 | `screw(M4_cap_screw, 20)` |  Screw M4 cap x 20mm |
 |   4 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
@@ -2904,7 +2908,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(WD2002SJ)` |  WD2002SJ Buck Boost DC-DC converter |
 |  20 | `washer(M2_washer)` |  Washer  M2 x 5mm x 0.3mm |
 |  38 | `washer(M2p5_washer)` |  Washer  M2.5 x 5.9mm x 0.5mm |
-|  43 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  47 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   8 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   1 | `pcb(ZC_A0591)` |  ZC-A0591 ULN2003 driver PCB |
 
@@ -2912,23 +2916,24 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Filename |
 | ---:|:--- |
 |   4 | pcb_spacer20100.stl |
-|   4 | pcb_spacer20130.stl |
+|   4 | pcb_spacer20140.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
-|   4 | pcb_spacer25120.stl |
-|   4 | pcb_spacer25150.stl |
+|   2 | pcb_spacer25100.stl |
+|   4 | pcb_spacer25130.stl |
 |   4 | pcb_spacer25160.stl |
-|   4 | pcb_spacer25170_2.stl |
+|   4 | pcb_spacer25170.stl |
 |   4 | pcb_spacer25180_2.stl |
-|   4 | pcb_spacer25220.stl |
+|   4 | pcb_spacer25190_2.stl |
 |   4 | pcb_spacer25230.stl |
 |   4 | pcb_spacer25240.stl |
+|   4 | pcb_spacer25250.stl |
 |   4 | pcb_spacer2580.stl |
-|   2 | pcb_spacer2590.stl |
-|   4 | pcb_spacer30190.stl |
+|   4 | pcb_spacer30120.stl |
 |   4 | pcb_spacer30200.stl |
-|   3 | pcb_spacer30210.stl |
+|   4 | pcb_spacer30210.stl |
+|   3 | pcb_spacer30220.stl |
 |  10 | pcb_spacer3050.stl |
 |   9 | pcb_spacer3060.stl |
 |   9 | pcb_spacer3070.stl |
