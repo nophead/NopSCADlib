@@ -25,11 +25,11 @@ include <../core.scad>
 include <../vitamins/sheets.scad>
 use <../vitamins/insert.scad>
 
-screw = M3_cap_screw;
+screwM3 = M3_cap_screw;
 sheet = PMMA3;
 height = 10;
 
-insert = screw_insert(screw);
+insert = screw_insert(screwM3);
 
 module widget(thickness) {
     vitamin(str("widget(", thickness, "): Rivet like thing for ", thickness, "mm sheets"));
@@ -46,7 +46,13 @@ module widget(thickness) {
 module widget_stl() {
     stl("widget")
         union() {
-            rounded_rectangle([30, 30, 3], 2, true);
+            difference() {
+                rounded_rectangle([30, 30, 3], 2, true);
+                for(x = [-10,10])
+                    for (y=[-10,10])
+                        translate([x,y,-1.5])
+                            cylinder(r=2, h=3.5);
+            }
 
             render() insert_boss(insert, height, 2.2);
         }
@@ -57,7 +63,18 @@ module widget_dxf() {
         difference() {
             sheet_2D(sheet, 20, 20, 1);
 
-            drill(screw_clearance_radius(screw), 0);
+            drill(screw_clearance_radius(screwM3), 0);
+        }
+}
+
+module mdf_svg() {
+    svg("mdf")
+        difference() {
+            sheet_2D(MDF6, 40,40);
+            for(x = [-10,10])
+                for (y=[-10,10])
+                    translate([x,y,0])
+                        drill(screw_clearance_radius(screwM3), 0);
         }
 }
 
@@ -85,11 +102,23 @@ assembly("widget_top") {
 module widget_assembly()
 assembly("widget") {
 
-    widget_base_assembly();                 // Note this is not exploded because it is sub-assembly
+    translate_z(-6) {
+        render_2D_sheet(MDF6)
+            mdf_svg();
+            
+        explode(0)
+            for(x = [-10,10])
+                for (y=[-10,10])
+                    translate([x,y,-10])
+                        screw(screwM3, 10);
+    }
+
+    explode(3)
+        widget_base_assembly();                 // Note this is not exploded because it is sub-assembly
 
     translate_z(height) {
         translate_z(sheet_thickness(sheet))
-            screw_and_washer(screw, screw_length(screw, sheet_thickness(sheet) + 3, 2, longer = true), true);
+            screw_and_washer(screwM3, screw_length(screwM3, sheet_thickness(sheet) + 3, 2, longer = true), true);
 
         explode(5)
             translate_z(sheet_thickness(sheet) / 2 + eps)

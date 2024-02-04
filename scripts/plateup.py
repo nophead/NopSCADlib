@@ -31,8 +31,8 @@ import re
 import time
 import times
 
-source_dirs = { "stl" : "platters", "dxf" : "panels" }
-target_dirs = { "stl" : "printed",  "dxf" : "routed" }
+source_dirs = { "stl" : "platters", "dxf" : "panels", "svg" : "panels" }
+target_dirs = { "stl" : "printed",  "dxf" : "routed", "svg" : "routed" }
 
 def plateup(target, part_type, usage = None):
     #

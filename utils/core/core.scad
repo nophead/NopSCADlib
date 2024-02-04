@@ -37,3 +37,9 @@ module use_dxf(name) {               //! Import a DXF to make a build panel
     path = is_undef($target) ? "../dxfs/" : str($cwd, "/", $target, "/dxfs/");
     import(str(path, name, ".dxf"));
 }
+
+module use_svg(name) {               //! Import an SVG to make a build panel
+    svg(name);
+    path = is_undef($target) ? "../svgs/" : str($cwd, "/", $target, "/svgs/");
+    import(str(path, name, ".svg"));
+}

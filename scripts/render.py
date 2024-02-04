@@ -33,7 +33,7 @@ import json
 from tmpdir import *
 
 def usage():
-    print("\nusage:\n\trender [target_config] - Render images of the stl and dxf files.");
+    print("\nusage:\n\trender [target_config] - Render images of the stl, dxf and svg files.");
     sys.exit(1)
 
 def render(target, type):
@@ -57,7 +57,7 @@ def render(target, type):
     with open(bom_file) as json_file:
         flat_bom = json.load(json_file)
 
-    things = { 'stl' : 'printed', 'dxf' : 'routed' }[type]
+    things = { 'stl' : 'printed', 'dxf' : 'routed', 'svg' : 'routed' }[type]
     colours = {}
     for ass in flat_bom:
         for part in ass[things]:
@@ -112,3 +112,4 @@ if __name__ == '__main__':
     target =  sys.argv[1] if len(sys.argv) > 1 else None
     render(target, 'stl')
     render(target, 'dxf')
+    render(target, 'svg')
