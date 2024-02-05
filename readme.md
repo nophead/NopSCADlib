@@ -4018,6 +4018,8 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(MDF10, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 10mm |
 |   1 | `sheet(MDF12, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 12mm |
 |   1 | `sheet(MDF19, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 19mm |
+|   1 | `sheet(MDF22, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 22mm |
+|   1 | `sheet(MDF3, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 3mm |
 |   1 | `sheet(MDF6, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 6mm |
 |   1 | `sheet(PMMA1p25, 30, 30, 2)` |  Sheet acrylic 30mm x 30mm x 1.25mm |
 |   1 | `sheet(PMMA10, 30, 30, 2)` |  Sheet acrylic 30mm x 30mm x 10mm |
