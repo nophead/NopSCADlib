@@ -39,7 +39,7 @@ if __name__ == '__main__':
     target = None if len(sys.argv) == 1 else sys.argv[1]
     set_config(target, usage)
     boms(target)
-    for part in ['stl', 'dxf']:
+    for part in ['stl', 'dxf', 'svg']:
         make_parts(target, part)
         render(target, part)
         plateup(target, part)
