@@ -26,11 +26,13 @@
 //
 mdf_colour = "#BEA587"; // sampled from a photo
 
+MDF3      = [ "MDF3",      "Sheet MDF",               3, mdf_colour,             true];
 MDF6      = [ "MDF6",      "Sheet MDF",               6, mdf_colour,             true];    // ~1/4"
 MDF10     = [ "MDF10",     "Sheet MDF",              10, mdf_colour,             true];    // ~3/8"
 MDF12     = [ "MDF12",     "Sheet MDF",              12, mdf_colour,             true];    // ~1/2"
 MDF18     = [ "MDF18",     "Sheet MDF",              18, mdf_colour,             true];
 MDF19     = [ "MDF19",     "Sheet MDF",              19, mdf_colour,             true];    // ~3/4"
+MDF22     = [ "MDF22",     "Sheet MDF",              22, mdf_colour,             true];
 PMMA1p25  = [ "PMMA1p25",  "Sheet acrylic",         1.25,[1,   1,   1,   0.5  ], false];
 PMMA2     = [ "PMMA2",     "Sheet acrylic",           2, [1,   1,   1,   0.5  ], false];
 PMMA3     = [ "PMMA3",     "Sheet acrylic",           3, [1,   1,   1,   0.5  ], false];   // ~1/8"
@@ -56,7 +58,7 @@ CF2 =       [ "CF2",       "Sheet carbon fiber",      2, grey(35),              
 CF3 =       [ "CF3",       "Sheet carbon fiber",      3, grey(35),               false,  2,  2,  grey(20)];
 
 
-sheets = [CF1, CF2, CF3, MDF6, MDF10, MDF12, MDF19, PMMA1p25, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10,
+sheets = [CF1, CF2, CF3, MDF3, MDF6, MDF10, MDF12, MDF19, MDF22, PMMA1p25, PMMA2, PMMA3, PMMA6, PMMA8, PMMA10,
          glass2, DiBond, DiBond6, Cardboard, FoilTape, AL1_6, AL2, AL3, AL6, AL8, Steel06, Spring08, Silicone3, Foam20];
 
 use <sheet.scad>
