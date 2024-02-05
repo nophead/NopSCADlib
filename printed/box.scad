@@ -452,9 +452,10 @@ module box_screw_hole_positions(type) {
             children();
 }
 
-module box_base_blank(type) { //! Generates a 2D template for the base sheet
+module box_base_blank(type, sheet = false) { //! Generates a 2D template for the base sheet, `sheet` can be set to override the type
+    s = sheet ? sheet : box_base_sheet(type);
     difference() {
-        sheet_2D(box_base_sheet(type), box_width(type), box_depth(type), box_sheet_r(type));
+        sheet_2D(s, box_width(type), box_depth(type), box_sheet_r(type));
 
         box_screw_hole_positions(type)
             drill(screw_clearance_radius(box_screw(type)), 0);

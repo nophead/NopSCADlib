@@ -5090,7 +5090,7 @@ The top bezel can have an optional child, which is subtracted to allow modificat
 | `box_back(type)` | Default back, can be overridden to customise |
 | `box_back_blank(type, sheet = false)` | Generates a 2D template for the back sheet, `sheet` can be set to override the type |
 | `box_base(type)` | Default base, can be overridden to customise |
-| `box_base_blank(type)` | Generates a 2D template for the base sheet |
+| `box_base_blank(type, sheet = false)` | Generates a 2D template for the base sheet, `sheet` can be set to override the type |
 | `box_bezel(type, bottom)` | Generates top and bottom bezel STLs |
 | `box_bezel_section(type, bottom, rows, cols, x, y)` | Generates interlocking sections of the bezel to allow it to be bigger than the printer |
 | `box_corner_profile(type)` | Generates the corner profile STL for 3D printing. |
