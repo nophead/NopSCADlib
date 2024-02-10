@@ -50,4 +50,5 @@ module pcbs() {
             pcb(p);
 }
 if($preview)
-    pcbs();
+    let($show_threads = false)
+        pcbs();

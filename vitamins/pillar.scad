@@ -22,6 +22,7 @@
 //
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
+use <nut.scad>
 
 function pillar_name(type)       = type[1];     //! Name of part
 function pillar_thread(type)     = type[2];     //! Thread diameter
@@ -34,6 +35,7 @@ function pillar_o_colour(type)   = type[8];     //! Colour of the outer part
 function pillar_i_colour(type)   = type[9];     //! Colour of the inner part
 function pillar_top_thread(type) = type[10];    //! Top thread length, + for male, - for female
 function pillar_bot_thread(type) = type[11];    //! Bottom thread length, + for male, - for female
+function pillar_chamfered(type)  = type[12];    //! True if pillar is chamfered
 
 module pillar(type) { //! Draw specified pillar
     function sex(thread) = thread > 0 ? "M" : "F";
@@ -67,12 +69,15 @@ module pillar(type) { //! Draw specified pillar
                 color(thread_colour)
                     cylinder(h = top_thread_l, d = thread_d);
 
-    color(pillar_i_colour(type))  {
-        linear_extrude(height)
-            difference() {
-                circle(d = pillar_id(type), $fn = fn(pillar_ifn(type)));
-                circle(d = thread_d);
-            }
+    color(thread_colour)  {
+        if(pillar_chamfered(type))
+            draw_nut(pillar_id(type), thread_d, height, 0, thread_colour, false);
+        else
+            linear_extrude(height)
+                difference() {
+                    circle(d = pillar_id(type), $fn = fn(pillar_ifn(type)));
+                    circle(d = thread_d);
+                }
 
         top = height + min(top_thread_l, 0);
         bot = -min(bot_thread_l, 0);
@@ -85,10 +90,10 @@ module pillar(type) { //! Draw specified pillar
         if(top_thread_l < 0)
             translate_z(height)
                 vflip()
-                    female_metric_thread(thread_d, pitch, -top_thread_l, false, colour = thread_colour);
+                    female_metric_thread(thread_d, pitch, -top_thread_l, bot = 1, false, colour = thread_colour);
 
         if(bot_thread_l < 0)
-            female_metric_thread(thread_d, pitch, -bot_thread_l, false, colour = thread_colour);
+            female_metric_thread(thread_d, pitch, -bot_thread_l, false, bot = 1, colour = thread_colour);
     }
 
     if(pillar_od(type) > pillar_id(type))

@@ -3010,6 +3010,7 @@ Threaded pillars. Each end can be male or female.
 | Function | Description |
 |:--- |:--- |
 | `pillar_bot_thread(type)` | Bottom thread length, + for male, - for female |
+| `pillar_chamfered(type)` | True if pillar is chamfered |
 | `pillar_height(type)` | Body height |
 | `pillar_i_colour(type)` | Colour of the inner part |
 | `pillar_id(type)` | Inner diameter of metal part |

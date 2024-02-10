@@ -23,6 +23,7 @@
 include <../utils/core/core.scad>
 use <../utils/thread.scad>
 use <../utils/pcb_utils.scad>
+use <nut.scad>
 
 d_pillar_colour                   = grey(90);
 d_plug_shell_colour               = grey(80);
@@ -62,16 +63,12 @@ module d_pillar() { //! Draw a pillar for a D-connector
             color(d_pillar_colour)
                 cylinder(d = screw, h = screw_length + 1);
 
-    color(d_pillar_colour) {
-        linear_extrude(height)
-            difference() {
-                circle(r = rad, $fn = 6);
-                circle(d = screw);
-            }
-        }
-    if(show_threads)
-        female_metric_thread(screw, pitch, height, false, colour = d_pillar_colour);
+    draw_nut(rad * 2, screw, height, pitch, d_pillar_colour, show_threads);
+
+    color(d_pillar_colour)
+        cylinder(d = screw + eps, h = 1);
 }
+
 
 module d_plug_D(length, width, rad) { //! D plug D shape
     d = width / 2 - rad;
