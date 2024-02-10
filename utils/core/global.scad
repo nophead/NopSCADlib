@@ -74,6 +74,10 @@ module render_if(render = true, convexity = 2)      //! Renders an object if `re
     else
         children();
 
+module render_manifold()                            //! Render if manifold to work around convexity bug in manifold
+    render_if(manifold)
+        children();
+
 module extrude_if(h, center = true)                 //! Extrudes 2D object to 3D when `h` is nonzero, otherwise leaves it 2D
     if(h)
         linear_extrude(h, center = center, convexity = 5) // 3D

@@ -57,7 +57,7 @@ module screws() {
             }
         }
         translate([20, 60, -15])
-            polysink_stl();
+            render_manifold() polysink_stl();
 }
 
 if($preview)

@@ -26,8 +26,9 @@ def check_options(dir = '.'):
     global options, options_mtime
     options = {
         "show_threads": str(os.getenv("NOPSCADLIB_SHOW_THREADS")),
-        "vitamin_fa":   str(os.getenv("NOPSCADLIB_VITAMIN_FA")),
-        "vitamin_fs":   str(os.getenv("NOPSCADLIB_VITAMIN_FS"))
+        "vitamin_fa"  : str(os.getenv("NOPSCADLIB_VITAMIN_FA")),
+        "vitamin_fs"  : str(os.getenv("NOPSCADLIB_VITAMIN_FS")),
+        "manifold"    : str(os.getenv("NOPSCADLIB_MANIFOLD"))
     }
     options_fname = dir + '/options.json'
     try:

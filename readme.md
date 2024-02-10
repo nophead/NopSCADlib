@@ -7539,7 +7539,7 @@ Original version by Doug Moen on the OpenSCAD forum
 | Module | Description |
 |:--- |:--- |
 | `box(xmin, ymin, zmin, xmax, ymax, zmax)` | Construct a box given its bounds |
-| `clip(xmin = -inf, ymin = -inf, zmin = -inf, xmax = inf, ymax = inf, zmax = inf, convexity = 1)` | Clip child to specified boundaries |
+| `clip(xmin = -big, ymin = -big, zmin = -big, xmax = big, ymax = big, zmax = big, convexity = 1)` | Clip child to specified boundaries |
 
 ![clip](tests/png/clip.png)
 
@@ -7585,6 +7585,7 @@ See [global_defs.scad](../../global_defs.scad) for a list of global constants.
 | `extrude_if(h, center = true)` | Extrudes 2D object to 3D when `h` is nonzero, otherwise leaves it 2D |
 | `hflip(flip=true)` | Invert children by doing a 180&deg; flip around the Y axis |
 | `render_if(render = true, convexity = 2)` | Renders an object if `render` is true, otherwise leaves it unrendered |
+| `render_manifold()` | Render if manifold to work around convexity bug in manifold |
 | `right_triangle(width, height, h, center = true)` | A right angled triangle with the 90&deg; corner at the origin. 3D when `h` is nonzero, otherwise 2D |
 | `semi_circle(r, d = undef)` | A semi circle in the positive Y domain |
 | `translate_z(z)` | Shortcut for Z only translations |

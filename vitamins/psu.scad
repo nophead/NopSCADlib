@@ -161,7 +161,7 @@ module psu(type) { //! Draw a power supply
                                         fan_holes(fan.z, h = 0);
 
                                         difference() {
-                                            square(inf, true);
+                                            square(big, true);
 
                                             fan_guard(fan.z, thickness = 0, grill = true);
                                         }

@@ -41,7 +41,7 @@ module box(xmin, ymin, zmin, xmax, ymax, zmax) //! Construct a box given its bou
          [0,2,3,1]]  // left
     );
 
-module clip(xmin = -inf, ymin = -inf, zmin = -inf, xmax = inf, ymax = inf, zmax = inf, convexity = 1) //! Clip child to specified boundaries
+module clip(xmin = -big, ymin = -big, zmin = -big, xmax = big, ymax = big, zmax = big, convexity = 1) //! Clip child to specified boundaries
     render(convexity = convexity) intersection() {
         children();
 

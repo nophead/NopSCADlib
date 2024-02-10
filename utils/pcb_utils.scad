@@ -52,6 +52,6 @@ module cylindrical_wrap(r, h = eps) { //! Wrap a 2D child extruded to height `h`
                             translate([(sides / 2 - i) * -dx, 0])
                                 children();
 
-                            square([dx, inf], center = true);
+                            square([dx, big], center = true);
                         }
 }

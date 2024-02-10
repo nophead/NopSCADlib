@@ -41,13 +41,14 @@ pp1_colour      = is_undef($pp1_colour)      ? rr_green     : $pp1_colour;// pri
 pp2_colour      = is_undef($pp2_colour)      ? crimson      : $pp2_colour;// printed part colour 2
 pp3_colour      = is_undef($pp3_colour)      ? "SteelBlue"  : $pp3_colour;// printed part colour 3
 pp4_colour      = is_undef($pp4_colour)      ? "darkorange" : $pp4_colour;// printed part colour 4
-
+manifold        = is_undef($manifold)        ? false  : $manifold;        // Manifold library being used instead of cgal
 
 // Minimum wall is about two filaments wide but we extrude it closer to get better bonding
 squeezed_wall = $preview ? 2 * extrusion_width - layer_height * (1 - PI / 4)
                          : extrusion_width - layer_height / 2 + nozzle / 2 + extrusion_width / 2;
 
-inf = 1e10;      // very big
+inf = 1e10;       // very big
+big = manifold ? 1e3 : inf;     // Not too big for manifold
 eps = 1/128;     // small fudge factor to stop CSG barfing on coincident faces.
 
 fa = is_undef($vitamin_fa) ? 6    : $vitamin_fa;          // Used for drawing vitamins, rather than printing.

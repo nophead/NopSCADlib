@@ -73,7 +73,7 @@ module polyholes() {
     // Alternating polyholes
     //
     translate([30, -40])
-        alt_polyhole_stl();
+        render_manifold() alt_polyhole_stl();
     //
     // Poly rings
     //

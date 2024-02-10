@@ -47,11 +47,11 @@ module offset_3D(r, chamfer_base = false) { //! Offset 3D shape by specified rad
     else
         if(r < 0)
             render() difference() {
-                cube(inf / 2, center = true);
+                cube(big / 2, center = true);
 
                 minkowski() {
                     difference() {
-                        cube(inf, center = true);
+                        cube(big, center = true);
 
                         children();
                     }

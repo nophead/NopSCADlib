@@ -26,6 +26,8 @@ import subprocess, sys
 
 def run_list(args, silent = False, verbose = False):
     cmd = ["openscad"] + args + ["--hardwarnings"]
+    if "-D$manifold=true" in args:
+        cmd += ["--enable"] + ["manifold"]
     if not silent:
         for arg in cmd:
             print(arg, end=" ")
