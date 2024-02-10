@@ -149,18 +149,8 @@ module jack_4mm_plastic(colour, thickness, display_colour = false) { //! Draw a 
     }
     translate_z(-thickness)
         explode(-length)
-            vflip() {
-                color(silver)
-                    linear_extrude(nut_t)
-                        difference() {
-                            circle(d = nut_d, $fn = 6);
-
-                            circle(d = thread_d);
-                        }
-
-                if(show_threads)
-                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
-            }
+            vflip()
+                draw_nut(nut_d, thread_d, nut_t, thread_p, silver, show_threads);
 }
 
 function jack_4mm_shielded_hole_radius() = 12 / 2; //! Panel hole radius for 4mm shielded jack
@@ -282,14 +272,7 @@ module post_4mm(colour, thickness, display_colour = false) { //! Draw a 4mm bind
     module nut() {
         nut_t = 2.3;
 
-        color(silver)
-            linear_extrude(nut_t) difference() {
-                circle(d = 6.3 / cos(30), $fn = 6);
-
-                circle(d = thread_d);
-            }
-        if(show_threads)
-            female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
+        draw_nut(6.3 / cos(30), thread_d, nut_t, thread_p, silver, show_threads);
 
         translate_z(nut_t)
             children();
@@ -498,16 +481,6 @@ module power_jack(thickness) { //! Draw a power jack socket with nut positioned 
     // Nut
     translate_z(-thickness)
         explode(-length)
-            vflip() {
-                color(silver)
-                    linear_extrude(nut_t)
-                        difference() {
-                            circle(d = nut_d, $fn = 6);
-
-                            circle(d = thread_d);
-                        }
-
-                if(show_threads)
-                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = silver);
-            }
+            vflip()
+                draw_nut(nut_d, thread_d, nut_t, thread_p, silver, show_threads);
 }

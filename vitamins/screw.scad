@@ -205,8 +205,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     cylinder(h=2 * eps, r=socket_rad, $fn = 6);
         }
         if(head_type == hs_hex) {
-            color(colour)
-                cylinder(r = head_rad, h = head_height, $fn = 6);
+            draw_nut(head_rad * 2, 0, head_height, 0, colour, false);
 
             shaft();
         }

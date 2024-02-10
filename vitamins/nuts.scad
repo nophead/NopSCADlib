@@ -28,25 +28,25 @@ M5_nut_depth = 4;
 M6_nut_depth = 5;
 M8_nut_depth = 6.5;
 
-//                                      s    d    t    n     w              t                  t
-//                                      c    i    h    y     a              r                  h
-//                                      r    a    i    l     s              a                  r
-//                                      e    m    c    o     h              p                  e
+//                                      s    d    t    n     w              t                  t  d    d
+//                                      c    i    h    y     a              r                  h  o    o
+//                                      r    a    i    l     s              a                  r  m    m
+//                                      e    m    c    o     h              p                  e  e    e
 //                                      w    e    k    c     e                                 d
-//                                           t    n          r              d
-//                                           e    e    t                    e                  p
-//                                           r    s    h                    p                  i
-//                                                s    k                    t                  t
-//                                                                          h                  c
-//                                                                                             h
+//                                           t    n          r              d                     h    t
+//                                           e    e    t                    e                  p  e    h
+//                                           r    s    h                    p                  i  i    r
+//                                                s    k                    t                  t  g    e
+//                                                                          h                  c  h    a
+//                                                                                             h  t    d
 M2_nut      =      ["M2_nut",           2,   4.9, 1.6, 2.4,  M2_washer,     M2_nut_trap_depth, 0];
 M2p5_nut    =      ["M2p5_nut",         2.5, 5.8, 2.2, 3.8,  M2p5_washer, M2p5_nut_trap_depth, 0];
-M3_nut      =      ["M3_nut",           3,   6.4, 2.4, 4,    M3_washer,     M3_nut_trap_depth, 0];
-M4_nut      =      ["M4_nut",           4,   8.1, 3.2, 5,    M4_washer,     M4_nut_trap_depth, 0];
-M5_nut      =      ["M5_nut",           5,   9.2, 4,   6.25, M5_washer,     M5_nut_depth,      0];
-M6_nut      =      ["M6_nut",           6,  11.5, 5,   8,    M6_washer,     M6_nut_depth,      0];
+M3_nut      =      ["M3_nut",           3,   6.4, 2.4, 4,    M3_washer,     M3_nut_trap_depth, 0, [6,   5.40]];
+M4_nut      =      ["M4_nut",           4,   8.1, 3.2, 5,    M4_washer,     M4_nut_trap_depth, 0, [8,   5.74]];
+M5_nut      =      ["M5_nut",           5,   9.2, 4,   6.25, M5_washer,     M5_nut_depth,      0, [10,  7.79]];
+M6_nut      =      ["M6_nut",           6,  11.5, 5,   8,    M6_washer,     M6_nut_depth,      0, [12,  8.29]];
 M6_half_nut =      ["M6_half_nut",      6,  11.5, 3,   8,    M6_washer,     3,                 0];
-M8_nut      =      ["M8_nut",           8,  15,   6.5, 8,    M8_washer,     M8_nut_depth,      0];
+M8_nut      =      ["M8_nut",           8,  15,   6.5, 8,    M8_washer,     M8_nut_depth,      0, [15, 11.35]];
 toggle_nut  =      ["toggle_nut",       6.1, 9.2, 1.5, 1.5,  M6_washer,     1.5,               inch(1/40)];
 
 M4_wingnut  =      ["M4_wingnut",       4,  10,   3.75,8,    M4_washer,     0, 22, 10, 6, 3];

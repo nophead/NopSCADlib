@@ -20,8 +20,10 @@ include <../utils/core/core.scad>
 
 use <../vitamins/fuseholder.scad>
 
+thickness = 6;
+
 module fuseholders()
-    fuseholder(6);
+    fuseholder(thickness);
 
 if($preview)
     let($show_threads = 1)

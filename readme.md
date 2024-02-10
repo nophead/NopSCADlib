@@ -2348,6 +2348,7 @@ If a nut is given a child then it gets placed on its top surface.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `nut_dome(type)` | Dome height and max thread depth if a domed acorn nut |
 | `nut_pitch(type)` | Pitch if not standard metric course thread |
 | `nut_radius(type)` | Radius across the corners |
 | `nut_size(type)` | Diameter of the corresponding screw |
@@ -2360,8 +2361,10 @@ If a nut is given a child then it gets placed on its top surface.
 ### Functions
 | Function | Description |
 |:--- |:--- |
+| `nut_dome_height(type)` | Height of the domed version |
 | `nut_flat_radius(type)` | Radius across the flats |
 | `nut_thickness(type, nyloc = false)` | Thickness of plain or nyloc version |
+| `nut_thread_depth(type)` | Max thread depth in domed version |
 | `nut_trap_flat_radius(nut, horizontal = false)` | Radius across the flats of a nut trap |
 | `nut_trap_radius(nut, horizontal = false)` | Radius across the corners of a nut trap |
 | `t_nut_tab(type)` | Sliding t-nut T dimensions |
@@ -2369,7 +2372,7 @@ If a nut is given a child then it gets placed on its top surface.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `nut(type, nyloc = false, brass = false, nylon = false)` | Draw specified nut |
+| `nut(type, nyloc = false, brass = false, nylon = false, dome = false)` | Draw specified nut |
 | `nut_and_washer(type, nyloc)` | Draw nut with corresponding washer |
 | `nut_square(type, brass = false, nylon = false)` | Draw specified square nut |
 | `nut_trap(screw, nut, depth = 0, horizontal = false, supported = false, h = 200)` | Make a nut trap |
@@ -2390,24 +2393,29 @@ If a nut is given a child then it gets placed on its top surface.
 |   1 | `sliding_t_nut(M3_sliding_t_nut)` |  Nut M3 sliding T |
 |   1 | `nut(M3_nut)` |  Nut M3 x 2.4mm  |
 |   1 | `nut(M3_nut, brass = true)` |  Nut M3 x 2.4mm brass |
+|   1 | `nut(M3_nut, dome = true)` |  Nut M3 x 2.4mm domed |
 |   1 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   1 | `nut(M3nS_thin_nut)` |  Nut M3nS 5.5 x 1.8mm  |
 |   1 | `sliding_t_nut(M4_hammer_nut)` |  Nut M4 hammer |
 |   1 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
 |   1 | `nut(M4_nut)` |  Nut M4 x 3.2mm  |
+|   1 | `nut(M4_nut, dome = true)` |  Nut M4 x 3.2mm domed |
 |   1 | `nut(M4_nut, nyloc = true)` |  Nut M4 x 3.2mm nyloc |
 |   1 | `nut(M4nS_thin_nut)` |  Nut M4nS 7 x 2.2mm  |
 |   1 | `sliding_t_nut(M5_sliding_t_nut)` |  Nut M5 sliding T |
 |   1 | `nut(M5_nut)` |  Nut M5 x 4mm  |
+|   1 | `nut(M5_nut, dome = true)` |  Nut M5 x 4mm domed |
 |   1 | `nut(M5_nut, nyloc = true)` |  Nut M5 x 4mm nyloc |
 |   1 | `nut(M5nS_thin_nut)` |  Nut M5nS 8 x 2.7mm  |
 |   1 | `sliding_t_nut(M6_sliding_t_nut)` |  Nut M6 hammer |
 |   1 | `nut(M6_half_nut)` |  Nut M6 x 3mm  |
 |   1 | `nut(M6_nut)` |  Nut M6 x 5mm  |
+|   1 | `nut(M6_nut, dome = true)` |  Nut M6 x 5mm domed |
 |   1 | `nut(M6_nut, nyloc = true)` |  Nut M6 x 5mm nyloc |
 |   1 | `nut(M6nS_thin_nut)` |  Nut M6nS 10 x 3.2mm  |
 |   1 | `sliding_t_nut(M8_sliding_ball_t_nut)` |  Nut M8 sliding T with spring loaded ball |
 |   1 | `nut(M8_nut)` |  Nut M8 x 6.5mm  |
+|   1 | `nut(M8_nut, dome = true)` |  Nut M8 x 6.5mm domed |
 |   1 | `nut(M8_nut, nyloc = true)` |  Nut M8 x 6.5mm nyloc |
 |   1 | `nut(M8nS_thin_nut)` |  Nut M8nS 13 x 4mm  |
 |   1 | `washer(M6_washer)` |  Washer  M6 x 12.5mm x 1.5mm |

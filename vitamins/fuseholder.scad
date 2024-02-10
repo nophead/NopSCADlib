@@ -20,7 +20,7 @@
 //
 //! 20mm panel mount fuse holder.
 //
-include <../utils/core/core.scad>
+include <../core.scad>
 include <spades.scad>
 use <../utils/tube.scad>
 use <../utils/thread.scad>
@@ -69,18 +69,10 @@ module fuseholder(thickness) { //! Fuseholder with nut in place for specified pa
     vflip()
         translate_z(thickness)
             explode(height, explode_children = true) {
-                color(colour) {
+                color(colour)
                     tube(or = nut_d / 2, ir = thread_d / 2, h = nut_flange_t, center = false);
 
-                    linear_extrude(nut_t)
-                        difference() {
-                            circle(d = nut_d, $fn = 6);
-
-                            circle(d = thread_d);
-                        }
-                }
-                if(show_threads && exploded())
-                    female_metric_thread(thread_d, thread_p, nut_t, false, colour = colour);
+                draw_nut(nut_d, thread_d, nut_t, thread_p, colour, show_threads && exploded() || thickness > thread);
             }
     //
     // Body

@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 //! Potentiometers and rotary encoders
-include <../utils/core/core.scad>
+include <../core.scad>
 use <../utils/rounded_cylinder.scad>
 use <../utils/round.scad>
 use <../utils/thread.scad>
@@ -71,18 +71,8 @@ module pot_nut(type, washer = true) { //! Draw the nut for a potentiometer and p
                     }
 
         if(nut)
-            color(nut[2])
-                translate_z(nut_z + exploded() * 10) {
-                    linear_extrude(nut[1])
-                        difference() {
-                            circle(d = nut.x / cos(30), $fn = 6);
-
-                            circle(d =  thread_d);
-                        }
-
-                    if(show_threads && exploded())
-                        female_metric_thread(thread_d, pot_thread_p(type), nut[1], center = false, colour = nut[2]);
-                }
+            translate_z(nut_z + exploded() * 10)
+                draw_nut(nut.x / cos(30), thread_d, nut[1], pot_thread_p(type), nut[2], show_threads && exploded());
     }
 }
 

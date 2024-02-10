@@ -226,7 +226,7 @@ translate([950, 1525])
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
-washers_y = nuts_y + 120;
+washers_y = nuts_y + 140;
 screws_y = washers_y + 120;
 circlips_y = screws_y + 180;
 springs_y = circlips_y + 20;

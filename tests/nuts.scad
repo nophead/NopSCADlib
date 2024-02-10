@@ -25,7 +25,11 @@ module nuts() {
             translate([0, nyloc ? 20 : 0])
                 nut(n, nyloc);
 
-        translate([0, 40]) {
+        translate([0, 40])
+            if(nut_dome(n))
+                nut(n, dome = true);
+
+        translate([0, 60]) {
             if(n == M3_nut)
                 nut(n, brass = true);
 
@@ -43,7 +47,7 @@ module nuts() {
                 #nut_trap(M8_cap_screw, n, h = 30);
         }
 
-        translate([0, 60]) {
+        translate([0, 80]) {
             if(n == M3_nut)
                 sliding_t_nut(M3_sliding_t_nut);
 
@@ -61,7 +65,7 @@ module nuts() {
                     sliding_t_nut(M8_sliding_ball_t_nut);
         }
 
-        translate([0, 80]) {
+        translate([0, 100]) {
             if(n == M3_nut)
                 sliding_t_nut(M3_hammer_nut);
 
@@ -69,7 +73,7 @@ module nuts() {
                 sliding_t_nut(M4_hammer_nut);
        }
 
-       translate([0, 100]) {
+       translate([0, 120]) {
             if(n == M3_nut)
                nut_square(M3nS_thin_nut);
             if(n == M4_nut)
