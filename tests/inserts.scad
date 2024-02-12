@@ -31,7 +31,11 @@ module inserts() {
         translate([10 * i, -5])
             insert(short_inserts[i]);
 
-
+    for(i = [0: len(threaded_inserts) -1]) {
+        d = insert_hole_radius(threaded_inserts[i]);
+        translate([(10 + d) * i, 20])
+            threaded_insert(threaded_inserts[i]);
+    }
 
     stl_colour(pp1_colour)
         translate([len(inserts) * 10, 0]) {

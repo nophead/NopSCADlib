@@ -1703,6 +1703,8 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | `insert_ring2_d(type)` | Diameter of the middle ring |
 | `insert_ring3_d(type)` | Diameter of the bottom ring |
 | `insert_screw_diameter(type)` | Screw size |
+| `threaded_insert_chamfer(type)` | Size of the chamfer for threaded inserts |
+| `threaded_insert_pitch(type)` | Pitch of the outer thread for threaded inserts |
 
 ### Functions
 | Function | Description |
@@ -1718,6 +1720,7 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 | `insert_boss(type, z, wall = 2 * extrusion_width)` | Make a boss to take an insert |
 | `insert_hole(type, counterbore = 0, horizontal = false)` | Make a hole to take an insert, `counterbore` is the extra length for the screw |
 | `insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, flying = true)` | Make a flying insert lug, see [ssr_shroud](#Ssr_shroud) |
+| `threaded_insert(type)` | Draw specified threaded insert, for use in wood |
 
 ![inserts](tests/png/inserts.png)
 
@@ -1732,6 +1735,14 @@ Heatfit threaded inserts. Can be pushed into thermoplastics using a soldering ir
 |   1 | `insert(CNCKM4)` |  Heatfit insert M4 x 4mm |
 |   1 | `insert(F1BM4)` |  Heatfit insert M4 x 8.2mm |
 |   2 | `insert(CNCKM5)` |  Heatfit insert M5 x 5.8mm |
+|   1 | `threaded_insert(M10x25)` |  Threaded insert M10 x 25mm |
+|   1 | `threaded_insert(M12x30)` |  Threaded insert M12 x 30mm |
+|   1 | `threaded_insert(M16x30)` |  Threaded insert M16 x 30mm |
+|   1 | `threaded_insert(M3x8)` |  Threaded insert M3 x 8mm |
+|   1 | `threaded_insert(M4x10)` |  Threaded insert M4 x 10mm |
+|   1 | `threaded_insert(M5x12)` |  Threaded insert M5 x 12mm |
+|   1 | `threaded_insert(M6x15)` |  Threaded insert M6 x 15mm |
+|   1 | `threaded_insert(M8x18)` |  Threaded insert M8 x 18mm |
 
 
 <a href="#top">Top</a>
