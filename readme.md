@@ -43,13 +43,13 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
 <tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
 <tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#wire">Wire</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td></td><td> <a href = "#zipties">Zipties</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td></td><td> <a href = "#wire">Wire</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -4671,6 +4671,80 @@ Iron core transformers. The grey shaded area is the keep out region where the te
 | ---:|:--- |:---|
 |   1 | `transformer(CCM300)` |  Transformer Carroll & Meynell CCM300/230 isolation |
 |   1 | `transformer(SMALLTX)` |  Transformer Small mains |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="ttracks"></a>
+## Ttracks
+T-Tracks used in woodworking jigs
+
+[vitamins/ttracks.scad](vitamins/ttracks.scad) Object definitions.
+
+[vitamins/ttrack.scad](vitamins/ttrack.scad) Implementation.
+
+[tests/ttracks.scad](tests/ttracks.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `t_insert_description(type)` | Description of this t-track insert |
+| `t_insert_height(type)` | Height of t-track insert |
+| `t_insert_thread(type)` | M thread for this the screw hole in this insert |
+| `t_insert_top_thickness(type)` | Top thickness for t-track insert |
+| `t_insert_top_width(type)` | Top Width of t-track insert |
+| `t_insert_width(type)` | Width of t-track insert |
+| `tbolt_description(type)` | Description of this t-track bolt |
+| `tbolt_head_length(type)` | Head length for t-track bolt |
+| `tbolt_head_thickness(type)` | Head thickness for t-track bolt |
+| `tbolt_head_width(type)` | Head width for t-track bolt |
+| `tbolt_thread(type)` | M thread for this bolt |
+| `ttrack_fixture(type)` | Fixture, such as T-bolt or Miter insert used with this track |
+| `ttrack_height(type)` | Height of track section |
+| `ttrack_opening(type)` | Width of the opening |
+| `ttrack_screw(type)` | Screw used to fasten track |
+| `ttrack_screw_pitch(type)` | Distance between screws |
+| `ttrack_slot_height(type)` | Height of the slot |
+| `ttrack_slot_width(type)` | Width of the slot |
+| `ttrack_top_thickness(type)` | Thickness of the top layer |
+| `ttrack_width(type)` | Width of track section |
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `ttrack_holes(type, length)` | Number of holes in a rail given its `length` |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `ttrack(type, length, colour = "LightSlateGray")` | Draw the specified rail |
+| `ttrack_hole_positions(type, length)` | Position children over screw holes |
+| `ttrack_place_bolt(type, pos, bolt = undef)` | Place a T-Bolt relative to the centre of the track |
+| `ttrack_place_insert(type, pos, insert = undef)` | Place a T-Insert relative to the centre of the track |
+
+![ttracks](tests/png/ttracks.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   3 | `screw(M3_cs_cap_screw, 15)` |  Screw M3 cs cap x 15mm |
+|   3 | `screw(M4_cs_cap_screw, 15)` |  Screw M4 cs cap x 15mm |
+|   2 | `screw(M6_hex_screw, 15)` |  Screw M6 hex x 15mm |
+|   1 | `ttrack(ttrack_mitre_30mm, 120)` |  T-Track ttrack_mitre_30mm x 120mm |
+|   1 | `ttrack(ttrack_mitre_30mm, 200)` |  T-Track ttrack_mitre_30mm x 200mm |
+|   1 | `ttrack(ttrack_mitre_36mm, 120)` |  T-Track ttrack_mitre_36mm x 120mm |
+|   1 | `ttrack(ttrack_universal_19mm, 120)` |  T-Track ttrack_universal_19mm x 120mm |
+|   1 | `ttrack(ttrack_universal_19mm, 200)` |  T-Track ttrack_universal_19mm x 200mm |
+|   1 | `ttrack(ttrack_universal_19mm_A, 120, colour="red")` |  T-Track ttrack_universal_19mm_A x 120mm |
+|   1 | `ttrack(ttrack_universal_19mm_B, 120, colour="blue")` |  T-Track ttrack_universal_19mm_B x 120mm |
+|   1 | `T-Track Bolt M6` | M6 x 30mm |
+|   1 | `T-Track Bolt M6 with small head` | M6 x 30mm |
+|   3 | `T-Track Bolt M8` | M8 x 30mm |
+|   1 | `ttrack_insert(TTrack_insert_Miter30_M6, 30, 1)` | T-Track insert, Miter track 30mm, M6 thread, M30mm, with 1 M6 |
+|   1 | `ttrack_insert(TTrack_insert_Miter30_M6, 30, 1, colour="red")` | T-Track insert, Miter track 30mm, M6 thread, M30mm, with 1 M6 |
+|   1 | `ttrack_insert(TTrack_insert_Miter30_M6, 60, 2, colour="red")` | T-Track insert, Miter track 30mm, M6 thread, M60mm, with 2 M6 |
+|   1 | `ttrack_insert(TTrack_insert_Miter30_M8, 30, 1, colour="red")` | T-Track insert, Miter track 30mm, M8 thread, M30mm, with 1 M8 |
 
 
 <a href="#top">Top</a>
