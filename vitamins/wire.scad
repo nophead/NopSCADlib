@@ -44,23 +44,62 @@ function cable_is_ribbon(cable) = len(cable) > 2 && cable[2]; //! Is a ribbon ca
 function cable_wire_colours(cable) = assert(len(cable[3]) >= cable_wires(cable)) cable[3]; //! Individual wire colours
 function cable_tlen(cable)      = cable[4]; //! Twisted cable twist length
 function cable(wires, size, colours, ribbon = false, tlen = 25) = [wires, size, ribbon, colours, tlen]; //! Cable constructor
+function cable_merge(cable1, cable2) = //! Combine the wires of two cables
+    assert(cable_wire_size(cable1) == cable_wire_size(cable2))
+    assert(cable_is_ribbon(cable1) == cable_is_ribbon(cable2))
+    cable(cable_wires(cable1) + cable_wires(cable2),
+          cable_wire_size(cable1),
+          concat(cable_wire_colours(cable1), cable_wire_colours(cable1)),
+          cable_is_ribbon(cable1));
 
-// numbers from http://mathworld.wolfram.com/CirclePacking.html
-function cable_radius(cable) = [0, 1, 2, 2.15, 2.41, 2.7, 3, 3, 3.3][cable_wires(cable)] * cable_wire_size(cable) / 2; //! Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>.
+// numbers from https://en.wikipedia.org/wiki/Circle_packing_in_a_circle
+function cable_radius(cable) = [ //! Radius of a bundle of wires, see <http://mathworld.wolfram.com/CirclePacking.html>.
+        0, 1, 2,
+        2.154,   // 3
+        2.414,   // 4
+        2.701,   // 5
+        3,       // 6
+        3,       // 7
+        3.304,   // 8
+        3.613,   // 9
+        3.813,   // 10
+        3.923,   // 11
+        4.029,   // 12
+        4.236,   // 13
+        4.328,   // 14
+        4.521,   // 15
+        4.615,   // 16
+        4.792,   // 17
+        4.863,   // 18
+        4.863,   // 19
+        5.122,   // 20
+    ][cable_wires(cable)] * cable_wire_size(cable) / 2;
 
 function wire_hole_radius(cable) = ceil(4 * cable_radius(cable) + 1) / 4; //! Radius of a hole to accept a bundle of wires, rounded up to standard metric drill size
 
 function cable_bundle(cable) = //! Dimensions of the bounding rectangle of a bundle of wires in a flat cable clip
     (cable_is_ribbon(cable) ? [cable_wires(cable), 1] :
-    [[0,0], [1,1], [2,1], [2, 1 + sin(60)], [2,2], [3, 1 + sin(60)], [3,2]][cable_wires(cable)]) * cable_wire_size(cable);
+    [[0, 0],                    // 0
+     [1, 1],                    // 1
+     [2, 1],                    // 2
+     [2, 1 + sin(60)],          // 3
+     [2, 2],                    // 4
+     [3, 1 + sin(60)],          // 5
+     [3, 2],                    // 6
+     [4, 1 + sin(60)],          // 7
+     [3, 2 + sin(60)],          // 8
+     [3, 3]
+    ][cable_wires(cable)]) * cable_wire_size(cable);
 
 function cable_bundle_positions(cable) = let( //! Positions of wires in a bundle to go through a cable strip
         wires = cable_wires(cable),
-        bottom = cable_is_ribbon(cable) ? wires : wires < 3 ? wires : ceil(wires / 2),
-        top = wires - bottom
+        bottom = cable_is_ribbon(cable) ? wires : wires < 3 ? wires : wires <= 7 ? ceil(wires / 2) : min(wires, 3),
+        middle = min(wires - bottom, 3),
+        top = wires - bottom - middle
     )
-    [for(i = [0 : 1 : bottom - 1]) [i - (bottom - 1) / 2, 0.5],
-     for(i = [top - 1 : -1 : 0])   [i - (top - 1) / 2, top == bottom ? 1.5 : 0.5 + sin(60)]
+    [for(i = [0 : 1 : bottom - 1])    [i - (bottom - 1) / 2,       0.5],
+     for(i = [middle - 1 : -1 : 0])   [i - (middle - 1) / 2,       middle == bottom ? 1.5 : 0.5 + sin(60)],
+     for(i = [0 : 1 : top - 1])       [i - [0.5, 0.5, 1][top - 1], top == middle ?    2.5 : 1.5 + sin(60)]
     ] * cable_wire_size(cable);
 
 function cable_width(cable)  = cable_bundle(cable).x; //! Width in flat clip
