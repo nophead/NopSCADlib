@@ -32,6 +32,9 @@ function insert_barrel_d(type)       = type[5];     //! Diameter of the main bar
 function insert_ring1_h(type)        = type[6];     //! Height of the top and middle rings
 function insert_ring2_d(type)        = type[7];     //! Diameter of the middle ring
 function insert_ring3_d(type)        = type[8];     //! Diameter of the bottom ring
+function threaded_insert_pitch(type) = type[9];     //! Pitch of the outer thread for threaded inserts
+function threaded_insert_chamfer(type) = type[10];  //! Size of the chamfer for threaded inserts
+
 
 function insert_hole_length(type) = round_to_layer(insert_length(type)); //! Length of the insert rounded to layer height
 
@@ -46,6 +49,14 @@ function insert_nose_length(type, d) = let( //! The length before the second rin
 
 module insert(type) { //! Draw specified insert
     length = insert_length(type);
+
+    vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type), " x ", length, "mm"));
+
+    base_insert(type);
+}
+
+module base_insert(type) {
+    length = insert_length(type);
     ring1_h = insert_ring1_h(type);
 
     chamfer1 = (insert_ring2_d(type) - insert_barrel_d(type)) / 2;
@@ -53,7 +64,6 @@ module insert(type) { //! Draw specified insert
     ring2_h = ring1_h + chamfer1;
     gap = (length - ring1_h - ring2_h - chamfer2) / 3;
 
-    vitamin(str("insert(", type[0], "): Heatfit insert M", insert_screw_diameter(type), " x ", length, "mm"));
     $fn = 64;
     thread_d = insert_screw_diameter(type);
     explode(20, offset = [0, 0, -length]) translate_z(eps) vflip() {
@@ -185,4 +195,55 @@ module insert_lug(insert, wall, counter_bore = 0, extension = 0, corner_r = 0, f
                     cube(eps, center = true);
             }
     }
+}
+
+
+module threaded_insert(type) { //! Draw specified threaded insert, for use in wood
+    d2 = insert_outer_d(type);
+    d3 = insert_barrel_d(type);
+    pitch = threaded_insert_pitch(type);
+
+    profile = thread_profile((d2 - d3) /2 , 0, 60);
+    socket = insert_screw_diameter(type) / cos(30) / 2;
+    length = insert_length(type);
+
+    r=insert_barrel_d(type) / 2;
+    z=threaded_insert_chamfer(type);
+
+    thread_l = insert_length(type) - z; // - insert_ring1_h(type);
+
+
+
+
+    vitamin(str("threaded_insert(", type[0], "): Threaded insert M", insert_screw_diameter(type), " x ", length, "mm"));
+    union() {
+        color(silver)
+            difference() {
+                base_insert(type);
+                translate_z(-socket/2 + 0.01)
+                    cylinder(r=socket, $fn = 6, h=socket/2);
+
+                // chamfer the end
+                rotate_extrude(convexity = 3)
+                    polygon([
+                        [r - z, -length],
+                        [r + 0.1, - length],
+                        [r + 0.1, - length + z + 0.1]
+                    ]);
+            }
+
+        translate_z(-thread_l/2)
+            thread(insert_barrel_d(type),
+                pitch,
+                thread_l,
+                profile,
+                center = true,
+                top = 1,
+                bot = -1,
+                starts = 1,
+                solid = false,
+                female = false,
+                colour = silver);
+    }
+
 }

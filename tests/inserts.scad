@@ -22,7 +22,6 @@ use <../utils/layout.scad>
 include <../vitamins/inserts.scad>
 
 module inserts() {
-
     for(i = [0: len(inserts) -1])
         translate([10 * i, 5])
             insert(inserts[i]);
@@ -30,7 +29,6 @@ module inserts() {
     for(i = [0: len(short_inserts) -1])
         translate([10 * i, -5])
             insert(short_inserts[i]);
-
 
 
     stl_colour(pp1_colour)
@@ -42,6 +40,17 @@ module inserts() {
         }
 }
 
+module threaded_inserts()
+    for(i = [0: len(threaded_inserts) -1]) {
+        d = insert_hole_radius(threaded_inserts[i]);
+        translate([(10 + d) * i, 0])
+            threaded_insert(threaded_inserts[i]);
+    }
+
 if($preview)
-    let($show_threads = true)
+    let($show_threads = true) {
         inserts();
+
+        translate([0, 20])
+            threaded_inserts();
+    }

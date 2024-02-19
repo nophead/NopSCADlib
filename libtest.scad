@@ -228,7 +228,8 @@ inserts_y = 0;
 nuts_y = inserts_y + 20;
 washers_y = nuts_y + 140;
 screws_y = washers_y + 120;
-circlips_y = screws_y + 180;
+threaded_inserts_y = screws_y + 180;
+circlips_y = threaded_inserts_y + 30;
 springs_y = circlips_y + 20;
 o_rings_y = springs_y;
 sealing_strip_y = springs_y + 20;
@@ -257,6 +258,9 @@ translate([x0, nuts_y])
 
 translate([x0, washers_y])
     washers();
+
+translate([x0, threaded_inserts_y])
+    threaded_inserts();
 
 translate([x0, screws_y])
     screws();
