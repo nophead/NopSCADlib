@@ -112,6 +112,7 @@ use <tests/stepper_motors.scad>
 use <tests/Swiss_clips.scad>
 use <tests/toggles.scad>
 use <tests/transformers.scad>
+use <tests/ttracks.scad>
 use <tests/tubings.scad>
 use <tests/veroboard.scad>
 use <tests/washers.scad>
@@ -220,10 +221,6 @@ translate([950, box_y])
     box_test();
 
 
-translate([950, 1525])
-    rotate(-90)
-        bbox_test();
-
 inserts_y = 0;
 nuts_y = inserts_y + 20;
 washers_y = nuts_y + 140;
@@ -246,6 +243,10 @@ displays_y = pcbs_y + 265;
 fans_y = displays_y + 110;
 transformers_y = fans_y + 120;
 psus_y = transformers_y + 190;
+
+ttracks_y = pcbs_y + 150;
+translate([840, ttracks_y])
+    ttracks();
 
 translate([x0 + 35, inserts_y])
     inserts();
@@ -471,6 +472,9 @@ translate([370, transformers_y])
 translate([x4, transformers_y])
     no_explode() socket_boxes();
 
+translate([950, transformers_y + 110])
+    rotate(-90)
+        bbox_test();
 
 belts_y = 0;
 rails_y = belts_y + 200;

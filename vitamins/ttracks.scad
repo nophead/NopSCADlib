@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2024
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //

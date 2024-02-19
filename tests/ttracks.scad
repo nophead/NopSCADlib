@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2024
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -18,28 +18,43 @@
 //
 include <../utils/core/core.scad>
 use <../utils/layout.scad>
+use <../utils/maths.scad>
 
 include <../vitamins/ttracks.scad>
 
 module ttracks() {
     colours = [ "LightSlateGray", "red", "blue", "LightSlateGray", "LightSlateGray" ];
+    gap = 8;
+    widths = [for(t = ttracks) ttrack_width(t)];
+    translate([0, 60])
+        layout(widths, gap) {
+            ttrack(ttracks[$i], 120, colours[$i]);
 
-    for(i = [0: len(ttracks) -1])
-        translate([(i < 4 ? 30 : 35) * i, 60])
-            ttrack(ttracks[i], 120, colours[i]);
+            if($i < len(ttrack_bolts))
+                translate([0, -80])
+                    ttrack_bolt(ttrack_bolts[$i], 30);
 
-    for(i = [0: len(ttrack_bolts) -1])
-        translate([30 * i, -15])
-            ttrack_bolt(ttrack_bolts[i], 30);
+            let(i = $i - len(ttrack_bolts))
+                if(i >= 0 && i < len(ttrack_inserts))
+                    translate([0, -85])
+                        rotate(90)
+                            ttrack_insert(ttrack_inserts[i], 30, colour=colours[i]);
+        }
 
-    for(i = [0: len(ttrack_inserts) -1]) {
-        translate([35 * (i + 3), -25])
-            rotate([0,0,90])
-                ttrack_insert(ttrack_inserts[i], 30, colour=colours[i]);
+    x = sumv(widths) + len(ttracks) * gap + ttrack_width(ttrack_universal_19mm) / 2;
+    translate([x, 20]) {
+        ttrack_assembly(ttrack_universal_19mm, 200);
+        ttrack_place_bolt(ttrack_universal_19mm, 50)
+            ttrack_bolt(ttrack_fixture(ttrack_universal_19mm), 30);
+
+        ttrack_place_bolt(ttrack_universal_19mm, -60)
+            ttrack_bolt(ttrack_fixture(ttrack_universal_19mm), 30);
     }
 
-    translate([-35,20,0]) {
+    x2 = x + ttrack_width(ttrack_universal_19mm) / 2 + gap + ttrack_width(ttrack_mitre_30mm) / 2;
+    translate([x2, 20]) {
         ttrack_assembly(ttrack_mitre_30mm, 200);
+
         ttrack_place_insert(ttrack_mitre_30mm, 50)
             ttrack_insert(ttrack_fixture(ttrack_mitre_30mm), 30, 1, "red");
 
@@ -49,15 +64,6 @@ module ttracks() {
                 translate_z(8)
                     screw(M6_hex_screw, 15);
         }
-    }
-
-    translate([-70,20,0]) {
-        ttrack_assembly(ttrack_universal_19mm, 200);
-        ttrack_place_bolt(ttrack_universal_19mm, 50)
-            ttrack_bolt(ttrack_fixture(ttrack_universal_19mm), 30);
-
-        ttrack_place_bolt(ttrack_universal_19mm, -60)
-            ttrack_bolt(ttrack_fixture(ttrack_universal_19mm), 30);
     }
 
 }
