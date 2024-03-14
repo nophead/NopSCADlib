@@ -30,6 +30,9 @@ function camera_connector_pos(type) = type[5]; //! The flex connector block for 
 function camera_connector_size(type)= type[6]; //! The flex connector block for the camera itself's size
 function camera_fov(type)           = type[7]; //! The field of view of the camera lens
 
+function camera_lens_height(type) = //! The height of the lens stack
+     let(lenses = camera_lens(type), lens = lenses[len(lenses) - 1][0]) lens.y + lens.z;
+
 module camera_lens(type, offset = 0, show_lens = true) //! Draw the lens stack, with optional offset for making a clearance hole
     color(grey(20))
         translate(camera_lens_offset(type))

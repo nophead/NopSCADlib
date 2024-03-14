@@ -779,6 +779,11 @@ PCB cameras.
 | `camera_lens_offset(type)` | Offset of the lens center from the PCB centre |
 | `camera_pcb(type)` | The PCB part of the camera |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `camera_lens_height(type)` | The height of the lens stack |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
