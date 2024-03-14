@@ -5206,7 +5206,7 @@ The top bezel can have an optional child, which is subtracted to allow modificat
 | `box_right(type)` | Default right side, can be overridden to customise |
 | `box_right_blank(type, sheet = false)` | Generates a 2D template for the right sheet, `sheet` can be set to override the type |
 | `box_shelf_blank(type, sheet = false, wall = undef)` | Generates a 2D template for a shelf sheet |
-| `box_shelf_bracket(type, screw_positions, wall = undef)` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts |
+| `box_shelf_bracket(type, screw_positions, wall = undef)` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts, third child is 3D additions. |
 | `box_shelf_bracket_section(type, rows, cols, x, y)` | Generates sections of the shelf bracket to allow it to be bigger than the printer |
 | `box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef, top_screws = true)` | Place children at the shelf screw positions |
 | `box_top(type)` | Default top, can be overridden to customise |
