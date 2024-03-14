@@ -63,5 +63,5 @@ def source_dirs(bom_dir):
         else:
             if dir.endswith('/printed'):
                 lib_dirs.add(dir)
-    dirs.remove(source_dir)
+    dirs.discard(source_dir)
     return [source_dir] + sorted(dirs) + sorted(lib_dirs)
