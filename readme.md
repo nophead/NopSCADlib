@@ -4038,6 +4038,7 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(Spring08, 30, 30, 2)` |  Bi-metal saw blade 30mm x 30mm x 0.8mm |
 |   1 | `sheet(Cardboard, 30, 30, 2)` |  Corrugated cardboard 30mm x 30mm x 5mm |
 |   1 | `sheet(Foam20, 30, 30, 2)` |  Foam sponge 30mm x 30mm x 20mm |
+|   1 | `sheet(Sellotape, 30, 30, 2)` |  Sellotape tape 30mm x 30mm x 0.05mm |
 |   1 | `sheet(DiBond, 30, 30, 2)` |  Sheet DiBond 30mm x 30mm x 3mm |
 |   1 | `sheet(DiBond6, 30, 30, 2)` |  Sheet DiBond 30mm x 30mm x 6mm |
 |   1 | `sheet(MDF10, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 10mm |
