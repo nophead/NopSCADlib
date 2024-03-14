@@ -4229,6 +4229,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `smd_inductor(CDRH104)` |  CDRH104 package 10R |
 |   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
 |   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
