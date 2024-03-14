@@ -67,7 +67,7 @@ module smds() {
     translate([0, 39])
         layout([for(i = smd_inductors) smd_inductor_leads(i).x], 1)
             let(i = smd_inductors[$i])
-                smd_inductor(i, "4R7");
+                smd_inductor(i, ["4R7", "10R"][$i % 2]);
 
     translate([20, 6])
          layout([for(q = smd_qfps) smd_qfp_body_size(q).x], 3)
