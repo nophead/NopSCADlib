@@ -67,7 +67,8 @@ rpi_camera = ["rpi_camera", "Raspberry Pi focusable camera", rpi_camera_pcb, [0,
         [[0, 0,  12], 6],
         [[0, 11, 4.3], 14 / 2, [8/2, 11/2, 1]],
     ],
-    [0, 18 - 1.5 - 2.5], [8, 5, 1.6]
+    [0, 18 - 1.5 - 2.5], [8, 5, 1.6],
+    [54, 41] // FOV
 ];
 
 esp32_cam_x = 1; // Seems to vary as mine is offset but pictures on the web show it more centered.
@@ -96,7 +97,7 @@ ESP32_module =  ["", "", 18, 26, 0.8,   0, 0.7, [1.1, 1.1, 0, gold], grey(18), f
 ESP32_CAM_pcb = ["", "", 27, 40, 1.7, 2.5, 0, 0, grey(15), false, [],
     [
         [27 / 2, 26 / 2, 0, "-pcb", 0, ESP32_module],
-        for(side = [-1, 1]) [side * inch(0.45) + 27 / 2, -(4.2 + inch(.35)), 0, "-2p54header", 1, 8],
+        for(side = [-1, 1]) [side * inch(0.45) + 27 / 2, -(4.2 + inch(.35)), 0, "-2p54joiner", 1, 8],
         [ 27 / 2, -8, 90, "uSD", [14.85, 14.65, 1.8]],
         [ 27 / 2 + 1, 15, 0, "flat_flex", false],
         [ 27 / 2 + inch(0.45), 10.5, 0, "block", 3, 3, 0.8, grey(90)],
@@ -151,7 +152,7 @@ ESP32_CAM = ["ESP32_CAM", "ESP32-CAM Camera module", ESP32_CAM_pcb, [esp32_cam_x
         [[0, 0, 6.3], 3.5, [1, 1, 0.5]],
     ],
     [1, -4], [15, 2.2, 1],
-    [54, 41] // FOV
+    [41, 54] // FOV
 ];
 
 
