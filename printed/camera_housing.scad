@@ -383,9 +383,3 @@ module camera_housing(cam) {
         rotate(90)
             camera_bracket(cam);
 }
-
-cam = rpi_camera_v2;
-if($preview)
-    camera_fastened_assembly(cam, 3);
-else
-    camera_housing(cam);
