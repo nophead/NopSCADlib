@@ -17,7 +17,7 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 wire_r = 5; // [1 : 20]
-t = 0; // [0 : 3]
+t = -1; // [-1 : 3]
 
 include <../utils/core/core.scad>
 use <../utils/layout.scad>
@@ -26,9 +26,9 @@ include <../vitamins/zipties.scad>
 
 module zipties()
     layout([for(z = zipties) 9], 2 * wire_r) {
-        ziptie(zipties[$i], wire_r, t);
+        ziptie(zipties[$i], wire_r, max(t, 0));
 
-        if(t)
+        if(t >= 0)
             color(grey(20))
                 cylinder(r = wire_r, h = 10, center = true);
 
