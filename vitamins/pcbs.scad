@@ -760,7 +760,7 @@ ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "
     ], [], [], [], M2p5_pan_screw];
 
 
-MT3608 = ["MT3608", "MT3608 boost converter module",        37, 17, 1.2, 2, 1.5, [5, 3], "#2140BE", false, 
+MT3608 = ["MT3608", "MT3608 boost converter module",        37, 17, 1.2, 2, 1.5, [5, 3], "#2140BE", false,
       [[3.0725, 5.095], [3.0725, -5.095], [-3.0725, 5.095], [-3.0725, -5.095]],
       [[-12.05 , -6.8, 180, "trimpot10"],
        [-24.05 , 13.8, 90, "smd_soic", SOT23_6, "B628"],
@@ -1201,7 +1201,7 @@ ESP_12F = pcb("ESP_12F", "ESP-12F ESP8266 WiFi module", [24, 16, 0.8],
         ]
     ]
 );
-            
+
 RCWL0516 = pcb(
     "RCWL-0516", "Microwave Radar Sensor",
     size = [36, 17.3, 1.2],
@@ -1248,7 +1248,7 @@ tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_f
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [KY_040, TP4056, L9110S, ZC_A0591, MT3608, RAMPSEndstop, ArduinoNano, HW803_1WAY_RELAY, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4, RCWL0516];
+pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RCWL0516, MT3608,RAMPSEndstop, ArduinoNano, HW803_1WAY_RELAY, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 

@@ -2884,6 +2884,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(Melzi)` |  Melzi electronics - not shown |
 |   6 |  |  Micro SD card |
 |   1 |  |  Micro SD card - not shown |
+|   1 | `pcb(RCWL-0516)` |  Microwave Radar Sensor |
 |   1 | `molex_254(2)` |  Molex KK header 2 way - not shown |
 |   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
@@ -2911,8 +2912,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   4 | `screw(M2_cap_screw, 25)` |  Screw M2 cap x 25mm |
 |   2 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
-|   4 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
-|   4 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
+|   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |  12 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
 |   4 | `screw(M2p5_dome_screw, 25)` |  Screw M2.5 dome x 25mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
@@ -2920,8 +2920,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |  19 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |  13 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   4 | `screw(M3_cap_screw, 25)` |  Screw M3 cap x 25mm |
-|   8 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
-|   3 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
+|  11 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   4 | `screw(M4_cap_screw, 20)` |  Screw M4 cap x 20mm |
 |   4 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
@@ -2941,24 +2940,24 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Filename |
 | ---:|:--- |
 |   4 | pcb_spacer20100.stl |
-|   4 | pcb_spacer20140.stl |
+|   4 | pcb_spacer20150.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
-|   2 | pcb_spacer25100.stl |
-|   4 | pcb_spacer25130.stl |
-|   4 | pcb_spacer25160.stl |
+|   2 | pcb_spacer25110.stl |
+|   4 | pcb_spacer25140.stl |
 |   4 | pcb_spacer25170.stl |
-|   4 | pcb_spacer25180_2.stl |
+|   4 | pcb_spacer25180.stl |
 |   4 | pcb_spacer25190_2.stl |
-|   4 | pcb_spacer25230.stl |
+|   4 | pcb_spacer25200_2.stl |
 |   4 | pcb_spacer25240.stl |
 |   4 | pcb_spacer25250.stl |
+|   4 | pcb_spacer25260.stl |
 |   4 | pcb_spacer2580.stl |
-|   4 | pcb_spacer30120.stl |
-|   4 | pcb_spacer30200.stl |
+|   4 | pcb_spacer30130.stl |
 |   4 | pcb_spacer30210.stl |
-|   3 | pcb_spacer30220.stl |
+|   4 | pcb_spacer30220.stl |
+|   3 | pcb_spacer30230.stl |
 |  10 | pcb_spacer3050.stl |
 |   9 | pcb_spacer3060.stl |
 |   9 | pcb_spacer3070.stl |
