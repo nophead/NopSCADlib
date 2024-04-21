@@ -5488,7 +5488,8 @@ Housings for PCB cameras.
 |   1 | `camera(rpi_camera_v1)` |  Raspberry Pi camera V1 |
 |   1 | `camera(rpi_camera_v2)` |  Raspberry Pi camera V2 |
 |   1 | `camera(rpi_camera)` |  Raspberry Pi focusable camera |
-|   7 | `screw(M2_cap_screw, 10)` |  Screw M2 cap x 10mm |
+|   3 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
+|   4 | `screw(M2_cap_screw, 10)` |  Screw M2 cap x 10mm |
 |   4 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |   4 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   2 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |

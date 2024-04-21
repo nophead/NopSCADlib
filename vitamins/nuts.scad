@@ -20,7 +20,7 @@ include <washers.scad>
 //
 // Nuts
 //
-M2_nut_trap_depth = 2.5;
+M2_nut_trap_depth = 1.75;
 M2p5_nut_trap_depth = 2.5;
 M3_nut_trap_depth = 3;
 M4_nut_trap_depth = 4;
