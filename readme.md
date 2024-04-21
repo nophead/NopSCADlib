@@ -7451,6 +7451,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 | `cap(facets, segment = 0, end)` | Create the mesh for an end cap |
 | `circle_points(r = 1, z = 0, dir = -1)` | Generate the points of a circle, setting z makes a single turn spiral |
 | `helical_twist_per_segment(r, pitch, sides)` | Calculate the twist around Z that rotate_from_to() introduces |
+| `offset_paths(path, offsets, twists = 0)` | Create new paths offset from the original, optionally spiralling around it |
 | `rectangle_points(w, h)` | Generate the points of a rectangle |
 | `rounded_path(path)` | Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep. |
 | `rounded_path_vertices(path)` | Show the unrounded version of a rounded_path for debug |
@@ -7462,7 +7463,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `show_path(path)` | Show a path using a chain of hulls for debugging, duplicate points are highlighted. |
+| `show_path(path, r = 0.1)` | Show a path using a chain of hulls for debugging, duplicate points are highlighted. |
 | `sweep(path, profile, loop = false, twist = 0, convexity = 1)` | Draw a polyhedron that is the swept volume |
 
 ![sweep](tests/png/sweep.png)
