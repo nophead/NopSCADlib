@@ -4771,7 +4771,7 @@ T-Tracks used in woodworking jigs
 ---
 <a name="tubings"></a>
 ## Tubings
-Tubing and sleeving. The internal diameter can be forced to stretch it over something.
+Tubing and sleeving. The internal diameter can be forced to stretch it over something. A path can be specified, otherwise it is just straight with the specified length.
 
 [vitamins/tubings.scad](vitamins/tubings.scad) Object definitions.
 
@@ -4796,7 +4796,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `tubing(type, length = 15, forced_id = 0, center = true)` | Draw specified tubing with optional forced internal diameter |
+| `tubing(type, length = 15, forced_id = 0, center = true, path = [])` | Draw specified tubing with optional forced internal diameter and optional path. |
 
 ![tubings](tests/png/tubings.png)
 
