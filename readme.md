@@ -5365,7 +5365,7 @@ fixing_blocks along the sides.
 ---
 <a name="cable_clip"></a>
 ## Cable_clip
-Cable clips to order. Can be for one or two cables of different sizes. Can use an insert and a screw from below or a screw and nut either way up.
+Cable clips to order. Can be for one or two cables of different sizes. Can use an insert and a screw from below or a screw and nut, nyloc or plain, either way up.
 
 [printed/cable_clip.scad](printed/cable_clip.scad) Implementation.
 
@@ -5374,17 +5374,17 @@ Cable clips to order. Can be for one or two cables of different sizes. Can use a
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `cable_clip_extent(screw, cable, insert = false)` | How far it extends from the screw. |
-| `cable_clip_height(cable, screw = false, insert = false)` | Height given the `cable`. |
+| `cable_clip_extent(screw, cable, insert = false, nut = false)` | How far it extends from the screw. |
+| `cable_clip_height(cable, screw = false, insert = false, nut = false)` | Height given the `cable`. |
 | `cable_clip_insert(screw, insert = true)` | Insert type for clip, given screw. |
-| `cable_clip_offset(screw, cable, insert = false)` | The offset of the cable from the screw. |
-| `cable_clip_width(screw, insert = false)` | Width given the `screw` and possibly insert. |
+| `cable_clip_offset(screw, cable, insert = false, nut = false)` | The offset of the cable from the screw. |
+| `cable_clip_width(screw, insert = false, nut = false)` | Width given the `screw` and possibly insert or nut. |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `cable_clip(screw, cable1, cable2 = 0, insert = false)` | Create the STL for a single cable or two cable clip |
-| `cable_clip_assembly(screw, thickness, cable1, cable2 = 0, flip = false, insert = false)` | Cable clip with the fasteners |
+| `cable_clip(screw, cable1, cable2 = 0, insert = false, nut = false)` | Create the STL for a single cable or two cable clip |
+| `cable_clip_assembly(screw, thickness, cable1, cable2 = 0, flip = false, insert = false, nut = false, nyloc = true)` | Cable clip with the fasteners |
 
 ![cable_clip](tests/png/cable_clip.png)
 
@@ -5393,10 +5393,10 @@ Cable clips to order. Can be for one or two cables of different sizes. Can use a
 | ---:|:--- |:---|
 |   2 | `insert(CNCKM3)` |  Heatfit insert M3 x 3mm |
 |   5 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
-|   2 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
+|   3 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   1 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
-|   4 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
-|  12 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|   3 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
+|  11 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   2 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
 ### Printed
@@ -5404,10 +5404,10 @@ Cable clips to order. Can be for one or two cables of different sizes. Can use a
 | ---:|:--- |
 |   1 | cable_clip_30I_10_13.stl |
 |   1 | cable_clip_30I_5_14_6_14.stl |
+|   1 | cable_clip_30N_7_14_8_14.stl |
 |   1 | cable_clip_30_1_14_2_14.stl |
 |   1 | cable_clip_30_1_60.stl |
 |   1 | cable_clip_30_3_14_4_14.stl |
-|   1 | cable_clip_30_7_14_8_14.stl |
 |   1 | cable_clip_30_9_14.stl |
 
 
