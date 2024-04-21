@@ -40,10 +40,10 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
 <tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#splines">Splines</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
@@ -7418,6 +7418,32 @@ A sector of a circle between two angles.
 | `sector(r, start_angle, end_angle)` | Create specified sector given radius `r`, `start_angle` and `end_angle` |
 
 ![sector](tests/png/sector.png)
+
+
+<a href="#top">Top</a>
+
+---
+<a name="splines"></a>
+## Splines
+Cubic splines that interpolate between a list of 2D points passing through all of them.
+Translated from the Python version at <https://community.alteryx.com/t5/Engine-Works/Creating-a-Cubic-Spline-in-Python-and-Alteryx/ba-p/581173>.
+Note the x values of the points must be strictly increasing.
+
+Catmull-Rom splines are well behaved but the ends points are control points and the curve only goes from the second point to the penultimate point.
+Coded from <https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline#Code_example_in_Python>.
+No restrictions on points and they can be 3D.
+
+[utils/splines.scad](utils/splines.scad) Implementation.
+
+[tests/splines.scad](tests/splines.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `catmull_rom_spline(points, n, alpha = 0.5)` | Interpolate n new points between the specified points with a Catmull-Rom spline, alpha = 0.5 for centripetal, 0 for uniform and 1 for chordal. |
+| `cubic_spline(points, N = 100)` | Interpolate the list of points given to produce N points on a cubic spline that passes through points given. |
+
+![splines](tests/png/splines.png)
 
 
 <a href="#top">Top</a>
