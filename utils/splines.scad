@@ -92,7 +92,7 @@ function catmull_rom_segment(P0, P1, P2, P3, n, alpha = 0.5, last = false) = let
             A3 = (t3 - t) / (t3 - t2) * P2 + (t - t2) / (t3 - t2) * P3,
             B1 = (t2 - t) / (t2 - t0) * A1 + (t - t0) / (t2 - t0) * A2,
             B2 = (t3 - t) / (t3 - t1) * A2 + (t - t1) / (t3 - t1) * A3
-        ) (t2 - t) / (t2 - t1) * B1 + (t - t1) / (t2 - t1) * B2],
+        ) (t2 - t) / (t2 - t1) * B1 + (t - t1) / (t2 - t1) * B2]
     ) points;
 
 
