@@ -212,13 +212,10 @@ module threaded_insert(type) { //! Draw specified threaded insert, for use in wo
 
     thread_l = insert_length(type) - z; // - insert_ring1_h(type);
 
-
-
-
     vitamin(str("threaded_insert(", type[0], "): Threaded insert M", insert_screw_diameter(type), " x ", length, "mm"));
     union() {
         color(silver)
-            difference() {
+            render() difference() {
                 base_insert(type);
                 translate_z(-socket/2 + 0.01)
                     cylinder(r=socket, $fn = 6, h=socket/2);
@@ -245,5 +242,4 @@ module threaded_insert(type) { //! Draw specified threaded insert, for use in wo
                 female = false,
                 colour = silver);
     }
-
 }

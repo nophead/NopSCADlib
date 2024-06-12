@@ -47,7 +47,7 @@ thread_colour_factor = 0.8; // 60 degree threads appear too bright due to the an
 
 function thread_profile(h, crest, angle, overlap = 0.1) = //! Create thread profile path
     let(base = crest + 2 * (h + overlap) * tan(angle / 2))
-        [[-base / 2, -overlap, 0], [-crest / 2, h, 0], [crest / 2, h, 0], [base / 2, -overlap, 0]];
+        [[-base / 2, -overlap, 0], [-crest / 2, h, 0], if(crest) [crest / 2, h, 0], [base / 2, -overlap, 0]];
 
 module thread(dia, pitch, length, profile, center = true, top = -1, bot = -1, starts = 1, solid = true, female = false, colour = undef) { //! Create male or female thread, ends can be tapered, chamfered or square
     assert(is_undef(colour) || is_list(colour), "Thread colour must be in [r, g, b] form");
