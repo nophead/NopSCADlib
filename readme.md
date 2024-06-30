@@ -1459,7 +1459,7 @@ Geared tin can steppers
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `geared_stepper(type)` | Draw the specified geared stepper |
+| `geared_stepper(type, angle = 0)` | Draw the specified geared stepper with optional shaft angle. |
 | `geared_stepper_screw_positions(type)` | Place children at the screw positions |
 
 ![geared_steppers](tests/png/geared_steppers.png)
