@@ -245,6 +245,39 @@ module sliding_t_nut(type) { //! Draw a sliding T nut, T nut with a spring loade
             extrusionSlidingNut(size, tab[0], tab[1], tabSizeZ, holeRadius, 0, hammerNut);
 }
 
+module weld_nut(type) {
+    thread_d = nut_size(type);
+    hole_rad  = thread_d / 2;
+    nut_neck_rad = nut_radius(type);
+    // top_rad = type[4] / 2;
+    thickness = nut_thickness(type);
+    base_rad = type[7]/2;
+    base_thickness= type[8];
+
+
+    vitamin(str("weld nut(", type[0], "): Weld Nut M", nut_size(type)));
+   colour = silver;
+    explode(10) {
+        color(colour) {
+
+            rotate_extrude()
+                polygon([
+                    [hole_rad, -base_thickness],
+                    [base_rad, -base_thickness],
+                    [base_rad, 0],
+                    [hole_rad, 0],
+                    [nut_neck_rad, 0],
+                    [nut_neck_rad, thickness],
+                    [hole_rad, thickness]
+                ]);
+        }
+
+        if(show_threads)
+            female_metric_thread(thread_d, metric_coarse_pitch(thread_d), thickness, center = false, colour = colour);
+    }
+
+}
+
 module extrusionSlidingNut(size, tabSizeY1, tabSizeY2, tabSizeZ, holeRadius, holeOffset = 0, hammerNut = false) {
     // center section
     stem_h = size.z - tabSizeZ;
