@@ -40,10 +40,10 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
 <tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
 <tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#splines">Splines</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
@@ -779,6 +779,11 @@ PCB cameras.
 | `camera_lens_offset(type)` | Offset of the lens center from the PCB centre |
 | `camera_pcb(type)` | The PCB part of the camera |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `camera_lens_height(type)` | The height of the lens stack |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
@@ -982,6 +987,7 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 | Module | Description |
 |:--- |:--- |
 | `d_connector_holes(type)` | Place children at the screw hole positions |
+| `d_hole(type, h = 0, center = true, clearance = 0.2)` | Make a hole to clear the back of d-connector |
 | `d_pillar()` | Draw a pillar for a D-connector |
 | `d_plug(type, socket = false, pcb = false, idc = false)` | Draw specified D plug, which can be IDC, PCB or plain solder bucket |
 | `d_plug_D(length, width, rad)` | D plug D shape |
@@ -1453,7 +1459,7 @@ Geared tin can steppers
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `geared_stepper(type)` | Draw the specified geared stepper |
+| `geared_stepper(type, angle = 0)` | Draw the specified geared stepper with optional shaft angle. |
 | `geared_stepper_screw_positions(type)` | Place children at the screw positions |
 
 ![geared_steppers](tests/png/geared_steppers.png)
@@ -2878,6 +2884,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(Melzi)` |  Melzi electronics - not shown |
 |   6 |  |  Micro SD card |
 |   1 |  |  Micro SD card - not shown |
+|   1 | `pcb(RCWL-0516)` |  Microwave Radar Sensor |
 |   1 | `molex_254(2)` |  Molex KK header 2 way - not shown |
 |   1 | `molex_254(3)` |  Molex KK header 3 way - not shown |
 |  20 | `nut(M2_nut, nyloc = true)` |  Nut M2 x 1.6mm nyloc |
@@ -2905,8 +2912,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   8 | `screw(M2_cap_screw, 20)` |  Screw M2 cap x 20mm |
 |   4 | `screw(M2_cap_screw, 25)` |  Screw M2 cap x 25mm |
 |   2 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
-|   4 | `screw(M2p5_cap_screw, 25)` |  Screw M2.5 cap x 25mm |
-|   4 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
+|   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
 |  12 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
 |   4 | `screw(M2p5_dome_screw, 25)` |  Screw M2.5 dome x 25mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
@@ -2914,8 +2920,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |  19 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |  13 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   4 | `screw(M3_cap_screw, 25)` |  Screw M3 cap x 25mm |
-|   8 | `screw(M3_cap_screw, 30)` |  Screw M3 cap x 30mm |
-|   3 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
+|  11 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   4 | `screw(M4_cap_screw, 20)` |  Screw M4 cap x 20mm |
 |   4 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
@@ -2935,24 +2940,24 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Filename |
 | ---:|:--- |
 |   4 | pcb_spacer20100.stl |
-|   4 | pcb_spacer20140.stl |
+|   4 | pcb_spacer20150.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
-|   2 | pcb_spacer25100.stl |
-|   4 | pcb_spacer25130.stl |
-|   4 | pcb_spacer25160.stl |
+|   2 | pcb_spacer25110.stl |
+|   4 | pcb_spacer25140.stl |
 |   4 | pcb_spacer25170.stl |
-|   4 | pcb_spacer25180_2.stl |
+|   4 | pcb_spacer25180.stl |
 |   4 | pcb_spacer25190_2.stl |
-|   4 | pcb_spacer25230.stl |
+|   4 | pcb_spacer25200_2.stl |
 |   4 | pcb_spacer25240.stl |
 |   4 | pcb_spacer25250.stl |
+|   4 | pcb_spacer25260.stl |
 |   4 | pcb_spacer2580.stl |
-|   4 | pcb_spacer30120.stl |
-|   4 | pcb_spacer30200.stl |
+|   4 | pcb_spacer30130.stl |
 |   4 | pcb_spacer30210.stl |
-|   3 | pcb_spacer30220.stl |
+|   4 | pcb_spacer30220.stl |
+|   3 | pcb_spacer30230.stl |
 |  10 | pcb_spacer3050.stl |
 |   9 | pcb_spacer3060.stl |
 |   9 | pcb_spacer3070.stl |
@@ -4033,6 +4038,7 @@ When woven sheets (e.g. carbon fibre) are rendered it is necessary to specify th
 |   1 | `sheet(Spring08, 30, 30, 2)` |  Bi-metal saw blade 30mm x 30mm x 0.8mm |
 |   1 | `sheet(Cardboard, 30, 30, 2)` |  Corrugated cardboard 30mm x 30mm x 5mm |
 |   1 | `sheet(Foam20, 30, 30, 2)` |  Foam sponge 30mm x 30mm x 20mm |
+|   1 | `sheet(Sellotape, 30, 30, 2)` |  Sellotape tape 30mm x 30mm x 0.05mm |
 |   1 | `sheet(DiBond, 30, 30, 2)` |  Sheet DiBond 30mm x 30mm x 3mm |
 |   1 | `sheet(DiBond6, 30, 30, 2)` |  Sheet DiBond 30mm x 30mm x 6mm |
 |   1 | `sheet(MDF10, 30, 30, 2)` |  Sheet MDF 30mm x 30mm x 10mm |
@@ -4222,6 +4228,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `smd_inductor(CDRH104)` |  CDRH104 package 10R |
 |   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
 |   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
 |   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
@@ -4763,7 +4770,7 @@ T-Tracks used in woodworking jigs
 ---
 <a name="tubings"></a>
 ## Tubings
-Tubing and sleeving. The internal diameter can be forced to stretch it over something.
+Tubing and sleeving. The internal diameter can be forced to stretch it over something. A path can be specified, otherwise it is just straight with the specified length.
 
 [vitamins/tubings.scad](vitamins/tubings.scad) Object definitions.
 
@@ -4788,7 +4795,7 @@ Tubing and sleeving. The internal diameter can be forced to stretch it over some
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `tubing(type, length = 15, forced_id = 0, center = true)` | Draw specified tubing with optional forced internal diameter |
+| `tubing(type, length = 15, forced_id = 0, center = true, path = [])` | Draw specified tubing with optional forced internal diameter and optional path. |
 
 ![tubings](tests/png/tubings.png)
 
@@ -5199,7 +5206,7 @@ The top bezel can have an optional child, which is subtracted to allow modificat
 | `box_right(type)` | Default right side, can be overridden to customise |
 | `box_right_blank(type, sheet = false)` | Generates a 2D template for the right sheet, `sheet` can be set to override the type |
 | `box_shelf_blank(type, sheet = false, wall = undef)` | Generates a 2D template for a shelf sheet |
-| `box_shelf_bracket(type, screw_positions, wall = undef)` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts |
+| `box_shelf_bracket(type, screw_positions, wall = undef)` | Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts, third child is 3D additions. |
 | `box_shelf_bracket_section(type, rows, cols, x, y)` | Generates sections of the shelf bracket to allow it to be bigger than the printer |
 | `box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = undef, top_screws = true)` | Place children at the shelf screw positions |
 | `box_top(type)` | Default top, can be overridden to customise |
@@ -5357,7 +5364,7 @@ fixing_blocks along the sides.
 ---
 <a name="cable_clip"></a>
 ## Cable_clip
-Cable clips to order. Can be for one or two cables of different sizes. Can use an insert and a screw from below or a screw and nut either way up.
+Cable clips to order. Can be for one or two cables of different sizes. Can use an insert and a screw from below or a screw and nut, nyloc or plain, either way up.
 
 [printed/cable_clip.scad](printed/cable_clip.scad) Implementation.
 
@@ -5366,17 +5373,17 @@ Cable clips to order. Can be for one or two cables of different sizes. Can use a
 ### Functions
 | Function | Description |
 |:--- |:--- |
-| `cable_clip_extent(screw, cable, insert = false)` | How far it extends from the screw. |
-| `cable_clip_height(cable, screw = false, insert = false)` | Height given the `cable`. |
+| `cable_clip_extent(screw, cable, insert = false, nut = false)` | How far it extends from the screw. |
+| `cable_clip_height(cable, screw = false, insert = false, nut = false)` | Height given the `cable`. |
 | `cable_clip_insert(screw, insert = true)` | Insert type for clip, given screw. |
-| `cable_clip_offset(screw, cable, insert = false)` | The offset of the cable from the screw. |
-| `cable_clip_width(screw, insert = false)` | Width given the `screw` and possibly insert. |
+| `cable_clip_offset(screw, cable, insert = false, nut = false)` | The offset of the cable from the screw. |
+| `cable_clip_width(screw, insert = false, nut = false)` | Width given the `screw` and possibly insert or nut. |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `cable_clip(screw, cable1, cable2 = 0, insert = false)` | Create the STL for a single cable or two cable clip |
-| `cable_clip_assembly(screw, thickness, cable1, cable2 = 0, flip = false, insert = false)` | Cable clip with the fasteners |
+| `cable_clip(screw, cable1, cable2 = 0, insert = false, nut = false)` | Create the STL for a single cable or two cable clip |
+| `cable_clip_assembly(screw, thickness, cable1, cable2 = 0, flip = false, insert = false, nut = false, nyloc = true)` | Cable clip with the fasteners |
 
 ![cable_clip](tests/png/cable_clip.png)
 
@@ -5385,10 +5392,10 @@ Cable clips to order. Can be for one or two cables of different sizes. Can use a
 | ---:|:--- |:---|
 |   2 | `insert(CNCKM3)` |  Heatfit insert M3 x 3mm |
 |   5 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
-|   2 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
+|   3 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   1 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
-|   4 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
-|  12 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|   3 | `screw(M3_dome_screw, 16)` |  Screw M3 dome x 16mm |
+|  11 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
 |   2 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
 ### Printed
@@ -5396,10 +5403,10 @@ Cable clips to order. Can be for one or two cables of different sizes. Can use a
 | ---:|:--- |
 |   1 | cable_clip_30I_10_13.stl |
 |   1 | cable_clip_30I_5_14_6_14.stl |
+|   1 | cable_clip_30N_7_14_8_14.stl |
 |   1 | cable_clip_30_1_14_2_14.stl |
 |   1 | cable_clip_30_1_60.stl |
 |   1 | cable_clip_30_3_14_4_14.stl |
-|   1 | cable_clip_30_7_14_8_14.stl |
 |   1 | cable_clip_30_9_14.stl |
 
 
@@ -5480,7 +5487,8 @@ Housings for PCB cameras.
 |   1 | `camera(rpi_camera_v1)` |  Raspberry Pi camera V1 |
 |   1 | `camera(rpi_camera_v2)` |  Raspberry Pi camera V2 |
 |   1 | `camera(rpi_camera)` |  Raspberry Pi focusable camera |
-|   7 | `screw(M2_cap_screw, 10)` |  Screw M2 cap x 10mm |
+|   3 | `screw(M2_cap_screw, 8)` |  Screw M2 cap x  8mm |
+|   4 | `screw(M2_cap_screw, 10)` |  Screw M2 cap x 10mm |
 |   4 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |   4 | `screw(M3_dome_screw, 10)` |  Screw M3 dome x 10mm |
 |   2 | `screw(M3_dome_screw, 12)` |  Screw M3 dome x 12mm |
@@ -7414,6 +7422,32 @@ A sector of a circle between two angles.
 <a href="#top">Top</a>
 
 ---
+<a name="splines"></a>
+## Splines
+Cubic splines that interpolate between a list of 2D points passing through all of them.
+Translated from the Python version at <https://community.alteryx.com/t5/Engine-Works/Creating-a-Cubic-Spline-in-Python-and-Alteryx/ba-p/581173>.
+Note the x values of the points must be strictly increasing.
+
+Catmull-Rom splines are well behaved but the ends points are control points and the curve only goes from the second point to the penultimate point.
+Coded from <https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline#Code_example_in_Python>.
+No restrictions on points and they can be 3D.
+
+[utils/splines.scad](utils/splines.scad) Implementation.
+
+[tests/splines.scad](tests/splines.scad) Code for this example.
+
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `catmull_rom_spline(points, n, alpha = 0.5)` | Interpolate n new points between the specified points with a Catmull-Rom spline, alpha = 0.5 for centripetal, 0 for uniform and 1 for chordal. |
+| `cubic_spline(points, N = 100)` | Interpolate the list of points given to produce N points on a cubic spline that passes through points given. |
+
+![splines](tests/png/splines.png)
+
+
+<a href="#top">Top</a>
+
+---
 <a name="sweep"></a>
 ## Sweep
 Utility to generate a polyhedron by sweeping a 2D profile along a 3D path and utilities for generating paths.
@@ -7443,6 +7477,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 | `cap(facets, segment = 0, end)` | Create the mesh for an end cap |
 | `circle_points(r = 1, z = 0, dir = -1)` | Generate the points of a circle, setting z makes a single turn spiral |
 | `helical_twist_per_segment(r, pitch, sides)` | Calculate the twist around Z that rotate_from_to() introduces |
+| `offset_paths(path, offsets, twists = 0)` | Create new paths offset from the original, optionally spiralling around it |
 | `rectangle_points(w, h)` | Generate the points of a rectangle |
 | `rounded_path(path)` | Convert a rounded_path, consisting of a start coordinate, vertex / radius pairs and then an end coordinate, to a path of points for sweep. |
 | `rounded_path_vertices(path)` | Show the unrounded version of a rounded_path for debug |
@@ -7454,7 +7489,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `show_path(path)` | Show a path using a chain of hulls for debugging, duplicate points are highlighted. |
+| `show_path(path, r = 0.1)` | Show a path using a chain of hulls for debugging, duplicate points are highlighted. |
 | `sweep(path, profile, loop = false, twist = 0, convexity = 1)` | Draw a polyhedron that is the swept volume |
 
 ![sweep](tests/png/sweep.png)

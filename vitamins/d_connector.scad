@@ -80,6 +80,13 @@ module d_plug_D(length, width, rad) { //! D plug D shape
                 circle(rad);
 }
 
+module d_hole(type, h = 0, center = true, clearance = 0.2) { //! Make a hole to clear the back of d-connector
+    dwall = 0.5 + clearance;
+
+    extrude_if(h, center)
+        d_plug_D(d_lengths(type)[0] + 2 * dwall, d_widths(type)[0] + 2 * dwall, 2.5 + dwall);
+}
+
 module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specified D plug, which can be IDC, PCB or plain solder bucket
     hole_r = 3.05 / 2;
     dwall = 0.5;
@@ -106,7 +113,7 @@ module d_plug(type, socket = false, pcb = false, idc = false) { //! Draw specifi
     // Shell
     //
     color(d_plug_shell_colour)  {
-        linear_extrude( d_flange_thickness(type))
+        linear_extrude(d_flange_thickness(type))
             difference() {
                 rounded_square([flange_length, flange_width], 2);
 

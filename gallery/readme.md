@@ -106,6 +106,10 @@ A base and shroud to make PSU safe to sit on a desk
 
 ![](PSU_tube.png)
 
+## PT_camera
+Two 28BYJ_48 geared stepper motors and a Raspberry v1 camera, combined with [4 drops of superglue](https://forums.raspberrypi.com/viewtopic.php?p=1810000#p1810000). Script [PT_camera.scad](../examples/PT_camera/PT_camera.scad) nicely demonstrates new 2nd optional arg (motor shaft angle) of ```geared_stepper()```.  
+![](PT_camera.anim.gif)
+
 ## PotBox
 Potentiometer box with course and fine controls and three 4mm binding posts
 

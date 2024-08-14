@@ -494,7 +494,8 @@ module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = un
         for(p = screw_positions)
             multmatrix(p)
                 translate_z(thickness)
-                    children();
+                    let($horizontal = true)
+                        children();
 
     r = box_boss_r(type);
     inset = box_intrusion(type) - r + (r + insert_boss_radius(insert, w) + bezel_clearance / 2) / sqrt(2);
@@ -503,10 +504,11 @@ module box_shelf_screw_positions(type, screw_positions, thickness = 0, wall = un
             for(x = [-1, 1], y = [-1, 1])
                 translate([x * (box_width(type) / 2 - inset), y * (box_depth(type) / 2 - inset)])
                     rotate(45 * x * (2 + y))
-                        children();
+                        let($horizontal = false)
+                            children();
 }
 
-module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts
+module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a shelf bracket, the first optional child is a 2D cutout and the second 3D cutouts, third child is 3D additions.
     w = is_undef(wall) ? box_wall(type) : wall;
     insert = box_shelf_insert(type);
     lip = 2 * insert_boss_radius(insert, w);
@@ -561,9 +563,13 @@ module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a 
                                     children(0);
                     }
 
-                hflip()
+                hflip() {
                     box_shelf_screw_positions(type, screw_positions, 0, w)
                         boss();
+
+                    if($children > 2)
+                        children(2);
+                }
             }
             if($children > 1)
                 hflip()
@@ -571,7 +577,7 @@ module box_shelf_bracket(type, screw_positions, wall = undef) { //! Generates a 
 
             hflip()
                 box_shelf_screw_positions(type, screw_positions, 0, w)
-                    insert_hole(insert, counterbore = 1, horizontal = true);
+                    insert_hole(insert, counterbore = 1, horizontal = $horizontal);
         }
 }
 

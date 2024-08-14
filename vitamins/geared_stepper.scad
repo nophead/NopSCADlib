@@ -52,7 +52,7 @@ module geared_stepper_screw_positions(type) //! Place children at the screw posi
 motor_colour = "#9BA2AC";
 gearbox_colour = "#FFF7EE";
 
-module geared_stepper(type) { //! Draw the specified geared stepper
+module geared_stepper(type, angle = 0) { //! Draw the specified geared stepper with optional shaft angle.
     vitamin(str("geared_stepper(", type[0], "): Geared stepper - ", type[1]));
 
     radius = gs_diameter(type) / 2;
@@ -125,19 +125,20 @@ module geared_stepper(type) { //! Draw the specified geared stepper
     f = gs_shaft_flat(type);
     two_flats = f < 0;
     vflip()
-        color(two_flats ? brass : gearbox_colour) {
-            d = gs_shaft_d(type);
-            h = gs_shaft_length(type);
-            linear_extrude(h)
-                intersection() {
-                    circle(d = d);
+        rotate(angle)
+            color(two_flats ? brass : gearbox_colour) {
+                d = gs_shaft_d(type);
+                h = gs_shaft_length(type);
+                linear_extrude(h)
+                    intersection() {
+                        circle(d = d);
 
-                    translate([0, two_flats ? 0 : (f - d) / 2])
-                        square([d + 1, abs(f)], center = true);
-                }
+                        translate([0, two_flats ? 0 : (f - d) / 2])
+                            square([d + 1, abs(f)], center = true);
+                    }
 
-            cylinder(d = d, h = h - gs_flat_length(type));
-        }
+                cylinder(d = d, h = h - gs_flat_length(type));
+            }
 
     // Wire block
     color(bulge_z ? "white" : "skyblue") {

@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2024
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,23 +16,23 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-wire_r = 5; // [1 : 20]
-t = -1; // [-1 : 3]
-
 include <../utils/core/core.scad>
-use <../utils/layout.scad>
 
-include <../vitamins/zipties.scad>
+use <../utils/splines.scad>
+use <../utils/sweep.scad>
 
-module zipties()
-    layout([for(z = zipties) 9], 2 * wire_r) {
-        ziptie(zipties[$i], wire_r, max(t, 0));
+points = [[0, 1.5], [2, 2], [3, 1], [4, -2], [5, 1], [6, 2], [7, 3]];
 
-        if(t >= 0)
-            color(grey(20))
-                cylinder(r = wire_r, h = 10, center = true);
+module splines() {
+    cm_spline = catmull_rom_spline(points, 100 / len(points), 0.5);
+    color("green") show_path(cm_spline, 0.01);
 
-    }
+    cu_spline = cubic_spline(points, 100);
+    color("blue") show_path(cu_spline, 0.01);
 
-if($preview)
-    zipties();
+    for(p = points)
+        translate(p) color("red")
+            cylinder($fn = 64, r = 0.03, h = 0.02, center = true);
+}
+
+rotate([70, 0, 315]) splines();
