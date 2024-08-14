@@ -257,7 +257,7 @@ module weld_nut(type) {
 
     vitamin(str("weld nut(", type[0], "): Weld Nut M", nut_size(type)));
    colour = silver;
-    explode(10) {
+    explode(-20) {
         color(colour) {
 
             rotate_extrude()
