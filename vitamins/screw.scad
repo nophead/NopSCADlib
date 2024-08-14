@@ -237,21 +237,25 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
 
         if(head_type == hs_dome) {
-            lift = 0.38;
-            h = head_height - lift;
-            r = min(2 * head_height, (sqr(head_rad) + sqr(h)) / 2 * h); // Special case for M2
-            y = sqrt(sqr(r) - sqr(head_rad));
+            R_minus_h = head_height; // h would be the height of the sphere cap that's cut off of the top of the screw dome
+            a= socket_rad;
+                // this is the trig way to do this, 
+            // alpha=atan(R_minus_h/a);
+            // R = R_minus_h/sin(alpha); //Radius if the cap was a perfect unscaled sphere
+                // this is mathematcially equivalent, but may run faster computationally with sqrt and ^2 instead of trig
+            R= a*sqrt((R_minus_h^2/a^2)+1); // Radius if the cap was a perfect unscaled sphere
+            dome_height_scaling_factor= R/head_rad;
             color(colour) {
                 rotate_extrude() {
                     difference() {
                         intersection() {
-                            translate([0, -y + lift])
-                                circle(r);
+                                scale([1,dome_height_scaling_factor])
+                                circle(r=head_rad);
 
                             square([head_rad, head_height]);
                         }
                         translate([0, head_height - socket_depth])
-                            square([socket_rad, 10]);
+                            square([socket_rad, 20]);
                     }
                 }
                 linear_extrude(head_height)
