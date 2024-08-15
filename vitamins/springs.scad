@@ -17,9 +17,11 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-peg_spring  = ["peg_spring",  6.4,  0.9,  15.5,  8,    1, false, 0,   "silver"];
-batt_spring = ["batt_spring", 5,    0.5,  8,     5,    1, false, 6,   "silver"];
+//                    name                  OD    wireG  len   #trns clsd flat  OD2   color
+peg_spring  =        ["peg_spring",         6.4,  0.9,   15.5,  8,    1, false, 0,   "silver"];
+yellow_bed_spring  = ["yellow_bed_spring",  8,    0.9,   20,    10,   1, false, 0,   "yellow"];
+batt_spring =        ["batt_spring",        5,    0.5,   8,     5,    1, false, 6,   "silver"];
 
-springs = [peg_spring, batt_spring];
+springs = [peg_spring, batt_spring, yellow_bed_spring];
 
 use <spring.scad>
