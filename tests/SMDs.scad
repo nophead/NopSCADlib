@@ -64,7 +64,12 @@ module smds() {
             let(s = smd_soics[$i])
                 smd_soic(s, s[0]);
 
-    translate([0, 39])
+    translate([0, 36.5])
+        layout([for(i = smd_250V_fuses) smd_250V_fuse_size(i).x], 1)
+            let(i = smd_250V_fuses[$i])
+                smd_250V_fuse(i, "2A 250V");
+
+    translate([0, 45])
         layout([for(i = smd_inductors) smd_inductor_leads(i).x], 1)
             let(i = smd_inductors[$i])
                 smd_inductor(i, ["4R7", "10R"][$i % 2]);

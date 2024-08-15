@@ -55,7 +55,7 @@ function smd_size(size) = //! Convert size to 1/100" notation
 
 module smd_led(type, colour, cutout) { //! Draw an SMD LED with specified `colour`
     size = smd_led_size(type);
-    vitamin(str("smd_led(", type[0], ", ", colour, "): SMD LED ", smd_size(size), " ", colour));
+    vitamin(str("smd_led(", type[0], ", \"", colour, "\"): SMD LED ", smd_size(size), " ", colour));
 
     lens = smd_led_lens(type);
     r = size.y * 0.32;
@@ -137,7 +137,7 @@ function smd_cap_end_cap(type) = type[2]; //! End cap width
 
 module smd_capacitor(type, height, value = undef) { //! Draw an SMD capacitor with specified height
     size = smd_cap_size(type);
-    vitamin(str("smd_capacitor(", type[0], "): SMD capacitor ", smd_size(size), !is_undef(value) ? str(" ", value) : ""));
+    vitamin(str("smd_capacitor(", type[0], arg(value, undef, "value"), "): SMD capacitor ", smd_size(size), !is_undef(value) ? str(" ", value) : ""));
 
     cap = smd_cap_end_cap(type);
 
@@ -161,7 +161,7 @@ function smd_sot_lead_size(type)  = type[6];    //! Lead width, foot depth, lead
 function smd_sot_tab_width(type)  = type[7];    //! The wide lead at the top
 
 module smd_sot(type, value) { //! Draw an SMD transistor
-    vitamin(str("smd_sot(", type[0], "): ", type[0], " package ", value));
+    vitamin(str("smd_sot(", type[0], ", \"", value, "\"): ", type[0], " package ", value));
 
     size = smd_sot_size(type);
     z0 = smd_sot_z(type);
@@ -197,7 +197,6 @@ module smd_sot(type, value) { //! Draw an SMD transistor
             linear_extrude(eps)
                 resize([size.x - 4 * (z2 - z1) * tan(slant), size.y / 2])
                     text(value, halign = "center", valign = "center");
-
 }
 
 function smd_soic_size(type)       = type[1];    //! Body length, width and height
@@ -208,7 +207,7 @@ function smd_soic_lead_span(type)  = type[5];    //! Total span of leads
 function smd_soic_lead_size(type)  = type[6];    //! Lead width, foot depth, lead thickness
 
 module smd_soic(type, value) { //! Draw an SMD SOIC
-    vitamin(str("smd_soic(", type[0], "): ", type[0], " package ", value));
+    vitamin(str("smd_soic(", type[0], ", \"", value, "\"): ", type[0], " package ", value));
 
     size = smd_soic_size(type);
     z0 = smd_soic_z(type);
@@ -261,7 +260,7 @@ function smd_diode_leads(type)  = type[4]; //! Lead extent in x, width, thicknes
 function smd_diode_colour(type) = type[5]; //! Body colour
 
 module smd_diode(type, value) { //! Draw an SMD diode
-    vitamin(str("smd_diode(", type[0], "): ", type[0], " package ", value));
+    vitamin(str("smd_diode(", type[0], ", \"", value, "\"): ", type[0], " package ", value));
 
     slant = 5;                              //! 5 degree body draft angle
     size = smd_diode_size(type);
@@ -326,7 +325,7 @@ module smd_tant(type, value) { //! Draw an SMD tantalum capacitor
     volts = is_undef(value) ? "" : let(c = value[3])
         assert(in(codes, c), str("expected the 4th character of value to be a voltage code: ", codes, ", got ", c))
             str(", ", voltages[search(c, codes)[0]], "V");
-    vitamin(str("smd_tant(", type[0], "): SMD Tantalum capacitor package ", type[0][len(type[0]) -1], uF, volts));
+    vitamin(str("smd_tant(", type[0], arg(value, undef, "value"), "): SMD Tantalum capacitor package ", type[0][len(type[0]) -1], uF, volts));
 
     size = smd_tant_size(type);
     slant = 5;                              //! 5 degree body draft angle
@@ -388,7 +387,7 @@ function smd_inductor_leads(type)  = type[4]; //! Lead extent in x, width, thick
 function smd_inductor_colour(type) = type[5]; //! Body colour
 
 module smd_inductor(type, value) { //! Draw an SMD inductor
-    vitamin(str("smd_inductor(", type[0], "): ", type[0], " package ", value));
+    vitamin(str("smd_inductor(", type[0], " ,\"", value, "\"): ", type[0], " package ", value));
 
     size = smd_inductor_size(type);
     z0 = smd_inductor_z(type);
@@ -437,7 +436,7 @@ function smd_pot_cross(type)    = type[4]; //! Cross head slot for screwdriver
 function smd_pot_flat(type)     = type[5]; //! Flat at the back of the wiper
 
 module smd_pot(type, value) { //! Draw an SMD pot
-    vitamin(str("smd_pot(", type[0], "): ", type[0], " package ", value));
+    vitamin(str("smd_pot(", type[0], ", \"", value, "\"): ", type[0], " package ", value));
 
     size = smd_pot_size(type);
     contacts = smd_pot_contacts(type);
@@ -601,7 +600,7 @@ function smd_qfp_pin_size(type)  = type[5]; //! Pins dimensions
 function smd_qfp_gullwing(type)  = type[6]; //! Gullwing S, L, R1, R2
 
 module smd_qfp(type, value) { //! Draw and SMD QFP package
-    vitamin(str("smd_qfp(", type[0], "): SMD chip: ", value, ", package : ", type[0]));
+    vitamin(str("smd_qfp(", type[0], ", \"", value, "\"): SMD chip: ", value, ", package : ", type[0]));
 
     size = smd_qfp_body_size(type);
     offset = size.z / 2 * tan(smd_qfp_slant(type));
@@ -651,4 +650,67 @@ module smd_qfp(type, value) { //! Draw and SMD QFP package
                 translate([(-(pins / 4 - 1) * pitch) / 2, (-(pins / 4 - 1) * pitch) / 2])
                     circle(r = pin.y, $fn = fn);
             }
+}
+
+function smd_250V_fuse_size(type) = type[1]; //! Bounding box of the body
+function smd_250V_fuse_z(type)    = type[2]; //! Height of body above the PCB surface
+function smd_250V_fuse_step(type) = type[3]; //! End cutout length, width and height
+function smd_250V_fuse_base(type) = type[4]; //! Base length
+
+module gcube(s) translate_z(s.z / 2) cube(s, center = true);
+
+module smd_250V_fuse(type, value) { //! Draw an SMD mains fuse
+    size = smd_250V_fuse_size(type);
+    step = smd_250V_fuse_step(type);
+    base = smd_250V_fuse_base(type);
+    z = smd_250V_fuse_z(type);
+
+    vitamin(str("smd_250V_fuse(", type[0], ", \"", value, "\"): SMD fuse: ", type[0], " ", value));
+
+    color("LightYellow")
+        translate_z(z) {
+            gcube(base);
+
+            translate_z(base.z)
+                gcube([size.x - step.x * 2, size.y, size.z - base.z]);
+
+            for(end = [-1, 1], side = [-1,1]) {
+                translate([end * (size.x / 2 - step.x / 2), side * (size.y / 2 - step.y / 2)])
+                    gcube(step);
+
+                translate([end * (size.x / 2 - step.x / 2 - eps), 0])
+                    gcube([step.x, size.y, base.z]);
+
+            }
+        }
+
+    color(silver) {
+        contact_h = step.z - 0.2;
+        fuse_d = size.y - 2 * step.y;
+
+        for(end = [-1, 1])
+            translate([end * (size.x / 2 - step.x), 0, contact_h / 2])
+                rotate([90, 0, 0])
+                    linear_extrude(size.y - 2 * step.y, center = true)
+                        difference() {
+                            rounded_square([step.x * 2, contact_h], 0.2, $fn = fn);
+
+                            translate([-step.x * end, 0])
+                                square([step.x * 2, contact_h], center = true);
+                        }
+
+        translate_z(step.z - fuse_d / 2)
+            rotate([0, 90, 0])
+                linear_extrude(size.x - (2 * step.x - eps), center = true)
+                    scale([1, size.y / fuse_d - eps])
+                    rotate(90)
+                        semi_circle(fuse_d / 2);
+
+    }
+
+    color("black")
+        translate_z(z + size.z)
+            linear_extrude(eps)
+                resize([(size.x - 2 * step.x) * 0.9, size.y / 2])
+                    text(value, halign = "center", valign = "center");
 }

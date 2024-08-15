@@ -1169,6 +1169,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "rd_module"))     rd_module(type = comp[4], value = comp[5]);
             if(show(comp, "rd_transistor")) rd_transistor(type = comp[4], value = comp[5], lead_positions = param(6, undef), z = param(7, 5), kind = param(8,"Transistor"));
                                              // type, value, lead positions, z, kind
+            if(show(comp, "rd_box_cap"))    rd_box_cap(type = comp[4], kind = comp[5], value = comp[6]);
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3), sleeve = param(8, false));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));
@@ -1177,6 +1178,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "jst_zh"))        jst_xh_header(jst_zh_header, comp[4], param(5, false), param(6, false), param(7, undef));
             if(show(comp, "potentiometer")) let(pot = param(4, BTT_encoder)) translate_z(pot_size(pot).z) vflip() potentiometer(pot, shaft_length = param(5, undef));
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
+            if(show(comp, "smd_250V_fuse")) smd_250V_fuse(comp[4], comp[5]);
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
             if(show(comp, "smd_cap"))       smd_capacitor(comp[4], comp[5], param(6, undef));
             if(show(comp, "smd_tant"))      smd_tant(comp[4], param(5, undef));

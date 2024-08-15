@@ -28,10 +28,14 @@ module radials() {
         pcb_grid(pcb, 10, 12)
             rd_module(rd_modules[2], "12V 900ma");
 
-        for(i = [0: len(rd_electrolytics) - 1])
+        for(i = [0 : len(rd_electrolytics) - 1])
             pcb_grid(pcb, i * 3, 2)
                 rotate(-90)
                     rd_electrolytic(rd_electrolytics[i], "220uF35V", z = 3, pitch = inch(0.2));
+
+        for(i = [0 : len(rd_box_caps) - 1])
+            pcb_grid(pcb, 20, i * 4)
+                rd_box_cap(rd_box_caps[i], "X2 rated film capacitor", ["0.1uF 250V", "0.47uF 250V"][i]);
     }
 
     $solder = pcb_solder(pcb);

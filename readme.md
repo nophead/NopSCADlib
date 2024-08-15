@@ -2668,6 +2668,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
 |   1 | `box_header(2p54header, 4, 2)` |  Box header 4 x 2 |
 |   1 | `box_header(2p54header, 4, 2, right_angle = true)` |  Box header 4 x 2 right angle  |
+|   1 | `rd_disc(6p4mm_disc, "100n")` |  Ceramic capacitor, 6p4mm_disc 100n |
 |   1 | `rd_xtal(ACT1100, "40MHz")` |  Crystal ACT1100 40MHz |
 |   1 | `rd_xtal(ACT1700, "80MHz")` |  Crystal ACT1700 80MHz |
 |   1 | `rd_xtal(C_002RX, "60KHz")` |  Crystal C_002RX 60KHz |
@@ -2675,14 +2676,15 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `rd_xtal(HC49_4H, "10MHz")` |  Crystal HC49_4H 10MHz |
 |   1 | `d_plug(DCONN9, pcb = true)` |  D-type 9 way PCB mount plug |
 |   1 | `dil_socket(12, 15.24)` |  DIL socket 24 x 0.6" |
-|   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
+|   1 | `smd_diode(DO214AC, "SS34")` |  DO214AC package SS34 |
 |   2 | `ax_diode(DO_41, "1N4007")` |  Diode 1N4007 |
 |   2 | `ax_diode(DO_35, "1N4148")` |  Diode 1N4148 |
+|   1 | `rd_electrolytic(ECAP8x12, "220uF35V")` |  Electolytic capacitor ECAP8x12 220uF35V |
 |   1 | `hdmi(hdmi_full)` |  HDMI socket |
 |   1 | `pdip(24, 27C32, w = 15.24)` |  IC 27C32 PDIP24 |
 |   1 | `pdip(8, NE555)` |  IC NE555 PDIP8 |
 |   1 | `idc_transition(2p54header, 5)` |  IDC transition header 5 x 2 |
-|   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
+|   1 | `smd_inductor(IND2525 ,"4R7")` |  IND2525 package 4R7 |
 |   1 | `jst_xh_header(jst_ph_header, 2)` |  JST PH connector 2 way |
 |   1 | `jst_xh_header(jst_xh_header, 2)` |  JST XH connector 2 way |
 |   1 | `jst_xh_header(jst_zh_header, 2)` |  JST ZH connector 2 way |
@@ -2703,40 +2705,42 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pin_socket(2p54header, 6, 1)` |  Pin socket 6 x 1 |
 |   2 | `pin_socket(2p54header, 8, 1)` |  Pin socket 8 x 1 |
 |   1 | `rd_transistor(TO92, "78L05")` |  Regulator TO92 78L05 |
+|   1 | `rd_module(HF33F, "012-HSL-3F")` |  Relay HF33F / 012-HSL-3F |
 |   1 | `ax_res(res1_2, 10, tol = 10)` |  Resistor 10 Ohms 10% 0.5W |
 |   1 | `ax_res(res1_4, 100, tol = 2)` |  Resistor 100 Ohms 2% 0.25W |
 |   1 | `ax_res(res1_8, 1000)` |  Resistor 1000 Ohms 5% 0.125W |
 |   1 | `ax_res(res1_4, 10000)` |  Resistor 10000 Ohms 5% 0.25W |
 |   1 | `ax_res(res1_2, 100000)` |  Resistor 100000 Ohms 5% 0.5W |
 |   1 | `ax_res(res1_8, 1e+6, tol = 1)` |  Resistor 1e+6 Ohms 1% 0.125W |
-|   1 | `smd_led(LED0603, orange)` |  SMD LED 0603 orange |
-|   1 | `smd_led(LED0805, red)` |  SMD LED 0805 red |
-|   1 | `smd_led(LED1206, blue)` |  SMD LED 1306 blue |
-|   1 | `smd_tant(TANT_A)` |  SMD Tantalum capacitor package A ,1uF, 2.5V |
-|   1 | `smd_tant(TANT_B)` |  SMD Tantalum capacitor package B ,10uF, 10V |
-|   1 | `smd_tant(TANT_C)` |  SMD Tantalum capacitor package C ,100uF, 16V |
-|   1 | `smd_capacitor(CAP0402)` |  SMD capacitor 0402 10nF |
-|   1 | `smd_capacitor(CAP0502)` |  SMD capacitor 0502 10nF |
-|   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 10nF |
-|   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 100nF |
-|   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 1uF |
-|   1 | `smd_qfp(QFP50P1200X1200X160_64N)` |  SMD chip: ATSAM4S4BA, package : QFP50P1200X1200X160_64N |
+|   1 | `smd_led(LED0603, "orange")` |  SMD LED 0603 orange |
+|   1 | `smd_led(LED0805, "red")` |  SMD LED 0805 red |
+|   1 | `smd_led(LED1206, "blue")` |  SMD LED 1306 blue |
+|   1 | `smd_tant(TANT_A, value = "105e")` |  SMD Tantalum capacitor package A ,1uF, 2.5V |
+|   1 | `smd_tant(TANT_B, value = "106A")` |  SMD Tantalum capacitor package B ,10uF, 10V |
+|   1 | `smd_tant(TANT_C, value = "107C")` |  SMD Tantalum capacitor package C ,100uF, 16V |
+|   1 | `smd_capacitor(CAP0402, value = "10nF")` |  SMD capacitor 0402 10nF |
+|   1 | `smd_capacitor(CAP0502, value = "10nF")` |  SMD capacitor 0502 10nF |
+|   1 | `smd_capacitor(CAP0603, value = "10nF")` |  SMD capacitor 0603 10nF |
+|   1 | `smd_capacitor(CAP0805, value = "100nF")` |  SMD capacitor 0805 100nF |
+|   1 | `smd_capacitor(CAP1206, value = "1uF")` |  SMD capacitor 1206 1uF |
+|   1 | `smd_qfp(QFP50P1200X1200X160_64N, "ATSAM4S4BA")` |  SMD chip: ATSAM4S4BA, package : QFP50P1200X1200X160_64N |
 |   1 | `smd_resistor(L2012C, 1u)` |  SMD choke 0805 1u |
 |   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax connector type: U_FL_R_SMT_1 |
+|   1 | `smd_250V_fuse(OMT250, "2A 250V")` |  SMD fuse: OMT250 2A 250V |
 |   1 | `smd_resistor(RES0402, 1)` |  SMD resistor 0402 1 0.0625W |
 |   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
 |   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |
 |   1 | `smd_resistor(RES0805, 1K)` |  SMD resistor 0805 1K 0.125W |
 |   1 | `smd_resistor(RES1206, 1M)` |  SMD resistor 1206 1M 0.25W |
-|   1 | `smd_soic(SOIC14)` |  SOIC14 package 74HC00 |
-|   1 | `smd_soic(SOIC16)` |  SOIC16 package ICL323 |
-|   1 | `smd_soic(SOIC18)` |  SOIC18 package PIC18F88 |
-|   1 | `smd_soic(SOIC8)` |  SOIC8 package M34063 |
-|   1 | `smd_sot(SOT223)` |  SOT223 package LM117 |
-|   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
+|   1 | `smd_soic(SOIC14, "74HC00")` |  SOIC14 package 74HC00 |
+|   1 | `smd_soic(SOIC16, "ICL323")` |  SOIC16 package ICL323 |
+|   1 | `smd_soic(SOIC18, "PIC18F88")` |  SOIC18 package PIC18F88 |
+|   1 | `smd_soic(SOIC8, "M34063")` |  SOIC8 package M34063 |
+|   1 | `smd_sot(SOT223, "LM117")` |  SOT223 package LM117 |
+|   1 | `smd_sot(SOT23, "2N7000")` |  SOT23 package 2N7000 |
 |   1 | `square_button(button_4p5mm)` |  Square button 4.5mm |
 |   1 | `square_button(button_6mm)` |  Square button 6mm |
-|   1 | `smd_pot(TC33X1)` |  TC33X1 package 10K |
+|   1 | `smd_pot(TC33X1, "10K")` |  TC33X1 package 10K |
 |   1 | `pcb(TMC2130)` |  TMC2130 |
 |   1 | `green_terminal(gt_5p08, 2)` |  Terminal block 2 way 0.2" |
 |   2 | `green_terminal(gt_6p35, 2)` |  Terminal block 2 way 0.25" |
@@ -2749,11 +2753,14 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `terminal_35(4)` |  Terminal block 4 way 3.5mm |
 |   1 | `pcb(test_pcb)` |  Test PCB |
 |   1 | `rd_transistor(E_LINE, "ZTX853")` |  Transistor E_LINE ZTX853 |
+|   1 | `rd_disc(ERZV07D471, "471")` |  Varistor, ERZV07D471 471 |
 |   2 | `vero_pin()` |  Vero board pin |
 |   1 | `wire_link(0.8, 5.08, h = 10.16)` |  Wire link 0.8mm x 0.2" |
 |   1 | `wire_link(0.8, 10.16)` |  Wire link 0.8mm x 0.4" |
 |   1 | `wire_link(0.8, 10.16, h = 0.75, sleeve = [1.5, "red"])` |  Wire link 0.8mm x 0.4" with red sleeving |
 |   1 | `wire_link(0.8, 0, h = 5)` |  Wire link 0.8mm x 8mm |
+|   1 | `rd_boxc(BOXC18x5x11, "X2 rated film capacitor", "0.1uF 250V" )` |  X2 rated film capacitor 0.1uF 250V |
+|   1 | `rd_boxc(BOXC18x10x16, "X2 rated film capacitor", "0.47uF 250V" )` |  X2 rated film capacitor 0.47uF 250V |
 
 
 <a href="#top">Top</a>
@@ -3399,6 +3406,11 @@ Radial components for PCBs.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `rd_boxc_colours(type)` | Case colour and resin fill colour |
+| `rd_boxc_leads(type)` | Lead pitch, diameter and length |
+| `rd_boxc_size(type)` | Overall size and corner radius |
+| `rd_boxc_skirt(type)` | Skirt slot, thickness, height |
+| `rd_boxc_z(type)` | Height of inner base above PCB. |
 | `rd_disc_colours(type)` | Colours of body and text |
 | `rd_disc_kind(type)` | Capacitor, etc |
 | `rd_disc_lead_d(type)` | Lead diameter and sleeve diameter |
@@ -3428,6 +3440,7 @@ Radial components for PCBs.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `rd_box_cap(type, kind, value)` | Draw radial boxed film capacitor |
 | `rd_disc(type, value, pitch = undef, z = 0, tail = 3)` | Draw a radial disc component |
 | `rd_electrolytic(type, value, pitch = undef, z = 0, tail = 3)` | Draw a radial electrolytic capcacitor |
 | `rd_module(type, value)` | Draw a PCB mounted potted module, e.g. PSU or relay |
@@ -3453,6 +3466,8 @@ Radial components for PCBs.
 |   1 | `rd_transistor(E_LINE, "ZTX853")` |  Transistor E_LINE ZTX853 |
 |   1 | `rd_transistor(TO92, "BC337")` |  Transistor TO92 BC337 |
 |   1 | `rd_disc(ERZV07D471, "470V")` |  Varistor, ERZV07D471 470V |
+|   1 | `rd_boxc(BOXC18x5x11, "X2 rated film capacitor", "0.1uF 250V" )` |  X2 rated film capacitor 0.1uF 250V |
+|   1 | `rd_boxc(BOXC18x10x16, "X2 rated film capacitor", "0.47uF 250V" )` |  X2 rated film capacitor 0.47uF 250V |
 
 
 <a href="#top">Top</a>
@@ -4147,6 +4162,10 @@ E.g. 475A is 4.7uF 10V on the parts list.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `smd_250V_fuse_base(type)` | Base length |
+| `smd_250V_fuse_size(type)` | Bounding box of the body |
+| `smd_250V_fuse_step(type)` | End cutout length, width and height |
+| `smd_250V_fuse_z(type)` | Height of body above the PCB surface |
 | `smd_cap_end_cap(type)` | End cap width |
 | `smd_cap_size(type)` | Body length, width |
 | `smd_coax_base_r(type)` | Corner radius of the base |
@@ -4211,6 +4230,7 @@ E.g. 475A is 4.7uF 10V on the parts list.
 ### Modules
 | Module | Description |
 |:--- |:--- |
+| `smd_250V_fuse(type, value)` | Draw an SMD mains fuse |
 | `smd_capacitor(type, height, value = undef)` | Draw an SMD capacitor with specified height |
 | `smd_coax(type)` | Draw an SMD coaxial connector |
 | `smd_diode(type, value)` | Draw an SMD diode |
@@ -4228,38 +4248,39 @@ E.g. 475A is 4.7uF 10V on the parts list.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `smd_inductor(CDRH104)` |  CDRH104 package 10R |
-|   1 | `smd_diode(DO214AC)` |  DO214AC package SS34 |
-|   1 | `smd_inductor(IND2525)` |  IND2525 package 4R7 |
-|   1 | `smd_led(LED0603, green)` |  SMD LED 0603 green |
-|   1 | `smd_led(LED0805, blue)` |  SMD LED 0805 blue |
-|   1 | `smd_led(LED1206, red)` |  SMD LED 1306 red |
-|   1 | `smd_tant(TANT_A)` |  SMD Tantalum capacitor package A ,1uF, 2.5V |
-|   1 | `smd_tant(TANT_B)` |  SMD Tantalum capacitor package B ,10uF, 6.3V |
-|   1 | `smd_tant(TANT_C)` |  SMD Tantalum capacitor package C ,100uF, 10V |
+|   1 | `smd_inductor(CDRH104 ,"10R")` |  CDRH104 package 10R |
+|   1 | `smd_diode(DO214AC, "SS34")` |  DO214AC package SS34 |
+|   1 | `smd_inductor(IND2525 ,"4R7")` |  IND2525 package 4R7 |
+|   1 | `smd_led(LED0603, "green")` |  SMD LED 0603 green |
+|   1 | `smd_led(LED0805, "blue")` |  SMD LED 0805 blue |
+|   1 | `smd_led(LED1206, "red")` |  SMD LED 1306 red |
+|   1 | `smd_tant(TANT_A, value = "105e")` |  SMD Tantalum capacitor package A ,1uF, 2.5V |
+|   1 | `smd_tant(TANT_B, value = "106J")` |  SMD Tantalum capacitor package B ,10uF, 6.3V |
+|   1 | `smd_tant(TANT_C, value = "107A")` |  SMD Tantalum capacitor package C ,100uF, 10V |
 |   1 | `smd_capacitor(CAP0402)` |  SMD capacitor 0402 |
 |   1 | `smd_capacitor(CAP0502)` |  SMD capacitor 0502 |
 |   1 | `smd_capacitor(CAP0603)` |  SMD capacitor 0603 |
 |   1 | `smd_capacitor(CAP0805)` |  SMD capacitor 0805 |
 |   1 | `smd_capacitor(CAP1206)` |  SMD capacitor 1206 |
 |   1 | `smd_capacitor(CAP1210)` |  SMD capacitor 1210 |
-|   1 | `smd_qfp(QFP50P1200X1200X160_64N)` |  SMD chip: ATSAM4S4BA, package : QFP50P1200X1200X160_64N |
+|   1 | `smd_qfp(QFP50P1200X1200X160_64N, "ATSAM4S4BA")` |  SMD chip: ATSAM4S4BA, package : QFP50P1200X1200X160_64N |
 |   1 | `smd_resistor(L2012C, 10u)` |  SMD choke 0805 10u |
 |   1 | `smd_coax(U_FL_R_SMT_1)` |  SMD coax connector type: U_FL_R_SMT_1 |
+|   1 | `smd_250V_fuse(OMT250, "2A 250V")` |  SMD fuse: OMT250 2A 250V |
 |   1 | `smd_resistor(RES0402, 1R0)` |  SMD resistor 0402 1R0 0.0625W |
 |   1 | `smd_resistor(RES0502, 10)` |  SMD resistor 0502 10 0.05W |
 |   1 | `smd_resistor(RES0603, 100)` |  SMD resistor 0603 100 0.1W |
 |   1 | `smd_resistor(RES0805, 10M)` |  SMD resistor 0805 10M 0.125W |
 |   1 | `smd_resistor(RES1206, 100K)` |  SMD resistor 1206 100K 0.25W |
-|   1 | `smd_soic(SOIC14)` |  SOIC14 package SOIC14 |
-|   1 | `smd_soic(SOIC16)` |  SOIC16 package SOIC16 |
-|   1 | `smd_soic(SOIC18)` |  SOIC18 package SOIC18 |
-|   1 | `smd_soic(SOIC8)` |  SOIC8 package SOIC8 |
-|   1 | `smd_sot(SOT223)` |  SOT223 package FZT851 |
-|   1 | `smd_sot(SOT23)` |  SOT23 package 2N7000 |
-|   1 | `smd_soic(SOT23_6)` |  SOT23_6 package SOT23_6 |
-|   1 | `smd_pot(TC33X1)` |  TC33X1 package 10K |
-|   1 | `smd_soic(TSOT23_8)` |  TSOT23_8 package TSOT23_8 |
+|   1 | `smd_soic(SOIC14, "SOIC14")` |  SOIC14 package SOIC14 |
+|   1 | `smd_soic(SOIC16, "SOIC16")` |  SOIC16 package SOIC16 |
+|   1 | `smd_soic(SOIC18, "SOIC18")` |  SOIC18 package SOIC18 |
+|   1 | `smd_soic(SOIC8, "SOIC8")` |  SOIC8 package SOIC8 |
+|   1 | `smd_sot(SOT223, "FZT851")` |  SOT223 package FZT851 |
+|   1 | `smd_sot(SOT23, "2N7000")` |  SOT23 package 2N7000 |
+|   1 | `smd_soic(SOT23_6, "SOT23_6")` |  SOT23_6 package SOT23_6 |
+|   1 | `smd_pot(TC33X1, "10K")` |  TC33X1 package 10K |
+|   1 | `smd_soic(TSOT23_8, "TSOT23_8")` |  TSOT23_8 package TSOT23_8 |
 
 
 <a href="#top">Top</a>

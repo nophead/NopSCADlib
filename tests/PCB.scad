@@ -61,7 +61,7 @@ test_pcb = ["test_pcb", "Test PCB",
     // components
     [
         [ 20, -5,  180, "trimpot10"],
-        [ 20, -15,  90, "trimpot10", true],
+        [ 20, -18,  90, "trimpot10", true],
         [ 19,  2,   90, "smd_led", LED1206, "blue"],
         [ 16,  2,   90, "smd_led", LED0805, "red"],
         [ 13,  2,   90, "smd_led", LED0603, "orange"],
@@ -82,6 +82,7 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 32,  3,  -90, "smd_diode",DO214AC, "SS34"],
         [ 26,  2,  -90, "smd_pot", TC33X1, "10K"],
         [ 26,  6,  -90, "smd_coax",U_FL_R_SMT_1],
+        [  8, 23,    0, "smd_250V_fuse", OMT250, "2A 250V"],
 
         [ 26, 10,  -90, "smd_sot", SOT23, "2N7000"],
         [ 28, 16,  -90, "smd_sot", SOT223, "LM117"],
@@ -116,8 +117,8 @@ test_pcb = ["test_pcb", "Test PCB",
         [  5, 220, 180, "hdmi"],
         [  3, 235, 180, "mini_hdmi"],
         [ 38, 190, -90, "text", 25, 4, "Silkscreen", "Liberation Sans:style=Bold"],
-        [ 25, 200,   0, "buzzer", 4.5, 8.5],
-        [ 25, 218,   0, "buzzer"],
+        [ 25, 205,   0, "buzzer", 4.5, 8.5],
+        [ 25, 220,   0, "buzzer"],
 
         [ 45,   1,   0, "link", inch(0.4), 0.75, undef, undef, [1.5, "red"]], // Sleeved link
         [ 45,   3,   0, "link", inch(0.4)], // Flat link
@@ -130,6 +131,10 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 35,  17,   0, "vero_pin", true],
         [ 35,   8, 180, "rd_transistor", TO92, "78L05", undef,  undef, "Regulator"],
         [ 35,  13, 180, "rd_transistor", E_LINE, "ZTX853"],
+        [ 25, 190,   0, "rd_electrolytic", ECAP8x11, "220uF35V"],
+        [ 25, 180,  90, "rd_disc",  ERZV07D471, "471"],
+        [ 25, 170,  90, "rd_disc", 6p4mm_disc, "100n"],
+        [ 90, 135, -90, "rd_module", HF33F, "012-HSL-3F"],
         [ 35,   3,   0, "link", 0, 5], // Vertical wire
 
         [ 60,   3,   0, "link", inch(0.2), inch(0.4)], // Raised link
@@ -146,6 +151,9 @@ test_pcb = ["test_pcb", "Test PCB",
 
         [ 30,  130,-90, "rd_xtal", ACT1100, "40MHz", 0.5 ],
         [ 30,  150,-90, "rd_xtal", ACT1700, "80MHz", 0.5 ],
+
+        [ 93,  230,-90, "rd_box_cap", BOXC18x10x16, "X2 rated film capacitor", "0.47uF 250V" ],
+        [ 93,  210,-90, "rd_box_cap", BOXC18x5x11,  "X2 rated film capacitor", "0.1uF 250V" ],
 
         [ 77,  15, -90, "flex"],
         [ 95,  15, -90, "flat_flex"],
@@ -179,7 +187,7 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 55, 170,   0, "button_4p5mm"],
         [ 50, 185,   0, "microswitch", small_microswitch],
         [ 52, 200,   0, "pcb", 11, TMC2130 ],
-        [ 80, 210,   0, "pdip", 24, "27C32", true, inch(0.6) ],
+        [ 76, 210,   0, "pdip", 24, "27C32", true, inch(0.6) ],
         [ 80, 180,   0, "pdip", 8, "NE555" ],
         [ 71, 180,    0, "smd_inductor", IND2525, "4R7"],
 

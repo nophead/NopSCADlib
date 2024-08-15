@@ -54,4 +54,10 @@ ECAP8x11 = ["ECAP8x12", [8.2, 7.5, 12.5], 0.5, [2.4, 2.5], 0.5, inch(0.1), [grey
 
 rd_electrolytics = [ECAP8x11];
 
+// Boxed plastic film capacitors
+BOXC18x5x11  = ["BOXC18x5x11",  [18,  5, 11, 0.25], 1.2, [8,  0.6, 0.4], [15, 0.6, 4.4], [grey(40), "LightYellow"]];
+BOXC18x10x16 = ["BOXC18x10x16", [18, 10, 16, 0.25], 1.7, [12, 0.8, 0.4], [15, 0.8, 4.4], [grey(40), "LightYellow"]];
+
+rd_box_caps = [BOXC18x5x11, BOXC18x10x16];
+
 use <radial.scad>

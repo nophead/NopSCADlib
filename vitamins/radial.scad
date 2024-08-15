@@ -158,6 +158,7 @@ module rd_module(type, value) { //! Draw a PCB mounted potted module, e.g. PSU o
     r = rd_module_radius(type);
     size = rd_module_size(type);
     pin = rd_module_pin_size(type);
+
     color(rd_module_colour(type))
         rounded_top_rectangle(size, r, r);
 
@@ -392,4 +393,61 @@ module rd_electrolytic(type, value, pitch = undef, z = 0, tail = 3) { //! Draw a
             translate_z(jacket_t)
                 cylinder(r = jacket_ir, h = eps);
     }
+}
+
+function rd_boxc_size(type)    = type[1]; //! Overall size and corner radius
+function rd_boxc_z(type)       = type[2]; //! Height of inner base above PCB.
+function rd_boxc_skirt(type)   = type[3]; //! Skirt slot, thickness, height
+function rd_boxc_leads(type)   = type[4]; //! Lead pitch, diameter and length
+function rd_boxc_colours(type) = type[5]; //! Case colour and resin fill colour
+
+module rd_box_cap(type, kind, value) { //! Draw radial boxed film capacitor
+    vitamin(str("rd_boxc(", type[0], ", \"", kind, "\", \"", value, "\" ): ", kind, " ", value));
+
+    size = rd_boxc_size(type);
+    r = size[3];
+    skirt = rd_boxc_skirt(type);
+    inset = skirt.y * 2;
+    leads = rd_boxc_leads(type);
+    c = rd_boxc_colours(type);
+    z = rd_boxc_z(type);
+    $fn = fn;
+
+    color(c[0]) {
+        translate_z(z)
+            rounded_top_rectangle([size.x, size.y, size.z - z], r, r);
+
+        for(i = [0, 1])
+            translate_z(i * skirt.z)
+                linear_extrude(z)
+                    difference() {
+                        rounded_square([size.x, size.y], r);
+
+                        square([size.x - inset, size.y - inset], center = true);
+
+                        if(!i)
+                            square([skirt.x, size.y], center = true);
+                    }
+    }
+
+    color(c[1])
+        translate_z(z)
+            cube([size.x - inset, size.y - inset, 2 * eps], center = true);
+
+    color(silver)
+        for(end = [-1, 1])
+            translate([end * leads.x / 2, 0]) {
+                translate_z(- leads.z)
+                    cylinder(d = leads.y, h = leads.z + z);
+
+                solder(leads.y / 2);
+            }
+
+    color("black")
+        translate([0, -size.y / 2])
+            rotate([90, 0, 0])
+                linear_extrude(eps)
+                    translate([-size.x * 0.45, size.z * 0.75])
+                         resize([size.x * 0.9, size.z / 6])
+                            text(value, halign = "left", valign = "top");
 }
