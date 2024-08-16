@@ -235,27 +235,35 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     cylinder(h=2 * eps, r=socket_rad + eps);
             shaft();
         }
-
         if(head_type == hs_dome) {
-            R_minus_h = head_height; // h would be the height of the sphere cap that's cut off of the top of the screw dome
-            a= socket_rad;
-                // this is the trig way to do this, 
-            // alpha=atan(R_minus_h/a);
-            // R = R_minus_h/sin(alpha); //Radius if the cap was a perfect unscaled sphere
-                // this is mathematcially equivalent, but may run faster computationally with sqrt and ^2 instead of trig
-            R= a*sqrt((R_minus_h^2/a^2)+1); // Radius if the cap was a perfect unscaled sphere
-            dome_height_scaling_factor= R/head_rad;
+            edge_height = head_rad / 7.5;
+            head_chamfer_x=edge_height/2;
+            head_fillet_radius= 0.5;
+            p0 = [head_rad, edge_height];                   // Lowest point on the arc
+            p1 = [1.3 * socket_rad / cos(30), head_height]; // Highest point on the arc
+            p = (p0 + p1) / 2;                              // Start of bisector
+            gradient = (p0.x - p1.x) / (p1.y - p0.y);       // Gradient of perpendicular bisector = -1 / gradient of the line between p10 and p1
+            c = p.y - gradient * p.x;                       // Y ordinate of the centre of the dome
+            r = norm(p1 - [0, c]);                          // Dome radius is distance from centre
             color(colour) {
                 rotate_extrude() {
                     difference() {
                         intersection() {
-                                scale([1,dome_height_scaling_factor])
-                                circle(r=head_rad);
+                            translate([0, c])
+                                circle(r);
 
-                            square([head_rad, head_height]);
+                            // square([head_rad, head_height]);
+                            offset(head_fillet_radius) offset(-head_fillet_radius)
+                            polygon(points = [
+                                [0,0],
+                                [head_rad-head_chamfer_x,0],
+                                [head_rad, edge_height],
+                                [head_rad,head_height],
+                                [0,head_height],
+                                ]);
                         }
                         translate([0, head_height - socket_depth])
-                            square([socket_rad, 20]);
+                            square([socket_rad, 10]);
                     }
                 }
                 linear_extrude(head_height)
