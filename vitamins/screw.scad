@@ -237,8 +237,9 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
         }
         if(head_type == hs_dome) {
             edge_height = head_rad / 7.5;
-            head_chamfer_x=edge_height/2;
-            head_fillet_radius= 0.5;
+            head_chamfer_angle= 15; // degrees
+            head_chamfer_x=edge_height*tan(head_chamfer_angle);
+            head_fillet_radius= 0.3;
             p0 = [head_rad, edge_height];                   // Lowest point on the arc
             p1 = [1.3 * socket_rad / cos(30), head_height]; // Highest point on the arc
             p = (p0 + p1) / 2;                              // Start of bisector
@@ -252,8 +253,7 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                             translate([0, c])
                                 circle(r);
 
-                            // square([head_rad, head_height]);
-                            offset(head_fillet_radius) offset(-head_fillet_radius)
+                            // offset(head_fillet_radius) offset(-head_fillet_radius)
                             polygon(points = [
                                 [0,0],
                                 [head_rad-head_chamfer_x,0],

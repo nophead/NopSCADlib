@@ -2,25 +2,25 @@ include <NopSCADlib/utils/core/core.scad>
 include <NopSCADlib/utils/thread.scad>
 
 
-function rod_end_bearing_bore(type) =type[1];  // radius of the  bore hole in the bearing
-function rod_end_bearing_od(type)        =type[2];  // Outer diameter of the bearing 
+function rod_end_bearing_bore(type) =type[1];  //! radius of the  bore hole in the bearing
+function rod_end_bearing_od(type)        =type[2];  //! Outer diameter of the bearing 
 function rod_end_bore_width(type)           = type[3]; //! Width
 function rod_end_bearing_width(type)           = type[4]; //! Width
 function rod_end_bearing_shield_colour(type)  = type[5]; //! Shield colour, "silver" for metal
-function rod_end_screw_radius(type) =type[6]/2;  // radius of the screw end, not the bore
-// function screw_pitch(type) =type[6];  // pitch of the screw end, not the bore
-function rod_end_sphere_seg_width(type) = type[7];  // the width of the pivoting part, effectively a (sphere - sphereCaps - center bore)
-function rod_end_sphere_radius(type) = type[8];
-function rod_end_screw_length(type) =type[9];  // length of the screw from eye center, not the bore
-function rod_end_thread_length(type) =type[10];  // length of the threads
-function rod_end_overall_length(type) = type[11];
+function rod_end_screw_radius(type) =type[6]/2;  //! radius of the screw end, not the bore
+// function screw_pitch(type) =type[6];         //! pitch of the screw end, not the bore
+function rod_end_sphere_seg_width(type) = type[7];  //! the width of the pivoting part, effectively a (sphere - sphereCaps - center bore)
+function rod_end_sphere_radius(type) = type[8];  //!radius of the rod end sphere 
+function rod_end_screw_length(type) =type[9];  //! length of the screw from eye center, not the bore
+function rod_end_thread_length(type) =type[10];  //! length of the threads
+function rod_end_overall_length(type) = type[11];  //!  overall length of the rod end
 function rod_end_bearing_rim(type)             = type[12]; //! Outer rim thickness guesstimate
 
 // function screw_thread_radius(type)  = //! Thread radius
 //     let(d = screw_thread_diameter(type)) is_undef(d) ? rod_end_screw_radius(type) : d / 2;
 
 
-module rod_end_bearing(type) {
+module rod_end_bearing(type) {  //! Draw a rod end bearing
 
     bb_bore = rod_end_bearing_bore(type); 
     bb_od=rod_end_bearing_od(type);
