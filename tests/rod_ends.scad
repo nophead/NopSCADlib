@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2024
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -17,11 +17,18 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-//                    name                  OD    wireG  len   #trns clsd flat  OD2   color
-peg_spring  =        ["peg_spring",         6.4,  0.9,   15.5,  8,    1, false, 0,   "silver"];
-yellow_bed_spring  = ["yellow_bed_spring",  8,    0.9,   20,    10,   1, false, 0,   "yellow"];
-batt_spring =        ["batt_spring",        5,    0.5,   8,     5,    1, false, 6,   "silver"];
+include <../utils/core/core.scad>
+use <../utils/layout.scad>
 
-springs = [peg_spring, batt_spring, yellow_bed_spring];
+include <../vitamins/rod_ends.scad>
 
-use <spring.scad>
+
+module rod_ends(list = rod_ends) {
+    diameters = [for(b = list) rod_end_bearing_od(b)];
+    max = max(diameters);
+    layout(diameters) let(b = list[$i])
+        rod_end_bearing(list[$i]);
+}
+
+if($preview)
+    rod_ends();

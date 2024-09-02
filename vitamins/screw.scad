@@ -235,20 +235,32 @@ module screw(type, length, hob_point = 0, nylon = false) { //! Draw specified sc
                     cylinder(h=2 * eps, r=socket_rad + eps);
             shaft();
         }
-
         if(head_type == hs_dome) {
-            lift = 0.38;
-            h = head_height - lift;
-            r = min(2 * head_height, (sqr(head_rad) + sqr(h)) / 2 * h); // Special case for M2
-            y = sqrt(sqr(r) - sqr(head_rad));
+            edge_height = head_rad / 7.5;
+            head_chamfer_angle= 15; // degrees
+            head_chamfer_x=edge_height*tan(head_chamfer_angle);
+            head_fillet_radius= 0.3;
+            p0 = [head_rad, edge_height];                   // Lowest point on the arc
+            p1 = [1.3 * socket_rad / cos(30), head_height]; // Highest point on the arc
+            p = (p0 + p1) / 2;                              // Start of bisector
+            gradient = (p0.x - p1.x) / (p1.y - p0.y);       // Gradient of perpendicular bisector = -1 / gradient of the line between p10 and p1
+            c = p.y - gradient * p.x;                       // Y ordinate of the centre of the dome
+            r = norm(p1 - [0, c]);                          // Dome radius is distance from centre
             color(colour) {
                 rotate_extrude() {
                     difference() {
                         intersection() {
-                            translate([0, -y + lift])
+                            translate([0, c])
                                 circle(r);
 
-                            square([head_rad, head_height]);
+                            // offset(head_fillet_radius) offset(-head_fillet_radius)
+                            polygon(points = [
+                                [0,0],
+                                [head_rad-head_chamfer_x,0],
+                                [head_rad, edge_height],
+                                [head_rad,head_height],
+                                [0,head_height],
+                                ]);
                         }
                         translate([0, head_height - socket_depth])
                             square([socket_rad, 10]);

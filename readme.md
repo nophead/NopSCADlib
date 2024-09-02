@@ -26,30 +26,31 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#axials">Axials</a> </td><td> <a href = "#jack">Jack</a> </td><td> <a href = "#ring_terminals">Ring_terminals</a> </td><td> <a href = "#cable_clip">Cable_clip</a> </td><td> <a href = "#catenary">Catenary</a> </td><td> <a href = "#global">Global</a> </td></tr>
 <tr><td> <a href = "#bldc_motors">BLDC_motors</a> </td><td> <a href = "#ldrs">LDRs</a> </td><td> <a href = "#rockers">Rockers</a> </td><td> <a href = "#cable_grommets">Cable_grommets</a> </td><td> <a href = "#core_xy">Core_xy</a> </td><td> <a href = "#polyholes">Polyholes</a> </td></tr>
 <tr><td> <a href = "#ball_bearings">Ball_bearings</a> </td><td> <a href = "#led_meters">LED_meters</a> </td><td> <a href = "#rod">Rod</a> </td><td> <a href = "#camera_housing">Camera_housing</a> </td><td> <a href = "#dogbones">Dogbones</a> </td><td> <a href = "#rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#batteries">Batteries</a> </td><td> <a href = "#leds">LEDs</a> </td><td> <a href = "#sbr_rails">SBR_rails</a> </td><td> <a href = "#carriers">Carriers</a> </td><td> <a href = "#fillet">Fillet</a> </td><td> <a href = "#sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#leadnuts">Leadnuts</a> </td><td> <a href = "#sk_brackets">SK_brackets</a> </td><td> <a href = "#corner_block">Corner_block</a> </td><td> <a href = "#gears">Gears</a> </td><td> <a href = "#teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#belts">Belts</a> </td><td> <a href = "#light_strips">Light_strips</a> </td><td> <a href = "#smds">SMDs</a> </td><td> <a href = "#door_hinge">Door_hinge</a> </td><td> <a href = "#hanging_hole">Hanging_hole</a> </td><td></td></tr>
-<tr><td> <a href = "#blowers">Blowers</a> </td><td> <a href = "#linear_bearings">Linear_bearings</a> </td><td> <a href = "#ssrs">SSRs</a> </td><td> <a href = "#door_latch">Door_latch</a> </td><td> <a href = "#horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#box_sections">Box_sections</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#pcb_utils">PCB_utils</a> </td><td></td></tr>
-<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#splines">Splines</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td></td><td> <a href = "#wire">Wire</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#batteries">Batteries</a> </td><td> <a href = "#leds">LEDs</a> </td><td> <a href = "#rod_ends">Rod_ends</a> </td><td> <a href = "#carriers">Carriers</a> </td><td> <a href = "#fillet">Fillet</a> </td><td> <a href = "#sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#leadnuts">Leadnuts</a> </td><td> <a href = "#sbr_rails">SBR_rails</a> </td><td> <a href = "#corner_block">Corner_block</a> </td><td> <a href = "#gears">Gears</a> </td><td> <a href = "#teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#belts">Belts</a> </td><td> <a href = "#light_strips">Light_strips</a> </td><td> <a href = "#sk_brackets">SK_brackets</a> </td><td> <a href = "#door_hinge">Door_hinge</a> </td><td> <a href = "#hanging_hole">Hanging_hole</a> </td><td></td></tr>
+<tr><td> <a href = "#blowers">Blowers</a> </td><td> <a href = "#linear_bearings">Linear_bearings</a> </td><td> <a href = "#smds">SMDs</a> </td><td> <a href = "#door_latch">Door_latch</a> </td><td> <a href = "#horiholes">Horiholes</a> </td><td></td></tr>
+<tr><td> <a href = "#box_sections">Box_sections</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#ssrs">SSRs</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#pcb_utils">PCB_utils</a> </td><td></td></tr>
+<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#splines">Splines</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
+<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td></td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td> <a href = "#zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -233,13 +234,16 @@ Also single bearing balls are modelled as just a silver sphere and a BOM entry.
 |   1 | `ball_bearing(BB686)` |  Ball bearing 686ZZ 6mm x 13mm x 5mm |
 |   1 | `ball_bearing(BB696)` |  Ball bearing 696ZZ 6mm x 16mm x 5mm |
 |   1 | `ball_bearing(BBF623)` |  Ball bearing F623-2RS 3mm x 10mm x 4mm |
+|   1 | `ball_bearing(BBF625)` |  Ball bearing F625ZZ 5mm x 16mm x 5mm |
 |   1 | `ball_bearing(BBF693)` |  Ball bearing F693ZZ 3mm x 8mm x 3mm |
 |   1 | `ball_bearing(BBF695)` |  Ball bearing F695ZZ 5mm x 13mm x 4mm |
 |   1 | `ball_bearing(BBMR63)` |  Ball bearing MR63ZZ 3mm x 6mm x 2.5mm |
 |   1 | `ball_bearing(BBMR83)` |  Ball bearing MR83ZZ 3mm x 8mm x 3mm |
+|   1 | `ball_bearing(BBMR85)` |  Ball bearing MR85ZZ 5mm x 8mm x 2.5mm |
 |   1 | `ball_bearing(BBMR93)` |  Ball bearing MR93ZZ 3mm x 9mm x 4mm |
+|   1 | `ball_bearing(BBMR95)` |  Ball bearing MR95ZZ 5mm x 9mm x 3mm |
 |   1 | `ball_bearing(BBSMR95)` |  Ball bearing SMR95ZZ 5mm x 9mm x 2.5mm |
-|   7 | ` bearing_ball(3)` |  Steel ball 3mm |
+|   8 | ` bearing_ball(3)` |  Steel ball 3mm |
 
 
 <a href="#top">Top</a>
@@ -2374,6 +2378,8 @@ If a nut is given a child then it gets placed on its top surface.
 | `nut_square_width(type)` | Width of the square nut |
 | `nut_trap_depth(type)` | Depth of nut trap |
 | `nut_washer(type)` | Corresponding washer |
+| `nut_weld_base_r(type)` | Weld nut base radius |
+| `nut_weld_base_t(type)` | Weld nut base thickness |
 
 ### Functions
 | Function | Description |
@@ -2393,7 +2399,9 @@ If a nut is given a child then it gets placed on its top surface.
 | `nut_and_washer(type, nyloc)` | Draw nut with corresponding washer |
 | `nut_square(type, brass = false, nylon = false)` | Draw specified square nut |
 | `nut_trap(screw, nut, depth = 0, horizontal = false, supported = false, h = 200)` | Make a nut trap |
+| `sliding_ball_t_nut(size, w, h, r)` | Draw a sliding ball t nut |
 | `sliding_t_nut(type)` | Draw a sliding T nut, T nut with a spring loaded ball or a hammer nut. |
+| `weld_nut(type)` | draw a weld nut |
 | `wingnut(type)` | Draw a wingnut |
 
 ![nuts](tests/png/nuts.png)
@@ -2436,6 +2444,8 @@ If a nut is given a child then it gets placed on its top surface.
 |   1 | `nut(M8_nut, nyloc = true)` |  Nut M8 x 6.5mm nyloc |
 |   1 | `nut(M8nS_thin_nut)` |  Nut M8nS 13 x 4mm  |
 |   1 | `washer(M6_washer)` |  Washer  M6 x 12.5mm x 1.5mm |
+|   1 | `weld nut(M4_weld_nut)` |  Weld Nut M4 |
+|   1 | `weld nut(M6_weld_nut)` |  Weld Nut M6 |
 |   1 | `wingnut(M4_wingnut)` |  Wingnut M4 |
 
 
@@ -3372,9 +3382,14 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `pulley(GT2x16_pulley_9)` |  Pulley GT2 16 teeth |
 |   1 | `pulley(GT2x16_pulley)` |  Pulley GT2 16 teeth |
+|   1 | `pulley(GT2x20_pulley_9)` |  Pulley GT2 20 teeth |
+|   1 | `pulley(GT2x80_pulley)` |  Pulley GT2 80 teeth |
 |   1 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
+|   1 | `pulley(GT2x16_toothed_idler_9)` |  Pulley GT2 idler 16 teeth |
 |   1 | `pulley(GT2x20_toothed_idler)` |  Pulley GT2 idler 20 teeth |
+|   1 | `pulley(GT2x20_toothed_idler_9)` |  Pulley GT2 idler 20 teeth |
 |   1 | `pulley(GT2x20_plain_idler)` |  Pulley GT2 idler smooth 12mm |
 |   1 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
 |   1 | `pulley(GT2x16x7_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
@@ -3386,8 +3401,9 @@ Timing belt pulleys, both toothed and plain with internal bearings for idlers.
 |   1 | `screw(M3_grub_screw, 3)` |  Screw M3 grub x  3mm |
 |   2 | `screw(M3_grub_screw, 4.5)` |  Screw M3 grub x  4.5mm |
 |   2 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
-|   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
-|   1 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
+|   6 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+|   3 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
+|   2 | `screw(M5_grub_screw, 6)` |  Screw M5 grub x  6mm |
 
 
 <a href="#top">Top</a>
@@ -3726,6 +3742,48 @@ These items are symmetrical, so by default the origin is in the centre but it ca
 <a href="#top">Top</a>
 
 ---
+<a name="rod_ends"></a>
+## Rod_ends
+A rod end, sometimes called a spherical bearing or rod-end eye, is a component used in mechanical systems to create a flexible connection between two parts.
+
+[vitamins/rod_ends.scad](vitamins/rod_ends.scad) Object definitions.
+
+[vitamins/rod_end.scad](vitamins/rod_end.scad) Implementation.
+
+[tests/rod_ends.scad](tests/rod_ends.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `rod_end_bearing_bore(type)` | radius of the  bore hole in the bearing |
+| `rod_end_bearing_od(type)` | Outer diameter of the bearing |
+| `rod_end_bearing_rim(type)` | Outer rim thickness guesstimate |
+| `rod_end_bearing_shield_colour(type)` | Shield colour, "silver" for metal |
+| `rod_end_bearing_width(type)` | Width |
+| `rod_end_bore_width(type)` | Width |
+| `rod_end_overall_length(type)` |  overall length of the rod end |
+| `rod_end_screw_length(type)` | length of the screw from eye center, not the bore |
+| `rod_end_screw_radius(type)` | radius of the screw end, not the bore |
+| `rod_end_sphere_radius(type)` | radius of the rod end sphere |
+| `rod_end_sphere_seg_width(type)` | the width of the pivoting part, effectively a (sphere - sphereCaps - center bore) |
+| `rod_end_thread_length(type)` | length of the threads |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `rod_end_bearing(type)` | Draw a rod end bearing |
+
+![rod_ends](tests/png/rod_ends.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `Rod End Bearing(RE_m5_bearing, 33)` |  Rod End Bearing 5 x 33mm |
+
+
+<a href="#top">Top</a>
+
+---
 <a name="sbr_rails"></a>
 ## SBR_rails
 SBR rails
@@ -3856,11 +3914,13 @@ For an explanation of `screw_polysink()` see <https://hydraraptor.blogspot.com/2
 |   1 | `screw(M5_pan_screw, 30)` |  Screw M5 pan x 30mm |
 |   1 | `screw(M6_cap_screw, 30)` |  Screw M6 cap x 30mm |
 |   1 | `screw(M6_cs_cap_screw, 30)` |  Screw M6 cs cap x 30mm |
+|   1 | `screw(M6_dome_screw, 30)` |  Screw M6 dome x 30mm |
 |   1 | `screw(M6_grub_screw, 12)` |  Screw M6 grub x 12mm |
 |   1 | `screw(M6_hex_screw, 30)` |  Screw M6 hex x 30mm |
 |   1 | `screw(M6_pan_screw, 30)` |  Screw M6 pan x 30mm |
 |   1 | `screw(M8_cap_screw, 35)` |  Screw M8 cap x 35mm |
 |   1 | `screw(M8_cs_cap_screw, 35)` |  Screw M8 cs cap x 35mm |
+|   1 | `screw(M8_dome_screw, 35)` |  Screw M8 dome x 35mm |
 |   1 | `screw(M8_hex_screw, 30)` |  Screw M8 hex x 30mm |
 |   1 | `screw(No2_screw, 10)` |  Screw No2 pan wood x 10mm |
 |   1 | `screw(No4_screw, 10)` |  Screw No4 pan wood x 10mm |
@@ -4405,6 +4465,7 @@ By default springs have their origin at the bottom but can be centered.
 | ---:|:--- |:---|
 |   1 | `comp_spring(batt_spring)` |  Spring 5 - 6mm spiral OD, 0.5mm gauge x 8mm long, closed end |
 |   1 | `comp_spring(peg_spring)` |  Spring 6.4mm OD, 0.9mm gauge x 15.5mm long, closed end |
+|   1 | `comp_spring(yellow_bed_spring)` |  Spring 8mm OD, 0.9mm gauge x 20mm long, closed end |
 
 
 <a href="#top">Top</a>
@@ -4504,18 +4565,19 @@ NEMA stepper motor model.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   4 | `ring_terminal(M3_ringterm)` |  Ring terminal 3mm |
-|  20 | `screw(M3_pan_screw, 8)` |  Screw M3 pan x  8mm |
-|   1 | `NEMA(NEMA14_36)` |  Stepper motor NEMA14 x 36mm |
-|   1 | `NEMA(NEMA16_19)` |  Stepper motor NEMA16 x 19.2mm |
-|   1 | `NEMA(NEMA17_27)` |  Stepper motor NEMA17 x 26.5mm |
-|   1 | `NEMA(NEMA17_34)` |  Stepper motor NEMA17 x 34mm |
-|   1 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm |
-|   1 | `NEMA(NEMA17_47)` |  Stepper motor NEMA17 x 47mm |
-|   1 | `NEMA(NEMA23_51)` |  Stepper motor NEMA22 x 51.2mm |
-|   1 | `NEMA(NEMA8_30)` |  Stepper motor NEMA8 x 30mm |
-|   1 | `NEMA(NEMA8_30BH)` |  Stepper motor NEMA8 x 30mm |
-|  16 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
-|  20 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
+|  25 | `screw(M3_pan_screw, 8)` |  Screw M3 pan x  8mm |
+|   1 | `NEMA(NEMA14_36)` |  Stepper motor NEMA14 x 36mm (5x21 shaft) |
+|   1 | `NEMA(NEMA16_19)` |  Stepper motor NEMA16 x 19.2mm (5x12 shaft) |
+|   1 | `NEMA(NEMA17_27)` |  Stepper motor NEMA17 x 26.5mm (5x26.5 shaft) |
+|   1 | `NEMA(NEMA17_34)` |  Stepper motor NEMA17 x 34mm (5x24 shaft) |
+|   1 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm (5x20 shaft) |
+|   1 | `NEMA(NEMA17_47)` |  Stepper motor NEMA17 x 47mm (5x24 shaft) |
+|   1 | `NEMA(NEMA17_47L80)` |  Stepper motor NEMA17 x 47mm (5x80 shaft) |
+|   1 | `NEMA(NEMA23_51)` |  Stepper motor NEMA22 x 51.2mm (6.35x24 shaft) |
+|   1 | `NEMA(NEMA8_30)` |  Stepper motor NEMA8 x 30mm (4x6 shaft) |
+|   1 | `NEMA(NEMA8_30BH)` |  Stepper motor NEMA8 x 30mm (5x12 shaft) |
+|  21 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |
+|  25 | `star_washer(M3_washer)` |  Washer star M3 x 0.5mm |
 
 
 <a href="#top">Top</a>
@@ -6512,8 +6574,9 @@ Creative Commons - Attribution - Share Alike license (see <https://creativecommo
 |   1 | `screw(M3_grub_screw, 3)` |  Screw M3 grub x  3mm |
 |   2 | `screw(M3_grub_screw, 4.5)` |  Screw M3 grub x  4.5mm |
 |   2 | `screw(M3_grub_screw, 4)` |  Screw M3 grub x  4mm |
-|   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
-|   1 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
+|   6 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+|   3 | `screw(M4_grub_screw, 6)` |  Screw M4 grub x  6mm |
+|   2 | `screw(M5_grub_screw, 6)` |  Screw M5 grub x  6mm |
 
 ### Printed
 | Qty | Filename |
@@ -6521,12 +6584,17 @@ Creative Commons - Attribution - Share Alike license (see <https://creativecommo
 |   1 | printed_pulley_GT2x12_pulley.stl |
 |   1 | printed_pulley_GT2x16_plain_idler.stl |
 |   1 | printed_pulley_GT2x16_pulley.stl |
+|   1 | printed_pulley_GT2x16_pulley_9.stl |
 |   1 | printed_pulley_GT2x16_toothed_idler.stl |
+|   1 | printed_pulley_GT2x16_toothed_idler_9.stl |
 |   1 | printed_pulley_GT2x16x7_plain_idler.stl |
 |   1 | printed_pulley_GT2x20_plain_idler.stl |
+|   1 | printed_pulley_GT2x20_pulley_9.stl |
 |   1 | printed_pulley_GT2x20_toothed_idler.stl |
+|   1 | printed_pulley_GT2x20_toothed_idler_9.stl |
 |   1 | printed_pulley_GT2x20ob_pulley.stl |
 |   1 | printed_pulley_GT2x20um_pulley.stl |
+|   1 | printed_pulley_GT2x80_pulley.stl |
 |   1 | printed_pulley_T2p5x16_pulley.stl |
 |   1 | printed_pulley_T5x10_pulley.stl |
 
@@ -6535,13 +6603,18 @@ Creative Commons - Attribution - Share Alike license (see <https://creativecommo
 | ---:|:--- |
 |   1 | printed_pulley_GT2x12_pulley_assembly |
 |   1 | printed_pulley_GT2x16_plain_idler_assembly |
+|   1 | printed_pulley_GT2x16_pulley_9_assembly |
 |   1 | printed_pulley_GT2x16_pulley_assembly |
+|   1 | printed_pulley_GT2x16_toothed_idler_9_assembly |
 |   1 | printed_pulley_GT2x16_toothed_idler_assembly |
 |   1 | printed_pulley_GT2x16x7_plain_idler_assembly |
 |   1 | printed_pulley_GT2x20_plain_idler_assembly |
+|   1 | printed_pulley_GT2x20_pulley_9_assembly |
+|   1 | printed_pulley_GT2x20_toothed_idler_9_assembly |
 |   1 | printed_pulley_GT2x20_toothed_idler_assembly |
 |   1 | printed_pulley_GT2x20ob_pulley_assembly |
 |   1 | printed_pulley_GT2x20um_pulley_assembly |
+|   1 | printed_pulley_GT2x80_pulley_assembly |
 |   1 | printed_pulley_T2p5x16_pulley_assembly |
 |   1 | printed_pulley_T5x10_pulley_assembly |
 
@@ -7038,7 +7111,7 @@ allows flexible positioning of the motors.
 |   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
 |   8 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
-|   2 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm |
+|   2 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm (5x20 shaft) |
 
 
 <a href="#top">Top</a>

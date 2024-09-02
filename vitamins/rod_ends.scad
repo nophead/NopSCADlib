@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2024
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,12 +16,8 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+RE_m5_bearing    = ["RE_m5_bearing",   5,  16, 8, 6,   brass,    5, 8, 11.11,  33, 21, 41,  2.0,  2.0,   0,    0];  // uxcell M5x0.8 Right Hand Thread, Self-Lubricating Joint Rod Ends
 
-//                    name                  OD    wireG  len   #trns clsd flat  OD2   color
-peg_spring  =        ["peg_spring",         6.4,  0.9,   15.5,  8,    1, false, 0,   "silver"];
-yellow_bed_spring  = ["yellow_bed_spring",  8,    0.9,   20,    10,   1, false, 0,   "yellow"];
-batt_spring =        ["batt_spring",        5,    0.5,   8,     5,    1, false, 6,   "silver"];
+rod_ends= [ RE_m5_bearing];
 
-springs = [peg_spring, batt_spring, yellow_bed_spring];
-
-use <spring.scad>
+use<rod_end.scad>

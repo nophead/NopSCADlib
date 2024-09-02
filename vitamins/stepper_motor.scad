@@ -80,7 +80,7 @@ module NEMA(type, shaft_angle = 0, jst_connector = false) { //! Draw specified N
     shaft_rad = NEMA_shaft_dia(type) / 2;
     cap = NEMA_cap_heights(type)[1];
     cap2 = NEMA_cap_heights(type)[0];
-    vitamin(str("NEMA(", type[0], "): Stepper motor NEMA", round(NEMA_width(type) / 2.54), " x ", length, "mm"));
+    vitamin(str("NEMA(", type[0], "): Stepper motor NEMA", round(NEMA_width(type) / 2.54), " x ", length, "mm (", type[7],"x",type[8], " shaft)"));
     thread_d = NEMA_thread_d(type);
     corner_r = 0.9;
     bore = NEMA_shaft_bore(type);

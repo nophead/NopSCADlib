@@ -49,7 +49,11 @@ M6_half_nut =      ["M6_half_nut",      6,  11.5, 3,   8,    M6_washer,     3,  
 M8_nut      =      ["M8_nut",           8,  15,   6.5, 8,    M8_washer,     M8_nut_depth,      0, [15, 11.35]];
 toggle_nut  =      ["toggle_nut",       6.1, 9.2, 1.5, 1.5,  M6_washer,     1.5,               inch(1/40)];
 
-M4_wingnut  =      ["M4_wingnut",       4,  10,   3.75,8,    M4_washer,     0, 22, 10, 6, 3];
+M4_wingnut  =      ["M4_wingnut",       4,  10,   3.75,8,    M4_washer,     0, 22,   10, 6, 3];
+
+M4_weld_nut  =     ["M4_weld_nut",      4,  5.3,  6.3, 8,    M4_washer,     0, 18,   0.8,]; // Base diameter and thickness
+M6_weld_nut  =     ["M6_weld_nut",      6,  7.7,  7.9, 8,    M6_washer,     0, 19.1, 1.2,];
+
 //                                                                              sx  ty1 ty2 hammer
 M3_sliding_t_nut = ["M3_sliding_t_nut", 3,   6,   3.0, 4.0,  false,         0,  10,  10,  6, false];
 M4_sliding_t_nut = ["M4_sliding_t_nut", 4,   6,   3.7, 4.7,  false,         0,  11,  10,  6, false];
