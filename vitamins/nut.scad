@@ -41,9 +41,12 @@ function nut_dome(type)       = type[8];        //! Dome height and max thread d
 
 function nut_flat_radius(type) = nut_radius(type) * cos(30); //! Radius across the flats
 
-function nut_square_size(type)      = type[1]; //! Diameter of the corresponding screw
-function nut_square_width(type)     = type[2]; //! Width of the square nut
-function nut_square_thickness(type) = type[3]; //! Thickness of the square nut
+function nut_square_size(type)      = type[1];  //! Diameter of the corresponding screw
+function nut_square_width(type)     = type[2];  //! Width of the square nut
+function nut_square_thickness(type) = type[3];  //! Thickness of the square nut
+
+function nut_weld_base_r(type) = type[7] / 2;   //! Weld nut base radius
+function nut_weld_base_t(type) = type[8];       //! Weld nut base thickness
 
 function nut_dome_height(type)  = let(d = nut_dome(type)) d ? d[0] : nut_thickness(type); //! Height of the domed version
 function nut_thread_depth(type) = let(d = nut_dome(type)) d ? d[1] : nut_thickness(type); //! Max thread depth in domed version
@@ -190,7 +193,7 @@ module wingnut(type) { //! Draw a wingnut
 
 function t_nut_tab(type) = [type[8], type[9]]; //! Sliding t-nut T dimensions
 
-module sliding_ball_t_nut(size, w, h, r) { //! Draw a sliding ball t nut 
+module sliding_ball_t_nut(size, w, h, r) { //! Draw a sliding ball t nut
     rad = 0.5;
     stem = size.z - h;
     ball_d = 4;
@@ -249,14 +252,13 @@ module weld_nut(type) { //! draw a weld nut
     thread_d = nut_size(type);
     hole_rad  = thread_d / 2;
     nut_neck_rad = nut_radius(type);
-    // top_rad = type[4] / 2;
     thickness = nut_thickness(type);
-    base_rad = type[7]/2;
-    base_thickness= type[8];
+    base_rad = nut_weld_base_r(type);
+    base_thickness = nut_weld_base_t(type);
 
 
     vitamin(str("weld nut(", type[0], "): Weld Nut M", nut_size(type)));
-   colour = silver;
+    colour = silver;
     explode(-20) {
         color(colour) {
 

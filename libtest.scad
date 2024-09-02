@@ -98,6 +98,7 @@ use <tests/rails.scad>
 use <tests/ring_terminals.scad>
 use <tests/rockers.scad>
 use <tests/rod.scad>
+use <tests/rod_ends.scad>
 use <tests/SBR_rails.scad>
 use <tests/screws.scad>
 use <tests/sealing_strip.scad>
@@ -178,7 +179,7 @@ translate([x5, screw_knobs_y])
     screw_knobs();
 
 knobs_y = screw_knobs_y + 40;
-translate([640, knobs_y])
+translate([660, knobs_y])
     printed_pulley_test();
 
 translate([x5, knobs_y])
@@ -223,7 +224,7 @@ translate([950, box_y])
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
-washers_y = nuts_y + 140;
+washers_y = nuts_y + 160;
 screws_y = washers_y + 120;
 threaded_inserts_y = screws_y + 180;
 circlips_y = threaded_inserts_y + 30;
@@ -293,6 +294,9 @@ translate([x0, pulleys_y])
 translate([x0, leadnuts_y])
     leadnuts();
 
+translate([x0 + 170, leadnuts_y])
+    rod_ends();
+
 translate([x0 + 120, leadnuts_y])
     leadnuthousings();
 
@@ -306,7 +310,7 @@ translate([x0, linear_bearings_y]) {
 translate([x0, steppers_y])
     stepper_motors();
 
-translate([x0 + 400, steppers_y])
+translate([x0 + 450, steppers_y])
     gear_motors();
 
 translate([x0, sheets_y])
@@ -410,7 +414,7 @@ blowers_y = ssrs_y + 60;
 hot_ends_y = blowers_y + 100;
 batteries_y = hot_ends_y + 55;
 panel_meters_y = batteries_y + 70;
-extrusions_y = panel_meters_y + 100;
+extrusions_y = panel_meters_y + 130;
 
 translate([x3, veroboard_y])
     veroboard_test();

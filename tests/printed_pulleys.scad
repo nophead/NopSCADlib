@@ -22,9 +22,16 @@ include <../vitamins/pulleys.scad>
 include <../printed/printed_pulleys.scad>
 use <../utils/layout.scad>
 
+n = len(pulleys) - 1;
+half = floor((n - 1) / 2);
+split = n - half;
+pulleys1 = [for(i = [0 : split - 1]) pulleys[i]];
+pulleys2 = [for(i = [split : n - 1]) pulleys[i]];
 
-module printed_pulley_test(show_metal = false) {
-    layout([for (p = pulleys) pulley_flange_dia(p)]) let(p = pulleys[$i]) {
+max_d = max([for(p = concat(pulleys1, pulleys2)) pulley_flange_dia(p)]);
+
+module do_list(list, show_metal) {
+    layout([for (p = list) max_d]) let(p = list[$i]) {
         rotate(-145)
             if($preview)
                 printed_pulley_assembly(p);
@@ -33,10 +40,21 @@ module printed_pulley_test(show_metal = false) {
 
         if(show_metal)
             not_on_bom()
-                translate([0, 20])
+                translate([0, 60])
                     rotate(-145)
                         pulley_assembly(p);
     }
+}
+
+module printed_pulley_test(show_metal = false) {
+    translate([0, 10])
+        do_list(pulleys1, show_metal);
+
+    translate([0, -10])
+        do_list(pulleys2, show_metal);
+
+    translate([split * (max_d + 5), 0])
+        do_list([pulleys[n]], show_metal);
 }
 
 if($preview)
