@@ -88,7 +88,7 @@ M3_dome_screw    = ["M3_dome", "M3 dome",       hs_dome,  3, 5.7, 1.65, 1.04,2.0
 M4_dome_screw    = ["M4_dome", "M4 dome",       hs_dome,  4, 7.6, 2.2,  1.3, 2.5, 20,  M4_washer, M4_nut,   M4_tap_radius,    M4_clearance_radius];
 M5_dome_screw    = ["M5_dome", "M5 dome",       hs_dome,  5, 9.5, 2.75, 1.56,3.0, 22,  M5_washer, M5_nut,   M5_tap_radius,    M5_clearance_radius];
 M6_dome_screw    = ["M6_dome", "M6 dome",       hs_dome,  6, 10.5, 3.3,  2.5,4.0, 24,  M6_washer, M6_nut,   M6_tap_radius,    M6_clearance_radius];
-M8_dome_screw    = ["M8_dome", "M8 dome",       hs_dome,  8, 14,   4.4,  3,5.0, 30,  M8_washer, M8_nut,   M8_tap_radius,    M8_clearance_radius];
+M8_dome_screw    = ["M8_dome", "M8 dome",       hs_dome,  8, 14,   4.4,  3,  5.0, 30,  M8_washer, M8_nut,   M8_tap_radius,    M8_clearance_radius];
 
 M2p5_pan_screw   = ["M2p5_pan", "M2.5 pan",     hs_pan, 2.5, 4.7, 1.7,    0,   0, 0, M2p5_washer, M2p5_nut, M2p5_tap_radius,  M2p5_clearance_radius];
 M3_pan_screw     = ["M3_pan", "M3 pan",         hs_pan,   3, 5.4, 2.0,    0,   0, 0,   M3_washer, M3_nut,   M3_tap_radius,    M3_clearance_radius];

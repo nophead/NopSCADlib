@@ -85,6 +85,13 @@ module nuts() {
             if(n == M8_nut)
                nut_square(M8nS_thin_nut);
        }
+
+       translate([0,150]){
+            if(n==M4_nut)
+                weld_nut(M4_weld_nut);
+            if(n==M6_nut)
+                weld_nut(M6_weld_nut);
+       } 
     }
 }
 

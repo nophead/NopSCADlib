@@ -190,7 +190,7 @@ module wingnut(type) { //! Draw a wingnut
 
 function t_nut_tab(type) = [type[8], type[9]]; //! Sliding t-nut T dimensions
 
-module sliding_ball_t_nut(size, w, h, r) {
+module sliding_ball_t_nut(size, w, h, r) { //! Draw a sliding ball t nut 
     rad = 0.5;
     stem = size.z - h;
     ball_d = 4;
@@ -245,7 +245,7 @@ module sliding_t_nut(type) { //! Draw a sliding T nut, T nut with a spring loade
             extrusionSlidingNut(size, tab[0], tab[1], tabSizeZ, holeRadius, 0, hammerNut);
 }
 
-module weld_nut(type) {
+module weld_nut(type) { //! draw a weld nut
     thread_d = nut_size(type);
     hole_rad  = thread_d / 2;
     nut_neck_rad = nut_radius(type);
