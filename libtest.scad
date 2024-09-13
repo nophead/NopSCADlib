@@ -406,8 +406,8 @@ translate([x2, components_y])
     components();
 
 veroboard_y = 0;
-d_connectors_y = veroboard_y + 110;
-iecs_y = d_connectors_y + 80;
+d_connectors_y = veroboard_y + 120;
+iecs_y = d_connectors_y + 70;
 modules_y = iecs_y + 60;
 ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
@@ -425,10 +425,10 @@ translate([x3 + 50, veroboard_y + 20])
 translate([x3 + 160, ssrs_y])
     pcb_mounts();
 
-translate([x3 + 145, veroboard_y + 16])
+translate([x3 + 145, veroboard_y])
     cameras();
 
-translate([x3 + 145, d_connectors_y - 10])
+translate([x3 + 145, veroboard_y + 45])
     camera_housings();
 
 translate([x3, d_connectors_y])
