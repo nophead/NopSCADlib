@@ -1006,9 +1006,11 @@ D-connectors. Can be any number of ways, male or female, solder buckets, PCB mou
 |   1 | `d_socket(DCONN15, idc = true)` |  D-type 15 way IDC socket |
 |   1 | `d_plug(DCONN25, pcb = true)` |  D-type 25 way PCB mount plug |
 |   1 | `d_socket(DCONN25, pcb = true)` |  D-type 25 way PCB mount socket |
+|   1 | `d_plug(DCONN37)` |  D-type 37 way  plug |
+|   1 | `d_socket(DCONN37)` |  D-type 37 way  socket |
 |   1 | `d_plug(DCONN9)` |  D-type 9 way  plug |
 |   1 | `d_socket(DCONN9)` |  D-type 9 way  socket |
-|   6 | `d_pillar()` |  D-type connector pillar |
+|   8 | `d_pillar()` |  D-type connector pillar |
 
 
 <a href="#top">Top</a>
