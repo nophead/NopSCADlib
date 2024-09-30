@@ -43,7 +43,7 @@ MGN12C_carriage = [ "MGN12C",  34.7, 21.7, 27, 13, 3,   15, 20, M3_cap_screw, MG
 MGN12H_carriage = [ "MGN12H",  45.4, 32.4, 27, 13, 3,   20, 20, M3_cap_screw, MGN12 ];
 MGN15C_carriage = [ "MGN15C",  43.3, 27.7, 32, 16, 4,   20, 25, M3_cap_screw, MGN15 ];
 HGH15CA_carriage= [ "HGH15CA", 61.4, 39.4, 34, 28, 4,   26, 26, M4_cap_screw, HGH15CA ];
-HGH20CA_carriage= [ "HGH20CA", 77.5, 50.5, 44, 30, 4.6, 35, 32, M5_cap_screw, HGH20CA ];
+HGH20CA_carriage= [ "HGH20CA", 77.5, 50.5, 44, 30, 4.6, 36, 32, M5_cap_screw, HGH20CA ];
 SSR15_carriage  = [ "SSR15",   40.3, 23.3, 34, 24, 4.5, 0,  26, M4_cap_screw, SSR15 ];
 
 rails = [MGN5, MGN7, MGN9, MGN12, MGN15, SSR15, HGH15CA, HGH20CA];
