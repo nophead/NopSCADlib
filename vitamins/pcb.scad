@@ -1170,6 +1170,8 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "rd_transistor")) rd_transistor(type = comp[4], value = comp[5], lead_positions = param(6, undef), z = param(7, 5), kind = param(8,"Transistor"));
                                              // type, value, lead positions, z, kind
             if(show(comp, "rd_box_cap"))    rd_box_cap(type = comp[4], kind = comp[5], value = comp[6]);
+            if(show(comp, "rd_cm_choke"))   rd_cm_choke(type = comp[4], value = comp[5]);
+            if(show(comp, "rd_coil"))       rd_coil(type = comp[4], value = comp[5], pitch = param(6, undef));
             if(show(comp, "link"))          wire_link(l = comp[4], h = param(5, 1), d = param(6, 0.8), tail = param(7, 3), sleeve = param(8, false));
             if(show(comp, "D_plug"))        translate_z(d_pcb_offset(comp[4])) d_plug(comp[4], pcb = true);
             if(show(comp, "molex_hdr"))     molex_254(comp[4], param(5, 0), param(6, undef));

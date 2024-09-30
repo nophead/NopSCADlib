@@ -21,7 +21,9 @@ include <../vitamins/pcbs.scad>
 
 module radials() {
     pcb = PERF70x50;
+    $solder = pcb_solder(pcb);
     pcb(pcb);
+
     translate([0, pcb_width(pcb) + inch(0.2)]) {
         pcb(pcb);
 
@@ -36,9 +38,17 @@ module radials() {
         for(i = [0 : len(rd_box_caps) - 1])
             pcb_grid(pcb, 20, i * 4)
                 rd_box_cap(rd_box_caps[i], "X2 rated film capacitor", ["0.1uF 250V", "0.47uF 250V"][i]);
+
+
+        for(i = [0 : len(rd_cm_chokes) - 1])
+            pcb_grid(pcb, 10.5, 2)
+                rd_cm_choke(rd_cm_chokes[i], "3.5mH");
+
+        pcb_grid(pcb, 4, 2.5)
+            rotate(90)
+                rd_coil(rd_coils[0], "4.7uH");
     }
 
-    $solder = pcb_solder(pcb);
 
     for(i = [0 : len(rd_xtals) - 1])
         pcb_grid(pcb, [0.5, 1, 1.5, 9, 1][i], [4, 6, 10.5, 10.5, 16][i])
@@ -51,7 +61,6 @@ module radials() {
         rotate(-90)
             rd_module(rd_modules[1], "12V 250ma");
 
-
     for(i = [0 : len(rd_discs) - 1])
         pcb_grid(pcb, 1 + 2.5 * i, 1) {
             disc = rd_discs[i];
@@ -60,7 +69,7 @@ module radials() {
             dy = round(pitch.y / inch(0.1)) * inch(0.1);
 
             rotate(90 - atan2(dy, dx))
-                rd_disc(disc, pitch = norm([dy, dx]), z = 0.5, value = ["10nF", "470V",][i]);
+                rd_disc(disc, pitch = norm([dy, dx]), z = 0.5, value = ["10nF", "470V", "1nF Y2"][i]);
         }
 
      for(i = [0 : len(rd_transistors) - 1])

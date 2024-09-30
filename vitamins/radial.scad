@@ -451,3 +451,179 @@ module rd_box_cap(type, kind, value) { //! Draw radial boxed film capacitor
                          resize([size.x * 0.9, size.z / 6])
                             text(value, halign = "left", valign = "top");
 }
+
+function rd_cm_choke_core(type) = type[1]; //! Core OD, ID, width, corner radius
+function rd_cm_choke_seam(type) = type[2]; //! Overlapping semicircular seams to join the two halves of the core width and thickness
+function rd_cm_choke_slot(type) = type[3]; //! Slot to hold central separator width, height, thickness
+function rd_cm_choke_csep(type) = type[4]; //! Central separator thickness in slot, total thickness, height
+function rd_cm_choke_wire(type) = type[5]; //! Wire positions, length and diameter
+
+module rd_cm_choke(type, value) { //! Draw specified common mode choke.
+    vitamin(str("rd_cm_choke(", type[0], " ,\"", value, "\"): Common mode choke ", value));
+    core = rd_cm_choke_core(type);
+    seam = rd_cm_choke_seam(type);
+    slot = rd_cm_choke_slot(type);
+    csep = rd_cm_choke_csep(type);
+    wire = rd_cm_choke_wire(type);
+    or = core.x / 2;
+    ir = core.y / 2;
+    core_w = core.z;
+    core_r = core[3];
+    z = seam.y + or;
+    wire_r = wire[3] / 2;
+    w = or - ir;
+    $fs = fs; $fa = fa;
+
+    color(grey(90))
+        translate_z(z) {
+            rotate([90, 0, 0]) {
+                rotate_extrude()
+                    translate([(ir + or) / 2, 0])
+                        rounded_square([w, core_w], core_r, center = true);
+
+                for(h = [true, false])
+                    hflip(h)
+                        rotate(-90)
+                            rotate_extrude(angle = 180)
+                                translate([or, 0])
+                                    square([seam.y, seam.x]);
+            }
+            r = sqrt(sqr(or * cos(180 / r2sides(or))) - sqr(slot.z + csep.x / 2));
+            for(x = [-1, 1], z = [-1, 1])
+                translate([x * (csep.x / 2 + slot.z / 2), 0, z * (r - slot.y / 2)])
+                    rotate([0, 90, 0])
+                        rounded_rectangle([slot.y, slot.x, slot.z], core_r, center = true);
+
+            rotate([0, 90, 0]) {
+                rounded_rectangle([2 * ir, slot.x, csep.x], core_r, center = true);
+
+                rounded_rectangle([csep.z, slot.x, csep.y], core_r, center = true);
+            }
+        }
+
+     color(silver)
+        for(x = [-1, 1], y = [-1, 1])
+            translate([x * wire.x / 2, y * wire.y / 2]) {
+                solder(wire_r);
+
+                vflip()
+                    cylinder(r = wire_r, h = wire.z, $fn = fn);
+            }
+
+     color(copper) {
+        wire_d = 2 * wire_r;
+        r = ir - wire_r;
+        cr = core_r + wire_r;
+        points = [
+            [-core_w / 2 + core_r, 0, 0],
+            [ core_w / 2 + wire_r, 0, 0],                       cr,
+            [ core_w / 2 + wire_r, w + wire_r, 0],              cr,
+            [ 0,                   w + wire_d + seam.y * 2, 0], 7,
+            [-core_w / 2 - wire_r, w + wire_r, 0],              cr,
+            [-core_w / 2 - wire_r, 0, 0],                       cr - eps,
+            [-core_w / 2 + core_r, 0, 0],
+        ];
+        profile = segmented_path(rounded_path(points, $fn = fn), fs);
+        min_gap_angle = 2 * asin((slot.z + csep.x / 2 + wire_r) / r);
+        turns = floor((r * PI * (180 - min_gap_angle) / 180) / wire_d);
+        turn_angle = wire_d / (r * PI) * 180;
+        //turns = floor(((or + wire_r) * PI * (180 - min_gap_angle) / 180) / wire_d / 2);
+        //turn_angle = 2 * asin(wire_d / (or + wire_r));
+        gap_angle = 180 - turns * turn_angle;
+        path = arc_points(r, a =  [90,  180 + gap_angle / 2, 180], al = 180 - gap_angle, $fn = turns * len(profile));
+        spiral = spiral_wrap(path, profile, path_length(path) / turns, turns);
+        tail = bezier_join([[wire.x / 2, wire.y / 2, -z - eps], [wire.x / 2, wire.y / 2, -z]], spiral, 1.5);
+        tilt = turn_angle * (or + wire_r) / 120;
+
+        outer_points = [
+            [ core_w / 2 - core_r - wire_d,    -wire_d, 0],
+            [-core_w / 2 - wire_r - wire_d,    -wire_d, 0],              cr + wire_d,
+            [-core_w / 2 - wire_r,          w + wire_r, tilt / 2],       cr,
+            [ 0,                            w + wire_d + seam.y * 2, -tilt / 4], 7, // No idea why -tilt / 2.5 and not zero.
+            [ core_w / 2 + wire_r,          w + wire_r, -tilt / 1.5],    cr,
+            [ core_w / 2 + wire_r + wire_d,    -wire_d, 0],              cr + wire_d,
+            [ core_w / 2 - core_r - wire_d,    -wire_d, 0],
+         ];
+
+        outer_profile = segmented_path(rounded_path(outer_points, $fn = fn), fs);
+        outer_path = arc_points(r, a =  [90,  180 + gap_angle / 2 + turn_angle / 2, 180], al = 180 - gap_angle, $fn = (turns - 1) * len(outer_profile));
+        outer_spiral = concat(spiral_wrap(outer_path, outer_profile, path_length(outer_path) / turns, turns), [spiral[len(spiral) - 1]]);
+        outer_tail = bezier_join([[wire.x / 2, -wire.y / 2, -z - eps], [wire.x / 2, -wire.y / 2, -z]], outer_spiral, 3);
+
+        wire_points = circle_points(wire_r, $fn = fn);
+        translate_z(z)
+            for(side = [-1, 1]) mirror([side < 0 ? 1 : 0, 0]){
+                color(copper)sweep(tail, wire_points);
+
+                sweep(outer_tail, wire_points);
+            }
+     }
+}
+
+function rd_coil_size(type)   = type[1]; //! OD, ID, height, coil height
+function rd_coil_wire(type)   = type[2]; //! Wire pitch, diameter and length
+function rd_coil_colour(type) = type[3]; //! Core colour
+function rd_coil_turns(type)  = type[4]; //! Number of turns
+
+module rd_coil(type, value, pitch = undef) { //! Draw the specified vertical coil
+    size = rd_coil_size(type);
+    wire = rd_coil_wire(type);
+    pitch = is_undef(pitch) ? wire.x : pitch;
+    wire_d = wire.y;
+    wire_r = wire_d / 2;
+    vitamin(str("rd_coil(", type[0], " ,\"", value, "\"): Radial inductor ", size.z, "x", size.x, " ", value));
+    $fs = fs; $fa = fa;
+    end = (size.z - size[3]) / 2;
+    function sigmoid(x) = 1 / (1 + exp(-x));
+    z = end + size[3] / 2;
+    h = size[3] - wire_d;
+
+    color(rd_coil_colour(type)) {
+        cylinder(d = size.y, h = size.z);
+
+        for(z = [0, size.z - end])
+            translate_z(z)
+                cylinder(d = size.x, h = end);
+    }
+    turns = rd_coil_turns(type);
+
+    color(silver)
+        for(side = [-1, 1])
+            translate([side * pitch / 2, 0]) {
+                vflip()
+                    cylinder(d = wire_d, h = wire.z, $fn = fn);
+
+                solder(wire.y / 2);
+            }
+
+    color(copper) {
+        r = size.y / 2 + wire_r;
+        sides = r2sides4n(r);
+        leadin = sides / 4;
+        total = sides * turns;
+        shortcut = 3;
+        spiral = [
+            for(i = [shortcut: total - shortcut])
+                let(a = 360 * i / sides,
+                    j = i <= leadin ? leadin - i : i >= total - leadin ? i - (total - leadin) : 0,
+                    R = r + j * wire_r / leadin
+                )
+                [R * cos(a), R * sin(a), (size[3] - wire.y) * i / total + end + wire_r]
+        ];
+        half_spiral = [
+            for(i = [sides / 2 - shortcut : -1 : shortcut * 2])
+                let(a = 360 * i / sides, R = r + wire_d)
+                    [R * cos(a), R * -sin(a), h * sigmoid((i - sides / 4) / 2) + end + wire_r]
+
+        ];
+        path = bezier_join([[-pitch / 2, 0, -eps], [-pitch / 2, 0, 0]], bezier_join(bezier_join(half_spiral, spiral, 1), [[pitch / 2, 0, 0], [pitch / 2, 0, -eps]], 3), 3);
+        sweep(path, circle_points(wire_r, $fn = fn));
+    }
+
+    color("white")
+        translate_z(size.z)
+            linear_extrude(eps)
+                 resize([size.x * 0.9, 0], auto = true)
+                    text(value, halign = "center", valign = "center");
+
+}

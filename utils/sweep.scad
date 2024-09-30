@@ -263,3 +263,29 @@ module show_path(path, r = 0.1) //! Show a path using a chain of hulls for debug
             translate(path[i])
                 color("red") sphere($fn = 16, r * 4);
     }
+
+function move_along(j, z, path_S) =
+     j >= len(path_S) - 1 || z <= path_S[j] ? j : move_along(j + 1, z, path_S);
+
+function spiral_wrap(path, profile, pitch, turns) = //! Create a path that spirals around the specified profile with the given pitch.
+    let(
+        transforms = sweep_transforms(path, loop = false, twist = 0),
+        plen = len(profile),
+        S = path_length(profile),
+        profile = [
+            for(i = 0, s = 0; i < plen; s = s + norm(profile[(i + 1) % plen] - profile[i]), i = i + 1)
+                let(p = profile[i]) [p.x, p.y, p.z + pitch * s / S, 1]
+        ],
+        path_len = len(path),
+        path_S = [for(i = 0, s = 0; i < path_len; s = s + norm(path[(i + 1) % path_len] - path[i]), i = i + 1) s],
+        n = turns * plen,
+
+    ) [
+        for(i = 0, j = 0, k = 0, zstep = 0;
+            i < n;
+            i = i + 1,
+            k = i % plen,
+            zstep = floor(i / plen) * pitch,
+            j = move_along(j, zstep + profile[k].z, path_S))
+                if(!i || k) (profile[k] + [0, 0, zstep - path_S[j], 0]) * transforms[j]
+    ];

@@ -2680,7 +2680,9 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
 |   1 | `box_header(2p54header, 4, 2)` |  Box header 4 x 2 |
 |   1 | `box_header(2p54header, 4, 2, right_angle = true)` |  Box header 4 x 2 right angle  |
+|   1 | `rd_disc(10mm_disc, "1nF Y2")` |  Ceramic capacitor, 10mm_disc 1nF Y2 |
 |   1 | `rd_disc(6p4mm_disc, "100n")` |  Ceramic capacitor, 6p4mm_disc 100n |
+|   1 | `rd_cm_choke(ATX_CM_CHOKE ,"3.5mH")` |  Common mode choke 3.5mH |
 |   1 | `rd_xtal(ACT1100, "40MHz")` |  Crystal ACT1100 40MHz |
 |   1 | `rd_xtal(ACT1700, "80MHz")` |  Crystal ACT1700 80MHz |
 |   1 | `rd_xtal(C_002RX, "60KHz")` |  Crystal C_002RX 60KHz |
@@ -2716,6 +2718,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pin_socket(2p54header, 4, 1)` |  Pin socket 4 x 1 |
 |   1 | `pin_socket(2p54header, 6, 1)` |  Pin socket 6 x 1 |
 |   2 | `pin_socket(2p54header, 8, 1)` |  Pin socket 8 x 1 |
+|   1 | `rd_coil(IND16x10 ,"4.7uH")` |  Radial inductor 16x10 4.7uH |
 |   1 | `rd_transistor(TO92, "78L05")` |  Regulator TO92 78L05 |
 |   1 | `rd_module(HF33F, "012-HSL-3F")` |  Relay HF33F / 012-HSL-3F |
 |   1 | `ax_res(res1_2, 10, tol = 10)` |  Resistor 10 Ohms 10% 0.5W |
@@ -3429,6 +3432,15 @@ Radial components for PCBs.
 | `rd_boxc_size(type)` | Overall size and corner radius |
 | `rd_boxc_skirt(type)` | Skirt slot, thickness, height |
 | `rd_boxc_z(type)` | Height of inner base above PCB. |
+| `rd_cm_choke_core(type)` | Core OD, ID, width, corner radius |
+| `rd_cm_choke_csep(type)` | Central separator thickness in slot, total thickness, height |
+| `rd_cm_choke_seam(type)` | Overlapping semicircular seams to join the two halves of the core width and thickness |
+| `rd_cm_choke_slot(type)` | Slot to hold central separator width, height, thickness |
+| `rd_cm_choke_wire(type)` | Wire positions, length and diameter |
+| `rd_coil_colour(type)` | Core colour |
+| `rd_coil_size(type)` | OD, ID, height, coil height |
+| `rd_coil_turns(type)` | Number of turns |
+| `rd_coil_wire(type)` | Wire pitch, diameter and length |
 | `rd_disc_colours(type)` | Colours of body and text |
 | `rd_disc_kind(type)` | Capacitor, etc |
 | `rd_disc_lead_d(type)` | Lead diameter and sleeve diameter |
@@ -3459,6 +3471,8 @@ Radial components for PCBs.
 | Module | Description |
 |:--- |:--- |
 | `rd_box_cap(type, kind, value)` | Draw radial boxed film capacitor |
+| `rd_cm_choke(type, value)` | Draw specified common mode choke. |
+| `rd_coil(type, value, pitch = undef)` | Draw the specified vertical coil |
 | `rd_disc(type, value, pitch = undef, z = 0, tail = 3)` | Draw a radial disc component |
 | `rd_electrolytic(type, value, pitch = undef, z = 0, tail = 3)` | Draw a radial electrolytic capcacitor |
 | `rd_module(type, value)` | Draw a PCB mounted potted module, e.g. PSU or relay |
@@ -3470,7 +3484,9 @@ Radial components for PCBs.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   1 | `rd_disc(10mm_disc, "1nF Y2")` |  Ceramic capacitor, 10mm_disc 1nF Y2 |
 |   1 | `rd_disc(6p4mm_disc, "10nF")` |  Ceramic capacitor, 6p4mm_disc 10nF |
+|   1 | `rd_cm_choke(ATX_CM_CHOKE ,"3.5mH")` |  Common mode choke 3.5mH |
 |   1 | `rd_xtal(ACT1100, "ACT1100")` |  Crystal ACT1100 ACT1100 |
 |   1 | `rd_xtal(ACT1700, "ACT1700")` |  Crystal ACT1700 ACT1700 |
 |   1 | `rd_xtal(C_002RX, "C_002RX")` |  Crystal C_002RX C_002RX |
@@ -3480,6 +3496,7 @@ Radial components for PCBs.
 |   1 | `rd_module(LDE10_20B, "12V 900ma")` |  PSU LDE10_20B / 12V 900ma |
 |   1 | `rd_module(VCE03, "12V 250ma")` |  PSU VCE03 / 12V 250ma |
 |   2 | `pcb(PERF70x50)` |  Perfboard 70 x 50mm |
+|   1 | `rd_coil(IND16x10 ,"4.7uH")` |  Radial inductor 16x10 4.7uH |
 |   1 | `rd_module(HF33F, "012-HSL3F")` |  Relay HF33F / 012-HSL3F |
 |   1 | `rd_transistor(E_LINE, "ZTX853")` |  Transistor E_LINE ZTX853 |
 |   1 | `rd_transistor(TO92, "BC337")` |  Transistor TO92 BC337 |
@@ -7580,6 +7597,7 @@ Each vertex, apart from the first and the last, has an associated radius and the
 | `segmented_path(path, min_segment)` | Add points to a path to enforce a minimum segment length |
 | `skin_faces(points, npoints, facets, loop, offset = 0)` | Create the mesh for the swept volume without end caps |
 | `spiral_paths(path, n, r, twists, start_angle)` | Create a new paths which spiral around the given path. Use for making twisted cables |
+| `spiral_wrap(path, profile, pitch, turns)` | Create a path that spirals around the specified profile with the given pitch. |
 | `sweep(path, profile, loop = false, twist = 0)` | Generate the point list and face list of the swept volume |
 
 ### Modules
