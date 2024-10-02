@@ -20,8 +20,8 @@
 //
 //! A rod end, sometimes called a spherical bearing or rod-end eye, is a component used in mechanical systems to create a flexible connection between two parts.
 //
-include <NopSCADlib/utils/core/core.scad>
-include <NopSCADlib/utils/thread.scad>
+include <../utils/core/core.scad>
+include <../utils/thread.scad>
 
 function rod_end_bearing_bore(type)          = type[1];    //! radius of the  bore hole in the bearing
 function rod_end_bearing_od(type)            = type[2];    //! Outer diameter of the bearing
