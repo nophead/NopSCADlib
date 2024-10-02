@@ -577,6 +577,7 @@ module rd_coil(type, value, pitch = undef) { //! Draw the specified vertical coi
     function sigmoid(x) = 1 / (1 + exp(-x));
     z = end + size[3] / 2;
     h = size[3] - wire_d;
+    turns = rd_coil_turns(type);
 
     color(rd_coil_colour(type)) {
         cylinder(d = size.y, h = size.z);
@@ -585,7 +586,6 @@ module rd_coil(type, value, pitch = undef) { //! Draw the specified vertical coi
             translate_z(z)
                 cylinder(d = size.x, h = end);
     }
-    turns = rd_coil_turns(type);
 
     color(silver)
         for(side = [-1, 1])

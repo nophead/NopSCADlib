@@ -278,8 +278,7 @@ function spiral_wrap(path, profile, pitch, turns) = //! Create a path that spira
         ],
         path_len = len(path),
         path_S = [for(i = 0, s = 0; i < path_len; s = s + norm(path[(i + 1) % path_len] - path[i]), i = i + 1) s],
-        n = turns * plen,
-
+        n = turns * plen
     ) [
         for(i = 0, j = 0, k = 0, zstep = 0;
             i < n;
