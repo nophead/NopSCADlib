@@ -40,6 +40,7 @@ include <vitamins/extrusion_brackets.scad>
 include <vitamins/fastons.scad>
 include <vitamins/gear_motors.scad>
 include <vitamins/geared_steppers.scad>
+include <vitamins/ht_pipes.scad>
 include <vitamins/hot_ends.scad>
 include <vitamins/inserts.scad>
 include <vitamins/ldrs.scad>
