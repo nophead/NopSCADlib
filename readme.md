@@ -48,9 +48,9 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td></td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
-<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#wire">Wire</a> </td><td></td><td></td><td></td></tr>
-<tr><td></td><td></td><td> <a href = "#zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#ht_pipes">HT_pipes</a> </td><td></td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#hot_ends">Hot_ends</a> </td><td></td><td> <a href = "#wire">Wire</a> </td><td></td><td></td><td></td></tr>
+<tr><td> <a href = "#hygrometer">Hygrometer</a> </td><td></td><td> <a href = "#zipties">Zipties</a> </td><td></td><td></td><td></td></tr>
 </table>
 
 ---
@@ -1589,6 +1589,99 @@ Needs updating as mostly obsolete versions.
 |   1 | `resistor(Epcos)` |  Thermistor Epcos B57560G104F 100K 1% - not shown |
 |   2 |  |  Wire Red PTFE 16/0.2mm strands, length 170mm |
 |   4 | `ziptie(small_ziptie)` |  Ziptie 2.5mm x 100mm min length |
+
+
+<a href="#top">Top</a>
+
+---
+<a name="ht_pipes"></a>
+## HT_pipes
+Parametric PVC HT water pipes commonly found in hardware stores around germany. Great for building weather proof cases for IoT things.
+
+[vitamins/ht_pipes.scad](vitamins/ht_pipes.scad) Object definitions.
+
+[vitamins/ht_pipe.scad](vitamins/ht_pipe.scad) Implementation.
+
+[tests/HT_pipes.scad](tests/HT_pipes.scad) Code for this example.
+
+### Properties
+| Function | Description |
+|:--- |:--- |
+| `pipe_length(type)` | Pipe length |
+| `pipe_od(type)` | Outside diameter |
+| `pipe_td(type)` | T-Pipe diameter |
+| `pipe_wall(type)` | Wall thickness |
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `ht_cap(type)` | Draw specified cap |
+| `ht_pipe(type)` | Draw specified pipe |
+| `ht_tpipe(type)` | Draw specified T-pipe |
+
+![ht_pipes](tests/png/ht_pipes.png)
+
+### Vitamins
+| Qty | Module call | BOM entry |
+| ---:|:--- |:---|
+|   1 | `ht_cap(HT_110_cap)` |  PVC Waterpipe - HT 110 cap |
+|   1 | `ht_pipe(HT_110_pipe_1000)` |  PVC Waterpipe - HT 110 pipe 1000 mm |
+|   1 | `ht_pipe(HT_110_pipe_150)` |  PVC Waterpipe - HT 110 pipe 150 mm |
+|   1 | `ht_pipe(HT_110_pipe_1500)` |  PVC Waterpipe - HT 110 pipe 1500 mm |
+|   1 | `ht_pipe(HT_110_pipe_2000)` |  PVC Waterpipe - HT 110 pipe 2000 mm |
+|   1 | `ht_pipe(HT_110_pipe_250)` |  PVC Waterpipe - HT 110 pipe 250 mm |
+|   1 | `ht_pipe(HT_110_pipe_500)` |  PVC Waterpipe - HT 110 pipe 500 mm |
+|   1 | `ht_cap(HT_125_cap)` |  PVC Waterpipe - HT 125 cap |
+|   1 | `ht_pipe(HT_125_pipe_1000)` |  PVC Waterpipe - HT 125 pipe 1000 mm |
+|   1 | `ht_pipe(HT_125_pipe_150)` |  PVC Waterpipe - HT 125 pipe 150 mm |
+|   1 | `ht_pipe(HT_125_pipe_1500)` |  PVC Waterpipe - HT 125 pipe 1500 mm |
+|   1 | `ht_pipe(HT_125_pipe_2000)` |  PVC Waterpipe - HT 125 pipe 2000 mm |
+|   1 | `ht_pipe(HT_125_pipe_250)` |  PVC Waterpipe - HT 125 pipe 250 mm |
+|   1 | `ht_pipe(HT_125_pipe_500)` |  PVC Waterpipe - HT 125 pipe 500 mm |
+|   1 | `ht_cap(HT_160_cap)` |  PVC Waterpipe - HT 160 cap |
+|   1 | `ht_pipe(HT_160_pipe_1000)` |  PVC Waterpipe - HT 160 pipe 1000 mm |
+|   1 | `ht_pipe(HT_160_pipe_150)` |  PVC Waterpipe - HT 160 pipe 150 mm |
+|   1 | `ht_pipe(HT_160_pipe_1500)` |  PVC Waterpipe - HT 160 pipe 1500 mm |
+|   1 | `ht_pipe(HT_160_pipe_2000)` |  PVC Waterpipe - HT 160 pipe 2000 mm |
+|   1 | `ht_pipe(HT_160_pipe_250)` |  PVC Waterpipe - HT 160 pipe 250 mm |
+|   1 | `ht_pipe(HT_160_pipe_500)` |  PVC Waterpipe - HT 160 pipe 500 mm |
+|   1 | `ht_cap(HT_32_cap)` |  PVC Waterpipe - HT 32 cap |
+|   1 | `ht_pipe(HT_32_pipe_1000)` |  PVC Waterpipe - HT 32 pipe 1000 mm |
+|   1 | `ht_pipe(HT_32_pipe_150)` |  PVC Waterpipe - HT 32 pipe 150 mm |
+|   1 | `ht_pipe(HT_32_pipe_1500)` |  PVC Waterpipe - HT 32 pipe 1500 mm |
+|   1 | `ht_pipe(HT_32_pipe_2000)` |  PVC Waterpipe - HT 32 pipe 2000 mm |
+|   1 | `ht_pipe(HT_32_pipe_250)` |  PVC Waterpipe - HT 32 pipe 250 mm |
+|   1 | `ht_pipe(HT_32_pipe_500)` |  PVC Waterpipe - HT 32 pipe 500 mm |
+|   1 | `ht_cap(HT_40_cap)` |  PVC Waterpipe - HT 40 cap |
+|   1 | `ht_pipe(HT_40_pipe_1000)` |  PVC Waterpipe - HT 40 pipe 1000 mm |
+|   1 | `ht_pipe(HT_40_pipe_150)` |  PVC Waterpipe - HT 40 pipe 150 mm |
+|   1 | `ht_pipe(HT_40_pipe_1500)` |  PVC Waterpipe - HT 40 pipe 1500 mm |
+|   1 | `ht_pipe(HT_40_pipe_2000)` |  PVC Waterpipe - HT 40 pipe 2000 mm |
+|   1 | `ht_pipe(HT_40_pipe_250)` |  PVC Waterpipe - HT 40 pipe 250 mm |
+|   1 | `ht_pipe(HT_40_pipe_500)` |  PVC Waterpipe - HT 40 pipe 500 mm |
+|   1 | `ht_tpipe(HT_50_tpipe)` |  PVC Waterpipe - HT 50 T pipe |
+|   1 | `ht_cap(HT_50_cap)` |  PVC Waterpipe - HT 50 cap |
+|   1 | `ht_pipe(HT_50_pipe_1000)` |  PVC Waterpipe - HT 50 pipe 1000 mm |
+|   1 | `ht_pipe(HT_50_pipe_150)` |  PVC Waterpipe - HT 50 pipe 150 mm |
+|   1 | `ht_pipe(HT_50_pipe_1500)` |  PVC Waterpipe - HT 50 pipe 1500 mm |
+|   1 | `ht_pipe(HT_50_pipe_2000)` |  PVC Waterpipe - HT 50 pipe 2000 mm |
+|   1 | `ht_pipe(HT_50_pipe_250)` |  PVC Waterpipe - HT 50 pipe 250 mm |
+|   1 | `ht_pipe(HT_50_pipe_500)` |  PVC Waterpipe - HT 50 pipe 500 mm |
+|   1 | `ht_tpipe(HT_50_40_tpipe)` |  PVC Waterpipe - HT 50/40 T pipe |
+|   1 | `ht_cap(HT_75_cap)` |  PVC Waterpipe - HT 75 cap |
+|   1 | `ht_pipe(HT_75_pipe_1000)` |  PVC Waterpipe - HT 75 pipe 1000 mm |
+|   1 | `ht_pipe(HT_75_pipe_150)` |  PVC Waterpipe - HT 75 pipe 150 mm |
+|   1 | `ht_pipe(HT_75_pipe_1500)` |  PVC Waterpipe - HT 75 pipe 1500 mm |
+|   1 | `ht_pipe(HT_75_pipe_2000)` |  PVC Waterpipe - HT 75 pipe 2000 mm |
+|   1 | `ht_pipe(HT_75_pipe_250)` |  PVC Waterpipe - HT 75 pipe 250 mm |
+|   1 | `ht_pipe(HT_75_pipe_500)` |  PVC Waterpipe - HT 75 pipe 500 mm |
+|   1 | `ht_cap(HT_90_cap)` |  PVC Waterpipe - HT 90 cap |
+|   1 | `ht_pipe(HT_90_pipe_1000)` |  PVC Waterpipe - HT 90 pipe 1000 mm |
+|   1 | `ht_pipe(HT_90_pipe_150)` |  PVC Waterpipe - HT 90 pipe 150 mm |
+|   1 | `ht_pipe(HT_90_pipe_1500)` |  PVC Waterpipe - HT 90 pipe 1500 mm |
+|   1 | `ht_pipe(HT_90_pipe_2000)` |  PVC Waterpipe - HT 90 pipe 2000 mm |
+|   1 | `ht_pipe(HT_90_pipe_250)` |  PVC Waterpipe - HT 90 pipe 250 mm |
+|   1 | `ht_pipe(HT_90_pipe_500)` |  PVC Waterpipe - HT 90 pipe 500 mm |
 
 
 <a href="#top">Top</a>

@@ -21,18 +21,17 @@ include <../vitamins/ht_pipes.scad>
 
 module ht_pipes()
     color("grey")
-    layout([for(p = ht_pipes) 40 + p[2]])
-        translate([0, 0, 0]) {
-            // rotate(0) {
-                if (ht_pipes[$i][4] <= 34)
-                     translate([0, 0, ht_pipes[$i][4]])
-                        ht_cap(ht_pipes[$i]);
-                if (ht_pipes[$i][4] >= 101)
-                    ht_pipe(ht_pipes[$i]);
-                if (ht_pipes[$i][4] == 100)
-                    ht_tpipe(ht_pipes[$i]);
-            // }
-        }
+    layout([for(p = ht_pipes) 40 + pipe_od(p)]) let(p = ht_pipes[$i], len = pipe_length(p)) {
+        if(len <= 34)
+             translate_z(len)
+                ht_cap(p);
+
+        if(len >= 101)
+            ht_pipe(p);
+
+        if(len == 100)
+            ht_tpipe(p);
+    }
 
 if($preview)
     ht_pipes();
