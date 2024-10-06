@@ -1,5 +1,7 @@
 //
 // NopSCADlib Copyright Jan Giebels 2024
+// info@ecosensors.cloud
+// ecosensors.cloud
 //
 // This file is part of NopSCADlib.
 //
@@ -13,6 +15,10 @@
 //
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
+//
+
+//
+//! Parametric PVC HT water pipes commonly found in hardware stores around germany. Great for building weather proof cases for IoT things.
 //
 
 include <../utils/core/core.scad>

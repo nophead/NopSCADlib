@@ -1,5 +1,7 @@
 //
 // NopSCADlib Copyright Jan Giebels 2024
+// info@ecosensors.cloud
+// ecosensors.cloud
 //
 // This file is part of NopSCADlib.
 //
