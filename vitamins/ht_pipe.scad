@@ -47,7 +47,7 @@ module ht_pipe(type) { //! Draw specified pipe
     tube_id = pipe_od(type) - pipe_wall(type) * 2;
     difference() {
         union() {
-            translate([0, 0, pipe_length(type) + tube_id - pipe_wall(type)])
+            translate([0, 0, pipe_length(type)])
                 HTpipeFitting(pipe_od(type));
             cylinder(pipe_length(type), tube_id/2 + pipe_wall(type), tube_id/2 + pipe_wall(type));
         }
@@ -61,10 +61,10 @@ module ht_tpipe(type) { //! Draw specified T-pipe
     tube_t_id = pipe_td(type) - pipe_wall(type) * 2;
     difference() {
         union() {
-            translate([0, 0, pipe_length(type) + tube_id - pipe_wall(type)])
+            translate([0, 0, pipe_length(type)])
                 HTpipeFitting(pipe_od(type));
             cylinder(pipe_length(type), tube_id/2 + pipe_wall(type), tube_id/2 + pipe_wall(type));
-            translate([0, -70, pipe_length(type) - 25])
+            translate([0, -25, pipe_length(type) - 25])
                 rotate ([90, 0, 0])
                     HTpipeFitting(pipe_td(type));
         }
@@ -76,18 +76,14 @@ module ht_tpipe(type) { //! Draw specified T-pipe
 }
 
 module HTpipeFitting(fit_dia) {
-    difference() {
-        union() {
-            cylinder(12, fit_dia/2 + 5, fit_dia/2 + 5);
-            translate([0, 0, 12]) 
-                cylinder(3.7, fit_dia/2, fit_dia/2);
-            translate([0, 0, -fit_dia + 12]) 
-                cylinder(fit_dia, fit_dia/2 + 2.6, fit_dia/2 + 2.6);
-            translate([0, 0, -fit_dia + 2]) 
-                cylinder(10, fit_dia/2, fit_dia/2 + 2.6);
-
-            translate([0, 0, -fit_dia - 15])
-                cylinder(fit_dia, fit_dia/2, fit_dia/2);
-        }
-    }
+    fitting_height = min(55, fit_dia * 0.8);
+    cylinder(10, fit_dia/2, fit_dia/2 + 2.6);
+    translate([0, 0, 10]) 
+        cylinder(fitting_height, fit_dia/2 + 2.6, fit_dia/2 + 2.6);
+    translate([0, 0, fitting_height])
+        cylinder(12, fit_dia/2 + 5, fit_dia/2 + 5);
+    translate([0, 0, fitting_height + 12]) 
+        cylinder(3.7, fit_dia/2, fit_dia/2);
+    translate([0, 0, -30])
+        cylinder(30, fit_dia/2, fit_dia/2);
 }

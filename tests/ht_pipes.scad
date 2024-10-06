@@ -20,9 +20,10 @@ use <../utils/layout.scad>
 include <../vitamins/ht_pipes.scad>
 
 module ht_pipes()
-    layout([for(p = ht_pipes) 100])
+    color("grey")
+    layout([for(p = ht_pipes) 40 + p[2]])
         translate([0, 0, 0]) {
-            rotate(180) {
+            // rotate(0) {
                 if (ht_pipes[$i][4] <= 34)
                      translate([0, 0, ht_pipes[$i][4]])
                         ht_cap(ht_pipes[$i]);
@@ -30,8 +31,7 @@ module ht_pipes()
                     ht_pipe(ht_pipes[$i]);
                 if (ht_pipes[$i][4] == 100)
                     ht_tpipe(ht_pipes[$i]);
-            }
-            
+            // }
         }
 
 if($preview)
