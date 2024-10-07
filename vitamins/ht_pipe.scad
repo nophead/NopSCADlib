@@ -55,7 +55,7 @@ module ht_tpipe(type) { //! Draw specified T-pipe
     tube_t_id = pipe_td(type) - pipe_wall(type) * 2;
 
     translate_z(pipe_length(type))
-        HTpipeFitting(pipe_od(type), tube_id);
+        HTpipeFitting(pipe_od(type), tube_id, 0);
 
     render(convexity = 5)
         difference() {
@@ -69,7 +69,7 @@ module ht_tpipe(type) { //! Draw specified T-pipe
     or = pipe_od(type) / 2;
     translate([0, -or, pipe_length(type) - or])
         rotate ([90, 0, 0]) {
-            HTpipeFitting(pipe_td(type), tube_t_id);
+            HTpipeFitting(pipe_td(type), tube_t_id, 0);
 
             translate_z(-or)
                 render(convexity = 5)
@@ -82,7 +82,7 @@ module ht_tpipe(type) { //! Draw specified T-pipe
         }
 }
 
-module HTpipeFitting(tube_od, tube_id) {
+module HTpipeFitting(tube_od, tube_id, length = 30) {
     fitting_height = min(55, tube_od * 0.8);
 
     tube_ir = tube_id / 2;
@@ -91,6 +91,7 @@ module HTpipeFitting(tube_od, tube_id) {
 
     rotate_extrude()
         polygon([
+                [tube_ir,      -length],
                 [tube_ir,      0],
                 [fit_ir,       10],
                 [fit_ir,       fitting_height + 12 + 3.7],
@@ -99,7 +100,8 @@ module HTpipeFitting(tube_od, tube_id) {
                 [fit_ir + 6.5, fitting_height + 12],
                 [fit_ir + 6.5, fitting_height],
                 [fit_or,       fitting_height],
-                [fit_or, 10],
-                [fit_ir, 0]
+                [fit_or,       10],
+                [fit_ir,       0],
+                [fit_ir,       -length],
             ]);
 }
