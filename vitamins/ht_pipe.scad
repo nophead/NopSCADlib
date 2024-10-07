@@ -43,7 +43,7 @@ module ht_pipe(type) { //! Draw specified pipe
     vitamin(str("ht_pipe(", type[0], "): PVC Waterpipe - ", type[1]));
     tube_id = pipe_od(type) - pipe_wall(type) * 2;
 
-    tube(h = pipe_length(type), or = tube_id/2 + pipe_wall(type), ir = tube_id/2, tube_id/2);
+    tube(h = pipe_length(type), or = tube_id/2 + pipe_wall(type), ir = tube_id/2, center = false);
 
     translate_z(pipe_length(type))
         HTpipeFitting(pipe_od(type), tube_id);
@@ -55,7 +55,7 @@ module ht_tpipe(type) { //! Draw specified T-pipe
     tube_t_id = pipe_td(type) - pipe_wall(type) * 2;
 
     translate_z(pipe_length(type))
-        HTpipeFitting(pipe_od(type), tube_id, 0);
+        HTpipeFitting(pipe_od(type), tube_id);
 
     render(convexity = 5)
         difference() {
@@ -69,7 +69,7 @@ module ht_tpipe(type) { //! Draw specified T-pipe
     or = pipe_od(type) / 2;
     translate([0, -or, pipe_length(type) - or])
         rotate ([90, 0, 0]) {
-            HTpipeFitting(pipe_td(type), tube_t_id, 0);
+            HTpipeFitting(pipe_td(type), tube_t_id);
 
             translate_z(-or)
                 render(convexity = 5)
@@ -82,7 +82,7 @@ module ht_tpipe(type) { //! Draw specified T-pipe
         }
 }
 
-module HTpipeFitting(tube_od, tube_id, length = 30) {
+module HTpipeFitting(tube_od, tube_id) {
     fitting_height = min(55, tube_od * 0.8);
 
     tube_ir = tube_id / 2;
@@ -91,7 +91,6 @@ module HTpipeFitting(tube_od, tube_id, length = 30) {
 
     rotate_extrude()
         polygon([
-                [tube_ir,      -length],
                 [tube_ir,      0],
                 [fit_ir,       10],
                 [fit_ir,       fitting_height + 12 + 3.7],
@@ -100,8 +99,7 @@ module HTpipeFitting(tube_od, tube_id, length = 30) {
                 [fit_ir + 6.5, fitting_height + 12],
                 [fit_ir + 6.5, fitting_height],
                 [fit_or,       fitting_height],
-                [fit_or,       10],
-                [fit_ir,       0],
-                [fit_ir,       -length],
+                [fit_or, 10],
+                [fit_ir, 0]
             ]);
 }

@@ -41,6 +41,7 @@ include <vitamins/fastons.scad>
 include <vitamins/gear_motors.scad>
 include <vitamins/geared_steppers.scad>
 include <vitamins/hot_ends.scad>
+include <vitamins/ht_pipes.scad>
 include <vitamins/inserts.scad>
 include <vitamins/ldrs.scad>
 include <vitamins/leadnuts.scad>
@@ -106,4 +107,3 @@ use <utils/pcb_utils.scad>
 use <utils/sector.scad>
 use <utils/thread.scad>
 use <vitamins/photo_interrupter.scad>
-use <vitamins/ht_pipes.scad>
