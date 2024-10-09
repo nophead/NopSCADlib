@@ -28,7 +28,9 @@
 include <../utils/core/core.scad>
 use <spring.scad>
 use <../utils/rounded_cylinder.scad>
+use <../utils/pcb_utils.scad>
 
+function battery_type(type)          = type[0]; //! Battery type
 function battery_length(type)        = type[2]; //! Total length including terminals
 function battery_diameter(type)      = type[3]; //! Casing diameter
 function battery_neg_dia(type)       = type[4]; //! Negative terminal diameter
@@ -109,6 +111,13 @@ module battery(type) { //! Draw a battery
     battery_led_positions(type)
         color(["red","green","blue"][$i])
             cylinder(d = 1.5, h = eps);
+
+    color(battery_colour(type) == "white" ? "black" : "white")
+        rotate([0, 0, 90])
+             cylindrical_wrap(battery_diameter(type)/2)
+                resize([0, battery_diameter(type)], auto = true)
+                    rotate(90)
+                        text(battery_type(type), halign = "center", valign = "center");
 }
 
 function contact_width(type)      = type[1]; //! Width of the flat part

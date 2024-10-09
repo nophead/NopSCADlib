@@ -411,10 +411,12 @@ iecs_y = d_connectors_y + 70;
 modules_y = iecs_y + 60;
 ssrs_y = modules_y + 80;
 blowers_y = ssrs_y + 60;
-hot_ends_y = blowers_y + 100;
-batteries_y = hot_ends_y + 55;
+hot_ends_y = blowers_y + 90;
+batteries_y = hot_ends_y + 65;
 panel_meters_y = batteries_y + 70;
 extrusions_y = panel_meters_y + 130;
+box_sections_y = extrusions_y + 70;
+
 
 translate([x3, veroboard_y])
     veroboard_test();
@@ -458,7 +460,7 @@ translate([x3, ssrs_y]) {
 translate([x3, blowers_y])
     blowers();
 
-translate([x3, batteries_y])
+translate([x2, batteries_y])
     batteries();
 
 translate([x3 + 10, hot_ends_y])
@@ -469,6 +471,9 @@ translate([x2, panel_meters_y])
 
 translate([x2, extrusions_y])
     extrusions();
+
+translate([x2, box_sections_y])
+    box_sections();
 
 translate([370, transformers_y])
     transformers();
@@ -486,7 +491,6 @@ extrusion_brackets_y = rails_y + 250;
 sk_brackets_y = extrusion_brackets_y + 80;
 kp_pillow_blocks_y = sk_brackets_y + 60;
 bearing_blocks_y = kp_pillow_blocks_y + 60;
-box_sections_y = batteries_y;
 BLDC_y = bearing_blocks_y + 180;
 pot_y = bearing_blocks_y;
 cable_strip_y = sheets_y + 30;
@@ -537,9 +541,6 @@ translate([x4, BLDC_y])
 
 translate([x4, pot_y])
     potentiometers();
-
-translate([x2, box_sections_y])
-    box_sections();
 
 translate([x6, 125])
     light_strips();

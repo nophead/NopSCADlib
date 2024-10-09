@@ -45,7 +45,10 @@ AAACELL   = ["AAACELL",   "Cell AAA",                                 44.5, 10.5
 CCELL     = ["CCELL",     "Cell C",                                   50,   26.2, 20, 7.5, 1.5, "brown",          [],                      0, bcontact];
 DCELL     = ["DCELL",     "Cell D",                                   61.5, 34.2, 22, 8.2, 2.4, "brown",          [],                      0, bcontact];
 A23CELL   = ["A23CELL",   "Cell A23 12v",                             28.5, 10.3, 5.2,5.2, 1.0, "silver",         [],                      0, bcontact];
+LI4680    = ["L4680",     "Li-Ion/LiFePo4 4680 3.2v",                 80.2, 46.2, 35,35, 0,     "green",          [],                      0, bcontact];
+LI32700   = ["L32700",    "Li-Ion/LiFePo4 32700 3.2v",                70.2, 32.4, 25,13, 0,     "blue",           [],                      0, bcontact];
+LI16340   = ["L16340",    "Li-Ion/LiFePo4 16340 3.2v",                35.2, 16.4, 14,6, 1.0,    "blue",           [],                      0, bcontact];
 
-batteries = [AAACELL, AACELL, CCELL, DCELL, LUMINTOP, S25R18650, A23CELL];
+batteries = [AAACELL, AACELL, CCELL, DCELL, LUMINTOP, S25R18650, A23CELL, LI4680, LI32700, LI16340];
 
 use <battery.scad>
