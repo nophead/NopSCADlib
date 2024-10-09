@@ -275,6 +275,7 @@ exposing enough information to make a battery box.
 | `battery_neg_dia(type)` | Negative terminal diameter |
 | `battery_pos_dia(type)` | Positive terminal diameter |
 | `battery_pos_height(type)` | Positive terminal height above the casing |
+| `battery_type(type)` | Battery type |
 | `battery_usb_offset(type)` | USB connector offset from the top |
 | `contact_height(type)` | Height of the flat part |
 | `contact_neg(type)` | Negative spring height above the plate when compressed and the spring type |
@@ -296,8 +297,8 @@ exposing enough information to make a battery box.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   7 | `battery_contact(bcontact, false)` |  Battery negative contact |
-|   7 | `battery_contact(bcontact, true)` |  Battery positive contact |
+|  10 | `battery_contact(bcontact, false)` |  Battery negative contact |
+|  10 | `battery_contact(bcontact, true)` |  Battery positive contact |
 |   1 | `battery(A23CELL)` |  Cell A23 12v |
 |   1 | `battery(AACELL)` |  Cell AA |
 |   1 | `battery(AAACELL)` |  Cell AAA |
@@ -305,6 +306,9 @@ exposing enough information to make a battery box.
 |   1 | `battery(DCELL)` |  Cell D |
 |   1 | `battery(LUMINTOP)` |  Cell LUMINTOP 18650 LION with charger |
 |   1 | `battery(S25R18650)` |  Cell Samsung 25R 18650 LION |
+|   1 | `battery(L16340)` |  Li-Ion/LiFePo4 16340 3.2v |
+|   1 | `battery(L32700)` |  Li-Ion/LiFePo4 32700 3.2v |
+|   1 | `battery(L4680)` |  Li-Ion/LiFePo4 4680 3.2v |
 
 
 <a href="#top">Top</a>
