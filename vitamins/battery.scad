@@ -112,8 +112,7 @@ module battery(type) { //! Draw a battery
         color(["red","green","blue"][$i])
             cylinder(d = 1.5, h = eps);
 
-    color("white")
-    translate([0, 0, 0])
+    color(battery_colour(type) == "white" ? "black" : "white")
         rotate([0, 0, 90])
              cylindrical_wrap(battery_diameter(type)/2)
                 resize([0, battery_diameter(type)], auto = true)
