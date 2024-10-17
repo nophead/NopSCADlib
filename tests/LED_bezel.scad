@@ -23,7 +23,7 @@ include <../vitamins/leds.scad>
 use <../printed/led_bezel.scad>
 
 module led_bezels()
-    layout([for(l = LEDs) led_diameter(l)], 6) let(l = LEDs[$i], b = led_bezel(l))
+    layout([for(l = LEDs) max(led_diameter(l))], 6) let(l = LEDs[$i], b = led_bezel(l))
         if($preview)
             led_bezel_fastened_assembly(b, 3, ["yellow", "blue", "red", "orange"][$i % 4]);
         else {

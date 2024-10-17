@@ -2112,6 +2112,7 @@ Standard domed through hole LEDs. Can specify colour and lead length.
 |   1 | `led(LED3mm, "green")` |  LED 3 mm green |
 |   1 | `led(LED5mm, "blue")` |  LED 5 mm blue |
 |   1 | `led(LED8mm)` |  LED 8 mm red |
+|   1 | `led(LED5x2mm, "green")` |  LED [5, 2] mm green |
 
 
 <a href="#top">Top</a>
@@ -6432,6 +6433,7 @@ Printed LED bezels for panel mounting
 |   1 | `led(LED3mm, "yellow")` |  LED 3 mm yellow |
 |   1 | `led(LED5mm, "blue")` |  LED 5 mm blue |
 |   1 | `led(LED8mm)` |  LED 8 mm red |
+|   1 | `led(LED5x2mm, "yellow")` |  LED [5, 2] mm yellow |
 
 ### Printed
 | Qty | Filename |
@@ -6442,6 +6444,8 @@ Printed LED bezels for panel mounting
 |   1 | LED3mm_bezel_retainer.stl |
 |   1 | LED5mm_bezel.stl |
 |   1 | LED5mm_bezel_retainer.stl |
+|   1 | LED5x2mm_bezel.stl |
+|   1 | LED5x2mm_bezel_retainer.stl |
 |   1 | LED8mm_bezel.stl |
 |   1 | LED8mm_bezel_retainer.stl |
 
@@ -6451,6 +6455,7 @@ Printed LED bezels for panel mounting
 |   1 | LED10mm_orange_bezel_assembly |
 |   1 | LED3mm_yellow_bezel_assembly |
 |   1 | LED5mm_blue_bezel_assembly |
+|   1 | LED5x2mm_yellow_bezel_assembly |
 |   1 | LED8mm_red_bezel_assembly |
 
 

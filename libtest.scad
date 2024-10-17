@@ -157,7 +157,7 @@ cable_grommets_y = 0;
 translate([x5, cable_grommets_y])
     cable_grommets();
 
-translate([x5, cable_grommets_y + 30])
+translate([x5, cable_grommets_y + 45])
     led_bezels();
 
 translate([x5 + 50, cable_grommets_y])
@@ -366,8 +366,11 @@ components_y = toggles_y + 40;
 translate([x2, leds_y])
     leds();
 
-translate([x2 + 35, leds_y])
+translate([x2 + 55, leds_y])
     ldrs();
+
+translate([x2 + 87, leds_y])
+    fuseholders();
 
 translate([x2 + 8, carriers_y])
     carriers();
@@ -377,9 +380,6 @@ translate([x2, magnets_y])
 
 translate([x2 + 20, carriers_y])
     led_meters();
-
-translate([x2 + 70, leds_y])
-    fuseholders();
 
 translate([x2, spades_y])
     spades();

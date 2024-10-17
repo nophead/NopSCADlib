@@ -41,16 +41,21 @@ module led(type, colour = "red", lead = 5, right_angle = 0) { //! Draw specified
     rotate([right_angle ? 90 : 0, 0, 0])
         translate_z(right_angle ? right_angle - led_rim_t(type) : 0)
             color(colour) {
-                rotate_extrude()
-                    rounded_corner(r = d / 2, h = led_height(type), r2 =  d / 2);
+                if (is_num(d)) {
+                    rotate_extrude()
+                        rounded_corner(r = d / 2, h = led_height(type), r2 =  d / 2);
 
-                linear_extrude(led_rim_t(type))
-                    difference() {
-                        circle(d = led_rim_dia(type));
+                    linear_extrude(led_rim_t(type))
+                        difference() {
+                            circle(d = led_rim_dia(type));
 
-                        translate([d / 2 + eps, -5])
-                            square(10);
-                    }
+                            translate([d / 2 + eps, -5])
+                                square(10);
+                        }
+                } else {
+                    translate_z(led_height(type)/2) cube([d.x, d.y, led_height(type)], center = true);
+                    translate_z(led_rim_t(type)/2) cube([led_rim_dia(type).x, led_rim_dia(type).y, led_rim_t(type)], center = true);
+                }
             }
     t = led_lead_t(type);
     len = lead - (right_angle ? t : 0);

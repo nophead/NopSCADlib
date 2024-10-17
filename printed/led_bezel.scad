@@ -40,32 +40,72 @@ function led_bezel_hole_r(type)   =     //! Panel hole radius
 module led_bezel(type) { //! Makes the STL for the bezel
     led = led_bezel_led(type);
     stl(str(led[0],"_bezel")) {
-        rl = led_diameter(led) / 2;
-        rr = led_rim_dia(led) / 2;
         wall = led_bezel_wall(type);
-        poly_tube(or = rr + wall + led_bezel_flange(type), ir = rl, h = led_bezel_flange_t(type));              // Flange
-        poly_tube(or = rl + wall,                          ir = rl, h = led_height(led) - rl - led_rim_t(led)); // Tube up to LED flange
-        poly_tube(or = corrected_radius(rr) + wall,        ir = rr, h = led_bezel_height(type));                // Tube beyond the flange
+        if(is_num(led_diameter(led))) {
+            rl = led_diameter(led) / 2;
+            rr = led_rim_dia(led) / 2;
+            poly_tube(or = rr + wall + led_bezel_flange(type), ir = rl, h = led_bezel_flange_t(type));              // Flange
+            poly_tube(or = rl + wall,                          ir = rl, h = led_height(led) - rl - led_rim_t(led)); // Tube up to LED flange
+            poly_tube(or = corrected_radius(rr) + wall,        ir = rr, h = led_bezel_height(type));                // Tube beyond the flange
+        }
+        else {
+            linear_extrude(led_bezel_flange_t(type))        // Flange
+                difference() {
+                    offset(wall + led_bezel_flange(type))
+                        square(led_rim_dia(led), true);
+
+                    square(led_diameter(led), true);
+                }
+
+            linear_extrude(led_height(led) - led_rim_t(led)) // Tube up to the LED flange
+                difference() {
+                    offset(wall)
+                        square(led_diameter(led), true);
+
+                    square(led_diameter(led), true);
+                }
+
+            linear_extrude(led_bezel_height(type)) // Tube beyond the LED flange
+                difference() {
+                    offset(wall)
+                        square(led_rim_dia(led), true);
+
+                    square(led_rim_dia(led), true);
+                }
+        }
     }
 }
 
 module led_bezel_retainer(type) { //! Makes the STL for the retaining ring
     led = led_bezel_led(type);
     stl(str(led[0],"_bezel_retainer")) {
-        ir =  led_bezel_r(type);
-        poly_tube(or = ir + led_bezel_wall(type), ir = ir, h = 4);
+        wall = led_bezel_wall(type);
+        if(is_num(led_diameter(led))) {
+             ir =  led_bezel_r(type);
+             poly_tube(or = ir + wall, ir = ir, h = 4);
+        }
+        else
+            linear_extrude(4)
+                difference() {
+                    offset(2 * wall)
+                        square(led_rim_dia(led), true);
+
+                    offset(wall)
+                        square(led_rim_dia(led), true);
+                }
     }
 }
 
 module led_bezel_assembly(type, colour = "red") {//! Led bezel with LED
     led = led_bezel_led(type);
+    d = led_diameter(led);
     assembly(str(led[0], "_", colour, "_bezel")) {
         translate_z(led_bezel_flange_t(type)) {
             vflip()
                 stl_colour(pp1_colour)
                     led_bezel(type);
 
-            translate_z(-led_height(led) + led_diameter(led) / 2)
+            translate_z(-led_height(led) + (is_num(d) ? d / 2 : 0))
                 explode(-20)
                     led(led, colour);
         }
