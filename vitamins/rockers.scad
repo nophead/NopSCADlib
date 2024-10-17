@@ -35,9 +35,10 @@ neon_spades  = [[spade4p8, 7.3, 0, -7, 0],
 //
 //                                                                               w   h   t
 //
+micro_rocker   = ["micro_rocker",   "Rocker Switch 10x15",            8.6, 13.5, 10.4, 14.9, 1.4, 9.1, 14.7, 9, 2.1,  0.8, 3.0, small_spades];
 small_rocker   = ["small_rocker",   "Rocker Switch PRASA1-16F-BB0BW", 13, 19.25, 15, 21, 2, 12.8, 18.5, 11.8, 2.5,  -1, 3.8, small_spades];
 neon_indicator = ["neon_indicator", "Neon Indicator H8630FBNAL",      13, 19.25, 15, 21, 2, 12.8, 18.5, 12.5, 2.5,  0,  0.3, neon_spades];
 
-rockers = [small_rocker, neon_indicator];
+rockers = [micro_rocker, small_rocker, neon_indicator];
 
 use <rocker.scad>
