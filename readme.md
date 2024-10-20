@@ -3805,6 +3805,7 @@ Rocker switch. Also used for neon indicator in the same form factor.
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   2 | `rocker(neon_indicator)` |  Neon Indicator H8630FBNAL |
+|   2 | `rocker(micro_rocker)` |  Rocker Switch 10x15 |
 |   2 | `rocker(small_rocker)` |  Rocker Switch PRASA1-16F-BB0BW |
 
 
