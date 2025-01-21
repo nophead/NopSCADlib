@@ -1244,7 +1244,26 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
     ]
 );
 
-tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge];
+9DOF_stick = pcb("9DOF_stick", "Sparkfun 9 degrees of freedom IMU", [24, 11, 0.8],
+    colour = "red",
+    hole_d = 3.3,
+    holes = [[-1.2 - 3.3 / 2, 11 / 2]],
+    components = [
+        [9.7, 11/ 2, 0, "chip", 3, 3.5, 1],
+        [9.7, 8.5, 0, "smd_cap",  CAP0603, 0.8],
+        for(i = [0 : 3])
+            [5.27, 2.5 + i * 2, 0, "smd_cap", CAP0603, 0.8],
+        [12.8, 4, 90, "smd_res", RES0603, "472"],
+        [14.1, 4, 90, "smd_res", RES0603, "472"],
+
+        // Silkscreen
+        [17.75, 1.4,   0,"text", 11, 1.4, "9DOF Stick",     "Liberation Sans:style=Bold"],
+        [3,  11/2, 90, "text", 10, 1, "SCL SDA VDD GND", "Liberation Sans:style=Bold"],
+    ],
+    grid = [inch(0.05), 11 / 2 - inch(0.15), 1, 4, "silver", 0, inch(0.1)]
+);
+
+tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge, 9DOF_stick];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
