@@ -37,19 +37,21 @@ def usage():
     sys.exit(1)
 
 def render(target, type):
-    #
-    # Make the target directory
-    #
     top_dir = set_config(target, usage)
-    tmp_dir = mktmpdir(top_dir)
-    target_dir = top_dir + type + 's'
     bom_dir = top_dir + 'bom'
-    if not os.path.isdir(target_dir):
-        os.makedirs(target_dir)
     #
     # Find all the parts
     #
     parts = bom_to_parts(bom_dir, type)
+    if not parts:
+        return
+    #
+    # Make the target directory
+    #
+    tmp_dir = mktmpdir(top_dir)
+    target_dir = top_dir + type + 's'
+    if not os.path.isdir(target_dir):
+        os.makedirs(target_dir)
     #
     # Read the json bom to get the colours
     #
