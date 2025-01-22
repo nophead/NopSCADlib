@@ -2982,6 +2982,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(BTT_SKR_E3_TURBO)` |  BigTreeTech SKR E3 Turbo |
 |   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
 |   1 | `pcb(BTT_SKR_V1_4_TURBO)` |  BigTreeTech SKR v1.4 Turbo |
+|   1 | `pcb(BlackPill)` |  Black Pill |
 |   1 |  |  Cat 5 patch cable 300mm |
 |   1 | `d_plug(DCONN15, pcb = true)` |  D-type 15 way PCB mount plug - not shown |
 |   1 | `pcb(DuetE)` |  Duet 2 Ethernet electronics |
@@ -3033,7 +3034,8 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | `screw(M2_cap_screw, 25)` |  Screw M2 cap x 25mm |
 |   2 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
 |   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
-|  12 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
+|   8 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
+|   4 | `screw(M2p5_cap_screw, 40)` |  Screw M2.5 cap x 40mm |
 |   4 | `screw(M2p5_dome_screw, 25)` |  Screw M2.5 dome x 25mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
 |   8 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
@@ -3067,18 +3069,18 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | pcb_spacer2090.stl |
 |   2 | pcb_spacer25110.stl |
 |   4 | pcb_spacer25140.stl |
-|   4 | pcb_spacer25170.stl |
 |   4 | pcb_spacer25180.stl |
-|   4 | pcb_spacer25190_2.stl |
+|   4 | pcb_spacer25190.stl |
 |   4 | pcb_spacer25200_2.stl |
-|   4 | pcb_spacer25240.stl |
+|   4 | pcb_spacer25210_2.stl |
 |   4 | pcb_spacer25250.stl |
 |   4 | pcb_spacer25260.stl |
+|   4 | pcb_spacer25270.stl |
 |   4 | pcb_spacer2580.stl |
 |   5 | pcb_spacer30130.stl |
-|   4 | pcb_spacer30210.stl |
 |   4 | pcb_spacer30220.stl |
-|   3 | pcb_spacer30230.stl |
+|   4 | pcb_spacer30230.stl |
+|   3 | pcb_spacer30240.stl |
 |  10 | pcb_spacer3050.stl |
 |   9 | pcb_spacer3060.stl |
 |   9 | pcb_spacer3070.stl |

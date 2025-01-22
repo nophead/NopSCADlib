@@ -1020,6 +1020,39 @@ ArduinoNano = let(l = 43.18, w = 17.78, pitch = inch(0.6), pins = 15, poffset = 
     [(l - inch(pins - 1) / 10) / 2 + poffset, (w - pitch) / 2, pins, 2, silver, 2.54, pitch], // 15x2 grid of holes
 ];
 
+BlackPill = let(l = 52.81, w = 20.78, pitch = inch(0.6), pins = 20, poffset = inch(-0.05), led_spacing = [0, 9.93/2], btn_spacing = [0, 4.3/2]) [
+    "BlackPill", "Black Pill",
+    l, w, 1.6, // Size
+    0, // corner radius
+    0, // mounting hole diameter
+    0, // pad around mounting hole
+    "#101010", // color
+    false, // true if parts should be separate BOM items
+    [],
+    [ // components
+      [l / 2 + poffset, w / 2 - pitch / 2,  0, "-2p54joiner", pins, 1, undef, "yellow"],
+      [l / 2 + poffset, w / 2 + pitch / 2,  0, "-2p54joiner", pins, 1, undef, "yellow"],
+      [l - inch(0.27), w / 2, 90, "2p54header",  4,    1, undef, undef, true],
+      [ l -26.75, w / 2, 45, "chip", 7, 7, 1.3],
+      [ 3.6, w / 2, 180, "usb_C" ],
+      [ 15,                       5.3,   0, "text",    4, 1.27, "BOOT0"],
+      [ 15,                     w-5.3,   0, "text",    4, 1.27, "NRST"],
+      [ l - 16,     w/2-led_spacing.y,   0, "text",    4, 1.27, "PWR"],
+      [ l - 16,     w/2+led_spacing.y,   0, "text",    4, 1.27, "C13"],
+      [ 15,     w / 2 - btn_spacing.y,  90, "chip",  3.5,    6, 1.8, silver ], // mock button boot0
+      [ 15,     w / 2 - btn_spacing.y,  90, "chip",  1.3,  2.6, 2.6, grey(90) ], // mock button boot0
+      [ 15,     w / 2 + btn_spacing.y,  90, "chip",  3.5,    6, 1.8, silver ], // mock button nrst
+      [ 15,     w / 2 + btn_spacing.y,  90, "chip",  1.3,  2.6, 2.6, grey(90) ], // mock button nrst
+      [ l - 12,                   8.5,  90, "chip",  3.5,    6, 1.8, silver ], // mock button user
+      [ l - 12,                   8.5,  90, "chip",  1.3,  2.6, 2.6, grey(90) ], // mock button user
+      [ l - 17,                  12.5,  90, "chip",  3.2,  2.5, 0.6, brass ], // xtal
+      [ l - 12,                  12.5,  90, "smd_sot", SOT23],
+      [ l - 12, w / 2 - led_spacing.y,   0, "smd_led", LED0603, "red"],
+      [ l - 12, w / 2 + led_spacing.y,   0, "smd_led", LED0603, "blue"]],
+    [], // accessories
+    [(l - inch(pins - 1) / 10) / 2 + poffset, (w - pitch) / 2, pins, 2, silver, 2.54, pitch], // 15x2 grid of holes
+];
+
 KY_040 = ["KY_040", "KY-040 rotart encoder breakout",
     26.3, 19.5, 1.6, 0, 3, 0, grey(20),  false,
     [
@@ -1267,7 +1300,8 @@ tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_f
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RCWL0516, MT3608,RAMPSEndstop, ArduinoNano, HW803_1WAY_RELAY, Feather405, RPI_Pico, ESP32_DOIT_V1, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
+pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RCWL0516, MT3608,RAMPSEndstop, ArduinoNano, HW803_1WAY_RELAY, Feather405, RPI_Pico,
+        ESP32_DOIT_V1, BlackPill, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];
 
