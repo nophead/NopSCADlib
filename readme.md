@@ -2978,6 +2978,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(ArduinoLeonardo)` |  Arduino Leonardo |
 |   1 | `pcb(ArduinoNano)` |  Arduino Nano |
 |   1 | `pcb(ArduinoUno3)` |  Arduino Uno R3 |
+|   1 | `pcb(BlackPill)` |  STM32 Black pill |
 |   1 | `pcb(BTT_RELAY_V1_2)` |  BigTreeTech Relay Module v1.2 |
 |   1 | `pcb(BTT_SKR_E3_TURBO)` |  BigTreeTech SKR E3 Turbo |
 |   1 | `pcb(BTT_SKR_MINI_E3_V2_0)` |  BigTreeTech SKR Mini E3 v2.0 |
