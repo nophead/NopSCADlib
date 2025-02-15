@@ -163,12 +163,12 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
         else {  //motor in the back
             if (drive_pulley_offset.x ) { // idler pulleys for offset stepper motor drive pulley
                 translate(p0)
-                    pulley_assembly(p0p_type); // y-carriage toothed pulley
+                    pulley_assembly(p0p_type); // y-carriage plain pulley
                 translate(p1)
-                    pulley_assembly(p1p_type); // bottom right toothed idler pulley
+                    pulley_assembly(p1p_type); // bottom right plain idler pulley
                 //left bottom corner
                 translate(p2)
-                       pulley_assembly(p2p_type); // toothed idler
+                       pulley_assembly(p2p_type); // plain idler
                         
                 translate(p2p)
                     pulley_assembly(p2p_type); // plain idler
@@ -178,10 +178,10 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
                         pulley_assembly(p2d_type); // bottom left stepper motor drive pulley
                         
                 translate(p3t)
-                    pulley_assembly(p3p_type); // top left toothed idler
+                    pulley_assembly(p3p_type); // top left plain idler
             
                 translate(p4mb)
-                    pulley_assembly(p4t_type); // y-carriage plain pulley
+                    pulley_assembly(p4t_type); // y-carriage toothed pulley
             } else {
                 translate(p0)
                     pulley_assembly(p0_type); // y-carriage toothed pulley
