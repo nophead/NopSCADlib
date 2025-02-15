@@ -68,27 +68,41 @@ function coreXY_drive_plain_idler_offset(type) = //! Offset of plain drive idler
     [ coreXY_plain_idler_offset(type).x, -(pulley_od(coreXY_plain_idler(type)) + pulley_od(coreXY_drive_pulley(type))) / 2, 0 ];
 
 
-module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_offset = [0, 0], drive_pulley_offset = [0, 0], show_pulleys = false, lower_belt = false, hflip = false) { //! Draw one belt of a coreXY setup
+module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_offset = [0, 0], drive_pulley_offset = [0, 0], show_pulleys = false, lower_belt = false, hflip = false, motor_back = false) { //! Draw one belt of a coreXY setup
 
     // y-carriage toothed pulley
     p0_type = coreXY_toothed_idler(type);
+    p0p_type = coreXY_plain_idler(type);
     p0 = [ size.x / 2, -size.y / 2 - pulley_od(p0_type) / 2 + pos.y - separation_y / 2 ];
 
     // bottom right toothed idler pulley
     p1_type = p0_type;
+    p1p_type = coreXY_plain_idler(type);
     p1 = [ size.x / 2, -size.y / 2 ];
 
     // bottom left anchor toothed idler pulley
-    p2_type = p0_type;
+    p2_type = coreXY_toothed_idler(type);
     p2 = [ -size.x / 2, -size.y / 2 ];
+    
+    //drive type if the motor is in the back
+    p2d_type = coreXY_drive_pulley(type);
+    p2d = [ p2.x + drive_pulley_offset.x,
+            p2.y + drive_pulley_offset.y 
+    ];
+    
+    // plain idler for offset stepper motor if the motor is in the back
+    p2p_type = coreXY_plain_idler(type);
+    p2p = [ p2.x + plain_idler_offset.x + drive_pulley_offset.x,
+            p2.y + plain_idler_offset.y 
+    ];
 
-    // stepper motor drive pulley
+    // stepper motor drive pulley if motor not in back
     p3d_type = coreXY_drive_pulley(type);
     p3d = [ -size.x / 2 + coreXY_drive_pulley_x_alignment(type) + drive_pulley_offset.x,
              size.y / 2 + drive_pulley_offset.y
     ];
 
-    // toothed idler for offset stepper motor drive pulley
+    // toothed idler for offset stepper motor drive pulley if motor not in back
     p3t_type = coreXY_toothed_idler(type);
     p3t = [ -size.x / 2 + (drive_pulley_offset.x > 0 ? 0 : plain_idler_offset.x + 2 * coreXY_drive_pulley_x_alignment(type)),
              size.y / 2 + coreXY_drive_pulley_x_alignment(type)
@@ -96,11 +110,14 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
 
     // y-carriage plain pulley
     p4_type = coreXY_plain_idler(type);
+    p4t_type = coreXY_toothed_idler(type);
     p4 = [ -size.x / 2 + pulley_od(p4_type) / 2 + pulley_od(p3d_type) / 2 + coreXY_drive_pulley_x_alignment(type) + (drive_pulley_offset.x == 0 ? 0 : plain_idler_offset.x),
            -size.y / 2 + pulley_od(p4_type) / 2 + pos.y + separation_y / 2
     ];
+    p4mb = [-size.x / 2 + pulley_od(p4_type) / 2 + pulley_od(p3t_type) / 2 + coreXY_drive_pulley_x_alignment(type), 
+        -size.y / 2 + pulley_od(p4_type) / 2 + pos.y + separation_y / 2];
 
-    // plain idler for offset stepper motor drive pulley
+    // plain idler for offset stepper motor drive pulley if motor not in back
     p3p_type = p4_type;
     p3p = [ drive_pulley_offset.x > 0 ? p4.x : -p0.x - pulley_od(p0_type),
             size.y / 2 - pulley_od(p3p_type) / 2 - pulley_od(p3d_type) / 2 + plain_idler_offset.y
@@ -121,28 +138,70 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
     }
 
     show_pulleys(show_pulleys) {
-        translate(p0)
-            pulley_assembly(p0_type); // y-carriage toothed pulley
+        if ( !motor_back ) {
+            translate(p0)
+                pulley_assembly(p0_type); // y-carriage toothed pulley
+            translate(p1)
+                pulley_assembly(p1_type); // bottom right toothed idler pulley
+            translate(p2)
+                pulley_assembly(p2_type); // bottom left anchor toothed idler pulley
+        
+            translate(p3d)
+                hflip(hflip)
+                    pulley_assembly(p3d_type); // top left stepper motor drive pulley
 
-        translate(p1)
-            pulley_assembly(p1_type); // bottom right toothed idler pulley
+            if (drive_pulley_offset.x ) { // idler pulleys for offset stepper motor drive pulley
+                translate(p3t)
+                    pulley_assembly(p3t_type); // toothed idler
 
-        translate(p2)
-            pulley_assembly(p2_type); // bottom left anchor toothed idler pulley
-
-        translate(p3d)
-            hflip(hflip)
-                pulley_assembly(p3d_type); // top left stepper motor drive pulley
-
-        if (drive_pulley_offset.x) { // idler pulleys for offset stepper motor drive pulley
-            translate(p3t)
-                pulley_assembly(p3t_type); // toothed idler
-
-            translate(p3p)
-                pulley_assembly(p3p_type); // plain idler
+                translate(p3p)
+                    pulley_assembly(p3p_type); // plain idler
+            }
+            translate(p4)
+                pulley_assembly(p4_type); // y-carriage plain pulley
         }
-        translate(p4)
-            pulley_assembly(p4_type); // y-carriage plain pulley
+        else {  //motor in the back
+            if (drive_pulley_offset.x ) { // idler pulleys for offset stepper motor drive pulley
+                translate(p0)
+                    pulley_assembly(p0p_type); // y-carriage toothed pulley
+                translate(p1)
+                    pulley_assembly(p1p_type); // bottom right toothed idler pulley
+                //left bottom corner
+                translate(p2)
+                       pulley_assembly(p2p_type); // toothed idler
+                        
+                translate(p2p)
+                    pulley_assembly(p2p_type); // plain idler
+            
+                translate(p2d)
+                    hflip(hflip)
+                        pulley_assembly(p2d_type); // bottom left stepper motor drive pulley
+                        
+                translate(p3t)
+                    pulley_assembly(p3p_type); // top left toothed idler
+            
+                translate(p4mb)
+                    pulley_assembly(p4t_type); // y-carriage plain pulley
+            } else {
+                translate(p0)
+                    pulley_assembly(p0_type); // y-carriage toothed pulley
+                translate(p1)
+                    pulley_assembly(p1_type); // bottom right toothed idler pulley
+            
+                //left bottom corner
+                translate(p2)
+                    hflip(hflip)
+                        pulley_assembly(p2d_type); // bottom left stepper motor drive pulley
+                        
+                translate(p3t)
+                    pulley_assembly(p3t_type); // top left toothed idler
+            
+                translate(p4mb)
+                    pulley_assembly(p4_type); // y-carriage plain pulley
+            }
+        }
+        
+
     }
 
     path0a = [
@@ -169,8 +228,28 @@ module coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_off
 
     belt = coreXY_belt(type);
 
-    path0 = drive_pulley_offset.x == 0 ? concat(path0a, path0b) : drive_pulley_offset.x > 0 ? concat(path0a, path0c) : concat(path0a, path0d);
-    path = concat([start_p], path0, [end_p]);
+    path0 = drive_pulley_offset.x == 0  ? concat(path0a, path0b) : drive_pulley_offset.x > 0 ? concat(path0a, path0c) : concat(path0a, path0d);
+    
+    path_mb_0a = [
+        [ p0.x, p0.y, pulley_od(p0_type) / 2 ],
+        [ p1.x, p1.y, pulley_od(p1_type) / 2 ],
+        [ p2.x, p2.y, pulley_od(p2d_type) / 2 ],
+        [ p3t.x, p3t.y, pulley_od(p3t_type) / 2 ],
+        [ p4mb.x, p4mb.y, -pulley_od(p4_type) / 2 ]
+    ];
+    
+    path_mb_0b = [
+        [ p0.x, p0.y, pulley_od(p0_type) / 2 ],
+        [ p1.x, p1.y, pulley_od(p1_type) / 2 ],
+        [ p2p.x, p2p.y, pulley_od(p2p_type) / 2 ],
+        [ p2d.x, p2d.y, -pulley_od(p2d_type) / 2 ],
+        [ p2.x, p2.y, pulley_od(p2_type) / 2 ],
+        [ p3t.x, p3t.y, pulley_od(p3t_type) / 2 ],
+        [ p4mb.x, p4mb.y, -pulley_od(p4_type) / 2 ]
+    ];
+    
+    path_mb0 = drive_pulley_offset.x == 0 ? path_mb_0a : path_mb_0b;
+    path = motor_back? concat([start_p], path_mb0, [end_p]):concat([start_p], path0, [end_p]);
 
     belt(type = belt,
         points = path,
