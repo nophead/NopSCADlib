@@ -132,5 +132,57 @@ module coreXY_belts_test() {
     }
 }
 
-if ($preview)
+module coreXY_motor_in_back_test1() {
+    size = [200,200];
+    pos = [100,100];
+    separation = [20,5,10];
+
+
+    coreXY(coreXY_GT2_20_16, size, pos, separation, x_gap = 0, plain_idler_offset = [0, 0], upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = true, left_lower = false, motor_back = true);
+
+    rotate([180,0,0])
+    translate (
+        [ separation.x/2
+        , 0
+        , -separation.z/2 -15 ])
+    NEMA(NEMA17_40);
+    translate (
+        [ size.x - separation.x/2
+        , 0
+        , -separation.z/2 - 15 ])
+    NEMA(NEMA17_40);
+}
+
+module coreXY_motor_in_back_test2() {
+    size = [200,200];
+    pos = [100,100];
+    separation = [0,5,10];
+    upper_drive_pulley_offset = [20, 5];
+    lower_drive_pulley_offset = [20, 5];
+
+
+    coreXY(coreXY_GT2_20_16, size, pos, separation, x_gap = 0, plain_idler_offset = [20, 0], upper_drive_pulley_offset, lower_drive_pulley_offset, show_pulleys = true, left_lower = false, motor_back = true);
+
+    translate (
+        [ size.x - separation.x/2 - lower_drive_pulley_offset.x
+        , lower_drive_pulley_offset.y
+        , -separation.z/2 - 15 ])
+    NEMA(NEMA17_40);
+
+    translate (
+        [ separation.x/2 + upper_drive_pulley_offset.x
+        , upper_drive_pulley_offset.y
+        , separation.z/2 - 25 ])
+    NEMA(NEMA17_40);
+}
+
+
+if ($preview) {
     coreXY_belts_test();
+
+    translate ([-250, 0,0])
+        coreXY_motor_in_back_test1();
+
+    translate ([-250, -250,0])
+        coreXY_motor_in_back_test2();
+}

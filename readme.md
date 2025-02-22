@@ -7220,9 +7220,9 @@ allows flexible positioning of the motors.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `coreXY(type, size, pos, separation, x_gap = 0, plain_idler_offset = [0, 0], upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false, left_lower = false)` | Wrapper module to draw both belts of a coreXY setup |
+| `coreXY(type, size, pos, separation, x_gap = 0, plain_idler_offset = [0, 0], upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false, left_lower = false, motor_back = false)` | Wrapper module to draw both belts of a coreXY setup |
 | `coreXY_belts(type, carriagePosition, coreXYPosBL, coreXYPosTR, separation, x_gap = 0, plain_idler_offset = [0, 0], upper_drive_pulley_offset = [0, 0], lower_drive_pulley_offset = [0, 0], show_pulleys = false, left_lower = false)` | Draw the coreXY belts |
-| `coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_offset = [0, 0], drive_pulley_offset = [0, 0], show_pulleys = false, lower_belt = false, hflip = false)` | Draw one belt of a coreXY setup |
+| `coreXY_half(type, size, pos, separation_y = 0, x_gap = 0, plain_idler_offset = [0, 0], drive_pulley_offset = [0, 0], show_pulleys = false, lower_belt = false, hflip = false, motor_back = false)` | Draw one belt of a coreXY setup |
 
 ![core_xy](tests/png/core_xy.png)
 
@@ -7231,12 +7231,15 @@ allows flexible positioning of the motors.
 | ---:|:--- |:---|
 |   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 728mm |
 |   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 790mm |
-|   7 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
-|   3 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
-|   2 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
+|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 826mm |
+|   1 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 826mm |
+|   2 | `belt(GT2x6, [ ... ])` |  Belt GT2 x 6mm x 836mm |
+|  15 | `pulley(GT2x16_toothed_idler)` |  Pulley GT2 idler 16 teeth |
+|  15 | `pulley(GT2x16_plain_idler)` |  Pulley GT2 idler smooth 9.63mm |
+|   6 | `pulley(GT2x20ob_pulley)` |  Pulley GT2OB 20 teeth |
 |   8 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
-|   4 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
-|   2 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm (5x20 shaft) |
+|  12 | `screw(M3_grub_screw, 6)` |  Screw M3 grub x  6mm |
+|   6 | `NEMA(NEMA17_40)` |  Stepper motor NEMA17 x 40mm (5x20 shaft) |
 
 
 <a href="#top">Top</a>
