@@ -191,3 +191,32 @@ function cubic_real_roots(a, b, c, d) = //! Returns real roots of cubic equation
 function path_length(path, i = 0, length = 0) = //! Calculated the length along a path
     i >= len(path) - 1 ? length
                        : path_length(path, i + 1, length + norm(path[i + 1] - path[i]));
+
+                       function rotate_vector_2d(v, angle) = [
+    v[0] * cos(angle) - v[1] * sin(angle),
+    v[0] * sin(angle) + v[1] * cos(angle)
+];
+
+function rotate_vector_2d(v, angle) = [
+    v[0] * cos(angle) - v[1] * sin(angle),
+    v[0] * sin(angle) + v[1] * cos(angle)
+];
+
+function rotation_matrix(axis, angle) = let(
+    u = axis / norm(axis), // Normalize axis
+    ux = u[0], uy = u[1], uz = u[2],
+    cosA = cos(angle), sinA = sin(angle),
+    one_minus_cosA = 1 - cosA
+) [
+    [cosA + ux*ux*one_minus_cosA,    ux*uy*one_minus_cosA - uz*sinA,  ux*uz*one_minus_cosA + uy*sinA],
+    [uy*ux*one_minus_cosA + uz*sinA, cosA + uy*uy*one_minus_cosA,     uy*uz*one_minus_cosA - ux*sinA],
+    [uz*ux*one_minus_cosA - uy*sinA, uz*uy*one_minus_cosA + ux*sinA,  cosA + uz*uz*one_minus_cosA]
+];
+
+function rotate_vector_3d(v, axis, angle) = let(
+    mat = rotation_matrix(axis, angle)
+) [
+    mat[0][0]*v[0] + mat[0][1]*v[1] + mat[0][2]*v[2],
+    mat[1][0]*v[0] + mat[1][1]*v[1] + mat[1][2]*v[2],
+    mat[2][0]*v[0] + mat[2][1]*v[1] + mat[2][2]*v[2]
+];
