@@ -27,7 +27,6 @@ include <../utils/maths.scad>
 
 
 //if text is empty, will display the number value
-//text_plane is either "XY" or "XZ"
 module dimension(startpoint, endpoint, text = "", thickness = 0.1) {    
     // Compute vector between points
     direction = endpoint - startpoint;
@@ -37,12 +36,8 @@ module dimension(startpoint, endpoint, text = "", thickness = 0.1) {
     // Ensure nonzero values for calculations
     dir_xy = norm([direction.x, direction.y]);
 
-    // Compute rotation angles safely
-    //azimuth = (dir_xy == 0) ? 0 : atan2(direction.y, direction.x); 
+    // Compute rotation angles
     azimuth = atan2(direction.y, direction.x); 
-    /*elevation = (direction.x == 0 && direction.y == 0) 
-                ? ((direction.z > 0) ? -90 : 90) 
-                : -atan2(direction.z, dir_xy);*/
     elevation = -atan2(direction.z, dir_xy);
 
     // Draw measurement line as a thin cylinder
