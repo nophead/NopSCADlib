@@ -192,11 +192,6 @@ function path_length(path, i = 0, length = 0) = //! Calculated the length along 
     i >= len(path) - 1 ? length
                        : path_length(path, i + 1, length + norm(path[i + 1] - path[i]));
 
-                       function rotate_vector_2d(v, angle) = [
-    v[0] * cos(angle) - v[1] * sin(angle),
-    v[0] * sin(angle) + v[1] * cos(angle)
-];
-
 function rotate_vector_2d(v, angle) = [
     v[0] * cos(angle) - v[1] * sin(angle),
     v[0] * sin(angle) + v[1] * cos(angle)
