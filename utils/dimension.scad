@@ -64,7 +64,7 @@ module dimension(startpoint, endpoint, text = "", thickness = 0.1) {
     translate(midpoint + up_dir*0.66)
     rotate([0, elevation, azimuth]) 
     linear_extrude(thickness)
-    text(text == "" ? str(length) : text, size = thickness * 5, valign = "center", halign = "center");
+    text(text == "" ? str(length) : text, size = thickness * 5, valign = "bottom", halign = "center");
 }
 
 //offset will detirmine how much space is between the measured point and the dimension
