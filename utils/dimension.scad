@@ -27,7 +27,7 @@ include <../utils/maths.scad>
 
 
 //if text is empty, will display the number value
-module dimension(startpoint, endpoint, text = "", thickness = 0.1) {    
+module dimension(startpoint, endpoint, text = "", thickness = 0.1, rot_around_dim = 0) {    
     // Compute vector between points
     direction = endpoint - startpoint;
     length = norm(direction);
@@ -60,8 +60,10 @@ module dimension(startpoint, endpoint, text = "", thickness = 0.1) {
     // Draw the text/distance
     dir = (length > 0) ? (direction / length) * thickness * 4 : [1, 0, 0]; 
     up_dir = transform([0,1,0], rotate(azimuth));
+    depth_dir = transform([0,0,1], rotate(azimuth));
     
-    translate(midpoint + up_dir*thickness)
+    rotate(direction*rot_around_dim/2) 
+    translate(midpoint + up_dir*thickness - depth_dir*thickness/2)
     rotate([0, elevation, azimuth]) 
     linear_extrude(thickness)
     text(text == "" ? str(length) : text, size = thickness * 5, valign = "bottom", halign = "center");

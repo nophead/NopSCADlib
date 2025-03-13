@@ -30,7 +30,7 @@ module dimensions_3d_xy() {
     dimension([0,0,0], [0,10,0], "", 0.2);
     dimension([0,0,0], [0,-10,0], "", 0.2);
     dimension([0,0,0], [10,0,0], "", 0.2);
-    dimension([0,0,0], [-10,0,0], "", 0.2);
+    dimension([0,0,0], [-10,0,0], "", 0.2, rot_around_dim=270);
 }
 
 module dimensions_3d_xyz() {
