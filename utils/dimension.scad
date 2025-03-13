@@ -59,9 +59,9 @@ module dimension(startpoint, endpoint, text = "", thickness = 0.1) {
 
     // Draw the text/distance
     dir = (length > 0) ? (direction / length) * thickness * 4 : [1, 0, 0]; 
-    up_dir = rotate_vector_3d([0,1,0], [0,0,1] ,azimuth);
+    up_dir = transform([0,1,0], rotate(azimuth));
     
-    translate(midpoint + up_dir*0.66)
+    translate(midpoint + up_dir*thickness)
     rotate([0, elevation, azimuth]) 
     linear_extrude(thickness)
     text(text == "" ? str(length) : text, size = thickness * 5, valign = "bottom", halign = "center");
