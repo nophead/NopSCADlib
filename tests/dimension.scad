@@ -29,8 +29,8 @@ module dimensions_3d_xy() {
 
     dimension([0,0,0], [0,10,0], "", 0.2);
     dimension([0,0,0], [0,-10,0], "", 0.2);
-    dimension([0,0,0], [10,0,0], "", 0.2);
-    dimension([0,0,0], [-10,0,0], "", 0.2, rot_around_dim=270);
+    dimension([0,0,0], [10,0,0], "", 0.2,rot_around_dim=0);
+    dimension([0,0,0], [-10,0,0], "", 0.2, rot_around_dim=90);
 }
 
 module dimensions_3d_xyz() {
@@ -42,7 +42,7 @@ module dimensions_3d_xyz() {
     dimension([0,0,0], [10,10,-10], "", 0.2);
     dimension([0,0,0], [10,-10,-10], "", 0.2);
     dimension([0,0,0], [-10,10,-10], "", 0.2);
-    dimension([0,0,0], [-10,-10,-10], "", 0.2);
+    dimension([0,0,0], [-10,-10,-10], "", 0.2, rot_around_dim=45);
 
     dimension([0,0,0], [-3,0,10], "", 0.2);
     dimension([0,0,0], [0,0,-10], "", 0.2);
@@ -55,24 +55,25 @@ module dimensions_3d_xyz() {
 module dimension_1d_x() {
     dimension_x([12,0,0], [18,0,0]);
     dimension_x([12,5,0], [18,10,0]);
+    dimension_x([12,0,-5], [18,0,0], plane= "xz");
     dimension_x([12,5,0], [18,10,5]);   
 }
 
 module dimension_1d_y() {
     dimension_y([12,0,0], [12,-5,0]);
     dimension_y([12,-8,0], [18,-10,0]);
-    dimension_y([12,-5,0], [18,-10,5]);   
+    dimension_y([12,-5,0], [18,-10,5], plane= "yz");   
 }
 
 module dimension_1d_z() {
-    dimension_z([20,0,0], [20,0,5]);
-    dimension_z([20,0,0], [20,0,10]);
-    dimension_z([20,0,0], [20,10,10]);   
+    dimension_z([20,0,5], [20,0,0]);
+    dimension_z([20,0,10], [20,0,0]);
+    dimension_z([20,0,0], [20,10,10],plane= "yz");   
 }
 
 if($preview)
-    dimensions_3d_xy();
-    dimensions_3d_xyz();
+    //dimensions_3d_xy();
+    //dimensions_3d_xyz();
     dimension_1d_x();
     dimension_1d_y();
     dimension_1d_z();
