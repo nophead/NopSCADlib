@@ -17,21 +17,20 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
-//
-//! Annotation used in this documentation
-//
-
 include <../utils/core/core.scad>
 include <../utils/maths.scad>
 
 
 
 //if text is empty, will display the number value
-module dimension(startpoint, endpoint, text = "", thickness = 0.1, rot_around_dim=0) {    
+//thickness will determine the thickness of the lines, and size of the arrows, if 0, will use 0.5% of the length of the dim
+//text_size will determine the size of the text, if 0, will use percentage of the length of the dim
+module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 , rot_around_dim=0) {    
     // Compute vector between points
     direction = endpoint - startpoint;
     length = norm(direction);
     midpoint = (startpoint + endpoint) / 2;
+    thickness = (thickness == 0? length/200:thickness);
 
     // Ensure nonzero values for calculations
     dir_xy = norm([direction.x, direction.y]);
@@ -41,8 +40,8 @@ module dimension(startpoint, endpoint, text = "", thickness = 0.1, rot_around_di
     elevation = -atan2(direction.z, dir_xy);
     
     //end triangle size
-    etr_width = thickness *5;
-    etr_height = thickness *3;
+    etr_width = thickness *10;
+    etr_height = thickness *4;
 
     // Draw measurement line as a thin cylinder
     translate(midpoint)
@@ -78,17 +77,21 @@ module dimension(startpoint, endpoint, text = "", thickness = 0.1, rot_around_di
     rotate([rot_around_dim,0,0])
     translate([0,thickness,-thickness/2])
     linear_extrude(thickness)
-    text(text == "" ? str(length) : text, size = thickness * 5, valign = "bottom", halign = "center");
+    text(text == "" ? str(length) : text, size = (text_size == 0? length/15:text_size), valign = "bottom", halign = "center");
 }
 
 //offset will detirmine how much space is between the measured point and the dimension
 //for x, this offset will be in the y direction
 //plane options : xy, xz
-module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0.1, plane = "xy") {
+module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") {
+    length = norm(endpoint - startpoint);
+    thickness = (thickness == 0? length/200:thickness);
+
+
     y = max(startpoint.y, endpoint.y) + (plane=="xy"?offset:0);
     z = max(startpoint.z, endpoint.z) + (plane=="xz"?offset:0);
     
-    dimension([startpoint.x, y, z], [endpoint.x, y, z], text, thickness, rot_around_dim=(plane=="xz"?90:0));    
+    dimension([startpoint.x, y, z], [endpoint.x, y, z], text, thickness, text_size, rot_around_dim=(plane=="xz"?90:0));    
     
     v1= [startpoint.x, y, z]-startpoint;
     h1 = norm(v1);
@@ -112,10 +115,14 @@ module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0.1,
 //offset will detirmine how much space is between the measured point and the dimension
 //for y, this offset will be in the x direction
 //plane options : xy, yz
-module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0.1, plane = "xy") {
+module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") {
+    length = norm(endpoint - startpoint);
+    thickness = (thickness == 0? length/200:thickness);
+
+
     x = max(startpoint.x, endpoint.x) + (plane=="xy"?offset:0);
     z = max(startpoint.z, endpoint.z) + (plane=="yz"?offset:0);
-    dimension([x, startpoint.y, z], [x, endpoint.y, z], text, thickness, rot_around_dim=(plane=="yz"?90:0));
+    dimension([x, startpoint.y, z], [x, endpoint.y, z], text, thickness, text_size, rot_around_dim=(plane=="yz"?90:0));
     
     v1= [x, startpoint.y, z]-startpoint;
     h1 = norm(v1);
@@ -140,10 +147,14 @@ module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0.1,
 //offset will detirmine how much space is between the measured point and the dimension
 //for z, this offset will be in the x direction
 //plane options : xz, yz
-module dimension_z(startpoint, endpoint, offset = 1, text = "", thickness = 0.1, plane = "xz") {
+module dimension_z(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xz") {
+    length = norm(endpoint - startpoint);
+    thickness = (thickness == 0? length/200:thickness);
+
+
     x = max(startpoint.x, endpoint.x) + (plane=="xz"?offset:0);
     y = max(startpoint.y, endpoint.y) + (plane=="yz"?offset:0);
-    dimension([x, y, startpoint.z], [x, y, endpoint.z], text, thickness, rot_around_dim=(plane=="xz"?90:0));
+    dimension([x, y, startpoint.z], [x, y, endpoint.z], text, thickness, text_size, rot_around_dim=(plane=="xz"?90:0));
     
     v1= [x, y, startpoint.z]-startpoint;
     h1 = norm(v1);

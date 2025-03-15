@@ -23,32 +23,32 @@ use <../utils/dimension.scad>
 module dimensions_3d_xy() {
     dimension([0,0,0], [10,10,0], "", 0.2);
     dimension([0,0,0], [10,-10,0], "", 0.2);
-    dimension([0,0,0], [-10,10,0], "", 0.2);
-    dimension([0,0,0], [-10,-10,0], "", 0.2);
+    dimension([0,0,0], [-10,10,0], "");
+    dimension([0,0,0], [-10,-10,0], "");
 
 
-    dimension([0,0,0], [0,10,0], "", 0.2);
-    dimension([0,0,0], [0,-10,0], "", 0.2);
-    dimension([0,0,0], [10,0,0], "", 0.2,rot_around_dim=0);
-    dimension([0,0,0], [-10,0,0], "", 0.2, rot_around_dim=90);
+    dimension([0,0,0], [0,10,0], "");
+    dimension([0,0,0], [0,-10,0], "");
+    dimension([0,0,0], [10,0,0], "",rot_around_dim=0);
+    dimension([0,0,0], [-10,0,0], "", rot_around_dim=90);
 }
 
 module dimensions_3d_xyz() {
-    dimension([0,0,0], [10,10,10], "", 0.2);
-    dimension([0,0,0], [10,-10,10], "", 0.2);
-    dimension([0,0,0], [-10,10,10], "", 0.2);
-    dimension([0,0,0], [-10,-10,10], "", 0.2);
+    dimension([0,0,0], [10,10,10], "");
+    dimension([0,0,0], [10,-10,10], "");
+    dimension([0,0,0], [-10,10,10], "");
+    dimension([0,0,0], [-10,-10,10], "");
 
-    dimension([0,0,0], [10,10,-10], "", 0.2);
-    dimension([0,0,0], [10,-10,-10], "", 0.2);
-    dimension([0,0,0], [-10,10,-10], "", 0.2);
-    dimension([0,0,0], [-10,-10,-10], "", 0.2, rot_around_dim=45);
+    dimension([0,0,0], [10,10,-10], "");
+    dimension([0,0,0], [10,-10,-10], "");
+    dimension([0,0,0], [-10,10,-10], "");
+    dimension([0,0,0], [-10,-10,-10], "", rot_around_dim=45);
 
-    dimension([0,0,0], [-3,0,10], "", 0.2);
-    dimension([0,0,0], [0,0,-10], "", 0.2);
+    dimension([0,0,0], [-3,0,10], "");
+    dimension([0,0,0], [0,0,-10], "");
     
-    dimension([0,0,0], [0,2,10], "", 0.2);
-    dimension([0,0,0], [0,2,-10], "", 0.2);
+    dimension([0,0,0], [0,2,10], "");
+    dimension([0,0,0], [0,2,-10], "");
     
 }
 
@@ -72,8 +72,8 @@ module dimension_1d_z() {
 }
 
 if($preview)
-    //dimensions_3d_xy();
-    //dimensions_3d_xyz();
+    dimensions_3d_xy();
+    dimensions_3d_xyz();
     dimension_1d_x();
     dimension_1d_y();
     dimension_1d_z();
