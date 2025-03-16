@@ -25,7 +25,7 @@ include <../utils/maths.scad>
 //if text is empty, will display the number value
 //thickness will determine the thickness of the lines, and size of the arrows, if 0, will use 0.5% of the length of the dim
 //text_size will determine the size of the text, if 0, will use percentage of the length of the dim
-module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 , rot_around_dim=0) {    
+module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 , rot_around_dim=0, text_centered=true) {    
     // Compute vector between points
     direction = endpoint - startpoint;
     length = norm(direction);
@@ -52,8 +52,6 @@ module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 ,
     
     //do some vector calculations
     dir = (length > 0) ? (direction / length) * thickness * 4 : [1, 0, 0]; 
-    //up_dir = transform([0,1,0], rotate(azimuth));
-    //depth_dir = transform([0,0,1], rotate(azimuth));
 
     // Draw endpoint markers
     translate(startpoint) 
@@ -77,7 +75,7 @@ module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 ,
     rotate([rot_around_dim,0,0])
     translate([0,thickness,-thickness/2])
     linear_extrude(thickness)
-    text(text == "" ? str(length) : text, size = (text_size == 0? length/15:text_size), valign = "bottom", halign = "center");
+    text(text == "" ? str(length) : text, size = (text_size == 0? length/15:text_size), valign = (text_centered?"center":"bottom"), halign = "center");
 }
 
 //offset will detirmine how much space is between the measured point and the dimension
