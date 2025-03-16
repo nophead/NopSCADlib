@@ -78,7 +78,7 @@ module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 ,
     text(text == "" ? str(length) : text, size = (text_size == 0? length/15:text_size), valign = "bottom", halign = "center");
 }
 
-//offset will detirmine how much space is between the measured point and the dimension
+//offset will determine how much space is between the measured point and the dimension
 //for x, this offset will be in the y direction
 //plane options : xy, xz
 module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") {
@@ -110,7 +110,7 @@ module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
         cylinder( h= h2+thickness*2, d=thickness);          
 }
 
-//offset will detirmine how much space is between the measured point and the dimension
+//offset will determine how much space is between the measured point and the dimension
 //for y, this offset will be in the x direction
 //plane options : xy, yz
 module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") {
@@ -142,7 +142,7 @@ module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
         cylinder( h= h2+thickness*2, d=thickness);          
 }
 
-//offset will detirmine how much space is between the measured point and the dimension
+//offset will determine how much space is between the measured point and the dimension
 //for z, this offset will be in the x direction
 //plane options : xz, yz
 module dimension_z(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xz") {
