@@ -22,10 +22,8 @@ include <../utils/maths.scad>
 
 
 
-//if text is empty, will display the number value
-//thickness will determine the thickness of the lines, and size of the arrows, if 0, will use 0.5% of the length of the dim
-//text_size will determine the size of the text, if 0, will use percentage of the length of the dim
-module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 , rot_around_dim=0) {    
+
+module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 , rot_around_dim=0) { //! Will create a 3D dimension between two points. If text is empty, will display the measured distance. Thickness will determine the thickness of the lines, and size of the arrows, if 0, will use 0.5% of the length of the dim. Text_size will determine the size of the text, if 0, will use percentage of the length of the dim   
     // Compute vector between points
     direction = endpoint - startpoint;
     length = norm(direction);
@@ -78,10 +76,8 @@ module dimension(startpoint, endpoint, text = "", thickness = 0, text_size = 0 ,
     text(text == "" ? str(length) : text, size = (text_size == 0? length/15:text_size), valign = "bottom", halign = "center");
 }
 
-//offset will determine how much space is between the measured point and the dimension
-//for x, this offset will be in the y direction
-//plane options : xy, xz
-module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") {
+
+module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") { //! Will create a dimension in the x direction. Offset will determine how much space is between the measured point and the dimension. Plane options : xy, xz
     length = norm(endpoint - startpoint);
     thickness = (thickness == 0? length/200:thickness);
 
@@ -110,10 +106,8 @@ module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
         cylinder( h= h2+thickness*2, d=thickness);          
 }
 
-//offset will determine how much space is between the measured point and the dimension
-//for y, this offset will be in the x direction
-//plane options : xy, yz
-module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") {
+
+module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xy") { //! Will create a dimension in the y direction. Offset will determine how much space is between the measured point and the dimension. Plane options : xy, yz
     length = norm(endpoint - startpoint);
     thickness = (thickness == 0? length/200:thickness);
 
@@ -142,10 +136,7 @@ module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
         cylinder( h= h2+thickness*2, d=thickness);          
 }
 
-//offset will determine how much space is between the measured point and the dimension
-//for z, this offset will be in the x direction
-//plane options : xz, yz
-module dimension_z(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xz") {
+module dimension_z(startpoint, endpoint, offset = 1, text = "", thickness = 0, text_size = 0 , plane = "xz") { //! Will create a dimension in the z direction. Offset will determine how much space is between the measured point and the dimension. Plane options : xz, yz
     length = norm(endpoint - startpoint);
     thickness = (thickness == 0? length/200:thickness);
 
