@@ -54,7 +54,7 @@ module dimensions_3d_xyz() {
 
 module dimension_1d_x() {
     dimension_x([12,0,0], [18,0,0]);
-    dimension_x([12,5,0], [18,10,0]);
+    dimension_x([12,5,0], [18,10,0], offset = -1);
     dimension_x([12,0,-5], [18,0,0], plane= "xz");
     dimension_x([12,5,0], [18,10,5]);   
 }
@@ -62,7 +62,7 @@ module dimension_1d_x() {
 module dimension_1d_y() {
     dimension_y([12,0,0], [12,-5,0]);
     dimension_y([12,-8,0], [18,-10,0]);
-    dimension_y([12,-5,0], [18,-10,5], plane= "yz");   
+    dimension_y([12,-5,0], [18,-10,5], offset = -1, plane= "yz");   
 }
 
 module dimension_1d_z() {
