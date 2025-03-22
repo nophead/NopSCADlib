@@ -81,9 +81,8 @@ module dimension_x(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
     length = norm(endpoint - startpoint);
     thickness = (thickness == 0? length/200:thickness);
 
-
-    y = max(startpoint.y, endpoint.y) + (plane=="xy"?offset:0);
-    z = max(startpoint.z, endpoint.z) + (plane=="xz"?offset:0);
+    y = offset > 0 ? max(startpoint.y, endpoint.y) + (plane=="xy"?offset:0) : min(startpoint.y, endpoint.y) + (plane=="xy"?offset:0);
+    z = offset > 0 ? max(startpoint.z, endpoint.z) + (plane=="xz"?offset:0) : min(startpoint.z, endpoint.z) + (plane=="xz"?offset:0);
     
     dimension([startpoint.x, y, z], [endpoint.x, y, z], text, thickness, text_size, rot_around_dim=(plane=="xz"?90:0));    
     
@@ -112,8 +111,8 @@ module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
     thickness = (thickness == 0? length/200:thickness);
 
 
-    x = max(startpoint.x, endpoint.x) + (plane=="xy"?offset:0);
-    z = max(startpoint.z, endpoint.z) + (plane=="yz"?offset:0);
+    x = offset > 0 ? max(startpoint.x, endpoint.x) + (plane=="xy"?offset:0) : min(startpoint.x, endpoint.x) + (plane=="xy"?offset:0);
+    z = offset > 0 ? max(startpoint.z, endpoint.z) + (plane=="yz"?offset:0) : min(startpoint.z, endpoint.z) + (plane=="yz"?offset:0);
     dimension([x, startpoint.y, z], [x, endpoint.y, z], text, thickness, text_size, rot_around_dim=(plane=="yz"?90:0));
     
     v1= [x, startpoint.y, z]-startpoint;
@@ -123,6 +122,7 @@ module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
     
     translate(startpoint)
     rotate(angle1, axis1)
+    rotate([offset>0?0:180,0,0])
         cylinder( h= h1+thickness*2, d=thickness);
         
         
@@ -133,6 +133,7 @@ module dimension_y(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
     
     translate(endpoint)
     rotate(angle2, axis2)
+    rotate([offset>0?0:180,0,0])
         cylinder( h= h2+thickness*2, d=thickness);          
 }
 
@@ -141,8 +142,8 @@ module dimension_z(startpoint, endpoint, offset = 1, text = "", thickness = 0, t
     thickness = (thickness == 0? length/200:thickness);
 
 
-    x = max(startpoint.x, endpoint.x) + (plane=="xz"?offset:0);
-    y = max(startpoint.y, endpoint.y) + (plane=="yz"?offset:0);
+    x = offset > 0 ? max(startpoint.x, endpoint.x) + (plane=="xz"?offset:0) :  min(startpoint.x, endpoint.x) + (plane=="xz"?offset:0);
+    y = offset > 0 ? max(startpoint.y, endpoint.y) + (plane=="yz"?offset:0) : min(startpoint.y, endpoint.y) + (plane=="yz"?offset:0);
     dimension([x, y, startpoint.z], [x, y, endpoint.z], text, thickness, text_size, rot_around_dim=(plane=="xz"?90:0));
     
     v1= [x, y, startpoint.z]-startpoint;
