@@ -7253,7 +7253,7 @@ allows flexible positioning of the motors.
 ## Dimension
 Modules for adding dimensions to assembly views.
 
-<img src="docs/sliding_t_nut.png" width="500", height="378">
+<img src="https://github.com/nophead/NopSCADlib/raw/master/docs/sliding_t_nut.png" width="500", height="378">
 
 * If `text` is empty, will display the measured distance.
 * `offset` will determine how much space is between the measured point and the dimension.
