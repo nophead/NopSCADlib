@@ -21,6 +21,10 @@
 //! Default is steel but can be drawn as brass or nylon. A utility for making nut traps included.
 //!
 //! If a nut is given a child then it gets placed on its top surface.
+//!
+//! The following diagram shows you the parameters for drawing a sliding_t_nut:
+//!
+//! ![](docs/sliding_t_nut.png)
 //
 include <../utils/core/core.scad>
 use <washer.scad>
