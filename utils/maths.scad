@@ -164,13 +164,13 @@ function xor(a,b) = (a && !b) || (!a && b);     //! Logical exclusive OR
 function cuberoot(x)= sign(x)*abs(x)^(1/3);
 
 function quadratic_real_roots(a, b, c) =        //! Returns real roots of a quadratic equation, biggest first. Returns empty list if no real roots
-    let(2a = 2 * a,
-        2c = 2 * c,
-        det = b^2 - 2a * 2c
+    let(ax2 = 2 * a,
+        cx2 = 2 * c,
+        det = b^2 - ax2 * cx2
     ) det < 0 ? [] :
         let(r = sqrt(det),
-            x1 = b < 0 ? 2c / (-b + r) : (-b - r) / 2a,
-            x2 = b < 0 ? (-b + r) / 2a : 2c / (-b - r)
+            x1 = b < 0 ? cx2 / (-b + r) : (-b - r) / ax2,
+            x2 = b < 0 ? (-b + r) / ax2 : cx2 / (-b - r)
         ) [x2, x1];
 
 function cubic_real_roots(a, b, c, d) = //! Returns real roots of cubic equation
