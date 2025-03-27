@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2025
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -46,29 +46,29 @@ module dimensions_3d_xyz() {
 
     dimension([0,0,0], [-3,0,10], "");
     dimension([0,0,0], [0,0,-10], "");
-    
+
     dimension([0,0,0], [0,2,10], "");
     dimension([0,0,0], [0,2,-10], "");
-    
+
 }
 
 module dimension_1d_x() {
     dimension_x([12,0,0], [18,0,0]);
     dimension_x([12,5,0], [18,10,0], offset = -1);
     dimension_x([12,0,-5], [18,0,0], plane= "xz");
-    dimension_x([12,5,0], [18,10,5]);   
+    dimension_x([12,5,0], [18,10,5]);
 }
 
 module dimension_1d_y() {
     dimension_y([12,0,0], [12,-5,0]);
     dimension_y([12,-8,0], [18,-10,0]);
-    dimension_y([12,-5,0], [18,-10,5], offset = -1, plane= "yz");   
+    dimension_y([12,-5,0], [18,-10,5], offset = -1, plane= "yz");
 }
 
 module dimension_1d_z() {
     dimension_z([20,0,5], [20,0,0]);
     dimension_z([20,0,10], [20,0,0]);
-    dimension_z([20,0,0], [20,10,10],plane= "yz");   
+    dimension_z([20,0,0], [20,10,10],plane= "yz");
 }
 
 if($preview)
@@ -77,6 +77,3 @@ if($preview)
     dimension_1d_x();
     dimension_1d_y();
     dimension_1d_z();
-
-
-    
