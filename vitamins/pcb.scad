@@ -650,9 +650,11 @@ module barrel_jack(cutout = false) { //! Draw barrel power jack
     contact_d = 2;
     contact_w = 4;
     inset = 1;
-    if(cutout)
-        ;
-    else {
+    if(cutout) {
+        rotate([0, 90, 0])
+            translate([-bore_h, 0])
+                cylinder(d = bore_d + panel_clearance, h = 100);
+    } else {
         color(grey(20)) rotate([0, 90, 0]) {
             linear_extrude(l, center = true) {
                 difference() {
