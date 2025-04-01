@@ -97,7 +97,7 @@ def render(target, type):
             render = "--preview" if type == 'stl' or colour != pp1 else "--render"
             tmp_name = tmp_dir + '/' + part[:-4] + '.png'
             dummy_deps_name = tmp_dir + '/tmp.deps' # work around for OpenSCAD issue #3879
-            openscad.run("-o", tmp_name, png_maker_name, colour_scheme, "--projection=p", image_size, cam, render, "--autocenter", "--viewall", "-d", dummy_deps_name)
+            openscad.run("-o", tmp_name, png_maker_name, colour_scheme, "--projection=p", image_size, cam, render, "-D$pose=1", "-D$explode=0", "--autocenter", "--viewall", "-d", dummy_deps_name)
             do_cmd(("magick "+ tmp_name + " -trim -resize 280x280 -background %s -gravity Center -extent 280x280 -bordercolor %s -border 10 %s"
                     % (background, background, tmp_name)).split())
             update_image(tmp_name, png_name)
