@@ -7847,6 +7847,8 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 * To get the parameter values make the GUI window square, pose the view with the mouse and then copy the viewport parameters from the Edit menu and paste them into the pose invocation.
 * Two `pose()` modules can be chained to allow different poses for exploded and assembled views.
 
+The `pose_stl()` module allows an STL child to be posed for its rendered image used in the readme for the project.
+
 [utils/core/bom.scad](utils/core/bom.scad) Implementation.
 
 [tests/BOM.scad](tests/BOM.scad) Code for this example.
@@ -7870,8 +7872,9 @@ The `pose()` module allows assembly views in the readme to be posed differently 
 | `no_explode()` | Prevent children being exploded |
 | `no_pose()` | Force children not to be posed even if parent is |
 | `not_on_bom(on = false)` | Specify the following child parts are not on the BOM, for example when they are on a PCB that comes assembled |
-| `pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef)` | Pose an STL or assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only. |
+| `pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef)` | Pose an assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only. |
 | `pose_hflip(exploded = undef)` | Pose an STL or assembly for rendering to png by flipping around the Y axis, `exploded = true for` just the exploded view or `false` for unexploded only. |
+| `pose_stl(a = [70, 0, 315], t = [0, 0, 0], d = 500)` | Pose an STL for its render, `a`, `t`, & `d` are camera parameters. |
 | `pose_vflip(exploded = undef)` | Pose an STL or assembly for rendering to png by flipping around the X axis, `exploded = true for` just the exploded view or `false` for unexploded only. |
 | `stl(name)` | Name an stl that will appear on the BOM, there needs to a module named `<name>_stl` to make it |
 | `stl_colour(colour = pp1_colour, alpha = 1)` | Colour an stl where it is placed in an assembly. `alpha` can be used to make it appear transparent. |

@@ -41,6 +41,8 @@
 //! * If the `d` parameter is set to specify the camera distance then the normal `viewall` and `autocenter` options are suppressed allowing a small section to be zoomed in to fill the view.
 //! * To get the parameter values make the GUI window square, pose the view with the mouse and then copy the viewport parameters from the Edit menu and paste them into the pose invocation.
 //! * Two `pose()` modules can be chained to allow different poses for exploded and assembled views.
+//!
+//! The `pose_stl()` module allows an STL child to be posed for its rendered image used in the readme for the project.
 //
 function bom_mode(n = 1) = (is_undef($bom) ? 0 : $bom) >= n && (is_undef($on_bom) || $on_bom);  //! Current BOM mode, 0 = none, 1 = printed and routed parts and assemblies, 2 includes vitamins as well
 function exploded() = is_undef($exploded_parent) ? is_undef($explode) ? 0 : $explode : 0;   //! Returns the value of `$explode` if it is defined, else `0`
@@ -73,7 +75,7 @@ module explode(d, explode_children = false, offset = [0,0,0], show_line = true) 
 module no_pose()                                                    //! Force children not to be posed even if parent is
     let($posed = true, $zoomed = undef) children();
 
-module pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef) //! Pose an STL or assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only.
+module pose(a = [55, 0, 25], t = [0, 0, 0], exploded = undef, d = undef) //! Pose an assembly for rendering to png by specifying rotation `a`, translation `t` and optionally `d`, `exploded = true for` just the exploded view or `false` for unexploded only.
     let($zoomed = is_undef(d)
             ? is_undef($zoomed)
                 ? undef
@@ -136,10 +138,15 @@ module stl_colour(colour = pp1_colour, alpha = 1) { //! Colour an stl where it i
         children();
 }
 
+module pose_stl(a = [70, 0, 315], t = [0, 0, 0], d = 500) //! Pose an STL for its render, `a`, `t`, & `d` are camera parameters.
+    let($stl_camera = str(t.x, ",", t.y, ",", t.z, ",", a.x, ",", a.y, ",", a.z, ",", d))
+        children();
+
 module stl(name) {                      //! Name an stl that will appear on the BOM, there needs to a module named `<name>_stl` to make it
     if(bom_mode() && is_undef($in_stl)) {
         colour = is_undef($stl_colour) ? pp1_colour : $stl_colour;
-        echo(str("~", name, ".stl(colour='", colour, "')"));
+        camera = is_undef($stl_camera) ? "0,0,0,70,0,315,500" : $stl_camera;
+        echo(str("~", name, ".stl(colour='", colour, "'| camera='", camera, "')" ));
     }
     if($children)
         if(is_undef($pose))

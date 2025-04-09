@@ -69,7 +69,10 @@ class Part:
         self.count = 1
         for arg in args:
             arg = arg.replace('true',  'True').replace('false', 'False').replace('undef', 'None')
-            exec('self.' + arg)
+            try:
+               exec('self.' + arg)
+            except:
+               print(arg)
 
     def data(self):
         return self.__dict__
@@ -107,7 +110,7 @@ class BOM:
         match = re.match(r'^(.*?\.stl|.*?\.dxf|.*?\.svg)\((.*)\)$', s)                             #look for name.stl(...), name.dxf(...) or name.svg(...)
         if match:
             s = match.group(1)
-            args = [match.group(2)]
+            args = match.group(2).split('|')
         if s[-4:] == ".stl":
             parts = self.printed
         else:
