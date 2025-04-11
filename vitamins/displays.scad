@@ -46,7 +46,26 @@ LCD1602APCB = pcb("", "", [80, 36, 1.65], hole_d = 2.9, land_d = 5, colour = "gr
     ]
 );
 
+LCD1602APCBI2C = pcb("", "", [80, 36, 1.65], hole_d = 2.9, land_d = 5, colour = "green",
+    holes = [[-2.5, -2.5], [-2.5, 2.5], [2.5, 2.5], [2.5, -2.5]],
+    components = [
+        [-27.05, - 2.5, 0, "2p54header", 16, 1],
+        [ -27.05, -10.0, 0, "pcb", 3, I2C_LCD_Backpack],
+    ],
+    grid = [
+          52.95 - inch(0.75), 36 - 2.5, 16, 1, silver, inch(0.1), inch(0.1),
+    ]
+);
+
 LCD1602A = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCB,
+          [0, 0, 0],                             // pcb offst
+          [[-64.5 / 2, -14.5 / 2], [64.5 / 2, 14.5 / 2, 0.6]],              // aperture
+          [],                                       // touch screen
+          0,                                        // thread length
+          [],                                       // clearance need for the ts ribbon
+        ];
+
+LCD1602AI2C = ["LCD1602A", "LCD display 1602A", 71.3, 24.3, 7.0, LCD1602APCBI2C,
           [0, 0, 0],                             // pcb offst
           [[-64.5 / 2, -14.5 / 2], [64.5 / 2, 14.5 / 2, 0.6]],              // aperture
           [],                                       // touch screen
