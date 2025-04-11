@@ -1097,6 +1097,56 @@ module trimpot10(vertical, cutout = false) { //! Draw a ten turn trimpot
              }
 }
 
+//! Draw a 1/4" square trimpot (https://ar.mouser.com/datasheet/2/54/3362-776956.pdf)
+module trimpot3362() {
+    l = 6.60;
+    w = 6.99;
+    h = 4.88;
+    foot_w = 0.38;
+    foot_h = 0.38;
+    screw_h = 0;
+    screw_d = 2.25;
+    slot_w =  0.6;
+    slot_h = 0.8;
+
+    module adjust(){
+      d = 2.77;
+      width = 0.64;
+      deep = 0.89;
+
+      color("white"){
+        difference(){
+          cylinder(d=d, h=2*deep, center=true);
+          translate([0, 0, deep-deep/2+0.01])
+            cube([d, width, deep], center=true);
+          translate([0, 0, deep-deep/2+0.01]) rotate([0, 0, 90])
+            cube([d, width, deep], center=true);
+        }
+      }
+    }
+
+    color("#2CA1FD") {
+      difference(){
+      translate([0, 0, foot_h / 2 + h / 2])
+        cube([w, l, h - foot_h], center = true);
+      translate_z(h-0.88) hull() adjust();
+      //Grub
+      for(ang=[-30:30:210])
+        rotate([0, 0, ang])
+        translate([2.77/2+0.46, 0, h]) cube([1, 0.3, 0.3], center=true);
+      }
+
+      for(x = [-1, 1], y = [1, -1])
+        translate([x * (w - foot_w) / 2, y * (l - foot_w) / 2, h / 2])
+          cube([foot_w, foot_w, h], center = true);
+
+      for(x = [-1, 1])
+        translate([x*(w/2-1), -l/2, h/2+foot_h/2])
+          cube([0.7, 0.7, h-foot_h], center=true);
+    }
+    translate([0, 0, h-0.89]) adjust();
+}
+
 module block(size, colour, makes_cutout, cutouts, r = 0, rtop = 0) //! Draw a coloured cube to represent a random PCB component
     if(cutouts) {
         if(makes_cutout)
@@ -1181,6 +1231,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "jst_ph"))        jst_xh_header(jst_ph_header, comp[4], param(5, false), param(6, false), param(7, undef));
             if(show(comp, "jst_zh"))        jst_xh_header(jst_zh_header, comp[4], param(5, false), param(6, false), param(7, undef));
             if(show(comp, "potentiometer")) let(pot = param(4, BTT_encoder)) translate_z(pot_size(pot).z) vflip() potentiometer(pot, shaft_length = param(5, undef));
+            if(show(comp, "trimpot3362"))   trimpot3362();
             if(show(comp, "buzzer"))        buzzer(param(4, 9), param(5, 12), param(6, grey(20)));
             if(show(comp, "smd_250V_fuse")) smd_250V_fuse(comp[4], comp[5]);
             if(show(comp, "smd_res"))       smd_resistor(comp[4], comp[5]);
