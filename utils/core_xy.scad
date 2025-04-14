@@ -272,13 +272,13 @@ module coreXY(type, size, pos, separation, x_gap = 0, plain_idler_offset = [0, 0
         // lower belt
         hflip(!left_lower)
             explode(25)
-                coreXY_half(type, size, [size.x - pos.x - separation.x/2 - (left_lower ? x_gap : 0), pos.y], separation.y, x_gap, plain_idler_offset, [-lower_drive_pulley_offset.x, lower_drive_pulley_offset.y], show_pulleys, lower_belt = true, hflip = true, motor_back);
+                coreXY_half(type, size, [size.x - pos.x - separation.x/2 - (left_lower ? x_gap : 0), pos.y], separation.y, x_gap, plain_idler_offset, [-lower_drive_pulley_offset.x, lower_drive_pulley_offset.y], show_pulleys, lower_belt = true, hflip = true, motor_back = motor_back);
 
         // upper belt
         translate([separation.x, 0, separation.z])
             hflip(left_lower)
                 explode(25)
-                    coreXY_half(type, size, [pos.x + separation.x/2 + (left_lower ? x_gap : 0), pos.y], separation.y, x_gap, plain_idler_offset, upper_drive_pulley_offset, show_pulleys, lower_belt = false, hflip = false, motor_back);
+                    coreXY_half(type, size, [pos.x + separation.x/2 + (left_lower ? x_gap : 0), pos.y], separation.y, x_gap, plain_idler_offset, upper_drive_pulley_offset, show_pulleys, lower_belt = false, hflip = false, motor_back = motor_back);
     }
 }
 
