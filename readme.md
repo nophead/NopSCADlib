@@ -24,28 +24,28 @@ A list of changes classified as breaking, additions or fixes is maintained in [C
 <tr><td> <a href = "#7_segments">7_segments</a> </td><td> <a href = "#iecs">IECs</a> </td><td> <a href = "#radials">Radials</a> </td><td> <a href = "#box">Box</a> </td><td> <a href = "#annotation">Annotation</a> </td><td> <a href = "#bom">BOM</a> </td></tr>
 <tr><td> <a href = "#antennas">Antennas</a> </td><td> <a href = "#inserts">Inserts</a> </td><td> <a href = "#rails">Rails</a> </td><td> <a href = "#butt_box">Butt_box</a> </td><td> <a href = "#bezier">Bezier</a> </td><td> <a href = "#clip">Clip</a> </td></tr>
 <tr><td> <a href = "#axials">Axials</a> </td><td> <a href = "#jack">Jack</a> </td><td> <a href = "#ring_terminals">Ring_terminals</a> </td><td> <a href = "#cable_clip">Cable_clip</a> </td><td> <a href = "#catenary">Catenary</a> </td><td> <a href = "#global">Global</a> </td></tr>
-<tr><td> <a href = "#bldc_motors">BLDC_motors</a> </td><td> <a href = "#ldrs">LDRs</a> </td><td> <a href = "#rockers">Rockers</a> </td><td> <a href = "#cable_grommets">Cable_grommets</a> </td><td> <a href = "#core_xy">Core_xy</a> </td><td> <a href = "#polyholes">Polyholes</a> </td></tr>
-<tr><td> <a href = "#ball_bearings">Ball_bearings</a> </td><td> <a href = "#led_meters">LED_meters</a> </td><td> <a href = "#rod">Rod</a> </td><td> <a href = "#camera_housing">Camera_housing</a> </td><td> <a href = "#dimension">Dimension</a> </td><td> <a href = "#rounded_rectangle">Rounded_rectangle</a> </td></tr>
-<tr><td> <a href = "#batteries">Batteries</a> </td><td> <a href = "#leds">LEDs</a> </td><td> <a href = "#rod_ends">Rod_ends</a> </td><td> <a href = "#carriers">Carriers</a> </td><td> <a href = "#dogbones">Dogbones</a> </td><td> <a href = "#sphere">Sphere</a> </td></tr>
-<tr><td> <a href = "#bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#leadnuts">Leadnuts</a> </td><td> <a href = "#sbr_rails">SBR_rails</a> </td><td> <a href = "#corner_block">Corner_block</a> </td><td> <a href = "#fillet">Fillet</a> </td><td> <a href = "#teardrops">Teardrops</a> </td></tr>
-<tr><td> <a href = "#belts">Belts</a> </td><td> <a href = "#light_strips">Light_strips</a> </td><td> <a href = "#sk_brackets">SK_brackets</a> </td><td> <a href = "#door_hinge">Door_hinge</a> </td><td> <a href = "#gears">Gears</a> </td><td></td></tr>
-<tr><td> <a href = "#blowers">Blowers</a> </td><td> <a href = "#linear_bearings">Linear_bearings</a> </td><td> <a href = "#smds">SMDs</a> </td><td> <a href = "#door_latch">Door_latch</a> </td><td> <a href = "#hanging_hole">Hanging_hole</a> </td><td></td></tr>
-<tr><td> <a href = "#box_sections">Box_sections</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#ssrs">SSRs</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#horiholes">Horiholes</a> </td><td></td></tr>
-<tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
-<tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
-<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
-<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#pcb_utils">PCB_utils</a> </td><td></td></tr>
-<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
-<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
-<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
-<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
-<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
-<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#splines">Splines</a> </td><td></td></tr>
-<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
-<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
-<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
-<tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td></td><td></td></tr>
+<tr><td> <a href = "#bldc_motors">BLDC_motors</a> </td><td> <a href = "#ldrs">LDRs</a> </td><td> <a href = "#rockers">Rockers</a> </td><td> <a href = "#cable_grommets">Cable_grommets</a> </td><td> <a href = "#chamfer">Chamfer</a> </td><td> <a href = "#polyholes">Polyholes</a> </td></tr>
+<tr><td> <a href = "#ball_bearings">Ball_bearings</a> </td><td> <a href = "#led_meters">LED_meters</a> </td><td> <a href = "#rod">Rod</a> </td><td> <a href = "#camera_housing">Camera_housing</a> </td><td> <a href = "#core_xy">Core_xy</a> </td><td> <a href = "#rounded_rectangle">Rounded_rectangle</a> </td></tr>
+<tr><td> <a href = "#batteries">Batteries</a> </td><td> <a href = "#leds">LEDs</a> </td><td> <a href = "#rod_ends">Rod_ends</a> </td><td> <a href = "#carriers">Carriers</a> </td><td> <a href = "#dimension">Dimension</a> </td><td> <a href = "#sphere">Sphere</a> </td></tr>
+<tr><td> <a href = "#bearing_blocks">Bearing_blocks</a> </td><td> <a href = "#leadnuts">Leadnuts</a> </td><td> <a href = "#sbr_rails">SBR_rails</a> </td><td> <a href = "#corner_block">Corner_block</a> </td><td> <a href = "#dogbones">Dogbones</a> </td><td> <a href = "#teardrops">Teardrops</a> </td></tr>
+<tr><td> <a href = "#belts">Belts</a> </td><td> <a href = "#light_strips">Light_strips</a> </td><td> <a href = "#sk_brackets">SK_brackets</a> </td><td> <a href = "#door_hinge">Door_hinge</a> </td><td> <a href = "#fillet">Fillet</a> </td><td></td></tr>
+<tr><td> <a href = "#blowers">Blowers</a> </td><td> <a href = "#linear_bearings">Linear_bearings</a> </td><td> <a href = "#smds">SMDs</a> </td><td> <a href = "#door_latch">Door_latch</a> </td><td> <a href = "#gears">Gears</a> </td><td></td></tr>
+<tr><td> <a href = "#box_sections">Box_sections</a> </td><td> <a href = "#magnets">Magnets</a> </td><td> <a href = "#ssrs">SSRs</a> </td><td> <a href = "#drag_chain">Drag_chain</a> </td><td> <a href = "#hanging_hole">Hanging_hole</a> </td><td></td></tr>
+<tr><td> <a href = "#bulldogs">Bulldogs</a> </td><td> <a href = "#mains_sockets">Mains_sockets</a> </td><td> <a href = "#screws">Screws</a> </td><td> <a href = "#fan_guard">Fan_guard</a> </td><td> <a href = "#horiholes">Horiholes</a> </td><td></td></tr>
+<tr><td> <a href = "#buttons">Buttons</a> </td><td> <a href = "#microswitches">Microswitches</a> </td><td> <a href = "#sealing_strip">Sealing_strip</a> </td><td> <a href = "#fixing_block">Fixing_block</a> </td><td> <a href = "#layout">Layout</a> </td><td></td></tr>
+<tr><td> <a href = "#cable_strips">Cable_strips</a> </td><td> <a href = "#microview">Microview</a> </td><td> <a href = "#servo_motors">Servo_motors</a> </td><td> <a href = "#flat_hinge">Flat_hinge</a> </td><td> <a href = "#maths">Maths</a> </td><td></td></tr>
+<tr><td> <a href = "#cameras">Cameras</a> </td><td> <a href = "#modules">Modules</a> </td><td> <a href = "#shaft_couplings">Shaft_couplings</a> </td><td> <a href = "#foot">Foot</a> </td><td> <a href = "#offset">Offset</a> </td><td></td></tr>
+<tr><td> <a href = "#circlips">Circlips</a> </td><td> <a href = "#nuts">Nuts</a> </td><td> <a href = "#sheets">Sheets</a> </td><td> <a href = "#handle">Handle</a> </td><td> <a href = "#pcb_utils">PCB_utils</a> </td><td></td></tr>
+<tr><td> <a href = "#components">Components</a> </td><td> <a href = "#o_ring">O_ring</a> </td><td> <a href = "#spades">Spades</a> </td><td> <a href = "#knob">Knob</a> </td><td> <a href = "#quadrant">Quadrant</a> </td><td></td></tr>
+<tr><td> <a href = "#dip">DIP</a> </td><td> <a href = "#opengrab">Opengrab</a> </td><td> <a href = "#spools">Spools</a> </td><td> <a href = "#led_bezel">LED_bezel</a> </td><td> <a href = "#round">Round</a> </td><td></td></tr>
+<tr><td> <a href = "#d_connectors">D_connectors</a> </td><td> <a href = "#pcb">PCB</a> </td><td> <a href = "#springs">Springs</a> </td><td> <a href = "#pcb_mount">PCB_mount</a> </td><td> <a href = "#rounded_cylinder">Rounded_cylinder</a> </td><td></td></tr>
+<tr><td> <a href = "#displays">Displays</a> </td><td> <a href = "#pcbs">PCBs</a> </td><td> <a href = "#stepper_motors">Stepper_motors</a> </td><td> <a href = "#psu_shroud">PSU_shroud</a> </td><td> <a href = "#rounded_polygon">Rounded_polygon</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusion_brackets">Extrusion_brackets</a> </td><td> <a href = "#psus">PSUs</a> </td><td> <a href = "#swiss_clips">Swiss_clips</a> </td><td> <a href = "#pocket_handle">Pocket_handle</a> </td><td> <a href = "#rounded_triangle">Rounded_triangle</a> </td><td></td></tr>
+<tr><td> <a href = "#extrusions">Extrusions</a> </td><td> <a href = "#panel_meters">Panel_meters</a> </td><td> <a href = "#terminals">Terminals</a> </td><td> <a href = "#press_fit">Press_fit</a> </td><td> <a href = "#sector">Sector</a> </td><td></td></tr>
+<tr><td> <a href = "#fans">Fans</a> </td><td> <a href = "#photo_interrupters">Photo_interrupters</a> </td><td> <a href = "#toggles">Toggles</a> </td><td> <a href = "#printed_box">Printed_box</a> </td><td> <a href = "#splines">Splines</a> </td><td></td></tr>
+<tr><td> <a href = "#fastons">Fastons</a> </td><td> <a href = "#pillars">Pillars</a> </td><td> <a href = "#transformers">Transformers</a> </td><td> <a href = "#printed_pulleys">Printed_pulleys</a> </td><td> <a href = "#sweep">Sweep</a> </td><td></td></tr>
+<tr><td> <a href = "#fuseholder">Fuseholder</a> </td><td> <a href = "#pillow_blocks">Pillow_blocks</a> </td><td> <a href = "#ttracks">Ttracks</a> </td><td> <a href = "#ribbon_clamp">Ribbon_clamp</a> </td><td> <a href = "#thread">Thread</a> </td><td></td></tr>
+<tr><td> <a href = "#gear_motors">Gear_motors</a> </td><td> <a href = "#pin_headers">Pin_headers</a> </td><td> <a href = "#tubings">Tubings</a> </td><td> <a href = "#ssr_shroud">SSR_shroud</a> </td><td> <a href = "#tube">Tube</a> </td><td></td></tr>
 <tr><td> <a href = "#geared_steppers">Geared_steppers</a> </td><td> <a href = "#potentiometers">Potentiometers</a> </td><td> <a href = "#variacs">Variacs</a> </td><td> <a href = "#screw_knob">Screw_knob</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#green_terminals">Green_terminals</a> </td><td> <a href = "#pulleys">Pulleys</a> </td><td> <a href = "#veroboard">Veroboard</a> </td><td> <a href = "#socket_box">Socket_box</a> </td><td></td><td></td></tr>
 <tr><td> <a href = "#ht_pipes">HT_pipes</a> </td><td></td><td> <a href = "#washers">Washers</a> </td><td> <a href = "#strap_handle">Strap_handle</a> </td><td></td><td></td></tr>
@@ -7180,6 +7180,27 @@ The coordinates of the lowest point on the curve can be retrieved by calling `ca
 | `catenary_s(d, a)` | Length of a symmetric catenary with width `2d`. |
 
 ![catenary](tests/png/catenary.png)
+
+
+<a href="#top">Top</a>
+
+---
+<a name="chamfer"></a>
+## Chamfer
+45 degree chamfer the entrance to holes.
+
+If the hole shape is concave then it must be described as a list of 2D convex children.
+
+[utils/chamfer.scad](utils/chamfer.scad) Implementation.
+
+[tests/chamfer.scad](tests/chamfer.scad) Code for this example.
+
+### Modules
+| Module | Description |
+|:--- |:--- |
+| `chamfer_hole(depth = 1)` | Chamfer a hole given a 2D outline as a child |
+
+![chamfer](tests/png/chamfer.png)
 
 
 <a href="#top">Top</a>
