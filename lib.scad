@@ -23,7 +23,7 @@
 include <core.scad>
 
 include <vitamins/psus.scad>
-include <vitamins/pcbs.scad>
+include <vitamins/displays.scad> // Includes pcbs.scad
 
 include <vitamins/antennas.scad>
 include <vitamins/batteries.scad>
@@ -34,7 +34,6 @@ include <vitamins/box_sections.scad>
 include <vitamins/bulldogs.scad>
 include <vitamins/cameras.scad>
 include <vitamins/components.scad>
-include <vitamins/displays.scad>
 include <vitamins/extrusions.scad>
 include <vitamins/extrusion_brackets.scad>
 include <vitamins/fastons.scad>
