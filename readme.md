@@ -6291,7 +6291,7 @@ Generate storage bins compatible with Zack Freedman's Gridfinity design, see <ht
 
 Based on <https://gridfinity.xyz/specification>
 
-More examples [here](examples/gridfinity).
+More examples [here](examples/Gridfinity).
 
 [printed/gridfinity.scad](printed/gridfinity.scad) Implementation.
 

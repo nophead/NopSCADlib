@@ -22,7 +22,7 @@
 //!
 //! Based on <https://gridfinity.xyz/specification>
 //!
-//! More examples [here](examples/gridfinity).
+//! More examples [here](examples/Gridfinity).
 //
 include <../core.scad>
 use <../utils/rounded_cylinder.scad>
