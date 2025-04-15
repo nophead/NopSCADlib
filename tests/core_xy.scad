@@ -161,7 +161,7 @@ module coreXY_motor_in_back_test2() {
     lower_drive_pulley_offset = [20, 5];
 
 
-    coreXY(coreXY_GT2_20_16, size, pos, separation, x_gap = 0, plain_idler_offset = [20, 0], upper_drive_pulley_offset, lower_drive_pulley_offset, show_pulleys = true, left_lower = false, motor_back = true);
+    coreXY(coreXY_GT2_20_16, size, pos, separation, x_gap = 0, plain_idler_offset = [20, 0], upper_drive_pulley_offset = upper_drive_pulley_offset, lower_drive_pulley_offset = lower_drive_pulley_offset, show_pulleys = true, left_lower = false, motor_back = true);
 
     translate (
         [ size.x - separation.x/2 - lower_drive_pulley_offset.x
