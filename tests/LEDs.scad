@@ -22,7 +22,7 @@ use <../utils/layout.scad>
 include <../vitamins/leds.scad>
 
 module leds()
-    layout(echoit([for(l = LEDs) max(led_diameter(l))]), 5)
+    layout([for(l = LEDs) max(led_diameter(l))], 5)
         led(LEDs[$i], ["green", "blue", "red", "orange"][$i % 4]);
 
 if($preview)

@@ -25,7 +25,7 @@
 //! STL files for all the printed parts, DXF files for CNC routed parts in a project and a manual containing assembly
 //! instructions and exploded views by scraping markdown embedded in OpenSCAD comments, [see scripts](scripts/readme.md).
 //!
-//! A simple example project can be found [here](examples/MainsBreakOutBox/readme.md).
+//! A simple example project can be found [here](examples/MainsBreakOutBox/readme.md) and more complex examples [here](examples).
 //!
 //! For more examples of what it can make see the [gallery](gallery/readme.md).
 //!
@@ -68,6 +68,7 @@ use <tests/fastons.scad>
 use <tests/fuseholder.scad>
 use <tests/gear_motors.scad>
 use <tests/geared_steppers.scad>
+use <tests/gridfinity.scad>
 use <tests/hot_ends.scad>
 use <tests/IECs.scad>
 use <tests/inserts.scad>
@@ -204,7 +205,11 @@ pocket_y = handle_y + 70;
 translate([x5 + 65, pocket_y])
     pocket_handles();
 
-hinge_y = pocket_y + 100;
+gridfinity_y = pocket_y + 100;
+translate([950, gridfinity_y])
+    gridfinity_test();
+
+hinge_y = gridfinity_y + 100;
 translate([x5, hinge_y]) {
     door_hinges()
         door_latches();
@@ -220,7 +225,6 @@ translate([900, pbox_y])
 box_y = pbox_y + 150;
 translate([950, box_y])
     box_test();
-
 
 inserts_y = 0;
 nuts_y = inserts_y + 20;
