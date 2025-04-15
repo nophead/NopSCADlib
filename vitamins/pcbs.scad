@@ -1296,11 +1296,28 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
     grid = [inch(0.05), 11 / 2 - inch(0.15), 1, 4, "silver", 0, inch(0.1)]
 );
 
+I2C_LCD_Backpack = let(size=[42, 19, 1.2])
+  pcb("I2C_LCD_Backpack", "I2C / SPI character LCD backpack",
+      size = size, //size
+      colour = "black",
+      components = [[size[0]-2, -size[1]/2, 90, "2p54header", 4, 1, false, undef, true],
+                    [2, size[1]-8.5, 270, "2p54header", 2, 1, false, false, true],
+                    [size[0]/2,  size[1]/2,  90, "smd_soic", SOIC16, "PCF8574"],
+                    [size[0]*3/4,  11,  0, "trimpot3362"],
+                    // Silkscreen
+                    [size[0]*3/4+6, size[1]-5.8, 0, "text", 3, 1, "GND", "Liberation Sans:style=Bold"],
+                    [size[0]*3/4+6, size[1]-5.8-2.54, 0, "text", 3, 1, "VCC", "Liberation Sans:style=Bold"],
+                    [size[0]*3/4+6, size[1]-5.8-2.54*2, 0, "text", 3, 1, "SDA", "Liberation Sans:style=Bold"],
+                    [size[0]*3/4+6, size[1]-5.8-2.54*3, 0, "text", 3, 1, "SCL", "Liberation Sans:style=Bold"]
+                    ],
+      grid = [2, size[1]-2, 16, 1, silver, inch(0.1), inch(0.9)]
+      );
+
 tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge, 9DOF_stick];
 
 big_pcbs = [BTT_RELAY_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 
-pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RCWL0516, MT3608,RAMPSEndstop, ArduinoNano, HW803_1WAY_RELAY, Feather405, RPI_Pico,
+pcbs = [KY_040, TP4056, L9110S, ZC_A0591, RCWL0516, MT3608,RAMPSEndstop, ArduinoNano, I2C_LCD_Backpack, HW803_1WAY_RELAY, Feather405, RPI_Pico,
         ESP32_DOIT_V1, BlackPill, RPI0, EnviroPlus, ArduinoUno3, ArduinoLeonardo, WD2002SJ, OPZ2, PanelDue_v3, RPI3A, RPI3, RPI4];
 
 pcbs_not_shown = [Melzi, Duex2, PSU12V1A, Keyes5p1, PI_IO, ExtruderPCB];

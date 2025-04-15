@@ -1106,7 +1106,7 @@ LCD displays.
 |   1 | `display(BigTreeTech_TFT35v3_0)` |  BigTreeTech TFT35 v3.0 |
 |   1 | `display(HDMI5)` |  HDMI display 5" |
 |   1 | `display(TFT128x160)` |  LCD TFT ST7735 display 128x160 |
-|   1 | `display(LCD1602A)` |  LCD display 1602A |
+|   2 | `display(LCD1602A)` |  LCD display 1602A |
 |   1 | `display(LCD2004A)` |  LCD display 2004A |
 |   1 | `display(LCDS7282B)` |  LCD display S-7282B |
 |   1 | `display(SSD1963_4p3)` |  LCD display SSD1963 4.3" |
@@ -3000,6 +3000,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(EnviroPlus)` |  Enviro+ |
 |   1 | `pcb(ExtruderPCB)` |  Extruder connection PCB - not shown |
 |   1 | `pcb(HW803_1WAY_RELAY)` |  HW-803 5V 1 way relay module |
+|   1 | `pcb(I2C_LCD_Backpack)` |  I2C / SPI character LCD backpack |
 |   1 | `pcb(KY_040)` |  KY-040 rotart encoder breakout |
 |   1 | `pcb(Keyes5p1)` |  Keyes5.1 Arduino Uno expansion board - not shown |
 |   1 | `pcb(L9110S)` |  L9110S 2-Channel motor driver module |
@@ -3038,11 +3039,12 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   4 | `screw(M2_cap_screw, 25)` |  Screw M2 cap x 25mm |
 |   2 | `screw(M2p5_cap_screw, 20)` |  Screw M2.5 cap x 20mm |
 |   8 | `screw(M2p5_cap_screw, 30)` |  Screw M2.5 cap x 30mm |
-|   8 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
-|   4 | `screw(M2p5_cap_screw, 40)` |  Screw M2.5 cap x 40mm |
+|   4 | `screw(M2p5_cap_screw, 35)` |  Screw M2.5 cap x 35mm |
+|   8 | `screw(M2p5_cap_screw, 40)` |  Screw M2.5 cap x 40mm |
 |   4 | `screw(M2p5_dome_screw, 25)` |  Screw M2.5 dome x 25mm |
 |   4 | `screw(M2p5_pan_screw, 20)` |  Screw M2.5 pan x 20mm |
-|   8 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
+|   4 | `screw(M2p5_pan_screw, 30)` |  Screw M2.5 pan x 30mm |
+|   4 | `screw(M2p5_pan_screw, 35)` |  Screw M2.5 pan x 35mm |
 |  19 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |  13 | `screw(M3_cap_screw, 20)` |  Screw M3 cap x 20mm |
 |   5 | `screw(M3_cap_screw, 25)` |  Screw M3 cap x 25mm |
@@ -3067,24 +3069,25 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Filename |
 | ---:|:--- |
 |   4 | pcb_spacer20100.stl |
-|   4 | pcb_spacer20150.stl |
+|   4 | pcb_spacer20160.stl |
 |   4 | pcb_spacer2070.stl |
 |   4 | pcb_spacer2080.stl |
 |   4 | pcb_spacer2090.stl |
 |   2 | pcb_spacer25110.stl |
-|   4 | pcb_spacer25140.stl |
-|   4 | pcb_spacer25180.stl |
+|   4 | pcb_spacer25150.stl |
 |   4 | pcb_spacer25190.stl |
-|   4 | pcb_spacer25200_2.stl |
+|   4 | pcb_spacer25200.stl |
 |   4 | pcb_spacer25210_2.stl |
-|   4 | pcb_spacer25250.stl |
+|   4 | pcb_spacer25220_2.stl |
 |   4 | pcb_spacer25260.stl |
 |   4 | pcb_spacer25270.stl |
+|   4 | pcb_spacer25280.stl |
 |   4 | pcb_spacer2580.stl |
-|   5 | pcb_spacer30130.stl |
-|   4 | pcb_spacer30220.stl |
+|   1 | pcb_spacer30130.stl |
+|   4 | pcb_spacer30140.stl |
 |   4 | pcb_spacer30230.stl |
-|   3 | pcb_spacer30240.stl |
+|   4 | pcb_spacer30240.stl |
+|   3 | pcb_spacer30250.stl |
 |  10 | pcb_spacer3050.stl |
 |   9 | pcb_spacer3060.stl |
 |   9 | pcb_spacer3070.stl |
