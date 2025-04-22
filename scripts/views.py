@@ -353,7 +353,7 @@ def views(target, do_assemblies = None):
                 print('### 3D Printed parts', file = doc_file)
                 keys = sorted(list(printed.keys()))
                 for i, p in enumerate(keys):
-                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p), file = doc_file, end = '')
+                    print('%s %d x [%s](stls/%s) |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p, p), file = doc_file, end = '')
                     if (i % 3) == 2 or i == len(printed) - 1:
                         n = (i % 3) + 1
                         print('\n|%s' % ('---|' * n), file =  doc_file)
