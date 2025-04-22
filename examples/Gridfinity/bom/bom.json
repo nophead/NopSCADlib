@@ -1,0 +1,49 @@
+[
+    {
+        "name": "main_assembly",
+        "big": null,
+        "ngb": false,
+        "zoomed": 0,
+        "count": 1,
+        "assemblies": {},
+        "vitamins": {},
+        "printed": {
+            "lathe_tool_stand.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            },
+            "MT2_stand.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            },
+            "chuck_stand.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            },
+            "chuck_jaw_bin.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            },
+            "1x1_bin.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            },
+            "123_block_stand.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            },
+            "faceplate_stand.stl": {
+                "count": 1,
+                "colour": "[0, 0.572549, 0]",
+                "camera": "0,0,0,70,0,315,500"
+            }
+        },
+        "routed": {}
+    }
+]

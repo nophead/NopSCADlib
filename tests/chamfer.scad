@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2025
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,14 +16,22 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../utils/core/core.scad>
-use <../utils/layout.scad>
+include <../core.scad>
+use <../utils/chamfer.scad>
 
-include <../vitamins/leds.scad>
+module chamfer() {
+    difference() {
+        h = 1;
+        rounded_rectangle([20, 20, h], 2);
 
-module leds()
-    layout([for(l = LEDs) max(led_diameter(l))], 5)
-        led(LEDs[$i], ["green", "blue", "red", "orange"][$i % 4]);
+        translate_z(h)
+            chamfer_hole(h + eps) {
+                circle(2);
 
-if($preview)
-    leds();
+                translate([-1, 0])
+                    square([2, 5]);
+            }
+    }
+}
+
+chamfer();

@@ -17,6 +17,8 @@
 // If not, see <https://www.gnu.org/licenses/>.
 //
 
+include <pcbs.scad>
+
 HDMI5PCB = pcb("", "",  [121.11, 77.93, 1.65], hole_d = 2.2, colour = "mediumblue",
     holes = [[4.6, 4.9], [4.6, -3.73], [97.69, -3.73], [97.69, 4.9]],
     components = [
@@ -186,6 +188,6 @@ BigTreeTech_TFT35v3_0 = ["BigTreeTech_TFT35v3_0", "BigTreeTech TFT35 v3.0",
 ];
 
 
-displays = [HDMI5, SSD1963_4p3, LCD2004A, BigTreeTech_TFT35v3_0, LCD1602A, LCDS7282B, TFT128x160];
+displays = [HDMI5, SSD1963_4p3, LCD2004A, BigTreeTech_TFT35v3_0, LCD1602A, LCD1602AI2C, LCDS7282B, TFT128x160];
 
 use <display.scad>

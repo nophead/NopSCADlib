@@ -1,5 +1,5 @@
 //
-// NopSCADlib Copyright Chris Palmer 2018
+// NopSCADlib Copyright Chris Palmer 2024
 // nop.head@gmail.com
 // hydraraptor.blogspot.com
 //
@@ -16,14 +16,23 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
-include <../utils/core/core.scad>
-use <../utils/layout.scad>
 
-include <../vitamins/leds.scad>
+//
+//! 45 degree chamfer the entrance to holes.
+//!
+//! If the hole shape is concave then it must be described as a list of 2D convex children.
+//
+include <core/core.scad>
 
-module leds()
-    layout([for(l = LEDs) max(led_diameter(l))], 5)
-        led(LEDs[$i], ["green", "blue", "red", "orange"][$i % 4]);
+module chamfer_hole(depth = 1) {    //! Chamfer a hole given a 2D outline as a child
+    for(i = [0 : $children - 1])
+        hull() {
+            linear_extrude(eps)
+                offset(depth)
+                    children(i);
 
-if($preview)
-    leds();
+            translate_z(-depth)
+                linear_extrude(eps)
+                    children(i);
+        }
+}
