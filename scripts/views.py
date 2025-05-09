@@ -368,7 +368,7 @@ def views(target, do_assemblies = None):
                 print("### CNC Routed parts", file = doc_file)
                 keys = sorted(list(routed.keys()))
                 for i, r in enumerate(keys):
-                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r), file = doc_file, end = '')
+                    print('%s %d x [%s](dxfs/%s) |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r, r), file = doc_file, end = '')
                     if (i % 3) == 2 or i == len(routed) - 1:
                         n = (i % 3) + 1
                         print('\n|%s' % ('---|' * n), file =  doc_file)
