@@ -70,7 +70,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ### 3D Printed parts
 
-| 1 x socket_box.stl |
+| 1 x [socket_box.stl](stls/socket_box.stl) |
 |---|
 | ![socket_box.stl](stls/socket_box.png) 
 
@@ -100,7 +100,7 @@ Earth leakage can be measured Canadian CSA style by disconnected the neutral lin
 
 ### 3D Printed parts
 
-| 4 x foot.stl |
+| 4 x [foot.stl](stls/foot.stl) |
 |---|
 | ![foot.stl](stls/foot.png) 
 

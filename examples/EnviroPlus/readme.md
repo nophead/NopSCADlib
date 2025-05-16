@@ -72,7 +72,7 @@ Environmental monitor using Enviro+ sensor board and a Raspberry Pi Zero.
 
 ### 3D Printed parts
 
-| 1 x enviro_plus_case_base.stl | 1 x fan_duct.stl |
+| 1 x [enviro_plus_case_base.stl](stls/enviro_plus_case_base.stl) | 1 x [fan_duct.stl](stls/fan_duct.stl) |
 |---|---|
 | ![enviro_plus_case_base.stl](stls/enviro_plus_case_base.png) | ![fan_duct.stl](stls/fan_duct.png) 
 
@@ -190,7 +190,7 @@ It converts the PWM signal on GPI4 to a stead DC voltage so that the fan doesn't
 
 ### 3D Printed parts
 
-| 1 x bulkhead.stl | 1 x enviro_plus_case.stl | 3 x foot.stl |
+| 1 x [bulkhead.stl](stls/bulkhead.stl) | 1 x [enviro_plus_case.stl](stls/enviro_plus_case.stl) | 3 x [foot.stl](stls/foot.stl) |
 |---|---|---|
 | ![bulkhead.stl](stls/bulkhead.png) | ![enviro_plus_case.stl](stls/enviro_plus_case.png) | ![foot.stl](stls/foot.png) 
 

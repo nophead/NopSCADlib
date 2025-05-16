@@ -17,11 +17,13 @@
         "printed": {
             "fan_duct.stl": {
                 "count": 1,
-                "colour": "darkorange"
+                "colour": "darkorange",
+                "camera": "0,0,0,70,0,315,500"
             },
             "enviro_plus_case_base.stl": {
                 "count": 1,
-                "colour": "grey"
+                "colour": "grey",
+                "camera": "0,0,0,70,0,315,500"
             }
         },
         "routed": {}
@@ -67,10 +69,10 @@
             "smd_resistor(RES0805, 3K3): SMD resistor 0805 3K3 0.125W": {
                 "count": 1
             },
-            "smd_capacitor(CAP1206): SMD capacitor 1206 10uF": {
+            "smd_capacitor(CAP1206, value = \"10uF\"): SMD capacitor 1206 10uF": {
                 "count": 1
             },
-            "smd_sot(SOT223): SOT223 package FZT851": {
+            "smd_sot(SOT223, \"FZT851\"): SOT223 package FZT851": {
                 "count": 1
             }
         },
@@ -115,15 +117,18 @@
         "printed": {
             "enviro_plus_case.stl": {
                 "count": 1,
-                "colour": "grey"
+                "colour": "grey",
+                "camera": "0,0,0,70,0,315,500"
             },
             "bulkhead.stl": {
                 "count": 1,
-                "colour": "[0.862745, 0.0784314, 0.235294]"
+                "colour": "[0.862745, 0.0784314, 0.235294]",
+                "camera": "0,0,0,70,0,315,500"
             },
             "foot.stl": {
                 "count": 3,
-                "colour": "darkorange"
+                "colour": "darkorange",
+                "camera": "0,0,0,70,0,315,500"
             }
         },
         "routed": {}

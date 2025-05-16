@@ -14,7 +14,8 @@
         "printed": {
             "socket_box.stl": {
                 "count": 1,
-                "colour": "dimgrey"
+                "colour": "dimgrey",
+                "camera": "0,0,0,70,0,315,500"
             }
         },
         "routed": {}
@@ -42,7 +43,8 @@
         "printed": {
             "foot.stl": {
                 "count": 4,
-                "colour": "darkorange"
+                "colour": "darkorange",
+                "camera": "0,0,0,70,0,315,500"
             }
         },
         "routed": {}

@@ -353,7 +353,7 @@ def views(target, do_assemblies = None):
                 print('### 3D Printed parts', file = doc_file)
                 keys = sorted(list(printed.keys()))
                 for i, p in enumerate(keys):
-                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p), file = doc_file, end = '')
+                    print('%s %d x [%s](stls/%s) |' % ('\n|' if not (i % 3) else '', printed[p]["count"], p, p), file = doc_file, end = '')
                     if (i % 3) == 2 or i == len(printed) - 1:
                         n = (i % 3) + 1
                         print('\n|%s' % ('---|' * n), file =  doc_file)
@@ -368,7 +368,10 @@ def views(target, do_assemblies = None):
                 print("### CNC Routed parts", file = doc_file)
                 keys = sorted(list(routed.keys()))
                 for i, r in enumerate(keys):
-                    print('%s %d x %s |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r), file = doc_file, end = '')
+                    if(r.endswith('dxf')):
+                        print('%s %d x [%s](dxfs/%s) |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r, r), file = doc_file, end = '')
+                    elif(r.endswith('svg')):
+                        print('%s %d x [%s](svgs/%s) |' % ('\n|' if not (i % 3) else '', routed[r]["count"], r, r), file = doc_file, end = '')
                     if (i % 3) == 2 or i == len(routed) - 1:
                         n = (i % 3) + 1
                         print('\n|%s' % ('---|' * n), file =  doc_file)
@@ -379,7 +382,7 @@ def views(target, do_assemblies = None):
                             elif (part[-4:] == ".svg"):
                                 print('| ![%s](svgs/%s) %s' % (part, part.replace('.svg','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
                             else:
-                                print("Unkown file type ", part[-4:], " for file ", part)
+                                print("Unknown file type ", part[-4:], " for file ", part)
                         print('\n', file = doc_file)
                 print('\n', file  = doc_file)
 
