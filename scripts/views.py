@@ -382,7 +382,7 @@ def views(target, do_assemblies = None):
                             elif (part[-4:] == ".svg"):
                                 print('| ![%s](svgs/%s) %s' % (part, part.replace('.svg','.png'), '|\n' if j == j - 1 else ''), end = '', file = doc_file)
                             else:
-                                print("Unkown file type ", part[-4:], " for file ", part)
+                                print("Unknown file type ", part[-4:], " for file ", part)
                         print('\n', file = doc_file)
                 print('\n', file  = doc_file)
 
