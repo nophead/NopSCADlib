@@ -35,10 +35,10 @@ module extrusions()
                     rotate(90)
                         layout(heights, gap)
                             rotate(-90)
-                                extrusion(list[$i], 80, cornerHole = extrusion_width(list[$i]) > 20);
+                                extrusion(list[$i], 80);
             }
             else
-                extrusion(e, 80, cornerHole = extrusion_width(e) > 20);
+                extrusion(e, 80);
 
 if ($preview)
     extrusions();
