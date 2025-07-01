@@ -37,7 +37,7 @@ function extrusion_center_hole(type)            = abs(extrusion_center_hole_wd(t
 function extrusion_corner_hole(type)            = abs(extrusion_corner_hole_wd(type));  //! Diameter of corner hole or side if square
 function extrusion_center_square(type)          = abs(extrusion_center_square_wd(type)); //! Size of center square or tube
 
-module extrusion_cross_section(type, cornerHole) {
+module extrusion_cross_section(type, cornerHole=true) {
     width = extrusion_width(type);
     height = extrusion_height(type);
     centerSquare = extrusion_center_square(type);
@@ -54,7 +54,7 @@ module extrusion_cross_section(type, cornerHole) {
             if(d < 0)
                 circle(d = -d);
 
-    module extrusion_corner(type, cornerHole) {
+    module extrusion_corner(type) {
         fillet = extrusion_fillet(type);
         cornerSize = (width - channelWidth) / 2;
         cornerHoleDiameter = abs(extrusion_corner_hole(type));
@@ -74,7 +74,7 @@ module extrusion_cross_section(type, cornerHole) {
                     translate([fillet, fillet])
                         square([cornerSquare - fillet, cornerSquare - fillet]);
                 }
-                if(cornerHole)
+                if(cornerHole && cornerHoleDiameter)
                     translate([cornerSquare / 2, cornerSquare / 2])
                         squircle(extrusion_corner_hole_wd(type));
              }
@@ -117,7 +117,7 @@ module extrusion_cross_section(type, cornerHole) {
                 translate([0, side * (width - height) / 2])
                     for(angle = [0, 90])
                         rotate(angle + (side < 0 ? 180 : 0))
-                            extrusion_corner(type, cornerHole);
+                            extrusion_corner(type);
 
             if(count >= 1)
                 for(i = [1 : count])
@@ -133,7 +133,7 @@ module extrusion_cross_section(type, cornerHole) {
     }
 }
 
-module extrusion(type, length, center = true, cornerHole = false) { //! Draw the specified extrusion
+module extrusion(type, length, center = true, cornerHole = true) { //! Draw the specified extrusion
 
     vitamin(str("extrusion(", type[0], ", ", length, arg(cornerHole, false, "cornerHole"), "): Extrusion ", type[0], " x ", length, "mm"));
 
