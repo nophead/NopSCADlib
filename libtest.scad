@@ -473,7 +473,7 @@ translate([x3 + 10, hot_ends_y])
 translate([x2, panel_meters_y])
     panel_meters();
 
-translate([x2, extrusions_y])
+translate([x2 - 15, extrusions_y])
     extrusions();
 
 translate([x2, box_sections_y])

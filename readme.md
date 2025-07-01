@@ -1210,24 +1210,26 @@ Aluminium  extrusion.
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `extrusion(type, length, center = true, cornerHole = false)` | Draw the specified extrusion |
+| `extrusion(type, length, center = true, cornerHole = true)` | Draw the specified extrusion |
 
 ![extrusions](tests/png/extrusions.png)
 
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `extrusion(E1515, 80)` |  Extrusion E1515 x 80mm |
-|   1 | `extrusion(E2020, 80)` |  Extrusion E2020 x 80mm |
-|   1 | `extrusion(E2020t, 80)` |  Extrusion E2020t x 80mm |
-|   1 | `extrusion(E2040, 80)` |  Extrusion E2040 x 80mm |
-|   1 | `extrusion(E2060, 80)` |  Extrusion E2060 x 80mm |
-|   1 | `extrusion(E2080, 80)` |  Extrusion E2080 x 80mm |
+|   1 | `extrusion(E1515, 80, cornerHole = true)` |  Extrusion E1515 x 80mm |
+|   1 | `extrusion(E2020, 80, cornerHole = true)` |  Extrusion E2020 x 80mm |
+|   1 | `extrusion(E2020t, 80, cornerHole = true)` |  Extrusion E2020t x 80mm |
+|   1 | `extrusion(E2040, 80, cornerHole = true)` |  Extrusion E2040 x 80mm |
+|   1 | `extrusion(E2060, 80, cornerHole = true)` |  Extrusion E2060 x 80mm |
+|   1 | `extrusion(E2080, 80, cornerHole = true)` |  Extrusion E2080 x 80mm |
 |   1 | `extrusion(E3030, 80, cornerHole = true)` |  Extrusion E3030 x 80mm |
 |   1 | `extrusion(E3060, 80, cornerHole = true)` |  Extrusion E3060 x 80mm |
 |   1 | `extrusion(E4040, 80, cornerHole = true)` |  Extrusion E4040 x 80mm |
 |   1 | `extrusion(E4040t, 80, cornerHole = true)` |  Extrusion E4040t x 80mm |
 |   1 | `extrusion(E4080, 80, cornerHole = true)` |  Extrusion E4080 x 80mm |
+|   1 | `extrusion(Makerbeam, 80, cornerHole = true)` |  Extrusion Makerbeam x 80mm |
+|   1 | `extrusion(MakerbeamXL, 80, cornerHole = true)` |  Extrusion MakerbeamXL x 80mm |
 
 
 <a href="#top">Top</a>
@@ -4303,8 +4305,8 @@ SK shaft support brackets
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `extrusion(E2020, 20)` |  Extrusion E2020 x 20mm |
-|   2 | `extrusion(E3030, 20)` |  Extrusion E3030 x 20mm |
+|   2 | `extrusion(E2020, 20, cornerHole = true)` |  Extrusion E2020 x 20mm |
+|   2 | `extrusion(E3030, 20, cornerHole = true)` |  Extrusion E3030 x 20mm |
 |   2 | `sliding_t_nut(M4_hammer_nut)` |  Nut M4 hammer |
 |   2 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
 |   2 | `sliding_t_nut(M5_sliding_t_nut)` |  Nut M5 sliding T |
