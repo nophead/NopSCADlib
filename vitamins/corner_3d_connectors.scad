@@ -30,11 +30,8 @@ corner_3d_connectors = [corner_3d_connector_2020,corner_3d_connector_3030,corner
 
 use <corner_3d_connector.scad>
 
-$show_threads = true;
-
-
-corner_3d_connector(corner_3d_connector_2020, false);
+corner_3d_connector(corner_3d_connector_2020);
 translate([50,0,0])
-corner_3d_connector(corner_3d_connector_3030, false);
+corner_3d_connector(corner_3d_connector_3030, grub_screws=true);
 translate([120,0,0])
-corner_3d_connector(corner_3d_connector_4040, false);
+corner_3d_connector(corner_3d_connector_4040);

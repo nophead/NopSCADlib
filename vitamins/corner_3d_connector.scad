@@ -29,6 +29,8 @@
 
 include <NopSCADlib/core.scad>
 include <NopSCADlib/utils/thread.scad>
+include <NopSCADlib/vitamins/screws.scad>
+
 
 
 
@@ -48,7 +50,7 @@ function nut_screws_hor(type)=type[12]; //! The positions of the screw holes on 
 function nut_screws_ver(type)=type[13]; //! The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm
 
 
-module corner_3d_connector (type, thread = false) {
+module corner_3d_connector (type, thread = false, grub_screws = true) {
     nut_screw_dia = nut_screw_dia(type);
     nut_dia = nut_dia(type);
     nut_thickness = nut_thickness(type);
@@ -72,22 +74,17 @@ nut_profile = [
     [0, -nut_dia/2]
 ];
 
+    grub_screw = nut_screw_dia == 3 ? M3_grub_screw:nut_screw_dia == 4 ? M4_grub_screw:nut_screw_dia == 5 ? M5_grub_screw:M6_grub_screw;
+    
+    translate([-5,0,0])
+    screw(grub_screw, nut_nyloc_thickness);
+
 
     outer_side_length = outer_side_length(type);
     outer_height = outer_height(type);
     inner_side_length= inner_side_length(type);
     inner_height = inner_height(type);
     inner_offset_z = outer_height-inner_height+0.01;
-    r=1;
-    color("lightgray")
-    union() {
-    
-    //create the base
-    difference () {
-        rounded_cube_xy([outer_side_length, outer_side_length, outer_height], r=r);
-        translate([(outer_side_length-inner_side_length)/2,(outer_side_length-inner_side_length)/2,inner_offset_z])
-        rounded_cube_xy([inner_side_length, inner_side_length, inner_height], r=r);
-    }
     
     //position the nuts on the base
     positions_horizontal = [
@@ -99,7 +96,18 @@ nut_profile = [
         [outer_side_length/2,outer_side_length,inner_offset_z,0,0,270],
     ];
     
-
+    //the radius of the base corners
+    r=1;
+    color("lightgray")
+    union() {
+    
+    //create the base
+    difference () {
+        rounded_cube_xy([outer_side_length, outer_side_length, outer_height], r=r);
+        translate([(outer_side_length-inner_side_length)/2,(outer_side_length-inner_side_length)/2,inner_offset_z])
+        rounded_cube_xy([inner_side_length, inner_side_length, inner_height], r=r);
+    }
+    
      for (pos = positions_horizontal) {
         translate([pos[0],pos[1],pos[2]])
         rotate([pos[3],pos[4],pos[5]])
@@ -112,15 +120,21 @@ nut_profile = [
                 rotate([0,90,0])
                 difference() {
                     cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
-                    if(thread)
+                    if(thread) {
                     female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
+                    }
+                    
+                    
                 }
+                if(grub_screws) {
+                        screw(grub_screw, nut_nyloc_thickness);
+                        }
             }
         }
      }
      for (pos = positions_vertical) {
         translate([pos[0],pos[1],pos[2]])
-        rotate([pos[3],pos[4],pos[5]])
+        rotate([pos[3],pos[4],pos[5]]){
             difference() {
             linear_extrude(nut_sx)
             polygon(nut_profile);
@@ -130,11 +144,37 @@ nut_profile = [
                 rotate([0,90,0])
                 difference() {
                     cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
-                    if(thread)
+                    if(thread) {
                     female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
+                    }
                 }
             }
         }
+        }
      }
 }
+
+if(grub_screws) {
+for (pos = positions_horizontal) {
+        translate([pos[0],pos[1],pos[2]])
+        rotate([pos[3],pos[4],pos[5]]){
+                            for ( dist = nut_screws_hor(type) ){
+            translate([-0.01,0,nut_sx*dist])
+                rotate([180,90,0])
+                
+                screw(grub_screw, nut_nyloc_thickness);
+            } 
+     }
+     }
+     for (pos = positions_vertical) {
+        translate([pos[0],pos[1],pos[2]])
+        rotate([pos[3],pos[4],pos[5]]){
+                            for ( dist = nut_screws_ver(type) ){
+            translate([-0.01,0,nut_sx*dist])
+                rotate([180,90,0])
+                screw(grub_screw, nut_nyloc_thickness);
+            }
+     }
+     }
+     }
 }
