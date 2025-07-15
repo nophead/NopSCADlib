@@ -34,30 +34,36 @@ include <NopSCADlib/vitamins/screws.scad>
 
 
 
-function outer_side_length(type) = type[1]; //! The length of the base cuboid sides
-function outer_height(type) = type[2]; //! The height of the cuboid 
-function inner_side_length(type)= type[3]; //! The length of the dip in the cuboid sides
-function inner_height(type) = type[4]; //! The depth offset of the dip in the cuboid
+function corner_3d_connector_outer_side_length(type) = type[1]; //! The length of the base cuboid sides
+function corner_3d_connector_outer_height(type) = type[2]; //! The height of the cuboid
+function corner_3d_connector_inner_side_length(type)= type[3]; //! The length of the dip in the cuboid sides
+function corner_3d_connector_inner_height(type) = type[4]; //! The depth offset of the dip in the cuboid
 
-function nut_screw_dia(type) = type[5]; //! The diameter of the screw
-function nut_dia(type) = type[6]; //! The width of bottom part of the nut
-function nut_thickness(type) = type[7]; //! The thickness of the top part of the nut
-function nut_nyloc_thickness(type) = type[8]; //! The total thickness of the nut
-function nut_sx(type) = type[9]; //! The lenght of the nuts
-function nut_ty1(type) = type[10]; //! The total width of the nut
-function nut_ty2(type) = type[11]; //! The width of the top edge of the nut
-function nut_screws_hor(type)=type[12]; //! The positions of the screw holes on the horizontal arms, expressed in %/100 of the nut arm
-function nut_screws_ver(type)=type[13]; //! The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm
+function corner_3d_connector_nut_screw_dia(type) = type[5]; //! The diameter of the screw
+function corner_3d_connector_nut_dia(type) = type[6]; //! The width of bottom part of the nut
+function corner_3d_connector_nut_thickness(type) = type[7]; //! The thickness of the top part of the nut
+function corner_3d_connector_nut_nyloc_thickness(type) = type[8]; //! The total thickness of the nut
+function corner_3d_connector_nut_sx(type) = type[9]; //! The lenght of the nuts
+function corner_3d_connector_nut_ty1(type) = type[10]; //! The total width of the nut
+function corner_3d_connector_nut_ty2(type) = type[11]; //! The width of the top edge of the nut
+function corner_3d_connector_nut_screws_hor(type) = type[12]; //! The positions of the screw holes on the horizontal arms, expressed in %/100 of the nut arm
+function corner_3d_connector_nut_screws_ver(type) = type[13]; //! The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm
+
+
+function corner_3d_connector_get_y_offset(type) = [0,-corner_3d_connector_outer_side_length(type)/2,corner_3d_connector_nut_nyloc_thickness(type)];
+function corner_3d_connector_get_y_rot(type) = [90,0,0];
+function corner_3d_connector_get_x_offset(type) = [corner_3d_connector_outer_side_length(type)/2,0,corner_3d_connector_nut_nyloc_thickness(type)];
+function corner_3d_connector_get_x_rot(type) = [0,90,0];
 
 
 module corner_3d_connector (type, thread = false, grub_screws = true) {
-    nut_screw_dia = nut_screw_dia(type);
-    nut_dia = nut_dia(type);
-    nut_thickness = nut_thickness(type);
-    nut_nyloc_thickness = nut_nyloc_thickness(type);
-    nut_sx = nut_sx(type);
-    nut_ty1 = nut_ty1(type);
-    nut_ty2= nut_ty2(type);
+    nut_screw_dia = corner_3d_connector_nut_screw_dia(type);
+    nut_dia = corner_3d_connector_nut_dia(type);
+    nut_thickness = corner_3d_connector_nut_thickness(type);
+    nut_nyloc_thickness = corner_3d_connector_nut_nyloc_thickness(type);
+    nut_sx = corner_3d_connector_nut_sx(type);
+    nut_ty1 = corner_3d_connector_nut_ty1(type);
+    nut_ty2= corner_3d_connector_nut_ty2(type);
 
     
 
@@ -75,21 +81,17 @@ nut_profile = [
 ];
 
     grub_screw = nut_screw_dia == 3 ? M3_grub_screw:nut_screw_dia == 4 ? M4_grub_screw:nut_screw_dia == 5 ? M5_grub_screw:M6_grub_screw;
-    
-    translate([-5,0,0])
-    screw(grub_screw, nut_nyloc_thickness);
 
-
-    outer_side_length = outer_side_length(type);
-    outer_height = outer_height(type);
-    inner_side_length= inner_side_length(type);
-    inner_height = inner_height(type);
+    outer_side_length = corner_3d_connector_outer_side_length(type);
+    outer_height = corner_3d_connector_outer_height(type);
+    inner_side_length= corner_3d_connector_inner_side_length(type);
+    inner_height = corner_3d_connector_inner_height(type);
     inner_offset_z = outer_height-inner_height+0.01;
     
     //position the nuts on the base
     positions_horizontal = [
-        [outer_side_length/2,0.001,nut_nyloc_thickness,0,90,270],
-        [outer_side_length-0.001,outer_side_length/2,nut_nyloc_thickness, 0,90,0]
+        [outer_side_length/2,0.001,0,0,270,90],
+        [outer_side_length-0.001,outer_side_length/2,0, 0,270,180]
     ];
     positions_vertical = [
         [0,outer_side_length/2,inner_offset_z,0,0,0],
@@ -98,9 +100,12 @@ nut_profile = [
     
     //the radius of the base corners
     r=1;
+    
+    //offset so everything is centered for easy attachment to extrusion
+    translate([-outer_side_length/2,-outer_side_length/2, -outer_height]){
+    
     color("lightgray")
     union() {
-    
     //create the base
     difference () {
         rounded_cube_xy([outer_side_length, outer_side_length, outer_height], r=r);
@@ -115,7 +120,7 @@ nut_profile = [
             linear_extrude(nut_sx)
             polygon(nut_profile);
             //create the screw holes
-            for ( dist = nut_screws_hor(type) ){
+            for ( dist = corner_3d_connector_nut_screws_hor(type) ){
             translate([-0.01,0,nut_sx*dist])
                 rotate([0,90,0])
                 difference() {
@@ -139,7 +144,7 @@ nut_profile = [
             linear_extrude(nut_sx)
             polygon(nut_profile);
             //create the screw holes
-            for ( dist = nut_screws_ver(type) ){
+            for ( dist = corner_3d_connector_nut_screws_ver(type) ){
             translate([-0.01,0,nut_sx*dist])
                 rotate([0,90,0])
                 difference() {
@@ -158,7 +163,7 @@ if(grub_screws) {
 for (pos = positions_horizontal) {
         translate([pos[0],pos[1],pos[2]])
         rotate([pos[3],pos[4],pos[5]]){
-                            for ( dist = nut_screws_hor(type) ){
+                            for ( dist = corner_3d_connector_nut_screws_hor(type) ){
             translate([-0.01,0,nut_sx*dist])
                 rotate([180,90,0])
                 
@@ -169,11 +174,12 @@ for (pos = positions_horizontal) {
      for (pos = positions_vertical) {
         translate([pos[0],pos[1],pos[2]])
         rotate([pos[3],pos[4],pos[5]]){
-                            for ( dist = nut_screws_ver(type) ){
+                            for ( dist = corner_3d_connector_nut_screws_ver(type) ){
             translate([-0.01,0,nut_sx*dist])
                 rotate([180,90,0])
                 screw(grub_screw, nut_nyloc_thickness);
             }
+     }
      }
      }
      }

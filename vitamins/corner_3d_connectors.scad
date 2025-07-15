@@ -29,9 +29,3 @@ corner_3d_connector_4040 = ["corner_3d_connector_4040", 40,9.5,     25,     2.5,
 corner_3d_connectors = [corner_3d_connector_2020,corner_3d_connector_3030,corner_3d_connector_4040];
 
 use <corner_3d_connector.scad>
-
-corner_3d_connector(corner_3d_connector_2020);
-translate([50,0,0])
-corner_3d_connector(corner_3d_connector_3030, grub_screws=true);
-translate([120,0,0])
-corner_3d_connector(corner_3d_connector_4040);
