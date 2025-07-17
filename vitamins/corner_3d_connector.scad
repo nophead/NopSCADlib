@@ -67,18 +67,18 @@ module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw
 
     
 
-nut_profile = [
-    [0, nut_dia/2],
-    [nut_nyloc_thickness-nut_thickness, nut_dia/2],
-    [nut_nyloc_thickness-nut_thickness, nut_ty1/2],
-    [nut_nyloc_thickness-nut_thickness + (nut_ty1-nut_ty2)/2, nut_ty1/2],
-    [nut_nyloc_thickness, nut_ty2/2],
-    [nut_nyloc_thickness, -nut_ty2/2],
-    [nut_nyloc_thickness-nut_thickness + (nut_ty1-nut_ty2)/2, -nut_ty1/2],
-    [nut_nyloc_thickness-nut_thickness, -nut_ty1/2],
-    [nut_nyloc_thickness-nut_thickness, -nut_dia/2],
-    [0, -nut_dia/2]
-];
+    nut_profile = [
+        [0, nut_dia/2],
+        [nut_nyloc_thickness-nut_thickness, nut_dia/2],
+        [nut_nyloc_thickness-nut_thickness, nut_ty1/2],
+        [nut_nyloc_thickness-nut_thickness + (nut_ty1-nut_ty2)/2, nut_ty1/2],
+        [nut_nyloc_thickness, nut_ty2/2],
+        [nut_nyloc_thickness, -nut_ty2/2],
+        [nut_nyloc_thickness-nut_thickness + (nut_ty1-nut_ty2)/2, -nut_ty1/2],
+        [nut_nyloc_thickness-nut_thickness, -nut_ty1/2],
+        [nut_nyloc_thickness-nut_thickness, -nut_dia/2],
+        [0, -nut_dia/2]
+    ];
 
     grub_screw = nut_screw_dia == 3 ? M3_grub_screw:nut_screw_dia == 4 ? M4_grub_screw:nut_screw_dia == 5 ? M5_grub_screw:M6_grub_screw;
 
@@ -103,84 +103,84 @@ nut_profile = [
     
     //offset so everything is centered for easy attachment to extrusion
     translate([-outer_side_length/2,-outer_side_length/2, -outer_height]){
-    
-    color("lightgray")
-    union() {
-    //create the base
-    difference () {
-        rounded_cube_xy([outer_side_length, outer_side_length, outer_height], r=r);
-        translate([(outer_side_length-inner_side_length)/2,(outer_side_length-inner_side_length)/2,inner_offset_z])
-        rounded_cube_xy([inner_side_length, inner_side_length, inner_height], r=r);
-    }
-    
-     for (pos = positions_horizontal) {
-        translate([pos[0],pos[1],pos[2]])
-        rotate([pos[3],pos[4],pos[5]])
-            difference() {
-            linear_extrude(nut_sx)
-            polygon(nut_profile);
-            //create the screw holes
-            for ( dist = corner_3d_connector_nut_screws_hor(type) ){
-            translate([-0.01,0,nut_sx*dist])
-                rotate([0,90,0])
-                difference() {
-                    cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
-                    if(thread) {
-                    female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
-                    }
-                    
-                    
-                }
-                if(grub_screws) {
-                        screw(grub_screw, nut_nyloc_thickness);
-                        }
-            }
-        }
-     }
-     for (pos = positions_vertical) {
-        translate([pos[0],pos[1],pos[2]])
-        rotate([pos[3],pos[4],pos[5]]){
-            difference() {
-            linear_extrude(nut_sx)
-            polygon(nut_profile);
-            //create the screw holes
-            for ( dist = corner_3d_connector_nut_screws_ver(type) ){
-            translate([-0.01,0,nut_sx*dist])
-                rotate([0,90,0])
-                difference() {
-                    cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
-                    if(thread) {
-                    female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
-                    }
-                }
-            }
-        }
-        }
-     }
-}
 
-if(grub_screws) {
-for (pos = positions_horizontal) {
-        translate([pos[0],pos[1],pos[2]])
-        rotate([pos[3],pos[4],pos[5]]){
-                            for ( dist = corner_3d_connector_nut_screws_hor(type) ){
-            translate([-0.01,0,nut_sx*dist])
-                rotate([180,90,0])
-                
-                screw(grub_screw, nut_nyloc_thickness);
-            } 
-     }
-     }
-     for (pos = positions_vertical) {
-        translate([pos[0],pos[1],pos[2]])
-        rotate([pos[3],pos[4],pos[5]]){
-                            for ( dist = corner_3d_connector_nut_screws_ver(type) ){
-            translate([-0.01,0,nut_sx*dist])
-                rotate([180,90,0])
-                screw(grub_screw, nut_nyloc_thickness);
+        color("lightgray")
+        union() {
+            //create the base
+            difference () {
+                rounded_cube_xy([outer_side_length, outer_side_length, outer_height], r=r);
+                translate([(outer_side_length-inner_side_length)/2,(outer_side_length-inner_side_length)/2,inner_offset_z])
+                rounded_cube_xy([inner_side_length, inner_side_length, inner_height], r=r);
             }
-     }
-     }
-     }
-     }
+
+            for (pos = positions_horizontal) {
+                translate([pos[0],pos[1],pos[2]])
+                rotate([pos[3],pos[4],pos[5]])
+                difference() {
+                    linear_extrude(nut_sx)
+                    polygon(nut_profile);
+                    //create the screw holes
+                    for ( dist = corner_3d_connector_nut_screws_hor(type) ){
+                        translate([-0.01,0,nut_sx*dist])
+                        rotate([0,90,0])
+                        difference() {
+                            cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
+                            if(thread) {
+                                female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
+                            }
+
+
+                        }
+                        if(grub_screws) {
+                            screw(grub_screw, nut_nyloc_thickness);
+                        }
+                    }
+                }
+            }
+            for (pos = positions_vertical) {
+                translate([pos[0],pos[1],pos[2]])
+                rotate([pos[3],pos[4],pos[5]]){
+                    difference() {
+                        linear_extrude(nut_sx)
+                        polygon(nut_profile);
+                        //create the screw holes
+                        for ( dist = corner_3d_connector_nut_screws_ver(type) ){
+                            translate([-0.01,0,nut_sx*dist])
+                            rotate([0,90,0])
+                            difference() {
+                                cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
+                                if(thread) {
+                                    female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if(grub_screws) {
+            for (pos = positions_horizontal) {
+                translate([pos[0],pos[1],pos[2]])
+                rotate([pos[3],pos[4],pos[5]]){
+                    for ( dist = corner_3d_connector_nut_screws_hor(type) ){
+                        translate([-0.01,0,nut_sx*dist])
+                        rotate([180,90,0])
+
+                        screw(grub_screw, nut_nyloc_thickness);
+                    }
+                }
+            }
+            for (pos = positions_vertical) {
+                translate([pos[0],pos[1],pos[2]])
+                rotate([pos[3],pos[4],pos[5]]){
+                    for ( dist = corner_3d_connector_nut_screws_ver(type) ){
+                        translate([-0.01,0,nut_sx*dist])
+                        rotate([180,90,0])
+                        screw(grub_screw, nut_nyloc_thickness);
+                    }
+                }
+            }
+        }
+    }
 }
