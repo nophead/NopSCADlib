@@ -50,13 +50,13 @@ function corner_3d_connector_nut_screws_hor(type) = type[12]; //! The positions 
 function corner_3d_connector_nut_screws_ver(type) = type[13]; //! The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm
 
 
-function corner_3d_connector_get_y_offset(type) = [0,-corner_3d_connector_outer_side_length(type)/2,corner_3d_connector_nut_nyloc_thickness(type)];
-function corner_3d_connector_get_y_rot(type) = [90,0,0];
-function corner_3d_connector_get_x_offset(type) = [corner_3d_connector_outer_side_length(type)/2,0,corner_3d_connector_nut_nyloc_thickness(type)];
-function corner_3d_connector_get_x_rot(type) = [0,90,0];
+function corner_3d_connector_get_y_offset(type) = [0,-corner_3d_connector_outer_side_length(type)/2,corner_3d_connector_nut_nyloc_thickness(type)]; //! helper function to position the y beam
+function corner_3d_connector_get_y_rot(type) = [90,0,0]; //! helper function to rotate the y beam
+function corner_3d_connector_get_x_offset(type) = [corner_3d_connector_outer_side_length(type)/2,0,corner_3d_connector_nut_nyloc_thickness(type)]; //! helper function to position the x beam
+function corner_3d_connector_get_x_rot(type) = [0,90,0]; //! helper function to rotate the y beam
 
 
-module corner_3d_connector (type, thread = false, grub_screws = true) {
+module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw the specified corner_3d_connector
     nut_screw_dia = corner_3d_connector_nut_screw_dia(type);
     nut_dia = corner_3d_connector_nut_dia(type);
     nut_thickness = corner_3d_connector_nut_thickness(type);
