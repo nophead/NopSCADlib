@@ -117,7 +117,7 @@ module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw
                 translate([pos[0],pos[1],pos[2]])
                 rotate([pos[3],pos[4],pos[5]])
                 difference() {
-                    linear_extrude(nut_sx)
+                    linear_extrude(nut_sx, convexity =3 )
                     polygon(nut_profile);
                     //create the screw holes
                     for ( dist = corner_3d_connector_nut_screws_hor(type) ){
@@ -141,7 +141,7 @@ module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw
                 translate([pos[0],pos[1],pos[2]])
                 rotate([pos[3],pos[4],pos[5]]){
                     difference() {
-                        linear_extrude(nut_sx)
+                        linear_extrude(nut_sx, convexity =3)
                         polygon(nut_profile);
                         //create the screw holes
                         for ( dist = corner_3d_connector_nut_screws_ver(type) ){
