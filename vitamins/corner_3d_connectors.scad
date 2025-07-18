@@ -16,15 +16,17 @@
 // You should have received a copy of the GNU General Public License along with NopSCADlib.
 // If not, see <https://www.gnu.org/licenses/>.
 //
+include <../core.scad>
+include <screws.scad>
 
 
 
 //sh is horizontal positions of the screw holes, expressed in %/100 of the nut arm
 //sv is vertical positions of the screw holes, expressed in %/100 of the nut arm
-//                                                                              sdia   nd   nt  nnt nsx  nty1 nty2   sh     sv
-corner_3d_connector_2020 = ["corner_3d_connector_2020", 20,    5,   13,     2.5,    4,  6,  3.5,5,  15.5,10,    6,   [0.5], [0.5]];
-corner_3d_connector_3030 = ["corner_3d_connector_3030", 29.6,6.2,   22,     2.5,    6,  8,  4.2,6.2,24.9,16,    11,   [0.25,0.75], [0.65]];
-corner_3d_connector_4040 = ["corner_3d_connector_4040", 40,9.5,     25,     2.5,    6,  8,  5,  9.5,34.0,19.5,  14,   [0.25,0.75], [0.65]];
+//                                                                              screw               nd   nt  nnt nsx  nty1 nty2   sh     sv
+corner_3d_connector_2020 = ["corner_3d_connector_2020", 20,    5,   13,     2.5,    M4_grub_screw,  6,  3.5,5,  15.5,10,    6,   [0.5], [0.5]];
+corner_3d_connector_3030 = ["corner_3d_connector_3030", 29.6,6.2,   22,     2.5,    M6_grub_screw,  8,  4.2,6.2,24.9,16,    11,   [0.25,0.75], [0.65]];
+corner_3d_connector_4040 = ["corner_3d_connector_4040", 40,9.5,     25,     2.5,    M6_grub_screw,  8,  5,  9.5,34.0,19.5,  14,   [0.25,0.75], [0.65]];
 
 corner_3d_connectors = [corner_3d_connector_2020,corner_3d_connector_3030,corner_3d_connector_4040];
 

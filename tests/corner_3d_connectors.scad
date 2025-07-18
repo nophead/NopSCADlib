@@ -48,7 +48,7 @@ translate([220,0,0])
 corner_connector(with_profiles, corner_3d_connector_4040, E4040);
 }
 
-$show_threads=true;
+$show_threads=false;
 corner_connectors();
 translate ([0,100,0])
 corner_connectors(true);

@@ -28,8 +28,8 @@
 //
 
 include <NopSCADlib/core.scad>
-include <NopSCADlib/utils/thread.scad>
-include <NopSCADlib/vitamins/screws.scad>
+include <../utils/thread.scad>
+//include <NopSCADlib/vitamins/screws.scad>
 
 
 
@@ -39,7 +39,7 @@ function corner_3d_connector_outer_height(type) = type[2]; //! The height of the
 function corner_3d_connector_inner_side_length(type)= type[3]; //! The length of the dip in the cuboid sides
 function corner_3d_connector_inner_height(type) = type[4]; //! The depth offset of the dip in the cuboid
 
-function corner_3d_connector_nut_screw_dia(type) = type[5]; //! The diameter of the screw
+function corner_3d_connector_nut_screw(type) = type[5]; //! The screw (most likely Mx_grub_screw from <NopSCADlib/vitamins/screws.scad>)
 function corner_3d_connector_nut_dia(type) = type[6]; //! The width of bottom part of the nut
 function corner_3d_connector_nut_thickness(type) = type[7]; //! The thickness of the top part of the nut
 function corner_3d_connector_nut_nyloc_thickness(type) = type[8]; //! The total thickness of the nut
@@ -58,7 +58,7 @@ function corner_3d_connector_get_x_rot(type) = [0,90,0]; //! helper function to 
 
 module corner_3d_connector (type, grub_screws = true) { //! draw the specified corner_3d_connector
 
-    nut_screw_dia = corner_3d_connector_nut_screw_dia(type);
+    nut_screw_dia = screw_radius(corner_3d_connector_nut_screw(type)*2);
     nut_dia = corner_3d_connector_nut_dia(type);
     nut_thickness = corner_3d_connector_nut_thickness(type);
     nut_nyloc_thickness = corner_3d_connector_nut_nyloc_thickness(type);
@@ -81,7 +81,7 @@ module corner_3d_connector (type, grub_screws = true) { //! draw the specified c
         [0, -nut_dia/2]
     ];
 
-    grub_screw = nut_screw_dia == 3 ? M3_grub_screw:nut_screw_dia == 4 ? M4_grub_screw:nut_screw_dia == 5 ? M5_grub_screw:M6_grub_screw;
+    grub_screw = corner_3d_connector_nut_screw(type);
 
     outer_side_length = corner_3d_connector_outer_side_length(type);
     outer_height = corner_3d_connector_outer_height(type);
@@ -105,7 +105,7 @@ module corner_3d_connector (type, grub_screws = true) { //! draw the specified c
     //offset so everything is centered for easy attachment to extrusion
     translate([-outer_side_length/2,-outer_side_length/2, -outer_height]){
 
-        color("lightgray")
+        color("silver")
         union() {
             //create the base
             difference () {
