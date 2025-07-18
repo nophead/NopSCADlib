@@ -21,7 +21,7 @@ include <../vitamins/extrusions.scad>
 
 module corner_connector(with_profiles = false, corner_connector_type, extrusion_type) {
     extrusion_length = 40;
-    corner_3d_connector(corner_connector_type);
+    corner_3d_connector(corner_connector_type, grub_screws=true);
     if(with_profiles){
         translate([0,0,extrusion_length/2])
         extrusion(extrusion_type, extrusion_length);
@@ -48,6 +48,8 @@ translate([220,0,0])
 corner_connector(with_profiles, corner_3d_connector_4040, E4040);
 }
 
+$show_threads=true;
 corner_connectors();
 translate ([0,100,0])
 corner_connectors(true);
+

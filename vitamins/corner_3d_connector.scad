@@ -56,7 +56,8 @@ function corner_3d_connector_get_x_offset(type) = [corner_3d_connector_outer_sid
 function corner_3d_connector_get_x_rot(type) = [0,90,0]; //! helper function to rotate the y beam
 
 
-module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw the specified corner_3d_connector
+module corner_3d_connector (type, grub_screws = true) { //! draw the specified corner_3d_connector
+
     nut_screw_dia = corner_3d_connector_nut_screw_dia(type);
     nut_dia = corner_3d_connector_nut_dia(type);
     nut_thickness = corner_3d_connector_nut_thickness(type);
@@ -125,7 +126,7 @@ module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw
                         rotate([0,90,0])
                         difference() {
                             cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
-                            if(thread) {
+                            if(show_threads ) {
                                 female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
                             }
 
@@ -149,7 +150,7 @@ module corner_3d_connector (type, thread = false, grub_screws = true) { //! draw
                             rotate([0,90,0])
                             difference() {
                                 cylinder(h = nut_nyloc_thickness+0.02, d=nut_screw_dia, center = false);
-                                if(thread) {
+                                if(show_threads ) {
                                     female_metric_thread(nut_screw_dia, metric_coarse_pitch(nut_screw_dia), nut_nyloc_thickness, center = false);
                                 }
                             }
