@@ -1119,8 +1119,6 @@ LCD displays.
 ## Extrusion_brackets
 Brackets for joining extrusions at a corner.
 
-[vitamins/extrusion_brackets.scad](vitamins/extrusion_brackets.scad) Object definitions.
-
 [vitamins/extrusion_bracket.scad](vitamins/extrusion_bracket.scad) Implementation.
 
 [tests/extrusion_brackets.scad](tests/extrusion_brackets.scad) Code for this example.
@@ -1128,6 +1126,19 @@ Brackets for joining extrusions at a corner.
 ### Properties
 | Function | Description |
 |:--- |:--- |
+| `extrusion_corner_bracket_3D_inner_height(type)` | The depth offset of the dip in the cuboid |
+| `extrusion_corner_bracket_3D_inner_side_length(type)` | The length of the dip in the cuboid sides |
+| `extrusion_corner_bracket_3D_nut_dia(type)` | The width of bottom part of the nut |
+| `extrusion_corner_bracket_3D_nut_nyloc_thickness(type)` | The total thickness of the nut |
+| `extrusion_corner_bracket_3D_nut_screw(type)` | The screw (most likely Mx_grub_screw from <NopSCADlib/vitamins/screws.scad>) |
+| `extrusion_corner_bracket_3D_nut_screws_hor(type)` | The positions of the screw holes on the horizontal arms, expressed in %/100 of the nut arm |
+| `extrusion_corner_bracket_3D_nut_screws_ver(type)` | The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm |
+| `extrusion_corner_bracket_3D_nut_sx(type)` | The length of the nuts |
+| `extrusion_corner_bracket_3D_nut_thickness(type)` | The thickness of the top part of the nut |
+| `extrusion_corner_bracket_3D_nut_ty1(type)` | The total width of the nut |
+| `extrusion_corner_bracket_3D_nut_ty2(type)` | The width of the top edge of the nut |
+| `extrusion_corner_bracket_3D_outer_height(type)` | The height of the cuboid |
+| `extrusion_corner_bracket_3D_outer_side_length(type)` | The length of the base cuboid sides |
 | `extrusion_corner_bracket_base_thickness(type)` | Thickness of base of bracket |
 | `extrusion_corner_bracket_extrusion(type)` | Default extrusion this bracket is for |
 | `extrusion_corner_bracket_hole_offset(type)` | Hole offset from corner |
@@ -1139,12 +1150,20 @@ Brackets for joining extrusions at a corner.
 | `extrusion_inner_corner_bracket_size(type)` | Size of inner bracket |
 | `extrusion_inner_corner_bracket_tnut(type)` | The sliding t-nut it is based on |
 
+### Functions
+| Function | Description |
+|:--- |:--- |
+| `extrusion_corner_bracket_3D_get_x_offset(type)` | helper function to position the x beam |
+| `extrusion_corner_bracket_3D_get_x_rot(type)` | helper function to rotate the y beam |
+| `extrusion_corner_bracket_3D_get_y_offset(type)` | helper function to position the y beam |
+| `extrusion_corner_bracket_3D_get_y_rot(type)` | helper function to rotate the y beam |
+
 ### Modules
 | Module | Description |
 |:--- |:--- |
 | `extrusion_corner_bracket(type)` | Corner bracket for extrusion |
+| `extrusion_corner_bracket_3D(type, grub_screws = true)` | draw the specified extrusion_corner_bracket_3D |
 | `extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_type = undef, nut_type = undef, max_screw_depth = undef, extrusion = undef)` | Assembly with fasteners in place |
-| `extrusion_corner_bracket_hole_positions(type)` | Place children at hole positions |
 | `extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false, extrusion = undef)` | Inner corner bracket for extrusion |
 
 ![extrusion_brackets](tests/png/extrusion_brackets.png)
@@ -1152,21 +1171,30 @@ Brackets for joining extrusions at a corner.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
+|   3 | `extrusion(E2020, 40, cornerHole = true)` |  Extrusion E2020 x 40mm |
 |   2 | `extrusion(E2020t, 20.5)` |  Extrusion E2020t x 20.5mm |
 |   1 | `extrusion(E2020t, 28)` |  Extrusion E2020t x 28mm |
 |   2 | `extrusion(E2020t, 39.5)` |  Extrusion E2020t x 39.5mm |
 |   1 | `extrusion(E2020t, 48)` |  Extrusion E2020t x 48mm |
+|   3 | `extrusion(E3030, 40, cornerHole = true)` |  Extrusion E3030 x 40mm |
+|   3 | `extrusion(E4040, 40, cornerHole = true)` |  Extrusion E4040 x 40mm |
 |   1 | `extrusion(E4040t, 27.4, cornerHole = true)` |  Extrusion E4040t x 27.4mm |
 |   1 | `extrusion(E4040t, 40, cornerHole = true)` |  Extrusion E4040t x 40mm |
 |   1 | `extrusion(E4040t, 60.4, cornerHole = true)` |  Extrusion E4040t x 60.4mm |
 |   1 | `extrusion(E4040t, 80, cornerHole = true)` |  Extrusion E4040t x 80mm |
 |   2 | `extrusion_corner_bracket(E20_corner_bracket)` |  Extrusion corner bracket 20mm for E2020t |
 |   2 | `extrusion_corner_bracket(E40_corner_bracket)` |  Extrusion corner bracket 35mm for E4040t |
+|   2 | `extrusion_corner_bracket_3D(extrusion_corner_bracket_3D_2020)` |  Extrusion corner bracket 3D mm for E2020 |
+|   2 | `extrusion_corner_bracket_3D(extrusion_corner_bracket_3D_3030)` |  Extrusion corner bracket 3D mm for E3030 |
+|   2 | `extrusion_corner_bracket_3D(extrusion_corner_bracket_3D_4040)` |  Extrusion corner bracket 3D mm for E4040 |
 |   4 | `extrusion_inner_corner_bracket(E20_inner_corner_bracket)` |  Extrusion inner corner bracket for E2020t |
 |   2 | `extrusion_inner_corner_bracket(E40_inner_corner_bracket)` |  Extrusion inner corner bracket for E4040t |
 |   4 | `sliding_t_nut(M4_sliding_t_nut)` |  Nut M4 sliding T |
 |   4 | `sliding_t_nut(M8_sliding_ball_t_nut)` |  Nut M8 sliding T with spring loaded ball |
 |   4 | `screw(M4_cap_screw, 8)` |  Screw M4 cap x  8mm |
+|  12 | `screw(M4_grub_screw, 5)` |  Screw M4 grub x  5mm |
+|  20 | `screw(M6_grub_screw, 6.2)` |  Screw M6 grub x  6.2mm |
+|  20 | `screw(M6_grub_screw, 9.5)` |  Screw M6 grub x  9.5mm |
 |   4 | `screw(M8_cap_screw, 12)` |  Screw M8 cap x 12mm |
 |   4 | `washer(M4_washer)` |  Washer  M4 x 9mm x 0.8mm |
 |   4 | `washer(M8_washer)` |  Washer  M8 x 17mm x 1.6mm |

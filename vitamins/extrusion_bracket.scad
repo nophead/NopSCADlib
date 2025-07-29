@@ -192,7 +192,7 @@ function extrusion_corner_bracket_3D_get_x_offset(type) = [extrusion_corner_brac
 function extrusion_corner_bracket_3D_get_x_rot(type) = [0, 90, 0]; //! helper function to rotate the y beam
 
 module extrusion_corner_bracket_3D(type, grub_screws = true) {  //! draw the specified extrusion_corner_bracket_3D
-    vitamin(str("extrusion_corner_bracket_3D(", type[0], "): Extrusion corner bracket 3D mm for ", extrusion_corner_bracket_extrusion(type)[0]));
+    vitamin(str("extrusion_corner_bracket_3D(", type[0], "): Extrusion corner bracket 3D mm for E", slice(type[0], -4)));
 
 
   nut_screw_dia = screw_radius(extrusion_corner_bracket_3D_nut_screw(type) * 2);
