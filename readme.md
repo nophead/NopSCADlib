@@ -1119,6 +1119,8 @@ LCD displays.
 ## Extrusion_brackets
 Brackets for joining extrusions at a corner.
 
+[vitamins/extrusion_brackets.scad](vitamins/extrusion_brackets.scad) Object definitions.
+
 [vitamins/extrusion_bracket.scad](vitamins/extrusion_bracket.scad) Implementation.
 
 [tests/extrusion_brackets.scad](tests/extrusion_brackets.scad) Code for this example.
