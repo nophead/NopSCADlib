@@ -24,9 +24,9 @@ include <../utils/thread.scad>
 
 use <extrusion.scad>
 
-function extrusion_inner_corner_bracket_size(type) = type[1]; //! Size of inner bracket
-function extrusion_inner_corner_bracket_tnut(type) = type[2]; //! The sliding t-nut it is based on
-function extrusion_inner_corner_bracket_extrusion(type) = type[3]; //! Default extrusion this bracket is for
+function extrusion_inner_corner_bracket_size(type)          = type[1]; //! Size of inner bracket
+function extrusion_inner_corner_bracket_tnut(type)          = type[2]; //! The sliding t-nut it is based on
+function extrusion_inner_corner_bracket_extrusion(type)     = type[3]; //! Default extrusion this bracket is for
 function extrusion_inner_corner_bracket_screw_offsets(type) = type[4]; //! Screw offsets from the ends
 
 module extrusion_inner_corner_bracket(type, grub_screws = true, backwards = false, extrusion = undef) {  //! Inner corner bracket for extrusion
@@ -84,12 +84,12 @@ module extrusion_inner_corner_bracket(type, grub_screws = true, backwards = fals
     }
 }
 
-function extrusion_corner_bracket_size(type) = type[1]; //! Size of bracket
+function extrusion_corner_bracket_size(type)           = type[1]; //! Size of bracket
 function extrusion_corner_bracket_base_thickness(type) = type[2]; //! Thickness of base of bracket
 function extrusion_corner_bracket_side_thickness(type) = type[3]; //! Thickness of side of bracket
-function extrusion_corner_bracket_hole_offset(type) = type[4]; //! Hole offset from corner
-function extrusion_corner_bracket_tnut(type) = type[5]; //! The sliding t-nut to use in the assembly
-function extrusion_corner_bracket_extrusion(type) = type[6]; //! Default extrusion this bracket is for
+function extrusion_corner_bracket_hole_offset(type)    = type[4]; //! Hole offset from corner
+function extrusion_corner_bracket_tnut(type)           = type[5]; //! The sliding t-nut to use in the assembly
+function extrusion_corner_bracket_extrusion(type)      = type[6]; //! Default extrusion this bracket is for
 
 module extrusion_corner_bracket(type) {  //! Corner bracket for extrusion
   vitamin(str("extrusion_corner_bracket(", type[0], "): Extrusion corner bracket ", type[1].z, "mm for ", extrusion_corner_bracket_extrusion(type)[0]));
@@ -171,20 +171,20 @@ module extrusion_corner_bracket_assembly(type, part_thickness = undef, screw_typ
   }
 }
 
-function extrusion_corner_bracket_3D_outer_side_length(type) = type[1]; //! The length of the base cuboid sides
-function extrusion_corner_bracket_3D_outer_height(type) = type[2]; //! The height of the cuboid
-function extrusion_corner_bracket_3D_inner_side_length(type) = type[3]; //! The length of the dip in the cuboid sides
-function extrusion_corner_bracket_3D_inner_height(type) = type[4]; //! The depth offset of the dip in the cuboid
+function extrusion_corner_bracket_3D_outer_side_length(type) = type[1];   //! The length of the base cuboid sides
+function extrusion_corner_bracket_3D_outer_height(type) = type[2];        //! The height of the cuboid
+function extrusion_corner_bracket_3D_inner_side_length(type) = type[3];   //! The length of the dip in the cuboid sides
+function extrusion_corner_bracket_3D_inner_height(type) = type[4];        //! The depth offset of the dip in the cuboid
 
-function extrusion_corner_bracket_3D_nut_screw(type) = type[5]; //! The screw (most likely Mx_grub_screw from <NopSCADlib/vitamins/screws.scad>)
-function extrusion_corner_bracket_3D_nut_dia(type) = type[6]; //! The width of bottom part of the nut
-function extrusion_corner_bracket_3D_nut_thickness(type) = type[7]; //! The thickness of the top part of the nut
+function extrusion_corner_bracket_3D_nut_screw(type) = type[5];           //! The screw (most likely Mx_grub_screw from <NopSCADlib/vitamins/screws.scad>)
+function extrusion_corner_bracket_3D_nut_dia(type) = type[6];             //! The width of bottom part of the nut
+function extrusion_corner_bracket_3D_nut_thickness(type) = type[7];       //! The thickness of the top part of the nut
 function extrusion_corner_bracket_3D_nut_nyloc_thickness(type) = type[8]; //! The total thickness of the nut
-function extrusion_corner_bracket_3D_nut_sx(type) = type[9]; //! The length of the nuts
-function extrusion_corner_bracket_3D_nut_ty1(type) = type[10]; //! The total width of the nut
-function extrusion_corner_bracket_3D_nut_ty2(type) = type[11]; //! The width of the top edge of the nut
-function extrusion_corner_bracket_3D_nut_screws_hor(type) = type[12]; //! The positions of the screw holes on the horizontal arms, expressed in %/100 of the nut arm
-function extrusion_corner_bracket_3D_nut_screws_ver(type) = type[13]; //! The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm
+function extrusion_corner_bracket_3D_nut_sx(type) = type[9];              //! The length of the nuts
+function extrusion_corner_bracket_3D_nut_ty1(type) = type[10];            //! The total width of the nut
+function extrusion_corner_bracket_3D_nut_ty2(type) = type[11];            //! The width of the top edge of the nut
+function extrusion_corner_bracket_3D_nut_screws_hor(type) = type[12];     //! The positions of the screw holes on the horizontal arms, expressed in %/100 of the nut arm
+function extrusion_corner_bracket_3D_nut_screws_ver(type) = type[13];     //! The positions of the screw holes on the vertical arms, expressed in %/100 of the nut arm
 
 function extrusion_corner_bracket_3D_get_y_offset(type) = [0, -extrusion_corner_bracket_3D_outer_side_length(type) / 2, extrusion_corner_bracket_3D_nut_nyloc_thickness(type)]; //! helper function to position the y beam
 function extrusion_corner_bracket_3D_get_y_rot(type) = [90, 0, 0]; //! helper function to rotate the y beam
