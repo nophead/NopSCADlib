@@ -20,7 +20,7 @@ include <../core.scad>
 
 include <../printed/gridfinity.scad>
 
-use <NopSCADlib/utils/chamfer.scad>
+use <../utils/chamfer.scad>
 
 box = gridfinity_bin("chuck_stand", 2, 2, 5);
 
