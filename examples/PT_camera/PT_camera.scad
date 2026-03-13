@@ -6,7 +6,7 @@ use <../../vitamins/pcb.scad>
 module ptc(ang2) {
   rotate([180,0,0])
     union(){
-      geared_stepper(28BYJ_48,ang2);
+      geared_stepper(_28BYJ_48,ang2);
       rotate([90,0,180-ang2])
         translate([9.8,-16.5,1.7])
           rotate([0,0,90])
@@ -15,7 +15,7 @@ module ptc(ang2) {
 }
 
 module pt(ang,ang2) {
-  rotate([180,0,0]) geared_stepper(28BYJ_48,ang);
+  rotate([180,0,0]) geared_stepper(_28BYJ_48,ang);
   rotate([0,0,ang]) rotate([270,0,0]) translate([0,-29.0,-1.5]) ptc(ang2);
 }
 
@@ -34,7 +34,7 @@ if($t<0.125){
 }else if ($t<0.5){
   b=c+deg-($t-0.375)/0.125*deg;
   pt(180,b);
-}   
+}
 else if($t<0.625){
   a=180+($t-0.5)/0.125*deg;
   b=c+deg-90+($t-0.5)/0.125*deg;
@@ -51,4 +51,4 @@ else if($t<0.625){
   a=90+($t-0.875)/0.125*deg;
   b=c+deg-180+($t-0.875)/0.125*deg;
   pt(a,b);
-}   
+}

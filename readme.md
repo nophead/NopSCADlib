@@ -70,16 +70,16 @@ Presence of a decimal point is determined by the number of pins. Its position is
 ### Properties
 | Function | Description |
 |:--- |:--- |
-| `7_segment_digit_size(type)` | Size of the actual digit and segment width and angle |
-| `7_segment_pin_pitch(type)` | x and y pin pitches and pin diameter |
-| `7_segment_pins(type)` | None |
-| `7_segment_size(type)` | Size of the body |
+| `_7_segment_digit_size(type)` | Size of the actual digit and segment width and angle |
+| `_7_segment_pin_pitch(type)` | x and y pin pitches and pin diameter |
+| `_7_segment_pins(type)` | None |
+| `_7_segment_size(type)` | Size of the body |
 
 ### Modules
 | Module | Description |
 |:--- |:--- |
-| `7_segment_digit(type, colour = grey(95), pin_length = 6.4)` | Draw the specified 7 segment digit |
-| `7_segment_digits(type, n, colour = grey(70), pin_length = 6.4, cutout = false)` | Draw n digits side by side |
+| `_7_segment_digit(type, colour = grey(95), pin_length = 6.4)` | Draw the specified 7 segment digit |
+| `_7_segment_digits(type, n, colour = grey(70), pin_length = 6.4, cutout = false)` | Draw n digits side by side |
 
 ![7_segments](tests/png/7_segments.png)
 
@@ -1379,7 +1379,7 @@ Faston receptacles to mate with spade connectors
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   4 | `faston(5_160430_7)` |  Faston part no 5_160430_7 to fit 4.75mm spade |
+|   4 | `faston(_5_160430_7)` |  Faston part no 5_160430_7 to fit 4.75mm spade |
 
 
 <a href="#top">Top</a>
@@ -1509,8 +1509,8 @@ Geared tin can steppers
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `geared_stepper(28BYJ_48)` |  Geared stepper - 28BYJ-48 5V |
-|   1 | `geared_stepper(35BYGHJ75)` |  Geared stepper - 35BYGHJ75 0.4A |
+|   1 | `geared_stepper(_28BYJ_48)` |  Geared stepper - 28BYJ-48 5V |
+|   1 | `geared_stepper(_35BYGHJ75)` |  Geared stepper - 35BYGHJ75 0.4A |
 
 
 <a href="#top">Top</a>
@@ -2812,10 +2812,10 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
 |   1 | `potentiometer(BTT_encoder)` |  BTT_encoder |
-|   1 | `box_header(2p54header, 4, 2)` |  Box header 4 x 2 |
-|   1 | `box_header(2p54header, 4, 2, right_angle = true)` |  Box header 4 x 2 right angle  |
-|   1 | `rd_disc(10mm_disc, "1nF Y2")` |  Ceramic capacitor, 10mm_disc 1nF Y2 |
-|   1 | `rd_disc(6p4mm_disc, "100n")` |  Ceramic capacitor, 6p4mm_disc 100n |
+|   1 | `box_header(_2p54header, 4, 2)` |  Box header 4 x 2 |
+|   1 | `box_header(_2p54header, 4, 2, right_angle = true)` |  Box header 4 x 2 right angle  |
+|   1 | `rd_disc(_10mm_disc, "1nF Y2")` |  Ceramic capacitor, 10mm_disc 1nF Y2 |
+|   1 | `rd_disc(_6p4mm_disc, "100n")` |  Ceramic capacitor, 6p4mm_disc 100n |
 |   1 | `rd_cm_choke(ATX_CM_CHOKE ,"3.5mH")` |  Common mode choke 3.5mH |
 |   1 | `rd_xtal(ACT1100, "40MHz")` |  Crystal ACT1100 40MHz |
 |   1 | `rd_xtal(ACT1700, "80MHz")` |  Crystal ACT1700 80MHz |
@@ -2831,7 +2831,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `hdmi(hdmi_full)` |  HDMI socket |
 |   1 | `pdip(24, 27C32, w = 15.24)` |  IC 27C32 PDIP24 |
 |   1 | `pdip(8, NE555)` |  IC NE555 PDIP8 |
-|   1 | `idc_transition(2p54header, 5)` |  IDC transition header 5 x 2 |
+|   1 | `idc_transition(_2p54header, 5)` |  IDC transition header 5 x 2 |
 |   1 | `smd_inductor(IND2525 ,"4R7")` |  IND2525 package 4R7 |
 |   1 | `jst_xh_header(jst_ph_header, 2)` |  JST PH connector 2 way |
 |   1 | `jst_xh_header(jst_xh_header, 2)` |  JST XH connector 2 way |
@@ -2846,12 +2846,12 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `molex_254(2)` |  Molex KK header 2 way |
 |   1 | `molex_254(2, right_angle = 1)` |  Molex KK header 2 way right angle |
 |   1 | `molex_254(2, right_angle = -1)` |  Molex KK header 2 way right angle |
-|   1 | `pin_header(2p54header, 4, 1)` |  Pin header 4 x 1 |
-|   1 | `pin_header(2p54header, 5, 1)` |  Pin header 5 x 1 |
-|   1 | `pin_header(2p54header, 5, 1, right_angle = true)` |  Pin header 5 x 1 right_angle |
-|   1 | `pin_socket(2p54header, 4, 1)` |  Pin socket 4 x 1 |
-|   1 | `pin_socket(2p54header, 6, 1)` |  Pin socket 6 x 1 |
-|   2 | `pin_socket(2p54header, 8, 1)` |  Pin socket 8 x 1 |
+|   1 | `pin_header(_2p54header, 4, 1)` |  Pin header 4 x 1 |
+|   1 | `pin_header(_2p54header, 5, 1)` |  Pin header 5 x 1 |
+|   1 | `pin_header(_2p54header, 5, 1, right_angle = true)` |  Pin header 5 x 1 right_angle |
+|   1 | `pin_socket(_2p54header, 4, 1)` |  Pin socket 4 x 1 |
+|   1 | `pin_socket(_2p54header, 6, 1)` |  Pin socket 6 x 1 |
+|   2 | `pin_socket(_2p54header, 8, 1)` |  Pin socket 8 x 1 |
 |   1 | `rd_coil(IND16x10 ,"4.7uH")` |  Radial inductor 16x10 4.7uH |
 |   1 | `rd_transistor(TO92, "78L05")` |  Regulator TO92 78L05 |
 |   1 | `rd_module(HF33F, "012-HSL-3F")` |  Relay HF33F / 012-HSL-3F |
@@ -3060,7 +3060,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |   1 | `pcb(PERF70x51)` |  Perfboard 70 x 51mm |
 |   1 | `pcb(PERF74x51)` |  Perfboard 74 x 51mm |
 |   1 | `pcb(PERF80x20)` |  Perfboard 80 x 20mm |
-|   1 | `pin_socket(2p54header, 13, 2, right_angle = true)` |  Pin socket 13 x 2 right_angle - not shown |
+|   1 | `pin_socket(_2p54header, 13, 2, right_angle = true)` |  Pin socket 13 x 2 right_angle - not shown |
 |   1 | `pcb(RAMPSEndstop)` |  RAMPS Endstop Switch |
 |   1 | `pcb(RPI3)` |  Raspberry Pi 3 |
 |   1 | `pcb(RPI3A)` |  Raspberry Pi 3 A+ |
@@ -3084,7 +3084,7 @@ PCBs and perfboard with optional components. The shape can be a rectangle with o
 |  11 | `screw(M3_cap_screw, 35)` |  Screw M3 cap x 35mm |
 |   8 | `screw(M4_cap_screw, 25)` |  Screw M4 cap x 25mm |
 |   1 | `pcb(XIAO)` |  Seeeduino XIAO |
-|   1 | `pcb(9DOF_stick)` |  Sparkfun 9 degrees of freedom IMU |
+|   1 | `pcb(_9DOF_stick)` |  Sparkfun 9 degrees of freedom IMU |
 |   1 | `pcb(TP4056)` |  TP4056 Li-lon Battery charger module |
 |   3 | `terminal_35(2)` |  Terminal block 2 way 3.5mm - not shown |
 |   2 | `green_terminal(gt_2p54, 4)` |  Terminal block 4 way 0.1" - not shown |
@@ -3317,11 +3317,11 @@ Pin headers and sockets, etc.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `box_header(2p54header, 10, 2)` |  Box header 10 x 2 |
-|   1 | `box_header(2p54header, 10, 2, right_angle = true)` |  Box header 10 x 2 right angle  |
-|   1 | `box_header(2p54header, 8, 1)` |  Box header 8 x 1 |
-|   1 | `box_header(2p54header, 8, 1, right_angle = true)` |  Box header 8 x 1 right angle  |
-|   1 | `idc_transition(2p54header, 10)` |  IDC transition header 10 x 2 |
+|   1 | `box_header(_2p54header, 10, 2)` |  Box header 10 x 2 |
+|   1 | `box_header(_2p54header, 10, 2, right_angle = true)` |  Box header 10 x 2 right angle  |
+|   1 | `box_header(_2p54header, 8, 1)` |  Box header 8 x 1 |
+|   1 | `box_header(_2p54header, 8, 1, right_angle = true)` |  Box header 8 x 1 right angle  |
+|   1 | `idc_transition(_2p54header, 10)` |  IDC transition header 10 x 2 |
 |   1 | `jst_xh_header(jst_ph_header, 2)` |  JST PH connector 2 way |
 |   1 | `jst_xh_header(jst_ph_header, 2, right_angle = true)` |  JST PH connector 2 way right_angle |
 |   1 | `jst_xh_header(jst_ph_header, 5)` |  JST PH connector 5 way |
@@ -3334,16 +3334,16 @@ Pin headers and sockets, etc.
 |   1 | `jst_xh_header(jst_zh_header, 2, right_angle = true)` |  JST ZH connector 2 way right_angle |
 |   1 | `jst_xh_header(jst_zh_header, 5)` |  JST ZH connector 5 way |
 |   1 | `jst_xh_header(jst_zh_header, 5, right_angle = true)` |  JST ZH connector 5 way right_angle |
-|   1 | `pin_header(2p54header, 10, 2)` |  Pin header 10 x 2 |
-|   1 | `pin_header(2p54header, 3, 1, right_angle = true)` |  Pin header 3 x 1 right_angle |
-|   1 | `pin_header(2p54header, 3, 2, right_angle = true)` |  Pin header 3 x 2 right_angle |
-|   1 | `pin_header(2p54header, 3, 3, right_angle = true)` |  Pin header 3 x 3 right_angle |
-|   1 | `pin_header(2p54header, 8, 1)` |  Pin header 8 x 1 |
-|   1 | `pin_socket(2p54header, 10, 2)` |  Pin socket 10 x 2 |
-|   1 | `pin_socket(2p54header, 3, 1, right_angle = true)` |  Pin socket 3 x 1 right_angle |
-|   1 | `pin_socket(2p54header, 3, 2, right_angle = true)` |  Pin socket 3 x 2 right_angle |
-|   1 | `pin_socket(2p54header, 3, 3, right_angle = true)` |  Pin socket 3 x 3 right_angle |
-|   1 | `pin_socket(2p54header, 8, 1)` |  Pin socket 8 x 1 |
+|   1 | `pin_header(_2p54header, 10, 2)` |  Pin header 10 x 2 |
+|   1 | `pin_header(_2p54header, 3, 1, right_angle = true)` |  Pin header 3 x 1 right_angle |
+|   1 | `pin_header(_2p54header, 3, 2, right_angle = true)` |  Pin header 3 x 2 right_angle |
+|   1 | `pin_header(_2p54header, 3, 3, right_angle = true)` |  Pin header 3 x 3 right_angle |
+|   1 | `pin_header(_2p54header, 8, 1)` |  Pin header 8 x 1 |
+|   1 | `pin_socket(_2p54header, 10, 2)` |  Pin socket 10 x 2 |
+|   1 | `pin_socket(_2p54header, 3, 1, right_angle = true)` |  Pin socket 3 x 1 right_angle |
+|   1 | `pin_socket(_2p54header, 3, 2, right_angle = true)` |  Pin socket 3 x 2 right_angle |
+|   1 | `pin_socket(_2p54header, 3, 3, right_angle = true)` |  Pin socket 3 x 3 right_angle |
+|   1 | `pin_socket(_2p54header, 8, 1)` |  Pin socket 8 x 1 |
 
 
 <a href="#top">Top</a>
@@ -3625,8 +3625,8 @@ Radial components for PCBs.
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   1 | `rd_disc(10mm_disc, "1nF Y2")` |  Ceramic capacitor, 10mm_disc 1nF Y2 |
-|   1 | `rd_disc(6p4mm_disc, "10nF")` |  Ceramic capacitor, 6p4mm_disc 10nF |
+|   1 | `rd_disc(_10mm_disc, "1nF Y2")` |  Ceramic capacitor, 10mm_disc 1nF Y2 |
+|   1 | `rd_disc(_6p4mm_disc, "10nF")` |  Ceramic capacitor, 6p4mm_disc 10nF |
 |   1 | `rd_cm_choke(ATX_CM_CHOKE ,"3.5mH")` |  Common mode choke 3.5mH |
 |   1 | `rd_xtal(ACT1100, "ACT1100")` |  Crystal ACT1100 ACT1100 |
 |   1 | `rd_xtal(ACT1700, "ACT1700")` |  Crystal ACT1700 ACT1700 |
@@ -5174,7 +5174,7 @@ Veroboard with mounting holes, track breaks, removed tracks, solder points and c
 ### Vitamins
 | Qty | Module call | BOM entry |
 | ---:|:--- |:---|
-|   2 | `idc_transition(2p54header, 10)` |  IDC transition header 10 x 2 |
+|   2 | `idc_transition(_2p54header, 10)` |  IDC transition header 10 x 2 |
 |   2 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   2 | `screw(M3_dome_screw, 25)` |  Screw M3 dome x 25mm |
 |   2 | `green_terminal(gt_2p54, 10)` |  Terminal block 10 way 0.1" |
@@ -6582,7 +6582,7 @@ The stl must be given a parameterless wrapper in the project that uses it.
 | ---:|:--- |:---|
 |   4 | `nut(M3_nut, nyloc = true)` |  Nut M3 x 2.4mm nyloc |
 |   1 | `pcb(PI_IO)` |  PI_IO V2 |
-|   1 | `pin_socket(2p54header, 13, 2)` |  Pin socket 13 x 2 |
+|   1 | `pin_socket(_2p54header, 13, 2)` |  Pin socket 13 x 2 |
 |   4 | `screw(M3_cap_screw, 16)` |  Screw M3 cap x 16mm |
 |   3 | `terminal_35(2)` |  Terminal block 2 way 3.5mm |
 |   4 | `washer(M3_washer)` |  Washer  M3 x 7mm x 0.5mm |

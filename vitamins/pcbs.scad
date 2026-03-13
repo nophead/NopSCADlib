@@ -1366,7 +1366,7 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
     ]
 );
 
-9DOF_stick = pcb("9DOF_stick", "Sparkfun 9 degrees of freedom IMU", [24, 11, 0.8],
+_9DOF_stick = pcb("9DOF_stick", "Sparkfun 9 degrees of freedom IMU", [24, 11, 0.8],
     colour = "red",
     hole_d = 3.3,
     holes = [[-1.2 - 3.3 / 2, 11 / 2]],
@@ -1402,7 +1402,7 @@ I2C_LCD_Backpack = let(size=[42, 19, 1.2])
       grid = [2, size[1]-2, 16, 1, silver, inch(0.1), inch(0.9)]
       );
 
-tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge, 9DOF_stick];
+tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge, _9DOF_stick];
 
 big_pcbs = [BTT_RELAY_V1_2, MELLOW_FLY_D5, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 

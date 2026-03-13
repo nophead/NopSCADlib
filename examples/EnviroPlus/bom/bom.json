@@ -42,7 +42,7 @@
             ": Micro SD card": {
                 "count": 1
             },
-            "pin_header(2p54header, 20, 2, right_angle = true): Pin header 20 x 2 right_angle": {
+            "pin_header(_2p54header, 20, 2, right_angle = true): Pin header 20 x 2 right_angle": {
                 "count": 1
             }
         },

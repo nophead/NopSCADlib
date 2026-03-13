@@ -133,8 +133,8 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 35,  13, 180, "rd_transistor", E_LINE, "ZTX853"],
         [ 25, 190,   0, "rd_electrolytic", ECAP8x11, "220uF35V"],
         [ 25, 180,  90, "rd_disc",  ERZV07D471, "471"],
-        [ 25, 170,  90, "rd_disc", 6p4mm_disc, "100n"],
-        [ 30, 170,  90, "rd_disc", 10mm_disc, "1nF Y2"],
+        [ 25, 170,  90, "rd_disc", _6p4mm_disc, "100n"],
+        [ 30, 170,  90, "rd_disc", _10mm_disc, "1nF Y2"],
         [ 90, 135, -90, "rd_module", HF33F, "012-HSL-3F"],
         [ 35,   3,   0, "link", 0, 5], // Vertical wire
 
