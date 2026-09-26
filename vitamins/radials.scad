@@ -39,10 +39,10 @@ rd_modules = [HF33F, VCE03, LDE10_20B];
 
 // Disks
 ERZV07D471 = ["ERZV07D471", "Varistor",          [6.5, 5.0, 8.0], [4.75, 3.1], [0.6,  1.4], [grey(20),  grey(80)]];
-6p4mm_disc = ["6p4mm_disc", "Ceramic capacitor", [6.5, 2.1, 7.8], [5.0,  0.9], [0.6,  0.8], ["#C5702D", grey(20)]];
-10mm_disc  = ["10mm_disc",  "Ceramic capacitor", [10,  4.25, 12], [7.72, 0],   [0.64, 2.0], ["#BA9C16", grey(20)]];
+disc_6p4mm = ["disc_6p4mm", "Ceramic capacitor", [6.5, 2.1, 7.8], [5.0,  0.9], [0.6,  0.8], ["#C5702D", grey(20)]];
+disc_10mm  = ["disc_10mm",  "Ceramic capacitor", [10,  4.25, 12], [7.72, 0],   [0.64, 2.0], ["#BA9C16", grey(20)]];
 
-rd_discs = [6p4mm_disc, ERZV07D471, 10mm_disc];
+rd_discs = [disc_6p4mm, ERZV07D471, disc_10mm];
 
 // Transistors
 TO92 =   ["TO92",   [5.0, 3.9, 4.5], [grey(20), grey(80)], [0.48, 0.48], [[-1,0], [0,0], [1,0]] ];

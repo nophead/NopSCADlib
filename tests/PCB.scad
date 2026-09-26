@@ -35,8 +35,8 @@ TMC2130HeatSinkColor = "DeepSkyBlue";
 TMC2130 = ["TMC2130", "TMC2130",
     20, 14, 1.6, 0, 3, 0, "white", false, [],
     [
-        [  10,  1,  0, "-2p54header", 8, 1 ,undef, "blue" ],
-        [  10, 13,  0, "-2p54header", 8, 1],
+        [  10,  1,  0, "-header2p54", 8, 1 ,undef, "blue" ],
+        [  10, 13,  0, "-header2p54", 8, 1],
         [  12,  7,  0, "-chip", 6, 4, 1, grey(20) ],
         // mock up a heat sink
         [  10,  7,  0, "block", 9, 9,  2, TMC2130HeatSinkColor ],
@@ -89,13 +89,13 @@ test_pcb = ["test_pcb", "Test PCB",
 
         [ 30, 30,  -90, "smd_qfp", QFP50P1200X1200X160_64N, "ATSAM4S4BA"],
 
-        [ 45,  35,   0, "2p54header", 4, 1],
-        [ 60,  35,   0, "2p54header", 5, 1, false, "blue" ],
-        [ 60,  40, 180, "2p54header", 5, 1, false, undef, true],
-        [ 80,  33,   0, "2p54boxhdr", 4, 2],
-        [ 80,  40,   0, "2p54boxhdr", 4, 2, false, true, true],
-        [ 45,  30,   0, "2p54socket", 4, 1, false, 0, false, "red" ],
-        [ 60,  30,   0, "2p54socket", 6, 1],
+        [ 45,  35,   0, "header2p54", 4, 1],
+        [ 60,  35,   0, "header2p54", 5, 1, false, "blue" ],
+        [ 60,  40, 180, "header2p54", 5, 1, false, undef, true],
+        [ 80,  33,   0, "boxhdr2p54", 4, 2],
+        [ 80,  40,   0, "boxhdr2p54", 4, 2, false, true, true],
+        [ 45,  30,   0, "socket2p54", 4, 1, false, 0, false, "red" ],
+        [ 60,  30,   0, "socket2p54", 6, 1],
 
         [ 59,  60, 180, "led", LED3mm, "red"],
         [ 66,  60, 180, "led", LED5mm, "orange"],
@@ -201,8 +201,8 @@ test_pcb = ["test_pcb", "Test PCB",
         [ 90, 140, -90, "relay", HF33F, "012-HSL-3F"],
 
 
-        [ 52, 206,   0, "2p54socket", 8, 1 ],
-        [ 52, 194,   0, "2p54socket", 8, 1, false, 0, false, "red" ],
+        [ 52, 206,   0, "socket2p54", 8, 1 ],
+        [ 52, 194,   0, "socket2p54", 8, 1, false, 0, false, "red" ],
         [ 55, 220,   0, "standoff",  5, 4.5, 12.5, 2.54],
         [ 60, 240,   0, "potentiometer"],
         [ 75, 240,   0, "potentiometer", KY_040_encoder, 8],

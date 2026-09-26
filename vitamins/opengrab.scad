@@ -41,7 +41,7 @@ pcb = ["", "", width, width, 0.8, 0, 3.5, 0, "darkgreen", false, [],
     [     [ 3.475,  19.05,    0, "button_4p5mm"],
           [ 2.2,    24.125,   0, "smd_led", LED0805, "green"],
           [ 2.375,  27.9,     0, "smd_led", LED0805, "red"],
-          [ 28.4,   13.345,   0, "2p54header", 3, 1, false, undef, true],
+          [ 28.4,   13.345,   0, "header2p54", 3, 1, false, undef, true],
      ]];
 
 module opengrab_hole_positions()    //! Position children at the screw positions

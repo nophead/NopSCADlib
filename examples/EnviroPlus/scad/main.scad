@@ -353,7 +353,7 @@ assembly("RPI") {
     pcb_grid(rpi, 9.5, 0.5, -0.6)
         rotate(180)
             explode(20)
-                pin_header(2p54header, 20, 2, right_angle = true);
+                pin_header(header2p54, 20, 2, right_angle = true);
 }
 
 //! 1. Solvent weld or glue the bulkhead into the recess in the bottom of the case.

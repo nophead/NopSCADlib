@@ -27,22 +27,22 @@ include <../utils/core/core.scad>
 use <../utils/pcb_utils.scad>
 
 
-function 7_segment_size(type)       = type[1]; //! Size of the body
-function 7_segment_digit_size(type) = type[2]; //! Size of the actual digit and segment width and angle
-function 7_segment_pins(type)       = type[3]; //! [x, y] array of pins
-function 7_segment_pin_pitch(type)  = type[4]; //! x and y pin pitches and pin diameter
+function disp_7_segment_size(type)       = type[1]; //! Size of the body
+function disp_7_segment_digit_size(type) = type[2]; //! Size of the actual digit and segment width and angle
+function disp_7_segment_pins(type)       = type[3]; //! [x, y] array of pins
+function disp_7_segment_pin_pitch(type)  = type[4]; //! x and y pin pitches and pin diameter
 
-function 7_segment_digits(type) = let(d = 7_segment_digit_size(type)) floor(7_segment_size(type).x / (d.x + d.y * tan(d[3])));
+function disp_7_segment_digits(type) = let(d = disp_7_segment_digit_size(type)) floor(disp_7_segment_size(type).x / (d.x + d.y * tan(d[3])));
 
-module 7_segment_digit(type, colour = grey(95), pin_length = 6.4) { //! Draw the specified 7 segment digit
-    size = 7_segment_size(type);
-    digit = 7_segment_digit_size(type);
-    pins = 7_segment_pins(type);
-    pin_pitch = 7_segment_pin_pitch(type);
+module disp_7_segment_digit(type, colour = grey(95), pin_length = 6.4) { //! Draw the specified 7 segment digit
+    size = disp_7_segment_size(type);
+    digit = disp_7_segment_digit_size(type);
+    pins = disp_7_segment_pins(type);
+    pin_pitch = disp_7_segment_pin_pitch(type);
 
     t = digit[2];
     a = digit[3];
-    digits = 7_segment_digits(type);
+    digits = disp_7_segment_digits(type);
     pitch = size.x / digits;
     has_dp = (pins.x * pins.y) > 7 + digits;
 
@@ -108,8 +108,8 @@ module 7_segment_digit(type, colour = grey(95), pin_length = 6.4) { //! Draw the
              }
 }
 
-module 7_segment_digits(type, n, colour = grey(70), pin_length = 6.4, cutout = false) { //! Draw n digits side by side
-    size = 7_segment_size(type);
+module disp_7_segment_digits(type, n, colour = grey(70), pin_length = 6.4, cutout = false) { //! Draw n digits side by side
+    size = disp_7_segment_size(type);
 
     if(cutout)
         linear_extrude(100)
@@ -117,5 +117,5 @@ module 7_segment_digits(type, n, colour = grey(70), pin_length = 6.4, cutout = f
     else
         for(i = [0 : 1 : n - 1])
             translate([(i - (n - 1) / 2) * size.x, 0])
-                7_segment_digit(type, colour, pin_length);
+                disp_7_segment_digit(type, colour, pin_length);
 }

@@ -41,8 +41,8 @@ include <buttons.scad>
 Ethernet = ["Ethernet", "Duet Ethernet piggy back",
                                      33.8,  37.5,  1.6, 0,    2.54, 0, "#1D39AB",  false, [[27.1, -6.3], [7.5, -2.7], [21.3, -31.1]],
                                                                     [[10.7,  -13.1, 180, "rj45"],
-                                                                     [7.75, -36.2,   0, "-2p54header", 6, 1],
-                                                                     [7.75, -26.04,  0, "-2p54header", 6, 1],
+                                                                     [7.75, -36.2,   0, "-header2p54", 6, 1],
+                                                                     [7.75, -26.04,  0, "-header2p54", 6, 1],
                                                                      [27.1, -6.3,    0, "-standoff", 5, 4.5, 12.5, 2.54],
                                                                      [7.5, -2.70,    0, "-standoff", 5, 4.5, 12.5, 2.54],
                                                                      [21.3, -31.1,   0, "-standoff", 5, 4.5, 12.5, 2.54],
@@ -81,10 +81,10 @@ DuetE = ["DuetE", "Duet 2 Ethernet electronics",
                                                                      [ 84.1, -48.8, -90, "molex_hdr", 2],
                                                                      [ 77.9, -48.8, -90, "molex_hdr", 2],
 
-                                                                     [105.2, -54.9,  0, "2p54header", 2, 1],
-                                                                     [ 98.4, -54.9,  0, "2p54header", 2, 1],
-                                                                     [ 90.2, -54.9,  0, "2p54header", 3, 1],
-                                                                     [ 61.7, -83.1,  0, "2p54header", 5, 2],
+                                                                     [105.2, -54.9,  0, "header2p54", 2, 1],
+                                                                     [ 98.4, -54.9,  0, "header2p54", 2, 1],
+                                                                     [ 90.2, -54.9,  0, "header2p54", 3, 1],
+                                                                     [ 61.7, -83.1,  0, "header2p54", 5, 2],
 
                                                                      [ 29.5, -3.6,   90, "gterm35", 4],
 
@@ -95,9 +95,9 @@ DuetE = ["DuetE", "Duet 2 Ethernet electronics",
                                                                      [ 90.4, -18.8,   0, "chip", 10, 10, 2],
                                                                      [109.9, -22.0,   0, "chip", 10, 10, 2],
 
-                                                                     [105.8, -86.3,   0, "2p54boxhdr", 5, 2],
-                                                                     [ 85.2, -86.3,   0, "2p54boxhdr", 5, 2],
-                                                                     [ 79.9, -95.7, 180, "2p54boxhdr", 25, 2],
+                                                                     [105.8, -86.3,   0, "boxhdr2p54", 5, 2],
+                                                                     [ 85.2, -86.3,   0, "boxhdr2p54", 5, 2],
+                                                                     [ 79.9, -95.7, 180, "boxhdr2p54", 25, 2],
 
                                                                      [  2.0, -47.3, 180, "usb_uA"],
                                                                      [  8.4, -63.3, 180, "uSD", [15, 14.5, 2]],
@@ -124,14 +124,14 @@ DuetE = ["DuetE", "Duet 2 Ethernet electronics",
 
 Duex2 = ["Duex2", "Duex2 expansion board",
                                      123,   100,   1.6, 0,    4.2,  0, "#2140BE",  false, [[-4, 4], [-4, -4], [4, -4],[4, 4]],
-                                                                   [ [ 79.8,  -4.3, 180, "2p54boxhdr", 25, 2],
-                                                                     [ 27.8,  -3.0,   0, "2p54header", 10, 1],
+                                                                   [ [ 79.8,  -4.3, 180, "boxhdr2p54", 25, 2],
+                                                                     [ 27.8,  -3.0,   0, "header2p54", 10, 1],
 
-                                                                     [ 45.7, -14.7,   0, "2p54header",  3, 1], // Endstop voltage select
-                                                                     [ 34.8, -15.1,   0, "2p54header",  3, 2], // Fan voltage select
-                                                                     [  4.8, -55.2,  90, "2p54header",  1, 2], // 12V EN
-                                                                     [ 59.5, -30.3,   0, "2p54header",  3, 1], // 5V Aux select
-                                                                     [ 31.6, -41.4,   0, "2p54header",  2, 5], // SPIO
+                                                                     [ 45.7, -14.7,   0, "header2p54",  3, 1], // Endstop voltage select
+                                                                     [ 34.8, -15.1,   0, "header2p54",  3, 2], // Fan voltage select
+                                                                     [  4.8, -55.2,  90, "header2p54",  1, 2], // 12V EN
+                                                                     [ 59.5, -30.3,   0, "header2p54",  3, 1], // 5V Aux select
+                                                                     [ 31.6, -41.4,   0, "header2p54",  2, 5], // SPIO
 
                                                                      [  4.7, -11.8,  -90, "molex_hdr", 2], // Fan / LED 8
                                                                      [  4.9, -23.9,  -90, "molex_hdr", 2], // Fan / LED 7
@@ -219,9 +219,9 @@ BTT_RELAY_V1_2 = [
         [   2.5,  10.65, 270, "jst_xh", 2, false, grey(20), ],
         [   2.5,  18.15, 270, "jst_xh", 2, false, grey(20), ],
         [   2.5,  25.65, 270, "jst_xh", 2, false, grey(20), ],
-        [  11.0,   2.0,    0, "2p54header", 2, 1 ],
-        [  23.0,   2.0,    0, "2p54header", 4, 1 ],
-        [   7.9,  -3.3,   90, "2p54header", 2, 1 ],
+        [  11.0,   2.0,    0, "header2p54", 2, 1 ],
+        [  23.0,   2.0,    0, "header2p54", 4, 1 ],
+        [   7.9,  -3.3,   90, "header2p54", 2, 1 ],
         [  -6.5,   2.45, 180, "terminal",   3, [10, 1.33, 13.2, 16, 7, 13] ],
     ],
     [], // accessories
@@ -275,9 +275,9 @@ BTT_SKR_MINI_E3_V2_0 = [
         [  -3, -(22.27 + 29.92)/2, 0, "usb_uA" ],
         [  -8, -( 2.13 + 17.17)/2, 0, "uSD", [17.17 - 2.13, 16, 2] ],
         // EXP
-        [  -4.5, 17,   -90, "2p54boxhdr", 5, 2 ],
+        [  -4.5, 17,   -90, "boxhdr2p54", 5, 2 ],
         // TFT
-        [  66.1,  21.7,  0, "2p54header", 5, 1 ],
+        [  66.1,  21.7,  0, "header2p54", 5, 1 ],
         // FAN0
         [  50.25,  3.8,  0, "jst_xh", 2, false, grey(20) ],
         // FAN1
@@ -306,20 +306,20 @@ BTT_SKR_MINI_E3_V2_0 = [
         [  57.25, -4.2,  0, "jst_xh", 4, false, grey(20) ],
         [  70.75, -4.2,  0, "jst_xh", 4, false, grey(20) ],
         // motor jumpers
-        [  20.6,  44.1,  0, "2p54header", 2, 1 ],
-        [  39.6,  44.2,  0, "2p54header", 2, 1 ],
-        [  60.1,  44.1,  0, "2p54header", 2, 1 ],
-        [  80.3,  44.1,  0, "2p54header", 2, 1 ],
+        [  20.6,  44.1,  0, "header2p54", 2, 1 ],
+        [  39.6,  44.2,  0, "header2p54", 2, 1 ],
+        [  60.1,  44.1,  0, "header2p54", 2, 1 ],
+        [  80.3,  44.1,  0, "header2p54", 2, 1 ],
         // SWD
-        [  43.9,  39.2,  0, "2p54header", 1, 5 ],
+        [  43.9,  39.2,  0, "header2p54", 1, 5 ],
         // SPI
-        [  -3.1,  31.9,  0, "2p54header", 2, 3 ],
+        [  -3.1,  31.9,  0, "header2p54", 2, 3 ],
         // PWR-1
-        [  -12.8, 30.3,  0, "2p54header", 3, 1 ],
+        [  -12.8, 30.3,  0, "header2p54", 3, 1 ],
         // VOUT
-        [  -14.0, 34.4,  0, "2p54header", 2, 2 ],
+        [  -14.0, 34.4,  0, "header2p54", 2, 2 ],
         // VIN
-        [  17.3,  19.6,  0, "2p54header", 2, 2 ],
+        [  17.3,  19.6,  0, "header2p54", 2, 2 ],
     ],
     [] // accessories
 ];
@@ -372,11 +372,11 @@ BTT_SKR_E3_TURBO = [
         [  -8, -(12.13 + 27.17)/2, 0, "uSD", [17.17 - 2.13, 16, 2] ],
         [ -22.2,   51.6,   0, "button_6mm" ],
         // EXP
-        [  -4.45,  27.2, -90, "2p54boxhdr", 5, 2 ],
+        [  -4.45,  27.2, -90, "boxhdr2p54", 5, 2 ],
         // AUX-2
-        [  -3.4,   42.5, -90, "2p54header", 4, 2 ],
+        [  -3.4,   42.5, -90, "header2p54", 4, 2 ],
         // TFT
-        [  73.7,   21,     0, "2p54header", 5, 1 ],
+        [  73.7,   21,     0, "header2p54", 5, 1 ],
         // FAN0
         [  52.1,   15.3, 180, "jst_xh", 2, false, grey(20) ],
         // FAN1
@@ -394,7 +394,7 @@ BTT_SKR_E3_TURBO = [
         // PWR-DET
         [  87.7,   26.8, 180, "jst_xh", 3, false, grey(20) ],
         // FAN2
-        [  52.1,    3.8,   0, "2p54header", 1, 2],
+        [  52.1,    3.8,   0, "header2p54", 1, 2],
         // end stops and thermistors
         for (x = [58.5 : 7.9 : 98.1])
             [x,  3.7,  180, "jst_xh", 2, false, grey(20)],
@@ -404,15 +404,15 @@ BTT_SKR_E3_TURBO = [
         [47.3, -10.4,  0, "jst_xh", 4, false, grey(20)], // second Z connector
         // motor jumpers
         for (x = [9.4, 26.4, 42.5, 58.7, 75.3])
-            [x, -33.7,  0, "2p54header", 2, 1],
+            [x, -33.7,  0, "header2p54", 2, 1],
         // SWD
-        [  45.4,   35.7,   0, "2p54header", 5, 1 ],
+        [  45.4,   35.7,   0, "header2p54", 5, 1 ],
         // USB power jumber
-        [ -12.6,   40.3,   0, "2p54header", 3, 1 ],
+        [ -12.6,   40.3,   0, "header2p54", 3, 1 ],
         // VOUT
-        [ -13.9,   44.5,   0, "2p54header", 2, 2 ],
+        [ -13.9,   44.5,   0, "header2p54", 2, 2 ],
         // VIN
-        [  18.6,   29.8,   0, "2p54header", 2, 2 ],
+        [  18.6,   29.8,   0, "header2p54", 2, 2 ],
     ],
     [] // accessories
 ];
@@ -425,8 +425,8 @@ TMC2130 = [
     false, // true if parts should be separate BOM items
     [], // hole positions
     [
-        [  10,  1,  0, "-2p54header", 8, 1 ],
-        [  10, 13,  0, "-2p54header", 8, 1 ],
+        [  10,  1,  0, "-header2p54", 8, 1 ],
+        [  10, 13,  0, "-header2p54", 8, 1 ],
         [  12,  7,  0, "-chip", 6, 4, 1, grey(20) ],
         // mock up a heat sink
         [  10,  7,  0, "block", 9, 8.5, 2, "DeepSkyBlue" ],
@@ -452,7 +452,7 @@ BTT_SKR_V1_4_TURBO = [
         [ 105,   13,     0, "button_6mm" ],
         [  58,   43,     0, "chip", 15, 15, 1, grey(20) ],
         // ESP-01 socket
-        [  69.8,  4,     0, "2p54socket", 4, 2 ],
+        [  69.8,  4,     0, "socket2p54", 4, 2 ],
         // terminals
         [   5.3, 13.2, 180, "gterm", gt_5x17, 2, undef, grey(20)],
         [   5.3, 25.8, 180, "gterm", gt_5x17, 2, undef, grey(20)],
@@ -477,18 +477,18 @@ BTT_SKR_V1_4_TURBO = [
         [  77.2, 19.6, -90, "jst_xh", 3, false, grey(20) ],
         [  69.8, 11.0,   0, "jst_xh", 5, false, grey(20) ],
 
-        [  69.0, 19.2,   0,  "2p54header", 4, 1 ],
-        [  57.8, 18.0,   0,  "2p54header", 3, 2 ],
-        [  28.0, 19.7,   0,  "2p54header", 2, 2 ],
+        [  69.0, 19.2,   0,  "header2p54", 4, 1 ],
+        [  57.8, 18.0,   0,  "header2p54", 3, 2 ],
+        [  28.0, 19.7,   0,  "header2p54", 2, 2 ],
 
-        [  37.6, 28.8,   0,  "2p54header", 1, 3, undef, "red" ],
-        [  77.8, 27.5,   0,  "2p54header", 2, 2 ],
-        [  81.8, 26.4,   0,  "2p54header", 1, 3, undef, "red" ],
-        [  43.8, 42.8,   0,  "2p54header", 1, 5 ],
+        [  37.6, 28.8,   0,  "header2p54", 1, 3, undef, "red" ],
+        [  77.8, 27.5,   0,  "header2p54", 2, 2 ],
+        [  81.8, 26.4,   0,  "header2p54", 1, 3, undef, "red" ],
+        [  43.8, 42.8,   0,  "header2p54", 1, 5 ],
 
         // EXP1 & EXP2
-        [  -6.6, 29.4,  90, "2p54boxhdr", 5, 2 ],
-        [  -6.6, 50.4,  90, "2p54boxhdr", 5, 2 ],
+        [  -6.6, 29.4,  90, "boxhdr2p54", 5, 2 ],
+        [  -6.6, 50.4,  90, "boxhdr2p54", 5, 2 ],
 
         // motor axes connections
         [  11.2, -3.75, 180, "jst_xh", 2, false, grey(20) ],
@@ -501,36 +501,36 @@ BTT_SKR_V1_4_TURBO = [
         [  98.5, -3.75, 180, "jst_xh", 2, false, grey(20) ],
 
         // stepper drivers
-        [  11.5, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
-        [  11.5, 75.2,  0, "2p54socket", 8, 1 ],
-        [   2.6, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  11.5, 62.5,  0, "socket2p54", 8, 1, undef, undef, undef, "red" ],
+        [  11.5, 75.2,  0, "socket2p54", 8, 1 ],
+        [   2.6, 66.3, 90, "socket2p54", 2, 1, undef, undef, undef, "red" ],
         [  11.5, 68.85, 0, "pcb", 11, TMC2130 ],
 
-        [  33.1, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
-        [  33.1, 75.2,  0, "2p54socket", 8, 1 ],
-        [  24.2, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  33.1, 62.5,  0, "socket2p54", 8, 1, undef, undef, undef, "red" ],
+        [  33.1, 75.2,  0, "socket2p54", 8, 1 ],
+        [  24.2, 66.3, 90, "socket2p54", 2, 1, undef, undef, undef, "red" ],
         [  33.1, 68.85, 0, "pcb", 11, TMC2130 ],
 
-        [  54.8, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
-        [  54.8, 75.2,  0, "2p54socket", 8, 1 ],
-        [  45.9, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  54.8, 62.5,  0, "socket2p54", 8, 1, undef, undef, undef, "red" ],
+        [  54.8, 75.2,  0, "socket2p54", 8, 1 ],
+        [  45.9, 66.3, 90, "socket2p54", 2, 1, undef, undef, undef, "red" ],
         [  54.8, 68.85, 0, "pcb", 11, TMC2130 ],
 
-        [  76.4, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
-        [  76.4, 75.2,  0, "2p54socket", 8, 1 ],
-        [  67.5, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  76.4, 62.5,  0, "socket2p54", 8, 1, undef, undef, undef, "red" ],
+        [  76.4, 75.2,  0, "socket2p54", 8, 1 ],
+        [  67.5, 66.3, 90, "socket2p54", 2, 1, undef, undef, undef, "red" ],
         [  76.4, 68.85, 0, "pcb", 11, TMC2130 ],
 
-        [  98.1, 62.5,  0, "2p54socket", 8, 1, undef, undef, undef, "red" ],
-        [  98.1, 75.2,  0, "2p54socket", 8, 1 ],
-        [  89.2, 66.3, 90, "2p54socket", 2, 1, undef, undef, undef, "red" ],
+        [  98.1, 62.5,  0, "socket2p54", 8, 1, undef, undef, undef, "red" ],
+        [  98.1, 75.2,  0, "socket2p54", 8, 1 ],
+        [  89.2, 66.3, 90, "socket2p54", 2, 1, undef, undef, undef, "red" ],
 
         // closed loop pins
-        [  24.4, 57.5,  0, "2p54header", 6, 1 ],
-        [  40.6, 57.5,  0, "2p54header", 6, 1 ],
-        [  56.7, 57.5,  0, "2p54header", 6, 1 ],
-        [  72.9, 57.5,  0, "2p54header", 6, 1 ],
-        [  89.1, 57.5,  0, "2p54header", 6, 1 ],
+        [  24.4, 57.5,  0, "header2p54", 6, 1 ],
+        [  40.6, 57.5,  0, "header2p54", 6, 1 ],
+        [  56.7, 57.5,  0, "header2p54", 6, 1 ],
+        [  72.9, 57.5,  0, "header2p54", 6, 1 ],
+        [  89.1, 57.5,  0, "header2p54", 6, 1 ],
     ],
     [] // accessories
 ];
@@ -552,33 +552,33 @@ MELLOW_FLY_D5 = [
     [ // components
         // motor connections, stepper sockets
         [  0*15.8+7+12.5/2, 7/2,      180, "jst_xh",     4, false, grey(20) ],
-        [  0*15.8+18+2.5/2, 5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef, "RoyalBlue" ],
-        [  0*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "2p54socket", 2, 1],
-        [  0*15.8+5.5+2.5/2,  5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef],
+        [  0*15.8+18+2.5/2, 5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef, "RoyalBlue" ],
+        [  0*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "socket2p54", 2, 1],
+        [  0*15.8+5.5+2.5/2,  5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef],
         [  0*15.8+5.1+2.5/2+6.5,  5.8+21/2,  90, "pcb", 11, TMC2130],
 
         [  1*15.8+7+12.5/2, 7/2,      180, "jst_xh",     4, false, grey(20) ],
-        [  1*15.8+18+2.5/2, 5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef, "RoyalBlue" ],
-        [  1*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "2p54socket", 2, 1],
-        [  1*15.8+5.5+2.5/2,  5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef],
+        [  1*15.8+18+2.5/2, 5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef, "RoyalBlue" ],
+        [  1*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "socket2p54", 2, 1],
+        [  1*15.8+5.5+2.5/2,  5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef],
         [  1*15.8+5.1+2.5/2+6.5,  5.8+21/2,  90, "pcb", 11, TMC2130],
 
         [  2*15.8+7+12.5/2, 7/2,      180, "jst_xh",     4, false, grey(20) ],
-        [  2*15.8+18+2.5/2, 5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef, "RoyalBlue" ],
-        [  2*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "2p54socket", 2, 1],
-        [  2*15.8+5.5+2.5/2,  5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef],
+        [  2*15.8+18+2.5/2, 5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef, "RoyalBlue" ],
+        [  2*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "socket2p54", 2, 1],
+        [  2*15.8+5.5+2.5/2,  5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef],
         [  2*15.8+5.1+2.5/2+6.5,  5.8+21/2,  90, "pcb", 11, TMC2130],
 
         [  3*15.8+7+12.5/2, 7/2,      180, "jst_xh",     4, false, grey(20) ],
-        [  3*15.8+18+2.5/2, 5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef, "RoyalBlue" ],
-        [  3*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "2p54socket", 2, 1],
-        [  3*15.8+5.5+2.5/2,  5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef],
+        [  3*15.8+18+2.5/2, 5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef, "RoyalBlue" ],
+        [  3*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "socket2p54", 2, 1],
+        [  3*15.8+5.5+2.5/2,  5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef],
         [  3*15.8+5.1+2.5/2+6.5,  5.8+21/2,  90, "pcb", 11, TMC2130],
 
         [  4*15.8+7+12.5/2, 7/2,      180, "jst_xh",     4, false, grey(20) ],
-        [  4*15.8+18+2.5/2, 5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef, "RoyalBlue" ],
-        [  4*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "2p54socket", 2, 1],
-        [  4*15.8+5.5+2.5/2,  5.8+21/2,  90, "2p54socket", 8, 1, undef, undef, undef],
+        [  4*15.8+18+2.5/2, 5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef, "RoyalBlue" ],
+        [  4*15.8+12.5+5.4/2, 5.8+2.6/2,  0, "socket2p54", 2, 1],
+        [  4*15.8+5.5+2.5/2,  5.8+21/2,  90, "socket2p54", 8, 1, undef, undef, undef],
 
         // thermistors
         [  0*8+7.8+7.4/2,  -(0*6+5.7/2),  180, "jst_xh", 2, false, grey(20) ],
@@ -610,8 +610,8 @@ MELLOW_FLY_D5 = [
         [  -26-10/2,    -20-10/2,      0, "chip", 10, 10,   1,   grey(15) ],
 
         // EXP1 & EXP2
-        [  -20/2, -17-9/2,  180, "2p54boxhdr", 5, 2 ],
-        [  -20/2, -26-9/2,  180, "2p54boxhdr", 5, 2 ],
+        [  -20/2, -17-9/2,  180, "boxhdr2p54", 5, 2 ],
+        [  -20/2, -26-9/2,  180, "boxhdr2p54", 5, 2 ],
 
         // USB connection
         [-3, -7-9/2, 0, "usb_C"],
@@ -629,9 +629,9 @@ Melzi = ["Melzi", "Melzi electronics", 203.2, 49.53, 1.6, 3.81, 3.1,  6, "green"
                                                                     [": USB A to Mini B lead", ": Micro SD card"]];
 
 OPZ2 =  ["OPZ2", "Orange Pi Zero 2",     60,    53,    1.4, 1.75,    3, 5, "blue", false, [[2.5, 2.5], [-2.5, 2.5], [-2.5, -2.5], [2.5, -2.5]],
-    [[-2.54, 53/2, 90, "2p54header", 13, 2],
-     [-10, -10-2.54*2, 0, "2p54header", 3, 1],
-     [2.54/2, 53/2, 90, "2p54header", 13, 1],
+    [[-2.54, 53/2, 90, "header2p54", 13, 2],
+     [-10, -10-2.54*2, 0, "header2p54", 3, 1],
+     [2.54/2, 53/2, 90, "header2p54", 13, 1],
      [6+16/2, -10.5+1, 90, "rj45"],
      [24+9/2, -3.6+1, 90, "usb_C"],
      [37+6.5/2,  -8.5/2+1, 90, "micro_hdmi"],
@@ -646,7 +646,7 @@ OPZ2 =  ["OPZ2", "Orange Pi Zero 2",     60,    53,    1.4, 1.75,    3, 5, "blue
     [60-2.54*1.5, 53/2 - 6*2.54, 2, 13]];
 
 RPI3A =  ["RPI3A", "Raspberry Pi 3 A+",     65,    56,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]],
-    [[32.5, -3.5,   0, "2p54header", 20, 2],
+    [[32.5, -3.5,   0, "header2p54", 20, 2],
      [27,   -24.6,  0, "chip",       14, 14, 1],
      [53.5,   6,  -90, "jack"],
      [32,   4.4,  -90, "hdmi"],
@@ -660,7 +660,7 @@ RPI3A =  ["RPI3A", "Raspberry Pi 3 A+",     65,    56,    1.4, 3,    2.75, 6, "g
     [32.5 - 9.5 * 2.54, 52.5 - 1.27, 20, 2]];
 
 RPI3 =  ["RPI3", "Raspberry Pi 3",     85,    56,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]],
-    [[32.5, -3.5,   0, "2p54header", 20, 2],
+    [[32.5, -3.5,   0, "header2p54", 20, 2],
      [27,   -24.6,  0, "chip",       14, 14, 1],
      [60,   -22.3,  0, "chip",       9, 9, 0.6],
      [-8.5,  10.25, 0, "rj45"],
@@ -677,7 +677,7 @@ RPI3 =  ["RPI3", "Raspberry Pi 3",     85,    56,    1.4, 3,    2.75, 6, "green"
     [32.5 - 9.5 * 2.54, 52.5 - 1.27, 20, 2]];
 
 RPI4 = ["RPI4", "Raspberry Pi 4", 85, 56, 1.4, 3, 2.75, 6, "green", false, [[3.5, 3.5], [61.5, 3.5], [61.5, -3.5], [3.5, -3.5]], [
-    [32.5, -3.5, 0, "2p54header", 20, 2],
+    [32.5, -3.5, 0, "header2p54", 20, 2],
     [-6.5, 9, 0, "usb_Ax2"],
     [-6.5, 27, 0, "usb_Ax2"],
     [-8.5, 45.75, 0, "rj45"],
@@ -696,7 +696,7 @@ RPI4 = ["RPI4", "Raspberry Pi 4", 85, 56, 1.4, 3, 2.75, 6, "green", false, [[3.5
 ];
 
 RPI0 =  ["RPI0", "Raspberry Pi Zero",     65,    30,    1.4, 3,    2.75, 6, "green", false, [[3.5, 3.5], [-3.5, 3.5], [-3.5, -3.5], [3.5, -3.5]],
-    [//[32.5, -3.5,   0, "2p54header", 20, 2],
+    [//[32.5, -3.5,   0, "header2p54", 20, 2],
      [25.5,  13,      0, "chip",       12, 12, 1.2],
      [12.4,  3.4,   -90, "mini_hdmi"],
      [54,    2,     -90, "usb_uA"],
@@ -730,7 +730,7 @@ RPI_Pico = [
 ];
 
 EnviroPlus =  ["EnviroPlus", "Enviro+",     65,    30.6,    1.6, 3,    2.75, 6, "white", false, [[3.5, 3.8], [-3.5, 3.8], [-3.5, -3.8], [3.5, -3.8]],
-    [[32.5, -3.8,   0, "-2p54socket", 20, 2, false, 5, true],
+    [[32.5, -3.8,   0, "-socket2p54", 20, 2, false, 5, true],
      [-15.5, 2.5,   0, "-chip", 15, 5, 3, "white"],
      [-14.25,16.25, 0, "chip", 27.5, 13.5, 1.5]
     ],
@@ -739,12 +739,12 @@ EnviroPlus =  ["EnviroPlus", "Enviro+",     65,    30.6,    1.6, 3,    2.75, 6, 
 
 
 ArduinoUno3 = ["ArduinoUno3", "Arduino Uno R3", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
-    [[30.226, -2.54, 0, "2p54socket", 10, 1],
-     [54.61,  -2.54, 0, "2p54socket", 8, 1],
-     [36.83,   2.54, 0, "2p54socket", 8, 1],
-     [57.15,   2.54, 0, "2p54socket", 6, 1],
-     [64.91,  27.89, 0, "2p54header", 2, 3],
-     [18.796, -7.00, 0, "2p54header", 3, 2],
+    [[30.226, -2.54, 0, "socket2p54", 10, 1],
+     [54.61,  -2.54, 0, "socket2p54", 8, 1],
+     [36.83,   2.54, 0, "socket2p54", 8, 1],
+     [57.15,   2.54, 0, "socket2p54", 6, 1],
+     [64.91,  27.89, 0, "header2p54", 2, 3],
+     [18.796, -7.00, 0, "header2p54", 3, 2],
      [ 6.5,   -3.5,  0, "button_6mm"],
      [4.7625,  7.62, 180,"barrel_jack"],
      [1.5875, 37.78, 180,"usb_B"],
@@ -774,11 +774,11 @@ ArduinoUno3 = ["ArduinoUno3", "Arduino Uno R3", 68.58, 53.34, 1.6, 0, 3.3, 0, "#
    ];
 
 ArduinoLeonardo = ["ArduinoLeonardo", "Arduino Leonardo", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
-    [[30.226, -2.54, 0, "2p54socket", 10, 1],
-     [54.61,  -2.54, 0, "2p54socket", 8, 1],
-     [36.83,   2.54, 0, "2p54socket", 8, 1],
-     [57.15,   2.54, 0, "2p54socket", 6, 1],
-     [64.91,  27.89, 0, "2p54header", 2, 3],
+    [[30.226, -2.54, 0, "socket2p54", 10, 1],
+     [54.61,  -2.54, 0, "socket2p54", 8, 1],
+     [36.83,   2.54, 0, "socket2p54", 8, 1],
+     [57.15,   2.54, 0, "socket2p54", 6, 1],
+     [64.91,  27.89, 0, "header2p54", 2, 3],
      [ 6.5,   -3.5,  0, "button_6mm"],
      [4.7625,  7.62, 180, "barrel_jack"],
      [1.5875, 38.1,  180,"usb_uA"],
@@ -799,10 +799,10 @@ ArduinoLeonardo = ["ArduinoLeonardo", "Arduino Leonardo", 68.58, 53.34, 1.6, 0, 
    ];
 
 Keyes5p1 = ["Keyes5p1", "Keyes5.1 Arduino Uno expansion board", 68.58, 53.34, 1.6, 0, 3.3, 0, "#2140BE", false, [[15.24, 50.8],[66.04, 35.56],[66.04, 7.62],[13.97, 2.54]],
-    [[30.226, -2.54, 0, "-2p54header", 10, 1],
-     [54.61,  -2.54, 0, "-2p54header", 8, 1],
-     [36.83,   2.54, 0, "-2p54header", 8, 1],
-     [57.15,   2.54, 0, "-2p54header", 6, 1],
+    [[30.226, -2.54, 0, "-header2p54", 10, 1],
+     [54.61,  -2.54, 0, "-header2p54", 8, 1],
+     [36.83,   2.54, 0, "-header2p54", 8, 1],
+     [57.15,   2.54, 0, "-header2p54", 6, 1],
     ],
     [],[],
     inch([
@@ -832,13 +832,13 @@ PI_IO = ["PI_IO", "PI_IO V2",       35.56, 25.4, 1.6, 0,    0,   0, "green", tru
     [[(3.015 - 2.7) * 25.4 - 3.5 /2, (4.5 - 3.685) * 25.4, 90, "term35", 2],
      [(3.46  - 2.7) * 25.4 - 3.5 /2, (4.5 - 3.69)  * 25.4, 90, "term35", 2],
      [(3.91  - 2.7) * 25.4 - 3.5 /2, (4.5 - 3.69)  * 25.4, 90, "term35", 2],
-     [(3.4   - 2.7) * 25.4,          (4.5 - 4.15)  * 25.4,  0, "2p54socket", 13, 2, true],
+     [(3.4   - 2.7) * 25.4,          (4.5 - 4.15)  * 25.4,  0, "socket2p54", 13, 2, true],
     ], []];
 
 ZC_A0591 = ["ZC_A0591", "ZC-A0591 ULN2003 driver PCB", 35, 32, 1.6, 0, 2.5, 0, "green", false, [[2.25, 3.25], [-2.25, 3.25], [2.25, -3.25], [-2.25, -3.25] ],
     [ [ 11.725, 8.3,  -90, "jst_xh", 5],
-      [ -6.5,  10,      0, "2p54header", 1, 4],
-      [ 20.4,  -4.5,    0, "2p54header", 4, 1],
+      [ -6.5,  10,      0, "header2p54", 1, 4],
+      [ 20.4,  -4.5,    0, "header2p54", 4, 1],
       [ 20.4,  11,  180, "pdip", 16, "ULN2003AN", true],
       [  5.5,  6,       0, "led", LED3mm, [1,1,1, 0.5]],
       [  5.5,  10.5,    0, "led", LED3mm, [1,1,1, 0.5]],
@@ -874,7 +874,7 @@ HW803_1WAY_RELAY = [
         [ 10.5 + 19/2, 26/2, 0,   "block", 19, 15, 15.5, "SkyBlue" ],
         [ 50-5,        26/2, 0,   "term35", 3],
         [ 5,           26/2, 180, "term35", 3],
-        [ 34,             2, 0,   "2p54header", 3, 1 ],
+        [ 34,             2, 0,   "header2p54", 3, 1 ],
     ],
     [], // accessories
     [], // grid
@@ -961,7 +961,7 @@ ESP_01 = [
     false, // true if parts should be separate BOM items
     [], // hole positions
     [ // components
-        [   2.8,   -7.25, 0, "-2p54header", 2, 4 ],
+        [   2.8,   -7.25, 0, "-header2p54", 2, 4 ],
         [ -14.55, -11.3,  0, "chip", 5.25, 5.25, 2.25, grey(15) ],
         [ -14,     -5.2,  0, "chip", 4.5,  4.75, 1.1,  grey(15) ],
         // antenna
@@ -1043,9 +1043,9 @@ LIPO_fuel_gauge = [
      for(x = 3,     y = [-1,1]) [x * 2.54 + 5.27, y * 0.5 * 2.54 + 5]],
     [ // components
         [17, 5, 90, "jst_ph", 2, true],
-        [2.54 + 5.27,  1.5 * 2.54 + 5, 0, "-2p54joiner", 3, 1],
-        [2.54 + 5.27, -1.5 * 2.54 + 5, 0, "-2p54joiner", 3, 1],
-        [3 * 2.54 + 5.27, 5,           0, "-2p54joiner", 1, 2],
+        [2.54 + 5.27,  1.5 * 2.54 + 5, 0, "-joiner2p54", 3, 1],
+        [2.54 + 5.27, -1.5 * 2.54 + 5, 0, "-joiner2p54", 3, 1],
+        [3 * 2.54 + 5.27, 5,           0, "-joiner2p54", 1, 2],
         [6.4 + 1.5, 5, 0, "chip", 3, 2, 0.8],
         [1.2,  2.5, 90, "smd_res", RES0603, "472"],
         [2.4,  2.5, 90, "smd_res", RES0603, "472"],
@@ -1071,8 +1071,8 @@ ESP32_DOIT_V1 = let(l = 51.45, w = 28.33, pitch = inch(1), pins = 15, poffset = 
     false, // true if parts should be separate BOM items
     [for(x = [-1, 1], y = [-1, 1]) [x * 46.7 / 2 + l / 2, y * 23.4 / 2 + w / 2, false]],
     [ // components
-      [l / 2 + poffset, w / 2 - pitch / 2, 0, "-2p54joiner", pins, 1],
-      [l / 2 + poffset, w / 2 + pitch / 2, 0, "-2p54joiner", pins, 1],
+      [l / 2 + poffset, w / 2 - pitch / 2, 0, "-joiner2p54", pins, 1],
+      [l / 2 + poffset, w / 2 + pitch / 2, 0, "-joiner2p54", pins, 1],
       [1.75, w / 2, 180, "usb_uA" ],
       [35,  w / 2, 0, "block", 17.7, 16, 3, silver, false, 0.3, 0.3], // can
       for(y=[-1,1]) [3.5,  y * 6.5, 0, "chip", 4,  3, 1.6, silver],   // Mock button surround
@@ -1095,9 +1095,9 @@ ArduinoNano = let(l = 43.18, w = 17.78, pitch = inch(0.6), pins = 15, poffset = 
     false, // true if parts should be separate BOM items
     [for(x = [-1, 1], y = [-1, 1]) [x * 40.64 / 2 + l / 2, y * 15.24 / 2 + w / 2]],
     [ // components
-      [l / 2 + poffset, w / 2 - pitch / 2,  0, "-2p54joiner", pins, 1],
-      [l / 2 + poffset, w / 2 + pitch / 2,  0, "-2p54joiner", pins, 1],
-      [l / 2 + poffset + inch(0.75), w / 2, 0, "2p54header",  2,    3, false, undef, false, false],
+      [l / 2 + poffset, w / 2 - pitch / 2,  0, "-joiner2p54", pins, 1],
+      [l / 2 + poffset, w / 2 + pitch / 2,  0, "-joiner2p54", pins, 1],
+      [l / 2 + poffset + inch(0.75), w / 2, 0, "header2p54",  2,    3, false, undef, false, false],
       [3.1, w / 2, 180, "usb_miniA" ],
       [l / 2 - inch(0.25), w / 2, 45, "chip", 7, 7, 1.3],
       [l / 2 + poffset + inch(0.15), w / 2,    0, "chip", 3.5, 6,   1.8, silver ], // mock button
@@ -1119,9 +1119,9 @@ BlackPill = let(l = 52.81, w = 20.78, pitch = inch(0.6), pins = 20, poffset = in
     false, // true if parts should be separate BOM items
     [],
     [ // components
-      [l / 2 + poffset, w / 2 - pitch / 2,  0, "-2p54joiner", pins, 1, undef, "yellow"],
-      [l / 2 + poffset, w / 2 + pitch / 2,  0, "-2p54joiner", pins, 1, undef, "yellow"],
-      [l - inch(0.27), w / 2, 90, "2p54header",  4,    1, undef, undef, true],
+      [l / 2 + poffset, w / 2 - pitch / 2,  0, "-joiner2p54", pins, 1, undef, "yellow"],
+      [l / 2 + poffset, w / 2 + pitch / 2,  0, "-joiner2p54", pins, 1, undef, "yellow"],
+      [l - inch(0.27), w / 2, 90, "header2p54",  4,    1, undef, undef, true],
       [ l -26.75, w / 2, 45, "chip", 7, 7, 1.3],
       [ 3.6, w / 2, 180, "usb_C" ],
       [ 15,                       5.3,   0, "text",    4, 1.27, "BOOT0"],
@@ -1149,14 +1149,14 @@ KY_040 = ["KY_040", "KY-040 rotart encoder breakout",
      [3.23 + 1.5 + 16.775, 1.3 + 1.5]
     ],
     [
-       [-3, 12, 90, "2p54header", 5, 1, undef, undef, true],
+       [-3, 12, 90, "header2p54", 5, 1, undef, undef, true],
        [10.8, 11.3, 0, "potentiometer", KY_040_encoder],
     ],
     []];
 
 L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3, 0, "#2140BE", false, [[10.7, 2.3], [10.7, -2.3], [-5.3, 2.3], [-5.3, -2.3] ],
     [
-        [ -1.3,  11.5,      0, "2p54header", 1, 6],
+        [ -1.3,  11.5,      0, "header2p54", 1, 6],
         [  16, 9.5      ,   0, "smd_led", LED0805, "red"],
         for(i = [-1, 1]) [ 4, 5.5*i, 180, "gterm508", 2],
         for(i = [-1, 1]) [ 17.38, 3*i, 90, "smd_soic", SOIC8, "" ]
@@ -1166,9 +1166,9 @@ L9110S = ["L9110S", "L9110S 2-Channel motor driver module", 29.2, 23, 1.6, 0, 3,
 PanelDue_v3 = ["PanelDue_v3", "Panel Due v3.0a LCD Display interface", 53, 73, 1.2, 0, 3.2, 0, "#2140BE", false, [[5,5], [5, -5], [43.7, 37.2]],
    [
     [ 45.0, 26.5,  45, "buzzer",     6, 12],
-    [ 32.8, 36.5,  90, "2p54socket", 20, 2],
+    [ 32.8, 36.5,  90, "socket2p54", 20, 2],
     [ 31.3,  5.9, 180, "molex_hdr",   4, 1],
-    [ 38.0, 53.2, -90, "2p54boxhdr",  5, 2, false, true, true],
+    [ 38.0, 53.2, -90, "boxhdr2p54",  5, 2, false, true, true],
     [ 40.8, 67.4,   0, "button_6mm"],
     [ 45.1, 16.5,   0, "button_6mm"],
     [ 51.2, 68.0,   0, "usb_uA"],
@@ -1251,8 +1251,8 @@ pcb("Feather405", "Adafruit Feather 405", [size.x, size.y, 1.6],
     grid = [inch(0.65), inch(0.05), 12, 2, gold, inch(0.1), inch(0.8),
             inch(0.25), inch(0.05), 4,  1, gold, inch(0.1), 0 ], //  grids of holes for the pins
     components = [
-        [size.x / 2, inch(0.05),   0, "-2p54header", 16, 1],
-        [inch(1.2), -inch(0.05),   0, "-2p54header", 12, 1],
+        [size.x / 2, inch(0.05),   0, "-header2p54", 16, 1],
+        [inch(1.2), -inch(0.05),   0, "-header2p54", 12, 1],
         [inch(1.3),  size.y / 2, -90, "smd_qfp", QFP50P1200X1200X160_64N, "STM32F405"],
         [ 3,         size.y / 2, 180, "usb_C"],
         [ 10,        -6.5,       180, "jst_ph", 2, true, grey(25) ],
@@ -1263,8 +1263,8 @@ pcb("Feather405", "Adafruit Feather 405", [size.x, size.y, 1.6],
 ESP_201 = let(size = [33.5, 25.5, 1.2], font = "Liberation Mono:style=Bold")
 pcb("ESP_201", "ESP-201 ESP8266 WiFi module", size, colour = "white",
     components = [
-        for(side = [-1, 1]) [2 + inch(0.5), size.y / 2 + side * inch(0.45), 0, "-2p54joiner", 11, 1],
-        [2 + inch(1.1),                size.y / 2, 90, "2p54header", 4, 1],
+        for(side = [-1, 1]) [2 + inch(0.5), size.y / 2 + side * inch(0.45), 0, "-joiner2p54", 11, 1],
+        [2 + inch(1.1),                size.y / 2, 90, "header2p54", 4, 1],
         [-1.5,                         size.y / 2,-90, "text", 10, 1, "3.3V RX TX GND", font, "black"],
         [2 + inch(0.5),                -3,          0, "text", inch(1) + 2, 1, "3.3V 3.3V IO4  D3   D1   D0   CMD  CLK  D2   IO2  IO0",  font, "black"],
         [2 + inch(0.5),                 3,        180, "text", inch(1) + 2, 1, "IO15 IO13 IO12 IO14 XPD  CPEN RST  TOUT IO5  GND  GND",  font, "black"],
@@ -1366,7 +1366,7 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
     ]
 );
 
-9DOF_stick = pcb("9DOF_stick", "Sparkfun 9 degrees of freedom IMU", [24, 11, 0.8],
+SF_9DOF_stick = pcb("SF_9DOF_stick", "Sparkfun 9 degrees of freedom IMU", [24, 11, 0.8],
     colour = "red",
     hole_d = 3.3,
     holes = [[-1.2 - 3.3 / 2, 11 / 2]],
@@ -1379,7 +1379,7 @@ tiny_buck = pcb("tiny_buck", "Ultra Small 3A buck regulator", [20, 11, 1.6],
         [14.1, 4, 90, "smd_res", RES0603, "472"],
 
         // Silkscreen
-        [17.75, 1.4,   0,"text", 11, 1.4, "9DOF Stick",     "Liberation Sans:style=Bold"],
+        [17.75, 1.4,   0,"text", 11, 1.4, "SF_9DOF Stick",     "Liberation Sans:style=Bold"],
         [3,  11/2, 90, "text", 10, 1, "SCL SDA VDD GND", "Liberation Sans:style=Bold"],
     ],
     grid = [inch(0.05), 11 / 2 - inch(0.15), 1, 4, "silver", 0, inch(0.1)]
@@ -1389,8 +1389,8 @@ I2C_LCD_Backpack = let(size=[42, 19, 1.2])
   pcb("I2C_LCD_Backpack", "I2C / SPI character LCD backpack",
       size = size, //size
       colour = "black",
-      components = [[size[0]-2, -size[1]/2, 90, "2p54header", 4, 1, false, undef, true],
-                    [2, size[1]-8.5, 270, "2p54header", 2, 1, false, false, true],
+      components = [[size[0]-2, -size[1]/2, 90, "header2p54", 4, 1, false, undef, true],
+                    [2, size[1]-8.5, 270, "header2p54", 2, 1, false, false, true],
                     [size[0]/2,  size[1]/2,  90, "smd_soic", SOIC16, "PCF8574"],
                     [size[0]*3/4,  11,  0, "trimpot3362"],
                     // Silkscreen
@@ -1402,7 +1402,7 @@ I2C_LCD_Backpack = let(size=[42, 19, 1.2])
       grid = [2, size[1]-2, 16, 1, silver, inch(0.1), inch(0.9)]
       );
 
-tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge, 9DOF_stick];
+tiny_pcbs = [ESP_201, ESP_01M, XIAO, ESP_12F, MP1584EN, ESP_01,tiny_buck, LIPO_fuel_gauge, SF_9DOF_stick];
 
 big_pcbs = [BTT_RELAY_V1_2, MELLOW_FLY_D5, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO, BTT_SKR_V1_4_TURBO, DuetE, Duex5];
 

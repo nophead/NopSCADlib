@@ -1166,12 +1166,12 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
     function param(n, default = 0) = len(comp) > n && !is_undef(comp[n]) ? comp[n] : default;
     rotate(comp.z) {
         // Components that have a cutout parameter go in this section
-        if(show(comp, "2p54header")) let($show_plugs = show_plugs && param(9, true))
-                                        pin_header(2p54header, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
-        if(show(comp, "2p54joiner"))    pin_header(2p54joiner, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
-        if(show(comp, "2p54boxhdr")) let($show_plugs = show_plugs && param(7, true))
-                                        box_header(2p54header, comp[4], comp[5], param(6, false), cutouts, param(8, false));
-        if(show(comp, "2p54socket"))    pin_socket(2p54header, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
+        if(show(comp, "header2p54")) let($show_plugs = show_plugs && param(9, true))
+                                        pin_header(header2p54, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
+        if(show(comp, "joiner2p54"))    pin_header(joiner2p54, comp[4], comp[5], param(6, false), param(8, false), cutouts, colour = param(7, undef));
+        if(show(comp, "boxhdr2p54")) let($show_plugs = show_plugs && param(7, true))
+                                        box_header(header2p54, comp[4], comp[5], param(6, false), cutouts, param(8, false));
+        if(show(comp, "socket2p54"))    pin_socket(header2p54, comp[4], comp[5], param(6, false), param(7, 0), param(8, false), cutouts, param(9, undef));
         if(show(comp, "chip"))          chip(comp[4], comp[5], comp[6], param(7, grey(30)), cutouts);
         if(show(comp, "rj45"))          rj45(cutouts);
         if(show(comp, "usb_A"))         usb_Ax1(cutouts);
@@ -1194,7 +1194,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
         if(show(comp, "molex_usb_Ax2")) molex_usb_Ax2(cutouts);
         if(show(comp, "molex_usb_Ax1")) molex_usb_Ax1(cutouts);
         if(show(comp, "smd_led"))       smd_led(comp[4], comp[5], cutouts);
-        if(show(comp, "7seg"))          let(z = param(6, 0)) translate_z(z) 7_segment_digits(comp[4], comp[5], pin_length = z + 3, cutout = cutouts);
+        if(show(comp, "7seg"))          let(z = param(6, 0)) translate_z(z) disp_7_segment_digits(comp[4], comp[5], pin_length = z + 3, cutout = cutouts);
         if(show(comp, "block"))         block(size = [comp[4], comp[5], comp[6]], colour = comp[7], makes_cutout = param(8), r = param(9, 0), rtop = param(10, 0));
         if(!cutouts) {
             // Components that don't have a cutout parameter go in this section
@@ -1210,7 +1210,7 @@ module pcb_component(comp, cutouts = false, angle = undef) { //! Draw pcb compon
             if(show(comp, "gterm508"))      green_terminal(gt_5p08, comp[4], comp[5], param(6,"lime"));
             if(show(comp, "gterm635"))      green_terminal(gt_6p35, comp[4], comp[5], param(6,"lime"));
             if(show(comp, "term35"))        terminal_35(comp[4], param(5,"blue"));
-            if(show(comp, "transition"))    idc_transition(2p54header, comp[4], comp[5]);
+            if(show(comp, "transition"))    idc_transition(header2p54, comp[4], comp[5]);
             if(show(comp, "led"))           let(z = param(6, 0)) translate_z(z + eps) led(comp[4], comp[5], 2.6 + z, param(7, 0));
             if(show(comp, "pdip"))          pdip(comp[4], comp[5], param(6, false), param(7, inch(0.3)));
             if(show(comp, "ax_res"))        ax_res(comp[4], comp[5], param(6, 5), param(7, 0));

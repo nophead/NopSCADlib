@@ -21,11 +21,11 @@ use <../utils/layout.scad>
 
 include <../vitamins/7_segments.scad>
 
-function digits(s) = 7_segment_digits(s) < 2 ? 2 : 1;
+function digits(s) = disp_7_segment_digits(s) < 2 ? 2 : 1;
 
-module 7_segments()
-    layout([for(s = 7_segments) 7_segment_size(s).x * digits(s)], 3) let(s = 7_segments[$i])
-        7_segment_digits(s, digits(s));
+module disp_7_segments()
+    layout([for(s = disp_7_segments) disp_7_segment_size(s).x * digits(s)], 3) let(s = disp_7_segments[$i])
+        disp_7_segment_digits(s, digits(s));
 
 if($preview)
-    7_segments();
+    disp_7_segments();

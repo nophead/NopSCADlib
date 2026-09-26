@@ -54,6 +54,6 @@ module microview(cutout = false) {  //! Draw microview or generate a panel cutou
 
             for(side = [-1, 1], i = [0 : 7])
                 translate([side * inch(0.35), (i - 3.5) * inch(0.1)])
-                    pin(2p54header);
+                    pin(header2p54);
         }
 }
