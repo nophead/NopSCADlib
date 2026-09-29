@@ -27,7 +27,7 @@ include <../utils/core/core.scad>
 module offset_3D(r, chamfer_base = false) { //! Offset 3D shape by specified radius `r`, positive or negative.
     module ball(r)
         if(chamfer_base)
-            rotate_extrude()
+            rotate_extrude(start=0)
                 intersection() {
                     rotate(180)
                         teardrop(0, r);
