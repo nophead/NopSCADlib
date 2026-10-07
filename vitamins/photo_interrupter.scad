@@ -88,7 +88,8 @@ module photo_interrupter(type) { //! Draw the photo interrupter, with PCB
         translate([-pi_base_width(type)/2, pi_gap_width(type)/2, 0])
             cube([pi_base_width(type), pi_stem_width(type), pi_gap_height(type) + pi_base_height(type)]);
     }
-    pi_pcb(type);
+    if (!is_undef(pi_pcb(type)))
+        pi_pcb(type);
 }
 
 module pi_cutout(type) { //! Shape to subtract for fitting a photo interrupter

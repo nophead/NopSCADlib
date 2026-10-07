@@ -22,7 +22,7 @@ include <../vitamins/photo_interrupters.scad>
 use <../utils/layout.scad>
 
 module photo_interrupters()
-    layout([for(l = photo_interrupters) pi_base_length(l)], 5, true)
+    layout([for(l = photo_interrupters) pi_base_length(l)], 10, true)
         photo_interrupter(photo_interrupters[$i]);
 
 photo_interrupters();
