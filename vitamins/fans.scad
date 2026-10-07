@@ -28,6 +28,8 @@
 //                        c                           s    a           e
 //                        h
 //
+fan200x30= [200, 30, 198,   77, M4_dome_screw, 41,   4,  147, 7, 0,   201];
+fan140x25= [140, 25, 138,62.25, M4_dome_screw, 41,   4,  147, 7, 0,   137];
 fan120x25= [120, 25, 116,52.5,  M4_dome_screw, 41,   4,  140, 9, 0,   137];
 fan80x38 = [80,  38, 75, 35.75, M4_dome_screw, 40,   4.3, 84, 7, 0,   85];
 fan80x25 = [80,  25, 75, 35.75, M4_dome_screw, 40,   4.3, 84, 7, 0,   85];
@@ -40,6 +42,6 @@ fan30x10 = [30,  10, 27, 12,    M3_dome_screw, 17,   10, 100, 5, 0,   undef];
 fan25x10 = [25.4,10, 24, 10,   M2p5_pan_screw, 16,   10, 100, 5, 0,   undef];
 fan17x8  = [17,   8, 16, 6.75,  M2_cap_screw,  12.6,  8, 100, 7, 0,   undef];
 
-fans = [fan17x8, fan25x10, fan30x10, fan40x11, fan50x15, fan60x15, fan60x25, fan70x15, fan80x25, fan80x38, fan120x25];
+fans = [fan17x8, fan25x10, fan30x10, fan40x11, fan50x15, fan60x15, fan60x25, fan70x15, fan80x25, fan80x38, fan120x25, fan140x25, fan200x30];
 
 use <fan.scad>
