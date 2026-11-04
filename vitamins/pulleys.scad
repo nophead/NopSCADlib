@@ -32,6 +32,7 @@ T2p5x16_pulley         = ["T2p5x16_pulley",       "T2.5",  16, 12.16, T2p5x6,   
 GT2x20um_pulley        = ["GT2x20um_pulley",      "GT2UM", 20, 12.22, GT2x6,  7.5,  18, 6.5, 5, 18.0, 1.0, 6, 3.75, M3_grub_screw, 2]; //Ultimaker
 GT2x20ob_pulley        = ["GT2x20ob_pulley",      "GT2OB", 20, 12.22, GT2x6,  7.5,  16, 5.5, 5, 16.0, 1.0, 6, 3.25, M3_grub_screw, 2]; //Openbuilds
 GT2x16_pulley          = ["GT2x16_pulley",        "GT2",   16,  9.75, GT2x6,  7.0,  13, 5,   5, 13.0, 1.0,4.5,3.0,  M3_grub_screw, 2];
+GT2x20_pulley          = ["GT2x20_pulley",        "GT2",   20, 12.22, GT2x6,  7.0,  13, 5,   5, 13.0, 1.0,4.5,3.0,  M3_grub_screw, 2];
 GT2x12_pulley          = ["GT2x12_pulley",        "GT2RD", 12,  7.15, GT2x6,  6.5,  12, 5.5, 4, 12.0, 1.0, 4, 3.0,  M3_grub_screw, 2]; //Robotdigg
 GT2x20_toothed_idler   = ["GT2x20_toothed_idler", "GT2",   20, 12.22, GT2x6,  6.5,  18, 0,   4, 18.0, 1.0, 0, 0,    false,         0];
 GT2x20_plain_idler     = ["GT2x20_plain_idler",   "GT2",    0, 12.0,  GT2x6,  6.5,  18, 0,   4, 18.0, 1.0, 0, 0,    false,         0];
@@ -45,11 +46,15 @@ GT2x16_pulley_9        = ["GT2x16_pulley_9",      "GT2",   16, 9.65,  GT2x9,  9.
 GT2x20_pulley_9        = ["GT2x20_pulley_9",      "GT2",   20, 12.22, GT2x9,  11,   16, 7,   5, 16.0, 1.0, 6, 3.25, M4_grub_screw, 2];//Powge
 GT2x20_toothed_idler_9 = ["GT2x20_toothed_idler_9", "GT2", 20, 12.22, GT2x9,  10,   18, 0,   5, 18.0, 1.0, 0, 0,    false,         0];
 
+f623_2x_idler          = ["f623_2x_idler",        "GT2",    0,  10,   GT2x6,  6,     3, 0,   3, 11.5,  1.0, 0, 0,    false,        0];
+f695_2x_idler          = ["f695_2x_idler",        "GT2",    0,  13,   GT2x6,  6,     3, 0,   5, 15.0,  1.0, 0, 0,    false,        0];
+mr105f_2x_idler        = ["mr105f_2x_idler",      "GT2",    0,  10,   GT2x6,  6,     3, 0,   5, 12.0,  1.0, 0, 0,    false,        0];
 
 
 pulleys = [
        T5x10_pulley,
        T2p5x16_pulley,
+       GT2x20_pulley,
        GT2x20_pulley_9,
        GT2x20um_pulley,
        GT2x20ob_pulley,
@@ -66,6 +71,10 @@ pulleys = [
        GT2x20_toothed_idler_9,
 
        GT2x80_pulley,
+
+       f623_2x_idler,
+       f695_2x_idler,
+       mr105f_2x_idler,
 ];
 
 use <pulley.scad>
