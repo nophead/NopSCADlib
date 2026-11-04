@@ -33,9 +33,10 @@ NEMA17_34     = ["NEMA17_34",     42.3, 34,     53.6/2, 25,     11,     2,     5
 NEMA17_27     = ["NEMA17_27",     42.3, 26.5,   53.6/2, 25,     11,     2,     5,     26.5,        31,    [10,    8], 3,     false, false, 0,       0];
 NEMA16_19     = ["NEMA16_19",     39.5, 19.2,   50.6/2, 50.6/2, 11,     2,     5,     12,          31,    [8,     8], 3,     false, false, 0,       0];
 NEMA14_36     = ["NEMA14_36",     35.2, 36,     46.4/2, 21,     11,     2,     5,     21,          26,    [8,     8], 3,     false, false, 0,       0];
+NEMA14_52     = ["NEMA14_52",     35.2, 52,     46.4/2, 21,     11,     2,     5,     21,          26,    [8,     8], 3,     false, false, 0,       0];
 NEMA23_51     = ["NEMA23_51",     56.4, 51.2,   75.7/2, 35,   38.1/2, 1.6,   6.35,    24,        47.1,    [8,     8], 3,     false, false, 0,       0];
 
-stepper_motors = [NEMA8_30, NEMA8_30BH, NEMA14_36, NEMA16_19, NEMA17_27, NEMA17_34, NEMA17_40, NEMA17_47,NEMA17_47L80, NEMA23_51];
+stepper_motors = [NEMA8_30, NEMA8_30BH, NEMA14_36, NEMA14_52, NEMA16_19, NEMA17_27, NEMA17_34, NEMA17_40, NEMA17_47,NEMA17_47L80, NEMA23_51];
 small_steppers = [];
 
 use <stepper_motor.scad>
